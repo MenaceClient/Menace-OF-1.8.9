@@ -1,0 +1,102 @@
+---- Minecraft Crash Report ----
+// Don't be sad. I'll do better next time, I promise!
+
+Time: 4/12/21, 7:59 am
+Description: Updating screen events
+
+java.lang.NullPointerException: Cannot invoke "dev.menace.module.modules.misc.disablers.DisablerBase.onDisable()" because "this.mode" is null
+	at dev.menace.module.modules.misc.Disabler.onDisable(Disabler.java:73)
+	at dev.menace.module.modules.misc.Disabler.onEnable(Disabler.java:56)
+	at dev.menace.module.Module.toggle(Module.java:36)
+	at de.Hero.clickgui.elements.ModuleButton.mouseClicked(ModuleButton.java:112)
+	at de.Hero.clickgui.Panel.mouseClicked(Panel.java:116)
+	at de.Hero.clickgui.ClickGUI.mouseClicked(ClickGUI.java:230)
+	at net.minecraft.client.gui.GuiScreen.handleMouseInput(GuiScreen.java:613)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:582)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1811)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1130)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:432)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at dev.menace.module.modules.misc.Disabler.onDisable(Disabler.java:73)
+	at dev.menace.module.modules.misc.Disabler.onEnable(Disabler.java:56)
+	at dev.menace.module.Module.toggle(Module.java:36)
+	at de.Hero.clickgui.elements.ModuleButton.mouseClicked(ModuleButton.java:112)
+	at de.Hero.clickgui.Panel.mouseClicked(Panel.java:116)
+	at de.Hero.clickgui.ClickGUI.mouseClicked(ClickGUI.java:230)
+	at net.minecraft.client.gui.GuiScreen.handleMouseInput(GuiScreen.java:613)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:582)
+
+-- Affected screen --
+Details:
+	Screen name: de.Hero.clickgui.ClickGUI
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 3 total; [EntityPlayerSP['Jellie1578722'/229275, l='MpServer', x=41.28, y=4.00, z=-175.69], EntityOtherPlayerMP['Bob'/556, l='MpServer', x=48.66, y=6.00, z=-204.88], EntityOtherPlayerMP['§7§lMenu'/615, l='MpServer', x=41.22, y=6.00, z=-205.06]]
+	Chunk stats: MultiplayerChunkCache: 625, 625
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 44.00,5.00,-203.00 - World: (44,5,-203), Chunk: (at 12,0,5 in 2,-13; contains blocks 32,0,-208 to 47,255,-193), Region: (0,-1; contains chunks 0,-32 to 31,-1, blocks 0,0,-512 to 511,255,-1)
+	Level time: 181056 game time, 1000 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 11 total; [EntityOtherPlayerMP['Bob'/556, l='MpServer', x=48.66, y=6.00, z=-204.88], EntityArmorStand['§fUse §7/menu §ffor info/help'/816, l='MpServer', x=56.78, y=3.25, z=-194.84], EntityOtherPlayerMP['§7§lMenu'/615, l='MpServer', x=41.22, y=6.00, z=-205.06], EntityWither['Playing on the §cAwesome §eBoyz §fNetwork'/2147473689, l='MpServer', x=41.44, y=1.75, z=-127.72], EntityOtherPlayerMP['§7§lMenu'/615, l='MpServer', x=41.22, y=6.00, z=-205.06], EntityOtherPlayerMP['Bob'/556, l='MpServer', x=48.66, y=6.00, z=-204.88], EntityPlayerSP['Jellie1578722'/229275, l='MpServer', x=41.28, y=4.00, z=-175.69], EntityArmorStand['§c§lAwesome §e§lBoyz §c§lCreative'/813, l='MpServer', x=56.78, y=4.00, z=-194.84], EntityArmorStand['§f§lWelcome'/814, l='MpServer', x=56.78, y=3.75, z=-194.84], EntityArmorStand['§6§lLobby'/559, l='MpServer', x=48.66, y=8.19, z=-204.88], EntityArmorStand['§fLeave Spawn to get started'/815, l='MpServer', x=56.78, y=3.50, z=-194.84]]
+	Retry entities: 0 total; []
+	Server brand: BungeeCord (git:BungeeCord-Bootstrap:1.17-R0.1-SNAPSHOT:6613aae:1607) <- Paper
+	Server type: Non-integrated multiplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:403)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2795)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:453)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 16.0.1, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 584791928 bytes (557 MB) / 1073741824 bytes (1024 MB) up to 1073741824 bytes (1024 MB)
+	JVM Flags: 4 total; -Xmx1024M -Xms1024M -XX:+ShowCodeDetailsInExceptionMessages -Xmx1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	Launched Version: mcp
+	LWJGL: 2.9.2
+	OpenGL: GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 456.71, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: §f§krr §7[ §cShouble V2 §7] §f§krr§7.zip, §bKetamine §5 V1.2.zip
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-9700F CPU @ 3.00GHz
+	OptiFine Version: OptiFine_1.8.9_HD_U_M5
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 13
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 456.71
+	OpenGlRenderer: GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8

@@ -1,0 +1,7 @@
+name: MenacePlugin
+main: dev.menace.Menace
+version: 0.0.1
+author: Exterminate
+description: Plugin
+depend: [ProtocolLib]
+api: 1.8.8

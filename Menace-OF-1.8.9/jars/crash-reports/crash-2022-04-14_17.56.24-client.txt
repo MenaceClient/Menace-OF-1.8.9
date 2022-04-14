@@ -1,0 +1,100 @@
+---- Minecraft Crash Report ----
+// Don't do that.
+
+Time: 14/04/22 5:56 PM
+Description: Updating screen events
+
+java.lang.IndexOutOfBoundsException: Index: 6, Size: 6
+	at java.util.ArrayList.rangeCheck(ArrayList.java:657)
+	at java.util.ArrayList.get(ArrayList.java:433)
+	at dev.menace.gui.clickgui.lemon.click.component.components.sub.ModeButton.mouseClicked(ModeButton.java:68)
+	at dev.menace.gui.clickgui.lemon.click.component.components.Button.mouseClicked(Button.java:122)
+	at dev.menace.gui.clickgui.lemon.click.ClickGui.mouseClicked(ClickGui.java:65)
+	at net.minecraft.client.gui.GuiScreen.handleMouseInput(GuiScreen.java:613)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:582)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1827)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1144)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:441)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at java.util.ArrayList.rangeCheck(ArrayList.java:657)
+	at java.util.ArrayList.get(ArrayList.java:433)
+	at dev.menace.gui.clickgui.lemon.click.component.components.sub.ModeButton.mouseClicked(ModeButton.java:68)
+	at dev.menace.gui.clickgui.lemon.click.component.components.Button.mouseClicked(Button.java:122)
+	at dev.menace.gui.clickgui.lemon.click.ClickGui.mouseClicked(ClickGui.java:65)
+	at net.minecraft.client.gui.GuiScreen.handleMouseInput(GuiScreen.java:613)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:582)
+
+-- Affected screen --
+Details:
+	Screen name: dev.menace.gui.clickgui.lemon.click.ClickGui
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 3 total; [EntityPlayerSP['ExterminateYT'/43769, l='MpServer', x=238.51, y=57.00, z=171.24], EntityOtherPlayerMP['Rubi04444'/43768, l='MpServer', x=221.31, y=86.25, z=181.44], EntityOtherPlayerMP['Rolyat99'/43773, l='MpServer', x=278.88, y=62.00, z=211.78]]
+	Chunk stats: MultiplayerChunkCache: 289, 289
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 211.00,61.00,162.00 - World: (211,61,162), Chunk: (at 3,3,2 in 13,10; contains blocks 208,0,160 to 223,255,175), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 1636434312 game time, 888000 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: survival (ID 0). Hardcore: false. Cheats: false
+	Forced entities: 26 total; [EntityPlayerSP['ExterminateYT'/43769, l='MpServer', x=238.51, y=57.00, z=171.24], EntityOtherPlayerMP['Rubi04444'/43768, l='MpServer', x=219.25, y=88.94, z=181.16], EntitySheep['Sheep'/43723, l='MpServer', x=191.44, y=62.00, z=184.88], EntitySheep['Sheep'/43727, l='MpServer', x=191.16, y=62.00, z=187.34], EntitySheep['Sheep'/43735, l='MpServer', x=192.06, y=62.00, z=188.03], EntityArmorStand['§6KillauraWallTest'/23, l='MpServer', x=181.50, y=65.66, z=139.50], EntityOtherPlayerMP['Rolyat99'/43770, l='MpServer', x=212.59, y=62.01, z=173.91], EntityArmorStand['§6KillauraAimTest 1'/25, l='MpServer', x=190.50, y=65.66, z=170.50], EntityArmorStand['§6KillauraAimTest 2'/26, l='MpServer', x=179.50, y=65.66, z=170.50], EntityArmorStand['§6PVP'/27, l='MpServer', x=181.50, y=65.66, z=160.50], EntityArmorStand['§6KillauraSwitchTest'/36, l='MpServer', x=189.50, y=65.66, z=186.50], EntityArmorStand['§6KillauraMultiTest1'/37, l='MpServer', x=179.50, y=65.66, z=186.50], EntitySheep['Sheep'/43686, l='MpServer', x=192.88, y=62.00, z=185.97], EntityArmorStand['§6Snow'/38, l='MpServer', x=207.50, y=65.66, z=156.50], EntityArmorStand['§6Void'/39, l='MpServer', x=200.50, y=65.66, z=201.50], EntityArmorStand['§6Nofall/Fly/Glide'/40, l='MpServer', x=214.50, y=65.66, z=140.50], EntityArmorStand['§6Step'/41, l='MpServer', x=208.50, y=65.66, z=140.50], EntityArmorStand['§6AntiCactus'/42, l='MpServer', x=215.50, y=65.66, z=156.50], EntityArmorStand['§6AntiFire'/43, l='MpServer', x=215.50, y=65.66, z=168.50], EntityArmorStand['§6Jesus'/44, l='MpServer', x=214.50, y=65.66, z=188.50], EntityArmorStand['§6Fastladder'/45, l='MpServer', x=208.50, y=65.66, z=180.50], EntityArmorStand['§6Esp'/46, l='MpServer', x=208.50, y=65.66, z=199.50], EntityArmorStand['§6Jesus-Lava ver.'/47, l='MpServer', x=214.50, y=65.66, z=226.50], EntityArmorStand['§6Misc'/48, l='MpServer', x=208.50, y=65.66, z=226.50], EntityOtherPlayerMP['Rubi04444'/43768, l='MpServer', x=221.31, y=86.25, z=181.44], EntityOtherPlayerMP['Rolyat99'/43773, l='MpServer', x=278.88, y=62.00, z=211.78]]
+	Retry entities: 0 total; []
+	Server brand: Spigot
+	Server type: Non-integrated multiplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:404)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2813)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:462)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_202, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 651224808 bytes (621 MB) / 1070596096 bytes (1021 MB) up to 1070596096 bytes (1021 MB)
+	JVM Flags: 3 total; -Xmx1024M -Xms1024M -Xmx1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	Launched Version: mcp
+	LWJGL: 2.9.2
+	OpenGL: GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 456.71, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (UK)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-9700F CPU @ 3.00GHz
+	OptiFine Version: OptiFine_1.8.9_HD_U_M5
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 13
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 456.71
+	OpenGlRenderer: GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8
