@@ -174,7 +174,7 @@ public class Menace {
 	public void login() {
     	MicrosoftAuthenticator authenticator = new MicrosoftAuthenticator();
 		try {
-			MicrosoftAuthResult result = authenticator.loginWithRefreshToken("M.R3_BAY.-CcrT*E3shAIl8A2ThTzIGUEMYK06re4OM3lCWO!UmqMC*Jrr4uOj7rRedkRqx5K98JovuBER!NY*0kHO0DMQLZPm0FP*fxImMEKgIfm!8gy1viMqYJjoVyvPss34C6ds8XJixcR5Ch4*g2eo*6OiVfM6m32EkQRojshbXgiyCOiO1U6qtwvUazZ5MOaMqMKfdFt9i9z2ftioeKZeniFgVMFU2Fl5WW6F!RMZzJngdY50*MF!b95zp!bMG3pRUL5cjOoS05AhYKG!YdVLFDdMgH0$");
+			MicrosoftAuthResult result = authenticator.loginWithRefreshToken("refreshToken");
 			MinecraftProfile profile = result.getProfile();
 			MC.session = new Session(profile.getName(), profile.getId(), result.getAccessToken(), "mojang");
 		} catch (MicrosoftAuthenticationException e) {
