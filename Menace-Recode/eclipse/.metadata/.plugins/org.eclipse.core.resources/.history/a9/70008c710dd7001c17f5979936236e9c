@@ -1,0 +1,10 @@
+package dev.menace.event.events;
+
+import net.minecraft.util.AxisAlignedBB;
+
+public class EventCollide {
+
+	private double posX, posY, posZ;
+	private AxisAlignedBB axisAlignedBB;
+	
+}

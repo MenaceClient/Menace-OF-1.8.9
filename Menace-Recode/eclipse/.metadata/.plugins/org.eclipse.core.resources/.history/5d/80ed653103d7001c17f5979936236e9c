@@ -1,0 +1,77 @@
+package dev.menace.module;
+
+import dev.menace.Menace;
+
+public class Module {
+
+	private String name;
+	private String desc;
+	private Category category;
+	private int keybind;
+	private boolean toggled;
+	
+	public Module(String name, Category category, int keybind) {
+		this.name = name;
+		this.desc = "";
+		this.category = category;
+		this.keybind = keybind;
+		this.toggled = false;
+	}
+	
+	public Module(String name, String desc, Category category, int keybind) {
+		this.name = name;
+		this.desc = desc;
+		this.category = category;
+		this.keybind = keybind;
+		this.toggled = false;
+	}
+
+	public void onEnable() {
+		Menace.instance.eventManager.register(this);
+	}
+	
+	public void onDisable() {
+		Menace.instance.eventManager.unregister(this);
+	}
+	
+	public int getKeybind() {
+		return keybind;
+	}
+
+	public void setKeybind(int keybind) {
+		this.keybind = keybind;
+	}
+
+	public boolean isToggled() {
+		return toggled;
+	}
+
+	public void toggle() {
+		this.setToggled(!this.toggled);
+	}
+	
+	public void setToggled(boolean toggled) {
+		if (this.toggled == toggled) return;
+		
+		if (this.toggled) {
+			this.onDisable();
+		} else {
+			this.onEnable();
+		}
+		
+		this.toggled = toggled;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getDesc() {
+		return desc;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+	
+}

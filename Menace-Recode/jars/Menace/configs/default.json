@@ -1,0 +1,29 @@
+{
+  "Velocity": {
+    "Toggled": false
+  },
+  "Flight": {
+    "Toggled": false
+  },
+  "Sprint": {
+    "Toggled": true
+  },
+  "NoFall": {
+    "Toggled": true,
+    "Settings": {
+      "Mode": "SpoofGround"
+    }
+  },
+  "FastPlace": {
+    "Toggled": false
+  },
+  "ClickGui": {
+    "Toggled": false,
+    "Settings": {
+      "Mode": "CSGO"
+    }
+  },
+  "DevModule": {
+    "Toggled": false
+  }
+}

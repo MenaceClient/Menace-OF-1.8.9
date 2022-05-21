@@ -1,0 +1,5 @@
+package dev.menace.module;
+
+public enum Category {
+
+}

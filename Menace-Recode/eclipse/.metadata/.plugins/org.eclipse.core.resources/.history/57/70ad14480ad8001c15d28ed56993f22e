@@ -1,0 +1,9 @@
+package dev.menace.module.settings;
+
+public class ToggleSetting extends Setting {
+
+	public ToggleSetting(String name, boolean visible, boolean enabled) {
+		super(name, visible);
+	}
+
+}

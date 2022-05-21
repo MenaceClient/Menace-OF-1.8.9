@@ -1,0 +1,5 @@
+package dev.menace.module.modules.render;
+
+public class ClickGuiModule {
+
+}

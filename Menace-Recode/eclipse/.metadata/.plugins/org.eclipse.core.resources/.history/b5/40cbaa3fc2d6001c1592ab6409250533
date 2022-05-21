@@ -1,0 +1,12 @@
+package dev.menace.module;
+
+public class Module {
+
+	private String name;
+	private Category category;
+	private boolean toggled;
+	private int keybind;
+	
+	
+	
+}

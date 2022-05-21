@@ -1,0 +1,22 @@
+package dev.menace.ui.altmanager;
+
+import dev.menace.ui.altmanager.DirectLoginScreen.LoginMode;
+
+public class LoginThread extends Thread {
+	
+	private String status = "Waiting...";
+	private String username;
+	private String password;
+	private LoginMode loginType;
+	
+	public LoginThread(String username, String password, LoginMode loginType) {
+		this.username = username;
+		this.password = password;
+		this.loginType = loginType;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+}

@@ -1,0 +1,12 @@
+package dev.menace.ui.clickgui.csgo.buttons.setting.settings;
+
+import dev.menace.module.settings.Setting;
+import dev.menace.ui.clickgui.csgo.buttons.setting.CSSetting;
+
+public class CSSettingBind {
+
+	public CSSettingBind(int x, int y, int width, int height) {
+		
+	}
+
+}

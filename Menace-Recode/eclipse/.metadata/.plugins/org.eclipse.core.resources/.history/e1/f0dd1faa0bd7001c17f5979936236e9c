@@ -1,0 +1,13 @@
+package dev.menace.event.events;
+
+import dev.menace.event.Event;
+
+public class EventSlowdown extends Event {
+
+	private float strafeMultiplier, forwardMultiplier;
+	
+	public EventSlowdown() {
+		
+	}
+	
+}

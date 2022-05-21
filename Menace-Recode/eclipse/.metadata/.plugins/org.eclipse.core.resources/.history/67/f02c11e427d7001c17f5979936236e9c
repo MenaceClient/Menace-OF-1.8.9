@@ -1,0 +1,9 @@
+package dev.menace.utils.altmanager;
+
+public class AlteningPremiumLogin {
+
+	public static void login(String api) {
+
+	}
+	
+}

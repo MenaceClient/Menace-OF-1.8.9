@@ -1,0 +1,7 @@
+package dev.menace.ui.clickgui.csgo.buttons.setting.settings;
+
+import dev.menace.ui.clickgui.csgo.buttons.setting.CSSetting;
+
+public class CSSettingBind extends CSSetting {
+
+}

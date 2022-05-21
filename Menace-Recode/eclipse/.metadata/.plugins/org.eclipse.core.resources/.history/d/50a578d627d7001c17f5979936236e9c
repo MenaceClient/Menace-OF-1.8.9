@@ -1,0 +1,30 @@
+package dev.menace.utils.altmanager;
+
+import java.net.Proxy;
+
+import com.mojang.authlib.Agent;
+import com.mojang.authlib.exceptions.AuthenticationException;
+import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
+import com.mojang.authlib.yggdrasil.YggdrasilUserAuthentication;
+import com.thealtening.AltService;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.Session;
+
+public class LoginManager {
+
+	private static AltService altService = new AltService();
+	
+	public static void mojangLogin(String username, String password) throws NoSuchFieldException, IllegalAccessException, AuthenticationException {
+		altService.switchService(AltService.EnumAltService.MOJANG);
+        YggdrasilUserAuthentication authentication = (YggdrasilUserAuthentication) new YggdrasilAuthenticationService(Proxy.NO_PROXY, "")
+                .createUserAuthentication(Agent.MINECRAFT);
+        authentication.setUsername(username);
+        authentication.setPassword(password);
+        authentication.logIn();
+
+        Minecraft.getMinecraft().session = new Session(authentication.getSelectedProfile().getName(), authentication.getSelectedProfile().getId().toString(),
+                authentication.getAuthenticatedToken(), "mojang");
+	}
+	
+}

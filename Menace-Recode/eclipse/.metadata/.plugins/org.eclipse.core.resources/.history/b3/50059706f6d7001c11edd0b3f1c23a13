@@ -1,0 +1,62 @@
+package dev.menace.ui.altmanager;
+
+import java.io.IOException;
+
+import org.lwjgl.input.Keyboard;
+
+import dev.menace.utils.render.GuiPasswordField;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiMainMenu;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.GuiTextField;
+
+public class DirectLoginScreen extends GuiScreen {
+
+	private GuiTextField usernameField;
+	private GuiPasswordField passwordField;
+	private final GuiScreen parent;
+	
+	public DirectLoginScreen(GuiScreen parent) {
+		this.parent = parent;
+	}
+
+	@Override
+	public void initGui() {
+		int var3 = height / 4 + 24;
+		this.loginModeButton = new GuiButton(1, width / 2 - 100, var3 + 72 + 12, 100, 20, "Mode: " + loginModeName.name);
+		this.buttonList.add(new GuiButton(2, width / 2 - 100, var3 + 72 + 12 + 24, "Back"));
+		this.buttonList.add(new GuiButton(0, width / 2, var3 + 72 + 12, 100, 20, "Login"));
+		this.usernameField = new GuiTextField(var3, this.mc.fontRendererObj, width / 2 - 100, 60, 200, 20);
+		this.passwordField = new GuiPasswordField(this.mc.fontRendererObj, width / 2 - 100, 100, 200, 20);
+		this.usernameField.setFocused(true);
+		Keyboard.enableRepeatEvents(true);
+	}
+	
+	@Override
+	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+		this.drawDefaultBackground();
+		this.usernameField.drawTextBox();
+		this.passwordField.drawTextBox();
+		super.drawScreen(mouseX, mouseY, partialTicks);
+	}
+	
+	@Override
+	protected void keyTyped(char typedChar, int keyCode) throws IOException {
+		if (keyCode == 1)
+        {
+            this.mc.displayGuiScreen(parent);
+            return;
+        }
+		
+		this.usernameField.textboxKeyTyped(typedChar, keyCode);
+		this.passwordField.textboxKeyTyped(typedChar, keyCode);
+	}
+	
+	@Override
+	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+		this.usernameField.mouseClicked(mouseX, mouseY, mouseButton);
+		this.passwordField.mouseClicked(mouseX, mouseY, mouseButton);
+		super.mouseClicked(mouseX, mouseY, mouseButton);
+	}
+	
+}

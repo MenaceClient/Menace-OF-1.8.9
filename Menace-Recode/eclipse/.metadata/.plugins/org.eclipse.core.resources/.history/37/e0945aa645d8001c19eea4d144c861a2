@@ -1,0 +1,29 @@
+package dev.menace.module.modules.player;
+
+import dev.menace.event.EventTarget;
+import dev.menace.event.events.EventSendPacket;
+import dev.menace.event.events.EventUpdate;
+import dev.menace.module.BaseModule;
+import dev.menace.module.Category;
+import net.minecraft.network.play.client.C03PacketPlayer;
+
+public class NoFallModule extends BaseModule {
+
+	public NoFallModule() {
+		super("NoFall", "Cancels fall damage", Category.PLAYER, 0);
+	}
+	
+	@Override
+	public void setup() {
+		
+		super.setup();
+	}
+
+	@EventTarget
+	public void onUpdaonPacket(EventSendPacket event) {
+		if (event.getPacket() instanceof C03PacketPlayer && MC.thePlayer.fallDistance - MC.thePlayer.motionY > 3) {
+			((C03PacketPlayer)event.getPacket()).setOnGround(true);
+		}
+	}
+	
+}

@@ -1,0 +1,58 @@
+package dev.menace.ui.altmanager;
+
+import com.mojang.authlib.exceptions.AuthenticationException;
+
+import dev.menace.ui.altmanager.DirectLoginScreen.LoginMode;
+import dev.menace.utils.altmanager.LoginManager;
+import net.minecraft.client.Minecraft;
+
+public class LoginThread extends Thread {
+	
+	Minecraft MC = Minecraft.getMinecraft();
+	private String status = "§7Waiting...§r";
+	private String username;
+	private String password;
+	private LoginMode loginType;
+	
+	public LoginThread(String username, String password, LoginMode loginType) {
+		this.username = username;
+		this.password = password;
+		this.loginType = loginType;
+		this.status = "§eLogging in...§r";
+	}
+	
+	@Override
+	public void run() {
+		switch (loginType) {
+		case ALTENING:
+			try {
+				LoginManager.alteningLogin(username);
+				this.status = "§aLogged in as - " + MC.session.getUsername() + "§r";
+			} catch (NoSuchFieldException | IllegalAccessException | AuthenticationException e) {
+				this.status = "§cLogin Failed! ";
+				e.printStackTrace();
+			}
+			break;
+		case ALTENINGPREMIUM:
+			
+			break;
+		case MICROSOFT:
+			
+			break;
+		case MICROSOFT_BROWSER:
+			
+			break;
+		case MOJANG:
+			
+			break;
+		default:
+			break;
+		
+		}
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+}

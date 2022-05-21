@@ -1,0 +1,52 @@
+package dev.menace.ui.altmanager;
+
+import java.io.IOException;
+
+import dev.menace.utils.render.GuiPasswordField;
+import net.minecraft.client.gui.GuiMainMenu;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.GuiTextField;
+
+public class DirectLoginScreen extends GuiScreen {
+
+	private GuiTextField usernameField;
+	private GuiPasswordField passwordField;
+	private final GuiScreen parent;
+	
+	public DirectLoginScreen(GuiScreen parent) {
+		this.parent = parent;
+	}
+
+	@Override
+	public void initGui() {
+		this.usernameField = new GuiTextField(1, fontRendererObj, 20, 20, 15, 15);
+		this.passwordField = new GuiPasswordField(fontRendererObj, 20, 30, 15, 15);
+	}
+	
+	@Override
+	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+		this.drawDefaultBackground();
+		this.usernameField.drawTextBox();
+		this.passwordField.drawTextBox();
+		super.drawScreen(mouseX, mouseY, partialTicks);
+	}
+	
+	@Override
+	protected void keyTyped(char typedChar, int keyCode) throws IOException {
+		if (keyCode == 1)
+        {
+            this.mc.displayGuiScreen(parent);
+        }
+		
+		this.usernameField.textboxKeyTyped(typedChar, keyCode);
+		this.passwordField.textboxKeyTyped(typedChar, keyCode);
+	}
+	
+	@Override
+	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+		this.usernameField.mouseClicked(mouseX, mouseY, mouseButton);
+		this.passwordField.mouseClicked(mouseX, mouseY, mouseButton);
+		super.mouseClicked(mouseX, mouseY, mouseButton);
+	}
+	
+}

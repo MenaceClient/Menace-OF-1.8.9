@@ -1,0 +1,18 @@
+package dev.menace.module.modules.movement;
+
+import org.lwjgl.input.Keyboard;
+
+import dev.menace.event.EventTarget;
+import dev.menace.event.events.EventUpdate;
+import dev.menace.module.Category;
+import dev.menace.module.BaseModule;
+
+public class FlightModule extends BaseModule {
+	
+	public FlightModule() {
+		super("Flight", "Fly like a bird!", Category.MOVEMENT, Keyboard.KEY_F);
+	}
+	
+	
+
+}

@@ -1,0 +1,16 @@
+package dev.menace.module.settings;
+
+public class SliderSetting extends Setting {
+
+	private double def, min, max;
+	private boolean intOnly;
+	
+	public SliderSetting(String name, boolean visible, double def, double min, double max, boolean intOnly) {
+		super(name, visible);
+		this.def = def;
+		this.min = min;
+		this.max = max;
+		this.intOnly = intOnly;
+	}
+
+}

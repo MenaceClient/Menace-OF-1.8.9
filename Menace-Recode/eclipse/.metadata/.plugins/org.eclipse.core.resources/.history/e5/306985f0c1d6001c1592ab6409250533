@@ -1,0 +1,8 @@
+package dev.menace.module;
+
+public class Module {
+
+	private boolean toggled;
+	private int keybind;
+	
+}

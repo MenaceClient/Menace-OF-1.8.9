@@ -1,0 +1,10 @@
+package dev.menace.module.settings;
+
+public class ListSetting extends Setting {
+
+	public ListSetting(String name, boolean visible) {
+		super(name, visible);
+		
+	}
+
+}

@@ -1,0 +1,12 @@
+package dev.menace.module.modules.world;
+
+import dev.menace.module.BaseModule;
+import dev.menace.module.Category;
+
+public class FastPlaceModule extends BaseModule {
+
+	public FastPlaceModule() {
+		super("FastPlace", Category.WORLD, 0);
+	}
+
+}

@@ -1,0 +1,92 @@
+package dev.menace.ui.clickgui.caesium.listeners;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import dev.menace.Menace;
+import dev.menace.module.BaseModule;
+import dev.menace.module.settings.Setting;
+import dev.menace.module.settings.SliderSetting;
+import dev.menace.module.settings.ToggleSetting;
+import dev.menace.ui.clickgui.caesium.components.GuiButton;
+import dev.menace.ui.clickgui.caesium.components.GuiComboBox;
+import dev.menace.ui.clickgui.caesium.components.GuiGetKey;
+import dev.menace.ui.clickgui.caesium.components.GuiLabel;
+import dev.menace.ui.clickgui.caesium.components.GuiSlider;
+import dev.menace.ui.clickgui.caesium.components.GuiToggleButton;
+import dev.menace.ui.clickgui.caesium.components.listeners.ComboListener;
+import dev.menace.ui.clickgui.caesium.components.listeners.ComponentListener;
+import dev.menace.ui.clickgui.caesium.components.listeners.KeyListener;
+import dev.menace.ui.clickgui.caesium.components.listeners.ValueListener;
+
+/**
+ * @author sendQueue <Vinii>
+ *
+ *         Further info at Vinii.de or github@vinii.de, file created at
+ *         11.11.2020. Use is only authorized if given credit!
+ * 
+ */
+public class ComponentsListener extends ComponentListener {
+	private GuiButton button;
+
+	public ComponentsListener(GuiButton button) {
+		this.button = button;
+	}
+
+	@Override
+	public void addComponents() {
+		add(new GuiLabel("Settings >"));
+		final BaseModule m = Menace.instance.moduleManager.getModuleByName(button.getText());
+
+		for (Setting set : m.getSettings()) {
+			if (set.isToggle()) {
+				GuiToggleButton toggleButton = new GuiToggleButton(set.getName());
+				toggleButton.setToggled(((ToggleSetting)set).isToggled());
+				toggleButton.addClickListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						((ToggleSetting)set).setToggled(toggleButton.isToggled());
+					}
+				});
+				add(toggleButton);
+			}
+			if (set.isSlider()) {
+				GuiSlider slider = new GuiSlider(set.getName(), ((SliderSetting)set).getMin(), ((SliderSetting)set).getMax(), ((SliderSetting)set).getValue(),
+						((SliderSetting)set).onlyInt() ? 0 : 2);
+				slider.addValueListener(new ValueListener() {
+
+					@Override
+					public void valueUpdated(double value) {
+						((SliderSetting)set).setValue(value);
+					}
+
+					@Override
+					public void valueChanged(double value) {
+						((SliderSetting)set).setValue(value);
+					}
+				});
+				add(slider);
+			}
+			if (set.isList()) {
+				GuiComboBox comboBox = new GuiComboBox(set);
+				comboBox.addComboListener(new ComboListener() {
+
+					@Override
+					public void comboChanged(String combo) {
+					}
+				});
+				add(comboBox);
+			}
+		}
+		GuiGetKey ggk = new GuiGetKey("KeyBind", m.getKeybind());
+		ggk.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyChanged(int key) {
+				m.setKeybind(key);
+			}
+		});
+		add(ggk);
+	}
+
+}

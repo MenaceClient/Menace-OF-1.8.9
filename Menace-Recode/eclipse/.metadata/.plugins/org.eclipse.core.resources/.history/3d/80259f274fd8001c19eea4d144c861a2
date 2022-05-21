@@ -1,0 +1,27 @@
+package dev.menace.module.modules.render;
+
+import org.lwjgl.input.Keyboard;
+
+import dev.menace.module.BaseModule;
+import dev.menace.module.Category;
+import dev.menace.ui.clickgui.csgo.CSGOGui;
+import dev.menace.ui.clickgui.lime.LimeClickGUI;
+
+public class ClickGuiModule extends BaseModule {
+
+	public CSGOGui csgoGui; 
+	public LimeClickGUI limeGui;
+	
+	public ClickGuiModule() {
+		super("ClickGui", Category.RENDER, Keyboard.KEY_RSHIFT);
+	}
+	
+	@Override
+	public void onEnable() {
+		super.onEnable();
+		if (MC.currentScreen instanceof CSGOGui) return;
+		MC.displayGuiScreen(csgoGui);
+		toggle();
+	}
+
+}

@@ -1,0 +1,7 @@
+package dev.menace.ui.altmanager;
+
+public class LoginThread extends Thread {
+	
+	
+
+}

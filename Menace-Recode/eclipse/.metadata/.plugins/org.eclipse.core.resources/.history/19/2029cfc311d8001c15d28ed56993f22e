@@ -1,0 +1,34 @@
+package dev.menace.ui.clickgui.csgo.buttons.setting.settings;
+
+import java.io.IOException;
+
+import dev.menace.module.settings.Setting;
+import dev.menace.ui.clickgui.csgo.buttons.setting.CSSetting;
+
+public class CSSettingBind {
+
+	public int x, y, width, height;
+	
+	public CSSettingBind(int x, int y, int width, int height) {
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+	}
+	
+	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+	}
+
+	public void keyTyped(char typedChar, int keyCode) throws IOException {
+	}
+
+	public void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+	}
+
+	public void mouseReleased(int mouseX, int mouseY, int state) {
+	}
+
+	public void initButton() {
+	}
+
+}

@@ -1,0 +1,12 @@
+package dev.menace.module.settings;
+
+public class Setting {
+
+	String name;
+	
+	
+	public Setting() {
+		
+	}
+	
+}

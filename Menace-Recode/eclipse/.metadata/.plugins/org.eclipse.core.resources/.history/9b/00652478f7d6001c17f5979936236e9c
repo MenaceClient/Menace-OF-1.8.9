@@ -1,0 +1,18 @@
+package dev.menace.module.modules.misc;
+
+import dev.menace.module.Category;
+import dev.menace.module.Module;
+
+public class DevModule extends Module {
+
+	public DevModule() {
+		super("DevModule", Category.MISC, 0);
+	}
+	
+	@Override
+	public void onEnable() {
+		super.onEnable();
+		
+	}
+
+}
