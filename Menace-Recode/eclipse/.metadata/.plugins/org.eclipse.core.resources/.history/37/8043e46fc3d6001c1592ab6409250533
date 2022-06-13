@@ -1,7 +1,0 @@
-package dev.menace.module.modules.misc;
-
-
-
-public class DevModule extends Module {
-
-}

@@ -1,9 +1,0 @@
-package dev.menace.module.modules.movement.flight;
-
-public class FlightBase {
-
-	public void onEnable() {}
-	public void onDisable() {}
-	public void onUpdate() {}
-	
-}

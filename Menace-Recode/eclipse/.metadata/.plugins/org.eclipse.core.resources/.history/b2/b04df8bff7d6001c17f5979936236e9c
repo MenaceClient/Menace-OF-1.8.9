@@ -1,7 +1,0 @@
-package dev.menace.utils.misc;
-
-public class ChatUtils {
-
-	static Minecraft MC = Menace.instance.MC;
-	
-}
