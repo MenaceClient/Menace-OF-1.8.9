@@ -1,0 +1,19 @@
+{
+  "Criticals": 0,
+  "KillAura": 19,
+  "Velocity": 0,
+  "Flight": 33,
+  "LongJump": 34,
+  "Sprint": 0,
+  "Step": 0,
+  "Strafe": 0,
+  "Blink": 46,
+  "NoFall": 0,
+  "FastPlace": 0,
+  "Timer": 0,
+  "Animations": 0,
+  "ClickGui": 54,
+  "Fullbright": 0,
+  "XRay": 0,
+  "DevModule": 25
+}

@@ -1,0 +1,12 @@
+package dev.menace.module.modules.movement;
+
+import dev.menace.module.BaseModule;
+import dev.menace.module.Category;
+
+public class LongJumpModule extends BaseModule {
+
+	public LongJumpModule() {
+		super("LongJump", Category.MOVEMENT, 0);
+	}
+
+}

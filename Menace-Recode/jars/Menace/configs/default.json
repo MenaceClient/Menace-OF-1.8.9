@@ -1,0 +1,135 @@
+{
+  "Criticals": {
+    "Toggled": false,
+    "Settings": {
+      "Mode": "Packet"
+    }
+  },
+  "KillAura": {
+    "Toggled": false,
+    "Settings": {
+      "Reach": 3.0,
+      "Delay Min": 90.0,
+      "Delay Max": 100.0,
+      "FOV": 360.0,
+      "Mode": "Single",
+      "Attack Event": "Pre",
+      "Filter": "Distance",
+      "Rotation": "Basic",
+      "NoSwing": false,
+      "ThroughWalls": false,
+      "InInventory": true,
+      "RayCast": false,
+      "Players": true,
+      "Hostiles": true,
+      "Passives": false,
+      "Invisibles": false
+    }
+  },
+  "Velocity": {
+    "Toggled": true,
+    "Settings": {
+      "Mode": "Simple"
+    }
+  },
+  "Flight": {
+    "Toggled": false,
+    "Settings": {
+      "Mode": "Vanilla",
+      "VanillaMode": "Damage",
+      "VerusMode": "Jump",
+      "DmgMode": "Jump",
+      "Speed": 2.0,
+      "Viewbob": 0.1
+    }
+  },
+  "LongJump": {
+    "Toggled": false
+  },
+  "Sprint": {
+    "Toggled": true,
+    "Settings": {
+      "OmniSprint": false
+    }
+  },
+  "Step": {
+    "Toggled": true,
+    "Settings": {
+      "Height": 1.0
+    }
+  },
+  "Strafe": {
+    "Toggled": false
+  },
+  "Blink": {
+    "Toggled": false,
+    "Settings": {
+      "FakePlayer": true,
+      "Pulse": false,
+      "PulseAmount": 50.0
+    }
+  },
+  "InvManager": {
+    "Toggled": true
+  },
+  "NoFall": {
+    "Toggled": true,
+    "Settings": {
+      "Mode": "SpoofGround"
+    }
+  },
+  "SafeWalk": {
+    "Toggled": false,
+    "Settings": {
+      "InAir": false
+    }
+  },
+  "ChestStealer": {
+    "Toggled": false,
+    "Settings": {
+      "Delay Min": 90.0,
+      "Delay Max": 100.0,
+      "CloseScreen": false
+    }
+  },
+  "FastPlace": {
+    "Toggled": true
+  },
+  "Timer": {
+    "Toggled": false,
+    "Settings": {
+      "Speed": 4.5
+    }
+  },
+  "Animations": {
+    "Toggled": true,
+    "Settings": {
+      "Blocking Mode": "Jello",
+      "TranslateX": 0.0,
+      "TranslateY": 0.0,
+      "TranslateZ": 0.0,
+      "ItemPosX": 0.56,
+      "ItemPosY": -0.52,
+      "ItemPosZ": -0.71999997,
+      "ItemScale": 0.4,
+      "ItemRotation": 45.0,
+      "SwingAnim": false,
+      "AnythingBlock": false
+    }
+  },
+  "ClickGui": {
+    "Toggled": false,
+    "Settings": {
+      "Mode": "CSGO"
+    }
+  },
+  "Fullbright": {
+    "Toggled": true
+  },
+  "XRay": {
+    "Toggled": false
+  },
+  "DevModule": {
+    "Toggled": false
+  }
+}

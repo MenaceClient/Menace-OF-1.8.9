@@ -1,0 +1,5 @@
+package dev.menace.module.modules.player;
+
+public class SafeWalkModule {
+
+}

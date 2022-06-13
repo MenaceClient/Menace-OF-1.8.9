@@ -1,0 +1,5 @@
+1653867526850	Encapsulate field 'readWriteLock'
+1653867540017	Encapsulate field 'outboundPacketsQueue'
+1653868222528	Encapsulate field 'pressed'
+1653868309588	Encapsulate field 'inGround'
+1653955712241	Move compilation unit
