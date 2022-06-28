@@ -57,11 +57,11 @@ public class AnimationsModule extends BaseModule {
 	}
 	
 	public boolean getAnythingBlock() {
-		return anythingblock.isToggled();
+		return anythingblock.getValue();
 	}
 	
 	public boolean getSwingAnim() {
-		return swinganim.isToggled();
+		return swinganim.getValue();
 	}
 	
 	public double getTranslateX() {

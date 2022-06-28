@@ -62,7 +62,7 @@ public class ChestStealerModule extends BaseModule {
 	@EventTarget
 	public void onUpdate(EventUpdate event) {
 		
-		if (MC.currentScreen instanceof GuiChest && closeScreen.isToggled() && (isEmpty((GuiChest) MC.currentScreen) || isInvFull())) {
+		if (MC.currentScreen instanceof GuiChest && closeScreen.getValue() && (isEmpty((GuiChest) MC.currentScreen) || isInvFull())) {
 			MC.thePlayer.closeScreen();
 		}
 		

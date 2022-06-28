@@ -1,0 +1,131 @@
+package dev.menace.module.modules.render;
+
+import java.awt.Color;
+
+import dev.menace.Menace;
+import dev.menace.event.EventTarget;
+import dev.menace.event.events.Event2D;
+import dev.menace.module.BaseModule;
+import dev.menace.module.Category;
+import dev.menace.module.settings.ListSetting;
+import dev.menace.module.settings.SliderSetting;
+import dev.menace.module.settings.ToggleSetting;
+import dev.menace.ui.hud.BaseElement;
+import dev.menace.ui.hud.HUDConfigScreen;
+import dev.menace.ui.hud.HUDManager;
+
+public class HUDModule extends BaseModule {
+
+	public ToggleSetting watermark;
+	public ListSetting wmMode;
+	public ToggleSetting array;
+	public ListSetting arrayAlign;
+	public ToggleSetting pos;
+	public ListSetting posMode;
+	public ToggleSetting customFont;
+	public ListSetting color;
+	public SliderSetting rainbowSpeed;
+	public SliderSetting red;
+	public SliderSetting green;
+	public SliderSetting blue;
+	public SliderSetting alpha;
+	public ToggleSetting hudEditor;
+	
+	public HUDModule() {
+		super("HUD", Category.RENDER, 0);
+	}
+	
+	@Override
+	public void setup() {
+		
+		watermark = new ToggleSetting("Watermark", true, true);
+		wmMode = new ListSetting("WaterMark Mode", true, "Text", new String[] {"Text", "Image"}) {
+			@Override
+			public void constantCheck() {
+				this.setVisible(Menace.instance.moduleManager.hudModule.watermark.getValue());
+			}
+		};
+		array = new ToggleSetting("ArrayList", true, true);
+		arrayAlign = new ListSetting("ArrayAlign", true, "Right", new String[] {"Left", "Right"}) {
+			@Override
+			public void constantCheck() {
+				this.setVisible(Menace.instance.moduleManager.hudModule.array.getValue());
+			}
+		};
+		pos = new ToggleSetting("Position", true, true);
+		posMode = new ListSetting("Position Mode", true, "Single", new String[] {"Single", "Multi"}) {
+			@Override
+			public void constantCheck() {
+				this.setVisible(Menace.instance.moduleManager.hudModule.pos.getValue());
+			}
+		};
+		customFont = new ToggleSetting("Custom Font", true, false);
+		color = new ListSetting("Color", true, "Custom", new String[] {"Rainbow", "Fade", "Custom"});
+		rainbowSpeed = new SliderSetting("RBW Speed", true, 10, 1, 100, true) {
+			@Override
+			public void constantCheck() {
+				this.setVisible(Menace.instance.moduleManager.hudModule.color.getValue().equalsIgnoreCase("Fade"));
+			}
+		};
+		red = new SliderSetting("Red", true, 255, 0, 255, 5, true) {
+			@Override
+			public void constantCheck() {
+				this.setVisible(Menace.instance.moduleManager.hudModule.color.getValue().equalsIgnoreCase("Custom"));
+			}
+		};
+		green = new SliderSetting("Green", true, 0, 0, 255, 5, true) {
+			@Override
+			public void constantCheck() {
+				this.setVisible(Menace.instance.moduleManager.hudModule.color.getValue().equalsIgnoreCase("Custom"));
+			}
+		};
+		blue = new SliderSetting("Blue", true, 0, 0, 255, 5, true) {
+			@Override
+			public void constantCheck() {
+				this.setVisible(Menace.instance.moduleManager.hudModule.color.getValue().equalsIgnoreCase("Custom"));
+			}
+		};
+		alpha = new SliderSetting("Alpha", true, 255, 0, 255, 5, true) {
+			@Override
+			public void constantCheck() {
+				this.setVisible(Menace.instance.moduleManager.hudModule.color.getValue().equalsIgnoreCase("Custom"));
+			}
+		};
+		hudEditor = new ToggleSetting("HUD Editor", true, false) {
+			@Override
+			public void constantCheck() {
+				if (this.getValue()) {
+					this.setValue(false);
+					MC.displayGuiScreen(new HUDConfigScreen(Menace.instance.hudManager));
+				}
+			}
+		};
+		
+		this.rSetting(watermark);
+		this.rSetting(array);
+		this.rSetting(arrayAlign);
+		this.rSetting(pos);
+		this.rSetting(posMode);
+		this.rSetting(customFont);
+		this.rSetting(red);
+		this.rSetting(green);
+		this.rSetting(blue);
+		this.rSetting(alpha);
+		this.rSetting(hudEditor);
+		super.setup();
+	}
+
+	@EventTarget
+	public void onRender2D(Event2D event) {
+		
+		Menace.instance.hudManager.watermarkElement.setVisible(watermark.getValue());
+		Menace.instance.hudManager.arrayElement.setVisible(array.getValue());
+		Menace.instance.hudManager.posElement.setVisible(pos.getValue());
+		
+		HUDManager.hudElements.stream().filter(BaseElement::isVisible).forEach(element -> {
+			element.render();
+		});
+		
+	}
+	
+}

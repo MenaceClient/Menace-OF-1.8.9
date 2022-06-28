@@ -1,5 +1,6 @@
 package dev.menace.utils.misc;
 
+import dev.menace.Menace;
 import net.arikia.dev.drpc.DiscordEventHandlers;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
@@ -18,7 +19,8 @@ public class DiscordRP {
 			
 			@Override
 			public void apply(DiscordUser user) {
-				update("Menace Client", "");
+				update("Authenticating...");
+				Menace.instance.discordUser = user;
 			}
 			
 		}).build();
@@ -45,12 +47,14 @@ public class DiscordRP {
 		DiscordRPC.discordShutdown();
 	}
 	
-	public void update(String firstLine, String secondLine) {
-		DiscordRichPresence.Builder b = new DiscordRichPresence.Builder(secondLine);
-		b.setBigImage("large", "");
-		b.setDetails(firstLine);
+	public void update(String line) {
+		DiscordRichPresence.Builder b = new DiscordRichPresence.Builder(line);
+		b.setBigImage("large", "https://menaceclient.ml/");
+		if (Menace.instance.user != null) {
+			b.setDetails(Menace.instance.user.getUsername() + " [" + String.valueOf(Menace.instance.user.getUID()) + "]");
+		}
 		b.setStartTimestamps(created);
-		
+
 		DiscordRPC.discordUpdatePresence(b.build());
 	}
 	

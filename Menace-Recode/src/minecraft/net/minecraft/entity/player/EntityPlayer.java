@@ -4,6 +4,7 @@ import com.google.common.base.Charsets;
 import com.google.common.collect.Lists;
 import com.mojang.authlib.GameProfile;
 
+import dev.menace.event.events.EventDeath;
 import dev.menace.utils.misc.ChatUtils;
 
 import java.util.Collection;
@@ -722,6 +723,9 @@ public abstract class EntityPlayer extends EntityLivingBase
      */
 	public void onDeath(DamageSource cause)
     {
+		EventDeath event = new EventDeath(this, cause);
+		event.call();
+		
         super.onDeath(cause);
         this.setSize(0.2F, 0.2F);
         this.setPosition(this.posX, this.posY, this.posZ);

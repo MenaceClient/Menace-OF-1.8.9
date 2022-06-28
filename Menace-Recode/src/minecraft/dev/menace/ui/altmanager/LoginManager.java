@@ -63,7 +63,8 @@ public class LoginManager {
 		alteningLogin(acc.getToken());
 	}
 	
-	public static void microsoftEmailLogin(String email, String password) throws MicrosoftAuthenticationException {
+	public static void microsoftEmailLogin(String email, String password) throws MicrosoftAuthenticationException, NoSuchFieldException, IllegalAccessException {
+		altService.switchService(AltService.EnumAltService.MOJANG);
 		MicrosoftAuthenticator auth = new MicrosoftAuthenticator();
 		MicrosoftAuthResult result = auth.loginWithCredentials(email, password);
 		MinecraftProfile profile = result.getProfile();

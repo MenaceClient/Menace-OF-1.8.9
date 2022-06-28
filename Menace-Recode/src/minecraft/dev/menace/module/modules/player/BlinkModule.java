@@ -41,7 +41,7 @@ public class BlinkModule extends BaseModule {
 		pulseAmount = new SliderSetting("PulseAmount", false, 50, 1, 100, 10, true) {
 			@Override
 			public void constantCheck() {
-				if (Menace.instance.moduleManager.blinkModule.pulse.isToggled()) {
+				if (Menace.instance.moduleManager.blinkModule.pulse.getValue()) {
 					this.setVisible(true);
 				} else {
 					this.setVisible(false);
@@ -57,7 +57,7 @@ public class BlinkModule extends BaseModule {
 	
 	@Override
 	public void onEnable() {
-		if (fakePlayer.isToggled()) {
+		if (fakePlayer.getValue()) {
             fp = new EntityOtherPlayerMP(MC.theWorld, MC.thePlayer.gameProfile);
             fp.clonePlayer(MC.thePlayer, true);
             fp.copyLocationAndAnglesFrom(MC.thePlayer);
@@ -69,7 +69,7 @@ public class BlinkModule extends BaseModule {
 	
 	@EventTarget
 	public void onSendPacket(EventSendPacket event) {
-		if (packets.size() >= pulseAmount.getValue() && pulse.isToggled()) blink();
+		if (packets.size() >= pulseAmount.getValue() && pulse.getValue()) blink();
 		if (event.getPacket() instanceof C04PacketPlayerPosition || event.getPacket() instanceof C06PacketPlayerPosLook ||
 				event.getPacket() instanceof C08PacketPlayerBlockPlacement ||
 				event.getPacket() instanceof C0APacketAnimation ||
@@ -98,7 +98,7 @@ public class BlinkModule extends BaseModule {
 		while (!packets.isEmpty()) {
 			PacketUtils.sendPacketNoEvent(packets.poll());
 		}
-		if (fakePlayer.isToggled()) {
+		if (fakePlayer.getValue()) {
             fp = new EntityOtherPlayerMP(MC.theWorld, MC.thePlayer.gameProfile);
             fp.clonePlayer(MC.thePlayer, true);
             fp.copyLocationAndAnglesFrom(MC.thePlayer);

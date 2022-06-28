@@ -813,9 +813,11 @@ public class EntityPlayerSP extends AbstractClientPlayer
 		if (getHeldItem() != null && this.isUsingItem() && !this.isRiding()) {
 			final EventSlowdown slowDownEvent = new EventSlowdown(0.2F, 0.2F);
 			slowDownEvent.call();
-			this.movementInput.moveStrafe *= slowDownEvent.getStrafeMultiplier();
-			this.movementInput.moveForward *= slowDownEvent.getForwardMultiplier();
-			this.sprintToggleTimer = 0;
+			if (!slowDownEvent.isCancelled()) {
+				this.movementInput.moveStrafe *= slowDownEvent.getStrafeMultiplier();
+				this.movementInput.moveForward *= slowDownEvent.getForwardMultiplier();
+				this.sprintToggleTimer = 0;
+			}
 		}
 
 		this.pushOutOfBlocks(this.posX - (double) this.width * 0.35D, this.getEntityBoundingBox().minY + 0.5D, this.posZ + (double) this.width * 0.35D);
@@ -839,7 +841,7 @@ public class EntityPlayerSP extends AbstractClientPlayer
 			this.setSprinting(true);
 		}
 
-		if (this.isSprinting() && ((!(sprint.isToggled() && sprint.omniSprint.isToggled()) && this.movementInput.moveForward < f) || this.isCollidedHorizontally || !flag3)) {
+		if (this.isSprinting() && ((!(sprint.isToggled() && sprint.omniSprint.getValue()) && this.movementInput.moveForward < f) || this.isCollidedHorizontally || !flag3)) {
 			this.setSprinting(false);
 		}
 
@@ -948,7 +950,7 @@ public class EntityPlayerSP extends AbstractClientPlayer
 			double d5 = z;
 			boolean flag = this.onGround && this.isSneaking() && this instanceof EntityPlayer;
 
-			if (flag || Menace.instance.moduleManager.safeWalkModule.isToggled() && (this.onGround || !this.onGround && Menace.instance.moduleManager.safeWalkModule.inair.isToggled()))
+			if (flag || Menace.instance.moduleManager.safeWalkModule.isToggled() && (this.onGround || !this.onGround && Menace.instance.moduleManager.safeWalkModule.inair.getValue()))
 			{
 				double d6;
 

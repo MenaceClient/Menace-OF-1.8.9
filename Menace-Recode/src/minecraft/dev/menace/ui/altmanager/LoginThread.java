@@ -52,7 +52,7 @@ public class LoginThread extends Thread {
 			try {
 				LoginManager.microsoftEmailLogin(username, password);
 				this.status = "§aLogged in as - " + MC.session.getUsername() + "§r";
-			} catch (MicrosoftAuthenticationException e) {
+			} catch (MicrosoftAuthenticationException | NoSuchFieldException | IllegalAccessException e) {
 				this.status = "§cLogin Failed!§r";
 				e.printStackTrace();
 			}

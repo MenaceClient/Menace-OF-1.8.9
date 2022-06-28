@@ -28,9 +28,9 @@ public class CSSettingCheck extends CSSetting {
 		Gui.drawRect(x + stringwidth + 20, y, x + stringwidth + 30, y + 10, 0xFF000000);
 		RenderHelper.drawFullCircle(x + stringwidth + 20, y + 5, 5, 0xFF000000);
 		RenderHelper.drawFullCircle(x + stringwidth + 30, y + 5, 5, 0xFF000000);
-		RenderHelper.drawFullCircle(x + stringwidth + animation, y + 5, 5, ((ToggleSetting) this.set).isToggled() ? Color.GREEN.getRGB() : Color.RED.getRGB());
+		RenderHelper.drawFullCircle(x + stringwidth + animation, y + 5, 5, ((ToggleSetting) this.set).getValue() ? Color.GREEN.getRGB() : Color.RED.getRGB());
 
-		if (((ToggleSetting) this.set).isToggled()) {
+		if (((ToggleSetting) this.set).getValue()) {
 			if (animation < 30) {
 				animation++;
 			}
@@ -46,7 +46,7 @@ public class CSSettingCheck extends CSSetting {
 	@Override
 	public void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
 		if (isHovered(mouseX, mouseY) && mouseButton == 0) {
-			((ToggleSetting) this.set).setToggled(!((ToggleSetting) this.set).isToggled());
+			((ToggleSetting) this.set).setValue(!((ToggleSetting) this.set).getValue());
 		}
 
 		super.mouseClicked(mouseX, mouseY, mouseButton);

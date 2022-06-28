@@ -1,8 +1,15 @@
 package dev.menace.utils.security;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HWIDManager {
 
@@ -38,5 +45,75 @@ public class HWIDManager {
 
 		return s;
 	}
+	
+	/**
+     * Opens and reads the URL.
+     */
+
+    public static List<String> readHWIDURL() {
+        List<String> s = new ArrayList<>();
+        try {
+            final URL url = new URL("http://menaceapi.cf/HWIDS.txt");
+            URLConnection uc = url.openConnection();
+            uc.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(uc.getInputStream(), StandardCharsets.UTF_8));
+            String hwid;
+            while ((hwid = bufferedReader.readLine()) != null) {
+                s.add(hwid);
+            }
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        return s;
+    }
+
+    /**
+     * Opens and reads the URL.
+     */
+
+    public static List<String> readInfoURL() {
+        List<String> s = new ArrayList<>();
+        try {
+            final URL url = new URL("http://menaceapi.cf/USERINFO.txt");
+            URLConnection uc = url.openConnection();
+            uc.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(uc.getInputStream(), StandardCharsets.UTF_8));
+            String hwid;
+            while ((hwid = bufferedReader.readLine()) != null) {
+                s.add(hwid);
+            }
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        return s;
+    }
+    
+    public static int getUID(String HWID) {
+    	String UID = null;
+    	
+    	for (String info : readInfoURL()) {
+    		if (info.split(":")[0].equals(getHWID())) {
+				UID = info.split(":")[2];
+			}
+    	}
+    	
+    	return Integer.valueOf(UID);
+    }
+    
+    public static String getUsername() {
+    	String username = null;
+    	
+    	for (String info : readInfoURL()) {
+    		if (info.split(":")[0].equals(getHWID())) {
+				username = info.split(":")[1];
+			}
+    	}
+    	
+    	return username;
+    }
+    
+    public static MenaceUser getUser() {
+    	return new MenaceUser(getUsername(), getHWID(), getUID(getHWID()));
+    }
 
 }

@@ -254,7 +254,7 @@ public class IntegratedServer extends MinecraftServer
         boolean flag = this.isGamePaused;
         this.isGamePaused = Minecraft.getMinecraft().getNetHandler() != null && Minecraft.getMinecraft().isGamePaused();
 
-        Menace.instance.discordRP.update("Menace Client", "Playing Singleplayer");
+        Menace.instance.discordRP.update("Playing Singleplayer");
         
         if (!flag && this.isGamePaused)
         {

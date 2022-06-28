@@ -22,7 +22,7 @@ public class FileManager {
 	private static Gson gson = new Gson();
 
 	private static File menaceFolder = new File("Menace");
-	//private static File hudFolder = new File(menaceFolder, "hud");
+	private static File hudFolder = new File(menaceFolder, "hud");
 	private static File configFolder = new File(menaceFolder, "configs");
 	private static File scriptFolder = new File(menaceFolder, "scripts");
 	//private static File betaFolder = new File(menaceFolder, "beta");
@@ -30,7 +30,7 @@ public class FileManager {
 	public static void init() {
 
 		if (!menaceFolder.exists()) {menaceFolder.mkdirs(); Menace.instance.isFirstLaunch = true;}
-		//if (!hudFolder.exists()) {hudFolder.mkdirs();}
+		if (!hudFolder.exists()) {hudFolder.mkdirs();}
 		if (!configFolder.exists()) {configFolder.mkdirs();}
 		if (!scriptFolder.exists()) {scriptFolder.mkdirs();}
 		//if (!betaFolder.exists()) {betaFolder.mkdirs();}
@@ -44,11 +44,10 @@ public class FileManager {
 	public static File getMenaceFolder() {
 		return menaceFolder;
 	}
-
-	/*
+	
 	public static File getHudFolder() {
 		return hudFolder;
-	}*/
+	}
 	
 	public static File getConfigFolder() {
 		return configFolder;

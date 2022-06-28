@@ -1,7 +1,5 @@
 package dev.menace.module.modules.combat;
 
-import java.util.Comparator;
-
 import dev.menace.Menace;
 import dev.menace.event.EventTarget;
 import dev.menace.event.events.EventPostMotion;
@@ -16,15 +14,15 @@ import dev.menace.utils.player.PacketUtils;
 import dev.menace.utils.player.PlayerUtils;
 import dev.menace.utils.player.RayCastUtils;
 import dev.menace.utils.timer.MSTimer;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.client.C0APacketAnimation;
-import net.minecraft.potion.Potion;
 import net.minecraft.util.MovingObjectPosition;
+
+import java.util.Comparator;
 
 public class KillAuraModule extends BaseModule {
 
@@ -35,6 +33,7 @@ public class KillAuraModule extends BaseModule {
 	SliderSetting reach;
 	public SliderSetting minDelay;
     public SliderSetting maxDelay;
+	SliderSetting ticksExisted;
 	SliderSetting fov;
 	ListSetting mode;
 	ListSetting attackevent;
@@ -72,6 +71,7 @@ public class KillAuraModule extends BaseModule {
                 }
             }
         };
+		ticksExisted = new SliderSetting("TicksExisted", true, 10, 0 , 100, true);
 		fov = new SliderSetting("FOV", true, 360, 0, 360, false);
 		mode = new ListSetting("Mode", true, "Single", new String[] {"Single", "Multi"});
 		attackevent = new ListSetting("Attack Event", true, "Pre", new String[] {"Pre", "Post"});
@@ -88,6 +88,7 @@ public class KillAuraModule extends BaseModule {
 		this.rSetting(reach);
 		this.rSetting(minDelay);
         this.rSetting(maxDelay);
+		this.rSetting(ticksExisted);
 		this.rSetting(fov);
 		this.rSetting(mode);
 		this.rSetting(attackevent);
@@ -140,11 +141,11 @@ public class KillAuraModule extends BaseModule {
 	public void getTarget() {
 		Comparator<Entity> entityFilter = null;
 		switch (filter.getValue()) {
-		
+
 		case "Health" :
-			entityFilter = (e1, e2) -> (int)((EntityLivingBase)e1).getHealth() - (int)((EntityLivingBase)e2).getHealth();
+			entityFilter = Comparator.comparingInt(e -> (int) ((EntityLivingBase) e).getHealth());
 			break;
-			
+
 		case "Distance" :
 			entityFilter = (e1, e2) -> (int)MC.thePlayer.getDistanceToEntity(e1) - (int)MC.thePlayer.getDistanceToEntity(e2);
 			break;
@@ -154,19 +155,19 @@ public class KillAuraModule extends BaseModule {
 			break;
 		
 		case "TicksExisted" : 
-			entityFilter = (e1, e2) -> ((EntityLivingBase)e1).ticksExisted - ((EntityLivingBase)e2).ticksExisted;
+			entityFilter = Comparator.comparingInt(e -> e.ticksExisted);
 			break;
 			
 		default :
-			entityFilter = (e1, e2) -> (int)((EntityLivingBase)e1).getHealth() - (int)((EntityLivingBase)e2).getHealth();
+			entityFilter = Comparator.comparingInt(e -> (int) ((EntityLivingBase) e).getHealth());
 			break;
 			
 		}
 
 		if (MC.theWorld.loadedEntityList.stream()
-				.filter(e -> isValid(e)).sorted(entityFilter).toArray().length > 0) {
+				.filter(this::isValid).sorted(entityFilter).toArray().length > 0) {
 			target = (EntityLivingBase) MC.theWorld.loadedEntityList.stream()
-					.filter(e -> isValid(e)).sorted(entityFilter).toArray()[0];
+					.filter(this::isValid).sorted(entityFilter).toArray()[0];
 		} else {
 			target = null;
 		}
@@ -177,14 +178,15 @@ public class KillAuraModule extends BaseModule {
 			return;
 		}
 		
-		if (raycast.isToggled()) {
+		if (raycast.getValue()) {
             final MovingObjectPosition objectMouseOver = RayCastUtils.getMouseOver(MC.thePlayer.prevRotationYaw, MC.thePlayer.prevRotationPitch, reach.getValueF());
-            if (objectMouseOver.entityHit != null && target != objectMouseOver.entityHit && objectMouseOver.entityHit instanceof EntityLivingBase) {
+			assert objectMouseOver != null;
+			if (target != objectMouseOver.entityHit && objectMouseOver.entityHit instanceof EntityLivingBase) {
                 target = (EntityLivingBase) objectMouseOver.entityHit;
             }
         }
 		
-		if (noswing.isToggled()) {
+		if (noswing.getValue()) {
 			PacketUtils.addToSendQueue(new C0APacketAnimation());
 		} else {
 			MC.thePlayer.swingItem();
@@ -198,7 +200,7 @@ public class KillAuraModule extends BaseModule {
 			
 		case "Multi" :
 			MC.theWorld.loadedEntityList.stream()
-			.filter(e -> isValid(e)).forEach(e -> {
+			.filter(this::isValid).forEach(e -> {
 				MC.playerController.attackEntity(MC.thePlayer, e);
 			});
 			break;
@@ -212,22 +214,20 @@ public class KillAuraModule extends BaseModule {
 	}
 	
 	private boolean isValid(Entity e) {
-		if (e instanceof EntityLivingBase 
-				&& e != MC.thePlayer 
+		return e instanceof EntityLivingBase
+				&& e != MC.thePlayer
 				&& e != Menace.instance.moduleManager.blinkModule.fp
 				&& MC.thePlayer.getDistanceToEntity(e) <= reach.getValue()
 				&& isInFOV(e, fov.getValue())
 				&& !e.isDead
-				&& ((EntityLivingBase)e).getHealth() > 0
-				&& (!(e instanceof EntityPlayer) || players.isToggled())
-				&& (!(e instanceof EntityMob) || hostiles.isToggled())
-				&& (!(e instanceof EntityAnimal) || passives.isToggled())
-				&& (!((EntityLivingBase)e).isInvisible() || invisibles.isToggled())
-				&& (MC.thePlayer.canEntityBeSeen(e) || throughwalls.isToggled())
-				&& (ininv.isToggled() || !(MC.currentScreen instanceof Gui))) {
-			return true;
-		}
-		return false;
+				&& e.ticksExisted >= ticksExisted.getValueI()
+				&& ((EntityLivingBase) e).getHealth() > 0
+				&& (!(e instanceof EntityPlayer) || players.getValue())
+				&& (!(e instanceof EntityMob) || hostiles.getValue())
+				&& (!(e instanceof EntityAnimal) || passives.getValue())
+				&& (!e.isInvisible() || invisibles.getValue())
+				&& (MC.thePlayer.canEntityBeSeen(e) || throughwalls.getValue())
+				&& (ininv.getValue() || MC.currentScreen == null);
 	}
 	
 	private boolean isInFOV(Entity entity, double angle) {

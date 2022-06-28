@@ -7,6 +7,7 @@ import com.google.gson.JsonObject;
 
 import dev.menace.Menace;
 import dev.menace.module.settings.Setting;
+import dev.menace.module.settings.ToggleSetting;
 import dev.menace.utils.file.FileManager;
 import net.minecraft.client.Minecraft;
 
@@ -14,9 +15,11 @@ public class BaseModule {
 
 	private String name;
 	private String desc;
+	private String displayName = null;
 	private Category category;
 	private int keybind;
 	protected boolean toggled;
+	private ToggleSetting visible;
 	private ArrayList<Setting> settings = new ArrayList<>();
 	
 	protected final Minecraft MC = Minecraft.getMinecraft();
@@ -39,6 +42,9 @@ public class BaseModule {
         }
 		
 		this.setup();
+		
+		visible = new ToggleSetting("Visible", true, true);
+		this.rSetting(visible);
 		
 		if (this.toggled) {
         	this.onEnable();
@@ -63,6 +69,9 @@ public class BaseModule {
         }
 		
 		this.setup();
+		
+		visible = new ToggleSetting("Visible", true, true);
+		this.rSetting(visible);
 		
 		if (this.toggled) {
         	this.onEnable();
@@ -140,6 +149,22 @@ public class BaseModule {
 
 	public boolean hasSettings() {
 		return !settings.isEmpty();
+	}
+	
+	public String getDisplayName() {
+		return displayName != null ? displayName : name;
+	}
+	
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
+	
+	public boolean isVisible() {
+		return this.visible.getValue();
+	}
+	
+	public void setVisible(boolean visible) {
+		this.visible.setValue(visible);
 	}
 	
 }

@@ -19,6 +19,7 @@ import dev.menace.Menace;
 import dev.menace.event.events.EventKey;
 import dev.menace.ui.custom.MenaceMainMenu;
 import dev.menace.utils.misc.IconUtils;
+import dev.menace.utils.security.MenaceAuthScreen;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -579,14 +580,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 		this.checkGLError("Post startup");
 		this.ingameGUI = new GuiIngame(this);
 
-		if (this.serverName != null)
-		{
-			this.displayGuiScreen(new GuiConnecting(new MenaceMainMenu(), this, this.serverName, this.serverPort));
-		}
-		else
-		{
-			this.displayGuiScreen(new MenaceMainMenu());
-		}
+		this.displayGuiScreen(new MenaceAuthScreen(new MenaceMainMenu()));
 
 		this.renderEngine.deleteTexture(this.mojangLogo);
 		this.mojangLogo = null;

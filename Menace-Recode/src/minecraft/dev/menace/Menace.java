@@ -22,23 +22,27 @@ import dev.menace.module.ModuleManager;
 import dev.menace.ui.altmanager.LoginManager;
 import dev.menace.ui.clickgui.csgo.CSGOGui;
 import dev.menace.ui.clickgui.lime.LimeClickGUI;
+import dev.menace.ui.hud.HUDManager;
 import dev.menace.utils.file.FileManager;
-import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.misc.DiscordRP;
 import dev.menace.utils.security.HWIDManager;
+import dev.menace.utils.security.MenaceUser;
 import fr.litarvan.openauth.microsoft.MicrosoftAuthenticationException;
+import net.arikia.dev.drpc.DiscordUser;
 import net.minecraft.client.Minecraft;
 import viamcp.ViaMCP;
 
 public class Menace {
 
 	public static Menace instance = new Menace();
-	
 	public Minecraft MC = Minecraft.getMinecraft();
 	public EventManager eventManager;
 	public ModuleManager moduleManager;
 	public CommandManager cmdManager;
+	public HUDManager hudManager;
 	public DiscordRP discordRP;
+	public DiscordUser discordUser;
+	public MenaceUser user;
 	
 	public boolean isFirstLaunch;
 	
@@ -55,6 +59,8 @@ public class Menace {
 		
 		cmdManager = new CommandManager();
 		cmdManager.init();
+		
+		hudManager = new HUDManager();
 		
 		discordRP = new DiscordRP();
 		discordRP.start();
@@ -85,7 +91,6 @@ public class Menace {
 		if (!(new File(FileManager.getConfigFolder(), "Binds.json").exists())) {
 			moduleManager.saveKeys();
 		}
-		
 	}
 	
 	public void stopClient() {
@@ -99,7 +104,6 @@ public class Menace {
 	@EventTarget
 	public void onKey(EventKey event) {
 		moduleManager.getModules().stream().filter(m -> m.getKeybind() == event.getKey()).forEach(module -> {
-			ChatUtils.message("Toggled " + module.getName() + " " + (module.isToggled() ? "off" : "on") + ".");
 			module.toggle();
 		});
 	}

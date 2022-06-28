@@ -47,6 +47,10 @@ public class SliderSetting extends Setting {
 		return (long) value;
 	}
 
+	public int getValueI() {
+		return (int) value;
+	}
+	
 	public void setValue(double value) {
 		this.value = value;
 	}

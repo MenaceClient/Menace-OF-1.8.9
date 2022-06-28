@@ -51,7 +51,6 @@ public class InvManagerModule extends BaseModule {
 				//Sword
 				if (InventoryUtils.getDamage(is) > damage && (is.getItem() instanceof ItemSword)) {
 					InventoryUtils.swap(i, swordSlot);
-					System.out.println(InventoryUtils.getDamage(is) + damage);
 				}
 				
 				//Pickaxe

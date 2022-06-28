@@ -1,5 +1,11 @@
 package dev.menace.ui.custom;
 
+import com.google.common.collect.Lists;
+import dev.menace.Menace;
+import dev.menace.ui.altmanager.DirectLoginScreen;
+import dev.menace.utils.render.GLSLShader;
+import dev.menace.utils.render.MenaceFontRenderer;
+import dev.menace.utils.render.RenderUtils;
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,26 +16,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import org.apache.commons.io.Charsets;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GLContext;
-import org.lwjgl.util.glu.Project;
-
-import com.google.common.collect.Lists;
-
-import dev.menace.Menace;
-import dev.menace.ui.altmanager.DirectLoginScreen;
-import dev.menace.utils.render.GLSLShader;
-import dev.menace.utils.render.MenaceFontRenderer;
-import dev.menace.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiConfirmOpenLink;
 import net.minecraft.client.gui.GuiMultiplayer;
 import net.minecraft.client.gui.GuiOptions;
 import net.minecraft.client.gui.GuiScreen;
@@ -39,382 +28,343 @@ import net.minecraft.client.gui.GuiYesNoCallback;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.client.settings.GameSettings;
+import net.minecraft.client.settings.GameSettings.Options;
 import net.minecraft.realms.RealmsBridge;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.demo.DemoWorldServer;
 import net.minecraft.world.storage.ISaveFormat;
 import net.minecraft.world.storage.WorldInfo;
-import net.optifine.CustomPanorama;
-import net.optifine.CustomPanoramaProperties;
 import viamcp.gui.GuiProtocolSelector;
 
-public class MenaceMainMenu extends GuiScreen implements GuiYesNoCallback
-{
-	private static final AtomicInteger field_175373_f = new AtomicInteger(0);
-	private static final Logger logger = LogManager.getLogger();
-	private static final Random RANDOM = new Random();
+import org.apache.commons.io.Charsets;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
+import org.lwjgl.opengl.GLContext;
 
-	/** Counts the number of screen updates. */
-	private float updateCounter;
+public class MenaceMainMenu extends GuiScreen implements GuiYesNoCallback {
+   private static final AtomicInteger field_175373_f = new AtomicInteger(0);
+   private static final Logger logger = LogManager.getLogger();
+   private static final Random RANDOM = new Random();
+   private float updateCounter;
+   private String splashText;
+   private GuiButton buttonResetDemo;
+   private int panoramaTimer;
+   private DynamicTexture viewportTexture;
+   private boolean field_175375_v = true;
+   private final Object threadLock = new Object();
+   private String openGLWarning1;
+   private String openGLWarning2;
+   private String openGLWarningLink;
+   private static final ResourceLocation splashTexts = new ResourceLocation("texts/splashes.txt");
+   private static final ResourceLocation minecraftTitleTextures = new ResourceLocation("textures/gui/title/minecraft.png");
+   private static final ResourceLocation[] titlePanoramaPaths = new ResourceLocation[]{new ResourceLocation("textures/gui/title/background/panorama_0.png"), new ResourceLocation("textures/gui/title/background/panorama_1.png"), new ResourceLocation("textures/gui/title/background/panorama_2.png"), new ResourceLocation("textures/gui/title/background/panorama_3.png"), new ResourceLocation("textures/gui/title/background/panorama_4.png"), new ResourceLocation("textures/gui/title/background/panorama_5.png")};
+   public static final String field_96138_a;
+   private int field_92024_r;
+   private int field_92023_s;
+   private int field_92022_t;
+   private int field_92021_u;
+   private int field_92020_v;
+   private int field_92019_w;
+   private ResourceLocation backgroundTexture;
+   private GuiButton realmsButton;
+   private GLSLShader backgroundShader;
+   private long initTime = System.currentTimeMillis();
+   MenaceFontRenderer title = MenaceFontRenderer.getFontOnPC("Arial", 130);
+   MenaceFontRenderer text = MenaceFontRenderer.getFontOnPC("Arial", 35);
+   private boolean L;
+   private GuiScreen M;
+   private GuiButton modButton;
+   private GuiScreen modUpdateNotification;
 
-	/** The splash message. */
-	private GuiButton buttonResetDemo;
+   static {
+      field_96138_a = "Please click " + EnumChatFormatting.UNDERLINE + "here" + EnumChatFormatting.RESET + " for more information.";
+   }
 
-	/** Timer used to rotate the panorama, increases every tick. */
-	private int panoramaTimer;
+   public MenaceMainMenu() {
+      this.openGLWarning2 = field_96138_a;
+      this.L = false;
+      this.splashText = "missingno";
+      BufferedReader bufferedreader = null;
 
-	/**
-	 * Texture allocated for the current viewport of the main menu's panorama background.
-	 */
-	private DynamicTexture viewportTexture;
-	private boolean field_175375_v = true;
+      try {
+         List<String> list = Lists.newArrayList();
+         bufferedreader = new BufferedReader(new InputStreamReader(Minecraft.getMinecraft().getResourceManager().getResource(splashTexts).getInputStream(), Charsets.UTF_8));
 
-	/**
-	 * The Object object utilized as a thread lock when performing non thread-safe operations
-	 */
-	private final Object threadLock = new Object();
+         String s;
+         while((s = bufferedreader.readLine()) != null) {
+            s = s.trim();
+            if (!s.isEmpty()) {
+               list.add(s);
+            }
+         }
 
-	/** OpenGL graphics card warning. */
-	private String openGLWarning1;
+         if (!list.isEmpty()) {
+            do {
+               this.splashText = (String)list.get(RANDOM.nextInt(list.size()));
+            } while(this.splashText.hashCode() == 125780783);
+         }
+      } catch (IOException var14) {
+      } finally {
+         if (bufferedreader != null) {
+            try {
+               bufferedreader.close();
+            } catch (IOException var12) {
+            }
+         }
 
-	/** OpenGL graphics card warning. */
-	private String openGLWarning2;
+      }
 
-	/** Link to the Mojang Support about minimum requirements */
-	private String openGLWarningLink;
-	private static final ResourceLocation splashTexts = new ResourceLocation("texts/splashes.txt");
-	private static final ResourceLocation minecraftTitleTextures = new ResourceLocation("textures/gui/title/minecraft.png");
+      this.updateCounter = RANDOM.nextFloat();
+      this.openGLWarning1 = "";
+      if (!GLContext.getCapabilities().OpenGL20 && !OpenGlHelper.areShadersSupported()) {
+         this.openGLWarning1 = I18n.format("title.oldgl1", new Object[0]);
+         this.openGLWarning2 = I18n.format("title.oldgl2", new Object[0]);
+         this.openGLWarningLink = "https://help.mojang.com/customer/portal/articles/325948?ref=game";
+      }
 
-	/** An array of all the paths to the panorama pictures. */
-	private static final ResourceLocation[] titlePanoramaPaths = new ResourceLocation[] {new ResourceLocation("textures/gui/title/background/panorama_0.png"), new ResourceLocation("textures/gui/title/background/panorama_1.png"), new ResourceLocation("textures/gui/title/background/panorama_2.png"), new ResourceLocation("textures/gui/title/background/panorama_3.png"), new ResourceLocation("textures/gui/title/background/panorama_4.png"), new ResourceLocation("textures/gui/title/background/panorama_5.png")};
-	public static final String field_96138_a = "Please click " + EnumChatFormatting.UNDERLINE + "here" + EnumChatFormatting.RESET + " for more information.";
-	private int field_92024_r;
-	private int field_92023_s;
-	private int field_92022_t;
-	private int field_92021_u;
-	private int field_92020_v;
-	private int field_92019_w;
-	private ResourceLocation backgroundTexture;
+      try {
+         this.backgroundShader = new GLSLShader("/assets/minecraft/menace/shaders/mainmenu.fsh");
+      } catch (IOException var13) {
+         throw new IllegalStateException("Failed to load backgound shader", var13);
+      }
+   }
 
-	/** Minecraft Realms button. */
-	private GuiButton realmsButton;
+   private boolean a() {
+      return Minecraft.getMinecraft().gameSettings.getOptionOrdinalValue(Options.enumFloat) && this.M != null;
+   }
 
-	//Menace Shaders
-	private GLSLShader backgroundShader;
-	private long initTime = System.currentTimeMillis(); // Initialize as a failsafe
-	MenaceFontRenderer title = MenaceFontRenderer.getFontOnPC("Arial", 130);
-	MenaceFontRenderer text = MenaceFontRenderer.getFontOnPC("Arial", 35);
+   public void updateScreen() {
+      ++this.panoramaTimer;
+      if (this.a()) {
+         this.M.updateScreen();
+      }
 
-	private boolean L;
-	private GuiScreen M;
-	private GuiButton modButton;
-	private GuiScreen modUpdateNotification;
+      Menace.instance.discordRP.update("In a menu.");
+   }
 
-	public MenaceMainMenu()
-	{
-		this.openGLWarning2 = field_96138_a;
-		this.L = false;
+   public boolean doesGuiPauseGame() {
+      return false;
+   }
 
-		this.updateCounter = RANDOM.nextFloat();
-		this.openGLWarning1 = "";
+   protected void keyTyped(char typedChar, int keyCode) throws IOException {
+   }
 
-		if (!GLContext.getCapabilities().OpenGL20 && !OpenGlHelper.areShadersSupported())
-		{
-			this.openGLWarning1 = I18n.format("title.oldgl1", new Object[0]);
-			this.openGLWarning2 = I18n.format("title.oldgl2", new Object[0]);
-			this.openGLWarningLink = "https://help.mojang.com/customer/portal/articles/325948?ref=game";
-		}
+   public void initGui() {
+      this.viewportTexture = new DynamicTexture(256, 256);
+      this.backgroundTexture = this.mc.getTextureManager().getDynamicTextureLocation("background", this.viewportTexture);
+      Calendar calendar = Calendar.getInstance();
+      calendar.setTime(new Date());
+      this.mc.setConnectedToRealms(false);
+      this.initTime = System.currentTimeMillis();
+      if (Minecraft.getMinecraft().gameSettings.getOptionOrdinalValue(Options.enumFloat) && !this.L) {
+         RealmsBridge realmsbridge = new RealmsBridge();
+         this.M = realmsbridge.getNotificationScreen(this);
+         this.L = true;
+      }
 
-		try {
-			this.backgroundShader = new GLSLShader("/assets/minecraft/menace/shaders/mainmenu.fsh");
-		} catch (IOException e) {
-			throw new IllegalStateException("Failed to load backgound shader", e);
-		}
-	}
+      if (this.a()) {
+         this.M.a(width, height);
+         this.M.initGui();
+      }
 
-	private boolean a()
-	{
-		return Minecraft.getMinecraft().gameSettings.getOptionOrdinalValue(GameSettings.Options.enumFloat) && this.M != null;
-	}
+   }
 
-	/**
-	 * Called from the main game loop to update the screen.
-	 */
-	public void updateScreen()
-	{
-		++this.panoramaTimer;
+   private void addDemoButtons(int p_73972_1_, int p_73972_2_) {
+      this.buttonList.add(new GuiButton(11, width / 2 - 100, p_73972_1_, I18n.format("menu.playdemo", new Object[0])));
+      this.buttonList.add(this.buttonResetDemo = new GuiButton(12, width / 2 - 100, p_73972_1_ + p_73972_2_ * 1, I18n.format("menu.resetdemo", new Object[0])));
+      ISaveFormat isaveformat = this.mc.getSaveLoader();
+      WorldInfo worldinfo = isaveformat.getWorldInfo("Demo_World");
+      if (worldinfo == null) {
+         this.buttonResetDemo.enabled = false;
+      }
 
-		if (this.a())
-		{
-			this.M.updateScreen();
-		}
+   }
 
-		Menace.instance.discordRP.update("Menace Client - Recode", "In a menu.");
-	}
+   protected void actionPerformed(GuiButton button) throws IOException {
+      if (button.id == 11) {
+         this.mc.launchIntegratedServer("Demo_World", "Demo_World", DemoWorldServer.demoWorldSettings);
+      }
 
-	/**
-	 * Returns true if this GUI should pause the game when it is displayed in single-player
-	 */
-	public boolean doesGuiPauseGame()
-	{
-		return false;
-	}
+      if (button.id == 12) {
+         ISaveFormat isaveformat = this.mc.getSaveLoader();
+         WorldInfo worldinfo = isaveformat.getWorldInfo("Demo_World");
+         if (worldinfo != null) {
+            GuiYesNo guiyesno = GuiSelectWorld.makeDeleteWorldYesNo(this, worldinfo.getWorldName(), 12);
+            this.mc.displayGuiScreen(guiyesno);
+         }
+      }
 
-	/**
-	 * Fired when a key is typed (except F11 which toggles full screen). This is the equivalent of
-	 * KeyListener.keyTyped(KeyEvent e). Args : character (character on the key), keyCode (lwjgl Keyboard key code)
-	 */
-	protected void keyTyped(char typedChar, int keyCode) throws IOException
-	{
-	}
+      if (button.id == 69) {
+         this.mc.displayGuiScreen(new GuiProtocolSelector(this));
+      }
 
-	/**
-	 * Adds the buttons (and other controls) to the screen in question. Called when the GUI is displayed and when the
-	 * window resizes, the buttonList is cleared beforehand.
-	 */
-	public void initGui()
-	{
-		this.viewportTexture = new DynamicTexture(256, 256);
-		this.backgroundTexture = this.mc.getTextureManager().getDynamicTextureLocation("background", this.viewportTexture);
+   }
 
-		this.mc.setConnectedToRealms(false);
+   private void switchToRealms() {
+      RealmsBridge realmsbridge = new RealmsBridge();
+      realmsbridge.switchToRealms(this);
+   }
 
-		initTime = System.currentTimeMillis();
+   public void confirmClicked(boolean result, int id) {
+      if (result && id == 12) {
+         ISaveFormat isaveformat = this.mc.getSaveLoader();
+         isaveformat.flushCache();
+         isaveformat.deleteWorldDirectory("Demo_World");
+         this.mc.displayGuiScreen(this);
+      } else if (id == 13) {
+         if (result) {
+            try {
+               Class<?> oclass = Class.forName("java.awt.Desktop");
+               Object object = oclass.getMethod("getDesktop").invoke((Object)null);
+               oclass.getMethod("browse", URI.class).invoke(object, new URI(this.openGLWarningLink));
+            } catch (Throwable var5) {
+               logger.error("Couldn't open link", var5);
+            }
+         }
 
-		if (Minecraft.getMinecraft().gameSettings.getOptionOrdinalValue(GameSettings.Options.enumFloat) && !this.L)
-		{
-			RealmsBridge realmsbridge = new RealmsBridge();
-			this.M = realmsbridge.getNotificationScreen(this);
-			this.L = true;
-		}
+         this.mc.displayGuiScreen(this);
+      }
 
-		if (this.a())
-		{
-			this.M.a(this.width, this.height);
-			this.M.initGui();
-		}
-	}
+   }
 
+   public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+      GlStateManager.enableAlpha();
+      GlStateManager.disableCull();
+      ScaledResolution sr = new ScaledResolution(this.mc);
+      this.backgroundShader.useShader(sr.getScaledWidth() * sr.getScaleFactor(), sr.getScaledHeight() * sr.getScaleFactor(), (float)mouseX, (float)mouseY, (float)(System.currentTimeMillis() - this.initTime) / 1000.0F);
+      GL11.glBegin(GL11.GL_QUADS);
+      GL11.glVertex2f(-1.0F, -1.0F);
+      GL11.glVertex2f(-1.0F, 1.0F);
+      GL11.glVertex2f(1.0F, 1.0F);
+      GL11.glVertex2f(1.0F, -1.0F);
+      GL11.glEnd();
+      GL20.glUseProgram(0);
+      this.title.drawCenteredString("Menace", (float)(width / 2), 29.0F, Color.black.getRGB());
+      this.drawExit(mouseX, mouseY);
+      this.drawOptions(mouseX, mouseY);
+      this.drawAltmanager(mouseX, mouseY);
+      this.drawSinglePlayer(mouseX, mouseY);
+      this.drawMultiPlayer(mouseX, mouseY);
+      this.text.drawString("Welcome back, " + Menace.instance.user.getUsername() + " [" + Menace.instance.user.getUID() + "]", 5, 5, Color.white.getRGB());
+      if (Menace.instance.discordUser != null) {
+    	  this.text.drawString("Discord: " + Menace.instance.discordUser.username + "#" + Menace.instance.discordUser.discriminator, 5, 25, Color.white.getRGB());
+      } else {
+    	  this.text.drawString("Discord not found.", 5, 25, Color.white.getRGB());
+      }
+      super.drawScreen(mouseX, mouseY, partialTicks);
+      if (this.a()) {
+         this.M.drawScreen(mouseX, mouseY, partialTicks);
+      }
 
-	private void switchToRealms()
-	{
-		RealmsBridge realmsbridge = new RealmsBridge();
-		realmsbridge.switchToRealms(this);
-	}
+   }
 
-	public void confirmClicked(boolean result, int id)
-	{
-		if (result && id == 12)
-		{
-			ISaveFormat isaveformat = this.mc.getSaveLoader();
-			isaveformat.flushCache();
-			isaveformat.deleteWorldDirectory("Demo_World");
-			this.mc.displayGuiScreen(this);
-		}
-		else if (id == 13)
-		{
-			if (result)
-			{
-				try
-				{
-					Class<?> oclass = Class.forName("java.awt.Desktop");
-					Object object = oclass.getMethod("getDesktop", new Class[0]).invoke((Object)null, new Object[0]);
-					oclass.getMethod("browse", new Class[] {URI.class}).invoke(object, new Object[] {new URI(this.openGLWarningLink)});
-				}
-				catch (Throwable throwable)
-				{
-					logger.error("Couldn\'t open link", throwable);
-				}
-			}
+   private void drawExit(int mouseX, int mouseY) {
+      int l1 = height / 4 + 48;
+      int w = 98;
+      int h = 20;
+      int x1 = width / 2 + 2;
+      int x2 = x1 + 2 + w;
+      int y1 = l1 + 80 + 12;
+      int y2 = y1 + h;
+      boolean hovered = RenderUtils.hover(x1, y1, mouseX, mouseY, w, h);
+      RenderUtils.drawRoundedRect((float)x1, (float)y1, (float)x2, (float)y2, 5.0F, hovered ? (new Color(203, 26, 26, 80)).getRGB() : (new Color(0, 0, 0, 80)).getRGB());
+      this.text.drawCenteredString("Exit", (float)((x1 + x2) / 2), (float)((y1 + y2 - 22) / 2), Color.black.getRGB());
+   }
 
-			this.mc.displayGuiScreen(this);
-		}
-	}
+   private void drawOptions(int mouseX, int mouseY) {
+      int l1 = height / 4 + 48;
+      int w = 98;
+      int h = 20;
+      int x1 = width / 2 - 100;
+      int x2 = x1 + w;
+      int y1 = l1 + 80 + 12;
+      int y2 = y1 + h;
+      boolean hovered = RenderUtils.hover(x1, y1, mouseX, mouseY, w, h);
+      RenderUtils.drawRoundedRect((float)x1, (float)y1, (float)x2, (float)y2, 5.0F, hovered ? (new Color(203, 26, 26, 80)).getRGB() : (new Color(0, 0, 0, 80)).getRGB());
+      this.text.drawCenteredString("Settings", (float)((x1 + x2) / 2), (float)((y1 + y2 - 22) / 2), Color.black.getRGB());
+   }
 
-	/**
-	 * Draws the screen and all the components in it. Args : mouseX, mouseY, renderPartialTicks
-	 */
-	public void drawScreen(int mouseX, int mouseY, float partialTicks)
-	{
-		GlStateManager.enableAlpha();
-		GlStateManager.disableCull();
-		int i = 274;
-		int j = this.width / 2 - i / 2;
-		int k = 30;
-		int l = -2130706433;
-		int i1 = 16777215;
-		int j1 = 0;
-		int k1 = Integer.MIN_VALUE;
-		int l1 = this.height / 4 + 48;
+   private void drawAltmanager(int mouseX, int mouseY) {
+      int l1 = height / 4 + 48;
+      int w = 200;
+      int h = 20;
+      int x1 = width / 2 - 100;
+      int x2 = x1 + w;
+      int y1 = l1 + 48;
+      int y2 = y1 + h;
+      boolean hovered = RenderUtils.hover(x1, y1, mouseX, mouseY, w, h);
+      RenderUtils.drawRoundedRect((float)x1, (float)y1, (float)x2, (float)y2, 5.0F, hovered ? (new Color(203, 26, 26, 80)).getRGB() : (new Color(0, 0, 0, 80)).getRGB());
+      this.text.drawCenteredString("Login", (float)((x1 + x2) / 2), (float)((y1 + y2 - 22) / 2), Color.black.getRGB());
+   }
 
-		ScaledResolution sr = new ScaledResolution(mc);
-		this.backgroundShader.useShader(sr.getScaledWidth() * sr.getScaleFactor(), sr.getScaledHeight() * sr.getScaleFactor(), mouseX, mouseY, (System.currentTimeMillis() - initTime) / 1000f);
+   public void drawSinglePlayer(int mouseX, int mouseY) {
+      int l1 = height / 4 + 48;
+      int w = 200;
+      int h = 20;
+      int x1 = width / 2 - 100;
+      int x2 = x1 + w;
+      int y2 = l1 + h;
+      boolean hovered = RenderUtils.hover(x1, l1, mouseX, mouseY, w, h);
+      RenderUtils.drawRoundedRect((float)x1, (float)l1, (float)x2, (float)y2, 5.0F, hovered ? (new Color(203, 26, 26, 80)).getRGB() : (new Color(0, 0, 0, 80)).getRGB());
+      this.text.drawCenteredString("SinglePlayer", (float)((x1 + x2) / 2), (float)((l1 + y2 - 22) / 2), Color.black.getRGB());
+   }
 
-		GL11.glBegin(GL11.GL_QUADS);
+   public void drawMultiPlayer(int mouseX, int mouseY) {
+      int l1 = height / 4 + 48;
+      int w = 200;
+      int h = 20;
+      int x1 = width / 2 - 100;
+      int x2 = x1 + w;
+      int y1 = l1 + 24;
+      int y2 = y1 + h;
+      boolean hovered = RenderUtils.hover(x1, y1, mouseX, mouseY, w, h);
+      RenderUtils.drawRoundedRect((float)x1, (float)y1, (float)x2, (float)y2, 5.0F, hovered ? (new Color(203, 26, 26, 80)).getRGB() : (new Color(0, 0, 0, 80)).getRGB());
+      this.text.drawCenteredString("MultiPlayer", (float)((x1 + x2) / 2), (float)((y1 + y2 - 22) / 2), Color.black.getRGB());
+   }
 
-		GL11.glVertex2f(-1f, -1f);
-		GL11.glVertex2f(-1f, 1f);
-		GL11.glVertex2f(1f, 1f);
-		GL11.glVertex2f(1f, -1f);
+   protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+      super.mouseClicked(mouseX, mouseY, mouseButton);
+      int l1 = height / 4 + 48;
+      if (RenderUtils.hover(width / 2 + 2, l1 + 80 + 12, mouseX, mouseY, 98, 20) && mouseButton == 0) {
+         this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
+         this.mc.shutdown();
+      }
 
-		GL11.glEnd();
+      if (RenderUtils.hover(width / 2 + 2 - 100, l1 + 80 + 12, mouseX, mouseY, 98, 20) && mouseButton == 0) {
+         this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
+         this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
+      }
 
-		// Unbind shader
-		GL20.glUseProgram(0);
-		
-		//Menace Title
-		title.drawCenteredString("Menace", width / 2, 29, Color.black.getRGB());
-		
-		//Exit
-		this.drawExit(mouseX, mouseY);
-		
-		//Options
-		this.drawOptions(mouseX, mouseY);
-		
-		//Altmanager TODO: make an altmanager
-		this.drawAltmanager(mouseX, mouseY);
-		
-		//SinglePlayer
-		this.drawSinglePlayer(mouseX, mouseY);
-		
-		//MultiPlayer
-		this.drawMultiPlayer(mouseX, mouseY);
-		
-		super.drawScreen(mouseX, mouseY, partialTicks);
+      if (RenderUtils.hover(width / 2 - 100, l1 + 48, mouseX, mouseY, 200, 20) && mouseButton == 0) {
+         this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
+         this.mc.displayGuiScreen(new DirectLoginScreen(this));
+      }
 
-		if (this.a())
-		{
-			this.M.drawScreen(mouseX, mouseY, partialTicks);
-		}
+      if (RenderUtils.hover(width / 2 - 100, l1, mouseX, mouseY, 200, 20) && mouseButton == 0) {
+         this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
+         this.mc.displayGuiScreen(new GuiSelectWorld(this));
+      }
 
-	}
-	
-	private void drawExit(int mouseX, int mouseY) {
-		int l1 = this.height / 4 + 48;
-		int w = 98;
-		int h = 20;
-		int x1 = this.width / 2 + 2;
-		int x2 = x1 + 2 + w;
-		int y1 = l1 + 80 + 12;
-		int y2 = y1 + h;
-		boolean hovered = RenderUtils.hover(x1, y1, mouseX, mouseY, w, h);
-		RenderUtils.drawRoundedRect(x1, y1, x2, y2, 5, hovered ? new Color(203, 26, 26, 80).getRGB() : new Color(0, 0, 0, 80).getRGB());
-		text.drawCenteredString("Exit", (x1 + x2) / 2,  (y1 + y2 - 22) / 2, Color.black.getRGB());
-	}
-	
-	private void drawOptions(int mouseX, int mouseY) {
-		int l1 = this.height / 4 + 48;
-		int w = 98;
-		int h = 20;
-		int x1 = this.width / 2 - 100;
-		int x2 = x1 + w;
-		int y1 = l1 + 80 + 12;
-		int y2 = y1 + h;
-		boolean hovered = RenderUtils.hover(x1, y1, mouseX, mouseY, w, h);
-		RenderUtils.drawRoundedRect(x1, y1, x2, y2, 5, hovered ? new Color(203, 26, 26, 80).getRGB() : new Color(0, 0, 0, 80).getRGB());
-		text.drawCenteredString("Settings", (x1 + x2) / 2,  (y1 + y2 - 22) / 2, Color.black.getRGB());
-	}
-	
-	private void drawAltmanager(int mouseX, int mouseY) {
-		int l1 = this.height / 4 + 48;
-		int w = 200;
-		int h = 20;
-		int x1 = this.width / 2 - 100;
-		int x2 = x1 + w;
-		int y1 = l1 + 24 * 2;
-		int y2 = y1 + h;
-		boolean hovered = RenderUtils.hover(x1, y1, mouseX, mouseY, w, h);
-		RenderUtils.drawRoundedRect(x1, y1, x2, y2, 5, hovered ? new Color(203, 26, 26, 80).getRGB() : new Color(0, 0, 0, 80).getRGB());
-		text.drawCenteredString("Login", (x1 + x2) / 2,  (y1 + y2 - 22) / 2, Color.black.getRGB());
-	}
-	
-	public void drawSinglePlayer(int mouseX, int mouseY) {
-		int l1 = this.height / 4 + 48;
-		int w = 200;
-		int h = 20;
-		int x1 = this.width / 2 - 100;
-		int x2 = x1 + w;
-		int y1 = l1;
-		int y2 = y1 + h;
-		boolean hovered = RenderUtils.hover(x1, y1, mouseX, mouseY, w, h);
-		RenderUtils.drawRoundedRect(x1, y1, x2, y2, 5, hovered ? new Color(203, 26, 26, 80).getRGB() : new Color(0, 0, 0, 80).getRGB());
-		text.drawCenteredString("SinglePlayer", (x1 + x2) / 2,  (y1 + y2 - 22) / 2, Color.black.getRGB());
-	}
-	
-	public void drawMultiPlayer(int mouseX, int mouseY) {
-		int l1 = this.height / 4 + 48;
-		int w = 200;
-		int h = 20;
-		int x1 = this.width / 2 - 100;
-		int x2 = x1 + w;
-		int y1 = l1 + 24;
-		int y2 = y1 + h;
-		boolean hovered = RenderUtils.hover(x1, y1, mouseX, mouseY, w, h);
-		RenderUtils.drawRoundedRect(x1, y1, x2, y2, 5, hovered ? new Color(203, 26, 26, 80).getRGB() : new Color(0, 0, 0, 80).getRGB());
-		text.drawCenteredString("MultiPlayer", (x1 + x2) / 2,  (y1 + y2 - 22) / 2, Color.black.getRGB());
-	}
+      if (RenderUtils.hover(width / 2 - 100, l1 + 24, mouseX, mouseY, 200, 20) && mouseButton == 0) {
+         this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
+         this.mc.displayGuiScreen(new GuiMultiplayer(this));
+      }
 
-	/**
-	 * Called when the mouse is clicked. Args : mouseX, mouseY, clickedButton
-	 */
-	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException
-	{
-		super.mouseClicked(mouseX, mouseY, mouseButton);
+      if (this.a()) {
+         this.M.mouseClickedP(mouseX, mouseY, mouseButton);
+      }
 
-		int l1 = this.height / 4 + 48;
-		
-		//Exit
-		if (RenderUtils.hover(this.width / 2 + 2, l1 + 80 + 12, mouseX, mouseY, 98, 20) && mouseButton == 0) {
-			this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-			this.mc.shutdown();
-		}
-		
-		//Options
-		if (RenderUtils.hover(this.width / 2 + 2 - 100, l1 + 80 + 12, mouseX, mouseY, 98, 20) && mouseButton == 0) {
-			this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-			this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
-		}
-		
-		//AltManager TODO add altmanager
-		if (RenderUtils.hover(this.width / 2 - 100, l1 + 24 * 2, mouseX, mouseY, 200, 20) && mouseButton == 0) {
-			this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-			this.mc.displayGuiScreen(new DirectLoginScreen(this));
-		}
-		
-		//SinglePlayer
-		if (RenderUtils.hover(this.width / 2 - 100, l1, mouseX, mouseY, 200, 20) && mouseButton == 0) {
-			this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-			this.mc.displayGuiScreen(new GuiSelectWorld(this));
-		}
-		
-		//MultiPlayer
-		if (RenderUtils.hover(this.width / 2 - 100, l1 + 24, mouseX, mouseY, 200, 20) && mouseButton == 0) {
-			this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-			this.mc.displayGuiScreen(new GuiMultiplayer(this));
-		}
+   }
 
-		if (this.a())
-		{
-			this.M.mouseClickedP(mouseX, mouseY, mouseButton);
-		}
-	}
+   public void onGuiClosed() {
+      if (this.M != null) {
+         this.M.onGuiClosed();
+      }
 
-	/**
-	 * Called when the screen is unloaded. Used to disable keyboard repeat events
-	 */
-	public void onGuiClosed()
-	{
-		if (this.M != null)
-		{
-			this.M.onGuiClosed();
-		}
-	}
+   }
 }

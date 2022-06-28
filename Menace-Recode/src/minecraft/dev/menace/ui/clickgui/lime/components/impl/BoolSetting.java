@@ -24,7 +24,7 @@ public class BoolSetting extends Component implements Priority {
     public BoolSetting(int x, int y, FrameModule owner, Setting setting)
     {
         super(x, y, owner, setting);
-        this.animation = new Animate().setMin(0).setMax(5).setSpeed(15).setEase(Easing.LINEAR).setReversed(!((ToggleSetting) setting).isToggled());
+        this.animation = new Animate().setMin(0).setMax(5).setSpeed(15).setEase(Easing.LINEAR).setReversed(!((ToggleSetting) setting).getValue());
     }
 
     @Override
@@ -40,7 +40,7 @@ public class BoolSetting extends Component implements Priority {
         productSans20.drawStringWithShadow(getSetting().getName(), x + 5, y + (getOffset() / 2F - (productSans20.FONT_HEIGHT / 2F)), -1);
         RenderUtils.drawFilledCircle(x + defaultWidth - 10, (int) (y + (getOffset() / 2F - (productSans20.FONT_HEIGHT / 2F)) + 6.75f), 5, new Color(darkerMainColor));
 
-        if(((ToggleSetting) getSetting()).isToggled() || animation.getValue() != 0)
+        if(((ToggleSetting) getSetting()).getValue() || animation.getValue() != 0)
         {
             RenderUtils.drawFilledCircle(x + defaultWidth - 10, (int) (y + (getOffset() / 2F - (productSans20.FONT_HEIGHT / 2F)) + 6.75f), animation.getValue(), new Color(enabledColor));
             GlStateManager.resetColor();
@@ -53,8 +53,8 @@ public class BoolSetting extends Component implements Priority {
     {
         if(RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, getOffset())) {
         	ToggleSetting set = (ToggleSetting) getSetting();
-            set.setToggled(!set.isToggled());
-            animation.setReversed(!set.isToggled());
+            set.setValue(!set.getValue());
+            animation.setReversed(!set.getValue());
             return true;
         }
         return false;

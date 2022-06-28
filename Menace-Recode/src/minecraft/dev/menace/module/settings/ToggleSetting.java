@@ -9,11 +9,11 @@ public class ToggleSetting extends Setting {
 		this.toggled = toggled;
 	}
 
-	public boolean isToggled() {
+	public boolean getValue() {
 		return toggled;
 	}
 
-	public void setToggled(boolean toggled) {
+	public void setValue(boolean toggled) {
 		this.toggled = toggled;
 	}
 

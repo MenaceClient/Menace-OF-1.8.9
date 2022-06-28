@@ -361,9 +361,9 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
                     this.actionPerformed((GuiButton)this.buttonList.get(2));
                 }
             }
-            else
+            else if (keyCode == 1)
             {
-                super.keyTyped(typedChar, keyCode);
+                this.mc.displayGuiScreen(this.parentScreen);
             }
         }
     }
@@ -402,7 +402,7 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
 
     private void connectToServer(ServerData server)
     {
-    	Menace.instance.discordRP.update("Menace Client", "Bypassing " + server.serverIP);
+    	Menace.instance.discordRP.update("Bypassing " + server.serverIP);
         this.mc.displayGuiScreen(new GuiConnecting(this, this.mc, server));
     }
 

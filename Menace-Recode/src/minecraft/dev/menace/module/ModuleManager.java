@@ -51,10 +51,13 @@ public class ModuleManager {
 	public AnimationsModule animationsModule = new AnimationsModule();
 	public ClickGuiModule clickGuiModule = new ClickGuiModule();
 	FullbrightModule fullbrightModule = new FullbrightModule();
+	public HUDModule hudModule = new HUDModule();
+	public ItemPhysicsModule itemPhysicsModule = new ItemPhysicsModule();
 	public XRayModule xrayModule = new XRayModule();
 	
 	//MISC
 	DevModule devModule = new DevModule();
+	KillSultsModule killSultsModule = new KillSultsModule();
 
 	public ModuleManager() {
 		try
@@ -115,7 +118,7 @@ public class ModuleManager {
 				module.getSettings().forEach(setting -> {
 
 					if (setting instanceof ToggleSetting) {
-						settingSave.addProperty(setting.getName(), ((ToggleSetting)setting).isToggled());
+						settingSave.addProperty(setting.getName(), ((ToggleSetting)setting).getValue());
 					} else if (setting instanceof SliderSetting) {
 						settingSave.addProperty(setting.getName(), ((SliderSetting)setting).getValue());
 					} else if (setting instanceof ListSetting) {
@@ -145,7 +148,7 @@ public class ModuleManager {
 				module.getSettings().forEach(setting -> {
 					if (settingSave.has(setting.getName())) {
 						if (setting instanceof ToggleSetting) {
-							((ToggleSetting)setting).setToggled(settingSave.get(setting.getName()).getAsBoolean());
+							((ToggleSetting)setting).setValue(settingSave.get(setting.getName()).getAsBoolean());
 						} else if (setting instanceof SliderSetting) {
 							((SliderSetting)setting).setValue(settingSave.get(setting.getName()).getAsDouble());
 						} else if (setting instanceof ListSetting) {

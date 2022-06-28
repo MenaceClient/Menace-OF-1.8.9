@@ -182,7 +182,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
             this.M.updateScreen();
         }
         
-        Menace.instance.discordRP.update("Menace Client", "In a menu.");
+        Menace.instance.discordRP.update("In a menu.");
     }
 
     /**
@@ -711,8 +711,6 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         {
             this.modUpdateNotification.drawScreen(mouseX, mouseY, partialTicks);
         }
-        
-        Menace.instance.discordRP.update("Menace", "In a menu.");
         
     }
 
