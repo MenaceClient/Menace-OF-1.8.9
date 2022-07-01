@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="MenaceClient" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="Start" />
+    <module name="Menace-Recode" />
+    <option name="VM_PARAMETERS" value="-Xmx1024M -Xms1024M" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/jars" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

@@ -8,6 +8,7 @@ import java.lang.reflect.Field;
 import java.security.NoSuchAlgorithmException;
 import java.util.Stack;
 
+import com.diffplug.common.base.StackDumper;
 import org.apache.commons.codec.binary.Base64;
 import org.lwjgl.opengl.Display;
 

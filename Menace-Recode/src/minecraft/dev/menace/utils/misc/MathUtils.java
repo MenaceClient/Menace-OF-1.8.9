@@ -16,6 +16,13 @@ public class MathUtils {
 
         return (long) (startInclusive + ((endInclusive - startInclusive) * Math.random()));
     }
+
+    public static float randFloat(final float startInclusive, final float endInclusive) {
+        if(startInclusive == endInclusive || endInclusive - startInclusive <= 0F)
+            return startInclusive;
+
+        return (float) (startInclusive + ((endInclusive - startInclusive) * Math.random()));
+    }
 	
 	public static float getAngleDifference(float dir, float yaw) {
         float f = Math.abs(yaw - dir) % 360F;

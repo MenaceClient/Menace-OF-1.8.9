@@ -27,11 +27,12 @@ public class ModuleManager {
 	//COMBAT
 	CriticalsModule criticalsModule = new CriticalsModule();
 	public KillAuraModule killAuraModule = new KillAuraModule();
-	VelocityModule velocityModule = new VelocityModule();
+	public VelocityModule velocityModule = new VelocityModule();
 	
 	//MOVEMENT
 	public FlightModule flightModule = new FlightModule();
 	LongJumpModule longJumpModule = new LongJumpModule();
+	SpeedModule speedModule = new SpeedModule();
 	public SprintModule sprintModule = new SprintModule();
 	StepModule stepModule = new StepModule();
 	StrafeModule strafeModule = new StrafeModule();
@@ -39,8 +40,11 @@ public class ModuleManager {
 	//PLAYER
 	public BlinkModule blinkModule = new BlinkModule();
 	InvManagerModule invManagerModule = new InvManagerModule();
+	InvMoveModule invMoveModule = new InvMoveModule();
 	NoFallModule noFallModule = new NoFallModule();
+	NoSlowModule noSlowModule = new NoSlowModule();
 	public SafeWalkModule safeWalkModule = new SafeWalkModule();
+	public ScaffoldModule scaffoldModule = new ScaffoldModule();
 	
 	//WORLD
 	public ChestStealerModule chestStealerModule = new ChestStealerModule();

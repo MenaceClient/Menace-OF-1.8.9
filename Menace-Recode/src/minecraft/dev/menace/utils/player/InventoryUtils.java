@@ -18,7 +18,7 @@ import net.minecraft.item.ItemTool;
 
 public class InventoryUtils {
 
-	private static Minecraft MC = Minecraft.getMinecraft();
+	private static final Minecraft MC = Minecraft.getMinecraft();
 	public static final List<Block> BLOCK_BLACKLIST = Arrays.asList(
             Blocks.enchanting_table, 
             Blocks.chest, 
@@ -72,8 +72,8 @@ public class InventoryUtils {
             Blocks.daylight_detector
     );
 
-	public static void shiftClick(int slot) {
-		MC.playerController.windowClick(MC.thePlayer.inventoryContainer.windowId, slot, 0, 1, MC.thePlayer);
+	public static void shiftClick(int slot, int windowID) {
+		MC.playerController.windowClick(windowID, slot, 0, 1, MC.thePlayer);
 	}
 
 	public static void swap(int slot1, int hotbarSlot) {
@@ -110,7 +110,7 @@ public class InventoryUtils {
 		} else {
 			String name = item.getUnlocalizedName();
 			ItemTool tool = (ItemTool)item;
-			float value = 1.0F;
+			float value;
 			if (item instanceof ItemPickaxe) {
 				value = tool.getStrVsBlock(stack, Blocks.stone);
 				if (name.toLowerCase().contains("gold")) {

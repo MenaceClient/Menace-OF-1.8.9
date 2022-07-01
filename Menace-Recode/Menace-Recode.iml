@@ -379,5 +379,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="annotations-20.1.0" level="project" />
+    <orderEntry type="library" name="durian-3.4.0" level="project" />
   </component>
 </module>

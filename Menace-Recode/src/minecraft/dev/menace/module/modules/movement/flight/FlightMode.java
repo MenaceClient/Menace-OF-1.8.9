@@ -1,5 +1,6 @@
 package dev.menace.module.modules.movement.flight;
 
+import dev.menace.module.modules.movement.flight.misc.BlocksMCFly;
 import dev.menace.module.modules.movement.flight.vanilla.*;
 import dev.menace.module.modules.movement.flight.verus.*;
 
@@ -9,7 +10,8 @@ public enum FlightMode {
 	MOTION("Motion", new MotionFly(), FlightType.VANILLA),
 	FAKEGROUND("FakeGround", new FakeGroundFly(), FlightType.VANILLA),
 	DAMAGE("Damage", new DamageFly(), FlightType.VANILLA),
-	VERUSJUMP("Jump", new VerusJumpFly(), FlightType.VERUS);
+	VERUSJUMP("Jump", new VerusJumpFly(), FlightType.VERUS),
+	BLOCKSMC("NCPSlime", new BlocksMCFly(), FlightType.OTHER);
 	
 	
 	String name;
@@ -33,7 +35,8 @@ public enum FlightMode {
 	
 	public enum FlightType {
 		VANILLA("Vanilla"),
-		VERUS("Verus");
+		VERUS("Verus"),
+		OTHER("Other");
 		
 		String name;
 		private FlightType(String name) {

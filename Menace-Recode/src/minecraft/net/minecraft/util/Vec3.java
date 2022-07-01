@@ -46,6 +46,10 @@ public class Vec3
         return new Vec3(vec.xCoord - this.xCoord, vec.yCoord - this.yCoord, vec.zCoord - this.zCoord);
     }
 
+    public Vec3 scale(final double p_186678_1_) {
+        return new Vec3(this.xCoord * p_186678_1_, this.yCoord * p_186678_1_, this.zCoord * p_186678_1_);
+    }
+
     /**
      * Normalizes the vector to a length of 1 (except if it is the zero vector)
      */

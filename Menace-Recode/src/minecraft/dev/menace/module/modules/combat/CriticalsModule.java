@@ -49,7 +49,7 @@ public class CriticalsModule extends BaseModule {
     }
 
     private boolean canCrit() {
-        return !PlayerUtils.isInLiquid() && MC.thePlayer.onGround;
+        return MC.thePlayer != null && !PlayerUtils.isInLiquid() && MC.thePlayer.onGround;
     }
 }
 

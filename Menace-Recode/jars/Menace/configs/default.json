@@ -7,19 +7,20 @@
     }
   },
   "KillAura": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
-      "Reach": 3.0,
-      "Delay Min": 90.0,
-      "Delay Max": 100.0,
+      "Reach": 7.0,
+      "MinCPS": 8.0,
+      "MaxCPS": 12.0,
       "TicksExisted": 10.0,
       "FOV": 360.0,
       "Mode": "Single",
       "Attack Event": "Pre",
       "Filter": "Distance",
       "Rotation": "Basic",
+      "AutoBlock": "Vanilla",
       "NoSwing": false,
-      "ThroughWalls": false,
+      "ThroughWalls": true,
       "InInventory": true,
       "RayCast": false,
       "Players": true,
@@ -33,6 +34,8 @@
     "Toggled": true,
     "Settings": {
       "Mode": "Simple",
+      "OnlyDamage": false,
+      "Explosions": true,
       "Visible": true
     }
   },
@@ -40,15 +43,22 @@
     "Toggled": false,
     "Settings": {
       "Mode": "Vanilla",
-      "VanillaMode": "Damage",
+      "VanillaMode": "Creative",
       "VerusMode": "Jump",
-      "DmgMode": "Jump",
+      "OtherMode": "NCPSlime",
+      "DmgMode": "Verus",
       "Speed": 2.0,
       "Viewbob": 0.1,
       "Visible": true
     }
   },
   "LongJump": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "Speed": {
     "Toggled": false,
     "Settings": {
       "Visible": true
@@ -69,7 +79,7 @@
     }
   },
   "Strafe": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "Visible": true
     }
@@ -89,10 +99,24 @@
       "Visible": true
     }
   },
+  "InvMove": {
+    "Toggled": true,
+    "Settings": {
+      "Rotate": true,
+      "Blink": false,
+      "Visible": true
+    }
+  },
   "NoFall": {
     "Toggled": true,
     "Settings": {
       "Mode": "SpoofGround",
+      "Visible": true
+    }
+  },
+  "NoSlow": {
+    "Toggled": true,
+    "Settings": {
       "Visible": true
     }
   },
@@ -103,12 +127,26 @@
       "Visible": true
     }
   },
+  "Scaffold": {
+    "Toggled": false,
+    "Settings": {
+      "Tower": true,
+      "Sprint": true,
+      "KeepRotations": true,
+      "SilentSwap": true,
+      "KeepY": false,
+      "Jump": false,
+      "Render": true,
+      "Visible": true
+    }
+  },
   "ChestStealer": {
     "Toggled": false,
     "Settings": {
-      "Delay Min": 90.0,
-      "Delay Max": 100.0,
-      "CloseScreen": false,
+      "Delay Min": 0.0,
+      "Delay Max": 10.0,
+      "CloseScreen": true,
+      "Randomize": true,
       "Visible": true
     }
   },
@@ -121,7 +159,7 @@
   "Timer": {
     "Toggled": false,
     "Settings": {
-      "Speed": 4.5,
+      "Speed": 1.5,
       "Visible": true
     }
   },
@@ -129,16 +167,16 @@
     "Toggled": true,
     "Settings": {
       "Blocking Mode": "Jello",
-      "TranslateX": 0.0,
-      "TranslateY": 0.0,
+      "TranslateX": 0.5,
+      "TranslateY": 0.2,
       "TranslateZ": 0.0,
       "ItemPosX": 0.56,
       "ItemPosY": -0.52,
       "ItemPosZ": -0.71999997,
       "ItemScale": 0.4,
       "ItemRotation": 45.0,
-      "SwingAnim": false,
-      "AnythingBlock": false,
+      "SwingAnim": true,
+      "AnythingBlock": true,
       "Visible": true
     }
   },
@@ -161,9 +199,11 @@
       "Watermark": true,
       "ArrayList": true,
       "ArrayAlign": "Right",
-      "Position": false,
+      "Position": true,
       "Position Mode": "Single",
       "Custom Font": false,
+      "Color": "Fade",
+      "RBW Speed": 36.0,
       "Red": 255.0,
       "Green": 0.0,
       "Blue": 0.0,
@@ -173,9 +213,9 @@
     }
   },
   "ItemPhysics": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
-      "Visible": true
+      "Visible": false
     }
   },
   "XRay": {

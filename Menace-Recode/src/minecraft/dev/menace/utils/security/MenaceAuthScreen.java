@@ -119,6 +119,8 @@ extends GuiScreen {
 			if (!this.username.isFocused()) {
 				this.username.setFocused(true);
 			}
+		} else if (key == Keyboard.KEY_RETURN) {
+			login();
 		}
 		this.username.textboxKeyTyped(character, key);
 	}
@@ -133,47 +135,51 @@ extends GuiScreen {
 			this.mc.shutdown();
 		}
 		if (RenderUtils.hover(width / 2 - 100, l1 + 78, mouseX, mouseY, 200, 20) && mouseButton == 0) {
-			this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-			status = "§eLogging in...";
-
-			if (username.getText() == null) {
-				status = "§cPlease type in your UID.";
-				return;
-			}
-
-			try {
-				Integer.valueOf(username.getText());
-			}
-			catch (NumberFormatException e) {
-				status = "§c" + username.getText() + " is not a number dumbass.";
-				return;
-			}
-
-			try {
-				URL url = new URL("http://menaceapi.cf/HWIDS.txt");
-	            URLConnection uc = url.openConnection();
-	            uc.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
-	            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(uc.getInputStream(), StandardCharsets.UTF_8));
-	            bufferedReader.close();
-			} catch (IOException e) {
-				status = "§cConnection Failed, could not connect to the Menace Servers.";
-				e.printStackTrace();
-				return;
-			}
-
-			if (!HWIDManager.readHWIDURL().contains(HWIDManager.getHWID())) {
-				status = "§cHWID not whitelisted.";
-				return;
-			}
-
-			if (HWIDManager.getUID(HWIDManager.getHWID()) != Integer.valueOf(username.getText())) {
-				status = "§cInvalid UID.";
-				return;
-			}
-
-			Menace.instance.user = HWIDManager.getUser();
-			Minecraft.getMinecraft().displayGuiScreen(previousScreen);
+			login();
 		}
+	}
+
+	private void login() {
+		this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
+		status = "§eLogging in...";
+
+		if (username.getText() == null) {
+			status = "§cPlease type in your UID.";
+			return;
+		}
+
+		try {
+			Integer.valueOf(username.getText());
+		}
+		catch (NumberFormatException e) {
+			status = "§c" + username.getText() + " is not a number dumbass.";
+			return;
+		}
+
+		try {
+			URL url = new URL("http://menaceapi.cf/HWIDS.txt");
+			URLConnection uc = url.openConnection();
+			uc.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(uc.getInputStream(), StandardCharsets.UTF_8));
+			bufferedReader.close();
+		} catch (IOException e) {
+			status = "§cConnection Failed, could not connect to the Menace Servers.";
+			e.printStackTrace();
+			return;
+		}
+
+		if (!HWIDManager.readHWIDURL().contains(HWIDManager.getHWID())) {
+			status = "§cHWID not whitelisted.";
+			return;
+		}
+
+		if (HWIDManager.getUID(HWIDManager.getHWID()) != Integer.parseInt(username.getText())) {
+			status = "§cInvalid UID.";
+			return;
+		}
+
+		Menace.instance.user = HWIDManager.getUser();
+		Minecraft.getMinecraft().displayGuiScreen(previousScreen);
 	}
 
 	@Override

@@ -1,11 +1,14 @@
 package dev.menace.module.modules.movement;
 
+import dev.menace.Menace;
 import dev.menace.event.EventTarget;
 import dev.menace.event.events.EventUpdate;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.module.settings.ToggleSetting;
 import dev.menace.utils.player.MovementUtils;
+
+import java.awt.*;
 
 public class SprintModule extends BaseModule {
 
@@ -24,7 +27,7 @@ public class SprintModule extends BaseModule {
 	
 	@EventTarget
 	public void onUpdate(EventUpdate event) {
-		if (MovementUtils.isMoving()) {
+		if (MovementUtils.isMoving() && (!Menace.instance.moduleManager.scaffoldModule.isToggled() || Menace.instance.moduleManager.scaffoldModule.sprint.getValue())) {
 			MC.thePlayer.setSprinting(true);
 		}
 	}

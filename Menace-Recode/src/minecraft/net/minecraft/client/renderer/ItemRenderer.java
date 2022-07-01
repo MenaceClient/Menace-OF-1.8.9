@@ -467,8 +467,8 @@ public class ItemRenderer
         if (this.itemToRender != null) {
             if (this.itemToRender.getItem() instanceof ItemMap) {
                 this.renderItemMap(abstractclientplayer, f2, f, f1);
-            } else if ((abstractclientplayer.isUsingItem() || (mc.gameSettings.keyBindDrop.isKeyDown() && animations.getAnythingBlock())) || mc.thePlayer.isBlocking()) {
-                switch((mc.thePlayer.isBlocking() || animations.getAnythingBlock()) ? EnumAction.BLOCK : this.itemToRender.getItemUseAction()) {
+            } else if ((abstractclientplayer.isUsingItem() || (mc.gameSettings.keyBindDrop.isKeyDown() && animations.getAnythingBlock())) || mc.thePlayer.isBlocking() || Menace.instance.moduleManager.killAuraModule.shouldFakeBlock) {
+                switch((mc.thePlayer.isBlocking() || animations.getAnythingBlock() || Menace.instance.moduleManager.killAuraModule.shouldFakeBlock) ? EnumAction.BLOCK : this.itemToRender.getItemUseAction()) {
                     case NONE:
                         this.transformFirstPersonItem(f, 0.0F);
                         break;

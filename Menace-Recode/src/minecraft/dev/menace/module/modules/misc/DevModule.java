@@ -1,5 +1,6 @@
 package dev.menace.module.modules.misc;
 
+import dev.menace.utils.misc.ChatUtils;
 import org.lwjgl.input.Keyboard;
 
 import dev.menace.module.BaseModule;
@@ -15,21 +16,11 @@ public class DevModule extends BaseModule {
 	
 	@Override
 	public void onEnable() {
-		/*
-		double x = MC.thePlayer.posX;
-		double y = MC.thePlayer.posY;
-		double z = MC.thePlayer.posZ;
-		
-		int i = 0;
-		while (i < 65) {
-			PacketUtils.sendPacket(new C04PacketPlayerPosition(x, y + 0.049, z, false));
-			PacketUtils.sendPacket(new C04PacketPlayerPosition(x, y, z, false));
-			i++;
-		}
-		
-		PacketUtils.sendPacket(new C04PacketPlayerPosition(x, y, z, true));
-		*/
-		MC.thePlayer.jump();
+		ChatUtils.message(String.valueOf(MC.thePlayer.rotationYaw));
+		ChatUtils.message(String.valueOf(MC.thePlayer.rotationPitch));
+		ChatUtils.message(String.valueOf(MC.thePlayer.posX));
+		ChatUtils.message(String.valueOf(MC.thePlayer.posY));
+		ChatUtils.message(String.valueOf(MC.thePlayer.posZ));
 		super.onEnable();
 	}
 	

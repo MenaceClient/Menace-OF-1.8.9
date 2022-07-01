@@ -1,0 +1,239 @@
+{
+  "Criticals": {
+    "Toggled": false,
+    "Settings": {
+      "Mode": "Packet",
+      "Visible": true
+    }
+  },
+  "KillAura": {
+    "Toggled": true,
+    "Settings": {
+      "Reach": 3.0,
+      "MinCPS": 5.0,
+      "MaxCPS": 14.0,
+      "TicksExisted": 10.0,
+      "FOV": 360.0,
+      "Mode": "Single",
+      "Attack Event": "Pre",
+      "Filter": "Health",
+      "Rotation": "Bypass",
+      "AutoBlock": "Fake",
+      "NoSwing": false,
+      "ThroughWalls": true,
+      "InInventory": true,
+      "RayCast": true,
+      "Players": true,
+      "Hostiles": true,
+      "Passives": false,
+      "Invisibles": false,
+      "Visible": true
+    }
+  },
+  "Velocity": {
+    "Toggled": true,
+    "Settings": {
+      "Mode": "Simple",
+      "OnlyDamage": false,
+      "Explosions": true,
+      "Visible": true
+    }
+  },
+  "Flight": {
+    "Toggled": false,
+    "Settings": {
+      "Mode": "Other",
+      "VanillaMode": "FakeGround",
+      "VerusMode": "Jump",
+      "OtherMode": "NCPSlime",
+      "DmgMode": "Verus",
+      "Speed": 2.0,
+      "Viewbob": 0.1,
+      "Visible": true
+    }
+  },
+  "LongJump": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "Speed": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "Sprint": {
+    "Toggled": true,
+    "Settings": {
+      "OmniSprint": false,
+      "Visible": true
+    }
+  },
+  "Step": {
+    "Toggled": false,
+    "Settings": {
+      "Height": 1.0,
+      "Visible": true
+    }
+  },
+  "Strafe": {
+    "Toggled": true,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "Blink": {
+    "Toggled": false,
+    "Settings": {
+      "FakePlayer": true,
+      "Pulse": false,
+      "PulseAmount": 50.0,
+      "Visible": true
+    }
+  },
+  "InvManager": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "InvMove": {
+    "Toggled": true,
+    "Settings": {
+      "Rotate": true,
+      "Blink": false,
+      "Visible": true
+    }
+  },
+  "NoFall": {
+    "Toggled": false,
+    "Settings": {
+      "Mode": "SpoofGround",
+      "Visible": true
+    }
+  },
+  "NoSlow": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "SafeWalk": {
+    "Toggled": true,
+    "Settings": {
+      "InAir": false,
+      "Visible": true
+    }
+  },
+  "Scaffold": {
+    "Toggled": true,
+    "Settings": {
+      "Tower": false,
+      "Sprint": false,
+      "KeepRotations": true,
+      "SilentSwap": false,
+      "KeepY": false,
+      "Jump": false,
+      "Render": true,
+      "Visible": true
+    }
+  },
+  "ChestStealer": {
+    "Toggled": true,
+    "Settings": {
+      "Delay Min": 90.0,
+      "Delay Max": 130.0,
+      "CloseScreen": true,
+      "Randomize": true,
+      "Visible": true
+    }
+  },
+  "FastPlace": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "Timer": {
+    "Toggled": false,
+    "Settings": {
+      "Speed": 1.5,
+      "Visible": true
+    }
+  },
+  "Animations": {
+    "Toggled": true,
+    "Settings": {
+      "Blocking Mode": "Jello",
+      "TranslateX": 0.5,
+      "TranslateY": 0.2,
+      "TranslateZ": 0.0,
+      "ItemPosX": 0.56,
+      "ItemPosY": -0.52,
+      "ItemPosZ": -0.71999997,
+      "ItemScale": 0.4,
+      "ItemRotation": 45.0,
+      "SwingAnim": true,
+      "AnythingBlock": true,
+      "Visible": true
+    }
+  },
+  "ClickGui": {
+    "Toggled": false,
+    "Settings": {
+      "Mode": "CSGO",
+      "Visible": true
+    }
+  },
+  "Fullbright": {
+    "Toggled": true,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "HUD": {
+    "Toggled": true,
+    "Settings": {
+      "Watermark": true,
+      "ArrayList": true,
+      "ArrayAlign": "Right",
+      "Position": true,
+      "Position Mode": "Single",
+      "Custom Font": false,
+      "Color": "Fade",
+      "RBW Speed": 36.0,
+      "Red": 255.0,
+      "Green": 0.0,
+      "Blue": 0.0,
+      "Alpha": 255.0,
+      "HUD Editor": false,
+      "Visible": true
+    }
+  },
+  "ItemPhysics": {
+    "Toggled": true,
+    "Settings": {
+      "Visible": false
+    }
+  },
+  "XRay": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "DevModule": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "KillSults": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  }
+}

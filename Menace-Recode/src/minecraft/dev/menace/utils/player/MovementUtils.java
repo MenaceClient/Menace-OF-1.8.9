@@ -11,6 +11,13 @@ public class MovementUtils {
 		return MC.thePlayer.motionX != 0 && MC.thePlayer.motionZ != 0;
 	}
 
+    public static boolean shouldMove() {
+        return MC.gameSettings.keyBindForward.isKeyDown()
+            || MC.gameSettings.keyBindBack.isKeyDown()
+            || MC.gameSettings.keyBindRight.isKeyDown()
+            || MC.gameSettings.keyBindLeft.isKeyDown();
+    }
+
 	public static float getSpeed() {
         return MathHelper.sqrt_double(MC.thePlayer.motionX * MC.thePlayer.motionX + MC.thePlayer.motionZ * MC.thePlayer.motionZ);
     }
@@ -25,6 +32,12 @@ public class MovementUtils {
         final double yaw = getDirection() / 180 * Math.PI;
         MC.thePlayer.motionX = -Math.sin(yaw) * speed;
         MC.thePlayer.motionZ = Math.cos(yaw) * speed;
+    }
+
+    public static void stop() {
+        MC.thePlayer.posX = 0;
+        MC.thePlayer.posY = 0;
+        MC.thePlayer.posZ = 0;
     }
     
     public static double getDirection() {

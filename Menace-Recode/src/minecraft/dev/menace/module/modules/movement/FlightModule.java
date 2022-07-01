@@ -32,6 +32,7 @@ public class FlightModule extends BaseModule {
 	public ListSetting mode;
 	ListSetting vanillaMode;
 	ListSetting verusMode;
+	ListSetting otherMode;
 	public ListSetting dmgMode;
 	public SliderSetting speed;
 	SliderSetting viewbobbingYaw;
@@ -50,17 +51,24 @@ public class FlightModule extends BaseModule {
 		
 		ArrayList<String> vanillaValues = new ArrayList<>();
 		ArrayList<String> verusValues = new ArrayList<>();
+		ArrayList<String> otherValues = new ArrayList<>();
 		for (FlightMode fm : FlightMode.values()) {
 			switch (fm.getType())
 			{
-			case VANILLA:
-				vanillaValues.add(fm.getName());
-				break;
-			case VERUS:
-				verusValues.add(fm.getName());
-				break;
-			default:
-				break;
+				case VANILLA:
+					vanillaValues.add(fm.getName());
+					break;
+
+				case VERUS:
+					verusValues.add(fm.getName());
+					break;
+
+				case OTHER:
+					otherValues.add(fm.getName());
+					break;
+
+				default:
+					break;
 			}
 		}
 		
@@ -82,6 +90,12 @@ public class FlightModule extends BaseModule {
 				} else {
 					this.setVisible(false);
 				}
+			}
+		};
+		otherMode = new ListSetting("OtherMode", false, "BlocksMC", otherValues.toArray(new String[] {})) {
+			@Override
+			public void constantCheck() {
+				this.setVisible(Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Other"));
 			}
 		};
 		dmgMode = new ListSetting("DmgMode", false, "Basic", new String[] {"Basic", "Verus", "Jump", "Bow", "Wait"}) {
@@ -110,6 +124,7 @@ public class FlightModule extends BaseModule {
 		this.rSetting(mode);
 		this.rSetting(vanillaMode);
 		this.rSetting(verusMode);
+		this.rSetting(otherMode);
 		this.rSetting(dmgMode);
 		this.rSetting(speed);
 		this.rSetting(viewbobbingYaw);
@@ -123,6 +138,9 @@ public class FlightModule extends BaseModule {
 				flightMode = fm.getFlight();
 				break;
 			} else if (verusMode.getValue().equalsIgnoreCase(fm.getName()) &&  mode.getValue().equalsIgnoreCase("verus")) {
+				flightMode = fm.getFlight();
+				break;
+			} else if (otherMode.getValue().equalsIgnoreCase(fm.getName()) && mode.getValue().equalsIgnoreCase("Other")) {
 				flightMode = fm.getFlight();
 				break;
 			}

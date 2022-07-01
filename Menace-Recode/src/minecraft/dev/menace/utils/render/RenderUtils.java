@@ -4,11 +4,14 @@ import static org.lwjgl.opengl.GL11.*;
 
 import java.awt.Color;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 
 public class RenderUtils {
 
@@ -68,7 +71,134 @@ public class RenderUtils {
 		glEnd();
 	}
 
+	public static void drawBlock(BlockPos blockPos, Color color, float thickness) {
+		double x = (double) blockPos.getX() - Minecraft.getMinecraft().getRenderManager().renderPosX;
+		double y = (double) blockPos.getY() - Minecraft.getMinecraft().getRenderManager().renderPosY;
+		double z = (double) blockPos.getZ() - Minecraft.getMinecraft().getRenderManager().renderPosZ;
+		glBlendFunc(770, 771);
+		glEnable(3042);
+		glLineWidth(thickness);
+		glEnable(GL_LINE_SMOOTH);
+		glDisable(3553);
+		glDisable(2929);
+		glDepthMask(false);
+		glColor4d(color.getRed(), color.getGreen(), color.getBlue(), 13);
+		glColor4d(color.getRed(), color.getGreen(), color.getBlue(), 1);
+		drawSelectionBoundingBox(new AxisAlignedBB(x, y, z, x + 1.0, y + 1.0, z + 1.0));
+		glEnable(3553);
+		glEnable(2929);
+		glDepthMask(true);
+	}
+
+	public static void drawSelectionBoundingBox(AxisAlignedBB boundingBox) {
+		Tessellator tessellator = Tessellator.getInstance();
+		WorldRenderer vertexbuffer = tessellator.getWorldRenderer();
+		vertexbuffer.begin(3, DefaultVertexFormats.POSITION_TEX);
+		vertexbuffer.pos(boundingBox.minX, boundingBox.minY, boundingBox.minZ).endVertex();
+		vertexbuffer.pos(boundingBox.maxX, boundingBox.minY, boundingBox.minZ).endVertex();
+		vertexbuffer.pos(boundingBox.maxX, boundingBox.minY, boundingBox.maxZ).endVertex();
+		vertexbuffer.pos(boundingBox.minX, boundingBox.minY, boundingBox.maxZ).endVertex();
+		vertexbuffer.pos(boundingBox.minX, boundingBox.minY, boundingBox.minZ).endVertex();
+		tessellator.draw();
+		vertexbuffer.begin(3, DefaultVertexFormats.POSITION_TEX);
+		vertexbuffer.pos(boundingBox.minX, boundingBox.maxY, boundingBox.minZ).endVertex();
+		vertexbuffer.pos(boundingBox.maxX, boundingBox.maxY, boundingBox.minZ).endVertex();
+		vertexbuffer.pos(boundingBox.maxX, boundingBox.maxY, boundingBox.maxZ).endVertex();
+		vertexbuffer.pos(boundingBox.minX, boundingBox.maxY, boundingBox.maxZ).endVertex();
+		vertexbuffer.pos(boundingBox.minX, boundingBox.maxY, boundingBox.minZ).endVertex();
+		tessellator.draw();
+		vertexbuffer.begin(1, DefaultVertexFormats.POSITION_TEX);
+		vertexbuffer.pos(boundingBox.minX, boundingBox.minY, boundingBox.minZ).endVertex();
+		vertexbuffer.pos(boundingBox.minX, boundingBox.maxY, boundingBox.minZ).endVertex();
+		vertexbuffer.pos(boundingBox.maxX, boundingBox.minY, boundingBox.minZ).endVertex();
+		vertexbuffer.pos(boundingBox.maxX, boundingBox.maxY, boundingBox.minZ).endVertex();
+		vertexbuffer.pos(boundingBox.maxX, boundingBox.minY, boundingBox.maxZ).endVertex();
+		vertexbuffer.pos(boundingBox.maxX, boundingBox.maxY, boundingBox.maxZ).endVertex();
+		vertexbuffer.pos(boundingBox.minX, boundingBox.minY, boundingBox.maxZ).endVertex();
+		vertexbuffer.pos(boundingBox.minX, boundingBox.maxY, boundingBox.maxZ).endVertex();
+		tessellator.draw();
+	}
+
+	public static void drawBoundingBox(final AxisAlignedBB aa, Color color) {
+		final Tessellator tessellator = Tessellator.getInstance();
+		final WorldRenderer worldRenderer = tessellator.getWorldRenderer();
+		worldRenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+		worldRenderer.color(color.getRed(), color.getBlue(), color.getGreen(), color.getAlpha());
+		worldRenderer.pos(aa.minX, aa.minY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.maxY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.minY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.maxY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.minY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.maxY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.minY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.maxY, aa.maxZ).endVertex();
+		tessellator.draw();
+		worldRenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+		worldRenderer.color(color.getRed(), color.getBlue(), color.getGreen(), color.getAlpha());
+		worldRenderer.pos(aa.maxX, aa.maxY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.minY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.maxY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.minY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.maxY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.minY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.maxY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.minY, aa.maxZ).endVertex();
+		tessellator.draw();
+		worldRenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+		worldRenderer.color(color.getRed(), color.getBlue(), color.getGreen(), color.getAlpha());
+		worldRenderer.pos(aa.minX, aa.maxY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.maxY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.maxY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.maxY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.maxY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.maxY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.maxY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.maxY, aa.minZ).endVertex();
+		tessellator.draw();
+		worldRenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+		worldRenderer.color(color.getRed(), color.getBlue(), color.getGreen(), color.getAlpha());
+		worldRenderer.pos(aa.minX, aa.minY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.minY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.minY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.minY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.minY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.minY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.minY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.minY, aa.minZ).endVertex();
+		tessellator.draw();
+		worldRenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+		worldRenderer.color(color.getRed(), color.getBlue(), color.getGreen(), color.getAlpha());
+		worldRenderer.pos(aa.minX, aa.minY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.maxY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.minY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.maxY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.minY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.maxY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.minY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.maxY, aa.minZ).endVertex();
+		tessellator.draw();
+		worldRenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+		worldRenderer.color(color.getRed(), color.getBlue(), color.getGreen(), color.getAlpha());
+		worldRenderer.pos(aa.minX, aa.maxY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.minY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.maxY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.minX, aa.minY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.maxY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.minY, aa.minZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.maxY, aa.maxZ).endVertex();
+		worldRenderer.pos(aa.maxX, aa.minY, aa.maxZ).endVertex();
+		tessellator.draw();
+	}
+
 	public static void drawRect(int left, int top, int right, int bottom, int color) {
+		// default
+		Gui.drawRect(left, top, right, bottom, color);
+
+		// replacement
+		//		LWJGLUtil.drawRect(left, top, right - left, bottom - top, color);
+	}
+
+	public static void drawRect(double left, double top, double right, double bottom, int color) {
 		// default
 		Gui.drawRect(left, top, right, bottom, color);
 
@@ -118,10 +248,10 @@ public class RenderUtils {
 			paramYEnd = z;
 		}
 
-		double x1 = (double)(paramXStart + radius);
-		double y1 = (double)(paramYStart + radius);
-		double x2 = (double)(paramXEnd - radius);
-		double y2 = (double)(paramYEnd - radius);
+		double x1 = paramXStart + radius;
+		double y1 = paramYStart + radius;
+		double x2 = paramXEnd - radius;
+		double y2 = paramYEnd - radius;
 
 		Tessellator tessellator = Tessellator.getInstance();
 		WorldRenderer worldrenderer = tessellator.getWorldRenderer();

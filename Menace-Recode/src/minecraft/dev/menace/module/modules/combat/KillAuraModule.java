@@ -19,26 +19,31 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemSword;
 import net.minecraft.network.play.client.C0APacketAnimation;
 import net.minecraft.util.MovingObjectPosition;
 
 import java.util.Comparator;
+import java.util.List;
 
 public class KillAuraModule extends BaseModule {
 
 	MSTimer delayTimer = new MSTimer();
 	EntityLivingBase target;
 	long nextDelay;
+	boolean blocking;
+	public boolean shouldFakeBlock;
 	
 	SliderSetting reach;
-	public SliderSetting minDelay;
-    public SliderSetting maxDelay;
+	public SliderSetting minCPS;
+	public SliderSetting maxCPS;
 	SliderSetting ticksExisted;
 	SliderSetting fov;
 	ListSetting mode;
 	ListSetting attackevent;
 	ListSetting filter;
 	ListSetting rotation;
+	ListSetting autoblock;
 	ToggleSetting noswing;
 	ToggleSetting throughwalls;
 	ToggleSetting ininv;
@@ -55,28 +60,29 @@ public class KillAuraModule extends BaseModule {
 	@Override
 	public void setup() {
 		reach = new SliderSetting("Reach", true, 3, 1, 7, false);
-		minDelay = new SliderSetting("Delay Min", true, 90, 100, 1000, 100, true) {
-            @Override
-            public void constantCheck() {
-                if (Menace.instance.moduleManager.killAuraModule.maxDelay.getValue() < this.getValue()) {
-                    this.setValue(Menace.instance.moduleManager.killAuraModule.maxDelay.getValue());
-                }
-            }
-        };
-        maxDelay = new SliderSetting("Delay Max", true, 100, 100, 1000, 100, true) {
-            @Override
-            public void constantCheck() {
-                if (Menace.instance.moduleManager.killAuraModule.minDelay.getValue() > this.getValue()) {
-                    this.setValue(Menace.instance.moduleManager.killAuraModule.minDelay.getValue());
-                }
-            }
-        };
+		minCPS = new SliderSetting("MinCPS", true, 10, 1, 20, true) {
+			@Override
+			public void constantCheck() {
+				if (this.getValue() > Menace.instance.moduleManager.killAuraModule.maxCPS.getValue()) {
+					this.setValue(Menace.instance.moduleManager.killAuraModule.maxCPS.getValue());
+				}
+			}
+		};
+		maxCPS = new SliderSetting("MaxCPS", true, 10, 1, 20, true) {
+			@Override
+			public void constantCheck() {
+				if (this.getValue() < Menace.instance.moduleManager.killAuraModule.minCPS.getValue()) {
+					this.setValue(Menace.instance.moduleManager.killAuraModule.minCPS.getValue());
+				}
+			}
+		};
 		ticksExisted = new SliderSetting("TicksExisted", true, 10, 0 , 100, true);
 		fov = new SliderSetting("FOV", true, 360, 0, 360, false);
 		mode = new ListSetting("Mode", true, "Single", new String[] {"Single", "Multi"});
 		attackevent = new ListSetting("Attack Event", true, "Pre", new String[] {"Pre", "Post"});
-		filter = new ListSetting("Filter", true, "Health", new String[] {"Health", "Distance", "Angle", "TicksExsted"});
-		rotation = new ListSetting("Rotation", true, "None", new String[] {"None", "Basic"});
+		filter = new ListSetting("Filter", true, "Health", new String[] {"Health", "Distance", "Angle", "TicksExisted"});
+		rotation = new ListSetting("Rotation", true, "None", new String[] {"None", "Basic", "Bypass", "Jitter"});
+		autoblock = new ListSetting("AutoBlock", true, "None", new String[] {"None", "Fake", "Vanilla"});
 		noswing = new ToggleSetting("NoSwing", true, false);
 		throughwalls = new ToggleSetting("ThroughWalls", true, false);
 		ininv = new ToggleSetting("InInventory", true, false);
@@ -86,14 +92,15 @@ public class KillAuraModule extends BaseModule {
 		passives = new ToggleSetting("Passives", true, false);
 		invisibles = new ToggleSetting("Invisibles", true, false);
 		this.rSetting(reach);
-		this.rSetting(minDelay);
-        this.rSetting(maxDelay);
+		this.rSetting(minCPS);
+		this.rSetting(maxCPS);
 		this.rSetting(ticksExisted);
 		this.rSetting(fov);
 		this.rSetting(mode);
 		this.rSetting(attackevent);
 		this.rSetting(filter);
 		this.rSetting(rotation);
+		this.rSetting(autoblock);
 		this.rSetting(noswing);
 		this.rSetting(throughwalls);
 		this.rSetting(ininv);
@@ -109,13 +116,16 @@ public class KillAuraModule extends BaseModule {
 	public void onEnable() {
 		delayTimer.reset();
 		target = null;
-		nextDelay = MathUtils.randLong(minDelay.getValueL(), maxDelay.getValueL());
+		nextDelay = MathUtils.randLong(minCPS.getValueL(), maxCPS.getValueL());
+		blocking = false;
+		shouldFakeBlock = false;
 		super.onEnable();
 	}
 	
 	@Override
 	public void onDisable() {
 		target = null;
+		unblock();
 		super.onDisable();
 	}
 	
@@ -125,7 +135,26 @@ public class KillAuraModule extends BaseModule {
 		if (rotation.getValue().equalsIgnoreCase("Basic") && target != null) {
 			event.setYaw(PlayerUtils.getRotations(target)[0]);
 			event.setPitch(PlayerUtils.getRotations(target)[1]);
+		} else if (rotation.getValue().equalsIgnoreCase("Jitter") && target != null) {
+			float minYaw = PlayerUtils.getRotations(target.boundingBox.minX, target.posY, target.boundingBox.minZ)[0];
+			float maxYaw = PlayerUtils.getRotations(target.boundingBox.maxX, target.posY, target.boundingBox.maxZ)[0];
+			float yaw = MathUtils.randFloat(minYaw, maxYaw);
+			float minPitch = PlayerUtils.getRotations(target.posX, target.boundingBox.minY, target.posZ)[1];
+			float maxPitch = PlayerUtils.getRotations(target.posX, target.boundingBox.maxY, target.posZ)[1];
+			float pitch = MathUtils.randFloat(minPitch, maxPitch);
+			event.setYaw(yaw);
+			event.setPitch(pitch);
+		} else if (rotation.getValue().equalsIgnoreCase("Bypass") && target != null) {
+			event.setYaw(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox()))[0]);
+			event.setPitch(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox()))[1]);
 		}
+
+		if (target != null) {
+			block();
+		} else {
+			unblock();
+		}
+
 		if (attackevent.getValue().equalsIgnoreCase("Pre")) {
 			attack();
 		}
@@ -157,13 +186,9 @@ public class KillAuraModule extends BaseModule {
 		case "TicksExisted" : 
 			entityFilter = Comparator.comparingInt(e -> e.ticksExisted);
 			break;
-			
-		default :
-			entityFilter = Comparator.comparingInt(e -> (int) ((EntityLivingBase) e).getHealth());
-			break;
-			
 		}
 
+		assert entityFilter != null;
 		if (MC.theWorld.loadedEntityList.stream()
 				.filter(this::isValid).sorted(entityFilter).toArray().length > 0) {
 			target = (EntityLivingBase) MC.theWorld.loadedEntityList.stream()
@@ -173,8 +198,8 @@ public class KillAuraModule extends BaseModule {
 		}
 	}
 	
-	public void attack() {		
-		if (!delayTimer.hasTimePassed(nextDelay) || target == null) {
+	public void attack() {
+		if (!delayTimer.hasTimePassed(1000 / nextDelay) || target == null || Menace.instance.moduleManager.scaffoldModule.isToggled()) {
 			return;
 		}
 		
@@ -200,17 +225,15 @@ public class KillAuraModule extends BaseModule {
 			
 		case "Multi" :
 			MC.theWorld.loadedEntityList.stream()
-			.filter(this::isValid).forEach(e -> {
-				MC.playerController.attackEntity(MC.thePlayer, e);
-			});
+			.filter(this::isValid).forEach(e -> MC.playerController.attackEntity(MC.thePlayer, e));
 			break;
 		
 		default :
 			break;
 		}
 		
-		delayTimer.reset();	
-		nextDelay = MathUtils.randLong(minDelay.getValueL(), maxDelay.getValueL());
+		delayTimer.reset();
+		nextDelay = MathUtils.randInt(minCPS.getValueI(), maxCPS.getValueI());
 	}
 	
 	private boolean isValid(Entity e) {
@@ -228,6 +251,23 @@ public class KillAuraModule extends BaseModule {
 				&& (!e.isInvisible() || invisibles.getValue())
 				&& (MC.thePlayer.canEntityBeSeen(e) || throughwalls.getValue())
 				&& (ininv.getValue() || MC.currentScreen == null);
+	}
+
+	private void block() {
+		if (autoblock.getValue().equalsIgnoreCase("Fake")) shouldFakeBlock = true;
+		if (MC.thePlayer.getHeldItem() == null
+				|| !(MC.thePlayer.getHeldItem().getItem() instanceof ItemSword)
+				|| !autoblock.getValue().equalsIgnoreCase("Vanilla")) return;
+
+		MC.playerController.sendUseItem(MC.thePlayer, MC.theWorld, MC.thePlayer.getHeldItem());
+		blocking = true;
+	}
+
+	private void unblock() {
+		shouldFakeBlock = false;
+		if (!blocking) return;
+		MC.playerController.onStoppedUsingItem(MC.thePlayer);
+		blocking = false;
 	}
 	
 	private boolean isInFOV(Entity entity, double angle) {

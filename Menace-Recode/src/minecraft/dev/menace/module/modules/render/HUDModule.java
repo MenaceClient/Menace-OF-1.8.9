@@ -60,7 +60,7 @@ public class HUDModule extends BaseModule {
 			}
 		};
 		customFont = new ToggleSetting("Custom Font", true, false);
-		color = new ListSetting("Color", true, "Custom", new String[] {"Rainbow", "Fade", "Custom"});
+		color = new ListSetting("Color", true, "Custom", new String[] {"Fade", "Custom"});
 		rainbowSpeed = new SliderSetting("RBW Speed", true, 10, 1, 100, true) {
 			@Override
 			public void constantCheck() {
@@ -107,12 +107,20 @@ public class HUDModule extends BaseModule {
 		this.rSetting(pos);
 		this.rSetting(posMode);
 		this.rSetting(customFont);
+		this.rSetting(color);
+		this.rSetting(rainbowSpeed);
 		this.rSetting(red);
 		this.rSetting(green);
 		this.rSetting(blue);
 		this.rSetting(alpha);
 		this.rSetting(hudEditor);
 		super.setup();
+	}
+
+	@Override
+	public void onEnable() {
+		HUDManager.load();
+		super.onEnable();
 	}
 
 	@EventTarget

@@ -14,14 +14,19 @@ import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChestStealerModule extends BaseModule {
 
+	List<Slot> slotList = new ArrayList<>();
 	MSTimer delayTimer = new MSTimer();
 	long nextDelay;
 	
 	ToggleSetting closeScreen;
 	public SliderSetting minDelay;
 	public SliderSetting maxDelay;
+	ToggleSetting randomize;
 	
 	public ChestStealerModule() {
 		super("ChestStealer", Category.WORLD, 0);
@@ -29,7 +34,7 @@ public class ChestStealerModule extends BaseModule {
 
 	@Override
 	public void setup() {
-		minDelay = new SliderSetting("Delay Min", true, 90, 100, 1000, 100, true) {
+		minDelay = new SliderSetting("Delay Min", true, 90, 0, 1000, 10, true) {
 			@Override
 			public void constantCheck() {
 				if (Menace.instance.moduleManager.chestStealerModule.maxDelay.getValue() < this.getValue()) {
@@ -37,7 +42,7 @@ public class ChestStealerModule extends BaseModule {
 				}
 			}
 		};
-		maxDelay = new SliderSetting("Delay Max", true, 100, 0, 1000, 100, true) {
+		maxDelay = new SliderSetting("Delay Max", true, 100, 0, 1000, 10, true) {
 			@Override
 			public void constantCheck() {
 				if (Menace.instance.moduleManager.chestStealerModule.minDelay.getValue() > this.getValue()) {
@@ -46,9 +51,11 @@ public class ChestStealerModule extends BaseModule {
 			}
 		};
 		closeScreen = new ToggleSetting("CloseScreen", true, false);
+		randomize = new ToggleSetting("Randomize", true, true);
 		this.rSetting(minDelay);
 		this.rSetting(maxDelay);
 		this.rSetting(closeScreen);
+		this.rSetting(randomize);
 		super.setup();
 	}
 	
@@ -56,6 +63,7 @@ public class ChestStealerModule extends BaseModule {
 	public void onEnable() {
 		delayTimer.reset();
 		nextDelay = MathUtils.randLong(minDelay.getValueL(), maxDelay.getValueL());
+		slotList.clear();
 		super.onEnable();
 	}
 	
@@ -73,18 +81,23 @@ public class ChestStealerModule extends BaseModule {
 			{return;}
 		
 		GuiChest gui = (GuiChest) MC.currentScreen;
-		
-		for (int i = 0; i < gui.inventoryRows * 9; i++) {
-			Slot slot = gui.inventorySlots.getSlot(i);
-			if (slot.getHasStack()) {
-				InventoryUtils.shiftClick(slot.slotNumber);
-				delayTimer.reset();
-				nextDelay = MathUtils.randLong(minDelay.getValueL(), maxDelay.getValueL());
-				if (nextDelay != 0) {
-					return;
+
+		if (slotList.isEmpty()) {
+			for (int i = 0; i < gui.inventoryRows * 9; i++) {
+				Slot slot = gui.inventorySlots.getSlot(i);
+				if (slot.getHasStack()) {
+					slotList.add(slot);
 				}
 			}
 		}
+
+		int i = randomize.getValue() ? MathUtils.randInt(0, slotList.size()) : 0;
+
+		Slot slot = slotList.get(i);
+		slotList.remove(slot);
+		InventoryUtils.shiftClick(slot.slotNumber, gui.inventorySlots.windowId);
+		delayTimer.reset();
+		nextDelay = MathUtils.randLong(minDelay.getValueL(), maxDelay.getValueL());
 	}
 	
 	private boolean isEmpty(GuiChest gui) {

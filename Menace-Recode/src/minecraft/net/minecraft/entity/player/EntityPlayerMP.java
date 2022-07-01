@@ -3,6 +3,7 @@ package net.minecraft.entity.player;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.mojang.authlib.GameProfile;
+import dev.menace.utils.misc.ChatUtils;
 import io.netty.buffer.Unpooled;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -492,6 +493,7 @@ public class EntityPlayerMP extends EntityPlayer implements ICrafting
      */
     public void onDeath(DamageSource cause)
     {
+
         if (this.worldObj.getGameRules().getBoolean("showDeathMessages"))
         {
             Team team = this.getTeam();

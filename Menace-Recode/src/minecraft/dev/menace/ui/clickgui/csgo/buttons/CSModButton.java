@@ -1,20 +1,17 @@
 package dev.menace.ui.clickgui.csgo.buttons;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.swing.text.html.CSS;
-
 import dev.menace.Menace;
 import dev.menace.module.BaseModule;
-import dev.menace.module.settings.*;
+import dev.menace.module.settings.ListSetting;
+import dev.menace.module.settings.Setting;
+import dev.menace.module.settings.SliderSetting;
+import dev.menace.module.settings.ToggleSetting;
 import dev.menace.ui.clickgui.csgo.buttons.setting.CSSetting;
-import dev.menace.ui.clickgui.csgo.buttons.setting.settings.CSSettingBind;
-import dev.menace.ui.clickgui.csgo.buttons.setting.settings.CSSettingCheck;
-import dev.menace.ui.clickgui.csgo.buttons.setting.settings.CSSettingCombo;
-import dev.menace.ui.clickgui.csgo.buttons.setting.settings.CSSettingComboValue;
-import dev.menace.ui.clickgui.csgo.buttons.setting.settings.CSSettingDouble;
+import dev.menace.ui.clickgui.csgo.buttons.setting.settings.*;
 import net.minecraft.client.gui.GuiScreen;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class CSModButton extends CSButton {
 
@@ -30,12 +27,17 @@ public class CSModButton extends CSButton {
 	private void initSettings() {
 		int y = 110;
 		int x = this.x + 100;
+		int longestName = 0;
 		for (Setting s : this.mod.getSettings()) {
 			if (s.isToggle()) {
 
 				CSSettingCheck check = new CSSettingCheck(x, y, y, x, (ToggleSetting) s);
 
 				settings.add(check);
+
+				if (mc.fontRendererObj.getStringWidth(s.getName()) + 50 > longestName) {
+					longestName = mc.fontRendererObj.getStringWidth(s.getName()) + 50;
+				}
 
 				y += 13;
 			}
@@ -45,20 +47,27 @@ public class CSModButton extends CSButton {
 
 				settings.add(doubleset);
 
+				if (mc.fontRendererObj.getStringWidth(s.getName()) + 50 > longestName) {
+					longestName = mc.fontRendererObj.getStringWidth(s.getName()) + 50;
+				}
+
 				y += 15;
 
 			}
 			if (s.isList()) {
-				int yplus = y;
 
 				CSSettingCombo combo = new CSSettingCombo(x, y, 70, mc.fontRendererObj.FONT_HEIGHT + 2, (ListSetting) s);
 				settings.add(combo);
 
+				if (mc.fontRendererObj.getStringWidth(s.getName()) + 50 > longestName) {
+					longestName = mc.fontRendererObj.getStringWidth(s.getName()) + 50;
+				}
+
 				for (int i1 = 0; i1 < ((ListSetting) s).getOptions().length; i1++) {
 					y += fr.FONT_HEIGHT + 2;
 					if (y > 100 + GuiScreen.width - 220) {
-						y = 0;
-						x += mc.fontRendererObj.getStringWidth(s.getName()) + 50;
+						y = 110;
+						x += longestName;
 					}
 
 				}
@@ -69,7 +78,7 @@ public class CSModButton extends CSButton {
 
 			if (y > GuiScreen.height-110) {
 				y = 110;
-				x += mc.fontRendererObj.getStringWidth(s.getName()) + 50;
+				x += longestName;
 			}
 		}
 		
@@ -95,6 +104,7 @@ public class CSModButton extends CSButton {
 
 		int y = 110;
 		int x = this.x + 100;
+		int longestName = 0;
 		for (CSSetting cs : settings) {
 			cs.set.constantCheck();
 			if (isCurrentMod() && cs.set.isVisible()) {
@@ -106,6 +116,10 @@ public class CSModButton extends CSButton {
 					cs.width = y;
 					cs.height = x;
 
+					if (mc.fontRendererObj.getStringWidth(s.getName()) + 50 > longestName) {
+						longestName = mc.fontRendererObj.getStringWidth(s.getName()) + 50;
+					}
+
 					y += 13;
 				}
 				if (s.isSlider()) {
@@ -114,13 +128,14 @@ public class CSModButton extends CSButton {
 					cs.y = y;
 					cs.width = 0;
 					cs.height = 0;
+					if (mc.fontRendererObj.getStringWidth(s.getName()) + 50 > longestName) {
+						longestName = mc.fontRendererObj.getStringWidth(s.getName()) + 50;
+					}
 
 					y += 15;
 
 				}
 				if (s.isList()) {
-					int yplus = y;
-					
 					cs.x = x;
 					cs.y = y;
 					cs.width = 70;
@@ -135,11 +150,16 @@ public class CSModButton extends CSButton {
 						
 						yy += mc.fontRendererObj.FONT_HEIGHT + 2;
 					}
+
+					if (mc.fontRendererObj.getStringWidth(s.getName()) + 50 > longestName) {
+						longestName = mc.fontRendererObj.getStringWidth(s.getName()) + 50;
+					}
+
 					for (int i1 = 0; i1 < ((ListSetting) s).getOptions().length; i1++) {
 						y += fr.FONT_HEIGHT + 2;
 						if (y > 100 + GuiScreen.width - 220) {
 							y = 0;
-							x += mc.fontRendererObj.getStringWidth(s.getName()) + 50;
+							x += longestName;
 						}
 
 					}
@@ -150,7 +170,7 @@ public class CSModButton extends CSButton {
 
 				if (y > GuiScreen.height-110) {
 					y = 110;
-					x += mc.fontRendererObj.getStringWidth(s.getName()) + 50;
+					x += longestName;
 				}
 				
 				cs.drawScreen(mouseX, mouseY, partialTicks);
