@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import dev.menace.Menace;
 import dev.menace.module.BaseModule;
 import dev.menace.ui.hud.BaseElement;
+import dev.menace.utils.render.RenderUtils;
 
 public class ArrayElement extends BaseElement {
 
@@ -26,9 +27,11 @@ public class ArrayElement extends BaseElement {
 			}
 			if (Menace.instance.moduleManager.hudModule.arrayAlign.getValue().equalsIgnoreCase("Left")) {
 				//Align left
+				RenderUtils.drawRect(this.getAbsoluteX(), y - 1, this.getAbsoluteX() + this.getStringWidth(m.getDisplayName()) + 1, y + this.getFontHeight(), new Color(0, 0, 0, Menace.instance.moduleManager.hudModule.arrayAlpha.getValueI()).getRGB());
 				this.drawString(m.getDisplayName(), this.getAbsoluteX(), y);
 			} else {
 				//Align right
+				RenderUtils.drawRect(this.getAbsoluteX() + this.getStringWidth("ArrayList"), y - 1, this.getAbsoluteX() - this.getStringWidth(m.getDisplayName()) + this.getStringWidth("ArrayList") - 1, y + this.getFontHeight(), new Color(0, 0, 0, Menace.instance.moduleManager.hudModule.arrayAlpha.getValueI()).getRGB());
 				this.drawString(m.getDisplayName(), this.getAbsoluteX() - this.getStringWidth(m.getDisplayName()) + this.getStringWidth("ArrayList"), y);
 			}
 			

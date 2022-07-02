@@ -2,6 +2,8 @@ package dev.menace.module.modules.render;
 
 import java.util.ArrayList;
 
+import dev.menace.event.EventTarget;
+import dev.menace.event.events.EventUpdate;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.module.settings.ListSetting;
@@ -54,6 +56,11 @@ public class AnimationsModule extends BaseModule {
 		this.rSetting(itemrotate);
 		this.rSetting(swinganim);
 		this.rSetting(anythingblock);
+	}
+
+	@EventTarget
+	public void onUpdate(EventUpdate event) {
+		this.setDisplayName(blockMode.getValue());
 	}
 	
 	public boolean getAnythingBlock() {

@@ -69,6 +69,7 @@ public class BlinkModule extends BaseModule {
 	
 	@EventTarget
 	public void onSendPacket(EventSendPacket event) {
+		this.setDisplayName("Packets: " + packets.size());
 		if (packets.size() >= pulseAmount.getValue() && pulse.getValue()) blink();
 		if (event.getPacket() instanceof C04PacketPlayerPosition || event.getPacket() instanceof C06PacketPlayerPosLook ||
 				event.getPacket() instanceof C08PacketPlayerBlockPlacement ||

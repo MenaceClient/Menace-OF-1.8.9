@@ -29,7 +29,8 @@ import java.util.List;
 public class KillAuraModule extends BaseModule {
 
 	MSTimer delayTimer = new MSTimer();
-	EntityLivingBase target;
+	MSTimer switchTimer = new MSTimer();
+	public EntityLivingBase target;
 	long nextDelay;
 	boolean blocking;
 	public boolean shouldFakeBlock;
@@ -39,7 +40,8 @@ public class KillAuraModule extends BaseModule {
 	public SliderSetting maxCPS;
 	SliderSetting ticksExisted;
 	SliderSetting fov;
-	ListSetting mode;
+	public ListSetting mode;
+	SliderSetting switchDelay;
 	ListSetting attackevent;
 	ListSetting filter;
 	ListSetting rotation;
@@ -78,7 +80,13 @@ public class KillAuraModule extends BaseModule {
 		};
 		ticksExisted = new SliderSetting("TicksExisted", true, 10, 0 , 100, true);
 		fov = new SliderSetting("FOV", true, 360, 0, 360, false);
-		mode = new ListSetting("Mode", true, "Single", new String[] {"Single", "Multi"});
+		mode = new ListSetting("Mode", true, "Single", new String[] {"Single", "Switch", "Multi"});
+		switchDelay = new SliderSetting("Switch Delay", true, 100, 10, 1000, 10, true) {
+			@Override
+			public void constantCheck() {
+				this.setVisible(Menace.instance.moduleManager.killAuraModule.mode.getValue().equalsIgnoreCase("Switch"));
+			}
+		};
 		attackevent = new ListSetting("Attack Event", true, "Pre", new String[] {"Pre", "Post"});
 		filter = new ListSetting("Filter", true, "Health", new String[] {"Health", "Distance", "Angle", "TicksExisted"});
 		rotation = new ListSetting("Rotation", true, "None", new String[] {"None", "Basic", "Bypass", "Jitter"});
@@ -97,6 +105,7 @@ public class KillAuraModule extends BaseModule {
 		this.rSetting(ticksExisted);
 		this.rSetting(fov);
 		this.rSetting(mode);
+		this.rSetting(switchDelay);
 		this.rSetting(attackevent);
 		this.rSetting(filter);
 		this.rSetting(rotation);
@@ -115,6 +124,7 @@ public class KillAuraModule extends BaseModule {
 	@Override
 	public void onEnable() {
 		delayTimer.reset();
+		switchTimer.reset();
 		target = null;
 		nextDelay = MathUtils.randLong(minCPS.getValueL(), maxCPS.getValueL());
 		blocking = false;
@@ -145,8 +155,11 @@ public class KillAuraModule extends BaseModule {
 			event.setYaw(yaw);
 			event.setPitch(pitch);
 		} else if (rotation.getValue().equalsIgnoreCase("Bypass") && target != null) {
-			event.setYaw(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox()))[0]);
-			event.setPitch(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox()))[1]);
+			float[] lastRotations = new float[] {MC.thePlayer.rotationYaw, MC.thePlayer.rotationPitch};
+			event.setYaw(PlayerUtils.getFixedRotation(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox())), lastRotations)[0]);
+			event.setPitch(PlayerUtils.getFixedRotation(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox())), lastRotations)[1]);
+			//event.setYaw(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox()))[0]);
+			//event.setPitch(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox()))[1]);
 		}
 
 		if (target != null) {
@@ -168,6 +181,9 @@ public class KillAuraModule extends BaseModule {
 	}
 	
 	public void getTarget() {
+		if ((mode.getValue().equalsIgnoreCase("Single") && isValid(target))
+		|| (mode.getValue().equalsIgnoreCase("Switch") &&
+				!switchTimer.hasTimePassed(switchDelay.getValueL()) && isValid(target))) return;
 		Comparator<Entity> entityFilter = null;
 		switch (filter.getValue()) {
 
@@ -216,20 +232,12 @@ public class KillAuraModule extends BaseModule {
 		} else {
 			MC.thePlayer.swingItem();
 		}
-		
-		switch (mode.getValue()) {
-		
-		case "Single" :
-			MC.playerController.attackEntity(MC.thePlayer, target);
-			break;
-			
-		case "Multi" :
+
+		if (mode.getValue().equalsIgnoreCase("Multi")) {
 			MC.theWorld.loadedEntityList.stream()
-			.filter(this::isValid).forEach(e -> MC.playerController.attackEntity(MC.thePlayer, e));
-			break;
-		
-		default :
-			break;
+					.filter(this::isValid).forEach(e -> MC.playerController.attackEntity(MC.thePlayer, e));
+		} else {
+			MC.playerController.attackEntity(MC.thePlayer, target);
 		}
 		
 		delayTimer.reset();

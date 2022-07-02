@@ -1,6 +1,7 @@
 package dev.menace.utils.misc;
 
 import dev.menace.Menace;
+import dev.menace.ui.custom.MenaceMainMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiMultiplayer;
@@ -17,7 +18,7 @@ public class ServerUtils {
         if(serverData == null)
             return;
 
-        MC.displayGuiScreen(new GuiConnecting(new GuiMultiplayer(new GuiMainMenu()), MC, serverData));
+        MC.displayGuiScreen(new GuiConnecting(new GuiMultiplayer(new MenaceMainMenu()), MC, serverData));
     }
 
     public static String getRemoteIp() {

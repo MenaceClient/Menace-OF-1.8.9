@@ -18,6 +18,7 @@ import dev.menace.utils.world.BlockUtils;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.client.C09PacketHeldItemChange;
+import net.minecraft.network.play.client.C0APacketAnimation;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Vec3;
@@ -38,6 +39,7 @@ public class ScaffoldModule extends BaseModule {
     ToggleSetting silentSwap;
     ToggleSetting keepY;
     ToggleSetting jump;
+    ToggleSetting noSwing;
     ToggleSetting render;
 
     public ScaffoldModule() {
@@ -52,6 +54,7 @@ public class ScaffoldModule extends BaseModule {
         silentSwap = new ToggleSetting("SilentSwap", true, false);
         keepY = new ToggleSetting("KeepY", true, false);
         jump = new ToggleSetting("Jump", true, false);
+        noSwing = new ToggleSetting("NoSwing", true, false);
         render = new ToggleSetting("Render", true, true);
         this.rSetting(tower);
         this.rSetting(sprint);
@@ -59,6 +62,7 @@ public class ScaffoldModule extends BaseModule {
         this.rSetting(silentSwap);
         this.rSetting(keepY);
         this.rSetting(jump);
+        this.rSetting(noSwing);
         this.rSetting(render);
         super.setup();
     }
@@ -148,7 +152,12 @@ public class ScaffoldModule extends BaseModule {
                         MC.playerController.onPlayerRightClick(MC.thePlayer, MC.theWorld, MC.thePlayer.getCurrentEquippedItem(), neighbor, side2, hitVec);
                     }
 
-                    MC.thePlayer.swingItem();
+                    if (noSwing.getValue()) {
+                        PacketUtils.sendPacket(new C0APacketAnimation());
+                    } else {
+                        MC.thePlayer.swingItem();
+                    }
+
                     MC.rightClickDelayTimer = 4;
                 }
             }

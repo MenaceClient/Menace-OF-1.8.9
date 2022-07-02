@@ -1,4 +1,10 @@
 {
+  "AutoPot": {
+    "Toggled": true,
+    "Settings": {
+      "Visible": true
+    }
+  },
   "Criticals": {
     "Toggled": false,
     "Settings": {
@@ -7,7 +13,7 @@
     }
   },
   "KillAura": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Reach": 3.0,
       "MinCPS": 5.0,
@@ -15,8 +21,9 @@
       "TicksExisted": 10.0,
       "FOV": 360.0,
       "Mode": "Single",
+      "Switch Delay": 1000.0,
       "Attack Event": "Pre",
-      "Filter": "Health",
+      "Filter": "Distance",
       "Rotation": "Bypass",
       "AutoBlock": "Fake",
       "NoSwing": false,
@@ -115,20 +122,21 @@
     }
   },
   "NoSlow": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
+      "Mode": "NCP",
       "Visible": true
     }
   },
   "SafeWalk": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "InAir": false,
       "Visible": true
     }
   },
   "Scaffold": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Tower": false,
       "Sprint": false,
@@ -136,12 +144,13 @@
       "SilentSwap": false,
       "KeepY": false,
       "Jump": false,
+      "NoSwing": false,
       "Render": true,
       "Visible": true
     }
   },
   "ChestStealer": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Delay Min": 90.0,
       "Delay Max": 130.0,

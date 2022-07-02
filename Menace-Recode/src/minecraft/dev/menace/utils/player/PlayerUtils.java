@@ -52,6 +52,37 @@ public class PlayerUtils {
         return new float[] { MathHelper.wrapAngleTo180_float(yaw), MathHelper.wrapAngleTo180_float(pitch) };
     }
 
+    /**
+     * Smooths the current rotation using the last for it to make aura harder to flag.
+     *
+     * @param rotations     Current rotations.
+     * @param lastRotations Last rotations.
+     * @return Current rotation smoothed according to last.
+     */
+    public static float[] getFixedRotation(final float[] rotations, final float[] lastRotations) {
+        final Minecraft mc = Minecraft.getMinecraft();
+
+        final float yaw = rotations[0];
+        final float pitch = rotations[1];
+
+        final float lastYaw = lastRotations[0];
+        final float lastPitch = lastRotations[1];
+
+        final float f = mc.gameSettings.mouseSensitivity * 0.6F + 0.2F;
+        final float gcd = f * f * f * 1.2F;
+
+        final float deltaYaw = yaw - lastYaw;
+        final float deltaPitch = pitch - lastPitch;
+
+        final float fixedDeltaYaw = deltaYaw - (deltaYaw % gcd);
+        final float fixedDeltaPitch = deltaPitch - (deltaPitch % gcd);
+
+        final float fixedYaw = lastYaw + fixedDeltaYaw;
+        final float fixedPitch = lastPitch + fixedDeltaPitch;
+
+        return new float[]{fixedYaw, fixedPitch};
+    }
+
     public static Vec3 getEyesPos() {
         return new Vec3(MC.thePlayer.posX, MC.thePlayer.posY + MC.thePlayer.getEyeHeight(), MC.thePlayer.posZ);
     }

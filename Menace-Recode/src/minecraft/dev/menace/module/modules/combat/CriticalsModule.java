@@ -29,6 +29,7 @@ public class CriticalsModule extends BaseModule {
 
     @EventTarget
     public void onSendPacket(EventSendPacket event) {
+        this.setDisplayName(mode.getValue());
         if(canCrit()) {
             if (event.getPacket() instanceof C02PacketUseEntity) {
                 C02PacketUseEntity packet = (C02PacketUseEntity)event.getPacket();

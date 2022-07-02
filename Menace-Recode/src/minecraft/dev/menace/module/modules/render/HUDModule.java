@@ -20,6 +20,7 @@ public class HUDModule extends BaseModule {
 	public ListSetting wmMode;
 	public ToggleSetting array;
 	public ListSetting arrayAlign;
+	public SliderSetting arrayAlpha;
 	public ToggleSetting pos;
 	public ListSetting posMode;
 	public ToggleSetting customFont;
@@ -47,6 +48,12 @@ public class HUDModule extends BaseModule {
 		};
 		array = new ToggleSetting("ArrayList", true, true);
 		arrayAlign = new ListSetting("ArrayAlign", true, "Right", new String[] {"Left", "Right"}) {
+			@Override
+			public void constantCheck() {
+				this.setVisible(Menace.instance.moduleManager.hudModule.array.getValue());
+			}
+		};
+		arrayAlpha = new SliderSetting("ArrayAlpha", true, 100, 0, 255, 5, true) {
 			@Override
 			public void constantCheck() {
 				this.setVisible(Menace.instance.moduleManager.hudModule.array.getValue());
@@ -104,6 +111,7 @@ public class HUDModule extends BaseModule {
 		this.rSetting(watermark);
 		this.rSetting(array);
 		this.rSetting(arrayAlign);
+		this.rSetting(arrayAlpha);
 		this.rSetting(pos);
 		this.rSetting(posMode);
 		this.rSetting(customFont);

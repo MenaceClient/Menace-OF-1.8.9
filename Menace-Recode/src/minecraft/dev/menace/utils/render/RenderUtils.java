@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
+import org.jetbrains.annotations.NotNull;
 
 public class RenderUtils {
 
@@ -226,6 +227,10 @@ public class RenderUtils {
 	}
 
 	public static void drawRoundedRect(float paramXStart, float paramYStart, float paramXEnd, float paramYEnd, float radius, int color) {
+		drawRoundedRect(paramXStart, paramYStart, paramXEnd, paramYEnd, radius, color, true);
+	}
+
+	public static void drawRoundedRect(int paramXStart, int paramYStart, int paramXEnd, int paramYEnd, int radius, int color) {
 		drawRoundedRect(paramXStart, paramYStart, paramXEnd, paramYEnd, radius, color, true);
 	}
 
@@ -497,7 +502,7 @@ public class RenderUtils {
 		return new Color(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, percentage);
 	}
 
-	public static Color fade(float speed, float off) {
+	public static @NotNull Color fade(float speed, float off) {
 
 		double time = (double) System.currentTimeMillis() / speed;
 		time += off;

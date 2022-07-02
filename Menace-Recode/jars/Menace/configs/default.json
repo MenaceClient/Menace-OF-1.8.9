@@ -1,4 +1,10 @@
 {
+  "AutoPot": {
+    "Toggled": true,
+    "Settings": {
+      "Visible": true
+    }
+  },
   "Criticals": {
     "Toggled": false,
     "Settings": {
@@ -14,7 +20,8 @@
       "MaxCPS": 12.0,
       "TicksExisted": 10.0,
       "FOV": 360.0,
-      "Mode": "Single",
+      "Mode": "Switch",
+      "Switch Delay": 1000.0,
       "Attack Event": "Pre",
       "Filter": "Distance",
       "Rotation": "Basic",
@@ -42,12 +49,12 @@
   "Flight": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Vanilla",
-      "VanillaMode": "Creative",
+      "Mode": "Other",
+      "VanillaMode": "Damage",
       "VerusMode": "Jump",
       "OtherMode": "NCPSlime",
       "DmgMode": "Verus",
-      "Speed": 2.0,
+      "Speed": 9.0,
       "Viewbob": 0.1,
       "Visible": true
     }
@@ -117,6 +124,7 @@
   "NoSlow": {
     "Toggled": true,
     "Settings": {
+      "Mode": "Vanilla",
       "Visible": true
     }
   },
@@ -136,6 +144,7 @@
       "SilentSwap": true,
       "KeepY": false,
       "Jump": false,
+      "NoSwing": false,
       "Render": true,
       "Visible": true
     }
@@ -199,6 +208,7 @@
       "Watermark": true,
       "ArrayList": true,
       "ArrayAlign": "Right",
+      "ArrayAlpha": 100.0,
       "Position": true,
       "Position Mode": "Single",
       "Custom Font": false,

@@ -72,7 +72,7 @@ public class MenaceMainMenu extends GuiScreen implements GuiYesNoCallback {
    private int field_92019_w;
    private ResourceLocation backgroundTexture;
    private GuiButton realmsButton;
-   private GLSLShader backgroundShader;
+   private final GLSLShader backgroundShader;
    private long initTime = System.currentTimeMillis();
    MenaceFontRenderer title = MenaceFontRenderer.getFontOnPC("Arial", 130);
    MenaceFontRenderer text = MenaceFontRenderer.getFontOnPC("Arial", 35);
@@ -108,12 +108,12 @@ public class MenaceMainMenu extends GuiScreen implements GuiYesNoCallback {
                this.splashText = (String)list.get(RANDOM.nextInt(list.size()));
             } while(this.splashText.hashCode() == 125780783);
          }
-      } catch (IOException var14) {
+      } catch (IOException ignored) {
       } finally {
          if (bufferedreader != null) {
             try {
                bufferedreader.close();
-            } catch (IOException var12) {
+            } catch (IOException ignored) {
             }
          }
 

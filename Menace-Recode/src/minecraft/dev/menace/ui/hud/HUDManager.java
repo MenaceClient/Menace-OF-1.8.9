@@ -6,10 +6,7 @@ import java.util.ArrayList;
 
 import com.google.gson.JsonObject;
 
-import dev.menace.ui.hud.elements.ArrayElement;
-import dev.menace.ui.hud.elements.NotificationElement;
-import dev.menace.ui.hud.elements.PosElement;
-import dev.menace.ui.hud.elements.WatermarkElement;
+import dev.menace.ui.hud.elements.*;
 import dev.menace.utils.file.FileManager;
 import dev.menace.utils.render.MenaceFontRenderer;
 import net.minecraft.crash.CrashReport;
@@ -22,6 +19,7 @@ public class HUDManager {
 	public ArrayElement arrayElement = new ArrayElement();
 	//public NotificationElement notificationElement = new NotificationElement();
 	public PosElement posElement = new PosElement();
+	//public TargetHudElement targetHudElement = new TargetHudElement();
 	public WatermarkElement watermarkElement = new WatermarkElement();
 
 	public HUDManager() {

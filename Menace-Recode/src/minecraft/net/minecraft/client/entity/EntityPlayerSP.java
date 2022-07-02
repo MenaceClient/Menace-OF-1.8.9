@@ -340,15 +340,6 @@ public class EntityPlayerSP extends AbstractClientPlayer
 		this.sendQueue.addToSendQueue(new C0APacketAnimation());
 	}
 
-	public void fakeSwingItem()
-	{
-		if (this.worldObj instanceof WorldServer)
-		{
-			((WorldServer)this.worldObj).getEntityTracker().sendToAllTrackingEntity(this, new S0BPacketAnimation(this, 0));
-		}
-		this.sendQueue.addToSendQueue(new C0APacketAnimation());
-	}
-
 	public void respawnPlayer()
 	{
 		this.sendQueue.addToSendQueue(new C16PacketClientStatus(C16PacketClientStatus.EnumState.PERFORM_RESPAWN));

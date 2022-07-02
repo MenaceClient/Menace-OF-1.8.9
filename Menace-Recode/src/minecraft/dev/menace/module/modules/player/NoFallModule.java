@@ -28,6 +28,7 @@ public class NoFallModule extends BaseModule {
 
 	@EventTarget
 	public void onCollide(EventCollide event) {
+		this.setDisplayName(mode.getValue());
 		if (mode.getValue().equalsIgnoreCase("Verus") && MC.thePlayer.fallDistance > 2.5) {
 			if (Menace.instance.moduleManager.flightModule.isToggled())
 				return;

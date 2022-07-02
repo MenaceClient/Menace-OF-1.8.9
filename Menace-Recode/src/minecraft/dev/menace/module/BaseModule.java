@@ -152,7 +152,7 @@ public class BaseModule {
 	}
 	
 	public String getDisplayName() {
-		return displayName != null ? displayName : name;
+		return displayName != null ? getName() + " §7[" + displayName + "]" : getName();
 	}
 	
 	public void setDisplayName(String displayName) {

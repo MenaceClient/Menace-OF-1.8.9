@@ -109,12 +109,6 @@ extends GuiScreen {
 
 	@Override
 	protected void keyTyped(char character, int key) {
-		try {
-			super.keyTyped(character, key);
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
 		if (key == Keyboard.KEY_TAB) {
 			if (!this.username.isFocused()) {
 				this.username.setFocused(true);

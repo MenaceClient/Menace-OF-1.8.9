@@ -46,6 +46,7 @@ public class VelocityModule extends BaseModule {
 	
 	@EventTarget
 	public void onUpdate(EventUpdate event) {
+		this.setDisplayName(mode.getValue());
 		   if (MC.thePlayer.hurtTime <= 0 || !mode.getValue().equalsIgnoreCase("Matrix")) {
                return;
            } 

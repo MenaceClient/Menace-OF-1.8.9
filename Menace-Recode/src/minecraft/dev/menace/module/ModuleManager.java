@@ -25,6 +25,7 @@ public class ModuleManager {
 	public String selectedConfig = "default";
 
 	//COMBAT
+	AutoPotModule autoPotModule = new AutoPotModule();
 	CriticalsModule criticalsModule = new CriticalsModule();
 	public KillAuraModule killAuraModule = new KillAuraModule();
 	public VelocityModule velocityModule = new VelocityModule();

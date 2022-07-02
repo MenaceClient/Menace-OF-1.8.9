@@ -135,12 +135,15 @@ public class FlightModule extends BaseModule {
 	public void onEnable() {
 		for (FlightMode fm : FlightMode.values()) {
 			if (vanillaMode.getValue().equalsIgnoreCase(fm.getName()) &&  mode.getValue().equalsIgnoreCase("vanilla")) {
+				this.setDisplayName(fm.getName());
 				flightMode = fm.getFlight();
 				break;
 			} else if (verusMode.getValue().equalsIgnoreCase(fm.getName()) &&  mode.getValue().equalsIgnoreCase("verus")) {
+				this.setDisplayName(fm.getName());
 				flightMode = fm.getFlight();
 				break;
 			} else if (otherMode.getValue().equalsIgnoreCase(fm.getName()) && mode.getValue().equalsIgnoreCase("Other")) {
+				this.setDisplayName(fm.getName());
 				flightMode = fm.getFlight();
 				break;
 			}
@@ -149,7 +152,7 @@ public class FlightModule extends BaseModule {
 		flightMode.launchX = MC.thePlayer.posX;
 		flightMode.launchY = MC.thePlayer.posY;
 		flightMode.launchZ = MC.thePlayer.posZ;
-		
+
 		flightMode.onEnable();
 		super.onEnable();
 	}
