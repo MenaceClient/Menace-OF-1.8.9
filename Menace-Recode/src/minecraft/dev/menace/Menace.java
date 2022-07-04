@@ -9,6 +9,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Stack;
 
 import com.diffplug.common.base.StackDumper;
+import dev.menace.module.BaseModule;
 import org.apache.commons.codec.binary.Base64;
 import org.lwjgl.opengl.Display;
 
@@ -37,6 +38,7 @@ public class Menace {
 
 	public static Menace instance = new Menace();
 	public Minecraft MC = Minecraft.getMinecraft();
+	public String buildName = "Menace Recode Indev";
 	public EventManager eventManager;
 	public ModuleManager moduleManager;
 	public CommandManager cmdManager;
@@ -104,9 +106,7 @@ public class Menace {
 	
 	@EventTarget
 	public void onKey(EventKey event) {
-		moduleManager.getModules().stream().filter(m -> m.getKeybind() == event.getKey()).forEach(module -> {
-			module.toggle();
-		});
+		moduleManager.getModules().stream().filter(m -> m.getKeybind() == event.getKey()).forEach(BaseModule::toggle);
 	}
 
 	public int getClientColor() {

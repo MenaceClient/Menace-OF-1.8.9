@@ -113,12 +113,6 @@ extends GuiScreen {
 
 	@Override
 	protected void keyTyped(char character, int key) {
-		try {
-			super.keyTyped(character, key);
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
 		if (character == '\t') {
 			if (!this.username.isFocused() && !this.password.isFocused()) {
 				this.username.setFocused(true);

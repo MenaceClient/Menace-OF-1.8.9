@@ -55,6 +55,7 @@ public class ModuleManager {
 	//RENDER
 	public AnimationsModule animationsModule = new AnimationsModule();
 	public ClickGuiModule clickGuiModule = new ClickGuiModule();
+	ESPModule espModule = new ESPModule();
 	FullbrightModule fullbrightModule = new FullbrightModule();
 	public HUDModule hudModule = new HUDModule();
 	public ItemPhysicsModule itemPhysicsModule = new ItemPhysicsModule();
@@ -63,6 +64,7 @@ public class ModuleManager {
 	//MISC
 	DevModule devModule = new DevModule();
 	KillSultsModule killSultsModule = new KillSultsModule();
+	StaffDetectorModule staffDetectorModule = new StaffDetectorModule();
 
 	public ModuleManager() {
 		try

@@ -10,9 +10,14 @@
     "Y": 530,
     "Visible": true
   },
+  "UserInfoElement": {
+    "X": 766,
+    "Y": 529,
+    "Visible": true
+  },
   "WatermarkElement": {
-    "X": 2,
-    "Y": 2,
+    "X": 1,
+    "Y": 1,
     "Visible": true
   }
 }

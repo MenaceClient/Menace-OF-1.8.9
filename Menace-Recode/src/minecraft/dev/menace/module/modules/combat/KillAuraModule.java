@@ -34,6 +34,7 @@ public class KillAuraModule extends BaseModule {
 	long nextDelay;
 	boolean blocking;
 	public boolean shouldFakeBlock;
+	float[] lastRotations = new float[2];
 	
 	SliderSetting reach;
 	public SliderSetting minCPS;
@@ -61,7 +62,7 @@ public class KillAuraModule extends BaseModule {
 	
 	@Override
 	public void setup() {
-		reach = new SliderSetting("Reach", true, 3, 1, 7, false);
+		reach = new SliderSetting("Reach", true, 3, 1, 7, 0.1, false);
 		minCPS = new SliderSetting("MinCPS", true, 10, 1, 20, true) {
 			@Override
 			public void constantCheck() {
@@ -129,6 +130,8 @@ public class KillAuraModule extends BaseModule {
 		nextDelay = MathUtils.randLong(minCPS.getValueL(), maxCPS.getValueL());
 		blocking = false;
 		shouldFakeBlock = false;
+		lastRotations[0] = MC.thePlayer.rotationYaw;
+		lastRotations[1] = MC.thePlayer.rotationPitch;
 		super.onEnable();
 	}
 	
@@ -155,11 +158,10 @@ public class KillAuraModule extends BaseModule {
 			event.setYaw(yaw);
 			event.setPitch(pitch);
 		} else if (rotation.getValue().equalsIgnoreCase("Bypass") && target != null) {
-			float[] lastRotations = new float[] {MC.thePlayer.rotationYaw, MC.thePlayer.rotationPitch};
 			event.setYaw(PlayerUtils.getFixedRotation(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox())), lastRotations)[0]);
 			event.setPitch(PlayerUtils.getFixedRotation(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox())), lastRotations)[1]);
-			//event.setYaw(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox()))[0]);
-			//event.setPitch(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox()))[1]);
+			lastRotations[0] = event.getYaw();
+			lastRotations[1] = event.getPitch();
 		}
 
 		if (target != null) {

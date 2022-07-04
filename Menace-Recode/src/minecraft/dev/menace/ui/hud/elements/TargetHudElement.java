@@ -20,7 +20,7 @@ public class TargetHudElement extends BaseElement {
         EntityLivingBase target = Menace.instance.moduleManager.killAuraModule.target;
         if (!(target instanceof EntityPlayer)) return;
         RenderUtils.drawRoundedRect(this.getAbsoluteX(), this.getAbsoluteY(), this.getAbsoluteX() + 80, this.getAbsoluteY() + 50, 5, Color.black.getRGB());
-        fr.drawString(target.getName(), this.getAbsoluteX() + 5, this.getAbsoluteY() + 5, -1);
+        this.drawString(target.getName(), this.getAbsoluteX() + 5, this.getAbsoluteY() + 5);
     }
 
     @Override

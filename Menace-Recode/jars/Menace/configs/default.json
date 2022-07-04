@@ -6,7 +6,7 @@
     }
   },
   "Criticals": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "Mode": "Packet",
       "Visible": true
@@ -21,7 +21,7 @@
       "TicksExisted": 10.0,
       "FOV": 360.0,
       "Mode": "Switch",
-      "Switch Delay": 1000.0,
+      "Switch Delay": 50.0,
       "Attack Event": "Pre",
       "Filter": "Distance",
       "Rotation": "Basic",
@@ -49,8 +49,8 @@
   "Flight": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Other",
-      "VanillaMode": "Damage",
+      "Mode": "Vanilla",
+      "VanillaMode": "Creative",
       "VerusMode": "Jump",
       "OtherMode": "NCPSlime",
       "DmgMode": "Verus",
@@ -68,6 +68,7 @@
   "Speed": {
     "Toggled": false,
     "Settings": {
+      "Speed": 7.0,
       "Visible": true
     }
   },
@@ -81,6 +82,7 @@
   "Step": {
     "Toggled": true,
     "Settings": {
+      "Mode": "Vanilla",
       "Height": 1.0,
       "Visible": true
     }
@@ -196,6 +198,12 @@
       "Visible": true
     }
   },
+  "ESP": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
   "Fullbright": {
     "Toggled": true,
     "Settings": {
@@ -211,6 +219,7 @@
       "ArrayAlpha": 100.0,
       "Position": true,
       "Position Mode": "Single",
+      "UserInfo": true,
       "Custom Font": false,
       "Color": "Fade",
       "RBW Speed": 36.0,
@@ -241,6 +250,12 @@
     }
   },
   "KillSults": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "StaffDetector": {
     "Toggled": false,
     "Settings": {
       "Visible": true

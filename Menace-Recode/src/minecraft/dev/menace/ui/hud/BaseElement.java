@@ -94,6 +94,14 @@ public abstract class BaseElement {
 			MC.fontRendererObj.drawString(string, x, y, color);
 		}
 	}
+
+	protected void drawString(String string, int x, int y, int color) {
+		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {
+			fr.drawString(string, x, y, color);
+		} else {
+			MC.fontRendererObj.drawString(string, x, y, color);
+		}
+	}
 	
 	protected int getStringWidth(String string) {
 		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {

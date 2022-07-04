@@ -26,7 +26,7 @@ public class FullbrightModule extends BaseModule {
 	
 	@Override
 	public void onDisable() {
-		MC.gameSettings.gammaSetting = oldBrightness;
+		MC.gameSettings.saturation = oldBrightness;
 		super.onDisable();
 	}
 

@@ -21,6 +21,7 @@ import dev.menace.utils.file.FileManager;
 import dev.menace.utils.misc.MathUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import org.jetbrains.annotations.NotNull;
 
 public class KillSultsModule extends BaseModule {
 
@@ -97,13 +98,13 @@ public class KillSultsModule extends BaseModule {
 	}
 
 	@EventTarget
-	public void onDeath(EventDeath event) {
+	public void onDeath(@NotNull EventDeath event) {
 		if (event.getEntity() != MC.thePlayer && event.getEntity().getLastAttacker() == MC.thePlayer) {
 			insult(event.getEntity());
 		}
 	}
 
-	public void insult(EntityPlayer e) {
+	public void insult(@NotNull EntityPlayer e) {
 		String insult = "";
 		insult = insults.get(MathUtils.randInt(0, insults.size()));
 		insult = insult.replaceAll("<player>", e.getName());
