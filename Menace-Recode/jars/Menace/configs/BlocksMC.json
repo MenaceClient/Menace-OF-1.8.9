@@ -1,6 +1,13 @@
 {
   "AutoPot": {
-    "Toggled": true,
+    "Toggled": false,
+    "Settings": {
+      "Delay": 100.0,
+      "Visible": true
+    }
+  },
+  "ComboOneTap": {
+    "Toggled": false,
     "Settings": {
       "Visible": true
     }
@@ -13,11 +20,11 @@
     }
   },
   "KillAura": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
-      "Reach": 3.8000000000000007,
-      "MinCPS": 5.0,
-      "MaxCPS": 14.0,
+      "Reach": 3.3000000000000003,
+      "MinCPS": 8.0,
+      "MaxCPS": 12.0,
       "TicksExisted": 10.0,
       "FOV": 360.0,
       "Mode": "Single",
@@ -26,12 +33,14 @@
       "Filter": "Distance",
       "Rotation": "Bypass",
       "AutoBlock": "Fake",
+      "KeepSprint": false,
       "NoSwing": false,
       "ThroughWalls": true,
       "InInventory": true,
       "RayCast": true,
+      "DisableOnWorldChange": true,
       "Players": true,
-      "Hostiles": true,
+      "Hostiles": false,
       "Passives": false,
       "Invisibles": false,
       "Visible": true
@@ -49,8 +58,8 @@
   "Flight": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Other",
-      "VanillaMode": "Damage",
+      "Mode": "Vanilla",
+      "VanillaMode": "FakeGround",
       "VerusMode": "Jump",
       "OtherMode": "NCPSlime",
       "DmgMode": "Verus",
@@ -158,6 +167,7 @@
       "Delay Max": 130.0,
       "CloseScreen": true,
       "Randomize": true,
+      "OnlyChests": true,
       "Visible": true
     }
   },
@@ -194,7 +204,7 @@
   "ClickGui": {
     "Toggled": false,
     "Settings": {
-      "Mode": "CSGO",
+      "Mode": "Panel",
       "Visible": true
     }
   },
@@ -219,7 +229,7 @@
       "ArrayAlpha": 100.0,
       "Position": true,
       "Position Mode": "Single",
-      "UserInfo": true,
+      "GameStats": true,
       "Custom Font": false,
       "Color": "Fade",
       "RBW Speed": 36.0,
@@ -243,8 +253,20 @@
       "Visible": true
     }
   },
+  "AutoLogin": {
+    "Toggled": true,
+    "Settings": {
+      "Visible": true
+    }
+  },
   "DevModule": {
     "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "Disabler": {
+    "Toggled": true,
     "Settings": {
       "Visible": true
     }

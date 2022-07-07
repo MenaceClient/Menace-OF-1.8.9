@@ -17,10 +17,10 @@ public class HUDManager {
 
 	//Elements
 	public ArrayElement arrayElement = new ArrayElement();
+	public GameStatsElement gameStatsElement = new GameStatsElement();
 	//public NotificationElement notificationElement = new NotificationElement();
 	public PosElement posElement = new PosElement();
 	//public TargetHudElement targetHudElement = new TargetHudElement();
-	public UserInfoElement userInfoElement = new UserInfoElement();
 	public WatermarkElement watermarkElement = new WatermarkElement();
 
 	public HUDManager() {

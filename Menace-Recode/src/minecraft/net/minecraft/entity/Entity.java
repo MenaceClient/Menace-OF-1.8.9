@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.Callable;
 
+import dev.menace.utils.misc.ChatUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockFenceGate;
@@ -285,11 +286,11 @@ public abstract class Entity implements ICommandSender
         }
 
         this.dataWatcher = new DataWatcher(this);
-        this.dataWatcher.addObject(0, Byte.valueOf((byte)0));
-        this.dataWatcher.addObject(1, Short.valueOf((short)300));
-        this.dataWatcher.addObject(3, Byte.valueOf((byte)0));
+        this.dataWatcher.addObject(0, (byte) 0);
+        this.dataWatcher.addObject(1, (short) 300);
+        this.dataWatcher.addObject(3, (byte) 0);
         this.dataWatcher.addObject(2, "");
-        this.dataWatcher.addObject(4, Byte.valueOf((byte)0));
+        this.dataWatcher.addObject(4, (byte) 0);
         this.entityInit();
     }
 
@@ -302,7 +303,7 @@ public abstract class Entity implements ICommandSender
 
     public boolean equals(Object p_equals_1_)
     {
-        return p_equals_1_ instanceof Entity ? ((Entity)p_equals_1_).entityId == this.entityId : false;
+        return p_equals_1_ instanceof Entity && ((Entity) p_equals_1_).entityId == this.entityId;
     }
 
     public int hashCode()

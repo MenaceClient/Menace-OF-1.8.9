@@ -10,13 +10,13 @@ bobView:true
 anaglyph3d:false
 maxFps:260
 fboEnable:true
-difficulty:1
+difficulty:0
 fancyGraphics:true
 ao:2
-renderClouds:true
+renderClouds:false
 resourcePacks:[]
 incompatibleResourcePacks:[]
-lastServer:blocksmc.com
+lastServer:o.tree.ac
 lang:en_US
 chatVisibility:0
 chatColors:true

@@ -1,10 +1,9 @@
 package dev.menace.command.commands;
 
-import java.io.File;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import dev.menace.Menace;
 import dev.menace.command.BaseCommand;
-import dev.menace.utils.file.FileManager;
 import dev.menace.utils.misc.ChatUtils;
 
 public class ConfigCmd extends BaseCommand {
@@ -20,15 +19,22 @@ public class ConfigCmd extends BaseCommand {
 			ChatUtils.message("Successfully saved " + args[1] + ".");
 			
 		} else if (args[0].equalsIgnoreCase("load")) {
-			if (!(new File(FileManager.getConfigFolder(), args[1] + ".json").exists())) {
-				ChatUtils.message("File: " + args[1] + "not found.");
-				return;
+			Menace.instance.configManager.reload();
+			AtomicBoolean loaded = new AtomicBoolean(false);
+			Menace.instance.configManager.getConfigs().forEach(config -> {
+				if (config.getName().equalsIgnoreCase(args[1])) {
+					config.load();
+					loaded.set(true);
+					ChatUtils.message("Successfully loaded " + args[1] + ".");
+				}
+			});
+
+			if (!loaded.get()) {
+				ChatUtils.message("Config: " + args[1] + " not found.");
 			}
-			Menace.instance.moduleManager.loadModules(args[1]);
-			ChatUtils.message("Successfully loaded " + args[1] + ".");
-			
+
 		} else if (args[0].equalsIgnoreCase("none")) {
-			Menace.instance.moduleManager.modules.stream().forEach(module -> {
+			Menace.instance.moduleManager.modules.forEach(module -> {
 				if (module.isToggled()) {
 					module.toggle();
 				}

@@ -4,7 +4,9 @@ import dev.menace.event.EventTarget;
 import dev.menace.event.events.EventPreMotion;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
+import dev.menace.module.settings.SliderSetting;
 import dev.menace.utils.player.PacketUtils;
+import dev.menace.utils.timer.MSTimer;
 import net.minecraft.item.ItemPotion;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
@@ -15,13 +17,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AutoPotModule extends BaseModule {
+
+    MSTimer delayTimer = new MSTimer();
+
+    SliderSetting delay;
+
     public AutoPotModule() {
         super("AutoPot", Category.COMBAT, 0);
     }
 
+    @Override
+    public void setup() {
+        delay = new SliderSetting("Delay", true, 100, 100, 1000, 50, true);
+        this.rSetting(delay);
+        super.setup();
+    }
+
+    @Override
+    public void onEnable() {
+        delayTimer.reset();
+        super.onEnable();
+    }
+
     @EventTarget
     public void onPre(EventPreMotion event) {
-        if (MC.thePlayer.getActivePotionEffect(Potion.moveSpeed) != null || !MC.thePlayer.onGround) return;
+        if (MC.thePlayer.getActivePotionEffect(Potion.moveSpeed) != null || !MC.thePlayer.onGround || !delayTimer.hasTimePassed(delay.getValueL())) return;
 
         int potionSlot = -1;
         int oldSlot = MC.thePlayer.inventory.currentItem;

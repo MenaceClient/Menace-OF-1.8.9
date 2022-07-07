@@ -17,6 +17,7 @@ import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
 import dev.menace.utils.file.FileManager;
+import dev.menace.utils.misc.ChatUtils;
 import net.minecraft.crash.CrashReport;
 
 public class ModuleManager {
@@ -26,6 +27,7 @@ public class ModuleManager {
 
 	//COMBAT
 	AutoPotModule autoPotModule = new AutoPotModule();
+	ComboOneTapModule comboOneTapModule = new ComboOneTapModule();
 	CriticalsModule criticalsModule = new CriticalsModule();
 	public KillAuraModule killAuraModule = new KillAuraModule();
 	public VelocityModule velocityModule = new VelocityModule();
@@ -62,8 +64,10 @@ public class ModuleManager {
 	public XRayModule xrayModule = new XRayModule();
 	
 	//MISC
+	AutoLoginModule autoLoginModule = new AutoLoginModule();
 	DevModule devModule = new DevModule();
-	KillSultsModule killSultsModule = new KillSultsModule();
+	DisablerModule disablerModule = new DisablerModule();
+	public KillSultsModule killSultsModule = new KillSultsModule();
 	StaffDetectorModule staffDetectorModule = new StaffDetectorModule();
 
 	public ModuleManager() {

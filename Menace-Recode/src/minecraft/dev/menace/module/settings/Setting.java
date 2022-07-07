@@ -2,6 +2,8 @@ package dev.menace.module.settings;
 
 public class Setting {
 
+	public float optionAnim = 0;
+	public float optionAnimNow = 0;
 	private final String name;
 	private boolean visible;
 	

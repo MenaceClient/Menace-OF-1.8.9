@@ -7,9 +7,12 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.security.NoSuchAlgorithmException;
 import java.util.Stack;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import com.diffplug.common.base.StackDumper;
 import dev.menace.module.BaseModule;
+import dev.menace.module.config.ConfigManager;
+import dev.menace.ui.clickgui.vape.VapeGui;
 import org.apache.commons.codec.binary.Base64;
 import org.lwjgl.opengl.Display;
 
@@ -42,6 +45,7 @@ public class Menace {
 	public EventManager eventManager;
 	public ModuleManager moduleManager;
 	public CommandManager cmdManager;
+	public ConfigManager configManager;
 	public HUDManager hudManager;
 	public DiscordRP discordRP;
 	public DiscordUser discordUser;
@@ -62,6 +66,8 @@ public class Menace {
 		
 		cmdManager = new CommandManager();
 		cmdManager.init();
+
+		configManager = new ConfigManager();
 		
 		hudManager = new HUDManager();
 		
@@ -82,18 +88,36 @@ public class Menace {
 		
 		SSLVerification ssl = new SSLVerification();
 		ssl.verify();
-		
-		moduleManager.clickGuiModule.csgoGui = new CSGOGui();
-		moduleManager.clickGuiModule.limeGui = new LimeClickGUI();
-		
-		if (isFirstLaunch) {
+
+		hudManager.gameStatsElement.start();
+
+		configManager.reload();
+
+		AtomicBoolean loaded = new AtomicBoolean(false);
+
+		configManager.getConfigs().forEach(c -> {
+			if (c.getName().equalsIgnoreCase("default")) {
+				c.load();
+				loaded.set(true);
+			}
+		});
+
+		if (!loaded.get()) {
 			moduleManager.saveModules("default");
-		} else {
-			moduleManager.loadModules("default");
+			configManager.reload();
+			configManager.getConfigs().forEach(c -> {
+				if (c.getName().equalsIgnoreCase("default")) {
+					c.load();
+				}
+			});
 		}
+
 		if (!(new File(FileManager.getConfigFolder(), "Binds.json").exists())) {
 			moduleManager.saveKeys();
 		}
+
+		moduleManager.clickGuiModule.csgoGui = new CSGOGui();
+		moduleManager.clickGuiModule.limeGui = new LimeClickGUI();
 	}
 	
 	public void stopClient() {
@@ -101,6 +125,7 @@ public class Menace {
 		discordRP.stop();
 		cmdManager.end();
 		Menace.instance.moduleManager.saveModules(this.moduleManager.selectedConfig);
+		hudManager.gameStatsElement.stop();
 		eventManager.unregister(this);
 	}
 	

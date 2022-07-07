@@ -11,6 +11,7 @@ import dev.menace.event.events.EventChatOutput;
 import dev.menace.module.ModuleManager;
 import dev.menace.utils.misc.ChatUtils;
 import net.minecraft.crash.CrashReport;
+import org.jetbrains.annotations.NotNull;
 
 public class CommandManager {
 
@@ -52,14 +53,14 @@ public class CommandManager {
 	}
 	
 	@EventTarget
-	public void onChat(EventChatOutput event) {
+	public void onChat(@NotNull EventChatOutput event) {
 		if (event.getMessage().startsWith(this.prefix)) {
 			parse(event.getMessage().replaceFirst(this.prefix, ""));
 			event.cancel();
 		}
 	}
 	
-	private void parse(String command) {
+	private void parse(@NotNull String command) {
 		String cmdName = command.split(" ")[0];
 		cmds.stream().filter(c -> c.getCmd().equalsIgnoreCase(cmdName)).forEach(cmd -> {
 			String[] args = command.split(" ");

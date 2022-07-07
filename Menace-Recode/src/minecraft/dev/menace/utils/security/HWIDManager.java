@@ -1,5 +1,7 @@
 package dev.menace.utils.security;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -50,7 +52,7 @@ public class HWIDManager {
      * Opens and reads the URL.
      */
 
-    public static List<String> readHWIDURL() {
+    public static @NotNull List<String> readHWIDURL() {
         List<String> s = new ArrayList<>();
         try {
             final URL url = new URL("http://menaceapi.cf/HWIDS.txt");

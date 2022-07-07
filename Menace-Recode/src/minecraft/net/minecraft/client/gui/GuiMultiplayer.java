@@ -13,6 +13,7 @@ import net.minecraft.client.multiplayer.ServerList;
 import net.minecraft.client.network.LanServerDetector;
 import net.minecraft.client.network.OldServerPinger;
 import net.minecraft.client.resources.I18n;
+import org.jetbrains.annotations.NotNull;
 import viamcp.ViaMCP;
 
 import org.apache.logging.log4j.LogManager;
@@ -400,9 +401,10 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
         }
     }
 
-    private void connectToServer(ServerData server)
+    private void connectToServer(@NotNull ServerData server)
     {
     	Menace.instance.discordRP.update("Bypassing " + server.serverIP);
+        Menace.instance.hudManager.gameStatsElement.reset();
         this.mc.displayGuiScreen(new GuiConnecting(this, this.mc, server));
     }
 

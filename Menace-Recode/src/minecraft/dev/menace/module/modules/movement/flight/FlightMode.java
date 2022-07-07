@@ -1,6 +1,7 @@
 package dev.menace.module.modules.movement.flight;
 
 import dev.menace.module.modules.movement.flight.misc.BlocksMCFly;
+import dev.menace.module.modules.movement.flight.other.MatrixDamageFly;
 import dev.menace.module.modules.movement.flight.vanilla.*;
 import dev.menace.module.modules.movement.flight.verus.*;
 
@@ -11,12 +12,13 @@ public enum FlightMode {
 	FAKEGROUND("FakeGround", new FakeGroundFly(), FlightType.VANILLA),
 	DAMAGE("Damage", new DamageFly(), FlightType.VANILLA),
 	VERUSJUMP("Jump", new VerusJumpFly(), FlightType.VERUS),
-	BLOCKSMC("NCPSlime", new BlocksMCFly(), FlightType.OTHER);
+	BLOCKSMC("NCPSlime", new BlocksMCFly(), FlightType.OTHER),
+	MATRIXDAMAGEFLY("MatrixDamage", new MatrixDamageFly(), FlightType.OTHER);
 	
 	
-	String name;
-	FlightBase flight;
-	FlightType flightType;
+	final String name;
+	final FlightBase flight;
+	final FlightType flightType;
 	private FlightMode(String name, FlightBase flight, FlightType flightType) {
 		this.name = name;
 		this.flight = flight;

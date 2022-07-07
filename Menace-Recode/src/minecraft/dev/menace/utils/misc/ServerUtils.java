@@ -5,6 +5,7 @@ import dev.menace.ui.custom.MenaceMainMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiMultiplayer;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.multiplayer.GuiConnecting;
 import net.minecraft.client.multiplayer.ServerData;
 
@@ -14,11 +15,11 @@ public class ServerUtils {
 	
     public static ServerData serverData;
 
-    public static void connectToLastServer() {
+    public static void connectToLastServer(GuiScreen parent) {
         if(serverData == null)
             return;
 
-        MC.displayGuiScreen(new GuiConnecting(new GuiMultiplayer(new MenaceMainMenu()), MC, serverData));
+        MC.displayGuiScreen(new GuiConnecting(parent, MC, serverData));
     }
 
     public static String getRemoteIp() {

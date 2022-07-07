@@ -1,6 +1,7 @@
 package dev.menace.utils.render;
 
 import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL13.GL_MULTISAMPLE;
 
 import java.awt.Color;
 import java.util.HashMap;
@@ -8,15 +9,14 @@ import java.util.Map;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderGlobal;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Timer;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
@@ -568,6 +568,78 @@ public class RenderUtils {
 		tessellator.draw();
 	}
 
+	public static void drawImage(float x, float y, final int width, final int height, final ResourceLocation image, @NotNull Color color) {
+		GL11.glDisable(2929);
+		GL11.glEnable(3042);
+		GL11.glDepthMask(false);
+		OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+		GL11.glColor4f(color.getRed() / 255F, color.getGreen() / 255F, color.getBlue() / 255F, 1.0f);
+		Minecraft.getMinecraft().getTextureManager().bindTexture(image);
+		Gui.drawModalRectWithCustomSizedTexture((int) x, (int) y, 0.0f, 0.0f, width, height, (float) width, (float) height);
+		GL11.glDepthMask(true);
+		GL11.glDisable(3042);
+		GL11.glEnable(2929);
+	}
+
+	public static void drawCircle(double x, double y, double radius, int c) {
+		GL11.glEnable(GL_MULTISAMPLE);
+		GL11.glEnable(GL_POLYGON_SMOOTH);
+		float alpha = (float) (c >> 24 & 255) / 255.0f;
+		float red = (float) (c >> 16 & 255) / 255.0f;
+		float green = (float) (c >> 8 & 255) / 255.0f;
+		float blue = (float) (c & 255) / 255.0f;
+		boolean blend = GL11.glIsEnabled((int) 3042);
+		boolean line = GL11.glIsEnabled((int) 2848);
+		boolean texture = GL11.glIsEnabled((int) 3553);
+		if (!blend) {
+			GL11.glEnable(3042);
+		}
+		if (!line) {
+			GL11.glEnable(2848);
+		}
+		if (texture) {
+			GL11.glDisable(3553);
+		}
+		GL11.glBlendFunc(770, 771);
+		GL11.glColor4f(red, green, blue, alpha);
+		GL11.glBegin(9);
+		int i = 0;
+		while (i <= 360) {
+			GL11.glVertex2d(
+					x + Math.sin((double) i * 3.141526 / 180.0) * radius,
+					y + Math.cos((double) i * 3.141526 / 180.0) * radius);
+			++i;
+		}
+		GL11.glEnd();
+		if (texture) {
+			GL11.glEnable((int) 3553);
+		}
+		if (!line) {
+			GL11.glDisable((int) 2848);
+		}
+		if (!blend) {
+			GL11.glDisable((int) 3042);
+		}
+		GL11.glDisable(GL_POLYGON_SMOOTH);
+		GL11.glClear(0);
+	}
+
+	public static void draw2DImage(ResourceLocation image, float x, float y, int width, int height, @NotNull Color c) {
+
+		GL11.glDisable(GL11.GL_DEPTH_TEST);
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glDepthMask(false);
+		OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+		GL11.glColor4f(c.getRed() / 255f, c.getGreen()/255f, c.getBlue() / 255f, c.getAlpha());
+		MC.getTextureManager().bindTexture(image);
+		Gui.drawModalRectWithCustomSizedTexture((int) x, (int) y, 0.0f, 0.0f, width, height, width, height);
+
+		GL11.glDepthMask(true);
+		GL11.glDisable(GL11.GL_BLEND);
+		GL11.glEnable(GL11.GL_DEPTH_TEST);
+		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+
 	public static void resetCaps() {
 		glCapMap.forEach(RenderUtils::setGlState);
 	}
@@ -576,7 +648,7 @@ public class RenderUtils {
 		setGlCap(cap, true);
 	}
 
-	public static void enableGlCap(final int... caps) {
+	public static void enableGlCap(final int @NotNull ... caps) {
 		for (final int cap : caps)
 			setGlCap(cap, true);
 	}

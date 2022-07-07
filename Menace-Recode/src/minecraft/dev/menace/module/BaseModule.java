@@ -13,6 +13,8 @@ import net.minecraft.client.Minecraft;
 
 public class BaseModule {
 
+	public float optionAnim = 0;
+	public float optionAnimNow = 0;
 	private String name;
 	private String desc;
 	private String displayName = null;

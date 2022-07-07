@@ -4,28 +4,39 @@ import dev.menace.Menace;
 import dev.menace.event.EventTarget;
 import dev.menace.event.events.EventPostMotion;
 import dev.menace.event.events.EventPreMotion;
+import dev.menace.event.events.EventWorldChange;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
+import dev.menace.module.DontSaveState;
+import dev.menace.module.modules.misc.KillSultsModule;
 import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
+import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.misc.MathUtils;
 import dev.menace.utils.player.PacketUtils;
 import dev.menace.utils.player.PlayerUtils;
 import dev.menace.utils.player.RayCastUtils;
 import dev.menace.utils.timer.MSTimer;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemSword;
+import net.minecraft.network.play.client.C02PacketUseEntity;
 import net.minecraft.network.play.client.C0APacketAnimation;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 
+@DontSaveState
 public class KillAuraModule extends BaseModule {
 
 	MSTimer delayTimer = new MSTimer();
@@ -35,6 +46,7 @@ public class KillAuraModule extends BaseModule {
 	boolean blocking;
 	public boolean shouldFakeBlock;
 	float[] lastRotations = new float[2];
+	Random rand = new Random();
 	
 	SliderSetting reach;
 	public SliderSetting minCPS;
@@ -47,15 +59,17 @@ public class KillAuraModule extends BaseModule {
 	ListSetting filter;
 	ListSetting rotation;
 	ListSetting autoblock;
+	ToggleSetting keepSprint;
 	ToggleSetting noswing;
 	ToggleSetting throughwalls;
 	ToggleSetting ininv;
 	ToggleSetting raycast;
+	ToggleSetting toggleOnWorldChange;
 	ToggleSetting players;
 	ToggleSetting hostiles;
 	ToggleSetting passives;
 	ToggleSetting invisibles;
-	
+
 	public KillAuraModule() {
 		super("KillAura", Category.COMBAT, 0);
 	}
@@ -92,10 +106,12 @@ public class KillAuraModule extends BaseModule {
 		filter = new ListSetting("Filter", true, "Health", new String[] {"Health", "Distance", "Angle", "TicksExisted"});
 		rotation = new ListSetting("Rotation", true, "None", new String[] {"None", "Basic", "Bypass", "Jitter"});
 		autoblock = new ListSetting("AutoBlock", true, "None", new String[] {"None", "Fake", "Vanilla"});
+		keepSprint = new ToggleSetting("KeepSprint", true, true);
 		noswing = new ToggleSetting("NoSwing", true, false);
 		throughwalls = new ToggleSetting("ThroughWalls", true, false);
 		ininv = new ToggleSetting("InInventory", true, false);
 		raycast = new ToggleSetting("RayCast", true, false);
+		toggleOnWorldChange = new ToggleSetting("DisableOnWorldChange", true, true);
 		players = new ToggleSetting("Players", true, true);
 		hostiles = new ToggleSetting("Hostiles", true, true);
 		passives = new ToggleSetting("Passives", true, false);
@@ -111,10 +127,12 @@ public class KillAuraModule extends BaseModule {
 		this.rSetting(filter);
 		this.rSetting(rotation);
 		this.rSetting(autoblock);
+		this.rSetting(keepSprint);
 		this.rSetting(noswing);
 		this.rSetting(throughwalls);
 		this.rSetting(ininv);
 		this.rSetting(raycast);
+		this.rSetting(toggleOnWorldChange);
 		this.rSetting(players);
 		this.rSetting(hostiles);
 		this.rSetting(passives);
@@ -127,7 +145,10 @@ public class KillAuraModule extends BaseModule {
 		delayTimer.reset();
 		switchTimer.reset();
 		target = null;
-		nextDelay = MathUtils.randLong(minCPS.getValueL(), maxCPS.getValueL());
+		final int maxValue = (int) ((this.minCPS.getMax() - this.maxCPS.getValue()) * 20);
+		final int minValue = (int) ((this.minCPS.getMin() - this.minCPS.getValue()) * 20);
+
+		nextDelay = (long) (randomBetween(minValue, maxValue) - rand.nextInt(10) + rand.nextInt(10));
 		blocking = false;
 		shouldFakeBlock = false;
 		lastRotations[0] = MC.thePlayer.rotationYaw;
@@ -144,6 +165,14 @@ public class KillAuraModule extends BaseModule {
 	
 	@EventTarget
 	public void onPreMotion(EventPreMotion event) {
+		this.setDisplayName(rotation.getValue());
+		if (target == null) {
+			lastRotations = new float[] {MC.thePlayer.rotationYaw, MC.thePlayer.rotationPitch};
+		}
+		if (target != null && (target.isDead || target.getHealth() <= 0) && target instanceof EntityPlayer && target != MC.thePlayer) {
+			Menace.instance.moduleManager.killSultsModule.insult((EntityPlayer) target);
+			Menace.instance.hudManager.gameStatsElement.kills++;
+		}
 		getTarget();
 		if (rotation.getValue().equalsIgnoreCase("Basic") && target != null) {
 			event.setYaw(PlayerUtils.getRotations(target)[0]);
@@ -179,6 +208,14 @@ public class KillAuraModule extends BaseModule {
 	public void onPostMotion(EventPostMotion event) {
 		if (attackevent.getValue().equalsIgnoreCase("Post")) {
 			attack();
+		}
+	}
+
+	@EventTarget
+	public void onWorldChange(EventWorldChange event) {
+		if (toggleOnWorldChange.getValue()) {
+			ChatUtils.message("Toggled Killaura due to world change");
+			this.toggle();
 		}
 	}
 	
@@ -217,7 +254,7 @@ public class KillAuraModule extends BaseModule {
 	}
 	
 	public void attack() {
-		if (!delayTimer.hasTimePassed(1000 / nextDelay) || target == null || Menace.instance.moduleManager.scaffoldModule.isToggled()) {
+		if (!delayTimer.hasTimePassed(nextDelay) || target == null || Menace.instance.moduleManager.scaffoldModule.isToggled()) {
 			return;
 		}
 		
@@ -237,13 +274,31 @@ public class KillAuraModule extends BaseModule {
 
 		if (mode.getValue().equalsIgnoreCase("Multi")) {
 			MC.theWorld.loadedEntityList.stream()
-					.filter(this::isValid).forEach(e -> MC.playerController.attackEntity(MC.thePlayer, e));
+					.filter(this::isValid).forEach(e -> {
+						if (keepSprint.getValue()) {
+							PacketUtils.sendPacket(new C02PacketUseEntity(e, C02PacketUseEntity.Action.ATTACK));
+						} else {
+							MC.playerController.attackEntity(MC.thePlayer, e);
+						}
+					});
 		} else {
-			MC.playerController.attackEntity(MC.thePlayer, target);
+			if (keepSprint.getValue()) {
+				PacketUtils.sendPacket(new C02PacketUseEntity(target, C02PacketUseEntity.Action.ATTACK));
+			} else {
+				MC.playerController.attackEntity(MC.thePlayer, target);
+			}
 		}
-		
+
+		final int maxValue = (int) ((this.minCPS.getMax() - this.maxCPS.getValue()) * 20);
+		final int minValue = (int) ((this.minCPS.getMin() - this.minCPS.getValue()) * 20);
+
+		nextDelay = (long) (randomBetween(minValue, maxValue) - rand.nextInt(10) + rand.nextInt(10));
+
 		delayTimer.reset();
-		nextDelay = MathUtils.randInt(minCPS.getValueI(), maxCPS.getValueI());
+	}
+
+	public double randomBetween(final double min, final double max) {
+		return min + (rand.nextDouble() * (max - min));
 	}
 	
 	private boolean isValid(Entity e) {
@@ -285,4 +340,5 @@ public class KillAuraModule extends BaseModule {
         double angleDiff = MathUtils.getAngleDifference(MC.thePlayer.rotationYaw, PlayerUtils.getRotations(entity)[0]);
         return (angleDiff > 0 && angleDiff < angle) || (-angle < angleDiff && angleDiff < 0);
     }
+
 }

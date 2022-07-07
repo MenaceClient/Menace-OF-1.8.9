@@ -3,6 +3,7 @@ package net.minecraft.client.gui;
 import java.io.IOException;
 import java.util.List;
 
+import dev.menace.Menace;
 import dev.menace.utils.misc.ServerUtils;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.IChatComponent;
@@ -52,7 +53,8 @@ public class GuiDisconnected extends GuiScreen
         {
             this.mc.displayGuiScreen(this.parentScreen);
         } else if (button.id == 69) {
-        	ServerUtils.connectToLastServer();
+            Menace.instance.hudManager.gameStatsElement.reset();
+        	ServerUtils.connectToLastServer(this.parentScreen);
         }
     }
 

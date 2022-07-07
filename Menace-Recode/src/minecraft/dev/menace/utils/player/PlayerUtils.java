@@ -7,10 +7,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.Vec3;
+import net.minecraft.entity.projectile.EntityEgg;
+import net.minecraft.util.*;
 import org.jetbrains.annotations.NotNull;
 
 public class PlayerUtils {
@@ -35,6 +33,28 @@ public class PlayerUtils {
 		float yaw = (float) Math.toDegrees(Math.atan2(diffZ, diffX)) - 90F;
 		float pitch = (float) -Math.toDegrees(Math.atan2(diffY, diffXZ));
         return new float[] { yaw, pitch };
+    }
+
+    public static float @NotNull [] getDirectionToBlock(final double x, final double y, final double z, final @NotNull EnumFacing enumfacing) {
+        final EntityEgg var4 = new EntityEgg(MC.theWorld);
+        var4.posX = x + 0.5D;
+        var4.posY = y + 0.5D;
+        var4.posZ = z + 0.5D;
+        var4.posX += (double) enumfacing.getDirectionVec().getX() * 0.5D;
+        var4.posY += (double) enumfacing.getDirectionVec().getY() * 0.5D;
+        var4.posZ += (double) enumfacing.getDirectionVec().getZ() * 0.5D;
+        return getRotationsForBlock(var4.posX, var4.posY, var4.posZ);
+    }
+
+    public static float @NotNull [] getRotationsForBlock(final double posX, final double posY, final double posZ) {
+        final EntityPlayerSP player = MC.thePlayer;
+        final double x = posX - player.posX;
+        final double y = posY - (player.posY + (double) player.getEyeHeight());
+        final double z = posZ - player.posZ;
+        final double dist = MathHelper.sqrt_double(x * x + z * z);
+        final float yaw = (float) (Math.atan2(z, x) * 180.0D / Math.PI) - 90.0F;
+        final float pitch = (float) (-(Math.atan2(y, dist) * 180.0D / Math.PI));
+        return new float[]{yaw, pitch};
     }
 
     public static Vec3 getCenter(final AxisAlignedBB bb) {

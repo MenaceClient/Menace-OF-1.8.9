@@ -2,16 +2,11 @@ package net.minecraft.client.entity;
 
 import java.util.List;
 
-import dev.menace.event.events.EventChatOutput;
-import dev.menace.event.events.EventMove;
-import dev.menace.event.events.EventPostMotion;
-import dev.menace.event.events.EventPreMotion;
-import dev.menace.event.events.EventSlowdown;
-import dev.menace.event.events.EventStep;
+import dev.menace.event.events.*;
 import dev.menace.event.events.EventStep.StepState;
-import dev.menace.event.events.EventUpdate;
 import dev.menace.module.modules.movement.SprintModule;
 import dev.menace.Menace;
+import dev.menace.utils.misc.ChatUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockFenceGate;
@@ -40,6 +35,7 @@ import net.minecraft.command.server.CommandBlockLogic;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IMerchant;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityMinecart;
@@ -716,7 +712,7 @@ public class EntityPlayerSP extends AbstractClientPlayer
 	 */
 	public boolean isSneaking()
 	{
-		boolean flag = this.movementInput != null ? this.movementInput.sneak : false;
+		boolean flag = this.movementInput != null && this.movementInput.sneak;
 		return flag && !this.sleeping;
 	}
 

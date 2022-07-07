@@ -17,6 +17,7 @@ import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 
 import dev.menace.Menace;
 import dev.menace.event.events.EventKey;
+import dev.menace.event.events.EventWorldChange;
 import dev.menace.ui.custom.MenaceMainMenu;
 import dev.menace.utils.misc.IconUtils;
 import dev.menace.utils.security.MenaceAuthScreen;
@@ -2336,6 +2337,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 		networkmanager.sendPacket(new C00Handshake(47, socketaddress.toString(), 0, EnumConnectionState.LOGIN));
 		networkmanager.sendPacket(new C00PacketLoginStart(this.getSession().getProfile()));
 		this.myNetworkManager = networkmanager;
+		Menace.instance.hudManager.gameStatsElement.reset();
 	}
 
 	/**
@@ -2351,6 +2353,9 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 	 */
 	public void loadWorld(WorldClient worldClientIn, String loadingMessage)
 	{
+		EventWorldChange event = new EventWorldChange();
+		event.call();
+
 		if (worldClientIn == null)
 		{
 			NetHandlerPlayClient nethandlerplayclient = this.getNetHandler();

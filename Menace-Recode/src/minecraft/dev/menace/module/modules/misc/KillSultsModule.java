@@ -18,6 +18,7 @@ import dev.menace.event.events.EventDeath;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.utils.file.FileManager;
+import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.misc.MathUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -45,7 +46,7 @@ public class KillSultsModule extends BaseModule {
 
 			try {
 				final FileWriter writer = new FileWriter(insultFile);
-				readInsults().stream().forEach(s -> {
+				readInsults().forEach(s -> {
 					try {
 						writer.write(s + "\n");
 					} catch (IOException e) {
@@ -68,7 +69,7 @@ public class KillSultsModule extends BaseModule {
 				insultFile.createNewFile();
 
 				final FileWriter writer = new FileWriter(insultFile);
-				readInsults().stream().forEach(s -> {
+				readInsults().forEach(s -> {
 					try {
 						writer.write(s + "\n");
 					} catch (IOException e) {
@@ -97,14 +98,8 @@ public class KillSultsModule extends BaseModule {
 		}
 	}
 
-	@EventTarget
-	public void onDeath(@NotNull EventDeath event) {
-		if (event.getEntity() != MC.thePlayer && event.getEntity().getLastAttacker() == MC.thePlayer) {
-			insult(event.getEntity());
-		}
-	}
-
 	public void insult(@NotNull EntityPlayer e) {
+		if (!this.isToggled()) return;
 		String insult = "";
 		insult = insults.get(MathUtils.randInt(0, insults.size()));
 		insult = insult.replaceAll("<player>", e.getName());

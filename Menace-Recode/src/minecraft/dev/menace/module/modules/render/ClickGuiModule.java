@@ -1,5 +1,6 @@
 package dev.menace.module.modules.render;
 
+import dev.menace.ui.clickgui.vape.VapeGui;
 import org.lwjgl.input.Keyboard;
 
 import dev.menace.event.EventTarget;
@@ -12,7 +13,7 @@ import dev.menace.ui.clickgui.lime.LimeClickGUI;
 
 public class ClickGuiModule extends BaseModule {
 
-	public CSGOGui csgoGui; 
+	public CSGOGui csgoGui;
 	public LimeClickGUI limeGui;
 	
 	ListSetting mode;
@@ -23,7 +24,7 @@ public class ClickGuiModule extends BaseModule {
 	
 	@Override
 	public void setup() {
-		mode = new ListSetting("Mode", true, "CSGO", new String[] {"Lime", "CSGO"});
+		mode = new ListSetting("Mode", true, "CSGO", new String[] {"Dropdown", "Panel", "Dashboard"});
 		this.rSetting(mode);
 		super.setup();
 	}
@@ -36,12 +37,16 @@ public class ClickGuiModule extends BaseModule {
 		}
 		
 		switch (mode.getValue()) {
-		case "Lime" : 
-			MC.displayGuiScreen(limeGui);
-			break;
-		case "CSGO" :
-			MC.displayGuiScreen(csgoGui);
-			break;
+			case "Dropdown" :
+				limeGui.config.reload();
+				MC.displayGuiScreen(limeGui);
+				break;
+			case "Panel" :
+				MC.displayGuiScreen(csgoGui);
+				break;
+			case "Dashboard" :
+				MC.displayGuiScreen(new VapeGui());
+				break;
 		}
 	}
 	

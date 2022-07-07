@@ -21,7 +21,7 @@ public class NoFallModule extends BaseModule {
 
 	@Override
 	public void setup() {
-		mode = new ListSetting("Mode", true, "SpoofGround", new String[] {"SpoofGround", "NoGround", "Verus"});
+		mode = new ListSetting("Mode", true, "SpoofGround", new String[] {"SpoofGround", "NoGround", "Verus", "Experimental"});
 		this.rSetting(mode);
 		super.setup();
 	}

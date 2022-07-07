@@ -1,12 +1,19 @@
 {
   "AutoPot": {
-    "Toggled": true,
+    "Toggled": false,
+    "Settings": {
+      "Delay": 100.0,
+      "Visible": true
+    }
+  },
+  "ComboOneTap": {
+    "Toggled": false,
     "Settings": {
       "Visible": true
     }
   },
   "Criticals": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Mode": "Packet",
       "Visible": true
@@ -15,21 +22,23 @@
   "KillAura": {
     "Toggled": false,
     "Settings": {
-      "Reach": 7.0,
-      "MinCPS": 8.0,
-      "MaxCPS": 12.0,
+      "Reach": 3.0,
+      "MinCPS": 10.0,
+      "MaxCPS": 10.0,
       "TicksExisted": 10.0,
       "FOV": 360.0,
-      "Mode": "Switch",
-      "Switch Delay": 50.0,
+      "Mode": "Single",
+      "Switch Delay": 100.0,
       "Attack Event": "Pre",
-      "Filter": "Distance",
-      "Rotation": "Basic",
-      "AutoBlock": "Vanilla",
+      "Filter": "Health",
+      "Rotation": "None",
+      "AutoBlock": "None",
+      "KeepSprint": true,
       "NoSwing": false,
-      "ThroughWalls": true,
-      "InInventory": true,
+      "ThroughWalls": false,
+      "InInventory": false,
       "RayCast": false,
+      "DisableOnWorldChange": true,
       "Players": true,
       "Hostiles": true,
       "Passives": false,
@@ -52,9 +61,9 @@
       "Mode": "Vanilla",
       "VanillaMode": "Creative",
       "VerusMode": "Jump",
-      "OtherMode": "NCPSlime",
-      "DmgMode": "Verus",
-      "Speed": 9.0,
+      "OtherMode": "BlocksMC",
+      "DmgMode": "Basic",
+      "Speed": 2.0,
       "Viewbob": 0.1,
       "Visible": true
     }
@@ -73,14 +82,14 @@
     }
   },
   "Sprint": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "OmniSprint": false,
       "Visible": true
     }
   },
   "Step": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Mode": "Vanilla",
       "Height": 1.0,
@@ -88,7 +97,7 @@
     }
   },
   "Strafe": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Visible": true
     }
@@ -109,7 +118,7 @@
     }
   },
   "InvMove": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Rotate": true,
       "Blink": false,
@@ -117,14 +126,14 @@
     }
   },
   "NoFall": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Mode": "SpoofGround",
       "Visible": true
     }
   },
   "NoSlow": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Mode": "Vanilla",
       "Visible": true
@@ -141,9 +150,9 @@
     "Toggled": false,
     "Settings": {
       "Tower": true,
-      "Sprint": true,
+      "Sprint": false,
       "KeepRotations": true,
-      "SilentSwap": true,
+      "SilentSwap": false,
       "KeepY": false,
       "Jump": false,
       "NoSwing": false,
@@ -154,15 +163,16 @@
   "ChestStealer": {
     "Toggled": false,
     "Settings": {
-      "Delay Min": 0.0,
-      "Delay Max": 10.0,
-      "CloseScreen": true,
+      "Delay Min": 90.0,
+      "Delay Max": 100.0,
+      "CloseScreen": false,
       "Randomize": true,
+      "OnlyChests": true,
       "Visible": true
     }
   },
   "FastPlace": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Visible": true
     }
@@ -170,42 +180,42 @@
   "Timer": {
     "Toggled": false,
     "Settings": {
-      "Speed": 1.5,
+      "Speed": 1.0,
       "Visible": true
     }
   },
   "Animations": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Blocking Mode": "Jello",
-      "TranslateX": 0.5,
-      "TranslateY": 0.2,
+      "TranslateX": 0.0,
+      "TranslateY": 0.0,
       "TranslateZ": 0.0,
       "ItemPosX": 0.56,
       "ItemPosY": -0.52,
       "ItemPosZ": -0.71999997,
       "ItemScale": 0.4,
       "ItemRotation": 45.0,
-      "SwingAnim": true,
-      "AnythingBlock": true,
+      "SwingAnim": false,
+      "AnythingBlock": false,
       "Visible": true
     }
   },
   "ClickGui": {
     "Toggled": false,
     "Settings": {
-      "Mode": "CSGO",
+      "Mode": "Dropdown",
       "Visible": true
     }
   },
   "ESP": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "Visible": true
     }
   },
   "Fullbright": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Visible": true
     }
@@ -219,10 +229,10 @@
       "ArrayAlpha": 100.0,
       "Position": true,
       "Position Mode": "Single",
-      "UserInfo": true,
+      "GameStats": true,
       "Custom Font": false,
-      "Color": "Fade",
-      "RBW Speed": 36.0,
+      "Color": "Custom",
+      "RBW Speed": 10.0,
       "Red": 255.0,
       "Green": 0.0,
       "Blue": 0.0,
@@ -234,7 +244,7 @@
   "ItemPhysics": {
     "Toggled": true,
     "Settings": {
-      "Visible": false
+      "Visible": true
     }
   },
   "XRay": {
@@ -243,7 +253,19 @@
       "Visible": true
     }
   },
+  "AutoLogin": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
   "DevModule": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "Disabler": {
     "Toggled": false,
     "Settings": {
       "Visible": true

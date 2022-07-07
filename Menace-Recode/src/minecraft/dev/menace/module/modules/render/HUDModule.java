@@ -23,7 +23,7 @@ public class HUDModule extends BaseModule {
 	public SliderSetting arrayAlpha;
 	public ToggleSetting pos;
 	public ListSetting posMode;
-	public ToggleSetting userInfo;
+	public ToggleSetting gameStats;
 	public ToggleSetting customFont;
 	public ListSetting color;
 	public SliderSetting rainbowSpeed;
@@ -67,7 +67,7 @@ public class HUDModule extends BaseModule {
 				this.setVisible(Menace.instance.moduleManager.hudModule.pos.getValue());
 			}
 		};
-		userInfo = new ToggleSetting("UserInfo", true, true);
+		gameStats = new ToggleSetting("GameStats", true, true);
 		customFont = new ToggleSetting("Custom Font", true, false);
 		color = new ListSetting("Color", true, "Custom", new String[] {"Fade", "Custom"});
 		rainbowSpeed = new SliderSetting("RBW Speed", true, 10, 1, 100, true) {
@@ -116,7 +116,7 @@ public class HUDModule extends BaseModule {
 		this.rSetting(arrayAlpha);
 		this.rSetting(pos);
 		this.rSetting(posMode);
-		this.rSetting(userInfo);
+		this.rSetting(gameStats);
 		this.rSetting(customFont);
 		this.rSetting(color);
 		this.rSetting(rainbowSpeed);
@@ -140,10 +140,9 @@ public class HUDModule extends BaseModule {
 		Menace.instance.hudManager.watermarkElement.setVisible(watermark.getValue());
 		Menace.instance.hudManager.arrayElement.setVisible(array.getValue());
 		Menace.instance.hudManager.posElement.setVisible(pos.getValue());
+		Menace.instance.hudManager.gameStatsElement.setVisible(gameStats.getValue());
 		
-		HUDManager.hudElements.stream().filter(BaseElement::isVisible).forEach(element -> {
-			element.render();
-		});
+		HUDManager.hudElements.stream().filter(BaseElement::isVisible).forEach(BaseElement::render);
 		
 	}
 	

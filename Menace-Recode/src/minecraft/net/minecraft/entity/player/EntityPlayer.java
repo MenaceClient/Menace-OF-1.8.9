@@ -725,9 +725,6 @@ public abstract class EntityPlayer extends EntityLivingBase
      */
 	public void onDeath(DamageSource cause)
     {
-		EventDeath event = new EventDeath(this, cause);
-		event.call();
-		
         super.onDeath(cause);
         this.setSize(0.2F, 0.2F);
         this.setPosition(this.posX, this.posY, this.posZ);
@@ -1975,6 +1972,9 @@ public abstract class EntityPlayer extends EntityLivingBase
      */
     public void onKillEntity(EntityLivingBase entityLivingIn)
     {
+        EventDeath event = new EventDeath(this, entityLivingIn);
+        event.call();
+
         if (entityLivingIn instanceof IMob)
         {
             this.triggerAchievement(AchievementList.killEnemy);

@@ -5,6 +5,11 @@
     "Y": 2,
     "Visible": true
   },
+  "GameStatsElement": {
+    "X": 1,
+    "Y": 16,
+    "Visible": true
+  },
   "PosElement": {
     "X": 3,
     "Y": 530,

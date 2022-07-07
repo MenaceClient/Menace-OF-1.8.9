@@ -9,4 +9,15 @@ public class XRayModule extends BaseModule {
 		super("XRay", Category.RENDER, 0);
 	}
 
+	@Override
+	public void onEnable() {
+		MC.renderGlobal.loadRenderers();
+		super.onEnable();
+	}
+
+	@Override
+	public void onDisable() {
+		MC.renderGlobal.loadRenderers();
+		super.onDisable();
+	}
 }

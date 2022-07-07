@@ -12,7 +12,9 @@ import dev.menace.utils.player.InventoryUtils;
 import dev.menace.utils.timer.MSTimer;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,7 @@ public class ChestStealerModule extends BaseModule {
 	public SliderSetting minDelay;
 	public SliderSetting maxDelay;
 	ToggleSetting randomize;
+	ToggleSetting chestOnly;
 	
 	public ChestStealerModule() {
 		super("ChestStealer", Category.WORLD, 0);
@@ -52,10 +55,12 @@ public class ChestStealerModule extends BaseModule {
 		};
 		closeScreen = new ToggleSetting("CloseScreen", true, false);
 		randomize = new ToggleSetting("Randomize", true, true);
+		chestOnly = new ToggleSetting("OnlyChests", true, true);
 		this.rSetting(minDelay);
 		this.rSetting(maxDelay);
 		this.rSetting(closeScreen);
 		this.rSetting(randomize);
+		this.rSetting(chestOnly);
 		super.setup();
 	}
 	
@@ -77,7 +82,8 @@ public class ChestStealerModule extends BaseModule {
 		if (!(MC.currentScreen instanceof GuiChest) 
 				|| isEmpty((GuiChest) MC.currentScreen) 
 				|| isInvFull()
-				|| !delayTimer.hasTimePassed(nextDelay)) 
+				|| !delayTimer.hasTimePassed(nextDelay)
+				|| (chestOnly.getValue() && !((GuiChest)MC.currentScreen).lowerChestInventory.getName().contains(new ItemStack(Item.itemRegistry.getObject(new ResourceLocation("minecraft:chest"))).getDisplayName())))
 			{return;}
 		
 		GuiChest gui = (GuiChest) MC.currentScreen;

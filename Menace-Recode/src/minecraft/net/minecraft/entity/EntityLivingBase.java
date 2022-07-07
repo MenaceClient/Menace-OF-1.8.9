@@ -54,6 +54,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class EntityLivingBase extends Entity
 {
@@ -1021,7 +1022,7 @@ public abstract class EntityLivingBase extends Entity
     /**
      * Called when the mob's health reaches 0.
      */
-    public void onDeath(DamageSource cause)
+    public void onDeath(@NotNull DamageSource cause)
     {
         Entity entity = cause.getEntity();
         EntityLivingBase entitylivingbase = this.getAttackingEntity();

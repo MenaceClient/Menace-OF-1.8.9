@@ -15,13 +15,18 @@ import dev.menace.utils.player.PacketUtils;
 import dev.menace.utils.player.PlayerUtils;
 import dev.menace.utils.render.RenderUtils;
 import dev.menace.utils.world.BlockUtils;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.client.C09PacketHeldItemChange;
 import net.minecraft.network.play.client.C0APacketAnimation;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 
@@ -140,10 +145,11 @@ public class ScaffoldModule extends BaseModule {
                 if (eyesPos.squareDistanceTo(hitVec) <= 36.0) {
 
                     if (keepRotations.getValue()) {
-                        rotation = PlayerUtils.getRotations(neighbor);
+                        rotation = aimAtLocation(neighbor.getX(), neighbor.getY(), neighbor.getZ(), side2);
+                        //rotation = PlayerUtils.getDirectionToBlock(neighbor.getX(), neighbor.getY(), neighbor.getZ(), side2);
                     } else {
-                        event.setYaw(PlayerUtils.getRotations(neighbor)[0]);
-                        event.setPitch(PlayerUtils.getRotations(neighbor)[1]);
+                        event.setYaw(PlayerUtils.getDirectionToBlock(neighbor.getX(), neighbor.getY(), neighbor.getZ(), side2)[0]);
+                        event.setPitch(PlayerUtils.getDirectionToBlock(neighbor.getX(), neighbor.getY(), neighbor.getZ(), side2)[1]);
                     }
 
                     if (silentSwap.getValue() && swappedSlot != -1) {
@@ -185,6 +191,32 @@ public class ScaffoldModule extends BaseModule {
     public void on2D(Event2D event) {
         if (!render.getValue()) return;
 
+    }
+
+    private float @NotNull [] aimAtLocation(final double x, final double y, final double z, final @NotNull EnumFacing facing) {
+        final EntitySnowball temp = new EntitySnowball(MC.theWorld);
+        temp.posX = x + 0.5;
+        temp.posY = y - 2.7035252353;
+        temp.posZ = z + 0.5;
+        final EntitySnowball entitySnowball10;
+        entitySnowball10 = temp;
+        entitySnowball10.posX += facing.getDirectionVec().getX() * 0.25;
+        final EntitySnowball entitySnowball11;
+        entitySnowball11 = temp;
+        entitySnowball11.posY += facing.getDirectionVec().getY() * 0.25;
+        final EntitySnowball entitySnowball12;
+        entitySnowball12 = temp;
+        entitySnowball12.posZ += facing.getDirectionVec().getZ() * 0.25;
+        return this.aimAtLocation(temp.posX, temp.posY, temp.posZ);
+    }
+
+    @Contract("_, _, _ -> new")
+    private float @NotNull [] aimAtLocation(final double positionX, final double positionY, final double positionZ) {
+        final double x = positionX - MC.thePlayer.posX;
+        final double y = positionY - MC.thePlayer.posY;
+        final double z = positionZ - MC.thePlayer.posZ;
+        final double distance = MathHelper.sqrt_double(x * x + z * z);
+        return new float[] { (float)(Math.atan2(z, x) * 180.0 / 3.141592653589793) - 90.0f, (float)(-(Math.atan2(y, distance) * 180.0 / 3.141592653589793)) };
     }
 
 }

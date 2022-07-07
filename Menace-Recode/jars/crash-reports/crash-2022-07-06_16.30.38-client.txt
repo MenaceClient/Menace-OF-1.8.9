@@ -1,0 +1,104 @@
+---- Minecraft Crash Report ----
+// My bad.
+
+Time: 6/07/22 4:30 PM
+Description: Updating screen events
+
+java.lang.NullPointerException: Updating screen events
+	at dev.menace.module.modules.movement.flight.other.MatrixDamageFly.onEnable(MatrixDamageFly.java:21)
+	at dev.menace.module.modules.movement.FlightModule.onEnable(FlightModule.java:156)
+	at dev.menace.module.BaseModule.setToggled(BaseModule.java:126)
+	at dev.menace.module.BaseModule.toggle(BaseModule.java:111)
+	at dev.menace.ui.clickgui.csgo.buttons.CSModButton.mouseClicked(CSModButton.java:198)
+	at dev.menace.ui.clickgui.csgo.buttons.CSCategoryButton.mouseClicked(CSCategoryButton.java:48)
+	at dev.menace.ui.clickgui.csgo.CSGOGui.mouseClicked(CSGOGui.java:87)
+	at net.minecraft.client.gui.GuiScreen.handleMouseInput(GuiScreen.java:617)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:586)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1788)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1109)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:439)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at dev.menace.module.modules.movement.flight.other.MatrixDamageFly.onEnable(MatrixDamageFly.java:21)
+	at dev.menace.module.modules.movement.FlightModule.onEnable(FlightModule.java:156)
+	at dev.menace.module.BaseModule.setToggled(BaseModule.java:126)
+	at dev.menace.module.BaseModule.toggle(BaseModule.java:111)
+	at dev.menace.ui.clickgui.csgo.buttons.CSModButton.mouseClicked(CSModButton.java:198)
+	at dev.menace.ui.clickgui.csgo.buttons.CSCategoryButton.mouseClicked(CSCategoryButton.java:48)
+	at dev.menace.ui.clickgui.csgo.CSGOGui.mouseClicked(CSGOGui.java:87)
+	at net.minecraft.client.gui.GuiScreen.handleMouseInput(GuiScreen.java:617)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:586)
+
+-- Affected screen --
+Details:
+	Screen name: dev.menace.ui.clickgui.csgo.CSGOGui
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['4DollarBill'/206365, l='MpServer', x=-26.64, y=100.00, z=105.66]]
+	Chunk stats: MultiplayerChunkCache: 289, 289
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: -1.00,125.00,50.00 - World: (-1,125,50), Chunk: (at 15,7,2 in -1,3; contains blocks -16,0,48 to -1,255,63), Region: (-1,0; contains chunks -32,0 to -1,31, blocks -512,0,0 to -1,255,511)
+	Level time: 1622823566 game time, 109500 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: survival (ID 0). Hardcore: false. Cheats: false
+	Forced entities: 27 total; [EntityPlayerSP['4DollarBill'/206365, l='MpServer', x=-26.64, y=100.00, z=105.66], EntityMinecartEmpty['entity.MinecartRideable.name'/11, l='MpServer', x=-80.53, y=100.00, z=163.13], EntityArmorStand['?https://liquidbounce.net'/81, l='MpServer', x=1.19, y=121.47, z=52.59], EntityBoat['Boat'/82, l='MpServer', x=9.44, y=100.00, z=160.94], EntityVillager['TNTBoost3Alt'/207256, l='MpServer', x=-45.41, y=100.00, z=59.81], EntityVillager['TNTBoost1Alt'/207263, l='MpServer', x=-69.50, y=101.00, z=58.50], EntityTNTPrimed['Block of TNT'/207267, l='MpServer', x=-71.48, y=101.00, z=59.49], EntityTNTPrimed['Block of TNT'/207266, l='MpServer', x=-71.59, y=101.00, z=57.32], EntityTNTPrimed['Block of TNT'/207265, l='MpServer', x=-71.47, y=100.00, z=58.47], EntityTNTPrimed['Block of TNT'/207264, l='MpServer', x=-72.52, y=101.00, z=58.54], EntityTNTPrimed['Block of TNT'/207271, l='MpServer', x=-71.30, y=101.00, z=72.53], EntityTNTPrimed['Block of TNT'/207270, l='MpServer', x=-71.51, y=100.00, z=73.51], EntityTNTPrimed['Block of TNT'/207269, l='MpServer', x=-72.50, y=101.00, z=73.63], EntityVillager['TNTBoost2Alt'/207268, l='MpServer', x=-69.50, y=101.00, z=73.50], EntityTNTPrimed['TNT2Boost1Alt'/207274, l='MpServer', x=-63.50, y=147.19, z=73.50], EntityTNTPrimed['TNT2Boost1Alt'/207273, l='MpServer', x=-63.50, y=160.19, z=58.50], EntityTNTPrimed['Block of TNT'/207272, l='MpServer', x=-71.55, y=101.00, z=74.66], EntityVillager['TNTBoost4Alt'/207279, l='MpServer', x=-44.50, y=101.00, z=73.50], EntityTNTPrimed['Block of TNT'/207278, l='MpServer', x=-43.04, y=100.00, z=71.52], EntityVillager['WallPredict1Alt'/207283, l='MpServer', x=-49.50, y=100.00, z=87.50], EntityVillager['WallPredict2Alt'/207282, l='MpServer', x=-49.50, y=100.00, z=95.50], EntityTNTPrimed['Block of TNT'/207281, l='MpServer', x=-45.50, y=100.00, z=75.45], EntityTNTPrimed['Block of TNT'/207280, l='MpServer', x=-45.50, y=100.00, z=75.55], EntityVillager['TNTBoost3Alt'/207287, l='MpServer', x=-44.50, y=101.50, z=58.50], EntityVillager['WallPredict3Alt'/207284, l='MpServer', x=-50.39, y=100.26, z=103.50], EntityTNTPrimed['Block of TNT'/207289, l='MpServer', x=-46.52, y=100.66, z=60.50], EntityTNTPrimed['Block of TNT'/207288, l='MpServer', x=-42.50, y=100.66, z=55.48]]
+	Retry entities: 0 total; []
+	Server brand: Spigot (Velocity)
+	Server type: Non-integrated multiplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:404)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2776)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:460)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_332, Amazon.com Inc.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Amazon.com Inc.
+	Memory: 913060944 bytes (870 MB) / 1276116992 bytes (1217 MB) up to 1908932608 bytes (1820 MB)
+	JVM Flags: 3 total; -Xmx1024M -Xms1024M -Xmx2G
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 456.71, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-9700F CPU @ 3.00GHz
+	OptiFine Version: OptiFine_1.8.9_HD_U_M5
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 8
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 456.71
+	OpenGlRenderer: GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8
