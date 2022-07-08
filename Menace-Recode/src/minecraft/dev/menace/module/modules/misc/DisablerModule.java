@@ -56,12 +56,7 @@ public class DisablerModule extends BaseModule {
     @EventTarget
     public void onUpdate(Event e) {
     	//	PacketUtils.sendPacket(new C19PacketResourcePackStatus("", C19PacketResourcePackStatus.Action.ACCEPTED));
-    	
-    if(e instanceof EventMove)	{
-    	if(mc.thePlayer.ticksExisted % 20 == 0 && Menace.instance.moduleManager.flightModule.isToggled()) {
-			((EventMove) e).setY(-1);
-		}
-    }
+   
    }
 
     
@@ -79,31 +74,6 @@ public class DisablerModule extends BaseModule {
     
     
     
-    
-    /*
-     * 
-    		if(mode.getValue().equalsIgnoreCase("HAZEL")) {
-    			if(e instanceof EventMove) {
-    	    		EventMove event = (EventMove)e;
-    	    		if(mc.thePlayer.ticksExisted % 20 == 0 && Menace.instance.moduleManager.flightModule.isToggled()) {
-    	    			event.setY(-1);
-    	    			
-    	    		}
-        	}
-    	}
-    	
-    	if(mode.getValue().equalsIgnoreCase("VULCAN")) {
-    		if(e.getPacket() instanceof C0FPacketConfirmTransaction && mc.thePlayer.ticksExisted > 20) {
-    			
-    			if(!messageSent) {
-    				ChatUtils.message(EnumChatFormatting.GREEN + "Disabler - Started Trolling C0F");
-    				messageSent = true;
-    			}
-    			e.setCancelled(true);
-    			mc.thePlayer.sendQueue.sendPacketNoEventDelayed(e.getPacket(), 3000);
-    		}
-    	}
-    	
-     */
+  
 
 }
