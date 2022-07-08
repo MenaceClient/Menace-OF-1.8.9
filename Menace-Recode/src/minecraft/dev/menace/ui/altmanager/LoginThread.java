@@ -10,7 +10,7 @@ import net.minecraft.client.Minecraft;
 public class LoginThread extends Thread {
 	
 	Minecraft MC = Minecraft.getMinecraft();
-	private String status = "§7Waiting...§r";
+	private String status = "Â§7Waiting...Â§r";
 	private String username;
 	private String password;
 	private LoginMode loginType;
@@ -19,59 +19,59 @@ public class LoginThread extends Thread {
 		this.username = username;
 		this.password = password;
 		this.loginType = loginType;
-		this.status = "§eLogin pending...§r";
+		this.status = "Â§eLogin pending...Â§r";
 	}
 	
 	@Override
 	public void run() {
 		if (password.isEmpty() && loginType != loginType.ALTENING && loginType != loginType.ALTENINGPREMIUM && loginType != loginType.MICROSOFT_BROWSER && loginType != loginType.RNG) {
 			LoginManager.crackedLogin(username);
-			this.status = "§aLogged in as - " + MC.session.getUsername() + " (Cracked)§r";
+			this.status = "Â§aLogged in as - " + MC.session.getUsername() + " (Cracked)Â§r";
 			return;
 		}
 		switch (loginType) {
 		case ALTENING:
 			try {
 				LoginManager.alteningLogin(username);
-				this.status = "§aLogged in as - " + MC.session.getUsername() + "§r";
+				this.status = "Â§aLogged in as - " + MC.session.getUsername() + "Â§r";
 			} catch (NoSuchFieldException | IllegalAccessException | AuthenticationException e) {
-				this.status = "§cLogin Failed!§r";
+				this.status = "Â§cLogin Failed!Â§r";
 				e.printStackTrace();
 			}
 			break;
-		case ALTENINGPREMIUM:
+/*		case ALTENINGPREMIUM:
 			try {
 				LoginManager.alteningPremiumLogin(username);
-				this.status = "§aLogged in as - " + MC.session.getUsername() + "§r";
+				this.status = "Â§aLogged in as - " + MC.session.getUsername() + "Â§r";
 			} catch (NoSuchFieldException | IllegalAccessException | AuthenticationException e) {
-				this.status = "§cLogin Failed!§r";
+				this.status = "Â§cLogin Failed!Â§r";
 				e.printStackTrace();
 			}
-			break;
+			break; */
 		case MICROSOFT:
 			try {
 				LoginManager.microsoftEmailLogin(username, password);
-				this.status = "§aLogged in as - " + MC.session.getUsername() + "§r";
+				this.status = "Â§aLogged in as - " + MC.session.getUsername() + "Â§r";
 			} catch (MicrosoftAuthenticationException | NoSuchFieldException | IllegalAccessException e) {
-				this.status = "§cLogin Failed!§r";
+				this.status = "Â§cLogin Failed!Â§r";
 				e.printStackTrace();
 			}
 			break;
 		case MICROSOFT_BROWSER:
 			try {
 				LoginManager.microsoftBrowserLogin();
-				this.status = "§aLogged in as - " + MC.session.getUsername() + "§r";
+				this.status = "Â§aLogged in as - " + MC.session.getUsername() + "Â§r";
 			} catch (MicrosoftAuthenticationException e) {
-				this.status = "§cLogin Failed!§r";
+				this.status = "Â§cLogin Failed!Â§r";
 				e.printStackTrace();
 			}
 			break;
 		case MOJANG:
 			try {
 				LoginManager.mojangLogin(username, password);
-				this.status = "§aLogged in as - " + MC.session.getUsername() + "§r";
+				this.status = "Â§aLogged in as - " + MC.session.getUsername() + "Â§r";
 			} catch (NoSuchFieldException | IllegalAccessException | AuthenticationException e) {
-				this.status = "§cLogin Failed!§r";
+				this.status = "Â§cLogin Failed!Â§r";
 				e.printStackTrace();
 			}
 			break;
@@ -82,10 +82,10 @@ public class LoginThread extends Thread {
 				name = name.concat(String.valueOf(whitelisted_letters.charAt(MathUtils.randInt(0, whitelisted_letters.length()))));
 			}
 			LoginManager.crackedLogin(name);
-			this.status = "§aLogged in as - " + MC.session.getUsername() + " (Cracked)§r";
+			this.status = "Â§aLogged in as - " + MC.session.getUsername() + " (Cracked)Â§r";
 			break;
 		default:
-			this.status = "§cThis should not happen!§r";
+			this.status = "Â§cThis should not happen!Â§r";
 			break;
 		
 		}

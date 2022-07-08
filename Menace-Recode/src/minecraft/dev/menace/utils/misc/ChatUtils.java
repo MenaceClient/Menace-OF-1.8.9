@@ -15,7 +15,7 @@ public class ChatUtils {
 		if (MC.thePlayer == null) return;
 
 		JsonObject jsonObject = new JsonObject();
-		jsonObject.addProperty("text", "§0[§4Menace§0]§r " + message);
+		jsonObject.addProperty("text", "Â§0[Â§4MenaceÂ§0]Â§r " + message);
 
 		MC.thePlayer.addChatMessage(IChatComponent.Serializer.jsonToComponent(jsonObject.toString()));
 	}
@@ -25,7 +25,7 @@ public class ChatUtils {
 		if (MC.thePlayer == null) return;
 
 		JsonObject jsonObject = new JsonObject();
-		jsonObject.addProperty("text", "§0[§4MenaceIRC§0]§r " + message);
+		jsonObject.addProperty("text", "Â§0[Â§4MenaceIRCÂ§0]Â§r " + message);
 
 		MC.thePlayer.addChatMessage(IChatComponent.Serializer.jsonToComponent(jsonObject.toString()));
 	}

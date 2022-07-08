@@ -23,12 +23,12 @@ public class TimerModule extends BaseModule {
 	
 	@EventTarget
 	public void onUpdate(EventUpdate event) {
-		MC.timer.timerSpeed = speed.getValueF();
+		mc.timer.timerSpeed = speed.getValueF();
 	}
 	
 	@Override
 	public void onDisable() {
-		MC.timer.timerSpeed = 1;
+		mc.timer.timerSpeed = 1;
 		super.onDisable();
 	}
 

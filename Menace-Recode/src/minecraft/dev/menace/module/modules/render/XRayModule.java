@@ -11,13 +11,13 @@ public class XRayModule extends BaseModule {
 
 	@Override
 	public void onEnable() {
-		MC.renderGlobal.loadRenderers();
+		mc.renderGlobal.loadRenderers();
 		super.onEnable();
 	}
 
 	@Override
 	public void onDisable() {
-		MC.renderGlobal.loadRenderers();
+		mc.renderGlobal.loadRenderers();
 		super.onDisable();
 	}
 }

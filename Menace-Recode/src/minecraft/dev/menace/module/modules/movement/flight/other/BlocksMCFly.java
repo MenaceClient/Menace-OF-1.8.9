@@ -1,4 +1,4 @@
-package dev.menace.module.modules.movement.flight.misc;
+package dev.menace.module.modules.movement.flight.other;
 
 import dev.menace.Menace;
 import dev.menace.event.events.EventReceivePacket;

@@ -2,6 +2,7 @@ package dev.menace.ui.hud.elements;
 
 import dev.menace.Menace;
 import dev.menace.ui.hud.BaseElement;
+import dev.menace.utils.misc.ColorUtils;
 import dev.menace.utils.misc.ServerUtils;
 import dev.menace.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
@@ -16,10 +17,10 @@ public class WatermarkElement extends BaseElement {
 	
 	@Override
 	public void render() {
-		//this.drawString("Menace ง01.8.9", this.getAbsoluteX(), this.getAbsoluteY());
+		//this.drawString("Menace ยง01.8.9", this.getAbsoluteX(), this.getAbsoluteY());
 
-		RenderUtils.drawRect(this.getAbsoluteX(), this.getAbsoluteY(), this.getAbsoluteX() + this.getWidth(), this.getAbsoluteY() + 2, Menace.instance.getClientColor());
-		RenderUtils.drawRect(this.getAbsoluteX(), this.getAbsoluteY() + 2, this.getAbsoluteX() + this.getWidth(), this.getAbsoluteY() + this.getFontHeight() + 4, new Color(0, 0, 0, 100).getRGB());
+		RenderUtils.drawRect(this.getAbsoluteX(), this.getAbsoluteY(), this.getAbsoluteX() + this.getWidth(), this.getAbsoluteY() + 2, ColorUtils.getRainbow(10, 0.6f, 1));
+		RenderUtils.drawRect(this.getAbsoluteX(), this.getAbsoluteY() + 2, this.getAbsoluteX() + this.getWidth(), this.getAbsoluteY() + this.getFontHeight() + 4, new Color(0, 0, 0, 255).getRGB());
 		this.drawString("Menace | " + Minecraft.debugFPS + " FPS | " + ServerUtils.getRemoteIp(), this.getAbsoluteX() + 2, this.getAbsoluteY() + 3, Color.white.getRGB());
 	}
 

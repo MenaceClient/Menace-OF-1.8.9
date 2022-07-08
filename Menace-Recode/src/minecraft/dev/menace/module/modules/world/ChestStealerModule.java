@@ -75,18 +75,18 @@ public class ChestStealerModule extends BaseModule {
 	@EventTarget
 	public void onUpdate(EventUpdate event) {
 		
-		if (MC.currentScreen instanceof GuiChest && closeScreen.getValue() && (isEmpty((GuiChest) MC.currentScreen) || isInvFull())) {
-			MC.thePlayer.closeScreen();
+		if (mc.currentScreen instanceof GuiChest && closeScreen.getValue() && (isEmpty((GuiChest) mc.currentScreen) || isInvFull())) {
+			mc.thePlayer.closeScreen();
 		}
 		
-		if (!(MC.currentScreen instanceof GuiChest) 
-				|| isEmpty((GuiChest) MC.currentScreen) 
+		if (!(mc.currentScreen instanceof GuiChest) 
+				|| isEmpty((GuiChest) mc.currentScreen) 
 				|| isInvFull()
 				|| !delayTimer.hasTimePassed(nextDelay)
-				|| (chestOnly.getValue() && !((GuiChest)MC.currentScreen).lowerChestInventory.getName().contains(new ItemStack(Item.itemRegistry.getObject(new ResourceLocation("minecraft:chest"))).getDisplayName())))
+				|| (chestOnly.getValue() && !((GuiChest)mc.currentScreen).lowerChestInventory.getName().contains(new ItemStack(Item.itemRegistry.getObject(new ResourceLocation("minecraft:chest"))).getDisplayName())))
 			{return;}
 		
-		GuiChest gui = (GuiChest) MC.currentScreen;
+		GuiChest gui = (GuiChest) mc.currentScreen;
 
 		if (slotList.isEmpty()) {
 			for (int i = 0; i < gui.inventoryRows * 9; i++) {
@@ -118,7 +118,7 @@ public class ChestStealerModule extends BaseModule {
 	
 	private boolean isInvFull() {
         for(int index = 9; index <= 44; ++index) {
-             ItemStack stack = MC.thePlayer.inventoryContainer.getSlot(index).getStack();
+             ItemStack stack = mc.thePlayer.inventoryContainer.getSlot(index).getStack();
              if (stack == null) {
                 return false;
              }

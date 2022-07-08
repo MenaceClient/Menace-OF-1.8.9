@@ -18,12 +18,14 @@ import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
 import dev.menace.utils.file.FileManager;
 import dev.menace.utils.misc.ChatUtils;
+import net.minecraft.client.Minecraft;
 import net.minecraft.crash.CrashReport;
 
 public class ModuleManager {
 
 	public ArrayList<BaseModule> modules = new ArrayList<BaseModule>();
 	public String selectedConfig = "default";
+	public static Minecraft mc = Minecraft.getMinecraft();
 
 	//COMBAT
 	AutoPotModule autoPotModule = new AutoPotModule();

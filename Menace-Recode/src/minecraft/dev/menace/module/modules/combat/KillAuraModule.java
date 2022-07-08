@@ -47,7 +47,7 @@ public class KillAuraModule extends BaseModule {
 	public boolean shouldFakeBlock;
 	float[] lastRotations = new float[2];
 	Random rand = new Random();
-	
+	public static float yaw2, pitch2;
 	SliderSetting reach;
 	public SliderSetting minCPS;
 	public SliderSetting maxCPS;
@@ -104,7 +104,7 @@ public class KillAuraModule extends BaseModule {
 		};
 		attackevent = new ListSetting("Attack Event", true, "Pre", new String[] {"Pre", "Post"});
 		filter = new ListSetting("Filter", true, "Health", new String[] {"Health", "Distance", "Angle", "TicksExisted"});
-		rotation = new ListSetting("Rotation", true, "None", new String[] {"None", "Basic", "Bypass", "Jitter"});
+		rotation = new ListSetting("Rotation", true, "None", new String[] {"None", "Basic", "Bypass", "Jitter", "SpinBot"});
 		autoblock = new ListSetting("AutoBlock", true, "None", new String[] {"None", "Fake", "Vanilla"});
 		keepSprint = new ToggleSetting("KeepSprint", true, true);
 		noswing = new ToggleSetting("NoSwing", true, false);
@@ -191,6 +191,11 @@ public class KillAuraModule extends BaseModule {
 			event.setPitch(PlayerUtils.getFixedRotation(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox())), lastRotations)[1]);
 			lastRotations[0] = event.getYaw();
 			lastRotations[1] = event.getPitch();
+		}else if (rotation.getValue().equalsIgnoreCase("SpinBot") && target != null) {
+			pitch2 += 40;
+			yaw2 += 100f;
+			event.setYaw(yaw2);
+			event.setYaw(pitch2);
 		}
 
 		if (target != null) {

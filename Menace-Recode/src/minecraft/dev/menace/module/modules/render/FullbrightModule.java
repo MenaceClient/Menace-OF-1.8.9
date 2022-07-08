@@ -15,18 +15,18 @@ public class FullbrightModule extends BaseModule {
 	
 	@Override
 	public void onEnable() {
-		oldBrightness = MC.gameSettings.saturation;
+		oldBrightness = mc.gameSettings.saturation;
 		super.onEnable();
 	}
 	
 	@EventTarget
 	public void onUpdate(EventUpdate event) {
-		MC.gameSettings.saturation = 10F;
+		mc.gameSettings.saturation = 10F;
 	}
 	
 	@Override
 	public void onDisable() {
-		MC.gameSettings.saturation = oldBrightness;
+		mc.gameSettings.saturation = oldBrightness;
 		super.onDisable();
 	}
 

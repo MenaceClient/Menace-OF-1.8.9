@@ -21,11 +21,11 @@ public class BindsCmd extends BaseCommand {
 		for (BaseModule m : Menace.instance.moduleManager.modules) {
 			i++;
 			if (message == null) {
-				message = "ง4Binds: \nงr";
+				message = "ยง4Binds: \nยงr";
 			} else if (i == Menace.instance.moduleManager.modules.size()) {
-				message = message + "ง7" + m.getName() + ": งd" + Keyboard.getKeyName(m.getKeybind()).toLowerCase() + "งr";
+				message = message + "ยง7" + m.getName() + ": ยงd" + Keyboard.getKeyName(m.getKeybind()).toLowerCase() + "ยงr";
 			} else {
-				message = message + "ง7" + m.getName() + ": งd" + Keyboard.getKeyName(m.getKeybind()).toLowerCase() + "งr\n";
+				message = message + "ยง7" + m.getName() + ": ยงd" + Keyboard.getKeyName(m.getKeybind()).toLowerCase() + "ยงr\n";
 			}
 		}
 		

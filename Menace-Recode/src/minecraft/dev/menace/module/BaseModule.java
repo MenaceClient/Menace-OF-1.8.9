@@ -24,6 +24,7 @@ public class BaseModule {
 	private ToggleSetting visible;
 	private ArrayList<Setting> settings = new ArrayList<>();
 	
+	protected final Minecraft mc = Minecraft.getMinecraft();
 	protected final Minecraft MC = Minecraft.getMinecraft();
 	
 	public BaseModule(String name, Category category, int keybind) {
@@ -113,7 +114,7 @@ public class BaseModule {
 	
 	public void setToggled(boolean toggled) {
 		
-		if (MC.thePlayer == null && this.getClass().isAnnotationPresent(DontSaveState.class)) {
+		if (mc.thePlayer == null && this.getClass().isAnnotationPresent(DontSaveState.class)) {
 			this.toggled = false;
 			return;
 		}
@@ -154,7 +155,7 @@ public class BaseModule {
 	}
 	
 	public String getDisplayName() {
-		return displayName != null ? getName() + " ง7[" + displayName + "]" : getName();
+		return displayName != null ? getName() + " ยง7- " + displayName + "" : getName();
 	}
 	
 	public void setDisplayName(String displayName) {

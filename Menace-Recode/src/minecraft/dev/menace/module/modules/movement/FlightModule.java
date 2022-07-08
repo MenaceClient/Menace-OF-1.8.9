@@ -92,7 +92,7 @@ public class FlightModule extends BaseModule {
 				}
 			}
 		};
-		otherMode = new ListSetting("OtherMode", false, "BlocksMC", otherValues.toArray(new String[] {})) {
+		otherMode = new ListSetting("OtherMode", false, "Blocksmc", otherValues.toArray(new String[] {})) {
 			@Override
 			public void constantCheck() {
 				this.setVisible(Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Other"));
@@ -112,8 +112,9 @@ public class FlightModule extends BaseModule {
 		speed = new SliderSetting("Speed", false, 2, 1, 10, true) {
 			@Override
 			public void constantCheck() {
-				if (Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Vanilla")
-						&& Menace.instance.moduleManager.flightModule.vanillaMode.getValue().equalsIgnoreCase("Damage")) {
+				if (Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Vanilla") 
+						&& Menace.instance.moduleManager.flightModule.vanillaMode.getValue().equalsIgnoreCase("Damage"))
+				{
 					this.setVisible(true);
 				} else {
 					this.setVisible(false);
@@ -149,9 +150,9 @@ public class FlightModule extends BaseModule {
 			}
 		}
 		
-		flightMode.launchX = MC.thePlayer.posX;
-		flightMode.launchY = MC.thePlayer.posY;
-		flightMode.launchZ = MC.thePlayer.posZ;
+		flightMode.launchX = mc.thePlayer.posX;
+		flightMode.launchY = mc.thePlayer.posY;
+		flightMode.launchZ = mc.thePlayer.posZ;
 
 		flightMode.onEnable();
 		super.onEnable();
@@ -159,8 +160,8 @@ public class FlightModule extends BaseModule {
 	
 	@EventTarget
 	public void onUpdate(EventUpdate event) {
-		if (MC.thePlayer.onGround) {
-			flightMode.launchY = MC.thePlayer.posY;
+		if (mc.thePlayer.onGround) {
+			flightMode.launchY = mc.thePlayer.posY;
 		}
 		flightMode.onUpdate();
 		}
@@ -171,8 +172,8 @@ public class FlightModule extends BaseModule {
 	@EventTarget
 	public void onPreMotion(EventPreMotion event) {
 		flightMode.onPreMotion(event);
-		MC.thePlayer.cameraYaw = viewbobbingYaw.getValueF();
-		MC.thePlayer.prevCameraYaw = viewbobbingYaw.getValueF();
+		mc.thePlayer.cameraYaw = viewbobbingYaw.getValueF();
+		mc.thePlayer.prevCameraYaw = viewbobbingYaw.getValueF();
 	}
 	@EventTarget
 	public void onPostMotion(EventPostMotion event) {flightMode.onPostMotion(event);}

@@ -39,17 +39,17 @@ public class LongJumpModule extends BaseModule {
 	public void onPre(EventPreMotion event) {
 		if (C03Count >= 4 && !damage && !C03Sent) {
 			PacketUtils.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(-1, -1, -1), 255, new ItemStack(Items.water_bucket), 0, 0.5f, 0));
-			PacketUtils.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(MC.thePlayer.posX, MC.thePlayer.posY - 1.5, MC.thePlayer.posZ), 1, new net.minecraft.item.ItemStack(Blocks.stone.getItem(MC.theWorld, new BlockPos(-1, -1, -1))), 0f, 0.94f, 0f));
-			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(MC.thePlayer.posX, MC.thePlayer.posY + 3.05, MC.thePlayer.posZ, false));
-			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(MC.thePlayer.posX, MC.thePlayer.posY, MC.thePlayer.posZ, false));
-			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(MC.thePlayer.posX, MC.thePlayer.posY+0.41999998688697815, MC.thePlayer.posZ, true));
-			MC.thePlayer.motionX = 0.0;
-			MC.thePlayer.motionY = 0.0;
-			MC.thePlayer.motionZ = 0.0;
+			PacketUtils.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY - 1.5, mc.thePlayer.posZ), 1, new net.minecraft.item.ItemStack(Blocks.stone.getItem(mc.theWorld, new BlockPos(-1, -1, -1))), 0f, 0.94f, 0f));
+			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 3.05, mc.thePlayer.posZ, false));
+			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
+			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY+0.41999998688697815, mc.thePlayer.posZ, true));
+			mc.thePlayer.motionX = 0.0;
+			mc.thePlayer.motionY = 0.0;
+			mc.thePlayer.motionZ = 0.0;
 			C03Sent = true;
 		}
 		
-		if (MC.thePlayer.hurtTime != 0) {
+		if (mc.thePlayer.hurtTime != 0) {
 			damage = true;
 		}
 		
@@ -57,18 +57,18 @@ public class LongJumpModule extends BaseModule {
 			return;
 		}
 		
-		if (MC.thePlayer.motionY > .5) {
-            MC.thePlayer.motionY = -.4F;
+		if (mc.thePlayer.motionY > .5) {
+            mc.thePlayer.motionY = -.4F;
             this.toggle();
-            MC.timer.timerSpeed = 1F;
+            mc.timer.timerSpeed = 1F;
         }
         if (damage) {
-            if (MC.thePlayer.onGround) {
-                MC.thePlayer.jump();
+            if (mc.thePlayer.onGround) {
+                mc.thePlayer.jump();
             } else {
-            	MC.thePlayer.sendQueue.getNetworkManager().sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(-1, -1, -1), 255, new ItemStack(Items.water_bucket), 0, 0.5f, 0));
-            	MC.thePlayer.sendQueue.getNetworkManager().sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(MC.thePlayer.posX, MC.thePlayer.posY - 1.5, MC.thePlayer.posZ), 1, new ItemStack(Blocks.stone.getItem(MC.theWorld, new BlockPos(-1, -1, -1))), 0, 0.94f, 0));
-                MC.thePlayer.motionY = .6F;
+            	mc.thePlayer.sendQueue.getNetworkManager().sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(-1, -1, -1), 255, new ItemStack(Items.water_bucket), 0, 0.5f, 0));
+            	mc.thePlayer.sendQueue.getNetworkManager().sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY - 1.5, mc.thePlayer.posZ), 1, new ItemStack(Blocks.stone.getItem(mc.theWorld, new BlockPos(-1, -1, -1))), 0, 0.94f, 0));
+                mc.thePlayer.motionY = .6F;
                 MovementUtils.strafe(6);
             }
         }

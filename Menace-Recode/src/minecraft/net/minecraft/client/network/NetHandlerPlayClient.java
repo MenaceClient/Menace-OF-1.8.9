@@ -815,6 +815,27 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
     {
         this.netManager.sendPacket(packet);
     }
+    
+    public void sendPacketNoEventDelayed(final Packet packet, final long delay) {
+        try {
+            new Thread(){
+
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(delay);
+                        Minecraft.getMinecraft().getNetHandler().getNetworkManager().sendPacketNoEvent(packet);
+                    }
+                    catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }.start();
+        }
+        catch (Exception exception) {
+            // empty catch block
+        }
+    }
 
     public void handleCollectItem(S0DPacketCollectItem packetIn)
     {

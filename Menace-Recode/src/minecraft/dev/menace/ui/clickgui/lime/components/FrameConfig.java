@@ -56,9 +56,9 @@ public class FrameConfig implements Priority {
         moduleAnimation.setReversed(!config.isLoaded());
         moduleAnimation.setSpeed(1000).update();
 
-        if (RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, moduleHeight) && hoveredColor) {
-            GuiScreen.drawRect(x,y, x + defaultWidth, y + moduleHeight, darkerMainColor);
-        }
+  //      if (RenderUtils.hover(x, y, mouseX, mouseY, defaultWidth, moduleHeight) && hoveredColor) {
+  //          GuiScreen.drawRect(x,y, x + defaultWidth, y + moduleHeight, darkerMainColor);
+   //     }
 
         if(config.isLoaded() || (moduleAnimation.isReversed() && moduleAnimation.getValue() != 0)) {
             GuiScreen.drawRect(x,y, x + defaultWidth, y + moduleHeight, ColorUtils.setAlpha(new Color(enabledColor), (int) moduleAnimation.getValue()).getRGB());

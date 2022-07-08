@@ -75,8 +75,8 @@ public class ScaffoldModule extends BaseModule {
     @Override
     public void onEnable() {
         rotation[0] = -69696969;
-        startY = MC.thePlayer.posY - 1;
-        oldSlot = MC.thePlayer.inventory.currentItem;
+        startY = mc.thePlayer.posY - 1;
+        oldSlot = mc.thePlayer.inventory.currentItem;
         swappedSlot = -1;
         super.onEnable();
     }
@@ -84,63 +84,63 @@ public class ScaffoldModule extends BaseModule {
     @Override
     public void onDisable() {
         if (silentSwap.getValue() && swappedSlot != -1) {
-            PacketUtils.sendPacketNoEvent(new C09PacketHeldItemChange(MC.thePlayer.inventory.currentItem));
+            PacketUtils.sendPacketNoEvent(new C09PacketHeldItemChange(mc.thePlayer.inventory.currentItem));
         } else {
-            MC.thePlayer.inventory.currentItem = oldSlot;
+            mc.thePlayer.inventory.currentItem = oldSlot;
         }
         super.onDisable();
     }
 
     @EventTarget
     public void onPre(EventPreMotion event) {
-        if (MC.thePlayer.onGround && !MovementUtils.isMoving() && startY != MC.thePlayer.posY - 1) startY = MC.thePlayer.posY - 1;
-        if (jump.getValue() && MC.thePlayer.onGround && MovementUtils.isMoving()) {
-            MC.thePlayer.jump();
+        if (mc.thePlayer.onGround && !MovementUtils.isMoving() && startY != mc.thePlayer.posY - 1) startY = mc.thePlayer.posY - 1;
+        if (jump.getValue() && mc.thePlayer.onGround && MovementUtils.isMoving()) {
+            mc.thePlayer.jump();
         }
-        MC.thePlayer.setSprinting(sprint.getValue());
+        mc.thePlayer.setSprinting(sprint.getValue());
         if (rotation[0] != -69696969 && keepRotations.getValue()) {
             event.setYaw(rotation[0]);
             event.setPitch(rotation[1]);
         }
-        BlockPos belowPlayer = new BlockPos(MC.thePlayer).down();
+        BlockPos belowPlayer = new BlockPos(mc.thePlayer).down();
         if (keepY.getValue() && MovementUtils.isMoving()) {
-            belowPlayer = new BlockPos(MC.thePlayer.posX, startY, MC.thePlayer.posZ);
+            belowPlayer = new BlockPos(mc.thePlayer.posX, startY, mc.thePlayer.posZ);
         }
 
-        if ((silentSwap.getValue() && (swappedSlot == -1 || MC.thePlayer.inventory.getStackInSlot(swappedSlot) == null)) ||
-                (!silentSwap.getValue() && (MC.thePlayer.getHeldItem() == null || !(MC.thePlayer.getHeldItem().getItem() instanceof ItemBlock)))) {
+        if ((silentSwap.getValue() && (swappedSlot == -1 || mc.thePlayer.inventory.getStackInSlot(swappedSlot) == null)) ||
+                (!silentSwap.getValue() && (mc.thePlayer.getHeldItem() == null || !(mc.thePlayer.getHeldItem().getItem() instanceof ItemBlock)))) {
             for (int i = 0; i < 9; ++i) {
-                ItemStack s = MC.thePlayer.inventory.getStackInSlot(i);
+                ItemStack s = mc.thePlayer.inventory.getStackInSlot(i);
                 if (s != null && s.getItem() instanceof ItemBlock && !InventoryUtils.BLOCK_BLACKLIST.contains(((ItemBlock)s.getItem()).getBlock())) {
                     if (silentSwap.getValue()) {
                         swappedSlot = i;
                         PacketUtils.sendPacketNoEvent(new C09PacketHeldItemChange(swappedSlot));
                     } else {
-                        MC.thePlayer.inventory.currentItem = i;
+                        mc.thePlayer.inventory.currentItem = i;
                     }
                     return;
                 }
             }
         }
 
-        if ((MC.thePlayer.getHeldItem() == null || !(MC.thePlayer.getHeldItem().getItem() instanceof ItemBlock)
-                || InventoryUtils.BLOCK_BLACKLIST.contains(((ItemBlock)MC.thePlayer.getHeldItem().getItem()).getBlock())) && swappedSlot == -1
+        if ((mc.thePlayer.getHeldItem() == null || !(mc.thePlayer.getHeldItem().getItem() instanceof ItemBlock)
+                || InventoryUtils.BLOCK_BLACKLIST.contains(((ItemBlock)mc.thePlayer.getHeldItem().getItem()).getBlock())) && swappedSlot == -1
                 || !BlockUtils.getMaterial(belowPlayer).isReplaceable()) return;
 
-        if (MC.gameSettings.keyBindJump.isKeyDown() && tower.getValue() && (!keepY.getValue() || !MovementUtils.isMoving())) {
-            MC.thePlayer.motionY = 0.42;
+        if (mc.gameSettings.keyBindJump.isKeyDown() && tower.getValue() && (!keepY.getValue() || !MovementUtils.isMoving())) {
+            mc.thePlayer.motionY = 0.42;
         }
         placeBlockSimple(belowPlayer, event);
     }
 
     public void placeBlockSimple(final BlockPos pos, EventPreMotion event) {
-        final Vec3 eyesPos = new Vec3(MC.thePlayer.posX, MC.thePlayer.posY + MC.thePlayer.getEyeHeight(), MC.thePlayer.posZ);
+        final Vec3 eyesPos = new Vec3(mc.thePlayer.posX, mc.thePlayer.posY + mc.thePlayer.getEyeHeight(), mc.thePlayer.posZ);
         EnumFacing[] values;
         for (int length = (values = EnumFacing.values()).length, i = 0; i < length; ++i) {
             final EnumFacing side = values[i];
             final BlockPos neighbor = pos.offset(side);
             final EnumFacing side2 = side.getOpposite();
-            if (BlockUtils.getBlock(neighbor).canCollideCheck(MC.theWorld.getBlockState(neighbor), false)) {
+            if (BlockUtils.getBlock(neighbor).canCollideCheck(mc.theWorld.getBlockState(neighbor), false)) {
                 final Vec3 hitVec = new Vec3(neighbor).addVector(0.5, 0.5, 0.5).add(new Vec3(side2.getDirectionVec()).scale(0.5));
                 if (eyesPos.squareDistanceTo(hitVec) <= 36.0) {
 
@@ -153,18 +153,18 @@ public class ScaffoldModule extends BaseModule {
                     }
 
                     if (silentSwap.getValue() && swappedSlot != -1) {
-                        MC.playerController.onPlayerRightClick(MC.thePlayer, MC.theWorld, MC.thePlayer.inventory.getStackInSlot(swappedSlot), neighbor, side2, hitVec);
+                        mc.playerController.onPlayerRightClick(mc.thePlayer, mc.theWorld, mc.thePlayer.inventory.getStackInSlot(swappedSlot), neighbor, side2, hitVec);
                     } else {
-                        MC.playerController.onPlayerRightClick(MC.thePlayer, MC.theWorld, MC.thePlayer.getCurrentEquippedItem(), neighbor, side2, hitVec);
+                        mc.playerController.onPlayerRightClick(mc.thePlayer, mc.theWorld, mc.thePlayer.getCurrentEquippedItem(), neighbor, side2, hitVec);
                     }
 
                     if (noSwing.getValue()) {
                         PacketUtils.sendPacket(new C0APacketAnimation());
                     } else {
-                        MC.thePlayer.swingItem();
+                        mc.thePlayer.swingItem();
                     }
 
-                    MC.rightClickDelayTimer = 4;
+                    mc.rightClickDelayTimer = 4;
                 }
             }
         }
@@ -180,9 +180,9 @@ public class ScaffoldModule extends BaseModule {
     @EventTarget
     public void on3D(Event3D event) {
         if (!render.getValue()) return;
-        BlockPos belowPlayer = new BlockPos(MC.thePlayer).down();
+        BlockPos belowPlayer = new BlockPos(mc.thePlayer).down();
         if (keepY.getValue() && MovementUtils.isMoving()) {
-            belowPlayer = new BlockPos(MC.thePlayer.posX, startY, MC.thePlayer.posZ);
+            belowPlayer = new BlockPos(mc.thePlayer.posX, startY, mc.thePlayer.posZ);
         }
         RenderUtils.drawBlock(belowPlayer, Color.RED, 3);
     }
@@ -194,7 +194,7 @@ public class ScaffoldModule extends BaseModule {
     }
 
     private float @NotNull [] aimAtLocation(final double x, final double y, final double z, final @NotNull EnumFacing facing) {
-        final EntitySnowball temp = new EntitySnowball(MC.theWorld);
+        final EntitySnowball temp = new EntitySnowball(mc.theWorld);
         temp.posX = x + 0.5;
         temp.posY = y - 2.7035252353;
         temp.posZ = z + 0.5;
@@ -212,9 +212,9 @@ public class ScaffoldModule extends BaseModule {
 
     @Contract("_, _, _ -> new")
     private float @NotNull [] aimAtLocation(final double positionX, final double positionY, final double positionZ) {
-        final double x = positionX - MC.thePlayer.posX;
-        final double y = positionY - MC.thePlayer.posY;
-        final double z = positionZ - MC.thePlayer.posZ;
+        final double x = positionX - mc.thePlayer.posX;
+        final double y = positionY - mc.thePlayer.posY;
+        final double z = positionZ - mc.thePlayer.posZ;
         final double distance = MathHelper.sqrt_double(x * x + z * z);
         return new float[] { (float)(Math.atan2(z, x) * 180.0 / 3.141592653589793) - 90.0f, (float)(-(Math.atan2(y, distance) * 180.0 / 3.141592653589793)) };
     }

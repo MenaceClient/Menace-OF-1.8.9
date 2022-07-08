@@ -30,7 +30,7 @@ public final class MenaceAuthScreen
 extends GuiScreen {
 	private final GuiScreen previousScreen;
 	private GuiTextField username;
-	private String status = "§7Waiting...";
+	private String status = "Â§7Waiting...";
 	private GLSLShader backgroundShader;
 	private long initTime = System.currentTimeMillis();
 	MenaceFontRenderer text = MenaceFontRenderer.getFontOnPC("Arial", 35);
@@ -135,10 +135,10 @@ extends GuiScreen {
 
 	private void login() {
 		this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-		status = "§eLogging in...";
+		status = "Â§eLogging in...";
 
 		if (username.getText() == null) {
-			status = "§cPlease type in your UID.";
+			status = "Â§cPlease type in your UID.";
 			return;
 		}
 
@@ -146,7 +146,7 @@ extends GuiScreen {
 			Integer.valueOf(username.getText());
 		}
 		catch (NumberFormatException e) {
-			status = "§c" + username.getText() + " is not a number dumbass.";
+			status = "Â§c" + username.getText() + " is not a number dumbass.";
 			return;
 		}
 
@@ -157,18 +157,18 @@ extends GuiScreen {
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(uc.getInputStream(), StandardCharsets.UTF_8));
 			bufferedReader.close();
 		} catch (IOException e) {
-			status = "§cConnection Failed, could not connect to the Menace Servers.";
+			status = "Â§cConnection Failed, could not connect to the Menace Servers.";
 			e.printStackTrace();
 			return;
 		}
 
 		if (!HWIDManager.readHWIDURL().contains(HWIDManager.getHWID())) {
-			status = "§cHWID not whitelisted.";
+			status = "Â§cHWID not whitelisted.";
 			return;
 		}
 
 		if (HWIDManager.getUID(HWIDManager.getHWID()) != Integer.parseInt(username.getText())) {
-			status = "§cInvalid UID.";
+			status = "Â§cInvalid UID.";
 			return;
 		}
 

@@ -13,7 +13,7 @@ public class FastPlaceModule extends BaseModule {
 
 	@EventTarget
 	public void onUpdate(EventUpdate event) {
-		MC.rightClickDelayTimer = 0;
+		mc.rightClickDelayTimer = 0;
 	}
 	
 }

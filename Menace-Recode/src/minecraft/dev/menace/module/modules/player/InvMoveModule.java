@@ -6,6 +6,9 @@ import dev.menace.event.events.EventUpdate;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.module.settings.ToggleSetting;
+import dev.menace.ui.clickgui.csgo.CSGOGui;
+import dev.menace.ui.clickgui.lime.LimeClickGUI;
+import dev.menace.ui.clickgui.vape.VapeGui;
 import dev.menace.utils.player.PacketUtils;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -40,18 +43,18 @@ public class InvMoveModule extends BaseModule {
 
     @Override
     public void onDisable() {
-        if (!GameSettings.isKeyDown(MC.gameSettings.keyBindForward) || MC.currentScreen != null)
-            MC.gameSettings.keyBindForward.pressed = false;
-        if (!GameSettings.isKeyDown(MC.gameSettings.keyBindBack) || MC.currentScreen != null)
-            MC.gameSettings.keyBindBack.pressed = false;
-        if (!GameSettings.isKeyDown(MC.gameSettings.keyBindRight) || MC.currentScreen != null)
-            MC.gameSettings.keyBindRight.pressed = false;
-        if (!GameSettings.isKeyDown(MC.gameSettings.keyBindLeft) || MC.currentScreen != null)
-            MC.gameSettings.keyBindLeft.pressed = false;
-        if (!GameSettings.isKeyDown(MC.gameSettings.keyBindJump) || MC.currentScreen != null)
-            MC.gameSettings.keyBindJump.pressed = false;
-        if (!GameSettings.isKeyDown(MC.gameSettings.keyBindSprint) || MC.currentScreen != null)
-            MC.gameSettings.keyBindSprint.pressed = false;
+        if (!GameSettings.isKeyDown(mc.gameSettings.keyBindForward) || mc.currentScreen != null)
+            mc.gameSettings.keyBindForward.pressed = false;
+        if (!GameSettings.isKeyDown(mc.gameSettings.keyBindBack) || mc.currentScreen != null)
+            mc.gameSettings.keyBindBack.pressed = false;
+        if (!GameSettings.isKeyDown(mc.gameSettings.keyBindRight) || mc.currentScreen != null)
+            mc.gameSettings.keyBindRight.pressed = false;
+        if (!GameSettings.isKeyDown(mc.gameSettings.keyBindLeft) || mc.currentScreen != null)
+            mc.gameSettings.keyBindLeft.pressed = false;
+        if (!GameSettings.isKeyDown(mc.gameSettings.keyBindJump) || mc.currentScreen != null)
+            mc.gameSettings.keyBindJump.pressed = false;
+        if (!GameSettings.isKeyDown(mc.gameSettings.keyBindSprint) || mc.currentScreen != null)
+            mc.gameSettings.keyBindSprint.pressed = false;
 
         blink();
         super.onDisable();
@@ -59,22 +62,22 @@ public class InvMoveModule extends BaseModule {
 
     @EventTarget
     public void onUpdate(@NotNull EventUpdate event) {
-        if (MC.currentScreen instanceof GuiContainer) {
-            MC.gameSettings.keyBindForward.pressed = GameSettings.isKeyDown(MC.gameSettings.keyBindForward);
-            MC.gameSettings.keyBindBack.pressed = GameSettings.isKeyDown(MC.gameSettings.keyBindBack);
-            MC.gameSettings.keyBindRight.pressed = GameSettings.isKeyDown(MC.gameSettings.keyBindRight);
-            MC.gameSettings.keyBindLeft.pressed = GameSettings.isKeyDown(MC.gameSettings.keyBindLeft);
-            MC.gameSettings.keyBindJump.pressed = GameSettings.isKeyDown(MC.gameSettings.keyBindJump);
-            MC.gameSettings.keyBindSprint.pressed = GameSettings.isKeyDown(MC.gameSettings.keyBindSprint);
+        if (mc.currentScreen instanceof GuiContainer || mc.currentScreen instanceof VapeGui || mc.currentScreen instanceof LimeClickGUI || mc.currentScreen instanceof CSGOGui) {
+            mc.gameSettings.keyBindForward.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindForward);
+            mc.gameSettings.keyBindBack.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindBack);
+            mc.gameSettings.keyBindRight.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindRight);
+            mc.gameSettings.keyBindLeft.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindLeft);
+            mc.gameSettings.keyBindJump.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindJump);
+            mc.gameSettings.keyBindSprint.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindSprint);
             if (rotate.getValue()) {
                 if (Keyboard.isKeyDown(Keyboard.KEY_RIGHT)) {
-                    MC.thePlayer.rotationYaw += 1;
+                    mc.thePlayer.rotationYaw += 1;
                 } else if (Keyboard.isKeyDown(Keyboard.KEY_LEFT)) {
-                    MC.thePlayer.rotationYaw -= 1;
+                    mc.thePlayer.rotationYaw -= 1;
                 } else if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
-                    MC.thePlayer.rotationPitch -= 1;
+                    mc.thePlayer.rotationPitch -= 1;
                 } else if (Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
-                    MC.thePlayer.rotationPitch += 1;
+                    mc.thePlayer.rotationPitch += 1;
                 }
             }
         } else {
@@ -84,7 +87,7 @@ public class InvMoveModule extends BaseModule {
 
     @EventTarget
     public void onSendPacket(EventSendPacket event) {
-        if (!(MC.currentScreen instanceof GuiContainer) || !blink.getValue()) return;
+        if (!(mc.currentScreen instanceof GuiContainer && mc.currentScreen instanceof VapeGui && mc.currentScreen instanceof CSGOGui && mc.currentScreen instanceof LimeClickGUI) || !blink.getValue()) return;
         if (event.getPacket() instanceof C03PacketPlayer.C04PacketPlayerPosition || event.getPacket() instanceof C03PacketPlayer.C06PacketPlayerPosLook ||
                 event.getPacket() instanceof C08PacketPlayerBlockPlacement ||
                 event.getPacket() instanceof C0APacketAnimation ||

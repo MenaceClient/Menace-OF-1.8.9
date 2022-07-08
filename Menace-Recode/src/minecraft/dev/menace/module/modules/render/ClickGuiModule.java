@@ -32,20 +32,20 @@ public class ClickGuiModule extends BaseModule {
 	@Override
 	public void onEnable() {
 		super.onEnable();
-		if (MC.currentScreen instanceof CSGOGui || MC.currentScreen instanceof LimeClickGUI) {
+		if (mc.currentScreen instanceof CSGOGui || mc.currentScreen instanceof LimeClickGUI) {
 			return;
 		}
 		
 		switch (mode.getValue()) {
 			case "Dropdown" :
 				limeGui.config.reload();
-				MC.displayGuiScreen(limeGui);
+				mc.displayGuiScreen(limeGui);
 				break;
 			case "Panel" :
-				MC.displayGuiScreen(csgoGui);
+				mc.displayGuiScreen(csgoGui);
 				break;
 			case "Dashboard" :
-				MC.displayGuiScreen(new VapeGui());
+				mc.displayGuiScreen(new VapeGui());
 				break;
 		}
 	}

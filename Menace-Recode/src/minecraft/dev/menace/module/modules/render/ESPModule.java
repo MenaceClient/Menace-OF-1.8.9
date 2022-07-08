@@ -15,8 +15,8 @@ public class ESPModule extends BaseModule {
 
     @EventTarget
     public void on3D(Event3D event) {
-        MC.theWorld.playerEntities.forEach(p -> {
-            if (p != MC.thePlayer) {
+        mc.theWorld.playerEntities.forEach(p -> {
+            if (p != mc.thePlayer) {
                 RenderUtils.drawEntityBox(p, Color.red, true);
             }
         });

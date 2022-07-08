@@ -105,7 +105,7 @@ public class HUDModule extends BaseModule {
 			public void constantCheck() {
 				if (this.getValue()) {
 					this.setValue(false);
-					MC.displayGuiScreen(new HUDConfigScreen(Menace.instance.hudManager));
+					mc.displayGuiScreen(new HUDConfigScreen(Menace.instance.hudManager));
 				}
 			}
 		};

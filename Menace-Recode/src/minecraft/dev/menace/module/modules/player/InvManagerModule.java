@@ -31,23 +31,23 @@ public class InvManagerModule extends BaseModule {
 		int gappleSlot = 4;
 		int blockSlot = 8;
 		
-		if (!(MC.currentScreen instanceof GuiInventory)) return;
+		if (!(mc.currentScreen instanceof GuiInventory)) return;
 
-		float damage = InventoryUtils.getDamage(MC.thePlayer.inventoryContainer.getSlot(swordSlot).getStack());
+		float damage = InventoryUtils.getDamage(mc.thePlayer.inventoryContainer.getSlot(swordSlot).getStack());
 
-		float pickValue =  InventoryUtils.getToolEffect(MC.thePlayer.inventoryContainer.getSlot(pickSlot).getStack());
+		float pickValue =  InventoryUtils.getToolEffect(mc.thePlayer.inventoryContainer.getSlot(pickSlot).getStack());
 
-		float axeValue =  InventoryUtils.getToolEffect(MC.thePlayer.inventoryContainer.getSlot(axeSlot).getStack());
+		float axeValue =  InventoryUtils.getToolEffect(mc.thePlayer.inventoryContainer.getSlot(axeSlot).getStack());
 
-		float shovelValue =  InventoryUtils.getToolEffect(MC.thePlayer.inventoryContainer.getSlot(shovelSlot).getStack());
+		float shovelValue =  InventoryUtils.getToolEffect(mc.thePlayer.inventoryContainer.getSlot(shovelSlot).getStack());
 
-		int blockValue = MC.thePlayer.inventoryContainer.getSlot(blockSlot).getStack() != null ?
-				MC.thePlayer.inventoryContainer.getSlot(blockSlot).getStack().stackSize : 0;
+		int blockValue = mc.thePlayer.inventoryContainer.getSlot(blockSlot).getStack() != null ?
+				mc.thePlayer.inventoryContainer.getSlot(blockSlot).getStack().stackSize : 0;
 
 		for(int i = 9; i < 45; ++i) {
 
-			if (MC.thePlayer.inventoryContainer.getSlot(i).getHasStack()) {
-				ItemStack is = MC.thePlayer.inventoryContainer.getSlot(i).getStack();
+			if (mc.thePlayer.inventoryContainer.getSlot(i).getHasStack()) {
+				ItemStack is = mc.thePlayer.inventoryContainer.getSlot(i).getStack();
 				
 				//Sword
 				if (InventoryUtils.getDamage(is) > damage && (is.getItem() instanceof ItemSword)) {
@@ -74,13 +74,13 @@ public class InvManagerModule extends BaseModule {
 				}
 				
 				//Gapple
-				if (is.getItem() == Items.golden_apple && (MC.thePlayer.inventoryContainer.getSlot(gappleSlot).getStack() == null
-						|| MC.thePlayer.inventoryContainer.getSlot(gappleSlot).getStack().stackSize < 64)) {
+				if (is.getItem() == Items.golden_apple && (mc.thePlayer.inventoryContainer.getSlot(gappleSlot).getStack() == null
+						|| mc.thePlayer.inventoryContainer.getSlot(gappleSlot).getStack().stackSize < 64)) {
 
-					if (MC.thePlayer.inventoryContainer.getSlot(gappleSlot).getStack() == null) {
+					if (mc.thePlayer.inventoryContainer.getSlot(gappleSlot).getStack() == null) {
 						InventoryUtils.swap(i, gappleSlot);
 					} else {
-						InventoryUtils.shiftClick(i, MC.thePlayer.inventoryContainer.windowId);
+						InventoryUtils.shiftClick(i, mc.thePlayer.inventoryContainer.windowId);
 					}
 				}
 				

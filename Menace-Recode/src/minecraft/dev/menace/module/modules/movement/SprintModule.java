@@ -28,7 +28,7 @@ public class SprintModule extends BaseModule {
 	@EventTarget
 	public void onUpdate(EventUpdate event) {
 		if (MovementUtils.isMoving() && (!Menace.instance.moduleManager.scaffoldModule.isToggled() || Menace.instance.moduleManager.scaffoldModule.sprint.getValue())) {
-			MC.thePlayer.setSprinting(true);
+			mc.thePlayer.setSprinting(true);
 		}
 	}
 
