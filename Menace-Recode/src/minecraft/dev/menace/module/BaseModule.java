@@ -45,6 +45,8 @@ public class BaseModule {
         }
 		
 		this.setup();
+
+
 		
 		visible = new ToggleSetting("Visible", true, true);
 		this.rSetting(visible);
@@ -82,6 +84,12 @@ public class BaseModule {
 	}
 	
 	public void setup() {}
+	public void onUpdate() {}
+	public void onRender() {}
+
+	public String getValue() {
+		return null;
+	}
 
 	public void onEnable() {
 		Menace.instance.eventManager.register(this);
@@ -169,5 +177,5 @@ public class BaseModule {
 	public void setVisible(boolean visible) {
 		this.visible.setValue(visible);
 	}
-	
+
 }
