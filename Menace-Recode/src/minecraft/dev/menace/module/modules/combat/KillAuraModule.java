@@ -73,7 +73,7 @@ public class KillAuraModule extends BaseModule {
 	public KillAuraModule() {
 		super("KillAura", Category.COMBAT, 0);
 	}
-	
+
 	@Override
 	public void setup() {
 		reach = new SliderSetting("Reach", true, 3, 1, 7, 0.1, false);
@@ -139,7 +139,7 @@ public class KillAuraModule extends BaseModule {
 		this.rSetting(invisibles);
 		super.setup();
 	}
-	
+
 	@Override
 	public void onEnable() {
 		delayTimer.reset();
@@ -151,25 +151,25 @@ public class KillAuraModule extends BaseModule {
 		nextDelay = (long) (randomBetween(minValue, maxValue) - rand.nextInt(10) + rand.nextInt(10));
 		blocking = false;
 		shouldFakeBlock = false;
-		lastRotations[0] = MC.thePlayer.rotationYaw;
-		lastRotations[1] = MC.thePlayer.rotationPitch;
+		lastRotations[0] = mc.thePlayer.rotationYaw;
+		lastRotations[1] = mc.thePlayer.rotationPitch;
 		super.onEnable();
 	}
-	
+
 	@Override
 	public void onDisable() {
 		target = null;
 		unblock();
 		super.onDisable();
 	}
-	
+
 	@EventTarget
 	public void onPreMotion(EventPreMotion event) {
 		this.setDisplayName(rotation.getValue());
 		if (target == null) {
-			lastRotations = new float[] {MC.thePlayer.rotationYaw, MC.thePlayer.rotationPitch};
+			lastRotations = new float[] {mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch};
 		}
-		if (target != null && (target.isDead || target.getHealth() <= 0) && target instanceof EntityPlayer && target != MC.thePlayer) {
+		if (target != null && (target.isDead || target.getHealth() <= 0) && target instanceof EntityPlayer && target != mc.thePlayer) {
 			Menace.instance.moduleManager.killSultsModule.insult((EntityPlayer) target);
 			Menace.instance.hudManager.gameStatsElement.kills++;
 		}
@@ -208,7 +208,7 @@ public class KillAuraModule extends BaseModule {
 			attack();
 		}
 	}
-	
+
 	@EventTarget
 	public void onPostMotion(EventPostMotion event) {
 		if (attackevent.getValue().equalsIgnoreCase("Post")) {
@@ -223,74 +223,74 @@ public class KillAuraModule extends BaseModule {
 			this.toggle();
 		}
 	}
-	
+
 	public void getTarget() {
 		if ((mode.getValue().equalsIgnoreCase("Single") && isValid(target))
-		|| (mode.getValue().equalsIgnoreCase("Switch") &&
+				|| (mode.getValue().equalsIgnoreCase("Switch") &&
 				!switchTimer.hasTimePassed(switchDelay.getValueL()) && isValid(target))) return;
 		Comparator<Entity> entityFilter = null;
 		switch (filter.getValue()) {
 
-		case "Health" :
-			entityFilter = Comparator.comparingInt(e -> (int) ((EntityLivingBase) e).getHealth());
-			break;
+			case "Health" :
+				entityFilter = Comparator.comparingInt(e -> (int) ((EntityLivingBase) e).getHealth());
+				break;
 
-		case "Distance" :
-			entityFilter = (e1, e2) -> (int)MC.thePlayer.getDistanceToEntity(e1) - (int)MC.thePlayer.getDistanceToEntity(e2);
-			break;
-			
-		case "Angle" : 
-			entityFilter = (e1, e2) -> (int)MathUtils.getAngleDifference(MC.thePlayer.rotationYaw, PlayerUtils.getRotations(e1)[0]) - (int)MathUtils.getAngleDifference(MC.thePlayer.rotationYaw, PlayerUtils.getRotations(e2)[0]);
-			break;
-		
-		case "TicksExisted" : 
-			entityFilter = Comparator.comparingInt(e -> e.ticksExisted);
-			break;
+			case "Distance" :
+				entityFilter = (e1, e2) -> (int)mc.thePlayer.getDistanceToEntity(e1) - (int)mc.thePlayer.getDistanceToEntity(e2);
+				break;
+
+			case "Angle" :
+				entityFilter = (e1, e2) -> (int)MathUtils.getAngleDifference(mc.thePlayer.rotationYaw, PlayerUtils.getRotations(e1)[0]) - (int)MathUtils.getAngleDifference(mc.thePlayer.rotationYaw, PlayerUtils.getRotations(e2)[0]);
+				break;
+
+			case "TicksExisted" :
+				entityFilter = Comparator.comparingInt(e -> e.ticksExisted);
+				break;
 		}
 
 		assert entityFilter != null;
-		if (MC.theWorld.loadedEntityList.stream()
+		if (mc.theWorld.loadedEntityList.stream()
 				.filter(this::isValid).sorted(entityFilter).toArray().length > 0) {
-			target = (EntityLivingBase) MC.theWorld.loadedEntityList.stream()
+			target = (EntityLivingBase) mc.theWorld.loadedEntityList.stream()
 					.filter(this::isValid).sorted(entityFilter).toArray()[0];
 		} else {
 			target = null;
 		}
 	}
-	
+
 	public void attack() {
 		if (!delayTimer.hasTimePassed(nextDelay) || target == null || Menace.instance.moduleManager.scaffoldModule.isToggled()) {
 			return;
 		}
-		
+
 		if (raycast.getValue()) {
-            final MovingObjectPosition objectMouseOver = RayCastUtils.getMouseOver(MC.thePlayer.prevRotationYaw, MC.thePlayer.prevRotationPitch, reach.getValueF());
+			final MovingObjectPosition objectMouseOver = RayCastUtils.getMouseOver(mc.thePlayer.prevRotationYaw, mc.thePlayer.prevRotationPitch, reach.getValueF());
 			assert objectMouseOver != null;
 			if (target != objectMouseOver.entityHit && objectMouseOver.entityHit instanceof EntityLivingBase) {
-                target = (EntityLivingBase) objectMouseOver.entityHit;
-            }
-        }
-		
+				target = (EntityLivingBase) objectMouseOver.entityHit;
+			}
+		}
+
 		if (noswing.getValue()) {
 			PacketUtils.addToSendQueue(new C0APacketAnimation());
 		} else {
-			MC.thePlayer.swingItem();
+			mc.thePlayer.swingItem();
 		}
 
 		if (mode.getValue().equalsIgnoreCase("Multi")) {
-			MC.theWorld.loadedEntityList.stream()
+			mc.theWorld.loadedEntityList.stream()
 					.filter(this::isValid).forEach(e -> {
 						if (keepSprint.getValue()) {
 							PacketUtils.sendPacket(new C02PacketUseEntity(e, C02PacketUseEntity.Action.ATTACK));
 						} else {
-							MC.playerController.attackEntity(MC.thePlayer, e);
+							mc.playerController.attackEntity(mc.thePlayer, e);
 						}
 					});
 		} else {
 			if (keepSprint.getValue()) {
 				PacketUtils.sendPacket(new C02PacketUseEntity(target, C02PacketUseEntity.Action.ATTACK));
 			} else {
-				MC.playerController.attackEntity(MC.thePlayer, target);
+				mc.playerController.attackEntity(mc.thePlayer, target);
 			}
 		}
 
@@ -305,12 +305,12 @@ public class KillAuraModule extends BaseModule {
 	public double randomBetween(final double min, final double max) {
 		return min + (rand.nextDouble() * (max - min));
 	}
-	
+
 	private boolean isValid(Entity e) {
 		return e instanceof EntityLivingBase
-				&& e != MC.thePlayer
+				&& e != mc.thePlayer
 				&& e != Menace.instance.moduleManager.blinkModule.fp
-				&& MC.thePlayer.getDistanceToEntity(e) <= reach.getValue()
+				&& mc.thePlayer.getDistanceToEntity(e) <= reach.getValue()
 				&& isInFOV(e, fov.getValue())
 				&& !e.isDead
 				&& e.ticksExisted >= ticksExisted.getValueI()
@@ -319,31 +319,31 @@ public class KillAuraModule extends BaseModule {
 				&& (!(e instanceof EntityMob) || hostiles.getValue())
 				&& (!(e instanceof EntityAnimal) || passives.getValue())
 				&& (!e.isInvisible() || invisibles.getValue())
-				&& (MC.thePlayer.canEntityBeSeen(e) || throughwalls.getValue())
-				&& (ininv.getValue() || MC.currentScreen == null);
+				&& (mc.thePlayer.canEntityBeSeen(e) || throughwalls.getValue())
+				&& (ininv.getValue() || mc.currentScreen == null);
 	}
 
 	private void block() {
 		if (autoblock.getValue().equalsIgnoreCase("Fake")) shouldFakeBlock = true;
-		if (MC.thePlayer.getHeldItem() == null
-				|| !(MC.thePlayer.getHeldItem().getItem() instanceof ItemSword)
+		if (mc.thePlayer.getHeldItem() == null
+				|| !(mc.thePlayer.getHeldItem().getItem() instanceof ItemSword)
 				|| !autoblock.getValue().equalsIgnoreCase("Vanilla")) return;
 
-		MC.playerController.sendUseItem(MC.thePlayer, MC.theWorld, MC.thePlayer.getHeldItem());
+		mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.getHeldItem());
 		blocking = true;
 	}
 
 	private void unblock() {
 		shouldFakeBlock = false;
 		if (!blocking) return;
-		MC.playerController.onStoppedUsingItem(MC.thePlayer);
+		mc.playerController.onStoppedUsingItem(mc.thePlayer);
 		blocking = false;
 	}
-	
+
 	private boolean isInFOV(Entity entity, double angle) {
-        angle *= .5D;
-        double angleDiff = MathUtils.getAngleDifference(MC.thePlayer.rotationYaw, PlayerUtils.getRotations(entity)[0]);
-        return (angleDiff > 0 && angleDiff < angle) || (-angle < angleDiff && angleDiff < 0);
-    }
+		angle *= .5D;
+		double angleDiff = MathUtils.getAngleDifference(mc.thePlayer.rotationYaw, PlayerUtils.getRotations(entity)[0]);
+		return (angleDiff > 0 && angleDiff < angle) || (-angle < angleDiff && angleDiff < 0);
+	}
 
 }

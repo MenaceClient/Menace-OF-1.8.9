@@ -3,9 +3,10 @@ package dev.menace.ui.hud.elements;
 import dev.menace.Menace;
 import dev.menace.event.EventTarget;
 import dev.menace.event.events.EventDeath;
+import dev.menace.module.modules.render.HUDModule;
 import dev.menace.ui.hud.BaseElement;
 import dev.menace.utils.misc.ChatUtils;
-import dev.menace.utils.misc.ColorUtils;
+import dev.menace.utils.render.ColorUtils;
 import dev.menace.utils.render.RenderUtils;
 import dev.menace.utils.timer.MSTimer;
 import net.minecraft.client.Minecraft;
@@ -40,12 +41,13 @@ public class GameStatsElement extends BaseElement {
     @Override
     public void render() {
         RenderUtils.drawRoundedRect(this.getAbsoluteX(), this.getAbsoluteY(), this.getAbsoluteX() + this.getStringWidth("") + 150, this.getAbsoluteY() + 60, 5, new Color(0, 0, 0, 120).getRGB());
-
+        HUDModule hudModule = Menace.instance.moduleManager.hudModule;
+        int color = hudModule.color.getValue().equalsIgnoreCase("Custom") ? new Color(hudModule.red.getValueI(), hudModule.green.getValueI(), hudModule.blue.getValueI(), hudModule.alpha.getValueI()).getRGB() : ColorUtils.fade(hudModule.rainbowSpeed.getValueF(), -this.getAbsoluteY()).getRGB();
         this.drawString("Statistics", this.getAbsoluteX() + 50, this.getAbsoluteY() + 3	, Color.white.getRGB());
-        this.drawString("-------------------------", this.getAbsoluteX() + 0, this.getAbsoluteY() + 12, ColorUtils.getRainbow(10, 0.6f, 1));
-        this.drawString("-------------------------", this.getAbsoluteX() + 1, this.getAbsoluteY() + 12, ColorUtils.getRainbow(10, 0.6f, 1));
+        this.drawString("-------------------------", this.getAbsoluteX(), this.getAbsoluteY() + 12, color);
+        this.drawString("-------------------------", this.getAbsoluteX() + 1, this.getAbsoluteY() + 12, color);
 
-        
+
         this.drawString("Username: " + Minecraft.getMinecraft().thePlayer.getName(), this.getAbsoluteX() + 4, this.getAbsoluteY() + 20, Color.white.getRGB());
 
         LocalTime lt = LocalTime.ofSecondOfDay(timer.timePassed() / 1000);

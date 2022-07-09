@@ -43,21 +43,21 @@ public class DamageFly extends FlightBase {
 	@Override
 	public void onEnable() {
 
-		if (!MC.thePlayer.onGround) {
+		if (!mc.thePlayer.onGround) {
 			Menace.instance.moduleManager.flightModule.setToggled(false);
 			//Menace.instance.notificationManager.addNotification(new Notification("You can only enable this fly on the ground.", Color.YELLOW, 1000L));
 			return;
 		}
 		
 		if (Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Basic")) {
-			MC.getNetHandler().addToSendQueue(new C04PacketPlayerPosition(MC.thePlayer.posX, MC.thePlayer.posY + 3.25, MC.thePlayer.posZ, false));
-			MC.getNetHandler().addToSendQueue(new C04PacketPlayerPosition(MC.thePlayer.posX, MC.thePlayer.posY, MC.thePlayer.posZ, false));
-			MC.getNetHandler().addToSendQueue(new C04PacketPlayerPosition(MC.thePlayer.posX, MC.thePlayer.posY, MC.thePlayer.posZ, true));
-			MC.thePlayer.motionX = 0.0;
-			MC.thePlayer.motionY = 0.0;
-			MC.thePlayer.motionZ = 0.0;
+			mc.getNetHandler().addToSendQueue(new C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 3.25, mc.thePlayer.posZ, false));
+			mc.getNetHandler().addToSendQueue(new C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
+			mc.getNetHandler().addToSendQueue(new C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, true));
+			mc.thePlayer.motionX = 0.0;
+			mc.thePlayer.motionY = 0.0;
+			mc.thePlayer.motionZ = 0.0;
 			flyable = true;
-			MC.timer.timerSpeed = 0.5f;
+			mc.timer.timerSpeed = 0.5f;
 			timer.reset();
 		} else if (Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Verus")) {
 			
@@ -67,8 +67,8 @@ public class DamageFly extends FlightBase {
 			
 		} else if (Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Bow")) {
 			damage = false;
-			oldYaw = MC.thePlayer.rotationYaw;
-			oldPitch = MC.thePlayer.rotationPitch;
+			oldYaw = mc.thePlayer.rotationYaw;
+			oldPitch = mc.thePlayer.rotationPitch;
 		} else {
 			damage = false;
 		}
@@ -78,17 +78,17 @@ public class DamageFly extends FlightBase {
 	@Override
 	public void onPreMotion(EventPreMotion event) {
 		if (!Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Bow") || damage || shot) return;	
-		if (MC.thePlayer.getHeldItem() != null &&
-				MC.thePlayer.getHeldItem().getItem() instanceof ItemBow) {
-			Packet C07 = new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN);
-			Packet C08 = new C08PacketPlayerBlockPlacement(MC.thePlayer.inventory.getCurrentItem());
-			MC.thePlayer.rotationPitch = -90f;
+		if (mc.thePlayer.getHeldItem() != null &&
+				mc.thePlayer.getHeldItem().getItem() instanceof ItemBow) {
+			C07PacketPlayerDigging C07 = new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN);
+			C08PacketPlayerBlockPlacement C08 = new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getCurrentItem());
+			mc.thePlayer.rotationPitch = -90f;
 			count++;
 			if (count >= 4) {
-				MC.thePlayer.sendQueue.addToSendQueue(C07);
+				mc.thePlayer.sendQueue.addToSendQueue(C07);
 				count = 0;
 			} else if (count == 1) {
-				MC.thePlayer.sendQueue.addToSendQueue(C08);
+				mc.thePlayer.sendQueue.addToSendQueue(C08);
 			}
 		}
 	}
@@ -99,7 +99,7 @@ public class DamageFly extends FlightBase {
 		flyable = false;
 		shot = false;
 		C03Sent = false;
-		MC.timer.timerSpeed = 1f;
+		mc.timer.timerSpeed = 1f;
 		doUp = false;
 		jumpCount = 0;
 	}
@@ -110,44 +110,44 @@ public class DamageFly extends FlightBase {
 		if (Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Verus") && C03Count >= 4 && !damage && C03Sent == false) {
 			//Menace.instance.notificationManager.addNotification(new Notification("Damaging", 1000L));
 			PacketUtils.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(-1, -1, -1), 255, new ItemStack(Items.water_bucket), 0, 0.5f, 0));
-			PacketUtils.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(MC.thePlayer.posX, MC.thePlayer.posY - 1.5, MC.thePlayer.posZ), 1, new net.minecraft.item.ItemStack(Blocks.stone.getItem(MC.theWorld, new BlockPos(-1, -1, -1))), 0f, 0.94f, 0f));
-			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(MC.thePlayer.posX, MC.thePlayer.posY + 3.05, MC.thePlayer.posZ, false));
-			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(MC.thePlayer.posX, MC.thePlayer.posY, MC.thePlayer.posZ, false));
-			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(MC.thePlayer.posX, MC.thePlayer.posY+0.41999998688697815, MC.thePlayer.posZ, true));
-			MC.thePlayer.motionX = 0.0;
-			MC.thePlayer.motionY = 0.0;
-			MC.thePlayer.motionZ = 0.0;
-			MC.timer.timerSpeed = 0.5f;
+			PacketUtils.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY - 1.5, mc.thePlayer.posZ), 1, new net.minecraft.item.ItemStack(Blocks.stone.getItem(mc.theWorld, new BlockPos(-1, -1, -1))), 0f, 0.94f, 0f));
+			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 3.05, mc.thePlayer.posZ, false));
+			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
+			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY+0.41999998688697815, mc.thePlayer.posZ, true));
+			mc.thePlayer.motionX = 0.0;
+			mc.thePlayer.motionY = 0.0;
+			mc.thePlayer.motionZ = 0.0;
+			mc.timer.timerSpeed = 0.5f;
 			timer.reset();
 			C03Sent = true;
 		}
 		
 		if (Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Bow") && !shot && !damage) {
-			for (Entity e : MC.theWorld.loadedEntityList) {
-				if (e instanceof EntityArrow && ((EntityArrow)e).shootingEntity == MC.thePlayer && !((EntityArrow)e).inGround) {
+			for (Entity e : mc.theWorld.loadedEntityList) {
+				if (e instanceof EntityArrow && ((EntityArrow)e).shootingEntity == mc.thePlayer && !((EntityArrow)e).inGround) {
 					shot = true;
-					MC.thePlayer.rotationPitch = oldPitch;
-					MC.thePlayer.rotationYaw = oldYaw;
+					mc.thePlayer.rotationPitch = oldPitch;
+					mc.thePlayer.rotationYaw = oldYaw;
 					if (oldSlot != -1) {
-						MC.thePlayer.inventory.currentItem = oldSlot;
+						mc.thePlayer.inventory.currentItem = oldSlot;
 					}
 				}
 			}
 		}
 		
-		if (Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Jump") && jumpCount < 3 && MC.thePlayer.onGround) {
-			MC.thePlayer.jump();
+		if (Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Jump") && jumpCount < 3 && mc.thePlayer.onGround) {
+			mc.thePlayer.jump();
 			jumpCount++;
 		}
 
-		if (!damage && MC.thePlayer.hurtTime > 0) {
+		if (!damage && mc.thePlayer.hurtTime > 0) {
 			damage = true;
-			MC.thePlayer.motionX = 0.0;
-			MC.thePlayer.motionY = 0.0;
-			MC.thePlayer.motionZ = 0.0;
+			mc.thePlayer.motionX = 0.0;
+			mc.thePlayer.motionY = 0.0;
+			mc.thePlayer.motionZ = 0.0;
 			flyable = true;
 			doUp = true;
-			MC.timer.timerSpeed = 0.5f;
+			mc.timer.timerSpeed = 0.5f;
 			timer.reset();
 			//Menace.instance.notificationManager.addNotification(new TimeredNotification("$TIMER$ms till slowdown", timer, 1500L));
 			//PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(MC.thePlayer.posX, MC.thePlayer.posY + 0.5, MC.thePlayer.posZ, true));
@@ -166,9 +166,9 @@ public class DamageFly extends FlightBase {
 		}
 		
 		if (!flyable && Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Verus")) {
-			MC.gameSettings.keyBindJump.pressed = false;
-			if (MC.thePlayer.onGround) {
-				MC.thePlayer.jump();
+			mc.gameSettings.keyBindJump.pressed = false;
+			if (mc.thePlayer.onGround) {
+				mc.thePlayer.jump();
 				MovementUtils.strafe(0.48F);
 			} else {
 				MovementUtils.strafe();
@@ -177,16 +177,16 @@ public class DamageFly extends FlightBase {
 		}
 
 		if (timer.hasTimePassed(300)) {
-			MC.timer.timerSpeed = 1f;
+			mc.timer.timerSpeed = 1f;
 		}
 
 		if (flyable && timer.hasTimePassed(100)) {
 			MovementUtils.strafe((float) Menace.instance.moduleManager.flightModule.speed.getValue());
-			if (MC.thePlayer.isCollidedHorizontally && Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Verus")) flyable = false;
+			if (mc.thePlayer.isCollidedHorizontally && Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Verus")) flyable = false;
 		} else if (!timer.hasTimePassed(100)) {
-			MC.thePlayer.motionX = 0.0;
-			MC.thePlayer.motionY = 0.0;
-			MC.thePlayer.motionZ = 0.0;
+			mc.thePlayer.motionX = 0.0;
+			mc.thePlayer.motionY = 0.0;
+			mc.thePlayer.motionZ = 0.0;
 		}
 	}
 
@@ -236,7 +236,7 @@ public class DamageFly extends FlightBase {
 			doUp = false;
 		}
 		
-		if (flyable && MC.gameSettings.keyBindJump.isKeyDown()) {
+		if (flyable && mc.gameSettings.keyBindJump.isKeyDown()) {
 			event.setY(0.5);
 			this.launchY += 0.5;
 		}

@@ -87,7 +87,7 @@ public class InvMoveModule extends BaseModule {
 
     @EventTarget
     public void onSendPacket(EventSendPacket event) {
-        if (!(mc.currentScreen instanceof GuiContainer && mc.currentScreen instanceof VapeGui && mc.currentScreen instanceof CSGOGui && mc.currentScreen instanceof LimeClickGUI) || !blink.getValue()) return;
+        if (!(mc.currentScreen instanceof GuiContainer) || !blink.getValue()) return;
         if (event.getPacket() instanceof C03PacketPlayer.C04PacketPlayerPosition || event.getPacket() instanceof C03PacketPlayer.C06PacketPlayerPosLook ||
                 event.getPacket() instanceof C08PacketPlayerBlockPlacement ||
                 event.getPacket() instanceof C0APacketAnimation ||

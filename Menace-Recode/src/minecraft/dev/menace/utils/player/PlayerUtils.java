@@ -9,6 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityEgg;
 import net.minecraft.util.*;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 public class PlayerUtils {
@@ -103,7 +104,8 @@ public class PlayerUtils {
         return new float[]{fixedYaw, fixedPitch};
     }
 
-    public static Vec3 getEyesPos() {
+    @Contract(" -> new")
+    public static @NotNull Vec3 getEyesPos() {
         return new Vec3(MC.thePlayer.posX, MC.thePlayer.posY + MC.thePlayer.getEyeHeight(), MC.thePlayer.posZ);
     }
 

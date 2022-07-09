@@ -62,7 +62,7 @@ public class BlinkModule extends BaseModule {
             fp.clonePlayer(mc.thePlayer, true);
             fp.copyLocationAndAnglesFrom(mc.thePlayer);
             fp.rotationYawHead = mc.thePlayer.rotationYawHead;
-            mc.theWorld.addEntityToWorld(-1337, fp);
+			mc.theWorld.addEntityToWorld(-1337, fp);
         }
 		super.onEnable();
 	}
@@ -85,7 +85,7 @@ public class BlinkModule extends BaseModule {
 	public void onDisable() {
 		blink();
 		if (fp != null) {
-            mc.theWorld.removeEntityFromWorld(fp.entityId);
+			mc.theWorld.removeEntityFromWorld(fp.entityId);
             fp = null;
         }
 		super.onDisable();
@@ -93,7 +93,7 @@ public class BlinkModule extends BaseModule {
 	
 	public void blink() {
 		if (fp != null) {
-            mc.theWorld.removeEntityFromWorld(fp.entityId);
+			mc.theWorld.removeEntityFromWorld(fp.entityId);
             fp = null;
         }
 		while (!packets.isEmpty()) {
@@ -104,7 +104,7 @@ public class BlinkModule extends BaseModule {
             fp.clonePlayer(mc.thePlayer, true);
             fp.copyLocationAndAnglesFrom(mc.thePlayer);
             fp.rotationYawHead = mc.thePlayer.rotationYawHead;
-            mc.theWorld.addEntityToWorld(-1337, fp);
+			mc.theWorld.addEntityToWorld(-1337, fp);
         }
 	}
 

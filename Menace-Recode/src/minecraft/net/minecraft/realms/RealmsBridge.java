@@ -30,7 +30,6 @@ public class RealmsBridge extends RealmsScreen
         }
     }
 
-
     public void init()
     {
         Minecraft.getMinecraft().displayGuiScreen(this.previousScreen);

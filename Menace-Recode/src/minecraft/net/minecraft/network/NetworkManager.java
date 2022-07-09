@@ -265,7 +265,24 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet>
                 this.readWriteLock.writeLock().unlock();
             }
         }
-    } 
+    }
+
+    public void sendPacketNoEventDelayed(final Packet packet, final long delay) {
+        try {
+            new Thread(() -> {
+                try {
+                    Thread.sleep(delay);
+                    sendPacketNoEvent(packet);
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        }
+        catch (Exception exception) {
+            // empty catch block
+        }
+    }
 
     /**
      * Will commit the packet to the channel. If the current thread 'owns' the channel it will write and flush the

@@ -12,6 +12,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
 import net.minecraft.network.play.client.C09PacketHeldItemChange;
 import net.minecraft.potion.Potion;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,13 +43,13 @@ public class AutoPotModule extends BaseModule {
 
     @EventTarget
     public void onPre(EventPreMotion event) {
-        if (MC.thePlayer.getActivePotionEffect(Potion.moveSpeed) != null || !MC.thePlayer.onGround || !delayTimer.hasTimePassed(delay.getValueL())) return;
+        if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed) != null || !mc.thePlayer.onGround || !delayTimer.hasTimePassed(delay.getValueL())) return;
 
         int potionSlot = -1;
-        int oldSlot = MC.thePlayer.inventory.currentItem;
+        int oldSlot = mc.thePlayer.inventory.currentItem;
 
         for (int i = 0; i < 9; ++i) {
-            ItemStack s = MC.thePlayer.inventory.getStackInSlot(i);
+            ItemStack s = mc.thePlayer.inventory.getStackInSlot(i);
             if (s != null && s.getItem() instanceof ItemPotion && ItemPotion.isSplash(s.getMetadata())) {
                 List<Potion> effects = new ArrayList<>();
                 ItemPotion potion = (ItemPotion) s.getItem();
@@ -65,11 +67,12 @@ public class AutoPotModule extends BaseModule {
 
         PacketUtils.sendPacket(new C09PacketHeldItemChange(potionSlot));
         event.setPitch(90);
-        PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(MC.thePlayer.inventory.getStackInSlot(potionSlot)));
+        PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getStackInSlot(potionSlot)));
         PacketUtils.sendPacket(new C09PacketHeldItemChange(oldSlot));
     }
 
-    private Potion getPotionByID(int id) {
+    @Contract(pure = true)
+    private @Nullable Potion getPotionByID(int id) {
         for (Potion p : Potion.field_180150_I.values()) {
             if (p.id == id) return p;
         }

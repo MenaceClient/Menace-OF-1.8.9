@@ -16,11 +16,11 @@ public class DevModule extends BaseModule {
 	
 	@Override
 	public void onEnable() {
-		ChatUtils.message(String.valueOf(MC.thePlayer.rotationYaw));
-		ChatUtils.message(String.valueOf(MC.thePlayer.rotationPitch));
-		ChatUtils.message(String.valueOf(MC.thePlayer.posX));
-		ChatUtils.message(String.valueOf(MC.thePlayer.posY));
-		ChatUtils.message(String.valueOf(MC.thePlayer.posZ));
+		ChatUtils.message(String.valueOf(mc.thePlayer.rotationYaw));
+		ChatUtils.message(String.valueOf(mc.thePlayer.rotationPitch));
+		ChatUtils.message(String.valueOf(mc.thePlayer.posX));
+		ChatUtils.message(String.valueOf(mc.thePlayer.posY));
+		ChatUtils.message(String.valueOf(mc.thePlayer.posZ));
 		super.onEnable();
 	}
 	

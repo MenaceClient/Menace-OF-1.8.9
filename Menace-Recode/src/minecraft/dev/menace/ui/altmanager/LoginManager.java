@@ -55,9 +55,12 @@ public class LoginManager {
 	}
 	
 	public static void alteningPremiumLogin(String apiKey) throws NoSuchFieldException, IllegalAccessException, AuthenticationException {
-		TheAltening altening = new TheAltening();
-	
+		TheAltening altening = new TheAltening(apiKey);
+		AccountData acc = altening.getAccountData();
 		
+		if (acc == null) return;
+		
+		alteningLogin(acc.getToken());
 	}
 	
 	public static void microsoftEmailLogin(String email, String password) throws MicrosoftAuthenticationException, NoSuchFieldException, IllegalAccessException {

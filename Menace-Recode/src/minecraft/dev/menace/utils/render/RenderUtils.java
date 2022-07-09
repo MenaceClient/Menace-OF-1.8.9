@@ -746,12 +746,4 @@ public class RenderUtils {
 	public static Color brighter(Color color, float percentage) {
 		return new Color(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, percentage);
 	}
-
-	public static @NotNull Color fade(float speed, float off) {
-
-		double time = (double) System.currentTimeMillis() / speed;
-		time += off;
-		time %= 255.0f;
-		return Color.getHSBColor((float) (time / 255.0f), 1.0f, 1.0f);
-	}
 }

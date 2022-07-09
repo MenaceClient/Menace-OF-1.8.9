@@ -68,84 +68,84 @@ public class StaffDetectorModule extends BaseModule {
     @EventTarget
     public void onRecievePacket(@NotNull EventReceivePacket event) {
         if (event.getPacket() instanceof S1DPacketEntityEffect) {
-            Entity entity = MC.theWorld.getEntityByID(((S1DPacketEntityEffect)event.getPacket()).getEntityId());
+            Entity entity = mc.theWorld.getEntityByID(((S1DPacketEntityEffect)event.getPacket()).getEntityId());
             if (entity != null && (obStaffs.contains(entity.getName()) || obStaffs.contains(entity.getDisplayName().getUnformattedText()))) {
                 if (!detected) {
                     ChatUtils.message("Staff Detected! (" + entity.getName() + ")");
-                    MC.thePlayer.sendChatMessage("/leave");
+                    mc.thePlayer.sendChatMessage("/leave");
                     detected = true;
                 }
             }
         }
         if (event.getPacket() instanceof S18PacketEntityTeleport) {
-            Entity entity = MC.theWorld.getEntityByID(((S18PacketEntityTeleport)event.getPacket()).getEntityId());
+            Entity entity = mc.theWorld.getEntityByID(((S18PacketEntityTeleport)event.getPacket()).getEntityId());
             if (entity != null && (obStaffs.contains(entity.getName()) || obStaffs.contains(entity.getDisplayName().getUnformattedText()))) {
                 if (!detected) {
                     ChatUtils.message("Staff Detected! (" + entity.getName() + ")");
-                    MC.thePlayer.sendChatMessage("/leave");
+                    mc.thePlayer.sendChatMessage("/leave");
                     detected = true;
                 }
             }
         }
         if (event.getPacket() instanceof S20PacketEntityProperties) {
-            Entity entity = MC.theWorld.getEntityByID(((S20PacketEntityProperties)event.getPacket()).getEntityId());
+            Entity entity = mc.theWorld.getEntityByID(((S20PacketEntityProperties)event.getPacket()).getEntityId());
             if (entity != null && (obStaffs.contains(entity.getName()) || obStaffs.contains(entity.getDisplayName().getUnformattedText()))) {
                 if (!detected) {
                     ChatUtils.message("Staff Detected! (" + entity.getName() + ")");
-                    MC.thePlayer.sendChatMessage("/leave");
+                    mc.thePlayer.sendChatMessage("/leave");
                     detected = true;
                 }
             }
         }
         if (event.getPacket() instanceof S0BPacketAnimation) {
-            Entity entity = MC.theWorld.getEntityByID(((S0BPacketAnimation)event.getPacket()).getEntityID());
+            Entity entity = mc.theWorld.getEntityByID(((S0BPacketAnimation)event.getPacket()).getEntityID());
             if (entity != null && (obStaffs.contains(entity.getName()) || obStaffs.contains(entity.getDisplayName().getUnformattedText()))) {
                 if (!detected) {
                     ChatUtils.message("Staff Detected! (" + entity.getName() + ")");
-                    MC.thePlayer.sendChatMessage("/leave");
+                    mc.thePlayer.sendChatMessage("/leave");
                     detected = true;
                 }
             }
         }
         if (event.getPacket() instanceof S14PacketEntity) {
-            Entity entity = ((S14PacketEntity)event.getPacket()).getEntity(MC.theWorld);
+            Entity entity = ((S14PacketEntity)event.getPacket()).getEntity(mc.theWorld);
             if (entity != null && (obStaffs.contains(entity.getName()) || obStaffs.contains(entity.getDisplayName().getUnformattedText()))) {
                 if (!detected) {
                     ChatUtils.message("Staff Detected! (" + entity.getName() + ")");
-                    MC.thePlayer.sendChatMessage("/leave");
+                    mc.thePlayer.sendChatMessage("/leave");
                     detected = true;
                 }
             }
         }
         if (event.getPacket() instanceof S19PacketEntityStatus) {
-            Entity entity = ((S19PacketEntityStatus)event.getPacket()).getEntity(MC.theWorld);
+            Entity entity = ((S19PacketEntityStatus)event.getPacket()).getEntity(mc.theWorld);
 
             if (entity != null && (obStaffs.contains(entity.getName()) || obStaffs.contains(entity.getDisplayName().getUnformattedText()))) {
                 if (!detected) {
                     ChatUtils.message("Staff Detected! (" + entity.getName() + ")");
-                    MC.thePlayer.sendChatMessage("/leave");
+                    mc.thePlayer.sendChatMessage("/leave");
                     detected = true;
                 }
             }
         }
         if (event.getPacket() instanceof S19PacketEntityHeadLook) {
-            Entity entity = ((S19PacketEntityHeadLook)event.getPacket()).getEntity(MC.theWorld);
+            Entity entity = ((S19PacketEntityHeadLook)event.getPacket()).getEntity(mc.theWorld);
 
             if (entity != null && (obStaffs.contains(entity.getName()) || obStaffs.contains(entity.getDisplayName().getUnformattedText()))) {
                 if (!detected) {
                     ChatUtils.message("Staff Detected! (" + entity.getName() + ")");
-                    MC.thePlayer.sendChatMessage("/leave");
+                    mc.thePlayer.sendChatMessage("/leave");
                     detected = true;
                 }
             }
         }
         if (event.getPacket() instanceof S49PacketUpdateEntityNBT) {
-            Entity entity = ((S49PacketUpdateEntityNBT)event.getPacket()).getEntity(MC.theWorld);
+            Entity entity = ((S49PacketUpdateEntityNBT)event.getPacket()).getEntity(mc.theWorld);
 
             if (entity != null && (obStaffs.contains(entity.getName()) || obStaffs.contains(entity.getDisplayName().getUnformattedText()))) {
                 if (!detected) {
                     ChatUtils.message("Staff Detected! (" + entity.getName() + ")");
-                    MC.thePlayer.sendChatMessage("/leave");
+                    mc.thePlayer.sendChatMessage("/leave");
                     detected = true;
                 }
             }
@@ -160,7 +160,6 @@ public class StaffDetectorModule extends BaseModule {
     public static @NotNull List<String> readURL() {
         List<String> s = new ArrayList<>();
         try {
-            //final URL url = new URL("https://themoskau.github.io/LiquidCloud/LiquidBounce/staffs.txt");
             final URL url = new URL("https://add-my-brain.exit-scammed.repl.co/staff/");
             URLConnection uc = url.openConnection();
             uc.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");

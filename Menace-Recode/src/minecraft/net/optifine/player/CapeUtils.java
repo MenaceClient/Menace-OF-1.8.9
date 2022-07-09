@@ -70,7 +70,7 @@ public class CapeUtils
 
         BufferedImage bufferedimage = new BufferedImage(i, j, 2);
         Graphics graphics = bufferedimage.getGraphics();
-        graphics.drawImage(img, 0, 0, (ImageObserver)null);
+        graphics.drawImage(img, 0, 0, null);
         graphics.dispose();
         return bufferedimage;
     }
@@ -94,7 +94,7 @@ public class CapeUtils
             texturemanager.deleteTexture(resourcelocation);
         }
 
-        player.setLocationOfCape((ResourceLocation)null);
+        player.setLocationOfCape(null);
         player.setElytraOfCape(false);
         downloadCape(player);
     }

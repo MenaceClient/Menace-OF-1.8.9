@@ -5,7 +5,7 @@ import net.minecraft.network.Packet;
 
 public class EventSendPacket extends Event {
 
-	public Packet packet;
+	private Packet packet;
 	
 	public EventSendPacket(Packet packet) {
 		this.packet = packet;

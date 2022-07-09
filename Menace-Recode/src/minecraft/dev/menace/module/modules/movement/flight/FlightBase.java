@@ -6,7 +6,7 @@ import net.minecraft.client.Minecraft;
 public class FlightBase {
 
 	public double launchX, launchY, launchZ;
-	public Minecraft MC = Minecraft.getMinecraft();
+	public Minecraft mc = Minecraft.getMinecraft();
 	
 	public void onEnable() {}
 	public void onDisable() {}

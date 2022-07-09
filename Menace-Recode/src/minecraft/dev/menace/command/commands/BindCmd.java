@@ -1,5 +1,6 @@
 package dev.menace.command.commands;
 
+import org.jetbrains.annotations.NotNull;
 import org.lwjgl.input.Keyboard;
 
 import dev.menace.Menace;
@@ -13,7 +14,7 @@ public class BindCmd extends BaseCommand {
 	}
 
 	@Override
-	public void call(String[] args) {
+	public void call(String @NotNull [] args) {
 		
 		Menace.instance.moduleManager
 		.getModules()

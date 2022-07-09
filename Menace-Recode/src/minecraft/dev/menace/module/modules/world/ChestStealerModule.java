@@ -79,8 +79,8 @@ public class ChestStealerModule extends BaseModule {
 			mc.thePlayer.closeScreen();
 		}
 		
-		if (!(mc.currentScreen instanceof GuiChest) 
-				|| isEmpty((GuiChest) mc.currentScreen) 
+		if (!(mc.currentScreen instanceof GuiChest)
+				|| isEmpty((GuiChest) mc.currentScreen)
 				|| isInvFull()
 				|| !delayTimer.hasTimePassed(nextDelay)
 				|| (chestOnly.getValue() && !((GuiChest)mc.currentScreen).lowerChestInventory.getName().contains(new ItemStack(Item.itemRegistry.getObject(new ResourceLocation("minecraft:chest"))).getDisplayName())))

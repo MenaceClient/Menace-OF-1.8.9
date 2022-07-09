@@ -137,7 +137,7 @@ public class VapeGui extends GuiScreen {
 
         RenderUtils.drawRect(windowX, windowY, windowX + width, windowY + height, new Color(21, 22, 25).getRGB());
         if (selectMod == null) {
-            f.drawString("MENACE", windowX + 20, windowY + height - 40, new Color(255, 255, 255).getRGB());
+            f.drawString("MENACE", windowX + 20, windowY + height - 20, new Color(77, 78, 84).getRGB());
         }
 
         float typeX = windowX + 20;

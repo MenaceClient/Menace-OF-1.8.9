@@ -50,7 +50,6 @@
     "Toggled": true,
     "Settings": {
       "Mode": "Simple",
-      "OnlyDamage": false,
       "Explosions": true,
       "Visible": true
     }
@@ -98,6 +97,12 @@
   },
   "Strafe": {
     "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "AntiCactus": {
+    "Toggled": true,
     "Settings": {
       "Visible": true
     }

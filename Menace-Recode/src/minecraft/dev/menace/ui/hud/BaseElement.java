@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import dev.menace.Menace;
 import dev.menace.module.modules.render.HUDModule;
+import dev.menace.utils.render.ColorUtils;
 import dev.menace.utils.render.MenaceFontRenderer;
 import dev.menace.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
@@ -76,7 +77,7 @@ public abstract class BaseElement {
 		switch (hudModule.color.getValue()) {
 		
 		case "Fade" :
-			color = RenderUtils.fade(hudModule.rainbowSpeed.getValueF(), -y).getRGB();
+			color = ColorUtils.fade(hudModule.rainbowSpeed.getValueF(), -y).getRGB();
 			break;
 		
 		case "Custom" :

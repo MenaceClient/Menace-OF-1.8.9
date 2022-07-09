@@ -6,12 +6,12 @@ public class MotionFly extends FlightBase {
 
 	@Override
 	public void onUpdate() {
-		MC.thePlayer.motionY = 0;
+		mc.thePlayer.motionY = 0;
 		
-		if (MC.gameSettings.keyBindSneak.isKeyDown()) {
-			MC.thePlayer.motionY = -0.1;
-		} else if (MC.gameSettings.keyBindJump.isKeyDown()) {
-			MC.thePlayer.motionY = 0.1;
+		if (mc.gameSettings.keyBindSneak.isKeyDown()) {
+			mc.thePlayer.motionY = -0.1;
+		} else if (mc.gameSettings.keyBindJump.isKeyDown()) {
+			mc.thePlayer.motionY = 0.1;
 		}
 	}
 	

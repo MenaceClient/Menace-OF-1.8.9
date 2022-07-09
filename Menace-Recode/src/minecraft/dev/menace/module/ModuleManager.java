@@ -3,7 +3,6 @@ package dev.menace.module;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.google.gson.JsonObject;
 
@@ -17,15 +16,12 @@ import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
 import dev.menace.utils.file.FileManager;
-import dev.menace.utils.misc.ChatUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.crash.CrashReport;
 
 public class ModuleManager {
 
 	public ArrayList<BaseModule> modules = new ArrayList<BaseModule>();
 	public String selectedConfig = "default";
-	public static Minecraft mc = Minecraft.getMinecraft();
 
 	//COMBAT
 	AutoPotModule autoPotModule = new AutoPotModule();
@@ -43,8 +39,9 @@ public class ModuleManager {
 	StrafeModule strafeModule = new StrafeModule();
 	
 	//PLAYER
+	AntiCactusModule antiCactusModule = new AntiCactusModule();
 	public BlinkModule blinkModule = new BlinkModule();
-	InvManagerModule invManagerModule = new InvManagerModule();
+	//InvManagerModule invManagerModule = new InvManagerModule();
 	InvMoveModule invMoveModule = new InvMoveModule();
 	NoFallModule noFallModule = new NoFallModule();
 	NoSlowModule noSlowModule = new NoSlowModule();
@@ -58,6 +55,7 @@ public class ModuleManager {
 	
 	//RENDER
 	public AnimationsModule animationsModule = new AnimationsModule();
+	CapeModule capeModule = new CapeModule();
 	public ClickGuiModule clickGuiModule = new ClickGuiModule();
 	ESPModule espModule = new ESPModule();
 	FullbrightModule fullbrightModule = new FullbrightModule();
@@ -67,7 +65,7 @@ public class ModuleManager {
 	
 	//MISC
 	AutoLoginModule autoLoginModule = new AutoLoginModule();
-	DevModule devModule = new DevModule();
+	//DevModule devModule = new DevModule();
 	DisablerModule disablerModule = new DisablerModule();
 	public KillSultsModule killSultsModule = new KillSultsModule();
 	StaffDetectorModule staffDetectorModule = new StaffDetectorModule();
@@ -176,9 +174,7 @@ public class ModuleManager {
 
 	public void saveKeys() {
 		JsonObject bindFile = new JsonObject();
-		this.modules.forEach(module -> {
-			bindFile.addProperty(module.getName(), module.getKeybind());
-		});
+		this.modules.forEach(module -> bindFile.addProperty(module.getName(), module.getKeybind()));
 		FileManager.writeJsonToFile(new File(FileManager.getConfigFolder(), "Binds.json"), bindFile);
 	}
 

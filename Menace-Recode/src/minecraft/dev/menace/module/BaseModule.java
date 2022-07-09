@@ -25,7 +25,6 @@ public class BaseModule {
 	private ArrayList<Setting> settings = new ArrayList<>();
 	
 	protected final Minecraft mc = Minecraft.getMinecraft();
-	protected final Minecraft MC = Minecraft.getMinecraft();
 	
 	public BaseModule(String name, Category category, int keybind) {
 		this.name = name;
@@ -155,7 +154,7 @@ public class BaseModule {
 	}
 	
 	public String getDisplayName() {
-		return displayName != null ? getName() + " ยง7- " + displayName + "" : getName();
+		return displayName != null ? getName() + " ง7- " + displayName : getName();
 	}
 	
 	public void setDisplayName(String displayName) {

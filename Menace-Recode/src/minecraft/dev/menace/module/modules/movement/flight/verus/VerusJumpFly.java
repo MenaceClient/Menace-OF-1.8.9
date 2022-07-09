@@ -10,8 +10,8 @@ public class VerusJumpFly extends FlightBase {
 
 	@Override
 	public void onUpdate() {
-		if (MC.thePlayer.onGround) {
-			MC.thePlayer.jump();
+		if (mc.thePlayer.onGround) {
+			mc.thePlayer.jump();
 		}
 		MovementUtils.strafe();
 	}

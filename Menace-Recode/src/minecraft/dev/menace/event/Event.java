@@ -3,12 +3,11 @@ package dev.menace.event;
 import java.lang.reflect.InvocationTargetException;
 
 import dev.menace.Menace;
-import net.minecraft.network.Packet;
 
 public abstract class Event {
 
 	private boolean cancelled;
-	public Packet packet;
+
 	public enum State {
 		PRE("PRE", 0), POST("POST", 1);
 		private State(String string, int number) {
@@ -21,12 +20,6 @@ public abstract class Event {
 		return this;
 	}
 
-	
-	public Packet getPacket()
-    {
-        return packet;
-    }
-	
 	public boolean isCancelled() {
 		return this.cancelled;
 	}

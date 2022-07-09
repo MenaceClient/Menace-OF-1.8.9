@@ -10,7 +10,7 @@ import net.minecraft.util.BlockPos;
 public class C08PacketPlayerBlockPlacement implements Packet<INetHandlerPlayServer>
 {
     private static final BlockPos field_179726_a = new BlockPos(-1, -1, -1);
-    public BlockPos position;
+    private BlockPos position;
     private int placedBlockDirection;
     private ItemStack stack;
     private float facingX;
@@ -107,5 +107,9 @@ public class C08PacketPlayerBlockPlacement implements Packet<INetHandlerPlayServ
     public float getPlacedBlockOffsetZ()
     {
         return this.facingZ;
+    }
+
+    public void setPosition(BlockPos position) {
+        this.position = position;
     }
 }

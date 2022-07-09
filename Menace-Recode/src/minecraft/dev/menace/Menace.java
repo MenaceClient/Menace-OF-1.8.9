@@ -41,7 +41,6 @@ public class Menace {
 
 	public static Menace instance = new Menace();
 	public Minecraft MC = Minecraft.getMinecraft();
-	public String buildName = "Menace Recode Indev";
 	public EventManager eventManager;
 	public ModuleManager moduleManager;
 	public CommandManager cmdManager;
@@ -50,8 +49,6 @@ public class Menace {
 	public DiscordRP discordRP;
 	public DiscordUser discordUser;
 	public MenaceUser user;
-	
-	public boolean isFirstLaunch;
 	
 	public void startClient() {
 		System.out.println("[Menace] Starting Client...");

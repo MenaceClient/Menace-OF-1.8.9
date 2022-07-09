@@ -35,22 +35,22 @@ public class CriticalsModule extends BaseModule {
                 C02PacketUseEntity packet = (C02PacketUseEntity)event.getPacket();
                 if(packet.getAction() == C02PacketUseEntity.Action.ATTACK) {
                     if(mode.getValue().equalsIgnoreCase("Packet")) {
-                        MC.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(MC.thePlayer.posX, MC.thePlayer.posY + 0.0625, MC.thePlayer.posZ, true));
-                        MC.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer(false));
-                        MC.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(MC.thePlayer.posX, MC.thePlayer.posY + 1.1E-5, MC.thePlayer.posZ, false));
-                        MC.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer(false));
+                        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.0625, mc.thePlayer.posZ, true));
+                        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer(false));
+                        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 1.1E-5, mc.thePlayer.posZ, false));
+                        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer(false));
                     }
                 }
                 if(mode.getValue().equalsIgnoreCase("MiniJump")) {
-                    MC.thePlayer.jump();
-                    MC.thePlayer.motionY -= .30000001192092879;
+                    mc.thePlayer.jump();
+                    mc.thePlayer.motionY -= .30000001192092879;
                 }
             }
         }
     }
 
     private boolean canCrit() {
-        return MC.thePlayer != null && !PlayerUtils.isInLiquid() && MC.thePlayer.onGround;
+        return mc.thePlayer != null && !PlayerUtils.isInLiquid() && mc.thePlayer.onGround;
     }
 }
 

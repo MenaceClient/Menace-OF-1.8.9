@@ -92,7 +92,7 @@ public class FlightModule extends BaseModule {
 				}
 			}
 		};
-		otherMode = new ListSetting("OtherMode", false, "Blocksmc", otherValues.toArray(new String[] {})) {
+		otherMode = new ListSetting("OtherMode", false, "BlocksMC", otherValues.toArray(new String[] {})) {
 			@Override
 			public void constantCheck() {
 				this.setVisible(Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Other"));
@@ -112,9 +112,8 @@ public class FlightModule extends BaseModule {
 		speed = new SliderSetting("Speed", false, 2, 1, 10, true) {
 			@Override
 			public void constantCheck() {
-				if (Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Vanilla") 
-						&& Menace.instance.moduleManager.flightModule.vanillaMode.getValue().equalsIgnoreCase("Damage"))
-				{
+				if (Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Vanilla")
+						&& Menace.instance.moduleManager.flightModule.vanillaMode.getValue().equalsIgnoreCase("Damage")) {
 					this.setVisible(true);
 				} else {
 					this.setVisible(false);

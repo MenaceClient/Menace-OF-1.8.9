@@ -8,21 +8,21 @@ public class CreativeFly extends FlightBase {
 	
 	@Override
 	public void onEnable() {
-		allowFlying = MC.thePlayer.capabilities.allowFlying;
-		MC.thePlayer.capabilities.allowFlying = true;
-		MC.thePlayer.capabilities.isFlying = true;
+		allowFlying = mc.thePlayer.capabilities.allowFlying;
+		mc.thePlayer.capabilities.allowFlying = true;
+		mc.thePlayer.capabilities.isFlying = true;
 	}
 	
 	@Override
 	public void onUpdate() {
-		MC.thePlayer.capabilities.allowFlying = true;
-		MC.thePlayer.capabilities.isFlying = true;
+		mc.thePlayer.capabilities.allowFlying = true;
+		mc.thePlayer.capabilities.isFlying = true;
 	}
 	
 	@Override
 	public void onDisable() {
-		MC.thePlayer.capabilities.allowFlying = allowFlying;
-		MC.thePlayer.capabilities.isFlying = false;
+		mc.thePlayer.capabilities.allowFlying = allowFlying;
+		mc.thePlayer.capabilities.isFlying = false;
 	}
 	
 }

@@ -18,7 +18,7 @@ public class SpeedModule extends BaseModule {
 
     @Override
     public void setup() {
-        speed = new SliderSetting("Speed", true, 1, 0, 10, 0.1, false);
+        speed = new SliderSetting("Speed", true, 1, 1, 10, 0.1, false);
         this.rSetting(speed);
         super.setup();
     }
@@ -28,8 +28,10 @@ public class SpeedModule extends BaseModule {
         if (!MovementUtils.shouldMove()) return;
         if (mc.thePlayer.onGround) {
             mc.thePlayer.jump();
+            MovementUtils.strafe(speed.getValue() == 1 ? MovementUtils.getSpeed() : (speed.getValueF() / 10));
         }
-        MovementUtils.strafe((float)speed.getValue());
+
+        MovementUtils.strafe();
     }
 
 }

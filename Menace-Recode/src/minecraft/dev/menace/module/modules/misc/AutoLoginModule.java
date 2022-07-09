@@ -9,8 +9,6 @@ import net.minecraft.network.play.server.S02PacketChat;
 import org.jetbrains.annotations.NotNull;
 
 public class AutoLoginModule extends BaseModule {
-
-    Thread loginThread;
     public AutoLoginModule() {
         super("AutoLogin", Category.MISC, 0);
     }
@@ -20,20 +18,15 @@ public class AutoLoginModule extends BaseModule {
         if (event.getPacket() instanceof S02PacketChat) {
             String message = ((S02PacketChat)event.getPacket()).getChatComponent().getUnformattedText();
             if (message.contains("/register <password> <password>")) {
-                loginThread = new Thread("AutoLoginThread") {
-                    @Override
-                    public void run() {
-
-                        MSTimer loginTimer = new MSTimer();
-                        loginTimer.reset();
-
-                        while (!loginTimer.hasTimePassed(700)) {}
-
-                        MC.thePlayer.sendChatMessage("/register password password");
-                        super.run();
+                new Thread(() -> {
+                    try {
+                        Thread.sleep(2000);
+                        mc.thePlayer.sendChatMessage("/register password password");
                     }
-                };
-                loginThread.start();
+                    catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }).start();
             }
         }
     }

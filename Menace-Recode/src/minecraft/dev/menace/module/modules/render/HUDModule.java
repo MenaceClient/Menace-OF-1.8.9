@@ -117,7 +117,7 @@ public class HUDModule extends BaseModule {
 		this.rSetting(pos);
 		this.rSetting(posMode);
 		this.rSetting(gameStats);
-		this.rSetting(customFont);
+		//this.rSetting(customFont);
 		this.rSetting(color);
 		this.rSetting(rainbowSpeed);
 		this.rSetting(red);

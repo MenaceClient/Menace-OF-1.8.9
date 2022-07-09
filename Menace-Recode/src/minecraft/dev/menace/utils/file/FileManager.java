@@ -29,7 +29,7 @@ public class FileManager {
 
 	public static void init() {
 
-		if (!menaceFolder.exists()) {menaceFolder.mkdirs(); Menace.instance.isFirstLaunch = true;}
+		if (!menaceFolder.exists()) {menaceFolder.mkdirs();}
 		if (!hudFolder.exists()) {hudFolder.mkdirs();}
 		if (!configFolder.exists()) {configFolder.mkdirs();}
 		if (!scriptFolder.exists()) {scriptFolder.mkdirs();}

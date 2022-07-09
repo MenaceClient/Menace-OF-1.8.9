@@ -13,31 +13,31 @@
     }
   },
   "Criticals": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
-      "Mode": "Packet",
+      "Mode": "MiniJump",
       "Visible": true
     }
   },
   "KillAura": {
     "Toggled": false,
     "Settings": {
-      "Reach": 3.0,
+      "Reach": 7.0,
       "MinCPS": 10.0,
-      "MaxCPS": 10.0,
+      "MaxCPS": 13.0,
       "TicksExisted": 10.0,
       "FOV": 360.0,
-      "Mode": "Single",
+      "Mode": "Multi",
       "Switch Delay": 100.0,
       "Attack Event": "Pre",
       "Filter": "Health",
-      "Rotation": "None",
-      "AutoBlock": "None",
+      "Rotation": "SpinBot",
+      "AutoBlock": "Vanilla",
       "KeepSprint": true,
       "NoSwing": false,
-      "ThroughWalls": false,
-      "InInventory": false,
-      "RayCast": false,
+      "ThroughWalls": true,
+      "InInventory": true,
+      "RayCast": true,
       "DisableOnWorldChange": true,
       "Players": true,
       "Hostiles": true,
@@ -50,7 +50,6 @@
     "Toggled": true,
     "Settings": {
       "Mode": "Simple",
-      "OnlyDamage": false,
       "Explosions": true,
       "Visible": true
     }
@@ -59,11 +58,11 @@
     "Toggled": false,
     "Settings": {
       "Mode": "Vanilla",
-      "VanillaMode": "Creative",
+      "VanillaMode": "Damage",
       "VerusMode": "Jump",
       "OtherMode": "BlocksMC",
-      "DmgMode": "Basic",
-      "Speed": 2.0,
+      "DmgMode": "Jump",
+      "Speed": 9.0,
       "Viewbob": 0.1,
       "Visible": true
     }
@@ -75,9 +74,9 @@
     }
   },
   "Speed": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
-      "Speed": 7.0,
+      "Speed": 7.1,
       "Visible": true
     }
   },
@@ -102,6 +101,12 @@
       "Visible": true
     }
   },
+  "AntiCactus": {
+    "Toggled": true,
+    "Settings": {
+      "Visible": true
+    }
+  },
   "Blink": {
     "Toggled": false,
     "Settings": {
@@ -118,7 +123,7 @@
     }
   },
   "InvMove": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "Rotate": true,
       "Blink": false,
@@ -126,14 +131,14 @@
     }
   },
   "NoFall": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "Mode": "SpoofGround",
       "Visible": true
     }
   },
   "NoSlow": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "Mode": "Vanilla",
       "Visible": true
@@ -149,12 +154,12 @@
   "Scaffold": {
     "Toggled": false,
     "Settings": {
-      "Tower": true,
+      "Tower": false,
       "Sprint": false,
       "KeepRotations": true,
       "SilentSwap": false,
-      "KeepY": false,
-      "Jump": false,
+      "KeepY": true,
+      "Jump": true,
       "NoSwing": false,
       "Render": true,
       "Visible": true
@@ -185,11 +190,11 @@
     }
   },
   "Animations": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "Blocking Mode": "Jello",
-      "TranslateX": 0.0,
-      "TranslateY": 0.0,
+      "TranslateX": 0.5,
+      "TranslateY": 0.2,
       "TranslateZ": 0.0,
       "ItemPosX": 0.56,
       "ItemPosY": -0.52,
@@ -201,10 +206,17 @@
       "Visible": true
     }
   },
+  "Cape": {
+    "Toggled": true,
+    "Settings": {
+      "Capes": "HackDonalds",
+      "Visible": true
+    }
+  },
   "ClickGui": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Dropdown",
+      "Mode": "Panel",
       "Visible": true
     }
   },
@@ -272,7 +284,7 @@
     }
   },
   "KillSults": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "Visible": true
     }

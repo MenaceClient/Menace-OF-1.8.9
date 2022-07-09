@@ -112,10 +112,10 @@ public class KillSultsModule extends BaseModule {
 		insult = insult.replaceAll("<hwid>", Menace.instance.user.getHwid());
 		insult = insult.replaceAll("<uid>", String.valueOf(Menace.instance.user.getUID()));
 		if (insult.isEmpty()) insult = "L";
-		MC.thePlayer.sendChatMessage(insult);
+		mc.thePlayer.sendChatMessage(insult);
 	}
 
-	public static List<String> readInsults() {
+	public static @NotNull List<String> readInsults() {
 		List<String> s = new ArrayList<>();
 		try {
 			final URL url = new URL("https://menaceapi.cf/Insults.txt");

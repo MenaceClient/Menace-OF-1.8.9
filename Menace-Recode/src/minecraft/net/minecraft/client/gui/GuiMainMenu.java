@@ -282,7 +282,9 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         {
             this.buttonList.add(this.modButton = new GuiButton(6, this.width / 2 - 100, p_73969_1_ + p_73969_2_ * 2, 98, 20, I18n.format("fml.menu.mods", new Object[0])));
         }
-
+        else
+        {
+        }
     }
 
     /**
@@ -326,7 +328,6 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
             this.mc.displayGuiScreen(new GuiMultiplayer(this));
         }
 
-
         if (button.id == 4)
         {
             this.mc.shutdown();
@@ -363,7 +364,6 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
           this.mc.displayGuiScreen(new GuiProtocolSelector(this));
         }
     }
-
 
     public void confirmClicked(boolean result, int id)
     {
@@ -642,7 +642,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         GlStateManager.scale(f, f, f);
         this.drawCenteredString(this.fontRendererObj, this.splashText, 0, -8, -256);
         GlStateManager.popMatrix();
-        String s = "ยง4Menace ยง01.8.9ยงr";
+        String s = "ง4Menace ง01.8.9งr";
 
         if (this.mc.isDemo())
         {

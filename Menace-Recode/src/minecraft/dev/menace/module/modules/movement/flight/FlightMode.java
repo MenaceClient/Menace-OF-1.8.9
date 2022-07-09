@@ -1,7 +1,6 @@
 package dev.menace.module.modules.movement.flight;
 
-import dev.menace.module.modules.movement.flight.other.BlocksMCFly;
-import dev.menace.module.modules.movement.flight.other.MatrixDamageFly;
+import dev.menace.module.modules.movement.flight.other.*;
 import dev.menace.module.modules.movement.flight.vanilla.*;
 import dev.menace.module.modules.movement.flight.verus.*;
 

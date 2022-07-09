@@ -146,7 +146,6 @@ public class ScaffoldModule extends BaseModule {
 
                     if (keepRotations.getValue()) {
                         rotation = aimAtLocation(neighbor.getX(), neighbor.getY(), neighbor.getZ(), side2);
-                        //rotation = PlayerUtils.getDirectionToBlock(neighbor.getX(), neighbor.getY(), neighbor.getZ(), side2);
                     } else {
                         event.setYaw(PlayerUtils.getDirectionToBlock(neighbor.getX(), neighbor.getY(), neighbor.getZ(), side2)[0]);
                         event.setPitch(PlayerUtils.getDirectionToBlock(neighbor.getX(), neighbor.getY(), neighbor.getZ(), side2)[1]);

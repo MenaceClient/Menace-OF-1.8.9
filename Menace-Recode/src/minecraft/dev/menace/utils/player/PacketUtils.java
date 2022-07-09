@@ -19,6 +19,10 @@ public class PacketUtils {
 	public static void sendPacketNoEvent(Packet packetIn) {
 		netManager.sendPacketNoEvent(packetIn);
 	}
+
+	public static void sendPacketNoEventDelayed(Packet packetIn, long delay) {
+		netManager.sendPacketNoEventDelayed(packetIn, delay);
+	}
 	
 	public static void addToSendQueue(Packet packetIn) {
 		MC.thePlayer.sendQueue.addToSendQueue(packetIn);

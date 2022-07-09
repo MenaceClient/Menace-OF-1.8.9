@@ -24,10 +24,10 @@ public class MatrixDamageFly extends FlightBase {
     @Override
     public void onUpdate() {
         if (veloPacket) {
-            double yaw = Math.toRadians(MC.thePlayer.rotationYaw);
-            MC.thePlayer.motionX += (-Math.sin(yaw) * 0.416);
-            MC.thePlayer.motionZ += (Math.cos(yaw) * 0.416);
-            MC.thePlayer.motionY = veloY;
+            double yaw = Math.toRadians(mc.thePlayer.rotationYaw);
+            mc.thePlayer.motionX += (-Math.sin(yaw) * 0.416);
+            mc.thePlayer.motionZ += (Math.cos(yaw) * 0.416);
+            mc.thePlayer.motionY = veloY;
             tickTimer.update();
             if (tickTimer.hasTimePassed(27)) {
                 Menace.instance.moduleManager.flightModule.toggle();
@@ -37,7 +37,7 @@ public class MatrixDamageFly extends FlightBase {
 
     @Override
     public void onReceivePacket(EventReceivePacket event) {
-        if (event.getPacket() instanceof S12PacketEntityVelocity && MC.theWorld.getEntityByID(((S12PacketEntityVelocity)event.getPacket()).getEntityID()) == MC.thePlayer) {
+        if (event.getPacket() instanceof S12PacketEntityVelocity && mc.theWorld.getEntityByID(((S12PacketEntityVelocity)event.getPacket()).getEntityID()) == mc.thePlayer) {
             if (((S12PacketEntityVelocity)event.getPacket()).motionY / 8000.0 > 0.2) {
                 veloPacket = true;
                 veloY = ((S12PacketEntityVelocity)event.getPacket()).motionY / 8000.0;

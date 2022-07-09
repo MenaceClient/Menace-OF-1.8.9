@@ -25,7 +25,7 @@ public class NoFallModule extends BaseModule {
 		this.rSetting(mode);
 		super.setup();
 	}
-	
+
 	@EventTarget
 	public void onEvent(EventUpdate e) {
 		if(mode.getValue().equalsIgnoreCase("Hypixel")) {
@@ -39,12 +39,12 @@ public class NoFallModule extends BaseModule {
 				mc.thePlayer.setPosition(mc.thePlayer.lastTickPosX, mc.thePlayer.posY, mc.thePlayer.lastTickPosZ);
 			}
 		}
-	} 
+	}
 
 	@EventTarget
 	public void onCollide(EventCollide event) {
 		this.setDisplayName(mode.getValue());
-		
+
 		if (mode.getValue().equalsIgnoreCase("Verus") && mc.thePlayer.fallDistance > 2.5) {
 			if (Menace.instance.moduleManager.flightModule.isToggled())
 				return;
@@ -54,7 +54,7 @@ public class NoFallModule extends BaseModule {
 	}
 
 	@EventTarget
-	public void onSendPacket(EventSendPacket event) {	
+	public void onSendPacket(EventSendPacket event) {
 		if (mode.getValue().equalsIgnoreCase("NoGround") && event.getPacket() instanceof C03PacketPlayer && !mc.thePlayer.isInWater()) {
 			((C03PacketPlayer)event.getPacket()).setOnGround(false);
 		}
