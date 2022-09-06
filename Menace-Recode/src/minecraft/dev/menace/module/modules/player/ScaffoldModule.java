@@ -1,13 +1,12 @@
 package dev.menace.module.modules.player;
 
 import dev.menace.event.EventTarget;
-import dev.menace.event.events.Event2D;
-import dev.menace.event.events.Event3D;
-import dev.menace.event.events.EventPreMotion;
-import dev.menace.event.events.EventSendPacket;
+import dev.menace.event.events.*;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.module.DontSaveState;
+import dev.menace.module.settings.ListSetting;
+import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
 import dev.menace.utils.player.InventoryUtils;
 import dev.menace.utils.player.MovementUtils;
@@ -16,6 +15,8 @@ import dev.menace.utils.player.PlayerUtils;
 import dev.menace.utils.render.RenderUtils;
 import dev.menace.utils.world.BlockUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.projectile.EntityEgg;
 import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -29,6 +30,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 @DontSaveState
 public class ScaffoldModule extends BaseModule {
@@ -45,6 +47,7 @@ public class ScaffoldModule extends BaseModule {
     ToggleSetting keepY;
     ToggleSetting jump;
     ToggleSetting noSwing;
+    SliderSetting timer;
     ToggleSetting render;
 
     public ScaffoldModule() {
@@ -60,6 +63,7 @@ public class ScaffoldModule extends BaseModule {
         keepY = new ToggleSetting("KeepY", true, false);
         jump = new ToggleSetting("Jump", true, false);
         noSwing = new ToggleSetting("NoSwing", true, false);
+        timer = new SliderSetting("Timer", true, 1, 1, 5, 0.1, false);
         render = new ToggleSetting("Render", true, true);
         this.rSetting(tower);
         this.rSetting(sprint);
@@ -68,6 +72,7 @@ public class ScaffoldModule extends BaseModule {
         this.rSetting(keepY);
         this.rSetting(jump);
         this.rSetting(noSwing);
+        this.rSetting(timer);
         this.rSetting(render);
         super.setup();
     }
@@ -88,7 +93,13 @@ public class ScaffoldModule extends BaseModule {
         } else {
             mc.thePlayer.inventory.currentItem = oldSlot;
         }
+        mc.timer.timerSpeed = 1F;
         super.onDisable();
+    }
+
+    @EventTarget
+    public void onUpdate(EventUpdate event) {
+        mc.timer.timerSpeed = timer.getValueF();
     }
 
     @EventTarget
@@ -130,7 +141,8 @@ public class ScaffoldModule extends BaseModule {
         if (mc.gameSettings.keyBindJump.isKeyDown() && tower.getValue() && (!keepY.getValue() || !MovementUtils.isMoving())) {
             mc.thePlayer.motionY = 0.42;
         }
-        placeBlockSimple(belowPlayer, event);
+
+        findNearbyBlocks(belowPlayer, event);
     }
 
     public void placeBlockSimple(final BlockPos pos, EventPreMotion event) {
@@ -145,10 +157,10 @@ public class ScaffoldModule extends BaseModule {
                 if (eyesPos.squareDistanceTo(hitVec) <= 36.0) {
 
                     if (keepRotations.getValue()) {
-                        rotation = aimAtLocation(neighbor.getX(), neighbor.getY(), neighbor.getZ(), side2);
+                        rotation = getRotsNew(neighbor, side2);
                     } else {
-                        event.setYaw(PlayerUtils.getDirectionToBlock(neighbor.getX(), neighbor.getY(), neighbor.getZ(), side2)[0]);
-                        event.setPitch(PlayerUtils.getDirectionToBlock(neighbor.getX(), neighbor.getY(), neighbor.getZ(), side2)[1]);
+                        event.setYaw(getRotsNew(neighbor, side2)[0]);
+                        event.setPitch(getRotsNew(neighbor, side2)[1]);
                     }
 
                     if (silentSwap.getValue() && swappedSlot != -1) {
@@ -164,6 +176,34 @@ public class ScaffoldModule extends BaseModule {
                     }
 
                     mc.rightClickDelayTimer = 4;
+                }
+            }
+        }
+    }
+
+    public void findNearbyBlocks(@NotNull BlockPos pos, EventPreMotion event) {
+
+        EnumFacing[] values;
+        for (int length = (values = EnumFacing.values()).length, i = 0; i < length; ++i) {
+            final EnumFacing side = values[i];
+            final BlockPos neighbor = pos.offset(side);
+            if (BlockUtils.getMaterial(pos).isReplaceable() && BlockUtils.getBlock(neighbor).canCollideCheck(mc.theWorld.getBlockState(neighbor), false)) {
+                placeBlockSimple(pos, event);
+                return;
+            }
+        }
+
+        for (int amt = 1; amt < 4; amt++) {
+            for (int sides = EnumFacing.values().length, side_ = 0; side_ < sides; side_++) {
+                BlockPos newPos = pos.offset(EnumFacing.values()[side_], amt);
+                EnumFacing[] values2;
+                for (int length = (values2 = EnumFacing.values()).length, i = 0; i < length; ++i) {
+                    final EnumFacing side = values2[i];
+                    final BlockPos neighbor = newPos.offset(side);
+                    if (BlockUtils.getMaterial(newPos).isReplaceable() && BlockUtils.getBlock(neighbor).canCollideCheck(mc.theWorld.getBlockState(neighbor), false)) {
+                        placeBlockSimple(newPos, event);
+                        return;
+                    }
                 }
             }
         }
@@ -192,30 +232,80 @@ public class ScaffoldModule extends BaseModule {
 
     }
 
-    private float @NotNull [] aimAtLocation(final double x, final double y, final double z, final @NotNull EnumFacing facing) {
-        final EntitySnowball temp = new EntitySnowball(mc.theWorld);
-        temp.posX = x + 0.5;
-        temp.posY = y - 2.7035252353;
-        temp.posZ = z + 0.5;
-        final EntitySnowball entitySnowball10;
-        entitySnowball10 = temp;
-        entitySnowball10.posX += facing.getDirectionVec().getX() * 0.25;
-        final EntitySnowball entitySnowball11;
-        entitySnowball11 = temp;
-        entitySnowball11.posY += facing.getDirectionVec().getY() * 0.25;
-        final EntitySnowball entitySnowball12;
-        entitySnowball12 = temp;
-        entitySnowball12.posZ += facing.getDirectionVec().getZ() * 0.25;
-        return this.aimAtLocation(temp.posX, temp.posY, temp.posZ);
+    public float[] getRotsNew(final BlockPos pos, final EnumFacing facing) {
+        final float yaw = this.getYaw(pos, facing);
+        final float[] rots2 = this.getDirectionToBlock(pos.getX(), pos.getY(), pos.getZ(), facing);
+        return new float[] { (float)(yaw + ThreadLocalRandom.current().nextDouble(-1.0, 1.0)), mc.thePlayer.onGround ? 80.31f : Math.min(90.0f, rots2[1]) };
     }
 
-    @Contract("_, _, _ -> new")
-    private float @NotNull [] aimAtLocation(final double positionX, final double positionY, final double positionZ) {
-        final double x = positionX - mc.thePlayer.posX;
-        final double y = positionY - mc.thePlayer.posY;
-        final double z = positionZ - mc.thePlayer.posZ;
-        final double distance = MathHelper.sqrt_double(x * x + z * z);
-        return new float[] { (float)(Math.atan2(z, x) * 180.0 / 3.141592653589793) - 90.0f, (float)(-(Math.atan2(y, distance) * 180.0 / 3.141592653589793)) };
+    public float[] getDirectionToBlock(final int var0, final int var1, final int var2, final EnumFacing var3) {
+        final EntityEgg var4 = new EntityEgg(this.mc.theWorld);
+        var4.posX = var0 + 0.5;
+        var4.posY = var1 + 0.5;
+        var4.posZ = var2 + 0.5;
+        var4.posX += var3.getDirectionVec().getX() * 0.25;
+        var4.posY += var3.getDirectionVec().getY() * 0.25;
+        var4.posZ += var3.getDirectionVec().getZ() * 0.25;
+        return getDirectionToEntity(var4);
+    }
+
+    public float[] getDirectionToEntity(final Entity var0) {
+        return new float[] { getYaw(var0) + mc.thePlayer.rotationYaw, getPitch(var0) + mc.thePlayer.rotationPitch };
+    }
+
+    public float getYaw(final Entity var0) {
+        final double var = var0.posX - mc.thePlayer.posX;
+        final double var2 = var0.posZ - mc.thePlayer.posZ;
+        final double degrees = Math.toDegrees(Math.atan(var2 / var));
+        double var3;
+        if (var2 < 0.0 && var < 0.0) {
+            var3 = 90.0 + degrees;
+        }
+        else if (var2 < 0.0 && var > 0.0) {
+            var3 = -90.0 + degrees;
+        }
+        else {
+            var3 = Math.toDegrees(-Math.atan(var / var2));
+        }
+        return MathHelper.wrapAngleTo180_float(-(mc.thePlayer.rotationYaw - (float)var3));
+    }
+
+    public float getPitch(final Entity var0) {
+        final double var = var0.posX - mc.thePlayer.posX;
+        final double var2 = var0.posZ - mc.thePlayer.posZ;
+        final double var3 = var0.posY - 1.6 + var0.getEyeHeight() - mc.thePlayer.posY;
+        final double var4 = MathHelper.sqrt_double(var * var + var2 * var2);
+        final double var5 = -Math.toDegrees(Math.atan(var3 / var4));
+        return -MathHelper.wrapAngleTo180_float(mc.thePlayer.rotationPitch - (float)var5);
+    }
+
+    public float getYaw(final BlockPos block, final EnumFacing face) {
+        final Vec3 vecToModify = new Vec3(block.getX(), block.getY(), block.getZ());
+        switch (face) {
+            case EAST:
+            case WEST: {
+                vecToModify.zCoord += 0.5;
+                break;
+            }
+            case SOUTH:
+            case NORTH: {
+                vecToModify.xCoord += 0.5;
+                break;
+            }
+            case UP:
+            case DOWN: {
+                vecToModify.xCoord += 0.5;
+                vecToModify.zCoord += 0.5;
+                break;
+            }
+        }
+        final double x = vecToModify.xCoord - this.mc.thePlayer.posX;
+        final double z = vecToModify.zCoord - this.mc.thePlayer.posZ;
+        float yaw = (float)(Math.atan2(z, x) * 180.0 / 3.141592653589793) - 90.0f;
+        if (yaw < 0.0f) {
+            yaw -= 360.0f;
+        }
+        return yaw;
     }
 
 }

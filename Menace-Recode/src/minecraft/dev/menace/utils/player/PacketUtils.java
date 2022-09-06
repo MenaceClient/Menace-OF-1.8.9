@@ -9,8 +9,8 @@ import net.minecraft.network.Packet;
 
 public class PacketUtils {
 
-	private static Minecraft MC = Minecraft.getMinecraft();
-	private static NetworkManager netManager = MC.getNetHandler().getNetworkManager();
+	private static final Minecraft MC = Minecraft.getMinecraft();
+	private static final NetworkManager netManager = MC.getNetHandler().getNetworkManager();
 
 	public static void sendPacket(Packet packetIn) {
 		netManager.sendPacket(packetIn);

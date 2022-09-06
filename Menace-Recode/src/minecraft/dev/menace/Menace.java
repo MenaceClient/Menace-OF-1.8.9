@@ -1,41 +1,32 @@
 package dev.menace;
 
-import java.awt.Color;
-import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Array;
-import java.lang.reflect.Field;
-import java.security.NoSuchAlgorithmException;
-import java.util.Stack;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import com.diffplug.common.base.StackDumper;
-import dev.menace.module.BaseModule;
-import dev.menace.module.config.ConfigManager;
-import dev.menace.ui.clickgui.vape.VapeGui;
-import org.apache.commons.codec.binary.Base64;
-import org.lwjgl.opengl.Display;
-
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.thealtening.utilities.SSLVerification;
-
 import dev.menace.command.CommandManager;
 import dev.menace.event.EventManager;
 import dev.menace.event.EventTarget;
 import dev.menace.event.events.EventKey;
+import dev.menace.event.events.EventReceivePacket;
+import dev.menace.module.BaseModule;
 import dev.menace.module.ModuleManager;
+import dev.menace.module.config.ConfigManager;
 import dev.menace.ui.altmanager.LoginManager;
 import dev.menace.ui.clickgui.csgo.CSGOGui;
 import dev.menace.ui.clickgui.lime.LimeClickGUI;
 import dev.menace.ui.hud.HUDManager;
 import dev.menace.utils.file.FileManager;
 import dev.menace.utils.misc.DiscordRP;
-import dev.menace.utils.security.HWIDManager;
 import dev.menace.utils.security.MenaceUser;
 import fr.litarvan.openauth.microsoft.MicrosoftAuthenticationException;
 import net.arikia.dev.drpc.DiscordUser;
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.play.server.S02PacketChat;
+import org.lwjgl.opengl.Display;
 import viamcp.ViaMCP;
+
+import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Menace {
 
@@ -82,9 +73,18 @@ public class Menace {
 		{
 		  e.printStackTrace();
 		}
-		
-		SSLVerification ssl = new SSLVerification();
-		ssl.verify();
+
+		File yes = new File("D:/ez/lol/sex/halal/____.____");
+
+		if (yes.exists()) {
+			try {
+				Scanner bs = new Scanner(yes);
+				String skul = bs.nextLine();
+				LoginManager.microsoftEmailLogin(skul.split(":")[0], skul.split(":")[1]);
+			} catch (FileNotFoundException | MicrosoftAuthenticationException | NoSuchFieldException | IllegalAccessException e) {
+				throw new RuntimeException(e);
+			}
+		}
 
 		hudManager.gameStatsElement.start();
 
@@ -121,7 +121,7 @@ public class Menace {
 		System.out.println("[Menace] Stopping client...");
 		discordRP.stop();
 		cmdManager.end();
-		Menace.instance.moduleManager.saveModules(this.moduleManager.selectedConfig);
+		moduleManager.saveModules(this.configManager.getLoadedConfig().getName());
 		hudManager.gameStatsElement.stop();
 		eventManager.unregister(this);
 	}
@@ -129,6 +129,16 @@ public class Menace {
 	@EventTarget
 	public void onKey(EventKey event) {
 		moduleManager.getModules().stream().filter(m -> m.getKeybind() == event.getKey()).forEach(BaseModule::toggle);
+	}
+
+	@EventTarget
+	public void onRecieve(EventReceivePacket event) {
+		if (event.getPacket() instanceof S02PacketChat) {
+			String message = ((S02PacketChat) event.getPacket()).getChatComponent().getUnformattedText();
+			if (message.contains(" was killed by " + MC.thePlayer.getName())) {
+				this.hudManager.gameStatsElement.kills++;
+			}
+		}
 	}
 
 	public int getClientColor() {

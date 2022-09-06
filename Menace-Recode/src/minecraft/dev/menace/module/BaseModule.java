@@ -15,14 +15,14 @@ public class BaseModule {
 
 	public float optionAnim = 0;
 	public float optionAnimNow = 0;
-	private String name;
-	private String desc;
+	private final String name;
+	private final String desc;
 	private String displayName = null;
-	private Category category;
+	private final Category category;
 	private int keybind;
 	protected boolean toggled;
 	private ToggleSetting visible;
-	private ArrayList<Setting> settings = new ArrayList<>();
+	private final ArrayList<Setting> settings = new ArrayList<>();
 	
 	protected final Minecraft mc = Minecraft.getMinecraft();
 	
@@ -36,7 +36,8 @@ public class BaseModule {
         	this.keybind = keybind;
         } else {
     		JsonObject bindFile = FileManager.readJsonFromFile(new File(FileManager.getConfigFolder(), "Binds.json"));
-    		if (bindFile.has(name)) {
+			assert bindFile != null;
+			if (bindFile.has(name)) {
     			this.keybind = bindFile.get(name).getAsInt();
     		} else {
     			this.keybind = keybind;
@@ -44,8 +45,6 @@ public class BaseModule {
         }
 		
 		this.setup();
-
-
 		
 		visible = new ToggleSetting("Visible", true, true);
 		this.rSetting(visible);
@@ -65,7 +64,8 @@ public class BaseModule {
         	this.keybind = keybind;
         } else {
     		JsonObject bindFile = FileManager.readJsonFromFile(new File(FileManager.getConfigFolder(), "Binds.json"));
-    		if (bindFile.has(name)) {
+			assert bindFile != null;
+			if (bindFile.has(name)) {
     			this.keybind = bindFile.get(name).getAsInt();
     		} else {
     			this.keybind = keybind;
@@ -83,12 +83,6 @@ public class BaseModule {
 	}
 	
 	public void setup() {}
-	public void onUpdate() {}
-	public void onRender() {}
-
-	public String getValue() {
-		return null;
-	}
 
 	public void onEnable() {
 		Menace.instance.eventManager.register(this);
@@ -176,5 +170,5 @@ public class BaseModule {
 	public void setVisible(boolean visible) {
 		this.visible.setValue(visible);
 	}
-
+	
 }

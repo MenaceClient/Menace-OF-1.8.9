@@ -149,6 +149,9 @@ public class EntityPlayerSP extends AbstractClientPlayer
 	/** The amount of time an entity has been in a Portal the previous tick */
 	public float prevTimeInPortal;
 
+	public float prevRotationPitchHead;
+	public float rotationPitchHead;
+
 	public EntityPlayerSP(Minecraft mcIn, World worldIn, NetHandlerPlayClient netHandler, StatFileWriter statFile)
 	{
 		super(worldIn, netHandler.getGameProfile());
@@ -252,6 +255,8 @@ public class EntityPlayerSP extends AbstractClientPlayer
 				
 				this.rotationYawHead = yaw;
 				this.renderYawOffset = yaw;
+				this.prevRotationPitchHead = this.rotationPitchHead;
+				this.rotationPitchHead = pitch;
 
 				double xDiff = event.getPosX() - this.lastReportedPosX;
 				double yDiff = event.getPosY() - this.lastReportedPosY;

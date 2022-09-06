@@ -15,6 +15,7 @@ import java.util.List;
 import dev.menace.Menace;
 import dev.menace.event.EventTarget;
 import dev.menace.event.events.EventDeath;
+import dev.menace.event.events.EventReceivePacket;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.utils.file.FileManager;
@@ -22,6 +23,7 @@ import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.misc.MathUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.play.server.S02PacketChat;
 import org.jetbrains.annotations.NotNull;
 
 public class KillSultsModule extends BaseModule {
@@ -98,11 +100,21 @@ public class KillSultsModule extends BaseModule {
 		}
 	}
 
-	public void insult(@NotNull EntityPlayer e) {
+	@EventTarget
+	public void onRecieve(EventReceivePacket event) {
+		if (event.getPacket() instanceof S02PacketChat) {
+			String message = ((S02PacketChat) event.getPacket()).getChatComponent().getUnformattedText();
+			if (message.contains(" was killed by " + mc.thePlayer.getName())) {
+				insult(message.split(" ")[0]);
+			}
+		}
+	}
+
+	public void insult(String name) {
 		if (!this.isToggled()) return;
 		String insult = "";
 		insult = insults.get(MathUtils.randInt(0, insults.size()));
-		insult = insult.replaceAll("<player>", e.getName());
+		insult = insult.replaceAll("<player>", name);
 		if (Menace.instance.discordUser == null) {
 			insult = insult.replaceAll("<discord>", "Exterminate#6552");
 		} else {

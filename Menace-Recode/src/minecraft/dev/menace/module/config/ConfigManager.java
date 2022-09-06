@@ -37,6 +37,7 @@ public class ConfigManager {
     }
 
     public List<Config> getConfigs() {
+        reload();
         return configs;
     }
 

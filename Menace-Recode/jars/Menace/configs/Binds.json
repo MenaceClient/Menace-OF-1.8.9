@@ -1,10 +1,11 @@
 {
-  "AutoPot": 24,
+  "AutoPot": 0,
   "ComboOneTap": 0,
   "Criticals": 0,
   "KillAura": 19,
   "Velocity": 0,
-  "Flight": 47,
+  "AirHop": 0,
+  "Flight": 0,
   "LongJump": 0,
   "Speed": 46,
   "Sprint": 0,
@@ -12,7 +13,7 @@
   "Strafe": 0,
   "AntiCactus": 0,
   "Blink": 0,
-  "InvManager": 0,
+  "InvManager": 45,
   "InvMove": 0,
   "NoFall": 0,
   "NoSlow": 0,
@@ -30,8 +31,6 @@
   "ItemPhysics": 0,
   "XRay": 0,
   "AutoLogin": 0,
-  "DevModule": 0,
-  "Disabler": 25,
   "KillSults": 0,
   "StaffDetector": 0
 }

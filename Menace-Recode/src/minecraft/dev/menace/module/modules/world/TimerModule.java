@@ -16,7 +16,7 @@ public class TimerModule extends BaseModule {
 	
 	@Override
 	public void setup() {
-		speed = new SliderSetting("Speed", true, 1, 0.1, 10, 0.5, false);
+		speed = new SliderSetting("Speed", true, 1, 0.1, 10, 0.1, false);
 		this.rSetting(speed);
 		super.setup();
 	}

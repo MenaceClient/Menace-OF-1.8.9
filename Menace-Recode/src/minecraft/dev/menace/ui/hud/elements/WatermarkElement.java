@@ -12,6 +12,8 @@ import java.awt.*;
 
 public class WatermarkElement extends BaseElement {
 
+
+
 	public WatermarkElement() {
 		super(2, 2, true);
 	}

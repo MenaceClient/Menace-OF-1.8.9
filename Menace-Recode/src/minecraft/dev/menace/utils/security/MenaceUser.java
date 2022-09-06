@@ -2,9 +2,9 @@ package dev.menace.utils.security;
 
 public class MenaceUser {
 
-	private String username;
-	private String hwid;
-	private int uid;
+	private final String username;
+	private final String hwid;
+	private final int uid;
 	
 	public MenaceUser(String username, String hwid, int uid) {
 		this.username = username;

@@ -112,7 +112,7 @@ public class FileManager {
 		return null;
 	}
 	
-	public static <T extends Object> T readFromJson(File file, Class<T> c) {
+	public static <T> T readFromJson(File file, Class<T> c) {
 		
 		try {
 			

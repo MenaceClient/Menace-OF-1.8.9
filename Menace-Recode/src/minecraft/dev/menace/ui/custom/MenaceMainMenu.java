@@ -105,7 +105,7 @@ public class MenaceMainMenu extends GuiScreen implements GuiYesNoCallback {
 
          if (!list.isEmpty()) {
             do {
-               this.splashText = (String)list.get(RANDOM.nextInt(list.size()));
+               this.splashText = list.get(RANDOM.nextInt(list.size()));
             } while(this.splashText.hashCode() == 125780783);
          }
       } catch (IOException ignored) {
@@ -122,8 +122,8 @@ public class MenaceMainMenu extends GuiScreen implements GuiYesNoCallback {
       this.updateCounter = RANDOM.nextFloat();
       this.openGLWarning1 = "";
       if (!GLContext.getCapabilities().OpenGL20 && !OpenGlHelper.areShadersSupported()) {
-         this.openGLWarning1 = I18n.format("title.oldgl1", new Object[0]);
-         this.openGLWarning2 = I18n.format("title.oldgl2", new Object[0]);
+         this.openGLWarning1 = I18n.format("title.oldgl1");
+         this.openGLWarning2 = I18n.format("title.oldgl2");
          this.openGLWarningLink = "https://help.mojang.com/customer/portal/articles/325948?ref=game";
       }
 
@@ -173,8 +173,8 @@ public class MenaceMainMenu extends GuiScreen implements GuiYesNoCallback {
    }
 
    private void addDemoButtons(int p_73972_1_, int p_73972_2_) {
-      this.buttonList.add(new GuiButton(11, width / 2 - 100, p_73972_1_, I18n.format("menu.playdemo", new Object[0])));
-      this.buttonList.add(this.buttonResetDemo = new GuiButton(12, width / 2 - 100, p_73972_1_ + p_73972_2_ * 1, I18n.format("menu.resetdemo", new Object[0])));
+      this.buttonList.add(new GuiButton(11, width / 2 - 100, p_73972_1_, I18n.format("menu.playdemo")));
+      this.buttonList.add(this.buttonResetDemo = new GuiButton(12, width / 2 - 100, p_73972_1_ + p_73972_2_, I18n.format("menu.resetdemo")));
       ISaveFormat isaveformat = this.mc.getSaveLoader();
       WorldInfo worldinfo = isaveformat.getWorldInfo("Demo_World");
       if (worldinfo == null) {

@@ -8,7 +8,6 @@ import dev.menace.event.events.EventWorldChange;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.module.DontSaveState;
-import dev.menace.module.modules.misc.KillSultsModule;
 import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
@@ -18,7 +17,6 @@ import dev.menace.utils.player.PacketUtils;
 import dev.menace.utils.player.PlayerUtils;
 import dev.menace.utils.player.RayCastUtils;
 import dev.menace.utils.timer.MSTimer;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
@@ -27,13 +25,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemSword;
 import net.minecraft.network.play.client.C02PacketUseEntity;
 import net.minecraft.network.play.client.C0APacketAnimation;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Comparator;
-import java.util.List;
 import java.util.Random;
 
 @DontSaveState
@@ -64,7 +58,7 @@ public class KillAuraModule extends BaseModule {
 	ToggleSetting throughwalls;
 	ToggleSetting ininv;
 	ToggleSetting raycast;
-	ToggleSetting toggleOnWorldChange;
+	ToggleSetting autoDisable;
 	ToggleSetting players;
 	ToggleSetting hostiles;
 	ToggleSetting passives;
@@ -111,7 +105,7 @@ public class KillAuraModule extends BaseModule {
 		throughwalls = new ToggleSetting("ThroughWalls", true, false);
 		ininv = new ToggleSetting("InInventory", true, false);
 		raycast = new ToggleSetting("RayCast", true, false);
-		toggleOnWorldChange = new ToggleSetting("DisableOnWorldChange", true, true);
+		autoDisable = new ToggleSetting("AutoDisable", true, true);
 		players = new ToggleSetting("Players", true, true);
 		hostiles = new ToggleSetting("Hostiles", true, true);
 		passives = new ToggleSetting("Passives", true, false);
@@ -132,7 +126,7 @@ public class KillAuraModule extends BaseModule {
 		this.rSetting(throughwalls);
 		this.rSetting(ininv);
 		this.rSetting(raycast);
-		this.rSetting(toggleOnWorldChange);
+		this.rSetting(autoDisable);
 		this.rSetting(players);
 		this.rSetting(hostiles);
 		this.rSetting(passives);
@@ -165,13 +159,13 @@ public class KillAuraModule extends BaseModule {
 
 	@EventTarget
 	public void onPreMotion(EventPreMotion event) {
+		if (autoDisable.getValue() && mc.thePlayer.ticksExisted == 0) {
+			ChatUtils.message("Toggled Killaura due to death/world change");
+			this.toggle();
+		}
 		this.setDisplayName(rotation.getValue());
 		if (target == null) {
 			lastRotations = new float[] {mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch};
-		}
-		if (target != null && (target.isDead || target.getHealth() <= 0) && target instanceof EntityPlayer && target != mc.thePlayer) {
-			Menace.instance.moduleManager.killSultsModule.insult((EntityPlayer) target);
-			Menace.instance.hudManager.gameStatsElement.kills++;
 		}
 		getTarget();
 		if (rotation.getValue().equalsIgnoreCase("Basic") && target != null) {
@@ -218,7 +212,7 @@ public class KillAuraModule extends BaseModule {
 
 	@EventTarget
 	public void onWorldChange(EventWorldChange event) {
-		if (toggleOnWorldChange.getValue()) {
+		if (autoDisable.getValue()) {
 			ChatUtils.message("Toggled Killaura due to world change");
 			this.toggle();
 		}
@@ -264,7 +258,7 @@ public class KillAuraModule extends BaseModule {
 		}
 
 		if (raycast.getValue()) {
-			final MovingObjectPosition objectMouseOver = RayCastUtils.getMouseOver(mc.thePlayer.prevRotationYaw, mc.thePlayer.prevRotationPitch, reach.getValueF());
+			final MovingObjectPosition objectMouseOver = RayCastUtils.getMouseOver(reach.getValueF());
 			assert objectMouseOver != null;
 			if (target != objectMouseOver.entityHit && objectMouseOver.entityHit instanceof EntityLivingBase) {
 				target = (EntityLivingBase) objectMouseOver.entityHit;
@@ -345,5 +339,4 @@ public class KillAuraModule extends BaseModule {
 		double angleDiff = MathUtils.getAngleDifference(mc.thePlayer.rotationYaw, PlayerUtils.getRotations(entity)[0]);
 		return (angleDiff > 0 && angleDiff < angle) || (-angle < angleDiff && angleDiff < 0);
 	}
-
 }

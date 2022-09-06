@@ -15,7 +15,7 @@ public class DynamicTexture extends AbstractTexture
     /** height of this icon in pixels */
     private final int height;
 
-    public DynamicTexture(@NotNull BufferedImage bufferedImage)
+    public DynamicTexture(BufferedImage bufferedImage)
     {
         this(bufferedImage.getWidth(), bufferedImage.getHeight());
         bufferedImage.getRGB(0, 0, bufferedImage.getWidth(), bufferedImage.getHeight(), this.dynamicTextureData, 0, bufferedImage.getWidth());

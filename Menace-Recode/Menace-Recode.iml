@@ -281,18 +281,9 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="ViaBackwards-4.2.1-SNAPSHOT.jar">
+      <library name="ViaBackwards-4.2.2-SNAPSHOT.jar">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/ViaBackwards-4.2.1-SNAPSHOT.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="ViaMCP.jar">
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/ViaMCP.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/ViaBackwards-4.4.2-SNAPSHOT.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -302,33 +293,6 @@
       <library name="ViaRewind-2.0.3-SNAPSHOT.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/libs/ViaRewind-2.0.3-SNAPSHOT.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="ViaSnakeYaml-1.27.jar">
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/ViaSnakeYaml-1.27.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="ViaVersion-4.2.1.jar">
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/ViaVersion-4.2.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="OAuth.jar">
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/OAuth.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -381,5 +345,7 @@
     </orderEntry>
     <orderEntry type="library" name="annotations-20.1.0" level="project" />
     <orderEntry type="library" name="durian-3.4.0" level="project" />
+    <orderEntry type="library" name="ViaSnakeYaml-1.30" level="project" />
+    <orderEntry type="library" name="ViaVersion-4.4.2-SNAPSHOT" level="project" />
   </component>
 </module>

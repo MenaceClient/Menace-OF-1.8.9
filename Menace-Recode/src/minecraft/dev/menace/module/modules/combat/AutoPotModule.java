@@ -46,7 +46,6 @@ public class AutoPotModule extends BaseModule {
         if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed) != null || !mc.thePlayer.onGround || !delayTimer.hasTimePassed(delay.getValueL())) return;
 
         int potionSlot = -1;
-        int oldSlot = mc.thePlayer.inventory.currentItem;
 
         for (int i = 0; i < 9; ++i) {
             ItemStack s = mc.thePlayer.inventory.getStackInSlot(i);
@@ -64,6 +63,8 @@ public class AutoPotModule extends BaseModule {
         }
 
         if (potionSlot == -1) return;
+
+        int oldSlot = mc.thePlayer.inventory.currentItem;
 
         PacketUtils.sendPacket(new C09PacketHeldItemChange(potionSlot));
         event.setPitch(90);

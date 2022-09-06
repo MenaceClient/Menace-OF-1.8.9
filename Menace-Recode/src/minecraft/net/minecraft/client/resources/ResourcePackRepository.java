@@ -23,6 +23,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreenWorking;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.client.resources.data.IMetadataSerializer;
 import net.minecraft.client.resources.data.PackMetadataSection;
 import net.minecraft.client.settings.GameSettings;
@@ -323,17 +324,15 @@ public class ResourcePackRepository
 
         public void updateResourcePack() throws IOException
         {
-            this.reResourcePack = (IResourcePack)(this.resourcePackFile.isDirectory() ? new FolderResourcePack(this.resourcePackFile) : new FileResourcePack(this.resourcePackFile));
-            this.rePackMetadataSection = (PackMetadataSection)this.reResourcePack.getPackMetadata(ResourcePackRepository.this.rprMetadataSerializer, "pack");
+            this.reResourcePack = this.resourcePackFile.isDirectory() ? new FolderResourcePack(this.resourcePackFile) : new FileResourcePack(this.resourcePackFile);
+            this.rePackMetadataSection = this.reResourcePack.getPackMetadata(ResourcePackRepository.this.rprMetadataSerializer, "pack");
 
             try
             {
                 this.texturePackIcon = this.reResourcePack.getPackImage();
             }
-            catch (IOException var2)
-            {
-                ;
-            }
+            catch (IOException ignored)
+            {}
 
             if (this.texturePackIcon == null)
             {
@@ -347,6 +346,16 @@ public class ResourcePackRepository
         {
             if (this.locationTexturePackIcon == null)
             {
+                try
+                {
+                    this.texturePackIcon = this.reResourcePack.getPackImage();
+
+                    if (this.texturePackIcon == null)
+                    {
+                        this.texturePackIcon = ResourcePackRepository.this.rprDefaultResourcePack.getPackImage();
+                    }
+                } catch (IOException ignored) {}
+
                 this.locationTexturePackIcon = textureManagerIn.getDynamicTextureLocation("texturepackicon", new DynamicTexture(this.texturePackIcon));
             }
 

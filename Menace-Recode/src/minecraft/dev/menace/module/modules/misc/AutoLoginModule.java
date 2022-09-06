@@ -27,6 +27,16 @@ public class AutoLoginModule extends BaseModule {
                         e.printStackTrace();
                     }
                 }).start();
+            } else if (message.contains("/login <password>")) {
+                new Thread(() -> {
+                    try {
+                        Thread.sleep(2000);
+                        mc.thePlayer.sendChatMessage("/login password");
+                    }
+                    catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }).start();
             }
         }
     }

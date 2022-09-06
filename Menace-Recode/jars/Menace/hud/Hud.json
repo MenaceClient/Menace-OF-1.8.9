@@ -6,23 +6,18 @@
     "Visible": true
   },
   "GameStatsElement": {
-    "X": 1,
-    "Y": 16,
+    "X": 2,
+    "Y": 15,
     "Visible": true
   },
   "PosElement": {
-    "X": 3,
+    "X": 2,
     "Y": 530,
     "Visible": true
   },
-  "UserInfoElement": {
-    "X": 766,
-    "Y": 529,
-    "Visible": true
-  },
   "WatermarkElement": {
-    "X": 1,
-    "Y": 1,
+    "X": 2,
+    "Y": 2,
     "Visible": true
   }
 }

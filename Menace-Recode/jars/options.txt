@@ -3,18 +3,18 @@ mouseSensitivity:0.5
 fov:0.5
 gamma:10.0
 saturation:0.0
-renderDistance:8
+renderDistance:10
 guiScale:2
 particles:0
 bobView:true
 anaglyph3d:false
 maxFps:260
 fboEnable:true
-difficulty:0
+difficulty:1
 fancyGraphics:true
 ao:2
 renderClouds:false
-resourcePacks:[]
+resourcePacks:["! §dDreamHax Personal Pack.zip"]
 incompatibleResourcePacks:[]
 lastServer:o.tree.ac
 lang:en_US
@@ -25,7 +25,7 @@ chatLinksPrompt:true
 chatOpacity:1.0
 snooperEnabled:true
 fullscreen:true
-enableVsync:true
+enableVsync:false
 useVbo:false
 hideServerAddress:false
 advancedItemTooltips:false
@@ -93,7 +93,7 @@ key_key.hotbar.9:10
 key_of.key.zoom:0
 soundCategory_master:0.46357617
 soundCategory_music:0.0
-soundCategory_record:0.38732395
+soundCategory_record:0.0
 soundCategory_weather:0.0
 soundCategory_block:0.3943662
 soundCategory_hostile:0.45774648

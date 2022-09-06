@@ -2,6 +2,7 @@ package dev.menace.ui.altmanager;
 
 import java.io.IOException;
 
+import org.jetbrains.annotations.NotNull;
 import org.lwjgl.input.Keyboard;
 
 import dev.menace.utils.render.GuiPasswordField;
@@ -30,7 +31,7 @@ extends GuiScreen {
 	}
 
 	@Override
-	protected void actionPerformed(GuiButton button) {
+	protected void actionPerformed(@NotNull GuiButton button) {
 		switch (button.id) {
 		case 2: {
 			this.mc.displayGuiScreen(this.previousScreen);
@@ -39,16 +40,8 @@ extends GuiScreen {
 
 		case 1: {
 			switch (loginModeName) {
-			case ALTENING: 
-				loginModeName = LoginMode.ALTENINGPREMIUM;
-				loginModeButton.displayString = "Mode: " + loginModeName.name;
-				break;
-			case ALTENINGPREMIUM:
-				loginModeName = LoginMode.MICROSOFT_BROWSER;
-				loginModeButton.displayString = "Mode: " + loginModeName.name;
-				break;
 			case MICROSOFT:
-				loginModeName = LoginMode.ALTENING;
+				loginModeName = LoginMode.MICROSOFT_BROWSER;
 				loginModeButton.displayString = "Mode: " + loginModeName.name;
 				break;
 			case MICROSOFT_BROWSER:
@@ -56,10 +49,6 @@ extends GuiScreen {
 				loginModeButton.displayString = "Mode: " + loginModeName.name;
 				break;
 			case RNG:
-				loginModeName = LoginMode.MOJANG;
-				loginModeButton.displayString = "Mode: " + loginModeName.name;
-				break;
-			case MOJANG:
 				loginModeName = LoginMode.MICROSOFT;
 				loginModeButton.displayString = "Mode: " + loginModeName.name;
 				break;
@@ -85,12 +74,12 @@ extends GuiScreen {
 		this.loginModeButton.drawButton(mc, mouseX, mouseY);
 		this.drawCenteredString(this.mc.fontRendererObj, "Alt Login", width / 2, 20, -1);
 		String status = null;
-		if (thread instanceof LoginThread) {
+		if (thread != null) {
 			status = thread.getStatus();
 		}
-		this.drawCenteredString(this.mc.fontRendererObj, this.thread == null ? (Object)((Object)EnumChatFormatting.GRAY) + "Idle..." : status, width / 2, 29, -1);
+		this.drawCenteredString(this.mc.fontRendererObj, this.thread == null ? EnumChatFormatting.GRAY + "Idle..." : status, width / 2, 29, -1);
 		if (this.username.getText().isEmpty()) {
-			this.drawString(this.mc.fontRendererObj, "Username / E-Mail / API Token", width / 2 - 96, 66, -7829368);
+			this.drawString(this.mc.fontRendererObj, "Username / E-Mail", width / 2 - 96, 66, -7829368);
 		}
 		if (this.password.getText().isEmpty()) {
 			this.drawString(this.mc.fontRendererObj, "Password", width / 2 - 96, 106, -7829368);
@@ -100,7 +89,7 @@ extends GuiScreen {
 
 	@Override
 	public void initGui() {
-		this.loginModeName = LoginMode.MOJANG;
+		this.loginModeName = LoginMode.MICROSOFT;
 		int var3 = height / 4 + 24;
 		this.loginModeButton = new GuiButton(1, width / 2 - 100, var3 + 72 + 12, 100, 20, "Mode: " + loginModeName.name);
 		this.buttonList.add(new GuiButton(2, width / 2 - 100, var3 + 72 + 12 + 24, "Back"));
@@ -122,7 +111,7 @@ extends GuiScreen {
 			}
 		}
 		if (character == '\r') {
-			this.actionPerformed((GuiButton)this.buttonList.get(0));
+			this.actionPerformed(this.buttonList.get(0));
 		}
 		this.username.textboxKeyTyped(character, key);
 		this.password.textboxKeyTyped(character, key);
@@ -164,15 +153,12 @@ extends GuiScreen {
 	}
 
 	public enum LoginMode {
-		MOJANG("Mojang"),
 		MICROSOFT("Microsoft"),
-		RNG("RNG"),
-		ALTENING("Altening"),
-		ALTENINGPREMIUM("AlteningPremium"),
+		RNG("Random"),
 		MICROSOFT_BROWSER("Browser");
 
-		String name;
-		private LoginMode(String name) {
+		final String name;
+		LoginMode(String name) {
 			this.name = name;
 		}
 	}

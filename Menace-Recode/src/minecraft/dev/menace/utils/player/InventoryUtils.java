@@ -2,19 +2,17 @@ package dev.menace.utils.player;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemAxe;
-import net.minecraft.item.ItemPickaxe;
-import net.minecraft.item.ItemSpade;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
-import net.minecraft.item.ItemTool;
+import net.minecraft.init.Items;
+import net.minecraft.item.*;
+import net.minecraft.util.DamageSource;
+import org.jetbrains.annotations.NotNull;
 
 public class InventoryUtils {
 
@@ -69,8 +67,16 @@ public class InventoryUtils {
             Blocks.redstone_wire,
             Blocks.light_weighted_pressure_plate,
             Blocks.heavy_weighted_pressure_plate,
-            Blocks.daylight_detector
+            Blocks.daylight_detector,
+			Blocks.wooden_slab
     );
+	public static final List<Item> TRASH = Arrays.asList(
+			Items.egg,
+			Items.snowball,
+			Items.experience_bottle,
+			Items.lava_bucket,
+			Items.cooked_fish
+	);
 
 	public static void shiftClick(int slot, int windowID) {
 		MC.playerController.windowClick(windowID, slot, 0, 1, MC.thePlayer);
@@ -136,6 +142,17 @@ public class InventoryUtils {
 			value = (float)((double)value + (double)EnchantmentHelper.getEnchantmentLevel(Enchantment.unbreaking.effectId, stack) / 100.0D);
 			return value;
 		}
+	}
+
+	public static float getArmorStrength(final ItemStack itemStack) {
+		if (itemStack == null || !(itemStack.getItem() instanceof ItemArmor)) return -1;
+		float damageReduction = ((ItemArmor) itemStack.getItem()).damageReduceAmount;
+		Map<Integer, Integer> enchantments = EnchantmentHelper.getEnchantments(itemStack);
+		if (enchantments.containsKey(Enchantment.protection.effectId)) {
+			int level = enchantments.get(Enchantment.protection.effectId);
+			damageReduction += Enchantment.protection.calcModifierDamage(level, DamageSource.generic);
+		}
+		return damageReduction;
 	}
 
 }

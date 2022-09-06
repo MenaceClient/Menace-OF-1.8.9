@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class MathUtils {
 
-	private static Random rand = new Random();
+	private static final Random rand = new Random();
 	
 	public static int randInt(int start, int end) {
 		return end - start <= 0 ? start : start + rand.nextInt(end - start);
@@ -26,8 +26,7 @@ public class MathUtils {
 	
 	public static float getAngleDifference(float dir, float yaw) {
         float f = Math.abs(yaw - dir) % 360F;
-        float dist = f > 180F ? 360F - f : f;
-        return dist;
+        return f > 180F ? 360F - f : f;
     }
 	
 }

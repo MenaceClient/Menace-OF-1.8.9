@@ -153,7 +153,7 @@ extends GuiScreen {
 		try {
 			URL url = new URL("http://menaceapi.cf/HWIDS.txt");
 			URLConnection uc = url.openConnection();
-			uc.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
+			uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(uc.getInputStream(), StandardCharsets.UTF_8));
 			bufferedReader.close();
 		} catch (IOException e) {
@@ -167,7 +167,7 @@ extends GuiScreen {
 			return;
 		}
 
-		if (HWIDManager.getUID(HWIDManager.getHWID()) != Integer.parseInt(username.getText())) {
+		if (HWIDManager.getUID() != Integer.parseInt(username.getText())) {
 			status = "§cInvalid UID.";
 			return;
 		}

@@ -7,7 +7,7 @@ import net.minecraft.util.BlockPos;
 
 public class BlockUtils {
 
-    private static Minecraft MC = Minecraft.getMinecraft();
+    private static final Minecraft MC = Minecraft.getMinecraft();
 
     public static Block getBlock(BlockPos blockPos) {
         return MC.theWorld.getBlockState(blockPos).getBlock();

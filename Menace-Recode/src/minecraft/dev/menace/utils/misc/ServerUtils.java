@@ -11,7 +11,7 @@ import net.minecraft.client.multiplayer.ServerData;
 
 public class ServerUtils {
 
-	private static Minecraft MC = Menace.instance.MC;
+	private static final Minecraft MC = Menace.instance.MC;
 	
     public static ServerData serverData;
 

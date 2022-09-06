@@ -4,7 +4,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
@@ -15,37 +14,31 @@ import java.util.List;
 
 public class HWIDManager {
 
-	public static String getHWID() {
-		String s = "";
+	public static @NotNull String getHWID() {
+		StringBuilder s = new StringBuilder();
 		String main = System.getenv("PROCESSOR_IDENTIFIER") + System.getenv("COMPUTERNAME") + System.getProperty("user.name").trim();
-		byte[] bytes = null;
-		try {
-			bytes = main.getBytes("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		byte[] bytes;
+		bytes = main.getBytes(StandardCharsets.UTF_8);
 		MessageDigest messageDigest = null;
 		try {
 			messageDigest = MessageDigest.getInstance("MD5");
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
+		assert messageDigest != null;
 		byte[] md5 = messageDigest.digest(bytes);
 		int i = 0;
-		byte[] var6 = md5;
-		int var7 = md5.length;
 
-		for(int var8 = 0; var8 < var7; ++var8) {
-			byte b = var6[var8];
-			s = s + Integer.toHexString(b & 255 | 768).substring(0, 3);
+		for (byte b : md5) {
+			s.append(Integer.toHexString(b & 255 | 768), 0, 3);
 			if (i != md5.length - 1) {
-				s = s + "-";
+				s.append("-");
 			}
 
 			++i;
 		}
 
-		return s;
+		return s.toString();
 	}
 	
 	/**
@@ -57,7 +50,7 @@ public class HWIDManager {
         try {
             final URL url = new URL("http://menaceapi.cf/HWIDS.txt");
             URLConnection uc = url.openConnection();
-            uc.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
+            uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(uc.getInputStream(), StandardCharsets.UTF_8));
             String hwid;
             while ((hwid = bufferedReader.readLine()) != null) {
@@ -78,7 +71,7 @@ public class HWIDManager {
         try {
             final URL url = new URL("http://menaceapi.cf/USERINFO.txt");
             URLConnection uc = url.openConnection();
-            uc.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
+            uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(uc.getInputStream(), StandardCharsets.UTF_8));
             String hwid;
             while ((hwid = bufferedReader.readLine()) != null) {
@@ -90,7 +83,7 @@ public class HWIDManager {
         return s;
     }
     
-    public static int getUID(String HWID) {
+    public static int getUID() {
     	String UID = null;
     	
     	for (String info : readInfoURL()) {
@@ -98,8 +91,9 @@ public class HWIDManager {
 				UID = info.split(":")[2];
 			}
     	}
-    	
-    	return Integer.valueOf(UID);
+
+		assert UID != null;
+		return Integer.parseInt(UID);
     }
     
     public static String getUsername() {
@@ -115,7 +109,7 @@ public class HWIDManager {
     }
     
     public static MenaceUser getUser() {
-    	return new MenaceUser(getUsername(), getHWID(), getUID(getHWID()));
+    	return new MenaceUser(getUsername(), getHWID(), getUID());
     }
 
 }

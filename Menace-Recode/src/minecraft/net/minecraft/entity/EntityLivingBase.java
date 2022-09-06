@@ -1579,7 +1579,7 @@ public abstract class EntityLivingBase extends Entity
         this.motionY = jumpEvent.getUpwardsMotion();
 
         if(this.isPotionActive(Potion.jump))
-            this.motionY += (double) ((float) (this.getActivePotionEffect(Potion.jump).getAmplifier() + 1) * 0.1F);
+            this.motionY += (float) (this.getActivePotionEffect(Potion.jump).getAmplifier() + 1) * 0.1F;
 
         if(this.isSprinting()) {
             float f = this.rotationYaw * 0.017453292F;

@@ -4,7 +4,7 @@ import dev.menace.Menace;
 import dev.menace.module.ModuleManager;
 
 public class Config {
-    public String name;
+    private String name;
     private boolean loaded = false;
 
     public Config(String name) {

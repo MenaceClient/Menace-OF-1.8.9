@@ -270,6 +270,7 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
      * Fired when a key is typed (except F11 which toggles full screen). This is the equivalent of
      * KeyListener.keyTyped(KeyEvent e). Args : character (character on the key), keyCode (lwjgl Keyboard key code)
      */
+    @Override
     protected void keyTyped(char typedChar, int keyCode) throws IOException
     {
         int i = this.serverListSelector.func_148193_k();

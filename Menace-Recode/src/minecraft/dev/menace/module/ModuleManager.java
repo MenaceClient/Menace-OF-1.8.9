@@ -20,8 +20,7 @@ import net.minecraft.crash.CrashReport;
 
 public class ModuleManager {
 
-	public ArrayList<BaseModule> modules = new ArrayList<BaseModule>();
-	public String selectedConfig = "default";
+	public ArrayList<BaseModule> modules = new ArrayList<>();
 
 	//COMBAT
 	AutoPotModule autoPotModule = new AutoPotModule();
@@ -31,6 +30,7 @@ public class ModuleManager {
 	public VelocityModule velocityModule = new VelocityModule();
 	
 	//MOVEMENT
+	AirHopModule airHopModule = new AirHopModule();
 	public FlightModule flightModule = new FlightModule();
 	LongJumpModule longJumpModule = new LongJumpModule();
 	SpeedModule speedModule = new SpeedModule();
@@ -41,7 +41,7 @@ public class ModuleManager {
 	//PLAYER
 	AntiCactusModule antiCactusModule = new AntiCactusModule();
 	public BlinkModule blinkModule = new BlinkModule();
-	//InvManagerModule invManagerModule = new InvManagerModule();
+	public InvManagerModule invManagerModule = new InvManagerModule();
 	InvMoveModule invMoveModule = new InvMoveModule();
 	NoFallModule noFallModule = new NoFallModule();
 	NoSlowModule noSlowModule = new NoSlowModule();
@@ -66,7 +66,7 @@ public class ModuleManager {
 	//MISC
 	AutoLoginModule autoLoginModule = new AutoLoginModule();
 	//DevModule devModule = new DevModule();
-	DisablerModule disablerModule = new DisablerModule();
+	//DisablerModule disablerModule = new DisablerModule();
 	public KillSultsModule killSultsModule = new KillSultsModule();
 	StaffDetectorModule staffDetectorModule = new StaffDetectorModule();
 
@@ -108,8 +108,8 @@ public class ModuleManager {
 	}
 
 	public ArrayList<BaseModule> getModulesByCategory(Category c) {
-		ArrayList<BaseModule> list = new ArrayList<BaseModule>();
-		modules.stream().forEach(module ->{ 
+		ArrayList<BaseModule> list = new ArrayList<>();
+		modules.forEach(module ->{
 			if (module.getCategory().equals(c)) {
 				list.add(module);
 			}
@@ -143,7 +143,6 @@ public class ModuleManager {
 			configFile.add(module.getName(), modSave);
 		});
 		FileManager.writeJsonToFile(new File(FileManager.getConfigFolder(), configName + ".json"), configFile);
-		this.selectedConfig = configName;
 	}
 
 	public void loadModules(String configName) {
@@ -169,7 +168,6 @@ public class ModuleManager {
 				});
 			}
 		});
-		this.selectedConfig = configName;
 	}
 
 	public void saveKeys() {

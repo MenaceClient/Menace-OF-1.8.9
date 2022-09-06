@@ -24,7 +24,7 @@ public class HUDConfigScreen extends GuiScreen {
 		
 		this.api = api;
 		
-		Collection<BaseElement> registeredRenderers = api.hudElements;
+		Collection<BaseElement> registeredRenderers = HUDManager.hudElements;
 		
 		for (BaseElement ren : registeredRenderers) {
 			//if (!ren.isEnabled()) continue;
@@ -41,9 +41,9 @@ public class HUDConfigScreen extends GuiScreen {
 		final float zBackup = this.zLevel;
 		this.zLevel = 200;
 		
-		this.drawHollowRect(0, 0, this.width - 1, this.height - 1, 0xFFFF0000);
+		this.drawHollowRect(0, 0, width - 1, height - 1, 0xFFFF0000);
 		
-		for (BaseElement renderer : api.hudElements) {
+		for (BaseElement renderer : HUDManager.hudElements) {
 			
 			renderer.renderDummy();
 			
