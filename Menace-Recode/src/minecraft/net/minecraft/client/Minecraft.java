@@ -530,18 +530,14 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 		this.mcResourceManager.registerReloadListener(this.standardGalacticFontRenderer);
 		this.mcResourceManager.registerReloadListener(new GrassColorReloadListener());
 		this.mcResourceManager.registerReloadListener(new FoliageColorReloadListener());
-		AchievementList.openInventory.setStatStringFormatter(new IStatStringFormat()
-		{
-			public String formatString(String str)
+		AchievementList.openInventory.setStatStringFormatter(str -> {
+			try
 			{
-				try
-				{
-					return String.format(str, new Object[] {GameSettings.getKeyDisplayString(Minecraft.this.gameSettings.keyBindInventory.getKeyCode())});
-				}
-				catch (Exception exception)
-				{
-					return "Error: " + exception.getLocalizedMessage();
-				}
+				return String.format(str, GameSettings.getKeyDisplayString(Minecraft.this.gameSettings.keyBindInventory.getKeyCode()));
+			}
+			catch (Exception exception)
+			{
+				return "Error: " + exception.getLocalizedMessage();
 			}
 		});
 		this.mouseHelper = new MouseHelper();

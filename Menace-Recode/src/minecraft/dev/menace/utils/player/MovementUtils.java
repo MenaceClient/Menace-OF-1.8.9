@@ -35,9 +35,9 @@ public class MovementUtils {
     }
 
     public static void stop() {
-        MC.thePlayer.posX = 0;
-        MC.thePlayer.posY = 0;
-        MC.thePlayer.posZ = 0;
+        MC.thePlayer.motionX = 0;
+        MC.thePlayer.motionY = 0;
+        MC.thePlayer.motionZ = 0;
     }
     
     public static double getDirection() {

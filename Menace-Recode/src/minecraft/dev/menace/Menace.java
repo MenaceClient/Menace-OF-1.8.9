@@ -16,7 +16,6 @@ import dev.menace.utils.file.FileManager;
 import dev.menace.utils.misc.DiscordRP;
 import dev.menace.utils.security.MenaceUser;
 import fr.litarvan.openauth.microsoft.MicrosoftAuthenticationException;
-import net.arikia.dev.drpc.DiscordUser;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.play.server.S02PacketChat;
 import org.lwjgl.opengl.Display;
@@ -38,7 +37,7 @@ public class Menace {
 	public ConfigManager configManager;
 	public HUDManager hudManager;
 	public DiscordRP discordRP;
-	public DiscordUser discordUser;
+
 	public MenaceUser user;
 	
 	public void startClient() {

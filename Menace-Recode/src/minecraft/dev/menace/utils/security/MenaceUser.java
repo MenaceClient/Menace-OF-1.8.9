@@ -5,9 +5,12 @@ public class MenaceUser {
 	private final String username;
 	private final String hwid;
 	private final int uid;
+
+	private final String discord;
 	
-	public MenaceUser(String username, String hwid, int uid) {
+	public MenaceUser(String username, String discord, String hwid, int uid) {
 		this.username = username;
+		this.discord = discord;
 		this.hwid = hwid;
 		this.uid = uid;
 	}
@@ -23,5 +26,7 @@ public class MenaceUser {
 	public int getUID() {
 		return uid;
 	}
+
+	public String getDiscord() {return discord;}
 	
 }

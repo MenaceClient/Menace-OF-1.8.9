@@ -25,7 +25,7 @@ public class S45PacketTitle implements Packet<INetHandlerPlayClient>
 
     public S45PacketTitle(int fadeInTime, int displayTime, int fadeOutTime)
     {
-        this(S45PacketTitle.Type.TIMES, (IChatComponent)null, fadeInTime, displayTime, fadeOutTime);
+        this(S45PacketTitle.Type.TIMES, null, fadeInTime, displayTime, fadeOutTime);
     }
 
     public S45PacketTitle(S45PacketTitle.Type type, IChatComponent message, int fadeInTime, int displayTime, int fadeOutTime)

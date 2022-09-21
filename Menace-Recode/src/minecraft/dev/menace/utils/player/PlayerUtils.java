@@ -109,11 +109,11 @@ public class PlayerUtils {
     }
 
     public static boolean isInLiquid() {
-        for(int x = MathHelper.floor_double(MC.thePlayer.boundingBox.minY); x < MathHelper.floor_double(MC.thePlayer.boundingBox.maxX) + 1; ++x) {
-            for(int z = MathHelper.floor_double(MC.thePlayer.boundingBox.minZ); z < MathHelper.floor_double(MC.thePlayer.boundingBox.maxZ) + 1; ++z) {
-                BlockPos pos = new BlockPos(x, (int)MC.thePlayer.boundingBox.minY, z);
+        for (int x = MathHelper.floor_double(MC.thePlayer.boundingBox.minY); x < MathHelper.floor_double(MC.thePlayer.boundingBox.maxX) + 1; ++x) {
+            for (int z = MathHelper.floor_double(MC.thePlayer.boundingBox.minZ); z < MathHelper.floor_double(MC.thePlayer.boundingBox.maxZ) + 1; ++z) {
+                BlockPos pos = new BlockPos(x, (int) MC.thePlayer.boundingBox.minY, z);
                 Block block = MC.theWorld.getBlockState(pos).getBlock();
-                if(block != null && !(block instanceof BlockAir))
+                if (block != null && !(block instanceof BlockAir))
                     return block instanceof BlockLiquid;
             }
         }

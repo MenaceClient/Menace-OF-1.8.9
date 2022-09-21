@@ -53,7 +53,7 @@ public class KillAuraModule extends BaseModule {
 	ListSetting filter;
 	ListSetting rotation;
 	ListSetting autoblock;
-	ToggleSetting keepSprint;
+	public ToggleSetting keepSprint;
 	ToggleSetting noswing;
 	ToggleSetting throughwalls;
 	ToggleSetting ininv;
@@ -281,11 +281,7 @@ public class KillAuraModule extends BaseModule {
 						}
 					});
 		} else {
-			if (keepSprint.getValue()) {
-				PacketUtils.sendPacket(new C02PacketUseEntity(target, C02PacketUseEntity.Action.ATTACK));
-			} else {
-				mc.playerController.attackEntity(mc.thePlayer, target);
-			}
+			mc.playerController.attackEntity(mc.thePlayer, target);
 		}
 
 		final int maxValue = (int) ((this.minCPS.getMax() - this.maxCPS.getValue()) * 20);

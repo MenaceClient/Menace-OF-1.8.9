@@ -19,7 +19,7 @@ public class CapeModule extends BaseModule {
 
     @Override
     public void setup() {
-        capes = new ListSetting("Capes", true, "Technoblade", new String[] {"Technoblade", "Menace", "Menace2", "Verus", "HackDonalds"});
+        capes = new ListSetting("Capes", true, "Technoblade", new String[] {"Technoblade", "Menace", "Menace2", "Verus", "HackDonalds", "Laugh"});
         this.rSetting(capes);
         super.setup();
     }

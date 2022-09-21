@@ -14,7 +14,7 @@ public class AirHopModule extends BaseModule {
     public void onUpdate(EventUpdate event) {
         if(mc.gameSettings.keyBindJump.isPressed()){
             mc.thePlayer.motionX *= 1.5;
-            mc.thePlayer.motionY = 0.4;
+            mc.thePlayer.motionY = 0.42;
             mc.thePlayer.motionZ *= 1.5;
             mc.thePlayer.onGround =  true;
         }

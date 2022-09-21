@@ -21,11 +21,11 @@ public class BaseModule {
 	private final Category category;
 	private int keybind;
 	protected boolean toggled;
-	private ToggleSetting visible;
+	private final ToggleSetting visible;
 	private final ArrayList<Setting> settings = new ArrayList<>();
 	
 	protected final Minecraft mc = Minecraft.getMinecraft();
-	
+
 	public BaseModule(String name, Category category, int keybind) {
 		this.name = name;
 		this.desc = "";

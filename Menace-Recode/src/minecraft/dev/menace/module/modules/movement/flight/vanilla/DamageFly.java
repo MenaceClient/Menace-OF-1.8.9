@@ -198,7 +198,7 @@ public class DamageFly extends FlightBase {
 				event.getPacket() instanceof C03PacketPlayer.C05PacketPlayerLook ||
 				event.getPacket() instanceof C03PacketPlayer.C06PacketPlayerPosLook)
 				&& Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Verus")
-				&& !damage && C03Sent == false) {
+				&& !damage && !C03Sent) {
 			event.setCancelled(true);
 			C03Count++;
 		}

@@ -4,8 +4,6 @@ import dev.menace.Menace;
 import net.arikia.dev.drpc.DiscordEventHandlers;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
-import net.arikia.dev.drpc.DiscordUser;
-import net.arikia.dev.drpc.callbacks.ReadyCallback;
 
 public class DiscordRP {
 
@@ -15,14 +13,8 @@ public class DiscordRP {
 	public void start() {
 		this.created = System.currentTimeMillis();
 		
-		DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler(new ReadyCallback() {
-			
-			@Override
-			public void apply(DiscordUser user) {
-				update("Authenticating...");
-				Menace.instance.discordUser = user;
-			}
-			
+		DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler(user -> {
+			update("Authenticating...");
 		}).build();
 		
 		DiscordRPC.discordInitialize("815961665652785172", handlers, true);
@@ -51,7 +43,7 @@ public class DiscordRP {
 		DiscordRichPresence.Builder b = new DiscordRichPresence.Builder(line);
 		b.setBigImage("large", "https://menaceclient.ml/");
 		if (Menace.instance.user != null) {
-			b.setDetails(Menace.instance.user.getUsername() + " [" + String.valueOf(Menace.instance.user.getUID()) + "]");
+			b.setDetails(Menace.instance.user.getUsername() + " [" + Menace.instance.user.getUID() + "]");
 		}
 		b.setStartTimestamps(created);
 

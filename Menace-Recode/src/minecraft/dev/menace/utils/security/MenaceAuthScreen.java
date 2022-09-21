@@ -31,7 +31,7 @@ extends GuiScreen {
 	private final GuiScreen previousScreen;
 	private GuiTextField username;
 	private String status = "§7Waiting...";
-	private GLSLShader backgroundShader;
+	private final GLSLShader backgroundShader;
 	private long initTime = System.currentTimeMillis();
 	MenaceFontRenderer text = MenaceFontRenderer.getFontOnPC("Arial", 35);
 

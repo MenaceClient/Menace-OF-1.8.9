@@ -38,7 +38,7 @@
       "ThroughWalls": false,
       "InInventory": false,
       "RayCast": false,
-      "DisableOnWorldChange": true,
+      "AutoDisable": true,
       "Players": true,
       "Hostiles": true,
       "Passives": false,
@@ -84,6 +84,7 @@
     "Settings": {
       "Mode": "BHop",
       "Speed": 1.0,
+      "AutoDisable": true,
       "Visible": true
     }
   },
@@ -108,9 +109,10 @@
       "Visible": true
     }
   },
-  "AntiCactus": {
+  "AntiVoid": {
     "Toggled": false,
     "Settings": {
+      "Mode": "Teleport",
       "Visible": true
     }
   },
@@ -177,9 +179,17 @@
       "SilentSwap": false,
       "KeepY": false,
       "Jump": false,
+      "Eagle": false,
+      "Eagle Delay": 200.0,
       "NoSwing": false,
       "Timer": 1.0,
       "Render": true,
+      "Visible": true
+    }
+  },
+  "AntiCactus": {
+    "Toggled": false,
+    "Settings": {
       "Visible": true
     }
   },
@@ -283,6 +293,19 @@
     }
   },
   "AutoLogin": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "AutoPlay": {
+    "Toggled": false,
+    "Settings": {
+      "Delay": 500.0,
+      "Visible": true
+    }
+  },
+  "Disabler": {
     "Toggled": false,
     "Settings": {
       "Visible": true

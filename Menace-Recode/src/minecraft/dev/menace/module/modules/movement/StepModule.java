@@ -11,6 +11,7 @@ import dev.menace.utils.player.PacketUtils;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
 import net.minecraft.util.BlockPos;
 import org.jetbrains.annotations.NotNull;
@@ -26,7 +27,7 @@ public class StepModule extends BaseModule {
 	
 	@Override
 	public void setup() {
-		mode = new ListSetting("Mode", true, "Vanilla", new String[] {"Vanilla", "Verus"});
+		mode = new ListSetting("Mode", true, "Vanilla", new String[] {"Vanilla", "Verus", "NCP"});
 		height = new SliderSetting("Height", true, 1, 1, 10, true);
 		this.rSetting(mode);
 		this.rSetting(height);

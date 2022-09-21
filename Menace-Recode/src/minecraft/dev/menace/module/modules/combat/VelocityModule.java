@@ -8,10 +8,13 @@ import dev.menace.event.events.EventUpdate;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.module.settings.ListSetting;
+import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
 import net.minecraft.network.play.server.S12PacketEntityVelocity;
 import net.minecraft.network.play.server.S27PacketExplosion;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.function.Consumer;
 
 public class VelocityModule extends BaseModule {
 
@@ -25,12 +28,7 @@ public class VelocityModule extends BaseModule {
 	@Override
 	public void setup() {
 		mode = new ListSetting("Mode", true, "Simple", new String[] {"Simple"});
-		explosions = new ToggleSetting("Explosions", true, true) {
-			@Override
-			public void constantCheck() {
-				this.setVisible(Menace.instance.moduleManager.velocityModule.mode.getValue().equalsIgnoreCase("Simple"));
-			}
-		};
+		explosions = new ToggleSetting("Explosions", true, true);
 		this.rSetting(mode);
 		this.rSetting(explosions);
 		super.setup();

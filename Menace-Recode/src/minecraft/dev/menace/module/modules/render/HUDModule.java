@@ -13,6 +13,7 @@ import dev.menace.module.settings.ToggleSetting;
 import dev.menace.ui.hud.BaseElement;
 import dev.menace.ui.hud.HUDConfigScreen;
 import dev.menace.ui.hud.HUDManager;
+import javafx.scene.web.WebView;
 
 public class HUDModule extends BaseModule {
 
@@ -136,7 +137,6 @@ public class HUDModule extends BaseModule {
 
 	@EventTarget
 	public void onRender2D(Event2D event) {
-		
 		Menace.instance.hudManager.watermarkElement.setVisible(watermark.getValue());
 		Menace.instance.hudManager.arrayElement.setVisible(array.getValue());
 		Menace.instance.hudManager.posElement.setVisible(pos.getValue());

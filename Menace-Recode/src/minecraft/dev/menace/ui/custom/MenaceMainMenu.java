@@ -249,11 +249,7 @@ public class MenaceMainMenu extends GuiScreen implements GuiYesNoCallback {
       this.drawSinglePlayer(mouseX, mouseY);
       this.drawMultiPlayer(mouseX, mouseY);
       this.text.drawString("Welcome back, " + Menace.instance.user.getUsername() + " [" + Menace.instance.user.getUID() + "]", 5, 5, Color.white.getRGB());
-      if (Menace.instance.discordUser != null) {
-    	  this.text.drawString("Discord: " + Menace.instance.discordUser.username + "#" + Menace.instance.discordUser.discriminator, 5, 25, Color.white.getRGB());
-      } else {
-    	  this.text.drawString("Discord not found.", 5, 25, Color.white.getRGB());
-      }
+      this.text.drawString("Discord: " + Menace.instance.user.getDiscord(), 5, 25, Color.white.getRGB());
       super.drawScreen(mouseX, mouseY, partialTicks);
       if (this.a()) {
          this.M.drawScreen(mouseX, mouseY, partialTicks);

@@ -27,19 +27,20 @@ public class ModuleManager {
 	ComboOneTapModule comboOneTapModule = new ComboOneTapModule();
 	CriticalsModule criticalsModule = new CriticalsModule();
 	public KillAuraModule killAuraModule = new KillAuraModule();
+	//TPAuraModule tpAuraModule = new TPAuraModule();
 	public VelocityModule velocityModule = new VelocityModule();
 	
 	//MOVEMENT
 	AirHopModule airHopModule = new AirHopModule();
 	public FlightModule flightModule = new FlightModule();
 	LongJumpModule longJumpModule = new LongJumpModule();
-	SpeedModule speedModule = new SpeedModule();
+	public SpeedModule speedModule = new SpeedModule();
 	public SprintModule sprintModule = new SprintModule();
 	StepModule stepModule = new StepModule();
 	StrafeModule strafeModule = new StrafeModule();
 	
 	//PLAYER
-	AntiCactusModule antiCactusModule = new AntiCactusModule();
+	AntiVoidModule antiVoidModule = new AntiVoidModule();
 	public BlinkModule blinkModule = new BlinkModule();
 	public InvManagerModule invManagerModule = new InvManagerModule();
 	InvMoveModule invMoveModule = new InvMoveModule();
@@ -49,6 +50,7 @@ public class ModuleManager {
 	public ScaffoldModule scaffoldModule = new ScaffoldModule();
 	
 	//WORLD
+	AntiCactusModule antiCactusModule = new AntiCactusModule();
 	public ChestStealerModule chestStealerModule = new ChestStealerModule();
 	FastPlaceModule fastPlaceModule = new FastPlaceModule();
 	TimerModule timerModule = new TimerModule();
@@ -65,6 +67,7 @@ public class ModuleManager {
 	
 	//MISC
 	AutoLoginModule autoLoginModule = new AutoLoginModule();
+	public AutoPlayModule autoPlayModule = new AutoPlayModule();
 	//DevModule devModule = new DevModule();
 	//DisablerModule disablerModule = new DisablerModule();
 	public KillSultsModule killSultsModule = new KillSultsModule();

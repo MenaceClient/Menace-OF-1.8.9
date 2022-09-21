@@ -75,7 +75,9 @@ public class InventoryUtils {
 			Items.snowball,
 			Items.experience_bottle,
 			Items.lava_bucket,
-			Items.cooked_fish
+			Items.cooked_fish,
+			Items.fishing_rod,
+			Items.wheat_seeds
 	);
 
 	public static void shiftClick(int slot, int windowID) {

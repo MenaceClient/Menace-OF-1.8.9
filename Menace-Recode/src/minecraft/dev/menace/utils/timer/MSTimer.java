@@ -18,4 +18,8 @@ public class MSTimer {
     public void reset() {
         time = System.currentTimeMillis();
     }
+
+    public long getStartTime() {
+        return time;
+    }
 }

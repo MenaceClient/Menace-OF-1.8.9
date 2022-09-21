@@ -1,5 +1,6 @@
 package dev.menace.module.modules.player;
 
+import dev.menace.Menace;
 import dev.menace.event.EventTarget;
 import dev.menace.event.events.*;
 import dev.menace.module.BaseModule;
@@ -8,11 +9,13 @@ import dev.menace.module.DontSaveState;
 import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
+import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.player.InventoryUtils;
 import dev.menace.utils.player.MovementUtils;
 import dev.menace.utils.player.PacketUtils;
 import dev.menace.utils.player.PlayerUtils;
 import dev.menace.utils.render.RenderUtils;
+import dev.menace.utils.timer.MSTimer;
 import dev.menace.utils.world.BlockUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -40,12 +43,16 @@ public class ScaffoldModule extends BaseModule {
     int oldSlot;
     int  swappedSlot;
 
+    MSTimer eagleTimer = new MSTimer();
+
     ToggleSetting tower;
     public ToggleSetting sprint;
     ToggleSetting keepRotations;
     ToggleSetting silentSwap;
     ToggleSetting keepY;
     ToggleSetting jump;
+    public ToggleSetting eagle;
+    SliderSetting eagleDelay;
     ToggleSetting noSwing;
     SliderSetting timer;
     ToggleSetting render;
@@ -62,6 +69,14 @@ public class ScaffoldModule extends BaseModule {
         silentSwap = new ToggleSetting("SilentSwap", true, false);
         keepY = new ToggleSetting("KeepY", true, false);
         jump = new ToggleSetting("Jump", true, false);
+        eagle = new ToggleSetting("Eagle", true, false);
+        eagleDelay = new SliderSetting("Eagle Delay", false, 200, 100, 1000, 100, true) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(Menace.instance.moduleManager.scaffoldModule.eagle.getValue());
+                super.constantCheck();
+            }
+        };
         noSwing = new ToggleSetting("NoSwing", true, false);
         timer = new SliderSetting("Timer", true, 1, 1, 5, 0.1, false);
         render = new ToggleSetting("Render", true, true);
@@ -71,6 +86,8 @@ public class ScaffoldModule extends BaseModule {
         this.rSetting(silentSwap);
         this.rSetting(keepY);
         this.rSetting(jump);
+        this.rSetting(eagle);
+        this.rSetting(eagleDelay);
         this.rSetting(noSwing);
         this.rSetting(timer);
         this.rSetting(render);
@@ -83,6 +100,7 @@ public class ScaffoldModule extends BaseModule {
         startY = mc.thePlayer.posY - 1;
         oldSlot = mc.thePlayer.inventory.currentItem;
         swappedSlot = -1;
+        eagleTimer.reset();
         super.onEnable();
     }
 
@@ -140,6 +158,23 @@ public class ScaffoldModule extends BaseModule {
 
         if (mc.gameSettings.keyBindJump.isKeyDown() && tower.getValue() && (!keepY.getValue() || !MovementUtils.isMoving())) {
             mc.thePlayer.motionY = 0.42;
+        }
+
+        if (eagleTimer.hasTimePassed(eagleDelay.getValueL()) && eagle.getValue()) {
+            eagleTimer.reset();
+            mc.gameSettings.keyBindSneak.pressed = true;
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        sleep(100);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    mc.gameSettings.keyBindSneak.pressed = false;
+                    super.run();
+                }
+            }.start();
         }
 
         findNearbyBlocks(belowPlayer, event);

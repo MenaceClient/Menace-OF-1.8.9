@@ -14,9 +14,9 @@ difficulty:1
 fancyGraphics:true
 ao:2
 renderClouds:false
-resourcePacks:["! §dDreamHax Personal Pack.zip"]
+resourcePacks:["§f§lTriton §7§lPack.zip"]
 incompatibleResourcePacks:[]
-lastServer:o.tree.ac
+lastServer:cascade.ddns.net
 lang:en_US
 chatVisibility:0
 chatColors:true

@@ -31,6 +31,7 @@
   "ItemPhysics": 0,
   "XRay": 0,
   "AutoLogin": 0,
+  "AutoPlay": 0,
   "KillSults": 0,
   "StaffDetector": 0
 }
