@@ -1,10 +1,5 @@
 package dev.menace.ui.clickgui.lime.components.impl;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
-import org.lwjgl.input.Mouse;
-
 import dev.menace.Menace;
 import dev.menace.module.settings.Setting;
 import dev.menace.module.settings.SliderSetting;
@@ -12,14 +7,16 @@ import dev.menace.ui.clickgui.lime.Priority;
 import dev.menace.ui.clickgui.lime.components.Component;
 import dev.menace.ui.clickgui.lime.components.FrameModule;
 import dev.menace.ui.clickgui.lime.utils.render.RenderUtils;
-import dev.menace.utils.render.MenaceFontRenderer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
+import dev.menace.utils.render.font.MenaceFontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.util.MathHelper;
+import org.lwjgl.input.Mouse;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class SlideSetting extends Component implements Priority {
-	MenaceFontRenderer productSans20 = MenaceFontRenderer.getFontOnPC("ProductSans20", 20);
+    MenaceFontRenderer font = Menace.instance.productSans20;
 	
     public SlideSetting(int x, int y, FrameModule owner, Setting setting) {
         super(x, y, owner, setting);
@@ -56,7 +53,7 @@ public class SlideSetting extends Component implements Priority {
             }
         }
 
-        productSans20.drawStringWithShadow(getSetting().getName() + ": " + roundToPlace(((SliderSetting) getSetting()).getValue(), 2), x + 5, y + (getOffset() / 2F - (productSans20.FONT_HEIGHT / 2F)), stringColor);
+        font.drawStringWithShadow(getSetting().getName() + ": " + roundToPlace(((SliderSetting) getSetting()).getValue(), 2), x + 5, y + (getOffset() / 2F - (font.getHeight() / 2F)), stringColor);
     }
 
     private double roundToPlace(double value, int places) {

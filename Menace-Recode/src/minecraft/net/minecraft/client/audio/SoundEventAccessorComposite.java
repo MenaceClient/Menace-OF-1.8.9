@@ -48,7 +48,7 @@ public class SoundEventAccessorComposite implements ISoundEventAccessor<SoundPoo
 
                 if (j < 0)
                 {
-                    SoundPoolEntry soundpoolentry = (SoundPoolEntry)isoundeventaccessor.cloneEntry();
+                    SoundPoolEntry soundpoolentry = isoundeventaccessor.cloneEntry();
                     soundpoolentry.setPitch(soundpoolentry.getPitch() * this.eventPitch);
                     soundpoolentry.setVolume(soundpoolentry.getVolume() * this.eventVolume);
                     return soundpoolentry;

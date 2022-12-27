@@ -4,7 +4,7 @@ import dev.menace.event.Event;
 
 public class EventKey extends Event {
 
-	private int key;
+	private final int key;
 	
 	public EventKey(int key) {
 		this.key = key;

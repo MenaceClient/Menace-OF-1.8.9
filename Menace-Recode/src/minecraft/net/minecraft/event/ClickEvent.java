@@ -49,17 +49,9 @@ public class ClickEvent
             {
                 if (this.value != null)
                 {
-                    if (!this.value.equals(clickevent.value))
-                    {
-                        return false;
-                    }
+                    return this.value.equals(clickevent.value);
                 }
-                else if (clickevent.value != null)
-                {
-                    return false;
-                }
-
-                return true;
+                else return clickevent.value == null;
             }
         }
         else
@@ -70,7 +62,7 @@ public class ClickEvent
 
     public String toString()
     {
-        return "ClickEvent{action=" + this.action + ", value=\'" + this.value + '\'' + '}';
+        return "ClickEvent{action=" + this.action + ", value='" + this.value + '\'' + '}';
     }
 
     public int hashCode()
@@ -80,12 +72,11 @@ public class ClickEvent
         return i;
     }
 
-    public static enum Action
+    public enum Action
     {
         OPEN_URL("open_url", true),
         OPEN_FILE("open_file", false),
         RUN_COMMAND("run_command", true),
-        TWITCH_USER_INFO("twitch_user_info", false),
         SUGGEST_COMMAND("suggest_command", true),
         CHANGE_PAGE("change_page", true);
 

@@ -32,6 +32,16 @@ public class MathUtils {
         return f > 180F ? 360F - f : f;
     }
 
+    public static float clamp(float angle, float min, float max) {
+        if (angle < min) {
+            angle = min;
+        }
+        if (angle > max) {
+            angle = max;
+        }
+        return angle;
+    }
+
     /***
      * Interpolating method
      * @param start start of the interval

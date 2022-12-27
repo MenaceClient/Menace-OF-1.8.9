@@ -1,5 +1,6 @@
 package dev.menace.module.modules.player;
 
+import dev.menace.Menace;
 import dev.menace.event.EventTarget;
 import dev.menace.event.events.EventUpdate;
 import dev.menace.module.BaseModule;
@@ -27,7 +28,7 @@ public class AntiVoidModule extends BaseModule {
 
     @Override
     public void setup() {
-        mode = new ListSetting("Mode", true, "Teleport", new String[] {"Teleport", "Flag"});
+        mode = new ListSetting("Mode", true, "Teleport", new String[] {"Teleport", "Flag", "Scaffold"});
         this.rSetting(mode);
         super.setup();
     }
@@ -49,6 +50,10 @@ public class AntiVoidModule extends BaseModule {
                 case "Flag" :
                     MovementUtils.stop();
                     PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY - 100, mc.thePlayer.posZ, true));
+                    break;
+                case "Scaffold" :
+                    if (!Menace.instance.moduleManager.scaffoldModule.isToggled())
+                        Menace.instance.moduleManager.scaffoldModule.toggle();
                     break;
             }
         }

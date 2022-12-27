@@ -1,7 +1,6 @@
 package dev.menace.utils.misc;
 
 import com.google.gson.JsonObject;
-
 import dev.menace.Menace;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.IChatComponent;

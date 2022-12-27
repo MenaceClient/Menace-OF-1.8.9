@@ -4,7 +4,6 @@ import dev.menace.event.EventTarget;
 import dev.menace.event.events.EventMove;
 import dev.menace.event.events.EventPreMotion;
 import dev.menace.event.events.EventReceivePacket;
-import dev.menace.event.events.EventUpdate;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.module.settings.ListSetting;
@@ -14,8 +13,11 @@ import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.player.MovementUtils;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.network.play.server.S08PacketPlayerPosLook;
-import net.minecraft.util.MathHelper;
+import net.minecraft.potion.Potion;
+import net.minecraft.util.AxisAlignedBB;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class SpeedModule extends BaseModule {
 
@@ -31,7 +33,7 @@ public class SpeedModule extends BaseModule {
 
     @Override
     public void setup() {
-        mode = new ListSetting("Mode", true, "BHop", new String[] {"BHop", "Strafe", "LowHop"});
+        mode = new ListSetting("Mode", true, "BHop", new String[] {"BHop", "Strafe", "LowHop", "Experimental"});
         speed = new SliderSetting("Speed", true, 1, 1, 10, true);
         autoDisable = new ToggleSetting("AutoDisable", true, true);
         this.rSetting(mode);
@@ -43,12 +45,14 @@ public class SpeedModule extends BaseModule {
     @Override
     public void onEnable() {
         flagCount = 0;
+        mc.timer.timerSpeed = 1.0F;
         super.onEnable();
     }
 
     @Override
     public void onDisable() {
         mc.gameSettings.keyBindJump.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindJump);
+        mc.timer.timerSpeed = 1.0f;
         super.onDisable();
     }
 
@@ -87,7 +91,6 @@ public class SpeedModule extends BaseModule {
             }
             MovementUtils.strafe();
         }
-
     }
 
     @EventTarget
@@ -96,9 +99,9 @@ public class SpeedModule extends BaseModule {
             flagCount++;
 
             if (flagCount >= 3) {
+                ChatUtils.message("Toggled Speed due to flag.");
                 this.toggle();
             }
         }
     }
-
 }

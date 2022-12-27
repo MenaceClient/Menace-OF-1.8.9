@@ -3,13 +3,13 @@ package dev.menace.ui.clickgui.vape;
 import dev.menace.Menace;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
-import dev.menace.module.config.Config;
 import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.Setting;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
-import dev.menace.utils.render.MenaceFontRenderer;
 import dev.menace.utils.render.RenderUtils;
+import dev.menace.utils.render.font.Fonts;
+import dev.menace.utils.render.font.MenaceFontRenderer;
 import dev.menace.utils.timer.MSTimer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -24,7 +24,6 @@ import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class VapeGui extends GuiScreen {
@@ -68,8 +67,8 @@ public class VapeGui extends GuiScreen {
 
     MSTimer valuetimer = new MSTimer();
 
-    MenaceFontRenderer f = MenaceFontRenderer.getFontFromAssets("ascii", 24);
-    MenaceFontRenderer fs = MenaceFontRenderer.getFontFromAssets("ascii", 18);
+    MenaceFontRenderer f = Menace.instance.ascii24;
+    MenaceFontRenderer fs = Menace.instance.ascii18;
 
     public float smoothTrans(double current, double last){
         return (float) (current + (last - current) / (Minecraft.debugFPS / 10));
@@ -477,7 +476,7 @@ public class VapeGui extends GuiScreen {
             float cateY = windowY + 65;
             for (Category m : Category.values()) {
 
-                if (isHovered(windowX, cateY - 8, windowX + 50, cateY + fs.FONT_HEIGHT + 8, mouseX, mouseY)) {
+                if (isHovered(windowX, cateY - 8, windowX + 50, cateY + fs.getHeight() + 8, mouseX, mouseY)) {
                     if (category != m) {
                         modsRole = 0;
                     }

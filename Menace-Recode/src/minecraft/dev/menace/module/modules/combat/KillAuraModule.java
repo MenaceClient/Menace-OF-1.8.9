@@ -4,6 +4,7 @@ import dev.menace.Menace;
 import dev.menace.event.EventTarget;
 import dev.menace.event.events.EventPostMotion;
 import dev.menace.event.events.EventPreMotion;
+import dev.menace.event.events.EventReceivePacket;
 import dev.menace.event.events.EventWorldChange;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
@@ -24,9 +25,13 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemSword;
 import net.minecraft.network.play.client.C02PacketUseEntity;
+import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.client.C0APacketAnimation;
+import net.minecraft.network.play.server.S0CPacketSpawnPlayer;
 import net.minecraft.util.MovingObjectPosition;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
 
@@ -35,6 +40,7 @@ public class KillAuraModule extends BaseModule {
 
 	MSTimer delayTimer = new MSTimer();
 	MSTimer switchTimer = new MSTimer();
+	public final ArrayList<Entity> botlist = new ArrayList<>();
 	public EntityLivingBase target;
 	long nextDelay;
 	boolean blocking;
@@ -42,7 +48,7 @@ public class KillAuraModule extends BaseModule {
 	float[] lastRotations = new float[2];
 	Random rand = new Random();
 	public static float yaw2, pitch2;
-	SliderSetting reach;
+	public SliderSetting reach;
 	public SliderSetting minCPS;
 	public SliderSetting maxCPS;
 	SliderSetting ticksExisted;
@@ -59,6 +65,7 @@ public class KillAuraModule extends BaseModule {
 	ToggleSetting ininv;
 	ToggleSetting raycast;
 	ToggleSetting autoDisable;
+	ToggleSetting antiBot;
 	ToggleSetting players;
 	ToggleSetting hostiles;
 	ToggleSetting passives;
@@ -106,6 +113,7 @@ public class KillAuraModule extends BaseModule {
 		ininv = new ToggleSetting("InInventory", true, false);
 		raycast = new ToggleSetting("RayCast", true, false);
 		autoDisable = new ToggleSetting("AutoDisable", true, true);
+		antiBot = new ToggleSetting("AntiBot", true, true);
 		players = new ToggleSetting("Players", true, true);
 		hostiles = new ToggleSetting("Hostiles", true, true);
 		passives = new ToggleSetting("Passives", true, false);
@@ -127,6 +135,7 @@ public class KillAuraModule extends BaseModule {
 		this.rSetting(ininv);
 		this.rSetting(raycast);
 		this.rSetting(autoDisable);
+		this.rSetting(antiBot);
 		this.rSetting(players);
 		this.rSetting(hostiles);
 		this.rSetting(passives);
@@ -165,7 +174,13 @@ public class KillAuraModule extends BaseModule {
 		}
 		this.setDisplayName(rotation.getValue());
 		if (target == null) {
-			lastRotations = new float[] {mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch};
+			if (lastRotations[0] != mc.thePlayer.rotationYaw && lastRotations[1] != mc.thePlayer.rotationPitch) {
+				float[] requiredRotations = new float[] {mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch};
+				float[] newRotations = PlayerUtils.getFixedRotation(requiredRotations, lastRotations);
+				event.setYaw(newRotations[0]);
+				event.setPitch(newRotations[1]);
+				lastRotations = newRotations;
+			}
 		}
 		getTarget();
 		if (rotation.getValue().equalsIgnoreCase("Basic") && target != null) {
@@ -244,9 +259,9 @@ public class KillAuraModule extends BaseModule {
 
 		assert entityFilter != null;
 		if (mc.theWorld.loadedEntityList.stream()
-				.filter(this::isValid).sorted(entityFilter).toArray().length > 0) {
+				.filter(this::isValid).min(entityFilter).isPresent()) {
 			target = (EntityLivingBase) mc.theWorld.loadedEntityList.stream()
-					.filter(this::isValid).sorted(entityFilter).toArray()[0];
+					.filter(this::isValid).min(entityFilter).get();
 		} else {
 			target = null;
 		}
@@ -310,7 +325,8 @@ public class KillAuraModule extends BaseModule {
 				&& (!(e instanceof EntityAnimal) || passives.getValue())
 				&& (!e.isInvisible() || invisibles.getValue())
 				&& (mc.thePlayer.canEntityBeSeen(e) || throughwalls.getValue())
-				&& (ininv.getValue() || mc.currentScreen == null);
+				&& (ininv.getValue() || mc.currentScreen == null)
+				&& !isBot(e);
 	}
 
 	private void block() {
@@ -334,5 +350,33 @@ public class KillAuraModule extends BaseModule {
 		angle *= .5D;
 		double angleDiff = MathUtils.getAngleDifference(mc.thePlayer.rotationYaw, PlayerUtils.getRotations(entity)[0]);
 		return (angleDiff > 0 && angleDiff < angle) || (-angle < angleDiff && angleDiff < 0);
+	}
+
+	@EventTarget
+	public void onSendPacket(@NotNull EventReceivePacket event) {
+		if (event.getPacket() instanceof S0CPacketSpawnPlayer) {
+			S0CPacketSpawnPlayer packet = (S0CPacketSpawnPlayer) event.getPacket();
+			double posX = packet.getX() / 32D;
+			double posY = packet.getY() / 32D;
+			double posZ = packet.getZ() / 32D;
+
+			double diffX = mc.thePlayer.posX - posX;
+			double diffY = mc.thePlayer.posY - posY;
+			double diffZ = mc.thePlayer.posZ - posZ;
+
+			double dist = Math.sqrt(diffX * diffX + diffY * diffY + diffZ * diffZ);
+
+			if (dist <= 17D && posX != mc.thePlayer.posX && posY != mc.thePlayer.posY && posZ != mc.thePlayer.posZ) {
+				botlist.add(mc.theWorld.getEntityByID(packet.getEntityID()));
+			}
+		}
+	}
+
+	private boolean isBot(Entity e) {
+		if (!Menace.instance.moduleManager.killAuraModule.antiBot.getValue()) {
+			return false;
+		} else {
+			return botlist.contains(e);
+		}
 	}
 }

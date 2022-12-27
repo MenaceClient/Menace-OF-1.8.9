@@ -112,4 +112,8 @@ public class C08PacketPlayerBlockPlacement implements Packet<INetHandlerPlayServ
     public void setPosition(BlockPos position) {
         this.position = position;
     }
+
+    public void setStack(ItemStack stack) {
+        this.stack = stack;
+    }
 }

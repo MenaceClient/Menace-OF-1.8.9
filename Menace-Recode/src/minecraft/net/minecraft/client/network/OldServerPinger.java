@@ -191,14 +191,12 @@ public class OldServerPinger
             {
                 try
                 {
-                    p_initChannel_1_.config().setOption(ChannelOption.TCP_NODELAY, Boolean.valueOf(true));
+                    p_initChannel_1_.config().setOption(ChannelOption.TCP_NODELAY, Boolean.TRUE);
                 }
-                catch (ChannelException var3)
-                {
-                    ;
-                }
+                catch (ChannelException ignored)
+                {}
 
-                p_initChannel_1_.pipeline().addLast(new ChannelHandler[] {new SimpleChannelInboundHandler<ByteBuf>()
+                p_initChannel_1_.pipeline().addLast(new SimpleChannelInboundHandler<ByteBuf>()
                     {
                         public void channelActive(ChannelHandlerContext p_channelActive_1_) throws Exception
                         {
@@ -265,8 +263,7 @@ public class OldServerPinger
                         {
                             p_exceptionCaught_1_.close();
                         }
-                    }
-                });
+                    });
             }
         })).channel(NioSocketChannel.class)).connect(serveraddress.getIP(), serveraddress.getPort());
     }

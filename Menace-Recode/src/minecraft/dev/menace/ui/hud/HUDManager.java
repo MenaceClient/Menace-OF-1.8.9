@@ -1,5 +1,6 @@
 package dev.menace.ui.hud;
 
+import java.awt.*;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -8,8 +9,10 @@ import com.google.gson.JsonObject;
 
 import dev.menace.ui.hud.elements.*;
 import dev.menace.utils.file.FileManager;
-import dev.menace.utils.render.MenaceFontRenderer;
+import dev.menace.utils.render.font.Fonts;
+import dev.menace.utils.render.font.MenaceFontRenderer;
 import net.minecraft.crash.CrashReport;
+import net.minecraft.util.ResourceLocation;
 
 public class HUDManager {
 
@@ -18,33 +21,15 @@ public class HUDManager {
 	//Elements
 	public ArrayElement arrayElement = new ArrayElement();
 	public GameStatsElement gameStatsElement = new GameStatsElement();
-	//public NotificationElement notificationElement = new NotificationElement();
+	public NotificationElement notificationElement = new NotificationElement();
+	public PingElement pingElement = new PingElement();
 	public PosElement posElement = new PosElement();
-	//public TargetHudElement targetHudElement = new TargetHudElement();
+	public TabGuiElement tabGuiElement = new TabGuiElement();
+	public TargetHudElement targetHudElement = new TargetHudElement();
 	public WatermarkElement watermarkElement = new WatermarkElement();
-
-	public HUDManager() {
-		try
-		{
-			for(Field field : HUDManager.class.getDeclaredFields())
-			{
-				if(!field.getName().endsWith("Element"))
-					continue;
-
-				BaseElement module = (BaseElement)field.get(this);
-				hudElements.add(module);
-			}
-
-		}catch(Exception e)
-		{
-			String message = "Initializing Menace Hud";
-			CrashReport report = CrashReport.makeCrashReport(e, message);
-		}
-	}
 
 	public static void save() {
 		JsonObject hudFile = new JsonObject();
-		hudFile.addProperty("Font", BaseElement.font);
 		hudElements.forEach(element -> {
 			JsonObject elementFile = new JsonObject();
 			elementFile.addProperty("X", element.getAbsoluteX());
@@ -64,11 +49,6 @@ public class HUDManager {
 
 		JsonObject hudFile = FileManager.readJsonFromFile(new File(FileManager.getHudFolder(), "Hud.json"));
 		assert hudFile != null;
-		if (!hudFile.get("Font").getAsString().equalsIgnoreCase(BaseElement.font)) {
-			BaseElement.font = hudFile.get("Font").getAsString();
-			BaseElement.fr = MenaceFontRenderer.getFontOnPC(BaseElement.font, 20);
-		}
-		
 		hudElements.stream().filter(e -> hudFile.has(e.getClass().getSimpleName())).forEach(element -> {
 			JsonObject elementSave = hudFile.get(element.getClass().getSimpleName()).getAsJsonObject();
 

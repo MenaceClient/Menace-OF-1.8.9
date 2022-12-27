@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="minecraft" name="Minecraft">
+      <configuration>
+        <autoDetectTypes>
+          <platformType>MCP</platformType>
+        </autoDetectTypes>
+      </configuration>
+    </facet>
+  </component>
+  <component name="McpModuleSettings">
+    <option name="srgType" value="SRG" />
+  </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$/src/minecraft">
@@ -182,9 +194,9 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="realms-1.7.39.jar">
+      <library name="realms-1.7.59.jar">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/jars/libraries/com/mojang/realms/1.7.39/realms-1.7.39.jar!/" />
+          <root url="jar://$MODULE_DIR$/jars/libraries/com/mojang/realms/1.7.59/realms-1.7.59.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -257,15 +269,6 @@
       <library name="lwjgl_util-2.9.4-nightly-20150209.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/jars/libraries/org/lwjgl/lwjgl/lwjgl_util/2.9.4-nightly-20150209/lwjgl_util-2.9.4-nightly-20150209.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="twitch-6.5.jar">
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/jars/libraries/tv/twitch/twitch/6.5/twitch-6.5.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

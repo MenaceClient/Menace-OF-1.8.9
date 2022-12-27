@@ -70,7 +70,7 @@ public abstract class World implements IBlockAccess
     private final List<TileEntity> tileEntitiesToBeRemoved = Lists.<TileEntity>newArrayList();
     public final List<EntityPlayer> playerEntities = Lists.<EntityPlayer>newArrayList();
     public final List<Entity> weatherEffects = Lists.<Entity>newArrayList();
-    protected final IntHashMap<Entity> entitiesById = new IntHashMap();
+    protected final IntHashMap<Entity> entitiesById = new IntHashMap<>();
     private long cloudColour = 16777215L;
 
     /** How much light is subtracted from full daylight */
@@ -825,9 +825,8 @@ public abstract class World implements IBlockAccess
 
     public void notifyLightSet(BlockPos pos)
     {
-        for (int i = 0; i < this.worldAccesses.size(); ++i)
-        {
-            ((IWorldAccess)this.worldAccesses.get(i)).notifyLightSet(pos);
+        for (IWorldAccess worldAccess : this.worldAccesses) {
+            worldAccess.notifyLightSet(pos);
         }
     }
 
@@ -1073,9 +1072,8 @@ public abstract class World implements IBlockAccess
      */
     public void playSoundAtEntity(Entity entityIn, String name, float volume, float pitch)
     {
-        for (int i = 0; i < this.worldAccesses.size(); ++i)
-        {
-            ((IWorldAccess)this.worldAccesses.get(i)).playSound(name, entityIn.posX, entityIn.posY, entityIn.posZ, volume, pitch);
+        for (IWorldAccess worldAccess : this.worldAccesses) {
+            worldAccess.playSound(name, entityIn.posX, entityIn.posY, entityIn.posZ, volume, pitch);
         }
     }
 
@@ -1084,9 +1082,8 @@ public abstract class World implements IBlockAccess
      */
     public void playSoundToNearExcept(EntityPlayer player, String name, float volume, float pitch)
     {
-        for (int i = 0; i < this.worldAccesses.size(); ++i)
-        {
-            ((IWorldAccess)this.worldAccesses.get(i)).playSoundToNearExcept(player, name, player.posX, player.posY, player.posZ, volume, pitch);
+        for (IWorldAccess worldAccess : this.worldAccesses) {
+            worldAccess.playSoundToNearExcept(player, name, player.posX, player.posY, player.posZ, volume, pitch);
         }
     }
 
@@ -1097,9 +1094,8 @@ public abstract class World implements IBlockAccess
      */
     public void playSoundEffect(double x, double y, double z, String soundName, float volume, float pitch)
     {
-        for (int i = 0; i < this.worldAccesses.size(); ++i)
-        {
-            ((IWorldAccess)this.worldAccesses.get(i)).playSound(soundName, x, y, z, volume, pitch);
+        for (IWorldAccess worldAccess : this.worldAccesses) {
+            worldAccess.playSound(soundName, x, y, z, volume, pitch);
         }
     }
 
@@ -1112,9 +1108,8 @@ public abstract class World implements IBlockAccess
 
     public void playRecord(BlockPos pos, String name)
     {
-        for (int i = 0; i < this.worldAccesses.size(); ++i)
-        {
-            ((IWorldAccess)this.worldAccesses.get(i)).playRecord(name, pos);
+        for (IWorldAccess worldAccess : this.worldAccesses) {
+            worldAccess.playRecord(name, pos);
         }
     }
 
@@ -1130,9 +1125,8 @@ public abstract class World implements IBlockAccess
 
     private void spawnParticle(int particleID, boolean p_175720_2_, double xCood, double yCoord, double zCoord, double xOffset, double yOffset, double zOffset, int... p_175720_15_)
     {
-        for (int i = 0; i < this.worldAccesses.size(); ++i)
-        {
-            ((IWorldAccess)this.worldAccesses.get(i)).spawnParticle(particleID, p_175720_2_, xCood, yCoord, zCoord, xOffset, yOffset, zOffset, p_175720_15_);
+        for (IWorldAccess worldAccess : this.worldAccesses) {
+            worldAccess.spawnParticle(particleID, p_175720_2_, xCood, yCoord, zCoord, xOffset, yOffset, zOffset, p_175720_15_);
         }
     }
 
@@ -1181,17 +1175,15 @@ public abstract class World implements IBlockAccess
 
     protected void onEntityAdded(Entity entityIn)
     {
-        for (int i = 0; i < this.worldAccesses.size(); ++i)
-        {
-            ((IWorldAccess)this.worldAccesses.get(i)).onEntityAdded(entityIn);
+        for (IWorldAccess worldAccess : this.worldAccesses) {
+            worldAccess.onEntityAdded(entityIn);
         }
     }
 
     protected void onEntityRemoved(Entity entityIn)
     {
-        for (int i = 0; i < this.worldAccesses.size(); ++i)
-        {
-            ((IWorldAccess)this.worldAccesses.get(i)).onEntityRemoved(entityIn);
+        for (IWorldAccess worldAccess : this.worldAccesses) {
+            worldAccess.onEntityRemoved(entityIn);
         }
     }
 
@@ -1483,7 +1475,7 @@ public abstract class World implements IBlockAccess
             f12 = f12 * 0.45F;
             f3 = f3 * (1.0F - f12) + 0.8F * f12;
             f4 = f4 * (1.0F - f12) + 0.8F * f12;
-            f5 = f5 * (1.0F - f12) + 1.0F * f12;
+            f5 = f5 * (1.0F - f12) + f12;
         }
 
         return new Vec3((double)f3, (double)f4, (double)f5);
@@ -1660,21 +1652,17 @@ public abstract class World implements IBlockAccess
         this.theProfiler.endStartSection("remove");
         this.loadedEntityList.removeAll(this.unloadedEntityList);
 
-        for (int k = 0; k < this.unloadedEntityList.size(); ++k)
-        {
-            Entity entity1 = (Entity)this.unloadedEntityList.get(k);
-            int j = entity1.chunkCoordX;
-            int l1 = entity1.chunkCoordZ;
+        for (Entity entity : this.unloadedEntityList) {
+            int j = entity.chunkCoordX;
+            int l1 = entity.chunkCoordZ;
 
-            if (entity1.addedToChunk && this.isChunkLoaded(j, l1, true))
-            {
-                this.getChunkFromChunkCoords(j, l1).removeEntity(entity1);
+            if (entity.addedToChunk && this.isChunkLoaded(j, l1, true)) {
+                this.getChunkFromChunkCoords(j, l1).removeEntity(entity);
             }
         }
 
-        for (int l = 0; l < this.unloadedEntityList.size(); ++l)
-        {
-            this.onEntityRemoved((Entity)this.unloadedEntityList.get(l));
+        for (Entity entity : this.unloadedEntityList) {
+            this.onEntityRemoved(entity);
         }
 
         this.unloadedEntityList.clear();
@@ -1738,7 +1726,7 @@ public abstract class World implements IBlockAccess
 
         while (iterator.hasNext())
         {
-            TileEntity tileentity = (TileEntity)iterator.next();
+            TileEntity tileentity = iterator.next();
 
             if (!tileentity.isInvalid() && tileentity.hasWorldObj())
             {
@@ -1785,23 +1773,18 @@ public abstract class World implements IBlockAccess
 
         if (!this.addedTileEntityList.isEmpty())
         {
-            for (int j1 = 0; j1 < this.addedTileEntityList.size(); ++j1)
-            {
-                TileEntity tileentity1 = (TileEntity)this.addedTileEntityList.get(j1);
+            for (TileEntity tileEntity : this.addedTileEntityList) {
 
-                if (!tileentity1.isInvalid())
-                {
-                    if (!this.loadedTileEntityList.contains(tileentity1))
-                    {
-                        this.addTileEntity(tileentity1);
+                if (!tileEntity.isInvalid()) {
+                    if (!this.loadedTileEntityList.contains(tileEntity)) {
+                        this.addTileEntity(tileEntity);
                     }
 
-                    if (this.isBlockLoaded(tileentity1.getPos()))
-                    {
-                        this.getChunkFromBlockCoords(tileentity1.getPos()).addTileEntity(tileentity1.getPos(), tileentity1);
+                    if (this.isBlockLoaded(tileEntity.getPos())) {
+                        this.getChunkFromBlockCoords(tileEntity.getPos()).addTileEntity(tileEntity.getPos(), tileEntity);
                     }
 
-                    this.markBlockForUpdate(tileentity1.getPos());
+                    this.markBlockForUpdate(tileEntity.getPos());
                 }
             }
 
@@ -2109,7 +2092,7 @@ public abstract class World implements IBlockAccess
 
                         if (block.getMaterial() == materialIn)
                         {
-                            double d0 = (double)((float)(l1 + 1) - BlockLiquid.getLiquidHeightPercent(((Integer)iblockstate.getValue(BlockLiquid.LEVEL)).intValue()));
+                            double d0 = (double)((float)(l1 + 1) - BlockLiquid.getLiquidHeightPercent(iblockstate.getValue(BlockLiquid.LEVEL)));
 
                             if ((double)l >= d0)
                             {
@@ -2188,7 +2171,7 @@ public abstract class World implements IBlockAccess
 
                     if (block.getMaterial() == materialIn)
                     {
-                        int j2 = ((Integer)iblockstate.getValue(BlockLiquid.LEVEL)).intValue();
+                        int j2 = iblockstate.getValue(BlockLiquid.LEVEL);
                         double d0 = (double)(l1 + 1);
 
                         if (j2 < 8)
@@ -3059,7 +3042,7 @@ public abstract class World implements IBlockAccess
         int j = MathHelper.floor_double((aabb.maxX + 2.0D) / 16.0D);
         int k = MathHelper.floor_double((aabb.minZ - 2.0D) / 16.0D);
         int l = MathHelper.floor_double((aabb.maxZ + 2.0D) / 16.0D);
-        List<T> list = Lists.<T>newArrayList();
+        List<T> list = Lists.newArrayList();
 
         for (int i1 = i; i1 <= j; ++i1)
         {
@@ -3077,7 +3060,7 @@ public abstract class World implements IBlockAccess
 
     public <T extends Entity> T findNearestEntityWithinAABB(Class <? extends T > entityType, AxisAlignedBB aabb, T closestTo)
     {
-        List<T> list = this.<T>getEntitiesWithinAABB(entityType, aabb);
+        List<T> list = this.getEntitiesWithinAABB(entityType, aabb);
         T t = null;
         double d0 = Double.MAX_VALUE;
 
@@ -3232,7 +3215,7 @@ public abstract class World implements IBlockAccess
                         else
                         {
                             i = Math.max(i, this.getStrongPower(pos.east(), EnumFacing.EAST));
-                            return i >= 15 ? i : i;
+                            return i;
                         }
                     }
                 }

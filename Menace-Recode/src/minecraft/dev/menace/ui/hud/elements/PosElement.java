@@ -2,6 +2,8 @@ package dev.menace.ui.hud.elements;
 
 import dev.menace.Menace;
 import dev.menace.ui.hud.BaseElement;
+import dev.menace.utils.misc.ServerUtils;
+import net.minecraft.client.network.OldServerPinger;
 
 public class PosElement extends BaseElement {
 
@@ -12,22 +14,22 @@ public class PosElement extends BaseElement {
 	@Override
 	public void render() {
 		if (Menace.instance.moduleManager.hudModule.posMode.getValue().equalsIgnoreCase("Single")) {
-			this.drawString(String.format("X: %.1f", MC.thePlayer.posX) + " |" + String.format(" Y: %.1f", MC.thePlayer.boundingBox.minY) + " |" + String.format(" Z: %.1f", MC.thePlayer.posZ), this.getAbsoluteX(), this.getAbsoluteY());
+			this.drawString(String.format("X: %.1f", mc.thePlayer.posX) + " |" + String.format(" Y: %.1f", mc.thePlayer.boundingBox.minY) + " |" + String.format(" Z: %.1f", mc.thePlayer.posZ), this.getAbsoluteX(), this.getAbsoluteY());
 		} else {
-			this.drawString(String.format("X: %.1f", MC.thePlayer.posX), this.getAbsoluteX(), this.getAbsoluteY());
-			this.drawString(String.format("Y: %.1f", MC.thePlayer.boundingBox.minY), this.getAbsoluteX(), this.getAbsoluteY() + 10);
-			this.drawString(String.format("Z: %.1f", MC.thePlayer.posZ), this.getAbsoluteX(), this.getAbsoluteY() + 20);
+			this.drawString(String.format("X: %.1f", mc.thePlayer.posX), this.getAbsoluteX(), this.getAbsoluteY());
+			this.drawString(String.format("Y: %.1f", mc.thePlayer.boundingBox.minY), this.getAbsoluteX(), this.getAbsoluteY() + 10);
+			this.drawString(String.format("Z: %.1f", mc.thePlayer.posZ), this.getAbsoluteX(), this.getAbsoluteY() + 20);
 		}
 	}
 
 	@Override
 	public void renderDummy() {
 		if (Menace.instance.moduleManager.hudModule.posMode.getValue().equalsIgnoreCase("Single")) {
-			this.drawString(String.format("X: %.1f", MC.thePlayer.posX) + " |" + String.format(" Y: %.1f", MC.thePlayer.boundingBox.minY) + " |" + String.format(" Z: %.1f", MC.thePlayer.posZ), this.getAbsoluteX(), this.getAbsoluteY());
+			this.drawString(String.format("X: %.1f", mc.thePlayer.posX) + " |" + String.format(" Y: %.1f", mc.thePlayer.boundingBox.minY) + " |" + String.format(" Z: %.1f", mc.thePlayer.posZ), this.getAbsoluteX(), this.getAbsoluteY());
 		} else {
-			this.drawString(String.format("X: %.1f", MC.thePlayer.posX), this.getAbsoluteX(), this.getAbsoluteY());
-			this.drawString(String.format("Y: %.1f", MC.thePlayer.boundingBox.minY), this.getAbsoluteX(), this.getAbsoluteY() + 10);
-			this.drawString(String.format("Z: %.1f", MC.thePlayer.posZ), this.getAbsoluteX(), this.getAbsoluteY() + 20);
+			this.drawString(String.format("X: %.1f", mc.thePlayer.posX), this.getAbsoluteX(), this.getAbsoluteY());
+			this.drawString(String.format("Y: %.1f", mc.thePlayer.boundingBox.minY), this.getAbsoluteX(), this.getAbsoluteY() + 10);
+			this.drawString(String.format("Z: %.1f", mc.thePlayer.posZ), this.getAbsoluteX(), this.getAbsoluteY() + 20);
 		}
 	}
 

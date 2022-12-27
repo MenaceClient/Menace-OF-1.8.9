@@ -1,5 +1,7 @@
 package dev.menace.module.modules.render;
 
+import dev.menace.module.settings.ToggleSetting;
+import dev.menace.ui.clickgui.menace.MenaceClickGui;
 import dev.menace.ui.clickgui.vape.VapeGui;
 import org.lwjgl.input.Keyboard;
 
@@ -15,8 +17,10 @@ public class ClickGuiModule extends BaseModule {
 
 	public CSGOGui csgoGui;
 	public LimeClickGUI limeGui;
+	public MenaceClickGui menaceGui;
 	
 	ListSetting mode;
+	public ToggleSetting sounds;
 	
 	public ClickGuiModule() {
 		super("ClickGui", Category.RENDER, Keyboard.KEY_RSHIFT);
@@ -24,8 +28,10 @@ public class ClickGuiModule extends BaseModule {
 	
 	@Override
 	public void setup() {
-		mode = new ListSetting("Mode", true, "Dropdown", new String[] {"Dropdown", "Panel", "Dashboard"});
+		mode = new ListSetting("Mode", true, "Dropdown", new String[] {"Dropdown", "Panel", "Dashboard", "Menace"});
+		sounds = new ToggleSetting("Sounds", true, true);
 		this.rSetting(mode);
+		this.rSetting(sounds);
 		super.setup();
 	}
 	
@@ -46,6 +52,9 @@ public class ClickGuiModule extends BaseModule {
 				break;
 			case "Dashboard" :
 				mc.displayGuiScreen(new VapeGui());
+				break;
+			case "Menace" :
+				mc.displayGuiScreen(menaceGui);
 				break;
 		}
 	}

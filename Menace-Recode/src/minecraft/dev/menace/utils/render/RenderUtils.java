@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.*;
@@ -231,14 +232,6 @@ public class RenderUtils {
 		drawRect(x, startY + 1, x + 1, endY, color);
 	}
 
-	public static void drawRoundedRect(float paramXStart, float paramYStart, float paramXEnd, float paramYEnd, float radius, int color) {
-		drawRoundedRect(paramXStart, paramYStart, paramXEnd, paramYEnd, radius, color, true);
-	}
-
-	public static void drawRoundedRect(int paramXStart, int paramYStart, int paramXEnd, int paramYEnd, int radius, int color) {
-		drawRoundedRect(paramXStart, paramYStart, paramXEnd, paramYEnd, radius, color, true);
-	}
-
 	public static void originalRoundedRect(float paramXStart, float paramYStart, float paramXEnd, float paramYEnd, float radius, int color) {
 		float alpha = (color >> 24 & 0xFF) / 255.0F;
 		float red = (color >> 16 & 0xFF) / 255.0F;
@@ -287,7 +280,7 @@ public class RenderUtils {
 		GlStateManager.disableBlend();
 	}
 
-	public static void drawRoundedRect(float paramXStart, float paramYStart, float paramXEnd, float paramYEnd, float radius, int color, boolean popPush) {
+	public static void drawRoundedRect(float paramXStart, float paramYStart, float paramXEnd, float paramYEnd, float radius, int color) {
 		float alpha = (color >> 24 & 0xFF) / 255.0F;
 		float red = (color >> 16 & 0xFF) / 255.0F;
 		float green = (color >> 8 & 0xFF) / 255.0F;
@@ -306,12 +299,12 @@ public class RenderUtils {
 			paramYEnd = z;
 		}
 
-		double x1 = (double)(paramXStart + radius);
-		double y1 = (double)(paramYStart + radius);
-		double x2 = (double)(paramXEnd - radius);
+		double x1 = paramXStart + radius;
+		double y1 = paramYStart + radius;
+		double x2 = paramXEnd - radius;
 		double y2 = (double)(paramYEnd - radius);
 
-		if (popPush) glPushMatrix();
+		glPushMatrix();
 		glEnable(GL_BLEND);
 		glDisable(GL_TEXTURE_2D);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -335,7 +328,9 @@ public class RenderUtils {
 		glEnable(GL_TEXTURE_2D);
 		glDisable(GL_BLEND);
 		glDisable(GL_LINE_SMOOTH);
-		if (popPush) glPopMatrix();
+		glPopMatrix();
+		GlStateManager.enableTexture2D();
+		GlStateManager.disableBlend();
 	}
 
 	// rTL = radius top left, rTR = radius top right, rBR = radius bottom right, rBL = radius bottom left
@@ -581,6 +576,42 @@ public class RenderUtils {
 		GL11.glEnable(2929);
 	}
 
+	public static void circle(final Entity entity, final double rad, Color color) {
+		GL11.glPushMatrix();
+		GL11.glDisable(3553);
+		GL11.glEnable(2848);
+		GL11.glEnable(2832);
+		GL11.glEnable(3042);
+		GL11.glBlendFunc(770, 771);
+		GL11.glHint(3154, 4354);
+		GL11.glHint(3155, 4354);
+		GL11.glHint(3153, 4354);
+		GL11.glDepthMask(false);
+		GlStateManager.disableCull();
+		GL11.glBegin(GL11.GL_TRIANGLE_STRIP);
+
+		final double x = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * MC.timer.renderPartialTicks - MC.getRenderManager().viewerPosX;
+		final double y = (entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * MC.timer.renderPartialTicks - MC.getRenderManager().viewerPosY) + 0.01;
+		final double z = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * MC.timer.renderPartialTicks - MC.getRenderManager().viewerPosZ;
+
+		for (int i = 0; i <= 90; ++i) {
+			GL11.glColor4d(color.getRed() / 255.0, color.getGreen() / 255.0, color.getBlue() / 255.0, 0.5);
+
+			GL11.glVertex3d(x + rad * Math.cos(i * 6.283185307179586 / 45.0), y, z + rad * Math.sin(i * 6.283185307179586 / 45.0));
+		}
+
+		GL11.glEnd();
+		GL11.glDepthMask(true);
+		GL11.glEnable(2929);
+		GlStateManager.enableCull();
+		GL11.glDisable(2848);
+		GL11.glDisable(2848);
+		GL11.glEnable(2832);
+		GL11.glEnable(3553);
+		GL11.glPopMatrix();
+		GL11.glColor3f(255, 255, 255);
+	}
+
 	public static void drawCircle(double x, double y, double radius, int c) {
 		GL11.glEnable(GL_MULTISAMPLE);
 		GL11.glEnable(GL_POLYGON_SMOOTH);
@@ -638,6 +669,36 @@ public class RenderUtils {
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glEnable(GL11.GL_DEPTH_TEST);
 		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+
+	public static void drawHead(ResourceLocation skin, int x, int y, int width, int height) {
+		GL11.glColor4f(1F, 1F, 1F, 1F);
+		MC.getTextureManager().bindTexture(skin);
+		RenderUtils.drawScaledCustomSizeModalRect(x, y, 8F, 8F, 8, 8, width, height,
+				64F, 64F);
+		RenderUtils.drawScaledCustomSizeModalRect(x, y, 40F, 8F, 8, 8, width, height,
+				64F, 64F);
+	}
+
+	public static void quickDrawHead(ResourceLocation skin, int x, int y, int width, int height) {
+		MC.getTextureManager().bindTexture(skin);
+		RenderUtils.drawScaledCustomSizeModalRect(x, y, 8F, 8F, 8, 8, width, height,
+				64F, 64F);
+		RenderUtils.drawScaledCustomSizeModalRect(x, y, 40F, 8F, 8, 8, width, height,
+				64F, 64F);
+	}
+
+	public static void drawScaledCustomSizeModalRect(int x, int y, float u, float v, int uWidth, int vHeight, int width, int height, float tileWidth, float tileHeight) {
+		float f = 1.0F / tileWidth;
+		float f1 = 1.0F / tileHeight;
+		Tessellator tessellator = Tessellator.getInstance();
+		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+		worldrenderer.begin(GL_QUADS, DefaultVertexFormats.POSITION_TEX);
+		worldrenderer.pos(x, y + height, 0.0D).tex(u * f, (v + (float) vHeight) * f1).endVertex();
+		worldrenderer.pos(x + width, y + height, 0.0D).tex((u + (float) uWidth) * f, (v + (float) vHeight) * f1).endVertex();
+		worldrenderer.pos(x + width, y, 0.0D).tex((u + (float) uWidth) * f, v * f1).endVertex();
+		worldrenderer.pos(x, y, 0.0D).tex(u * f, v * f1).endVertex();
+		tessellator.draw();
 	}
 
 	public static void resetCaps() {

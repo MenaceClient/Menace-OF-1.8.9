@@ -73,7 +73,7 @@ public class SoundHandler implements IResourceManagerReloadListener, ITickable
 
                         for (Entry<String, SoundList> entry : map.entrySet())
                         {
-                            this.loadSoundResource(new ResourceLocation(s, (String)entry.getKey()), (SoundList)entry.getValue());
+                            this.loadSoundResource(new ResourceLocation(s, entry.getKey()), entry.getValue());
                         }
                     }
                     catch (RuntimeException runtimeexception)
@@ -105,20 +105,20 @@ public class SoundHandler implements IResourceManagerReloadListener, ITickable
         return map;
     }
 
-    private void loadSoundResource(ResourceLocation location, SoundList sounds)
+    public void loadSoundResource(ResourceLocation location, SoundList sounds)
     {
         boolean flag = !this.sndRegistry.containsKey(location);
         SoundEventAccessorComposite soundeventaccessorcomposite;
 
         if (!flag && !sounds.canReplaceExisting())
         {
-            soundeventaccessorcomposite = (SoundEventAccessorComposite)this.sndRegistry.getObject(location);
+            soundeventaccessorcomposite = this.sndRegistry.getObject(location);
         }
         else
         {
             if (!flag)
             {
-                logger.debug("Replaced sound event location {}", new Object[] {location});
+                logger.debug("Replaced sound event location {}", location);
             }
 
             soundeventaccessorcomposite = new SoundEventAccessorComposite(location, 1.0D, 1.0D, sounds.getSoundCategory());
@@ -144,7 +144,7 @@ public class SoundHandler implements IResourceManagerReloadListener, ITickable
                     }
                     catch (FileNotFoundException var18)
                     {
-                        logger.warn("File {} does not exist, cannot add it to event {}", new Object[] {resourcelocation1, location});
+                        logger.warn("File {} does not exist, cannot add it to event {}", resourcelocation1, location);
                         continue;
                     }
                     catch (IOException ioexception)
@@ -187,7 +187,7 @@ public class SoundHandler implements IResourceManagerReloadListener, ITickable
 
     public SoundEventAccessorComposite getSound(ResourceLocation location)
     {
-        return (SoundEventAccessorComposite)this.sndRegistry.getObject(location);
+        return this.sndRegistry.getObject(location);
     }
 
     /**
@@ -284,5 +284,10 @@ public class SoundHandler implements IResourceManagerReloadListener, ITickable
     public boolean isSoundPlaying(ISound sound)
     {
         return this.sndManager.isSoundPlaying(sound);
+    }
+
+    public SoundRegistry getSndRegistry()
+    {
+        return sndRegistry;
     }
 }

@@ -1,9 +1,6 @@
 package dev.menace.ui.clickgui.lime.components.impl;
 
-import java.awt.Color;
-
-import org.lwjgl.opengl.GL11;
-
+import dev.menace.Menace;
 import dev.menace.module.settings.Setting;
 import dev.menace.module.settings.ToggleSetting;
 import dev.menace.ui.clickgui.lime.Priority;
@@ -12,14 +9,17 @@ import dev.menace.ui.clickgui.lime.components.FrameModule;
 import dev.menace.ui.clickgui.lime.utils.render.RenderUtils;
 import dev.menace.ui.clickgui.lime.utils.render.animation.easings.Animate;
 import dev.menace.ui.clickgui.lime.utils.render.animation.easings.Easing;
-import dev.menace.utils.render.MenaceFontRenderer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
+import dev.menace.utils.render.font.Fonts;
+import dev.menace.utils.render.font.MenaceFontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
+
+import java.awt.*;
 
 public class BoolSetting extends Component implements Priority {
     private final Animate animation;
-    MenaceFontRenderer productSans20 = MenaceFontRenderer.getFontOnPC("ProductSans20", 20);
+    MenaceFontRenderer font = Menace.instance.productSans20;
 
     public BoolSetting(int x, int y, FrameModule owner, Setting setting)
     {
@@ -37,12 +37,12 @@ public class BoolSetting extends Component implements Priority {
     public void drawScreen(int mouseX, int mouseY)
     {
         animation.update();
-        productSans20.drawStringWithShadow(getSetting().getName(), x + 5, y + (getOffset() / 2F - (productSans20.FONT_HEIGHT / 2F)), -1);
-        RenderUtils.drawFilledCircle(x + defaultWidth - 10, (int) (y + (getOffset() / 2F - (productSans20.FONT_HEIGHT / 2F)) + 6.75f), 5, new Color(darkerMainColor));
+        font.drawStringWithShadow(getSetting().getName(), x + 5, y + (getOffset() / 2F - (font.getHeight() / 2F)), -1);
+        RenderUtils.drawFilledCircle(x + defaultWidth - 10, (int) (y + (getOffset() / 2F - (font.getHeight() / 2F)) + 6.75f), 5, new Color(darkerMainColor));
 
         if(((ToggleSetting) getSetting()).getValue() || animation.getValue() != 0)
         {
-            RenderUtils.drawFilledCircle(x + defaultWidth - 10, (int) (y + (getOffset() / 2F - (productSans20.FONT_HEIGHT / 2F)) + 6.75f), animation.getValue(), new Color(enabledColor));
+            RenderUtils.drawFilledCircle(x + defaultWidth - 10, (int) (y + (getOffset() / 2F - (font.getHeight() / 2F)) + 6.75f), animation.getValue(), new Color(enabledColor));
             GlStateManager.resetColor();
             GL11.glColor4f(1, 1, 1, 1);
         }

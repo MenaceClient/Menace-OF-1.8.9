@@ -15,34 +15,18 @@ import org.jetbrains.annotations.NotNull;
 
 public class CommandManager {
 
-	public ArrayList<BaseCommand> cmds = new ArrayList<BaseCommand>();
+	public static ArrayList<BaseCommand> cmds = new ArrayList<BaseCommand>();
 	public String prefix = ".";
+	public String ircPrefix = "#";
 	
 	//CMDS
 	BindCmd bindCmd = new BindCmd();
 	BindsCmd bindsCmd = new BindsCmd();
 	ConfigCmd configCmd = new ConfigCmd();
+	IRCCmd ircCmd = new IRCCmd();
 	PrefixCmd prefixCmd = new PrefixCmd();
 	VClipCmd vClipCmd = new VClipCmd();
-	
-	public CommandManager() {
-		try
-		{
-			for(Field field : CommandManager.class.getDeclaredFields())
-			{
-				if(!field.getName().endsWith("Cmd"))
-					continue;
 
-				BaseCommand cmd = (BaseCommand)field.get(this);
-				cmds.add(cmd);
-			}
-
-		}catch(Exception e)
-		{
-			String message = "Initializing Menace commands";
-			CrashReport report = CrashReport.makeCrashReport(e, message);
-		}
-	}
 	
 	public void init() {
 		Menace.instance.eventManager.register(this);
@@ -56,6 +40,9 @@ public class CommandManager {
 	public void onChat(@NotNull EventChatOutput event) {
 		if (event.getMessage().startsWith(this.prefix)) {
 			parse(event.getMessage().replaceFirst(this.prefix, ""));
+			event.cancel();
+		} else if (event.getMessage().startsWith(this.ircPrefix)) {
+			Menace.instance.irc.sendMsg(event.getMessage().replaceFirst(this.ircPrefix, ""));
 			event.cancel();
 		}
 	}

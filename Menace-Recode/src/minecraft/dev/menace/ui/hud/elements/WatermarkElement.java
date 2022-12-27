@@ -22,9 +22,9 @@ public class WatermarkElement extends BaseElement {
 	public void render() {
 		HUDModule hudModule = Menace.instance.moduleManager.hudModule;
 		int color = hudModule.color.getValue().equalsIgnoreCase("Custom") ? new Color(hudModule.red.getValueI(), hudModule.green.getValueI(), hudModule.blue.getValueI(), hudModule.alpha.getValueI()).getRGB() : ColorUtils.fade(hudModule.rainbowSpeed.getValueF(), -this.getAbsoluteY()).getRGB();
-		RenderUtils.drawRect(this.getAbsoluteX(), this.getAbsoluteY(), this.getAbsoluteX() + this.getWidth(), this.getAbsoluteY() + 2, color);
-		RenderUtils.drawRect(this.getAbsoluteX(), this.getAbsoluteY() + 2, this.getAbsoluteX() + this.getWidth(), this.getAbsoluteY() + this.getFontHeight() + 4, new Color(0, 0, 0, 255).getRGB());
-		this.drawString("Menace | " + Minecraft.debugFPS + " FPS | " + ServerUtils.getRemoteIp(), this.getAbsoluteX() + 2, this.getAbsoluteY() + 3, Color.white.getRGB());
+		RenderUtils.drawRect(this.getAbsoluteX(), this.getAbsoluteY(), this.getAbsoluteX() + this.getWidth() + 1, this.getAbsoluteY() + 2, color);
+		RenderUtils.drawRect(this.getAbsoluteX(), this.getAbsoluteY() + 2, this.getAbsoluteX() + this.getWidth() + 1, this.getAbsoluteY() + this.getFontHeight() + 4, new Color(0, 0, 0, 255).getRGB());
+		this.drawString("Menace | " + Minecraft.debugFPS + " FPS | " + ServerUtils.getRemoteIp().split(":")[0], this.getAbsoluteX() + 2, this.getAbsoluteY() + 3, Color.white.getRGB());
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class WatermarkElement extends BaseElement {
 
 	@Override
 	public int getWidth() {
-		return this.getStringWidth("Menace | " + Minecraft.debugFPS + " FPS | " + ServerUtils.getRemoteIp()) + 2;
+		return this.getStringWidth("Menace | " + Minecraft.debugFPS + " FPS | " + ServerUtils.getRemoteIp().split(":")[0]) + 2;
 	}
 
 	@Override

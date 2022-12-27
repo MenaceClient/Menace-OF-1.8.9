@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class AntiCactusModule extends BaseModule {
     public AntiCactusModule() {
-        super("AntiCactus", Category.PLAYER, 0);
+        super("AntiCactus", Category.WORLD, 0);
     }
 
     @EventTarget

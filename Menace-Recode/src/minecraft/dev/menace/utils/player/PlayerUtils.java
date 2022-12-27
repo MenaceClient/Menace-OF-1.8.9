@@ -35,6 +35,23 @@ public class PlayerUtils {
         return new float[] { yaw, pitch };
     }
 
+    public static float[] getRotations2(@NotNull Entity entity) {
+        double deltaX = entity.posX + (entity.posX - entity.lastTickPosX) - MC.thePlayer.posX;
+        double deltaY = entity.posY - 3.5 + entity.getEyeHeight() - MC.thePlayer.posY + MC.thePlayer.getEyeHeight();
+        double deltaZ = entity.posZ + (entity.posZ - entity.lastTickPosZ) - MC.thePlayer.posZ;
+        double distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaZ, 2));
+        float yaw = (float) Math.toDegrees(-Math.atan(deltaX / deltaZ));
+        float pitch = (float) -Math.toDegrees(Math.atan(deltaY / distance));
+
+        if (deltaX < 0 && deltaZ < 0) {
+            yaw = (float) (90 + Math.toDegrees(Math.atan(deltaZ / deltaX)));
+        } else if (deltaX > 0 && deltaZ < 0) {
+            yaw = (float) (-90 + Math.toDegrees(Math.atan(deltaZ / deltaX)));
+        }
+
+        return new float[]{yaw, pitch};
+    }
+
     public static float @NotNull [] getDirectionToBlock(final double x, final double y, final double z, final @NotNull EnumFacing enumfacing) {
         final EntityEgg var4 = new EntityEgg(MC.theWorld);
         var4.posX = x + 0.5D;
@@ -118,6 +135,24 @@ public class PlayerUtils {
             }
         }
         return false;
+    }
+
+    public static double calculateGround() {
+        AxisAlignedBB playerBoundingBox = MC.thePlayer.getEntityBoundingBox();
+        double blockHeight = 1.0;
+        double ground = MC.thePlayer.posY;
+
+        while (ground > 0.0) {
+            AxisAlignedBB customBox = new AxisAlignedBB(playerBoundingBox.maxX, ground + blockHeight, playerBoundingBox.maxZ, playerBoundingBox.minX, ground, playerBoundingBox.minZ);
+            if (MC.theWorld.checkBlockCollision(customBox)) {
+                if (blockHeight <= 0.05) return ground + blockHeight;
+                ground += blockHeight;
+                blockHeight = 0.05;
+            }
+            ground -= blockHeight;
+        }
+
+        return 0.0;
     }
 	
 }

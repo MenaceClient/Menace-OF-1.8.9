@@ -1,22 +1,27 @@
 package dev.menace.ui.hud;
 
-import java.awt.Color;
+import java.awt.*;
 
 import dev.menace.Menace;
 import dev.menace.module.modules.render.HUDModule;
 import dev.menace.utils.render.ColorUtils;
-import dev.menace.utils.render.MenaceFontRenderer;
 import dev.menace.utils.render.RenderUtils;
+import dev.menace.utils.render.font.Fonts;
+import dev.menace.utils.render.font.MenaceFontRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.util.ResourceLocation;
 
 public abstract class BaseElement {
 
-	protected Minecraft MC = Minecraft.getMinecraft();
+	{
+		HUDManager.hudElements.add(this);
+	}
+
+	protected Minecraft mc = Minecraft.getMinecraft();
 	private double posX, posY;
 	private boolean visible;
-	public static String font = "Arial";
-	public static MenaceFontRenderer fr = MenaceFontRenderer.getFontOnPC(font, 20);
+	private final MenaceFontRenderer fr = Menace.instance.sfPro;
 	
 	public BaseElement(int posX, int posY, boolean visible) {
 		this.setAbsolute(posX, posY);
@@ -34,12 +39,12 @@ public abstract class BaseElement {
 	public abstract int getHeight();
 
 	public int getAbsoluteX() {
-		ScaledResolution sr = new ScaledResolution(MC);
+		ScaledResolution sr = new ScaledResolution(mc);
 		return (int) (posX * sr.getScaledWidth());
 	}
 	
 	public int getAbsoluteY() {
-		ScaledResolution sr = new ScaledResolution(MC);
+		ScaledResolution sr = new ScaledResolution(mc);
 		return (int) (posY * sr.getScaledHeight());
 	}
 	
@@ -52,7 +57,7 @@ public abstract class BaseElement {
 	}
 	
 	public void setAbsolute(int x, int y) {
-		ScaledResolution sr = new ScaledResolution(MC);
+		ScaledResolution sr = new ScaledResolution(mc);
 		
 		this.posX = (double) x / sr.getScaledWidth();
 		this.posY = (double) y / sr.getScaledHeight();
@@ -72,7 +77,7 @@ public abstract class BaseElement {
 	}
 	
 	protected void drawString(String string, int x, int y) {
-		int color = Color.WHITE.getRGB();
+		int color;
 		HUDModule hudModule = Menace.instance.moduleManager.hudModule;
 		switch (hudModule.color.getValue()) {
 		
@@ -92,7 +97,7 @@ public abstract class BaseElement {
 		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {
 			fr.drawString(string, x, y, color);
 		} else {
-			MC.fontRendererObj.drawString(string, x, y, color);
+			mc.fontRendererObj.drawString(string, x, y, color);
 		}
 	}
 
@@ -100,7 +105,7 @@ public abstract class BaseElement {
 		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {
 			fr.drawString(string, x, y, color);
 		} else {
-			MC.fontRendererObj.drawString(string, x, y, color);
+			mc.fontRendererObj.drawString(string, x, y, color);
 		}
 	}
 	
@@ -108,15 +113,15 @@ public abstract class BaseElement {
 		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {
 			return fr.getStringWidth(string);
 		} else {
-			return MC.fontRendererObj.getStringWidth(string);
+			return mc.fontRendererObj.getStringWidth(string);
 		}
 	}
 	
 	protected int getFontHeight() {
 		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {
-			return fr.FONT_HEIGHT;
+			return fr.getHeight();
 		} else {
-			return MC.fontRendererObj.FONT_HEIGHT;
+			return mc.fontRendererObj.FONT_HEIGHT;
 		}
 	}
 	

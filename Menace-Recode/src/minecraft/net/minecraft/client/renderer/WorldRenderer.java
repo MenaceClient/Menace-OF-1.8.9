@@ -108,14 +108,14 @@ public class WorldRenderer
 
         for (int k = 0; k < ainteger.length; ++k)
         {
-            ainteger[k] = Integer.valueOf(k);
+            ainteger[k] = k;
         }
 
         Arrays.sort(ainteger, new Comparator<Integer>()
         {
             public int compare(Integer p_compare_1_, Integer p_compare_2_)
             {
-                return Floats.compare(afloat[p_compare_2_.intValue()], afloat[p_compare_1_.intValue()]);
+                return Floats.compare(afloat[p_compare_2_], afloat[p_compare_1_]);
             }
         });
         BitSet bitset = new BitSet();
@@ -124,7 +124,7 @@ public class WorldRenderer
 
         for (int l1 = 0; (l1 = bitset.nextClearBit(l1)) < ainteger.length; ++l1)
         {
-            int i1 = ainteger[l1].intValue();
+            int i1 = ainteger[l1];
 
             if (i1 != l1)
             {
@@ -133,7 +133,7 @@ public class WorldRenderer
                 this.rawIntBuffer.get(aint);
                 int j1 = i1;
 
-                for (int k1 = ainteger[i1].intValue(); j1 != l1; k1 = ainteger[k1].intValue())
+                for (int k1 = ainteger[i1]; j1 != l1; k1 = ainteger[k1])
                 {
                     this.rawIntBuffer.limit(k1 * l + l);
                     this.rawIntBuffer.position(k1 * l);
@@ -159,11 +159,10 @@ public class WorldRenderer
         if (this.quadSprites != null)
         {
             TextureAtlasSprite[] atextureatlassprite = new TextureAtlasSprite[this.vertexCount / 4];
-            int i2 = this.vertexFormat.getNextOffset() / 4 * 4;
 
             for (int j2 = 0; j2 < ainteger.length; ++j2)
             {
-                int k2 = ainteger[j2].intValue();
+                int k2 = ainteger[j2];
                 atextureatlassprite[j2] = this.quadSprites[k2];
             }
 
@@ -199,16 +198,16 @@ public class WorldRenderer
 
     private static float getDistanceSq(FloatBuffer p_181665_0_, float p_181665_1_, float p_181665_2_, float p_181665_3_, int p_181665_4_, int p_181665_5_)
     {
-        float f = p_181665_0_.get(p_181665_5_ + p_181665_4_ * 0 + 0);
-        float f1 = p_181665_0_.get(p_181665_5_ + p_181665_4_ * 0 + 1);
-        float f2 = p_181665_0_.get(p_181665_5_ + p_181665_4_ * 0 + 2);
-        float f3 = p_181665_0_.get(p_181665_5_ + p_181665_4_ * 1 + 0);
-        float f4 = p_181665_0_.get(p_181665_5_ + p_181665_4_ * 1 + 1);
-        float f5 = p_181665_0_.get(p_181665_5_ + p_181665_4_ * 1 + 2);
-        float f6 = p_181665_0_.get(p_181665_5_ + p_181665_4_ * 2 + 0);
+        float f = p_181665_0_.get(p_181665_5_);
+        float f1 = p_181665_0_.get(p_181665_5_ + 1);
+        float f2 = p_181665_0_.get(p_181665_5_ + 2);
+        float f3 = p_181665_0_.get(p_181665_5_ + p_181665_4_);
+        float f4 = p_181665_0_.get(p_181665_5_ + p_181665_4_ + 1);
+        float f5 = p_181665_0_.get(p_181665_5_ + p_181665_4_ + 2);
+        float f6 = p_181665_0_.get(p_181665_5_ + p_181665_4_ * 2);
         float f7 = p_181665_0_.get(p_181665_5_ + p_181665_4_ * 2 + 1);
         float f8 = p_181665_0_.get(p_181665_5_ + p_181665_4_ * 2 + 2);
-        float f9 = p_181665_0_.get(p_181665_5_ + p_181665_4_ * 3 + 0);
+        float f9 = p_181665_0_.get(p_181665_5_ + p_181665_4_ * 3);
         float f10 = p_181665_0_.get(p_181665_5_ + p_181665_4_ * 3 + 1);
         float f11 = p_181665_0_.get(p_181665_5_ + p_181665_4_ * 3 + 2);
         float f12 = (f + f3 + f6 + f9) * 0.25F - p_181665_1_;
@@ -506,60 +505,51 @@ public class WorldRenderer
 
     public WorldRenderer color(int red, int green, int blue, int alpha)
     {
-        if (this.noColor)
-        {
-            return this;
-        }
-        else
-        {
+        if (!this.noColor) {
             int i = this.vertexCount * this.vertexFormat.getNextOffset() + this.vertexFormat.getOffset(this.vertexFormatIndex);
 
-            switch (this.vertexFormatElement.getType())
-            {
+            switch (this.vertexFormatElement.getType()) {
                 case FLOAT:
-                    this.byteBuffer.putFloat(i, (float)red / 255.0F);
-                    this.byteBuffer.putFloat(i + 4, (float)green / 255.0F);
-                    this.byteBuffer.putFloat(i + 8, (float)blue / 255.0F);
-                    this.byteBuffer.putFloat(i + 12, (float)alpha / 255.0F);
+                    this.byteBuffer.putFloat(i, (float) red / 255.0F);
+                    this.byteBuffer.putFloat(i + 4, (float) green / 255.0F);
+                    this.byteBuffer.putFloat(i + 8, (float) blue / 255.0F);
+                    this.byteBuffer.putFloat(i + 12, (float) alpha / 255.0F);
                     break;
 
                 case UINT:
                 case INT:
-                    this.byteBuffer.putFloat(i, (float)red);
-                    this.byteBuffer.putFloat(i + 4, (float)green);
-                    this.byteBuffer.putFloat(i + 8, (float)blue);
-                    this.byteBuffer.putFloat(i + 12, (float)alpha);
+                    this.byteBuffer.putFloat(i, (float) red);
+                    this.byteBuffer.putFloat(i + 4, (float) green);
+                    this.byteBuffer.putFloat(i + 8, (float) blue);
+                    this.byteBuffer.putFloat(i + 12, (float) alpha);
                     break;
 
                 case USHORT:
                 case SHORT:
-                    this.byteBuffer.putShort(i, (short)red);
-                    this.byteBuffer.putShort(i + 2, (short)green);
-                    this.byteBuffer.putShort(i + 4, (short)blue);
-                    this.byteBuffer.putShort(i + 6, (short)alpha);
+                    this.byteBuffer.putShort(i, (short) red);
+                    this.byteBuffer.putShort(i + 2, (short) green);
+                    this.byteBuffer.putShort(i + 4, (short) blue);
+                    this.byteBuffer.putShort(i + 6, (short) alpha);
                     break;
 
                 case UBYTE:
                 case BYTE:
-                    if (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN)
-                    {
-                        this.byteBuffer.put(i, (byte)red);
-                        this.byteBuffer.put(i + 1, (byte)green);
-                        this.byteBuffer.put(i + 2, (byte)blue);
-                        this.byteBuffer.put(i + 3, (byte)alpha);
-                    }
-                    else
-                    {
-                        this.byteBuffer.put(i, (byte)alpha);
-                        this.byteBuffer.put(i + 1, (byte)blue);
-                        this.byteBuffer.put(i + 2, (byte)green);
-                        this.byteBuffer.put(i + 3, (byte)red);
+                    if (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN) {
+                        this.byteBuffer.put(i, (byte) red);
+                        this.byteBuffer.put(i + 1, (byte) green);
+                        this.byteBuffer.put(i + 2, (byte) blue);
+                        this.byteBuffer.put(i + 3, (byte) alpha);
+                    } else {
+                        this.byteBuffer.put(i, (byte) alpha);
+                        this.byteBuffer.put(i + 1, (byte) blue);
+                        this.byteBuffer.put(i + 2, (byte) green);
+                        this.byteBuffer.put(i + 3, (byte) red);
                     }
             }
 
             this.nextVertexFormatIndex();
-            return this;
         }
+        return this;
     }
 
     public void addVertexData(int[] vertexData)
@@ -799,7 +789,6 @@ public class WorldRenderer
             }
 
             Arrays.fill(this.drawnIcons, false);
-            int j = 0;
             int k = -1;
             int l = this.vertexCount / 4;
 
@@ -823,7 +812,6 @@ public class WorldRenderer
                         else
                         {
                             i1 = this.drawForIcon(textureatlassprite, i1) - 1;
-                            ++j;
 
                             if (this.blockLayer != EnumWorldBlockLayer.TRANSLUCENT)
                             {
@@ -837,13 +825,8 @@ public class WorldRenderer
             if (k >= 0)
             {
                 this.drawForIcon(TextureUtils.iconGrassSideOverlay, k);
-                ++j;
             }
 
-            if (j > 0)
-            {
-                ;
-            }
         }
     }
 
@@ -926,8 +909,7 @@ public class WorldRenderer
 
     private int getBufferQuadSize()
     {
-        int i = this.rawIntBuffer.capacity() * 4 / (this.vertexFormat.getIntegerSize() * 4);
-        return i;
+        return this.rawIntBuffer.capacity() * 4 / (this.vertexFormat.getIntegerSize() * 4);
     }
 
     public RenderEnv getRenderEnv(IBlockState p_getRenderEnv_1_, BlockPos p_getRenderEnv_2_)

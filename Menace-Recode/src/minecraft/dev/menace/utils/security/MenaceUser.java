@@ -1,5 +1,7 @@
 package dev.menace.utils.security;
 
+import java.util.UUID;
+
 public class MenaceUser {
 
 	private final String username;

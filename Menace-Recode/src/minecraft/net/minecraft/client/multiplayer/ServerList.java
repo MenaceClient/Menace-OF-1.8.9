@@ -49,7 +49,7 @@ public class ServerList
         }
         catch (Exception exception)
         {
-            logger.error((String)"Couldn\'t load server list", (Throwable)exception);
+            logger.error("Couldn\'t load server list", exception);
         }
     }
 

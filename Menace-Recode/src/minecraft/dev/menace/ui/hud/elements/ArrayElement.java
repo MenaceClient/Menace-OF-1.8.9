@@ -35,7 +35,7 @@ public class ArrayElement extends BaseElement {
 				this.drawString(m.getDisplayName(), this.getAbsoluteX() - this.getStringWidth(m.getDisplayName()) + this.getStringWidth("ArrayList"), y);
 			}
 			
-			y += 10;
+			y += this.getFontHeight() + 1;
 		}
 	}
 

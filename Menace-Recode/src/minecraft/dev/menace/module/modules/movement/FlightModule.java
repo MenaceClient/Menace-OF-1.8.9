@@ -75,21 +75,13 @@ public class FlightModule extends BaseModule {
 		vanillaMode = new ListSetting("VanillaMode", true, "Creative", vanillaValues.toArray(new String[] {})) {
 			@Override
 			public void constantCheck() {
-				if (Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Vanilla")) {
-					this.setVisible(true);
-				} else {
-					this.setVisible(false);
-				}
+				this.setVisible(Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Vanilla"));
 			}
 		};
 		verusMode = new ListSetting("VerusMode", false, "Jump", verusValues.toArray(new String[] {})) {
 			@Override
 			public void constantCheck() {
-				if (Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Verus")) {
-					this.setVisible(true);
-				} else {
-					this.setVisible(false);
-				}
+				this.setVisible(Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Verus"));
 			}
 		};
 		otherMode = new ListSetting("OtherMode", false, "BlocksMC", otherValues.toArray(new String[] {})) {
@@ -101,23 +93,15 @@ public class FlightModule extends BaseModule {
 		dmgMode = new ListSetting("DmgMode", false, "Basic", new String[] {"Basic", "Verus", "Jump", "Bow", "Wait"}) {
 			@Override
 			public void constantCheck() {
-				if (Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Vanilla")
-						&& Menace.instance.moduleManager.flightModule.vanillaMode.getValue().equalsIgnoreCase("Damage")) {
-					this.setVisible(true);
-				} else {
-					this.setVisible(false);
-				}
+				this.setVisible(Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Vanilla")
+						&& Menace.instance.moduleManager.flightModule.vanillaMode.getValue().equalsIgnoreCase("Damage"));
 			}
 		};
 		speed = new SliderSetting("Speed", false, 2, 1, 10, true) {
 			@Override
 			public void constantCheck() {
-				if (Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Vanilla")
-						&& Menace.instance.moduleManager.flightModule.vanillaMode.getValue().equalsIgnoreCase("Damage")) {
-					this.setVisible(true);
-				} else {
-					this.setVisible(false);
-				}
+				this.setVisible(Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Vanilla")
+						&& Menace.instance.moduleManager.flightModule.vanillaMode.getValue().equalsIgnoreCase("Damage"));
 			}
 		};
 		viewbobbingYaw = new SliderSetting("Viewbob", false, 0.1, 0, 0.5, 0.1, false);

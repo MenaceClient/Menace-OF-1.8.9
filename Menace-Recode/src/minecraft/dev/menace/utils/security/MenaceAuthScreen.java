@@ -1,21 +1,23 @@
 package dev.menace.utils.security;
 
-import java.awt.Color;
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 
+import dev.menace.utils.render.font.Fonts;
+import dev.menace.utils.render.font.MenaceFontRenderer;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 
 import dev.menace.Menace;
 import dev.menace.utils.render.GLSLShader;
-import dev.menace.utils.render.MenaceFontRenderer;
 import dev.menace.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -33,14 +35,15 @@ extends GuiScreen {
 	private String status = "§7Waiting...";
 	private final GLSLShader backgroundShader;
 	private long initTime = System.currentTimeMillis();
-	MenaceFontRenderer text = MenaceFontRenderer.getFontOnPC("Arial", 35);
+	MenaceFontRenderer text;
 
 	public MenaceAuthScreen(GuiScreen previousScreen) {
 		this.previousScreen = previousScreen;
+		text = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/SF-Pro.ttf"), 30, Font.PLAIN), true, true);
 		try {
-			this.backgroundShader = new GLSLShader("/assets/minecraft/menace/shaders/mainmenu.fsh");
-		} catch (IOException var13) {
-			throw new IllegalStateException("Failed to load background shader", var13);
+			this.backgroundShader = new GLSLShader("/assets/minecraft/menace/shaders/radar.fsh");
+		} catch (IOException e) {
+			throw new IllegalStateException("Failed to load background shader", e);
 		}
 	}
 
@@ -63,10 +66,10 @@ extends GuiScreen {
 		GL11.glEnd();
 		GL20.glUseProgram(0);
 		this.username.drawTextBox();
-		this.text.drawCenteredString("Menace Auth", width / 2, 20, -1);
-		this.text.drawCenteredString(status, width / 2, 40, -1);
+		this.text.drawCenteredString("Menace Auth", width / 2, height / 4 + 24, -1);
+		this.text.drawCenteredString(status, width / 2, height / 4 + 44, -1);
 		if (this.username.getText().isEmpty()) {
-			this.drawString(mc.fontRendererObj, "UID", width / 2 - 96, height / 4 + 30, -7829368);
+			this.drawString(mc.fontRendererObj, "UID", width / 2 - 96, height / 4 + 30 + 80, -7829368);
 		}
 		this.drawExit(mouseX, mouseY);
 		this.drawLogin(mouseX, mouseY);
@@ -76,32 +79,35 @@ extends GuiScreen {
 	private void drawExit(int mouseX, int mouseY) {
 		int l1 = height / 4 + 24;
 		int w = 200;
-		int h = 20;
+		int h = 25;
 		int x1 = width / 2 - 100;
 		int x2 = x1 + w;
-		int y1 = l1 + 108;
+		int y1 = l1 + 158;
 		int y2 = y1 + h;
 		boolean hovered = RenderUtils.hover(x1, y1, mouseX, mouseY, w, h);
-		RenderUtils.drawRoundedRect((float)x1, (float)y1, (float)x2, (float)y2, 5.0F, hovered ? (new Color(203, 26, 26, 80)).getRGB() : (new Color(0, 0, 0, 80)).getRGB());
-		this.text.drawCenteredString("Exit", (float)((x1 + x2) / 2), (float)((y1 + y2 - 22) / 2), Color.black.getRGB());
+		RenderUtils.drawRect((float)x1, (float)y1, (float)x2, (float)y2, hovered ? (new Color(255, 0, 0, 80)).getRGB() : (new Color(153, 9, 9, 80)).getRGB());
+		RenderUtils.drawRect((float)x1, (float)y1 + 20, (float)x2, (float)y2, (new Color(200, 0, 0)).getRGB());
+		this.text.drawCenteredString("Exit", (float)((x1 + x2) / 2), (float)((y1 + y2 - 16) / 2), Color.black.getRGB());
 	}
 
 	private void drawLogin(int mouseX, int mouseY) {
 		int l1 = height / 4 + 24;
 		int w = 200;
-		int h = 20;
+		int h = 25;
 		int x1 = width / 2 - 100;
 		int x2 = x1 + w;
-		int y1 = l1 + 78;
+		int y1 = l1 + 128;
 		int y2 = y1 + h;
 		boolean hovered = RenderUtils.hover(x1, y1, mouseX, mouseY, w, h);
-		RenderUtils.drawRoundedRect((float)x1, (float)y1, (float)x2, (float)y2, 5.0F, hovered ? (new Color(203, 26, 26, 80)).getRGB() : (new Color(0, 0, 0, 80)).getRGB());
-		this.text.drawCenteredString("Login", (float)((x1 + x2) / 2), (float)((y1 + y2 - 22) / 2), Color.black.getRGB());
+		RenderUtils.drawRect((float)x1, (float)y1, (float)x2, (float)y2, hovered ? (new Color(255, 0, 0, 80)).getRGB() : (new Color(153, 9, 9, 80)).getRGB());
+		RenderUtils.drawRect((float)x1, (float)y1 + 20, (float)x2, (float)y2, (new Color(200, 0, 0)).getRGB());
+		this.text.drawCenteredString("Login", (float)((x1 + x2) / 2), (float)((y1 + y2 - 20) / 2), Color.black.getRGB());
 	}
 
 	@Override
 	public void initGui() {
-		this.username = new GuiTextField(-1, this.mc.fontRendererObj, width / 2 - 100, height / 4 + 24, 200, 20);
+		MenaceUUIDHandler.validate();
+		this.username = new GuiTextField(-1, this.mc.fontRendererObj, width / 2 - 100, height / 4 + 24 + 80, 200, 20);
 		this.username.setFocused(true);
 		this.initTime = System.currentTimeMillis();
 		Keyboard.enableRepeatEvents(true);
@@ -124,11 +130,11 @@ extends GuiScreen {
 		super.mouseClicked(mouseX, mouseY, mouseButton);
 		int l1 = height / 4 + 24;
 		this.username.mouseClicked(mouseX, mouseY, mouseButton);
-		if (RenderUtils.hover(width / 2 - 100, l1 + 108, mouseX, mouseY, 200, 20) && mouseButton == 0) {
+		if (RenderUtils.hover(width / 2 - 100, l1 + 158, mouseX, mouseY, 200, 25) && mouseButton == 0) {
 			this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
 			this.mc.shutdown();
 		}
-		if (RenderUtils.hover(width / 2 - 100, l1 + 78, mouseX, mouseY, 200, 20) && mouseButton == 0) {
+		if (RenderUtils.hover(width / 2 - 100, l1 + 128, mouseX, mouseY, 200, 25) && mouseButton == 0) {
 			login();
 		}
 	}
@@ -151,18 +157,27 @@ extends GuiScreen {
 		}
 
 		try {
-			URL url = new URL("http://menaceapi.cf/HWIDS.txt");
-			URLConnection uc = url.openConnection();
+			URL url = new URL("https://menaceapi.cf/");
+			HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
 			uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(uc.getInputStream(), StandardCharsets.UTF_8));
-			bufferedReader.close();
+			uc.setRequestMethod("GET");
+			int responseCode = uc.getResponseCode();
+			if (responseCode != HttpURLConnection.HTTP_OK) {
+				status = "§cConnection Failed, could not connect to the Menace Servers.";
+			}
 		} catch (IOException e) {
 			status = "§cConnection Failed, could not connect to the Menace Servers.";
 			e.printStackTrace();
 			return;
 		}
 
-		if (!HWIDManager.readHWIDURL().contains(HWIDManager.getHWID())) {
+
+		if (!HWIDManager.isWhitelisted()) {
+			try {
+				AntiSkidUtils.log("User not whitelisted. (uid: " + username.getText() + ")");
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
 			status = "§cHWID not whitelisted.";
 			return;
 		}
@@ -173,6 +188,7 @@ extends GuiScreen {
 		}
 
 		Menace.instance.user = HWIDManager.getUser();
+		Menace.instance.postinit();
 		Minecraft.getMinecraft().displayGuiScreen(previousScreen);
 	}
 

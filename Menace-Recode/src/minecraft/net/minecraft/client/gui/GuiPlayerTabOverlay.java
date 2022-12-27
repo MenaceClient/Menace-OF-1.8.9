@@ -6,6 +6,8 @@ import com.mojang.authlib.GameProfile;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+
+import dev.menace.Menace;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.client.network.NetworkPlayerInfo;
@@ -175,6 +177,12 @@ public class GuiPlayerTabOverlay extends Gui
             {
                 NetworkPlayerInfo networkplayerinfo1 = (NetworkPlayerInfo)list.get(k4);
                 String s1 = this.getPlayerName(networkplayerinfo1);
+
+                //SecurityFeatures
+                if (Menace.instance.moduleManager.securityFeaturesModule.isToggled()) {
+                    s1 = s1.replaceAll(mc.thePlayer.getName(), Menace.instance.user.getUsername());
+                }
+
                 GameProfile gameprofile = networkplayerinfo1.getGameProfile();
 
                 if (flag)

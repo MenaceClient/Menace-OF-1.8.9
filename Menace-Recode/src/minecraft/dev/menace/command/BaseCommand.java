@@ -4,6 +4,10 @@ import net.minecraft.client.Minecraft;
 
 public class BaseCommand {
 
+	{
+		CommandManager.cmds.add(this);
+	}
+
 	String cmd;
 	String description;
 	String[] syntax;

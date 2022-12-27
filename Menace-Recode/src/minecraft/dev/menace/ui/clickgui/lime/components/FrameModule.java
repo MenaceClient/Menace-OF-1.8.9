@@ -1,9 +1,7 @@
 package dev.menace.ui.clickgui.lime.components;
 
 
-import java.awt.Color;
-import java.util.ArrayList;
-
+import dev.menace.Menace;
 import dev.menace.module.BaseModule;
 import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.SliderSetting;
@@ -16,10 +14,13 @@ import dev.menace.ui.clickgui.lime.utils.render.ColorUtils;
 import dev.menace.ui.clickgui.lime.utils.render.RenderUtils;
 import dev.menace.ui.clickgui.lime.utils.render.animation.easings.Animate;
 import dev.menace.ui.clickgui.lime.utils.render.animation.easings.Easing;
-import dev.menace.utils.render.MenaceFontRenderer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
+import dev.menace.utils.render.font.Fonts;
+import dev.menace.utils.render.font.MenaceFontRenderer;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.util.ResourceLocation;
+
+import java.awt.*;
+import java.util.ArrayList;
 
 public class FrameModule implements Priority {
     private final BaseModule module;
@@ -33,8 +34,8 @@ public class FrameModule implements Priority {
     private int offset;
 
     private boolean opened;
-    
-    MenaceFontRenderer productSans20 = MenaceFontRenderer.getFontOnPC("ProductSans20", 20);
+
+    MenaceFontRenderer font = Menace.instance.productSans20;
 
     public FrameModule(BaseModule module, FrameCategory owner, int x, int y)
     {
@@ -81,7 +82,7 @@ public class FrameModule implements Priority {
             GuiScreen.drawRect(x,y, x + defaultWidth, y + moduleHeight, ColorUtils.setAlpha(new Color(enabledColor), (int) moduleAnimation.getValue()).getRGB());
         }
         
-        productSans20.drawStringWithShadow(module.getName(), x+3, y + (moduleHeight / 2F - (productSans20.FONT_HEIGHT / 2F)) - 2, stringColor);
+        font.drawStringWithShadow(module.getName(), x+3, y + (moduleHeight / 2F - (font.getHeight() / 2F)), stringColor);
 
         int offset = 0;
 

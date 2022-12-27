@@ -1,27 +1,21 @@
 package dev.menace.ui.clickgui.lime.components;
 
 
-import java.awt.Color;
-import java.util.ArrayList;
-
-import dev.menace.module.BaseModule;
+import dev.menace.Menace;
 import dev.menace.module.config.Config;
-import dev.menace.module.settings.ListSetting;
-import dev.menace.module.settings.SliderSetting;
-import dev.menace.module.settings.ToggleSetting;
 import dev.menace.ui.clickgui.lime.Priority;
-import dev.menace.ui.clickgui.lime.components.impl.BoolSetting;
-import dev.menace.ui.clickgui.lime.components.impl.EnumSetting;
-import dev.menace.ui.clickgui.lime.components.impl.SlideSetting;
 import dev.menace.ui.clickgui.lime.utils.render.ColorUtils;
 import dev.menace.ui.clickgui.lime.utils.render.RenderUtils;
 import dev.menace.ui.clickgui.lime.utils.render.animation.easings.Animate;
 import dev.menace.ui.clickgui.lime.utils.render.animation.easings.Easing;
-import dev.menace.utils.render.MenaceFontRenderer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
+import dev.menace.utils.render.font.Fonts;
+import dev.menace.utils.render.font.MenaceFontRenderer;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.util.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
+
+import java.awt.*;
+import java.util.ArrayList;
 
 public class FrameConfig implements Priority {
     private final Config config;
@@ -36,7 +30,7 @@ public class FrameConfig implements Priority {
 
     private boolean opened;
 
-    MenaceFontRenderer productSans20 = MenaceFontRenderer.getFontOnPC("ProductSans20", 20);
+    MenaceFontRenderer font = Menace.instance.productSans20;
 
     public FrameConfig(@NotNull Config config, FrameConfigs owner, int x, int y)
     {
@@ -64,7 +58,7 @@ public class FrameConfig implements Priority {
             GuiScreen.drawRect(x,y, x + defaultWidth, y + moduleHeight, ColorUtils.setAlpha(new Color(enabledColor), (int) moduleAnimation.getValue()).getRGB());
         }
 
-        productSans20.drawStringWithShadow(config.getName(), x+3, y + (moduleHeight / 2F - (productSans20.FONT_HEIGHT / 2F)) - 2, stringColor);
+        font.drawStringWithShadow(config.getName(), x+3, y + (moduleHeight / 2F - (font.getHeight() / 2F)) + 1, stringColor);
 
         int offset = 0;
 

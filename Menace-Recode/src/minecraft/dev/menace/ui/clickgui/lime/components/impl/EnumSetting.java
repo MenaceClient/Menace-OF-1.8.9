@@ -1,17 +1,16 @@
 package dev.menace.ui.clickgui.lime.components.impl;
 
+import dev.menace.Menace;
 import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.Setting;
 import dev.menace.ui.clickgui.lime.Priority;
 import dev.menace.ui.clickgui.lime.components.Component;
 import dev.menace.ui.clickgui.lime.components.FrameModule;
 import dev.menace.ui.clickgui.lime.utils.render.RenderUtils;
-import dev.menace.utils.render.MenaceFontRenderer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
+import dev.menace.utils.render.font.MenaceFontRenderer;
 
 public class EnumSetting extends Component implements Priority {
-	MenaceFontRenderer productSans20 = MenaceFontRenderer.getFontOnPC("ProductSans20", 20);
+    MenaceFontRenderer font = Menace.instance.productSans20;
 	
     public EnumSetting(int x, int y, FrameModule owner, Setting setting) {
         super(x, y, owner, setting);
@@ -24,8 +23,8 @@ public class EnumSetting extends Component implements Priority {
 
     @Override
     public void drawScreen(int mouseX, int mouseY) {
-    	productSans20.drawStringWithShadow(getSetting().getName(), x + 5, y + (getOffset() / 2F - (productSans20.FONT_HEIGHT / 2F)), -1);
-    	productSans20.drawStringWithShadow(((ListSetting) getSetting()).getValue().toUpperCase(), x + defaultWidth - productSans20.getStringWidth(((ListSetting) getSetting()).getValue().toUpperCase()) - 5, y + (getOffset() / 2F - (productSans20.FONT_HEIGHT / 2F)), -1);
+        font.drawStringWithShadow(getSetting().getName(), x + 5, y + (getOffset() / 2F - (font.getHeight() / 2F)), -1);
+        font.drawStringWithShadow(((ListSetting) getSetting()).getValue().toUpperCase(), x + defaultWidth - font.getStringWidth(((ListSetting) getSetting()).getValue().toUpperCase()) - 5, y + (getOffset() / 2F - (font.getHeight() / 2F)), -1);
     }
 
     @Override

@@ -74,7 +74,7 @@ public class Gui
         GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
         GlStateManager.color(f, f1, f2, f3);
         worldrenderer.begin(7, DefaultVertexFormats.POSITION);
-        worldrenderer.pos((double)x, (double)e, 0.0D).endVertex();
+        worldrenderer.pos(x, e, 0.0D).endVertex();
         worldrenderer.pos((double)d, (double)e, 0.0D).endVertex();
         worldrenderer.pos((double)d, (double)y, 0.0D).endVertex();
         worldrenderer.pos((double)x, (double)y, 0.0D).endVertex();

@@ -1,614 +1,246 @@
-[10:45:12] [Client thread/INFO]: Setting user: Player540
-[10:45:12] [Client thread/INFO]: (Session ID is token:0:Player540)
-[10:45:14] [Client thread/INFO]: [OptiFine] *** Reflector Forge ***
-[10:45:14] [Client thread/INFO]: [OptiFine] *** Reflector Vanilla ***
-[10:45:14] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event$Result
-[10:45:14] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraft.launchwrapper.Launch
-[10:45:14] [Client thread/INFO]: LWJGL Version: 2.9.4
-[10:45:14] [Client thread/INFO]: [OptiFine] 
-[10:45:14] [Client thread/INFO]: [OptiFine] OptiFine_1.8.9_HD_U_M5
-[10:45:14] [Client thread/INFO]: [OptiFine] Build: null
-[10:45:14] [Client thread/INFO]: [OptiFine] OS: Windows 10 (amd64) version 10.0
-[10:45:14] [Client thread/INFO]: [OptiFine] Java: 1.8.0_202, Oracle Corporation
-[10:45:14] [Client thread/INFO]: [OptiFine] VM: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
-[10:45:14] [Client thread/INFO]: [OptiFine] LWJGL: 2.9.4
-[10:45:14] [Client thread/INFO]: [OptiFine] OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2, version 4.6.0 NVIDIA 512.15, NVIDIA Corporation
-[10:45:14] [Client thread/INFO]: [OptiFine] OpenGL Version: 4.6.0
-[10:45:14] [Client thread/INFO]: [OptiFine] Maximum texture size: 32768x32768
-[10:45:14] [VersionCheck/INFO]: [OptiFine] Checking for new version
-[10:45:14] [Client thread/INFO]: [Shaders] OpenGL Version: 4.6.0 NVIDIA 512.15
-[10:45:14] [Client thread/INFO]: [Shaders] Vendor:  NVIDIA Corporation
-[10:45:14] [Client thread/INFO]: [Shaders] Renderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
-[10:45:14] [Client thread/INFO]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0 
-[10:45:14] [Client thread/INFO]: [Shaders] GL_MAX_DRAW_BUFFERS: 8
-[10:45:14] [Client thread/INFO]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8
-[10:45:14] [Client thread/INFO]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32
-[10:45:14] [Client thread/INFO]: [Shaders] Load shaders configuration.
-[10:45:14] [Client thread/INFO]: [Shaders] Save shaders configuration.
-[10:45:14] [Client thread/INFO]: [Shaders] No shaderpack loaded.
-[10:45:14] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.Loader
-[10:45:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.SplashProgress
-[10:45:15] [VersionCheck/INFO]: [OptiFine] Version found: M5
-[10:45:15] [Client thread/INFO]: Reloading ResourceManager: Default, §f§lTriton §7§lPack.zip
-[10:45:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: optifine.OptiFineClassTransformer
-[10:45:15] [Client thread/INFO]: [OptiFine] *** Reloading textures ***
-[10:45:15] [Client thread/INFO]: [OptiFine] Resource packs: §f§lTriton §7§lPack.zip
-[10:45:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.Attributes
-[10:45:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.preDraw
-[10:45:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.postDraw
-[10:45:15] [Client thread/ERROR]: Couldn't initialize twitch stream
-[10:45:15] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[10:45:15] [Thread-6/INFO]: Initializing LWJGL OpenAL
-[10:45:15] [Thread-6/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[10:45:15] [Client thread/INFO]: [OptiFine] Loading mcpatcher/font/ascii.properties
-[10:45:15] [Client thread/INFO]: [OptiFine] Loading mcpatcher/font/ascii_sga.properties
-[10:45:15] [Thread-6/INFO]: OpenAL initialized.
-[10:45:16] [Sound Library Loader/INFO]: Sound engine started
-[10:45:16] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ForgeHooksClient
-[10:45:17] [Client thread/INFO]: [OptiFine] Mipmap levels: 4
-[10:45:17] [Client thread/INFO]: [OptiFine] Multitexture: false
-[10:45:17] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/bookshelf/block47.properties
-[10:45:17] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/bookshelf/bookshelf.properties
-[10:45:17] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass black/glass_black.properties
-[10:45:17] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass blue/glass_blue.properties
-[10:45:17] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass brown/glass_brown.properties
-[10:45:17] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass cyan/glass_cyan.properties
-[10:45:17] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass gray/glass_gray.properties
-[10:45:17] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass green/glass_green.properties
-[10:45:17] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass light blue/glass_light_blue.properties
-[10:45:17] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass light gray/glass_silver.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass lime/glass_lime.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass magenta/glass_magenta.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass orange/glass_orange.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass pink/glass_pink.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass purple/glass_purple.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass red/glass_red.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass white/glass_white.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass yellow/glass_yellow.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass/Black Glass/glass_black.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass/Blue Glass/glass_blue.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass/Brown Glass/glass_brown.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass/Cyan Glass/glass_cyan.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass/Green Glass/glass_green.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass/Grey Glass/glass_gray.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass/Light Blue Glass/glass_light_blue.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass/Light Grey Glass/glass_silver.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass/Lime Glass/glass_lime.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass/Magenta Glass/glass_magenta.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass/Normal/glass.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass/Orange Glass/glass_orange.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass/Pink Glass/glass_pink.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass/Purple Glass/glass_purple.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass/Red Glass/glass_red.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass/White Glass/glass_white.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass/Yellow Glass/glass_yellow.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass/glass.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/glass_clear/glass.properties
-[10:45:18] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
-[10:45:18] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
-[10:45:18] [Client thread/INFO]: [OptiFine] BetterGrass: Parsing default configuration optifine/bettergrass.properties
-[10:45:19] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/slime, 8 -> 16
-[10:45:19] [Client thread/INFO]: Created: 4096x2048 textures-atlas
-[10:45:19] [Client thread/INFO]: [OptiFine] Animated sprites: 13
-[10:45:19] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader
-[10:45:19] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ItemModelMesherForge
-[10:45:19] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.registry.RenderingRegistry
-[10:45:19] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeModContainer
-[10:45:22] [Via-Mappingloader-0/INFO]: Loading 1.12 -> 1.13 mappings...
-[10:45:22] [Via-Mappingloader-1/INFO]: Loading 1.13 -> 1.13.2 mappings...
-[10:45:22] [Via-Mappingloader-2/INFO]: Loading 1.13.2 -> 1.14 mappings...
-[10:45:22] [Via-Mappingloader-3/INFO]: Loading 1.14 -> 1.15 mappings...
-[10:45:22] [Via-Mappingloader-4/INFO]: Loading 1.15 -> 1.16 mappings...
-[10:45:22] [Via-Mappingloader-5/INFO]: Loading 1.16 -> 1.16.2 mappings...
-[10:45:22] [Via-Mappingloader-6/INFO]: Loading 1.16.2 -> 1.17 mappings...
-[10:45:22] [Via-Mappingloader-1/INFO]: Loading 1.17 -> 1.18 mappings...
-[10:45:22] [Via-Mappingloader-0/INFO]: Loading block connection mappings ...
-[10:45:22] [Via-Mappingloader-3/INFO]: Loading 1.18 -> 1.19 mappings...
-[10:45:23] [Client thread/INFO]: Loading translations...
-[10:45:23] [Via-Mappingloader-3/INFO]: Loading 1.10 -> 1.9.4 mappings...
-[10:45:23] [Via-Mappingloader-3/INFO]: Loading 1.11 -> 1.10 mappings...
-[10:45:23] [Via-Mappingloader-3/INFO]: Loading 1.12 -> 1.11 mappings...
-[10:45:23] [Via-Mappingloader-0/INFO]: Loading 1.13 -> 1.12 mappings...
-[10:45:23] [Via-Mappingloader-3/INFO]: Loading 1.13.2 -> 1.13 mappings...
-[10:45:23] [Via-Mappingloader-3/INFO]: Loading 1.14 -> 1.13.2 mappings...
-[10:45:23] [Via-Mappingloader-5/INFO]: Loading 1.15 -> 1.14 mappings...
-[10:45:23] [Via-Mappingloader-1/INFO]: Loading 1.16 -> 1.15 mappings...
-[10:45:23] [Via-Mappingloader-6/INFO]: Loading 1.16.2 -> 1.16 mappings...
-[10:45:23] [Via-Mappingloader-1/INFO]: Loading 1.17 -> 1.16.2 mappings...
-[10:45:23] [Via-Mappingloader-0/INFO]: Loading 1.18 -> 1.17 mappings...
-[10:45:23] [Via-Mappingloader-0/INFO]: Loading 1.19 -> 1.18 mappings...
-[10:45:23] [ViaMCP-0/INFO]: ViaVersion detected server version: 1.8.x (47)
-[10:45:23] [ViaMCP-0/WARN]: This version of Minecraft is extremely outdated and support for it has reached its end of life. You will still be able to run Via on this Minecraft version, but we are unlikely to provide any further fixes or help with problems specific to legacy Minecraft versions. Please consider updating to give your players a better experience and to avoid issues that have long been fixed.
-[10:45:23] [ViaMCP-0/WARN]: You are running an outdated Java version, please consider updating it to at least Java 17 (your version is 1.8.0_202). At some point in the future, ViaVersion will no longer be compatible with this version of Java.
-[10:45:23] [ViaMCP-0/INFO]: Finished mapping loading, shutting down loader executor!
-[10:45:24] [ViaMCP-0/WARN]: There is a newer plugin version available: 4.4.2, you're on: 4.1.1
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkWatchEvent$UnWatch
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.relauncher.CoreModManager
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.DimensionManager
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Pre
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Post
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$CameraSetup
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$FogColors
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.EventBus
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.ExtendedBlockState
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.FMLClientHandler
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.FMLCommonHandler
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.biome.BiomeGenBase.getWaterColorMultiplier
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addDestroyEffects
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addHitEffects
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canCreatureSpawn
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canRenderInLayer
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.doesSideBlockRendering
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getBedDirection
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getExtendedState
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightOpacity
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightValue
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.hasTileEntity
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isAir
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBed
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBedFoot
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isSideSolid
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.ChunkCache.isSideSolid
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.canRiderInteract
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.captureDrops
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.capturedDrops
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRenderInPass
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRiderSit
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.ForgeEventFactory
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeHooks
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.item.Item.delegate
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getDurabilityForDisplay
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getModel
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.onEntitySwing
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.shouldCauseReequipAnimation
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.showDurabilityBar
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.potion.PotionEffect.isCurativeItem
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.canRenderBreaking
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.getRenderBoundingBox
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.hasFastRenderer
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.shouldRenderInPass
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.countEntities
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.getPerWorldStorage
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getCloudRenderer
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSkyRenderer
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getWeatherRenderer
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSaveFolder
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.GuiModList
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IColoredBakedQuad
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.IExtendedBlockState
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IModel
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.IRenderHandler
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.LightUtil
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.MinecraftForge
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.MinecraftForgeClient
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.ModContainer
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader$VanillaLoader
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderBlockOverlayEvent$OverlayType
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderItemInFrameEvent
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Pre
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Post
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Pre
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Post
-[10:45:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.WorldEvent$Load
-[10:45:31] [Client thread/INFO]: [OptiFine] *** Reloading custom textures ***
-[10:45:31] [Client thread/INFO]: [OptiFine] CustomColors: Colormap mcpatcher/colormap/water.png
-[10:45:31] [Client thread/INFO]: [OptiFine] CustomColors: Colormap mcpatcher/colormap/swampgrass.png
-[10:45:31] [Client thread/INFO]: [OptiFine] CustomColors: Colormap mcpatcher/colormap/swampfoliage.png
-[10:45:31] [Client thread/INFO]: [OptiFine] CustomColors: Colormap mcpatcher/colormap/sky0.png
-[10:45:31] [Client thread/INFO]: [OptiFine] CustomColors: Colormap mcpatcher/lightmap/world-1.png
-[10:45:31] [Client thread/INFO]: [OptiFine] CustomColors: Colormap mcpatcher/lightmap/world0.png
-[10:45:31] [Client thread/INFO]: [OptiFine] CustomColors: Colormap mcpatcher/lightmap/world1.png
-[10:45:31] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky1.properties
-[10:45:31] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky2.properties
-[10:45:31] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky3.properties
-[10:45:32] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky4.properties
-[10:45:32] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky5.properties
-[10:45:32] [Client thread/INFO]: [OptiFine] CustomSky: Texture not found: minecraft:mcpatcher/sky/world0/sky_sunflare.png
-[10:45:32] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky6.properties
-[10:45:32] [Client thread/INFO]: [OptiFine] CustomSky: Texture not found: minecraft:mcpatcher/sky/world0/sky_sunflare.png
-[10:45:32] [Client thread/INFO]: [OptiFine] Enable face culling: acacia_leaves, birch_leaves, dark_oak_leaves, jungle_leaves, oak_leaves, spruce_leaves
-[10:46:17] [Server thread/INFO]: Starting integrated minecraft server version 1.9
-[10:46:17] [Server thread/INFO]: Generating keypair
-[10:46:18] [Server thread/INFO]: Preparing start region for level 0
-[10:46:19] [Server thread/INFO]: Preparing spawn area: 6%
-[10:46:20] [Server thread/INFO]: ExterminateYT[local:E:80bb9c5e] logged in with entity id 48 at (393.15733555853956, 83.0, 257.32357060131943)
-[10:46:20] [Server thread/INFO]: ExterminateYT joined the game
-[10:46:21] [Thread-13/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/ExterminateYT.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:46:57] [Server thread/INFO]: Saving and pausing game...
-[10:46:57] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[10:46:57] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[10:46:57] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[10:46:58] [Server thread/INFO]: Stopping server
-[10:46:58] [Server thread/INFO]: Saving players
-[10:46:58] [Server thread/INFO]: Saving worlds
-[10:46:58] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Overworld
-[10:46:58] [Server thread/INFO]: Saving chunks for level 'mcpworld'/Nether
-[10:46:58] [Server thread/INFO]: Saving chunks for level 'mcpworld'/The End
-[10:47:24] [Client thread/INFO]: Connecting to ccc.blocksmc.com., 25565
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:25] [Client thread/INFO]: [CHAT] 
-[10:47:26] [Client thread/INFO]: [CHAT] /register <password> <password>
-[10:47:26] [Thread-16/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/9ZphFkXak2IjnR.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:47:32] [Client thread/INFO]: Connecting to ccc.blocksmc.com., 25565
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] 
-[10:47:34] [Client thread/INFO]: [CHAT] /login <password>
-[10:47:34] [Client thread/INFO]: [CHAT] If you lost the password type /resetpassword
-[10:48:01] [Client thread/INFO]: Connecting to ccc.blocksmc.com., 25565
-[10:48:26] [Client thread/INFO]: Connecting to ccc.blocksmc.com., 25565
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] 
-[10:48:28] [Client thread/INFO]: [CHAT] /register <password> <password>
-[10:48:29] [Thread-22/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/tiCSANbS6t6M3N.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:30] [Client thread/INFO]: [CHAT] Successful Register.
-[10:48:30] [Client thread/INFO]: [CHAT] ? BlocksMC ? If you have a premium minecraft account you may join through:
-[10:48:30] [Client thread/INFO]: [CHAT] ? BlocksMC ? PREMIUM.BLOCKSMC.COM
-[10:48:31] [Client thread/INFO]: [CHAT] 
-[10:48:31] [Client thread/INFO]: [CHAT] 
-[10:48:31] [Client thread/INFO]: [CHAT]                         Welcome to BlocksMC
-[10:48:31] [Client thread/INFO]: [CHAT]                 We have 853 players at our network
-[10:48:31] [Client thread/INFO]: [CHAT] 
-[10:48:31] [Client thread/INFO]: [CHAT]                          Check out these links:
-[10:48:31] [Client thread/INFO]: [CHAT]      Website - Rules - Store - Support - Discord
-[10:48:31] [Client thread/INFO]: [CHAT] 
-[10:48:31] [Client thread/INFO]: [CHAT]                                Have Fun ?
-[10:48:31] [Client thread/INFO]: [CHAT] 
-[10:48:31] [Client thread/INFO]: [CHAT]                                      
-[10:48:32] [Thread-24/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/MeiParrilla.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:33] [Thread-26/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/davibatschke_.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:34] [Thread-25/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/Nicolas_1947.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:34] [Client thread/FATAL]: Error executing task
-java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:1.8.0_202]
-	at java.util.concurrent.FutureTask.get(FutureTask.java:192) ~[?:1.8.0_202]
-	at net.minecraft.util.Util.runTask(Util.java:20) [Menace-Recode/:?]
-	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1095) [Menace-Recode/:?]
-	at net.minecraft.client.Minecraft.run(Minecraft.java:439) [Menace-Recode/:?]
-	at net.minecraft.client.main.Main.main(Main.java:113) [Menace-Recode/:?]
-	at Start.main(Start.java:11) [Menace-Recode/:?]
-Caused by: java.lang.NullPointerException
-	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnPlayer(NetHandlerPlayClient.java:539) ~[Menace-Recode/:?]
-	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:83) ~[Menace-Recode/:?]
-	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:15) ~[Menace-Recode/:?]
-	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:22) ~[Menace-Recode/:?]
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[?:1.8.0_202]
-	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266) ~[?:1.8.0_202]
-	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:1.8.0_202]
-	at net.minecraft.util.Util.runTask(Util.java:19) ~[Menace-Recode/:?]
-	... 4 more
-[10:48:35] [Thread-27/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/7uXz.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:35] [Thread-28/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/zdkaa1212.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:36] [Thread-37/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/xX_KOKUSHIBO_Xx.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:36] [Thread-29/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/pe__.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:36] [Client thread/FATAL]: Error executing task
-java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:1.8.0_202]
-	at java.util.concurrent.FutureTask.get(FutureTask.java:192) ~[?:1.8.0_202]
-	at net.minecraft.util.Util.runTask(Util.java:20) [Menace-Recode/:?]
-	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1095) [Menace-Recode/:?]
-	at net.minecraft.client.Minecraft.run(Minecraft.java:439) [Menace-Recode/:?]
-	at net.minecraft.client.main.Main.main(Main.java:113) [Menace-Recode/:?]
-	at Start.main(Start.java:11) [Menace-Recode/:?]
-Caused by: java.lang.NullPointerException
-	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnPlayer(NetHandlerPlayClient.java:539) ~[Menace-Recode/:?]
-	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:83) ~[Menace-Recode/:?]
-	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:15) ~[Menace-Recode/:?]
-	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:22) ~[Menace-Recode/:?]
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[?:1.8.0_202]
-	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266) ~[?:1.8.0_202]
-	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:1.8.0_202]
-	at net.minecraft.util.Util.runTask(Util.java:19) ~[Menace-Recode/:?]
-	... 4 more
-[10:48:37] [Thread-64/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/AsanDerpJR.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:37] [Thread-62/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-932e5417ea6e.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:38] [Thread-63/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-fdd0e663a39a.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:38] [Thread-61/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-5e6af8d9ab72.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:38] [Thread-60/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-72d06e6e188f.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:39] [Thread-58/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-875120602ed7.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:39] [Thread-59/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/El_GabeKKj.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:40] [Thread-55/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-153b3ed5e69e.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:40] [Thread-57/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-03952dfb2614.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:40] [Client thread/INFO]: [CHAT] 10 ? Nicolas_1947 » tourism because a woman´ place is the kitchen XD
-[10:48:40] [Thread-56/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-b1f427ad1728.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:41] [Thread-54/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/xXx_mirrors_xXx.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:41] [Thread-53/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/iLyCryy.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:42] [Thread-52/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-d762b24ac0a8.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:42] [Thread-51/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-f78b6c0bf860.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:42] [Thread-50/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-fd8c77bbb4bf.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:42] [Client thread/INFO]: [CHAT]                                      
-[10:48:43] [Thread-48/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/MrFix565.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:43] [Client thread/FATAL]: Error executing task
-java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:1.8.0_202]
-	at java.util.concurrent.FutureTask.get(FutureTask.java:192) ~[?:1.8.0_202]
-	at net.minecraft.util.Util.runTask(Util.java:20) [Menace-Recode/:?]
-	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1095) [Menace-Recode/:?]
-	at net.minecraft.client.Minecraft.run(Minecraft.java:439) [Menace-Recode/:?]
-	at net.minecraft.client.main.Main.main(Main.java:113) [Menace-Recode/:?]
-	at Start.main(Start.java:11) [Menace-Recode/:?]
-Caused by: java.lang.NullPointerException
-	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnPlayer(NetHandlerPlayClient.java:539) ~[Menace-Recode/:?]
-	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:83) ~[Menace-Recode/:?]
-	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:15) ~[Menace-Recode/:?]
-	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:22) ~[Menace-Recode/:?]
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[?:1.8.0_202]
-	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266) ~[?:1.8.0_202]
-	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:1.8.0_202]
-	at net.minecraft.util.Util.runTask(Util.java:19) ~[Menace-Recode/:?]
-	... 4 more
-[10:48:43] [Client thread/FATAL]: Error executing task
-java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:1.8.0_202]
-	at java.util.concurrent.FutureTask.get(FutureTask.java:192) ~[?:1.8.0_202]
-	at net.minecraft.util.Util.runTask(Util.java:20) [Menace-Recode/:?]
-	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1095) [Menace-Recode/:?]
-	at net.minecraft.client.Minecraft.run(Minecraft.java:439) [Menace-Recode/:?]
-	at net.minecraft.client.main.Main.main(Main.java:113) [Menace-Recode/:?]
-	at Start.main(Start.java:11) [Menace-Recode/:?]
-Caused by: java.lang.NullPointerException
-	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnPlayer(NetHandlerPlayClient.java:539) ~[Menace-Recode/:?]
-	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:83) ~[Menace-Recode/:?]
-	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:15) ~[Menace-Recode/:?]
-	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:22) ~[Menace-Recode/:?]
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[?:1.8.0_202]
-	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266) ~[?:1.8.0_202]
-	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:1.8.0_202]
-	at net.minecraft.util.Util.runTask(Util.java:19) ~[Menace-Recode/:?]
-	... 4 more
-[10:48:43] [Thread-49/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/ImShefo2.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:44] [Thread-47/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-cbd7621c624a.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:44] [Thread-35/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-a4194fdeab58.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:44] [Thread-32/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-0248ad1cb1cc.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:45] [Thread-33/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-1055eb74d179.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:45] [Thread-38/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-53fc6d2526e2.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:45] [Thread-40/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-d3eb63cee7d6.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:45] [Client thread/FATAL]: Error executing task
-java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:1.8.0_202]
-	at java.util.concurrent.FutureTask.get(FutureTask.java:192) ~[?:1.8.0_202]
-	at net.minecraft.util.Util.runTask(Util.java:20) [Menace-Recode/:?]
-	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1095) [Menace-Recode/:?]
-	at net.minecraft.client.Minecraft.run(Minecraft.java:439) [Menace-Recode/:?]
-	at net.minecraft.client.main.Main.main(Main.java:113) [Menace-Recode/:?]
-	at Start.main(Start.java:11) [Menace-Recode/:?]
-Caused by: java.lang.NullPointerException
-	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnPlayer(NetHandlerPlayClient.java:539) ~[Menace-Recode/:?]
-	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:83) ~[Menace-Recode/:?]
-	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:15) ~[Menace-Recode/:?]
-	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:22) ~[Menace-Recode/:?]
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[?:1.8.0_202]
-	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266) ~[?:1.8.0_202]
-	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:1.8.0_202]
-	at net.minecraft.util.Util.runTask(Util.java:19) ~[Menace-Recode/:?]
-	... 4 more
-[10:48:46] [Thread-39/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-61b48fcd11fb.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:47] [Thread-41/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-8f8e69118fbb.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:47] [Thread-34/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-fe3a52d5d0de.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:47] [Thread-46/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-cf2c69539163.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:48] [Thread-42/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-6ab3a909a515.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:48] [Thread-31/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/ITzEydoo.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:49] [Thread-44/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/AbuNgr.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:49] [Thread-30/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/pipoXDlol.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:49] [Client thread/INFO]: [CHAT] tiCSANbS6t6M3N wants to fight!
-[10:48:49] [Thread-36/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-1f162ed653d7.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:50] [Client thread/FATAL]: Error executing task
-java.util.concurrent.ExecutionException: java.lang.NullPointerException
-	at java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:1.8.0_202]
-	at java.util.concurrent.FutureTask.get(FutureTask.java:192) ~[?:1.8.0_202]
-	at net.minecraft.util.Util.runTask(Util.java:20) [Menace-Recode/:?]
-	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1095) [Menace-Recode/:?]
-	at net.minecraft.client.Minecraft.run(Minecraft.java:439) [Menace-Recode/:?]
-	at net.minecraft.client.main.Main.main(Main.java:113) [Menace-Recode/:?]
-	at Start.main(Start.java:11) [Menace-Recode/:?]
-Caused by: java.lang.NullPointerException
-	at net.minecraft.client.network.NetHandlerPlayClient.handleSpawnPlayer(NetHandlerPlayClient.java:539) ~[Menace-Recode/:?]
-	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:83) ~[Menace-Recode/:?]
-	at net.minecraft.network.play.server.S0CPacketSpawnPlayer.processPacket(S0CPacketSpawnPlayer.java:15) ~[Menace-Recode/:?]
-	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:22) ~[Menace-Recode/:?]
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[?:1.8.0_202]
-	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266) ~[?:1.8.0_202]
-	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:1.8.0_202]
-	at net.minecraft.util.Util.runTask(Util.java:19) ~[Menace-Recode/:?]
-	... 4 more
-[10:48:50] [Client thread/INFO]: [CHAT] DIVX wants to fight!
-[10:48:50] [Client thread/INFO]: [CHAT] ? SkyWars Solo ? Warmup started. You will be teleported in the next 10 seconds.
-[10:48:50] [Thread-45/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-e8030c24d1f0.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:51] [Thread-43/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-fef1559a5153.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:51] [Thread-65/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/spdekusp.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:52] [Thread-66/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/iosaama.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:53] [Client thread/INFO]: [CHAT] Knight kit has been selected!
-[10:48:53] [Thread-67/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/skymh12.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:53] [Thread-68/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/BUGSUU.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:54] [Thread-69/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/vAbuOmar.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:55] [Thread-70/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/hotpotatomeow.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:55] [Thread-71/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/6N83_.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:56] [Thread-72/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-1c9b45144df2.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:56] [Thread-73/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/CIT-71fcb494ad05.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:57] [Thread-74/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/Tost94.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:57] [Thread-75/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/rdo.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:58] [Thread-76/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/pako22y5.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:59] [Thread-77/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/dvvvvvvvvvvvv.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:59] [Thread-78/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/joo505.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:48:59] [Client thread/INFO]: [CHAT] Cages open in: 10 seconds!
-[10:49:00] [Thread-79/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/3bodyo_o.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:49:00] [Client thread/INFO]: [CHAT] Cages open in: 9 seconds!
-[10:49:01] [Thread-80/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/gwdihf.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:49:01] [Client thread/INFO]: [CHAT] [?] You can add friends by typing /friend add
-[10:49:01] [Thread-81/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/ka_1r.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:49:01] [Client thread/INFO]: [CHAT] Cages open in: 8 seconds!
-[10:49:02] [Client thread/INFO]: [CHAT] Knight kit has been selected!
-[10:49:02] [Thread-82/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/okbrohgetback.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:49:02] [Client thread/INFO]: [CHAT] Cages open in: 7 seconds!
-[10:49:03] [Thread-83/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/BaKeeee.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:49:03] [Client thread/INFO]: [CHAT] Cages open in: 6 seconds!
-[10:49:03] [Thread-84/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/SonicElk.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:49:04] [Thread-85/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/888992.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:49:04] [Client thread/INFO]: [CHAT] Cages open in: 5 seconds!
-[10:49:05] [Thread-86/INFO]: [OptiFine] Error parsing configuration: http://s.optifine.net/users/DIVX.cfg, com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2
-[10:49:05] [Client thread/INFO]: [CHAT] Cages open in: 4 seconds!
-[10:49:06] [Client thread/INFO]: [CHAT] Cages open in: 3 seconds!
-[10:49:07] [Client thread/INFO]: [CHAT] Cages open in: 2 seconds!
-[10:49:08] [Client thread/INFO]: [CHAT] Cages open in: 1 seconds!
-[10:49:09] [Client thread/INFO]: [CHAT] Cages opened! FIGHT!
-[10:49:24] [Client thread/INFO]: [CHAT] joo505 died!
-[10:49:29] [Client thread/INFO]: [CHAT] DIVX was killed by BaKeeee
-[10:49:38] [Client thread/INFO]: [CHAT] ? SkyWars Solo ? You gained 5 global points for killing BaKeeee
-[10:49:38] [Client thread/INFO]: [CHAT] BaKeeee was killed by tiCSANbS6t6M3N
-[10:49:38] [Client thread/INFO]: [CHAT] tiCSANbS6t6M3N » Mad? Rage at me on discord Exterminate#6552 [ZHPLB]
-[10:49:43] [Client thread/INFO]: [CHAT] dvvvvvvvvvvvv was killed by okbrohgetback
-[10:49:49] [Client thread/ERROR]: Item entity 62221 has no item?!
-[10:49:49] [Client thread/ERROR]: Item entity 62221 has no item?!
-[10:50:01] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Toggled Killaura due to world change
-[10:50:07] [Client thread/INFO]: Stopping!
-[10:50:07] [Client thread/INFO]: SoundSystem shutting down...
-[10:50:07] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[10:34:06] [Client thread/INFO]: Setting user: Player859
+[10:34:06] [Client thread/INFO]: (Session ID is token:0:Player859)
+[10:34:07] [Client thread/INFO]: [OptiFine] *** Reflector Forge ***
+[10:34:07] [Client thread/INFO]: [OptiFine] *** Reflector Vanilla ***
+[10:34:07] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event$Result
+[10:34:07] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraft.launchwrapper.Launch
+[10:34:07] [Client thread/INFO]: LWJGL Version: 2.9.4
+[10:34:07] [Client thread/INFO]: [OptiFine] 
+[10:34:07] [Client thread/INFO]: [OptiFine] OptiFine_1.8.9_HD_U_M5
+[10:34:07] [Client thread/INFO]: [OptiFine] Build: null
+[10:34:07] [Client thread/INFO]: [OptiFine] OS: Windows 10 (amd64) version 10.0
+[10:34:07] [Client thread/INFO]: [OptiFine] Java: 1.8.0_202, Oracle Corporation
+[10:34:07] [Client thread/INFO]: [OptiFine] VM: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+[10:34:07] [Client thread/INFO]: [OptiFine] LWJGL: 2.9.4
+[10:34:07] [Client thread/INFO]: [OptiFine] OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2, version 4.6.0 NVIDIA 516.94, NVIDIA Corporation
+[10:34:07] [Client thread/INFO]: [OptiFine] OpenGL Version: 4.6.0
+[10:34:07] [Client thread/INFO]: [OptiFine] Maximum texture size: 32768x32768
+[10:34:07] [VersionCheck/INFO]: [OptiFine] Checking for new version
+[10:34:07] [Client thread/INFO]: [Shaders] OpenGL Version: 4.6.0 NVIDIA 516.94
+[10:34:07] [Client thread/INFO]: [Shaders] Vendor:  NVIDIA Corporation
+[10:34:07] [Client thread/INFO]: [Shaders] Renderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+[10:34:07] [Client thread/INFO]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0 
+[10:34:07] [Client thread/INFO]: [Shaders] GL_MAX_DRAW_BUFFERS: 8
+[10:34:07] [Client thread/INFO]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8
+[10:34:07] [Client thread/INFO]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32
+[10:34:07] [Client thread/INFO]: [Shaders] Load shaders configuration.
+[10:34:07] [Client thread/INFO]: [Shaders] No shaderpack loaded.
+[10:34:07] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.Loader
+[10:34:07] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.SplashProgress
+[10:34:07] [Client thread/INFO]: Reloading ResourceManager: Default, gamerswordpack.zip
+[10:34:07] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: optifine.OptiFineClassTransformer
+[10:34:07] [Client thread/INFO]: [OptiFine] *** Reloading textures ***
+[10:34:07] [Client thread/INFO]: [OptiFine] Resource packs: gamerswordpack.zip
+[10:34:07] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.Attributes
+[10:34:07] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.preDraw
+[10:34:07] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.postDraw
+[10:34:07] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[10:34:08] [VersionCheck/INFO]: [OptiFine] Version found: M5
+[10:34:08] [Thread-6/INFO]: Initializing LWJGL OpenAL
+[10:34:08] [Thread-6/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[10:34:08] [Thread-6/INFO]: OpenAL initialized.
+[10:34:08] [Sound Library Loader/INFO]: Sound engine started
+[10:34:08] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ForgeHooksClient
+[10:34:09] [Client thread/INFO]: [OptiFine] Mipmap levels: 4
+[10:34:09] [Client thread/INFO]: [OptiFine] Multitexture: false
+[10:34:09] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/0_glass_white/glass_pane_white.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/0_glass_white/glass_white.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/10_glass_purple/glass_pane_purple.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/10_glass_purple/glass_purple.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/11_glass_blue/glass_blue.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/11_glass_blue/glass_pane_blue.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/12_glass_brown/glass_brown.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/12_glass_brown/glass_pane_brown.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/13_glass_green/glass_green.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/13_glass_green/glass_pane_green.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/14_glass_red/glass_pane_red.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/14_glass_red/glass_red.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/15_glass_black/glass_black.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/15_glass_black/glass_pane_black.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/1_glass_orange/glass_orange.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/1_glass_orange/glass_pane_orange.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/2_glass_magenta/glass_magenta.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/2_glass_magenta/glass_pane_magenta.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/3_glass_light_blue/glass_light_blue.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/3_glass_light_blue/glass_pane_light_blue.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/4_glass_yellow/glass_pane_yellow.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/4_glass_yellow/glass_yellow.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/5_glass_lime/glass_lime.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/5_glass_lime/glass_pane_lime.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/6_glass_pink/glass_pane_pink.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/6_glass_pink/glass_pink.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/8_glass_silver/glass_pane_silver.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/8_glass_silver/glass_silver.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/9_glass_cyan/glass_cyan.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/9_glass_cyan/glass_pane_cyan.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/bookshelf.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/sandstone.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
+[10:34:09] [Client thread/INFO]: [OptiFine] BetterGrass: Parsing default configuration optifine/bettergrass.properties
+[10:34:09] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/diamond_ore, 1 -> 16
+[10:34:09] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/emerald_ore, 1 -> 16
+[10:34:09] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/gold_ore, 1 -> 16
+[10:34:09] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/coal_ore, 1 -> 16
+[10:34:09] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/lapis_ore, 1 -> 16
+[10:34:09] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/iron_ore, 1 -> 16
+[10:34:09] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/redstone_ore, 1 -> 16
+[10:34:09] [Client thread/INFO]: Created: 1024x1024 textures-atlas
+[10:34:09] [Client thread/INFO]: [OptiFine] Animated sprites: 11
+[10:34:09] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader
+[10:34:09] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ItemModelMesherForge
+[10:34:09] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.registry.RenderingRegistry
+[10:34:09] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeModContainer
+[10:34:10] [Via-Mappingloader-0/INFO]: Loading 1.12 -> 1.13 mappings...
+[10:34:10] [Via-Mappingloader-1/INFO]: Loading 1.13 -> 1.13.2 mappings...
+[10:34:11] [Via-Mappingloader-2/INFO]: Loading 1.13.2 -> 1.14 mappings...
+[10:34:11] [Via-Mappingloader-3/INFO]: Loading 1.14 -> 1.15 mappings...
+[10:34:11] [Via-Mappingloader-5/INFO]: Loading 1.16 -> 1.16.2 mappings...
+[10:34:11] [Via-Mappingloader-4/INFO]: Loading 1.15 -> 1.16 mappings...
+[10:34:11] [Via-Mappingloader-0/INFO]: Loading block connection mappings ...
+[10:34:11] [Via-Mappingloader-6/INFO]: Loading 1.16.2 -> 1.17 mappings...
+[10:34:11] [Via-Mappingloader-2/INFO]: Loading 1.17 -> 1.18 mappings...
+[10:34:11] [Via-Mappingloader-5/INFO]: Loading 1.18 -> 1.19 mappings...
+[10:34:11] [Client thread/INFO]: Loading translations...
+[10:34:11] [Via-Mappingloader-5/INFO]: Loading 1.10 -> 1.9.4 mappings...
+[10:34:11] [Via-Mappingloader-5/INFO]: Loading 1.11 -> 1.10 mappings...
+[10:34:11] [Via-Mappingloader-0/INFO]: Loading 1.12 -> 1.11 mappings...
+[10:34:11] [Via-Mappingloader-0/INFO]: Loading 1.13 -> 1.12 mappings...
+[10:34:11] [Via-Mappingloader-5/INFO]: Loading 1.13.2 -> 1.13 mappings...
+[10:34:11] [Via-Mappingloader-5/INFO]: Loading 1.14 -> 1.13.2 mappings...
+[10:34:11] [Via-Mappingloader-5/INFO]: Loading 1.15 -> 1.14 mappings...
+[10:34:11] [Via-Mappingloader-5/INFO]: Loading 1.16 -> 1.15 mappings...
+[10:34:11] [Via-Mappingloader-0/INFO]: Loading 1.16.2 -> 1.16 mappings...
+[10:34:11] [Via-Mappingloader-2/INFO]: Loading 1.17 -> 1.16.2 mappings...
+[10:34:11] [Via-Mappingloader-2/INFO]: Loading 1.18 -> 1.17 mappings...
+[10:34:11] [Via-Mappingloader-2/INFO]: Loading 1.19 -> 1.18 mappings...
+[10:34:11] [ViaMCP-0/INFO]: ViaVersion detected server version: 1.8.x (47)
+[10:34:11] [ViaMCP-0/WARN]: This version of Minecraft is extremely outdated and support for it has reached its end of life. You will still be able to run Via on this Minecraft version, but we are unlikely to provide any further fixes or help with problems specific to legacy Minecraft versions. Please consider updating to give your players a better experience and to avoid issues that have long been fixed.
+[10:34:11] [ViaMCP-0/WARN]: You are running an outdated Java version, please consider updating it to at least Java 17 (your version is 1.8.0_202). At some point in the future, ViaVersion will no longer be compatible with this version of Java.
+[10:34:11] [ViaMCP-0/WARN]: There is a newer plugin version available: 4.5.1, you're on: 4.1.1
+[10:34:11] [ViaMCP-0/INFO]: Finished mapping loading, shutting down loader executor!
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkWatchEvent$UnWatch
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.relauncher.CoreModManager
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.DimensionManager
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Pre
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Post
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$CameraSetup
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$FogColors
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.EventBus
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.ExtendedBlockState
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.FMLClientHandler
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.FMLCommonHandler
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.biome.BiomeGenBase.getWaterColorMultiplier
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addDestroyEffects
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addHitEffects
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canCreatureSpawn
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canRenderInLayer
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.doesSideBlockRendering
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getBedDirection
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getExtendedState
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightOpacity
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightValue
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.hasTileEntity
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isAir
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBed
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBedFoot
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isSideSolid
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.ChunkCache.isSideSolid
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.canRiderInteract
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.captureDrops
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.capturedDrops
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRenderInPass
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRiderSit
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.ForgeEventFactory
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeHooks
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.item.Item.delegate
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getDurabilityForDisplay
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getModel
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.onEntitySwing
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.shouldCauseReequipAnimation
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.showDurabilityBar
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.potion.PotionEffect.isCurativeItem
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.canRenderBreaking
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.getRenderBoundingBox
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.hasFastRenderer
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.shouldRenderInPass
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.countEntities
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.getPerWorldStorage
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getCloudRenderer
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSkyRenderer
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getWeatherRenderer
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSaveFolder
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.GuiModList
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IColoredBakedQuad
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.IExtendedBlockState
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IModel
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.IRenderHandler
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.LightUtil
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.MinecraftForge
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.MinecraftForgeClient
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.ModContainer
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader$VanillaLoader
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderBlockOverlayEvent$OverlayType
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderItemInFrameEvent
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Pre
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Post
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Pre
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Post
+[10:34:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.WorldEvent$Load
+[10:34:15] [Client thread/INFO]: [OptiFine] *** Reloading custom textures ***
+[10:34:15] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky1.properties
+[10:34:15] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky2.properties
+[10:34:15] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky3.properties
+[10:34:15] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky4.properties
+[10:34:15] [Client thread/INFO]: [OptiFine] Enable face culling: acacia_leaves, birch_leaves, dark_oak_leaves, jungle_leaves, oak_leaves, spruce_leaves
+[10:34:19] [Client thread/INFO]: Connecting to anticheat-test.com, 25565
+[10:34:21] [Client thread/INFO]: [CHAT]                                      
+[10:34:24] [Client thread/INFO]: [CHAT] Make sure to vote on the worst anticheat of 2022
+[10:34:24] [Client thread/INFO]: [CHAT] https://strawpoll.com/polls/NMnQB47BGg6
+[10:34:30] [Client thread/INFO]: [CHAT]                                      
+[10:34:33] [Client thread/INFO]: [CHAT] Make sure to vote on the worst anticheat of 2022
+[10:34:33] [Client thread/INFO]: [CHAT] https://strawpoll.com/polls/NMnQB47BGg6
+[10:34:37] [Client thread/INFO]: [CHAT]                                      
+[10:34:40] [Client thread/INFO]: [CHAT] NCP > [MOVING_SURVIVALFLY] [ExterminateYT] VL=383.8(+383.8) health=20.0/20.0
+[10:34:40] [Client thread/INFO]: [CHAT] Make sure to vote on the worst anticheat of 2022
+[10:34:40] [Client thread/INFO]: [CHAT] https://strawpoll.com/polls/NMnQB47BGg6
+[10:34:41] [Client thread/INFO]: [CHAT] NCP > [MOVING_SURVIVALFLY] [ExterminateYT] VL=767.9(+384) health=20.0/20.0
+[10:34:41] [Client thread/INFO]: [CHAT] NCP > [MOVING_SURVIVALFLY] [ExterminateYT] VL=769(+1.2) health=20.0/20.0
+[10:34:45] [Client thread/INFO]: [CHAT] You have switched to Vanilla
+[10:34:51] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Loaded config BlocksMC
+[10:35:04] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r
+[10:35:04] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r
+[10:35:04] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r
+[10:35:05] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r
+[10:35:05] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r
+[10:35:05] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r
+[10:35:06] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r
+[10:35:06] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r
+[10:35:06] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r
+[10:35:07] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r
+[10:35:07] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r
+[10:35:08] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r
+[10:35:08] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r
+[10:35:08] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r
+[10:35:09] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r
+[10:35:10] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r
+[10:35:10] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r
+[10:35:11] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r
+[10:35:12] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r
+[10:35:12] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r
+[10:35:13] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r
+[10:35:13] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r
+[10:35:13] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r
+[10:35:16] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r
+[10:35:23] [Netty Client IO #1/INFO]: [CHAT] §0[§4Menace§0]§r Toggled Speed due to flag.
+[10:35:46] [Client thread/INFO]: [CHAT] §r§aPvP is enabled in this area.§r
+[10:35:46] [Client thread/INFO]: [CHAT] §r§cPvP is now disabled.§r
+[10:36:48] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r
+[10:36:48] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r
+[10:37:50] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r
+[10:44:16] [Client thread/INFO]: Stopping!
+[10:44:16] [Client thread/INFO]: SoundSystem shutting down...
+[10:44:16] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com

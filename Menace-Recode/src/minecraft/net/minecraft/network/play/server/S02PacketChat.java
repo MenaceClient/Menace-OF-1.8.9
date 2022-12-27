@@ -57,6 +57,10 @@ public class S02PacketChat implements Packet<INetHandlerPlayClient>
         return this.chatComponent;
     }
 
+    public void setChatComponent(IChatComponent chatComponent) {
+        this.chatComponent = chatComponent;
+    }
+
     public boolean isChat()
     {
         return this.type == 1 || this.type == 2;

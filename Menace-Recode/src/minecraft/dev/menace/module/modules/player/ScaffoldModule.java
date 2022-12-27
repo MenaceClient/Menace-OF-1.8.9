@@ -10,6 +10,7 @@ import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
 import dev.menace.utils.misc.ChatUtils;
+import dev.menace.utils.misc.MathUtils;
 import dev.menace.utils.player.InventoryUtils;
 import dev.menace.utils.player.MovementUtils;
 import dev.menace.utils.player.PacketUtils;
@@ -23,6 +24,7 @@ import net.minecraft.entity.projectile.EntityEgg;
 import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
 import net.minecraft.network.play.client.C09PacketHeldItemChange;
 import net.minecraft.network.play.client.C0APacketAnimation;
 import net.minecraft.util.BlockPos;
@@ -42,10 +44,17 @@ public class ScaffoldModule extends BaseModule {
     double startY;
     int oldSlot;
     int  swappedSlot;
+    float derpYaw;
+    boolean isTowering;
+    int towerHeight;
 
     MSTimer eagleTimer = new MSTimer();
 
-    ToggleSetting tower;
+    public ToggleSetting tower;
+    ToggleSetting towerMove;
+    ListSetting towerMode;
+    SliderSetting towerSpeed;
+    ToggleSetting towerDerp;
     public ToggleSetting sprint;
     ToggleSetting keepRotations;
     ToggleSetting silentSwap;
@@ -64,6 +73,34 @@ public class ScaffoldModule extends BaseModule {
     @Override
     public void setup() {
         tower = new ToggleSetting("Tower", true, true);
+        towerMove = new ToggleSetting("Tower Move", true, false) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(Menace.instance.moduleManager.scaffoldModule.tower.getValue());
+                super.constantCheck();
+            }
+        };
+        towerMode = new ListSetting("Tower Mode", true, "Normal", new String[]{"Normal", "BlocksMC"}) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(Menace.instance.moduleManager.scaffoldModule.tower.getValue());
+                super.constantCheck();
+            }
+        };
+        towerSpeed = new SliderSetting("Tower Speed", true, 42, 10, 50, true) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(Menace.instance.moduleManager.scaffoldModule.tower.getValue() && Menace.instance.moduleManager.scaffoldModule.towerMode.getValue().equalsIgnoreCase("Normal"));
+                super.constantCheck();
+            }
+        };
+        towerDerp = new ToggleSetting("Tower Derp", true, false) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(Menace.instance.moduleManager.scaffoldModule.tower.getValue());
+                super.constantCheck();
+            }
+        };
         sprint = new ToggleSetting("Sprint", true, false);
         keepRotations = new ToggleSetting("KeepRotations", true, true);
         silentSwap = new ToggleSetting("SilentSwap", true, false);
@@ -81,6 +118,10 @@ public class ScaffoldModule extends BaseModule {
         timer = new SliderSetting("Timer", true, 1, 1, 5, 0.1, false);
         render = new ToggleSetting("Render", true, true);
         this.rSetting(tower);
+        this.rSetting(towerMove);
+        this.rSetting(towerMode);
+        this.rSetting(towerSpeed);
+        this.rSetting(towerDerp);
         this.rSetting(sprint);
         this.rSetting(keepRotations);
         this.rSetting(silentSwap);
@@ -101,6 +142,9 @@ public class ScaffoldModule extends BaseModule {
         oldSlot = mc.thePlayer.inventory.currentItem;
         swappedSlot = -1;
         eagleTimer.reset();
+        derpYaw = 0;
+        isTowering = false;
+        towerHeight = 0;
         super.onEnable();
     }
 
@@ -127,7 +171,11 @@ public class ScaffoldModule extends BaseModule {
             mc.thePlayer.jump();
         }
         mc.thePlayer.setSprinting(sprint.getValue());
-        if (rotation[0] != -69696969 && keepRotations.getValue()) {
+        if (towerDerp.getValue() && isTowering) {
+            event.setYaw(derpYaw);
+            event.setPitch(90);
+            derpYaw += 100f;
+        } else if (rotation[0] != -69696969 && keepRotations.getValue()) {
             event.setYaw(rotation[0]);
             event.setPitch(rotation[1]);
         }
@@ -152,12 +200,27 @@ public class ScaffoldModule extends BaseModule {
             }
         }
 
+        if (mc.gameSettings.keyBindJump.isKeyDown() && tower.getValue() && ((!keepY.getValue() && towerMove.getValue()) || !MovementUtils.isMoving()) && towerMode.getValue().equalsIgnoreCase("Normal")) {
+            isTowering = true;
+            mc.thePlayer.motionY = towerSpeed.getValue() / 100D;
+        } else if (towerMode.getValue().equalsIgnoreCase("Normal")) {
+            isTowering = false;
+        }
+
         if ((mc.thePlayer.getHeldItem() == null || !(mc.thePlayer.getHeldItem().getItem() instanceof ItemBlock)
                 || InventoryUtils.BLOCK_BLACKLIST.contains(((ItemBlock)mc.thePlayer.getHeldItem().getItem()).getBlock())) && swappedSlot == -1
                 || !BlockUtils.getMaterial(belowPlayer).isReplaceable()) return;
 
-        if (mc.gameSettings.keyBindJump.isKeyDown() && tower.getValue() && (!keepY.getValue() || !MovementUtils.isMoving())) {
-            mc.thePlayer.motionY = 0.42;
+        if (mc.gameSettings.keyBindJump.isKeyDown() && tower.getValue() && ((!keepY.getValue() && towerMove.getValue()) || !MovementUtils.isMoving()) && towerMode.getValue().equalsIgnoreCase("BlocksMC")) {
+            isTowering = true;
+            if (towerHeight >= 10) {
+                towerHeight = 0;
+                mc.thePlayer.motionY = 0;
+            } else {
+                mc.thePlayer.motionY = 0.42;
+            }
+        } else if (towerMode.getValue().equalsIgnoreCase("BlocksMC")){
+            isTowering = false;
         }
 
         if (eagleTimer.hasTimePassed(eagleDelay.getValueL()) && eagle.getValue()) {
@@ -195,7 +258,7 @@ public class ScaffoldModule extends BaseModule {
                         rotation = getRotsNew(neighbor, side2);
                     } else {
                         event.setYaw(getRotsNew(neighbor, side2)[0]);
-                        event.setPitch(getRotsNew(neighbor, side2)[1]);
+                        event.setPitch(MathUtils.clamp(getRotsNew(neighbor, side2)[1], -90F, 90F));
                     }
 
                     if (silentSwap.getValue() && swappedSlot != -1) {
@@ -208,6 +271,10 @@ public class ScaffoldModule extends BaseModule {
                         PacketUtils.sendPacket(new C0APacketAnimation());
                     } else {
                         mc.thePlayer.swingItem();
+                    }
+
+                    if (isTowering && towerMode.getValue().equalsIgnoreCase("BlocksMC")) {
+                        towerHeight++;
                     }
 
                     mc.rightClickDelayTimer = 4;
@@ -247,7 +314,10 @@ public class ScaffoldModule extends BaseModule {
     @EventTarget
     public void onSendPacket(EventSendPacket event) {
         if (silentSwap.getValue() && event.getPacket() instanceof C09PacketHeldItemChange) {
+            PacketUtils.sendPacketNoEvent(new C09PacketHeldItemChange(swappedSlot));
             event.cancel();
+        } else if (silentSwap.getValue() && event.getPacket() instanceof C08PacketPlayerBlockPlacement) {
+            ((C08PacketPlayerBlockPlacement) event.getPacket()).setStack(mc.thePlayer.inventory.getStackInSlot(swappedSlot));
         }
     }
 
@@ -288,7 +358,7 @@ public class ScaffoldModule extends BaseModule {
         return new float[] { getYaw(var0) + mc.thePlayer.rotationYaw, getPitch(var0) + mc.thePlayer.rotationPitch };
     }
 
-    public float getYaw(final Entity var0) {
+    public float getYaw(final @NotNull Entity var0) {
         final double var = var0.posX - mc.thePlayer.posX;
         final double var2 = var0.posZ - mc.thePlayer.posZ;
         final double degrees = Math.toDegrees(Math.atan(var2 / var));
@@ -305,7 +375,7 @@ public class ScaffoldModule extends BaseModule {
         return MathHelper.wrapAngleTo180_float(-(mc.thePlayer.rotationYaw - (float)var3));
     }
 
-    public float getPitch(final Entity var0) {
+    public float getPitch(final @NotNull Entity var0) {
         final double var = var0.posX - mc.thePlayer.posX;
         final double var2 = var0.posZ - mc.thePlayer.posZ;
         final double var3 = var0.posY - 1.6 + var0.getEyeHeight() - mc.thePlayer.posY;
@@ -314,7 +384,7 @@ public class ScaffoldModule extends BaseModule {
         return -MathHelper.wrapAngleTo180_float(mc.thePlayer.rotationPitch - (float)var5);
     }
 
-    public float getYaw(final BlockPos block, final EnumFacing face) {
+    public float getYaw(final @NotNull BlockPos block, final @NotNull EnumFacing face) {
         final Vec3 vecToModify = new Vec3(block.getX(), block.getY(), block.getZ());
         switch (face) {
             case EAST:

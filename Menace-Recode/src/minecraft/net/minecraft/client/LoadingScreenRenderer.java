@@ -31,8 +31,8 @@ public class LoadingScreenRenderer implements IProgressUpdate
 
     /** True if the loading ended with a success */
     private boolean loadingSuccess;
-    private ScaledResolution scaledResolution;
-    private Framebuffer framebuffer;
+    private final ScaledResolution scaledResolution;
+    private final Framebuffer framebuffer;
 
     public LoadingScreenRenderer(Minecraft mcIn)
     {
@@ -166,11 +166,11 @@ public class LoadingScreenRenderer implements IProgressUpdate
 
                 if (Reflector.FMLClientHandler_handleLoadingScreen.exists())
                 {
-                    Object object = Reflector.call(Reflector.FMLClientHandler_instance, new Object[0]);
+                    Object object = Reflector.call(Reflector.FMLClientHandler_instance);
 
                     if (object != null)
                     {
-                        flag = !Reflector.callBoolean(object, Reflector.FMLClientHandler_handleLoadingScreen, new Object[] {scaledresolution});
+                        flag = !Reflector.callBoolean(object, Reflector.FMLClientHandler_handleLoadingScreen, scaledresolution);
                     }
                 }
 
@@ -235,10 +235,8 @@ public class LoadingScreenRenderer implements IProgressUpdate
                 {
                     Thread.yield();
                 }
-                catch (Exception var16)
-                {
-                    ;
-                }
+                catch (Exception ignored)
+                {}
             }
         }
     }

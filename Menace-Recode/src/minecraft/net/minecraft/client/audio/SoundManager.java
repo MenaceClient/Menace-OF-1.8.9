@@ -346,7 +346,7 @@ public class SoundManager
 
                 if (soundeventaccessorcomposite == null)
                 {
-                    logger.warn(LOG_MARKER, "Unable to play unknown soundEvent: {}", new Object[] {p_sound.getSoundLocation()});
+                    logger.warn(LOG_MARKER, "Unable to play unknown soundEvent: {}", p_sound.getSoundLocation());
                 }
                 else
                 {
@@ -373,7 +373,7 @@ public class SoundManager
 
                         if (f2 == 0.0F)
                         {
-                            logger.debug(LOG_MARKER, "Skipped playing sound {}, volume was zero.", new Object[] {resourcelocation});
+                            logger.debug(LOG_MARKER, "Skipped playing sound {}, volume was zero.", resourcelocation);
                         }
                         else
                         {
@@ -389,11 +389,11 @@ public class SoundManager
                                 this.sndSystem.newSource(false, s, getURLForSoundResource(resourcelocation), resourcelocation.toString(), flag, p_sound.getXPosF(), p_sound.getYPosF(), p_sound.getZPosF(), p_sound.getAttenuationType().getTypeInt(), f1);
                             }
 
-                            logger.debug(LOG_MARKER, "Playing sound {} for event {} as channel {}", new Object[] {soundpoolentry.getSoundPoolEntryLocation(), soundeventaccessorcomposite.getSoundEventLocation(), s});
+                            logger.debug(LOG_MARKER, "Playing sound {} for event {} as channel {}", soundpoolentry.getSoundPoolEntryLocation(), soundeventaccessorcomposite.getSoundEventLocation(), s);
                             this.sndSystem.setPitch(s, (float)d0);
                             this.sndSystem.setVolume(s, f2);
                             this.sndSystem.play(s);
-                            this.playingSoundsStopTime.put(s, Integer.valueOf(this.playTime + 20));
+                            this.playingSoundsStopTime.put(s, this.playTime + 20);
                             this.playingSounds.put(s, p_sound);
                             this.playingSoundPoolEntries.put(p_sound, soundpoolentry);
 

@@ -34,29 +34,26 @@ public class NoSlowModule extends BaseModule {
     }
 
     @EventTarget
-    public void onPre(Event e) {
+    public void onPre(EventPreMotion event) {
         this.setDisplayName(mode.getValue());
 
-        if(mode.getValue().equalsIgnoreCase("Hypixel") && mc.thePlayer.isBlocking() && MovementUtils.isMoving()) {
-            if (e instanceof EventSendPacket) {
-                EventSendPacket p = (EventSendPacket)e;
-                if(p.getPacket() instanceof S30PacketWindowItems) {
-                    mc.thePlayer.sendQueue.addToSendQueue(new C08PacketPlayerBlockPlacement(mc.thePlayer.getHeldItem()));
-                    e.setCancelled(true);
-                }
-                //kys
-                EventSendPacket event = (EventSendPacket)e;
-                if (event.getPacket() instanceof C08PacketPlayerBlockPlacement) {
-                    C08PacketPlayerBlockPlacement packet = (C08PacketPlayerBlockPlacement) event.getPacket();
-                    if (packet.getPosition() == BlockPos.ORIGIN)
-                        packet.setPosition(new BlockPos(-0. + Math.random(),-0. + Math.random(), -0. + Math.random()));
-                }
-            }
+        if (mc.thePlayer.isBlocking() && MovementUtils.isMoving() && mode.getValue().equalsIgnoreCase("NCP")) {
+            PacketUtils.sendPacket(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
         }
+    }
 
-        if(e instanceof EventPreMotion) {
-            if (mc.thePlayer.isBlocking() && MovementUtils.isMoving() && mode.getValue().equalsIgnoreCase("NCP")) {
-                PacketUtils.sendPacket(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
+    @EventTarget
+    public void onSendPacket(EventSendPacket event) {
+        if(mode.getValue().equalsIgnoreCase("Hypixel") && mc.thePlayer.isBlocking() && MovementUtils.isMoving()) {
+            if(event.getPacket() instanceof S30PacketWindowItems) {
+                mc.thePlayer.sendQueue.addToSendQueue(new C08PacketPlayerBlockPlacement(mc.thePlayer.getHeldItem()));
+                event.setCancelled(true);
+            }
+            //kys
+            if (event.getPacket() instanceof C08PacketPlayerBlockPlacement) {
+                C08PacketPlayerBlockPlacement packet = (C08PacketPlayerBlockPlacement) event.getPacket();
+                if (packet.getPosition() == BlockPos.ORIGIN)
+                    packet.setPosition(new BlockPos(-0. + Math.random(),-0. + Math.random(), -0. + Math.random()));
             }
         }
     }

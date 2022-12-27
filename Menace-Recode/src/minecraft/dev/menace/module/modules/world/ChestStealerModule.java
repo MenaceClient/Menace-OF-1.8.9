@@ -11,10 +11,10 @@ import dev.menace.utils.misc.MathUtils;
 import dev.menace.utils.player.InventoryUtils;
 import dev.menace.utils.timer.MSTimer;
 import net.minecraft.client.gui.inventory.GuiChest;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,18 +74,18 @@ public class ChestStealerModule extends BaseModule {
 	
 	@EventTarget
 	public void onUpdate(EventUpdate event) {
-		
+
 		if (mc.currentScreen instanceof GuiChest && closeScreen.getValue() && (isEmpty((GuiChest) mc.currentScreen) || isInvFull())) {
 			mc.thePlayer.closeScreen();
 		}
-		
+
 		if (!(mc.currentScreen instanceof GuiChest)
 				|| isEmpty((GuiChest) mc.currentScreen)
 				|| isInvFull()
 				|| !delayTimer.hasTimePassed(nextDelay)
-				|| (chestOnly.getValue() && !((GuiChest)mc.currentScreen).lowerChestInventory.getName().contains(new ItemStack(Item.itemRegistry.getObject(new ResourceLocation("minecraft:chest"))).getDisplayName())))
+				|| (chestOnly.getValue() && !((GuiChest)mc.currentScreen).lowerChestInventory.getName().contains(I18n.format("container.chest"))))
 			{return;}
-		
+
 		GuiChest gui = (GuiChest) mc.currentScreen;
 
 		if (slotList.isEmpty()) {
@@ -105,8 +105,8 @@ public class ChestStealerModule extends BaseModule {
 		delayTimer.reset();
 		nextDelay = MathUtils.randLong(minDelay.getValueL(), maxDelay.getValueL());
 	}
-	
-	private boolean isEmpty(GuiChest gui) {
+
+	private boolean isEmpty(@NotNull GuiChest gui) {
 		for (int i = 0; i < gui.inventoryRows * 9; i++) {
 			Slot slot = gui.inventorySlots.getSlot(i);
 			if (slot.getHasStack()) {
@@ -115,7 +115,7 @@ public class ChestStealerModule extends BaseModule {
 		}
 		return true;
 	}
-	
+
 	private boolean isInvFull() {
         for(int index = 9; index <= 44; ++index) {
              ItemStack stack = mc.thePlayer.inventoryContainer.getSlot(index).getStack();
@@ -126,5 +126,5 @@ public class ChestStealerModule extends BaseModule {
 
           return true;
     }
-	
+
 }

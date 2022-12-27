@@ -77,7 +77,7 @@ public abstract class TileEntity
 
     public void writeToNBT(NBTTagCompound compound)
     {
-        String s = (String)classToNameMap.get(this.getClass());
+        String s = classToNameMap.get(this.getClass());
 
         if (s == null)
         {
@@ -101,11 +101,11 @@ public abstract class TileEntity
 
         try
         {
-            Class <? extends TileEntity > oclass = (Class)nameToClassMap.get(nbt.getString("id"));
+            Class <? extends TileEntity > oclass = nameToClassMap.get(nbt.getString("id"));
 
             if (oclass != null)
             {
-                tileentity = (TileEntity)oclass.newInstance();
+                tileentity = oclass.newInstance();
             }
         }
         catch (Exception exception)

@@ -18,6 +18,10 @@ public class S01PacketPong implements Packet<INetHandlerStatusClient>
         this.clientTime = time;
     }
 
+    public long getClientTime() {
+        return clientTime;
+    }
+
     /**
      * Reads the raw packet data from the data stream.
      */

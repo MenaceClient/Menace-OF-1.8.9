@@ -20,13 +20,14 @@ import net.minecraft.crash.CrashReport;
 
 public class ModuleManager {
 
-	public ArrayList<BaseModule> modules = new ArrayList<>();
+	public static ArrayList<BaseModule> modules = new ArrayList<>();
 
 	//COMBAT
 	AutoPotModule autoPotModule = new AutoPotModule();
 	ComboOneTapModule comboOneTapModule = new ComboOneTapModule();
 	CriticalsModule criticalsModule = new CriticalsModule();
 	public KillAuraModule killAuraModule = new KillAuraModule();
+	public TestAuraModule testAuraModule = new TestAuraModule();
 	//TPAuraModule tpAuraModule = new TPAuraModule();
 	public VelocityModule velocityModule = new VelocityModule();
 	
@@ -38,6 +39,7 @@ public class ModuleManager {
 	public SprintModule sprintModule = new SprintModule();
 	StepModule stepModule = new StepModule();
 	StrafeModule strafeModule = new StrafeModule();
+	TargetStrafeModule targetStrafeModule = new TargetStrafeModule();
 	
 	//PLAYER
 	AntiVoidModule antiVoidModule = new AntiVoidModule();
@@ -63,34 +65,17 @@ public class ModuleManager {
 	FullbrightModule fullbrightModule = new FullbrightModule();
 	public HUDModule hudModule = new HUDModule();
 	public ItemPhysicsModule itemPhysicsModule = new ItemPhysicsModule();
+	TimeChangerModule timeChangerModule = new TimeChangerModule();
 	public XRayModule xrayModule = new XRayModule();
 	
 	//MISC
 	AutoLoginModule autoLoginModule = new AutoLoginModule();
 	public AutoPlayModule autoPlayModule = new AutoPlayModule();
-	//DevModule devModule = new DevModule();
-	//DisablerModule disablerModule = new DisablerModule();
+	DevModule devModule = new DevModule();
+	DisablerModule disablerModule = new DisablerModule();
 	public KillSultsModule killSultsModule = new KillSultsModule();
+	public SecurityFeaturesModule securityFeaturesModule = new SecurityFeaturesModule();
 	StaffDetectorModule staffDetectorModule = new StaffDetectorModule();
-
-	public ModuleManager() {
-		try
-		{
-			for(Field field : ModuleManager.class.getDeclaredFields())
-			{
-				if(!field.getName().endsWith("Module"))
-					continue;
-
-				BaseModule module = (BaseModule)field.get(this);
-				modules.add(module);
-			}
-
-		}catch(Exception e)
-		{
-			String message = "Initializing Menace modules";
-			CrashReport report = CrashReport.makeCrashReport(e, message);
-		}
-	}
 
 	public ArrayList<BaseModule> getModules() {
 		return modules;

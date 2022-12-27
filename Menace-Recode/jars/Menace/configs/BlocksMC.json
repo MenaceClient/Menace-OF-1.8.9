@@ -22,13 +22,13 @@
   "KillAura": {
     "Toggled": false,
     "Settings": {
-      "Reach": 3.5,
-      "MinCPS": 13.0,
-      "MaxCPS": 15.0,
+      "Reach": 6.6000000000000005,
+      "MinCPS": 20.0,
+      "MaxCPS": 20.0,
       "TicksExisted": 0.0,
-      "FOV": 360.0,
+      "FOV": 179.0,
       "Mode": "Switch",
-      "Switch Delay": 300.0,
+      "Switch Delay": 10.0,
       "Attack Event": "Pre",
       "Filter": "Distance",
       "Rotation": "Bypass",
@@ -39,6 +39,24 @@
       "InInventory": true,
       "RayCast": true,
       "AutoDisable": true,
+      "AntiBot": false,
+      "Players": true,
+      "Hostiles": true,
+      "Passives": false,
+      "Invisibles": false,
+      "Visible": true
+    }
+  },
+  "TestAura": {
+    "Toggled": false,
+    "Settings": {
+      "MinCPS": 18.0,
+      "MaxCPS": 20.0,
+      "Reach": 3.7,
+      "FOV": 360.0,
+      "TicksExisted": 10.0,
+      "ThroughWalls": true,
+      "InInventory": true,
       "Players": true,
       "Hostiles": false,
       "Passives": false,
@@ -63,12 +81,12 @@
   "Flight": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Other",
-      "VanillaMode": "Damage",
-      "VerusMode": "Jump",
-      "OtherMode": "NCPSlime",
-      "DmgMode": "Basic",
-      "Speed": 2.0,
+      "Mode": "Vanilla",
+      "VanillaMode": "Creative",
+      "VerusMode": "Bob",
+      "OtherMode": "MatrixDamage",
+      "DmgMode": "Jump",
+      "Speed": 3.0,
       "Viewbob": 0.1,
       "Visible": true
     }
@@ -80,10 +98,10 @@
     }
   },
   "Speed": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
-      "Mode": "Strafe",
-      "Speed": 1.0,
+      "Mode": "BHop",
+      "Speed": 5.0,
       "AutoDisable": true,
       "Visible": true
     }
@@ -96,10 +114,10 @@
     }
   },
   "Step": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
-      "Mode": "Verus",
-      "Height": 1.0,
+      "Mode": "Vanilla",
+      "Height": 4.0,
       "Visible": true
     }
   },
@@ -109,10 +127,16 @@
       "Visible": true
     }
   },
-  "AntiVoid": {
-    "Toggled": true,
+  "TargetStrafe": {
+    "Toggled": false,
     "Settings": {
-      "Mode": "Flag",
+      "Visible": true
+    }
+  },
+  "AntiVoid": {
+    "Toggled": false,
+    "Settings": {
+      "Mode": "Teleport",
       "Visible": true
     }
   },
@@ -126,10 +150,11 @@
     }
   },
   "InvManager": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
-      "Delay Min": 80.0,
-      "Delay Max": 90.0,
+      "Delay Min": 60.0,
+      "Delay Max": 70.0,
+      "In Inventory": true,
       "CloseScreen": false,
       "Randomize": true,
       "Sword Slot": 1.0,
@@ -150,16 +175,16 @@
     }
   },
   "NoFall": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "Mode": "SpoofGround",
       "Visible": true
     }
   },
   "NoSlow": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
-      "Mode": "NCP",
+      "Mode": "Vanilla",
       "Visible": true
     }
   },
@@ -173,14 +198,18 @@
   "Scaffold": {
     "Toggled": false,
     "Settings": {
-      "Tower": false,
+      "Tower": true,
+      "Tower Move": false,
+      "Tower Mode": "Normal",
+      "Tower Speed": 50.0,
+      "Tower Derp": true,
       "Sprint": true,
       "KeepRotations": true,
       "SilentSwap": false,
       "KeepY": false,
       "Jump": false,
       "Eagle": false,
-      "Eagle Delay": 500.0,
+      "Eagle Delay": 300.0,
       "NoSwing": false,
       "Timer": 1.0,
       "Render": true,
@@ -196,8 +225,8 @@
   "ChestStealer": {
     "Toggled": true,
     "Settings": {
-      "Delay Min": 90.0,
-      "Delay Max": 100.0,
+      "Delay Min": 40.0,
+      "Delay Max": 60.0,
       "CloseScreen": true,
       "Randomize": true,
       "OnlyChests": true,
@@ -205,7 +234,7 @@
     }
   },
   "FastPlace": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "Visible": true
     }
@@ -213,14 +242,14 @@
   "Timer": {
     "Toggled": false,
     "Settings": {
-      "Speed": 1.2000000000000002,
+      "Speed": 1.9000000000000001,
       "Visible": true
     }
   },
   "Animations": {
     "Toggled": true,
     "Settings": {
-      "Blocking Mode": "Push",
+      "Blocking Mode": "Avatar",
       "TranslateX": 0.2,
       "TranslateY": 0.2,
       "TranslateZ": 0.0,
@@ -229,7 +258,7 @@
       "ItemPosZ": -0.71999997,
       "ItemScale": 0.30000000000000004,
       "ItemRotation": 45.0,
-      "SwingAnim": false,
+      "SwingAnim": true,
       "AnythingBlock": false,
       "Visible": false
     }
@@ -245,6 +274,7 @@
     "Toggled": false,
     "Settings": {
       "Mode": "Dropdown",
+      "Sounds": false,
       "Visible": true
     }
   },
@@ -269,7 +299,12 @@
       "ArrayAlpha": 100.0,
       "Position": true,
       "Position Mode": "Single",
+      "Ping": true,
       "GameStats": true,
+      "TargetHUD": true,
+      "Notifications": true,
+      "TabGui": true,
+      "Custom Font": true,
       "Color": "Custom",
       "RBW Speed": 10.0,
       "Red": 255.0,
@@ -286,6 +321,13 @@
       "Visible": false
     }
   },
+  "TimeChanger": {
+    "Toggled": true,
+    "Settings": {
+      "Time": 16200.0,
+      "Visible": false
+    }
+  },
   "XRay": {
     "Toggled": false,
     "Settings": {
@@ -299,16 +341,34 @@
     }
   },
   "AutoPlay": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Delay": 700.0,
       "Visible": false
     }
   },
+  "DevModule": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "Disabler": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
   "KillSults": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Visible": false
+    }
+  },
+  "SecurityFeatures": {
+    "Toggled": true,
+    "Settings": {
+      "Visible": true
     }
   },
   "StaffDetector": {

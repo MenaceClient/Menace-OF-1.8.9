@@ -1,20 +1,115 @@
 package dev.menace.utils.security;
 
+import dev.menace.utils.misc.ChatUtils;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.NetworkInterface;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Base64;
+import java.util.Enumeration;
 import java.util.List;
 
 public class HWIDManager {
+
+	public static String getHWIDNew() {
+		String hwid = "";
+
+		//figure out what os we are on
+		String os = System.getProperty("os.name").toLowerCase();
+		try {
+
+			MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+			String serial = "";
+			String processorId = "";
+
+			if (os.contains("win")) {
+				ChatUtils.message("Windows OS detected");
+
+				//Get the windows mac address because the serial number does not work on some peoples machines including mine :<
+				Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+				while (interfaces.hasMoreElements()) {
+					NetworkInterface current = interfaces.nextElement();
+					if (!current.isUp() || current.isLoopback() || current.isVirtual()) continue;
+					byte[] mac = current.getHardwareAddress();
+					if (mac != null) {
+						StringBuilder sb = new StringBuilder();
+						for (byte b : mac) {
+							sb.append(String.format("%02X", b));
+						}
+						serial = sb.toString();
+						break;
+					}
+				}
+
+				//Get the windows processor id
+				Process processorIdProcess = Runtime.getRuntime().exec("wmic cpu get ProcessorId");
+				processorIdProcess.getOutputStream().close();
+				BufferedReader processorIdReader = new BufferedReader(new InputStreamReader(processorIdProcess.getInputStream()));
+				processorIdReader.readLine();
+				processorIdReader.readLine();
+				processorId = processorIdReader.readLine().trim();
+				processorIdReader.close();
+				processorIdProcess.destroy();
+
+			} else if (os.contains("mac")) {
+
+				//Get the mac serial number
+				Process serialNumProcess = Runtime.getRuntime().exec("system_profiler SPHardwareDataType | grep 'Serial Number (system):'");
+				BufferedReader serialNumReader = new BufferedReader(new InputStreamReader(serialNumProcess.getInputStream()));
+				serialNumReader.readLine();
+				serial = serialNumReader.readLine().trim();
+				serial = serial.split(" ")[2];
+				serialNumReader.close();
+				serialNumProcess.destroy();
+
+				//Get the mac processor id
+				Process processorIdProcess = Runtime.getRuntime().exec("system_profiler SPHardwareDataType | grep 'Processor Name:'");
+				BufferedReader processorIdReader = new BufferedReader(new InputStreamReader(processorIdProcess.getInputStream()));
+				processorId = processorIdReader.readLine().trim();
+				processorId = processorId.split(" ")[2];
+				processorIdReader.close();
+				processorIdProcess.destroy();
+
+			} else if (os.contains("nix") || os.contains("nux") || os.contains("aix")) {
+
+				//Get the linux serial number
+				Process serialNumProcess = Runtime.getRuntime().exec("lshw -class baseboard | grep 'serial:'");
+				BufferedReader serialNumReader = new BufferedReader(new InputStreamReader(serialNumProcess.getInputStream()));
+				serial = serialNumReader.readLine().trim();
+				serialNumReader.close();
+				serialNumProcess.destroy();
+
+				//Get the linux processor id
+				Process processorIdProcess = Runtime.getRuntime().exec("lshw -class processor | grep 'product:'");
+				BufferedReader processorIdReader = new BufferedReader(new InputStreamReader(processorIdProcess.getInputStream()));
+				processorId = processorIdReader.readLine().trim();
+				processorIdReader.close();
+				processorIdProcess.destroy();
+
+			} else {
+				return "Unknown";
+			}
+
+			//byte[] bytes = (serial + processorId).getBytes(StandardCharsets.UTF_8);
+			//byte[] digest = md.digest(bytes);
+			//hwid = Base64.getEncoder().encodeToString(digest);
+			return (serial + " : " + processorId);
+
+		} catch (IOException | NoSuchAlgorithmException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 	public static @NotNull String getHWID() {
 		StringBuilder s = new StringBuilder();
@@ -43,52 +138,55 @@ public class HWIDManager {
 
 		return s.toString();
 	}
-	
-	/**
-     * Opens and reads the URL.
-     */
 
-    public static @NotNull List<String> readHWIDURL() {
-        List<String> s = new ArrayList<>();
-        try {
-            final URL url = new URL("http://menaceapi.cf/balls/347609743609843908659807509/247698646980549867/HWIDS.txt");
-            URLConnection uc = url.openConnection();
-            uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(uc.getInputStream(), StandardCharsets.UTF_8));
-            String hwid;
-            while ((hwid = bufferedReader.readLine()) != null) {
-                s.add(hwid);
-            }
-        } catch (Exception e) {
-        	e.printStackTrace();
-        }
-        return s;
-    }
+	public static boolean isWhitelisted() {
+		try {
+			final URL url = new URL("https://menaceapi.cf/isWhitelisted/" + getHWID());
+			HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
+			uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
+			uc.setRequestMethod("GET");
+			int responseCode = uc.getResponseCode();
+			if (responseCode == HttpURLConnection.HTTP_OK) {
+				BufferedReader in = new BufferedReader(new InputStreamReader(uc.getInputStream()));
+				String inputLine;
+				StringBuilder response = new StringBuilder();
 
-    /**
-     * Opens and reads the URL.
-     */
+				while ((inputLine = in.readLine()) != null) {
+					response.append(inputLine);
+				}
+				in.close();
 
-    public static List<String> readInfoURL() {
-        List<String> s = new ArrayList<>();
-        try {
-            final URL url = new URL("http://menaceapi.cf/balls/347609743609843908659807509/247698646980549867/USERINFO.txt");
-            URLConnection uc = url.openConnection();
-            uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(uc.getInputStream(), StandardCharsets.UTF_8));
-            String hwid;
-            while ((hwid = bufferedReader.readLine()) != null) {
-                s.add(hwid);
-            }
-        } catch (Exception e) {
-        	e.printStackTrace();
-        }
-        return s;
-    }
+				String pwd = getHWID() + "G1ZpUxclnWg7V5zWtEaFUo6rkCkb6iuwdZzGk5JB1CYGCZJe";
+
+				byte[] decodedSalt = pwd.getBytes(StandardCharsets.UTF_8);
+
+				MessageDigest md = MessageDigest.getInstance("SHA-512");
+
+				byte[] hashed = md.digest(decodedSalt);
+
+				StringBuilder s = new StringBuilder();
+				for (byte b : hashed) {
+					s.append(String.format("%02x", b));
+				}
+
+				if (response.toString().equals("cope")) {
+					return false;
+				} else if (!response.toString().equals(s.toString())) {
+					AntiSkidUtils.log("A user with the hwid " + getHWID() + " tried to intercept the hwid system.");
+					return false;
+				} else return response.toString().equals(s.toString());
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 	public static @NotNull String sendDiscordRequest(String id) {
 		try {
-			final URL url = new URL("http://localhost:35789/getDiscordByID/" + id);
+			final URL url = new URL("https://menaceapi.cf/getDiscordByID/" + id);
 			HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
 			uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
 			uc.setRequestMethod("GET");
@@ -113,39 +211,86 @@ public class HWIDManager {
 			return "null";
 		}
 	}
-    
-    public static int getUID() {
-    	String UID = null;
-    	
-    	for (String info : readInfoURL()) {
-    		if (info.split(":")[0].equals(getHWID())) {
-				UID = info.split(":")[2];
-			}
-    	}
 
-		assert UID != null;
-		return Integer.parseInt(UID);
+    public static int getUID() {
+		try {
+			final URL url = new URL("https://menaceapi.cf/getUID/" + getHWID());
+			HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
+			uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
+			uc.setRequestMethod("GET");
+			int responseCode = uc.getResponseCode();
+			if (responseCode == HttpURLConnection.HTTP_OK) {
+				BufferedReader in = new BufferedReader(new InputStreamReader(uc.getInputStream()));
+				String inputLine;
+				StringBuilder response = new StringBuilder();
+
+				while ((inputLine = in.readLine()) != null) {
+					response.append(inputLine);
+				}
+				in.close();
+
+				return Integer.parseInt(response.toString());
+			} else {
+				return 0;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
     }
     
     public static String getUsername() {
-    	String username = null;
-    	
-    	for (String info : readInfoURL()) {
-    		if (info.split(":")[0].equals(getHWID())) {
-				username = info.split(":")[1];
+		try {
+			final URL url = new URL("https://menaceapi.cf/getUsername/" + getHWID());
+			HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
+			uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
+			uc.setRequestMethod("GET");
+			int responseCode = uc.getResponseCode();
+			if (responseCode == HttpURLConnection.HTTP_OK) {
+				BufferedReader in = new BufferedReader(new InputStreamReader(uc.getInputStream()));
+				String inputLine;
+				StringBuilder response = new StringBuilder();
+
+				while ((inputLine = in.readLine()) != null) {
+					response.append(inputLine);
+				}
+				in.close();
+
+				return response.toString();
+			} else {
+				return "null";
 			}
-    	}
-    	
-    	return username;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "null";
+		}
     }
 
 	public static @NotNull String getDiscord() {
-		String discordID = null;
+		String discordID;
+		try {
+			final URL url = new URL("https://menaceapi.cf/getDiscordID/" + getHWID());
+			HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
+			uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
+			uc.setRequestMethod("GET");
+			int responseCode = uc.getResponseCode();
+			if (responseCode == HttpURLConnection.HTTP_OK) {
+				BufferedReader in = new BufferedReader(new InputStreamReader(uc.getInputStream()));
+				String inputLine;
+				StringBuilder response = new StringBuilder();
 
-		for (String info : readInfoURL()) {
-			if (info.split(":")[0].equals(getHWID())) {
-				discordID = info.split(":")[3];
+				while ((inputLine = in.readLine()) != null) {
+					response.append(inputLine);
+				}
+				in.close();
+
+				discordID = response.toString();
+			} else {
+				return "null";
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "null";
 		}
 
 		return sendDiscordRequest(discordID);

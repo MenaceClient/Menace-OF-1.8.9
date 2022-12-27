@@ -95,6 +95,10 @@ public class S45PacketTitle implements Packet<INetHandlerPlayClient>
         return this.message;
     }
 
+    public void setMessage(IChatComponent message) {
+        this.message = message;
+    }
+
     public int getFadeInTime()
     {
         return this.fadeInTime;

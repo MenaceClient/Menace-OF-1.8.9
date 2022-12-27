@@ -356,7 +356,7 @@ public class CrashReport
 
             if (i > 0 && !this.crashReportSections.isEmpty())
             {
-                CrashReportCategory crashreportcategory1 = (CrashReportCategory)this.crashReportSections.get(this.crashReportSections.size() - 1);
+                CrashReportCategory crashreportcategory1 = this.crashReportSections.get(this.crashReportSections.size() - 1);
                 crashreportcategory1.trimStackTraceEntriesFromBottom(i);
             }
             else if (astacktraceelement != null && astacktraceelement.length >= i && 0 <= j && j < astacktraceelement.length)

@@ -12,6 +12,7 @@ import dev.menace.utils.timer.MSTimer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import org.jetbrains.annotations.NotNull;
+import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 import java.time.LocalTime;
@@ -41,14 +42,16 @@ public class GameStatsElement extends BaseElement {
     @Override
     public void render() {
         RenderUtils.drawRoundedRect(this.getAbsoluteX(), this.getAbsoluteY(), this.getAbsoluteX() + this.getStringWidth("") + 150, this.getAbsoluteY() + 60, 5, new Color(0, 0, 0, 120).getRGB());
+
+        this.drawString("Statistics", this.getAbsoluteX() + 50, this.getAbsoluteY() + 3	, -1);
+
         HUDModule hudModule = Menace.instance.moduleManager.hudModule;
         int color = hudModule.color.getValue().equalsIgnoreCase("Custom") ? new Color(hudModule.red.getValueI(), hudModule.green.getValueI(), hudModule.blue.getValueI(), hudModule.alpha.getValueI()).getRGB() : ColorUtils.fade(hudModule.rainbowSpeed.getValueF(), -this.getAbsoluteY()).getRGB();
-        this.drawString("Statistics", this.getAbsoluteX() + 50, this.getAbsoluteY() + 3	, Color.white.getRGB());
-        this.drawString("-------------------------", this.getAbsoluteX(), this.getAbsoluteY() + 12, color);
-        this.drawString("-------------------------", this.getAbsoluteX() + 1, this.getAbsoluteY() + 12, color);
+        RenderUtils.drawRect(this.getAbsoluteX(), this.getAbsoluteY() + 12, this.getAbsoluteX() + 150, this.getAbsoluteY() + 14, color);
 
+        String username = Menace.instance.moduleManager.securityFeaturesModule.isToggled() ? Menace.instance.user.getUsername() : Minecraft.getMinecraft().getSession().getUsername();
 
-        this.drawString("Username: " + Minecraft.getMinecraft().thePlayer.getName(), this.getAbsoluteX() + 4, this.getAbsoluteY() + 20, Color.white.getRGB());
+        this.drawString("Username: " + username, this.getAbsoluteX() + 4, this.getAbsoluteY() + 20, Color.white.getRGB());
 
         LocalTime lt = LocalTime.ofSecondOfDay(timer.timePassed() / 1000);
         String second = lt.getSecond() < 10 ? "0" + lt.getSecond() : String.valueOf(lt.getSecond());
@@ -65,11 +68,11 @@ public class GameStatsElement extends BaseElement {
 
     @Override
     public int getWidth() {
-        return this.getStringWidth("Welcome back " + Menace.instance.user.getUsername() + " [" + Menace.instance.user.getUID() + "]") + 3;
+        return 150;
     }
 
     @Override
     public int getHeight() {
-        return 50;
+        return 60;
     }
 }

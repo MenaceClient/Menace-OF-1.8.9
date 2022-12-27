@@ -4,6 +4,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
+import dev.menace.Menace;
 import dev.menace.event.events.Event2D;
 
 import java.util.Collection;
@@ -58,7 +59,6 @@ public class GuiIngame extends Gui
 
     /** ChatGUI instance that retains all previous chat data */
     private final GuiNewChat persistantChatGUI;
-    private final GuiStreamIndicator streamIndicator;
     private int updateCounter;
 
     /** The string specifying which record music is playing */
@@ -115,7 +115,6 @@ public class GuiIngame extends Gui
         this.overlayDebug = new GuiOverlayDebug(mcIn);
         this.spectatorGui = new GuiSpectator(mcIn);
         this.persistantChatGUI = new GuiNewChat(mcIn);
-        this.streamIndicator = new GuiStreamIndicator(mcIn);
         this.overlayPlayerList = new GuiPlayerTabOverlay(mcIn, this);
         this.setDefaultTitlesTimes();
     }
@@ -558,11 +557,6 @@ public class GuiIngame extends Gui
         }
     }
 
-    public void renderStreamIndicator(ScaledResolution scaledRes)
-    {
-        this.streamIndicator.render(scaledRes.getScaledWidth() - 10, 10);
-    }
-
     private void renderScoreboard(ScoreObjective objective, ScaledResolution scaledRes)
     {
         Scoreboard scoreboard = objective.getScoreboard();
@@ -604,6 +598,12 @@ public class GuiIngame extends Gui
             ++j;
             ScorePlayerTeam scoreplayerteam1 = scoreboard.getPlayersTeam(score1.getPlayerName());
             String s1 = ScorePlayerTeam.formatPlayerName(scoreplayerteam1, score1.getPlayerName());
+
+            //SecurityFeatures
+            if (Menace.instance.moduleManager.securityFeaturesModule.isToggled()) {
+                s1 = s1.replaceAll(mc.thePlayer.getName(), Menace.instance.user.getUsername());
+            }
+
             String s2 = EnumChatFormatting.RED + "" + score1.getScorePoints();
             int k = j1 - j * this.getFontRenderer().FONT_HEIGHT;
             int l = scaledRes.getScaledWidth() - k1 + 2;
@@ -1107,7 +1107,6 @@ public class GuiIngame extends Gui
         }
 
         ++this.updateCounter;
-        this.streamIndicator.updateStreamAlpha();
 
         if (this.mc.thePlayer != null)
         {

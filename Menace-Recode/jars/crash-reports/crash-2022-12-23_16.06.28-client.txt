@@ -1,0 +1,108 @@
+---- Minecraft Crash Report ----
+// Shall we play a game?
+
+Time: 23/12/22 4:06 PM
+Description: Updating screen events
+
+java.lang.NullPointerException: Updating screen events
+	at dev.menace.utils.security.HWIDManager.getHWIDNew(HWIDManager.java:63)
+	at dev.menace.module.modules.misc.DevModule.onEnable(DevModule.java:21)
+	at dev.menace.module.BaseModule.setToggled(BaseModule.java:143)
+	at dev.menace.module.BaseModule.toggle(BaseModule.java:128)
+	at dev.menace.ui.clickgui.lime.components.FrameModule.mouseClicked(FrameModule.java:113)
+	at dev.menace.ui.clickgui.lime.components.FrameCategory.mouseClicked(FrameCategory.java:127)
+	at dev.menace.ui.clickgui.lime.LimeClickGUI.lambda$mouseClicked$1(LimeClickGUI.java:59)
+	at java.util.ArrayList.forEach(ArrayList.java:1257)
+	at dev.menace.ui.clickgui.lime.LimeClickGUI.mouseClicked(LimeClickGUI.java:59)
+	at net.minecraft.client.gui.GuiScreen.handleMouseInput(GuiScreen.java:602)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:571)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1687)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1007)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:355)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at dev.menace.utils.security.HWIDManager.getHWIDNew(HWIDManager.java:63)
+	at dev.menace.module.modules.misc.DevModule.onEnable(DevModule.java:21)
+	at dev.menace.module.BaseModule.setToggled(BaseModule.java:143)
+	at dev.menace.module.BaseModule.toggle(BaseModule.java:128)
+	at dev.menace.ui.clickgui.lime.components.FrameModule.mouseClicked(FrameModule.java:113)
+	at dev.menace.ui.clickgui.lime.components.FrameCategory.mouseClicked(FrameCategory.java:127)
+	at dev.menace.ui.clickgui.lime.LimeClickGUI.lambda$mouseClicked$1(LimeClickGUI.java:59)
+	at java.util.ArrayList.forEach(ArrayList.java:1257)
+	at dev.menace.ui.clickgui.lime.LimeClickGUI.mouseClicked(LimeClickGUI.java:59)
+	at net.minecraft.client.gui.GuiScreen.handleMouseInput(GuiScreen.java:602)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:571)
+
+-- Affected screen --
+Details:
+	Screen name: dev.menace.ui.clickgui.lime.LimeClickGUI
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 5 total; [EntityPlayerSP['ExterminateYT'/3530516, l='MpServer', x=78.38, y=4.00, z=104.19], EntityOtherPlayerMP['CIT-740cc2f3e8f3'/49, l='MpServer', x=107.72, y=4.00, z=150.38], EntityOtherPlayerMP['CIT-dc44976f9c6b'/45, l='MpServer', x=110.50, y=67108863.97, z=147.50], EntityOtherPlayerMP['CIT-f65935c5250f'/53, l='MpServer', x=110.47, y=4.00, z=147.53], EntityOtherPlayerMP['CIT-0d65fe041f01'/41, l='MpServer', x=113.41, y=4.00, z=150.53]]
+	Chunk stats: MultiplayerChunkCache: 441, 441
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 200.00,4.00,104.00 - World: (200,4,104), Chunk: (at 8,0,8 in 12,6; contains blocks 192,0,96 to 207,255,111), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 32260 game time, 16201 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: survival (ID 0). Hardcore: false. Cheats: false
+	Forced entities: 77 total; [EntityPlayerSP['ExterminateYT'/3530516, l='MpServer', x=78.38, y=4.00, z=104.19], EntityMinecartEmpty['entity.MinecartRideable.name'/0, l='MpServer', x=95.50, y=4.06, z=148.47], EntityOtherPlayerMP['CIT-dc44976f9c6b'/45, l='MpServer', x=110.50, y=67108863.97, z=147.50], EntityOtherPlayerMP['CIT-72d9fef2e67d'/37, l='MpServer', x=110.41, y=4.00, z=153.50], EntityOtherPlayerMP['CIT-f65935c5250f'/53, l='MpServer', x=110.47, y=4.00, z=147.53], EntityArmorStand['§cSpeed'/11, l='MpServer', x=118.38, y=5.66, z=102.44], EntityArmorStand['§cTeleport'/12, l='MpServer', x=125.47, y=5.66, z=111.53], EntityOtherPlayerMP['trollmakoto'/2340594, l='MpServer', x=152.31, y=4.00, z=158.30], EntityOtherPlayerMP['OldSynx'/3576876, l='MpServer', x=191.51, y=3.86, z=78.91], EntityArmorStand['§cPiston'/22, l='MpServer', x=137.47, y=5.66, z=111.47], EntityOtherPlayerMP['OldSynx'/3678299, l='MpServer', x=122.55, y=4.03, z=104.03], EntityOtherPlayerMP['OldSynx'/3678299, l='MpServer', x=122.74, y=4.14, z=103.10], EntityArmorStand['§cNoSlow'/24, l='MpServer', x=130.56, y=5.66, z=122.44], EntityOtherPlayerMP['OldSynx'/3985519, l='MpServer', x=122.44, y=27.69, z=117.00], EntityArmorStand['§cAura'/25, l='MpServer', x=124.47, y=5.66, z=144.47], EntityOtherPlayerMP['trollmakoto'/2340594, l='MpServer', x=156.64, y=4.00, z=160.51], EntityOtherPlayerMP['OldSynx'/4110571, l='MpServer', x=126.10, y=4.00, z=108.28], EntityArmorStand['§cAura'/26, l='MpServer', x=110.50, y=5.66, z=144.50], EntityOtherPlayerMP['OldSynx'/4110571, l='MpServer', x=83.09, y=29.41, z=100.79], EntityArmorStand['§cESP'/27, l='MpServer', x=94.50, y=5.66, z=151.53], EntityArmorStand['§cBreaker'/28, l='MpServer', x=81.59, y=5.66, z=150.50], EntityOtherPlayerMP['trollmakoto'/2340594, l='MpServer', x=166.77, y=4.61, z=159.77], EntityArmorStand['§cStealer'/29, l='MpServer', x=78.34, y=5.66, z=138.53], EntityArmorStand['§cCivBreak'/30, l='MpServer', x=85.47, y=5.66, z=117.38], EntityArmorStand['§cScaffold'/33, l='MpServer', x=68.56, y=5.66, z=103.50], EntityOtherPlayerMP['CIT-0d65fe041f01'/41, l='MpServer', x=113.41, y=4.00, z=150.53], EntityArmorStand['Killaura-Switch-4'/40, l='MpServer', x=110.41, y=5.78, z=153.50], EntityOtherPlayerMP['CIT-0d65fe041f01'/41, l='MpServer', x=113.41, y=4.00, z=150.53], EntityArmorStand['Killaura-Switch-3'/44, l='MpServer', x=113.41, y=5.78, z=150.53], EntityOtherPlayerMP['CIT-740cc2f3e8f3'/49, l='MpServer', x=107.72, y=4.00, z=150.38], EntityOtherPlayerMP['OldSynx'/4110571, l='MpServer', x=113.38, y=4.44, z=109.73], EntityOtherPlayerMP['CIT-dc44976f9c6b'/45, l='MpServer', x=110.50, y=67108863.97, z=147.50], EntityOtherPlayerMP['CIT-dc44976f9c6b'/45, l='MpServer', x=110.50, y=67108863.97, z=147.50], EntityOtherPlayerMP['CIT-740cc2f3e8f3'/49, l='MpServer', x=107.72, y=4.00, z=150.38], EntityOtherPlayerMP['CIT-72d9fef2e67d'/37, l='MpServer', x=110.41, y=4.00, z=153.50], EntityOtherPlayerMP['CIT-f65935c5250f'/53, l='MpServer', x=110.47, y=4.00, z=147.53], EntityOtherPlayerMP['CIT-dc44976f9c6b'/45, l='MpServer', x=110.50, y=67108863.97, z=147.50], EntityArmorStand['Killaura-Switch-2'/48, l='MpServer', x=110.50, y=67108863.97, z=147.50], EntityOtherPlayerMP['CIT-0d65fe041f01'/41, l='MpServer', x=113.41, y=4.00, z=150.53], EntityOtherPlayerMP['CIT-740cc2f3e8f3'/49, l='MpServer', x=107.72, y=4.00, z=150.38], EntityArmorStand['Killaura-Switch-1'/52, l='MpServer', x=107.72, y=5.78, z=150.38], EntityOtherPlayerMP['CIT-f65935c5250f'/53, l='MpServer', x=110.47, y=4.00, z=147.53], EntityOtherPlayerMP['CIT-72d9fef2e67d'/37, l='MpServer', x=110.41, y=4.00, z=153.50], EntityOtherPlayerMP['CIT-72d9fef2e67d'/37, l='MpServer', x=110.41, y=4.00, z=153.50], EntityOtherPlayerMP['CIT-72d9fef2e67d'/37, l='MpServer', x=110.41, y=4.00, z=153.50], EntityOtherPlayerMP['CIT-dc44976f9c6b'/45, l='MpServer', x=110.50, y=67108863.97, z=147.50], EntityOtherPlayerMP['CIT-f65935c5250f'/53, l='MpServer', x=110.47, y=4.00, z=147.53], EntityOtherPlayerMP['CIT-f65935c5250f'/53, l='MpServer', x=110.47, y=4.00, z=147.53], EntityArmorStand['Killaura-Switch-5'/56, l='MpServer', x=110.47, y=5.78, z=147.53], EntityOtherPlayerMP['CIT-f65935c5250f'/53, l='MpServer', x=110.47, y=4.00, z=147.53], EntityOtherPlayerMP['CIT-dc44976f9c6b'/45, l='MpServer', x=110.50, y=67108863.97, z=147.50], EntityOtherPlayerMP['CIT-72d9fef2e67d'/37, l='MpServer', x=110.41, y=4.00, z=153.50], EntityOtherPlayerMP['trollmakoto'/2340594, l='MpServer', x=114.29, y=4.00, z=153.44], EntityOtherPlayerMP['CIT-f65935c5250f'/53, l='MpServer', x=110.47, y=4.00, z=147.53], EntityOtherPlayerMP['CIT-740cc2f3e8f3'/49, l='MpServer', x=107.72, y=4.00, z=150.38], EntityOtherPlayerMP['CIT-0d65fe041f01'/41, l='MpServer', x=113.41, y=4.00, z=150.53], EntityOtherPlayerMP['CIT-740cc2f3e8f3'/49, l='MpServer', x=107.72, y=4.00, z=150.38], EntityOtherPlayerMP['CIT-dc44976f9c6b'/45, l='MpServer', x=110.50, y=67108863.97, z=147.50], EntityOtherPlayerMP['CIT-72d9fef2e67d'/37, l='MpServer', x=110.41, y=4.00, z=153.50], EntityOtherPlayerMP['CIT-f65935c5250f'/53, l='MpServer', x=110.47, y=4.00, z=147.53], EntityOtherPlayerMP['CIT-0d65fe041f01'/41, l='MpServer', x=113.41, y=4.00, z=150.53], EntityOtherPlayerMP['Moving-4'/57, l='MpServer', x=149.38, y=4.00, z=100.28], EntityOtherPlayerMP['Kepte'/4634287, l='MpServer', x=45.89, y=11.88, z=68.61], EntityOtherPlayerMP['Moving-3'/60, l='MpServer', x=153.06, y=4.00, z=96.07], EntityOtherPlayerMP['OldSynx'/3678299, l='MpServer', x=69.94, y=4.13, z=154.70], EntityOtherPlayerMP['CIT-740cc2f3e8f3'/49, l='MpServer', x=107.72, y=4.00, z=150.38], EntityOtherPlayerMP['Walking-2'/63, l='MpServer', x=163.52, y=4.00, z=96.33], EntityOtherPlayerMP['Wall-3'/69, l='MpServer', x=159.28, y=4.00, z=87.63], EntityOtherPlayerMP['CIT-72d9fef2e67d'/37, l='MpServer', x=110.41, y=4.00, z=153.50], EntityOtherPlayerMP['CIT-dc44976f9c6b'/45, l='MpServer', x=110.50, y=67108863.97, z=147.50], EntityOtherPlayerMP['CIT-f65935c5250f'/53, l='MpServer', x=110.47, y=4.00, z=147.53], EntityOtherPlayerMP['Wall-2'/72, l='MpServer', x=165.50, y=4.00, z=87.59], EntityOtherPlayerMP['Wall-1'/75, l='MpServer', x=171.50, y=4.00, z=87.38], EntityOtherPlayerMP['CIT-72d9fef2e67d'/37, l='MpServer', x=110.41, y=4.00, z=153.50], EntityOtherPlayerMP['CIT-0d65fe041f01'/41, l='MpServer', x=113.41, y=4.00, z=150.53], EntityOtherPlayerMP['Walking-1'/66, l='MpServer', x=174.60, y=4.00, z=100.41], EntityOtherPlayerMP['joebiden'/93, l='MpServer', x=187.44, y=67108863.97, z=152.59]]
+	Retry entities: 0 total; []
+	Server brand: PaperSpigot (Velocity)
+	Server type: Non-integrated multiplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:404)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2677)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:376)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_202, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 498225912 bytes (475 MB) / 1067450368 bytes (1018 MB) up to 1067450368 bytes (1018 MB)
+	JVM Flags: 2 total; -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 516.94, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: gamerswordpack.zip
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-9700F CPU @ 3.00GHz
+	OptiFine Version: OptiFine_1.8.9_HD_U_M5
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 10
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 516.94
+	OpenGlRenderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8

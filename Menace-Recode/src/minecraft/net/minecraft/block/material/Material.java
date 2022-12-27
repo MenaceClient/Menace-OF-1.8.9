@@ -208,7 +208,7 @@ public class Material
     }
 
     /**
-     * @see #isAdventureModeExempt()
+     * @see #setAdventureModeExempt()
      */
     protected Material setAdventureModeExempt()
     {

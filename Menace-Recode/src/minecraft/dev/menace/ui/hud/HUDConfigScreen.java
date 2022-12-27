@@ -123,12 +123,13 @@ public class HUDConfigScreen extends GuiScreen {
 	}
 
 	private void loadMouseOver(int x, int y) {
-		this.selectedRenderer = api.hudElements.stream().filter(new MouseOverFinder(x, y)).findFirst();
+		this.selectedRenderer = HUDManager.hudElements.stream().filter(new MouseOverFinder(x, y)).findFirst();
 	}
 	
-	private class MouseOverFinder implements Predicate<BaseElement> {
+	private static class MouseOverFinder implements Predicate<BaseElement> {
 
-		private int mouseX, mouseY;
+		private final int mouseX;
+		private final int mouseY;
 		
 		public MouseOverFinder(int x, int y) {
 			this.mouseX = x;
@@ -142,9 +143,7 @@ public class HUDConfigScreen extends GuiScreen {
 			int absoluteY = renderer.getAbsoluteY();
 			
 			if (mouseX >= absoluteX && mouseX <= absoluteX + renderer.getWidth()) {
-				if (mouseY >= absoluteY && mouseY <= absoluteY + renderer.getHeight()) {
-					return true;
-				}
+				return mouseY >= absoluteY && mouseY <= absoluteY + renderer.getHeight();
 			}
 			
 			return false;

@@ -11,6 +11,7 @@ public enum FlightMode {
 	FAKEGROUND("FakeGround", new FakeGroundFly(), FlightType.VANILLA),
 	DAMAGE("Damage", new DamageFly(), FlightType.VANILLA),
 	VERUSJUMP("Jump", new VerusJumpFly(), FlightType.VERUS),
+	VERUSBOB("Bob", new VerusBobFly(), FlightType.VERUS),
 	BLOCKSMC("NCPSlime", new BlocksMCFly(), FlightType.OTHER),
 	MATRIXDAMAGEFLY("MatrixDamage", new MatrixDamageFly(), FlightType.OTHER);
 	

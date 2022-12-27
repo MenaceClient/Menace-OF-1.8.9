@@ -5,7 +5,7 @@ import dev.menace.event.Event;
 public class EventStep extends Event {
 
 	private float stepHeight;
-	private StepState state;
+	private final StepState state;
 	
 	public EventStep(float stepHeight, StepState state) {
 		this.stepHeight = stepHeight;

@@ -1,18 +1,19 @@
 package dev.menace.ui.clickgui.lime.components;
 
 import dev.menace.Menace;
-import dev.menace.module.config.Config;
 import dev.menace.ui.clickgui.lime.Priority;
 import dev.menace.ui.clickgui.lime.utils.render.RenderUtils;
 import dev.menace.ui.clickgui.lime.utils.render.animation.easings.Animate;
 import dev.menace.ui.clickgui.lime.utils.render.animation.easings.Easing;
-import dev.menace.utils.render.MenaceFontRenderer;
+import dev.menace.utils.render.font.Fonts;
+import dev.menace.utils.render.font.MenaceFontRenderer;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
+import java.awt.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class FrameConfigs implements Priority {
@@ -27,7 +28,7 @@ public class FrameConfigs implements Priority {
 
     private final ArrayList<FrameConfig> configs;
 
-    MenaceFontRenderer productSans24 = MenaceFontRenderer.getFontOnPC("ProductSans24", 24);
+    MenaceFontRenderer font = Menace.instance.productSans24;
 
     // Smooth animation
     private final Animate animation;
@@ -107,7 +108,7 @@ public class FrameConfigs implements Priority {
         }
 
         // Drawing category name
-        productSans24.drawStringWithShadow("CONFIGS", x + 3, y + ((categoryNameHeight / 2F) - productSans24.FONT_HEIGHT / 2F) - 2, stringColor);
+        font.drawStringWithShadow("CONFIGS", x + 3, y + ((categoryNameHeight / 2F) - font.getHeight() / 2F), stringColor);
 
         GL11.glPushMatrix();
         GL11.glEnable(3089);

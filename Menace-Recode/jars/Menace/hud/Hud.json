@@ -1,8 +1,7 @@
 {
-  "Font": "Arial",
   "ArrayElement": {
-    "X": 911,
-    "Y": 2,
+    "X": 920,
+    "Y": 1,
     "Visible": true
   },
   "GameStatsElement": {
@@ -10,9 +9,29 @@
     "Y": 15,
     "Visible": true
   },
+  "NotificationElement": {
+    "X": 910,
+    "Y": 529,
+    "Visible": true
+  },
+  "PingElement": {
+    "X": 2,
+    "Y": 518,
+    "Visible": true
+  },
   "PosElement": {
     "X": 2,
     "Y": 530,
+    "Visible": true
+  },
+  "TabGuiElement": {
+    "X": 2,
+    "Y": 76,
+    "Visible": true
+  },
+  "TargetHudElement": {
+    "X": 440,
+    "Y": 289,
     "Visible": true
   },
   "WatermarkElement": {

@@ -1,0 +1,134 @@
+---- Minecraft Crash Report ----
+// Hey, that tickles! Hehehe!
+
+Time: 30/10/22 2:30 PM
+Description: Updating screen events
+
+java.lang.NullPointerException: Updating screen events
+	at com.sun.media.sound.SoftMidiAudioFileReader.getAudioInputStream(SoftMidiAudioFileReader.java:134)
+	at javax.sound.sampled.AudioSystem.getAudioInputStream(AudioSystem.java:1113)
+	at dev.menace.utils.misc.SoundPlayer.playSound(SoundPlayer.java:13)
+	at dev.menace.module.BaseModule.onDisable(BaseModule.java:105)
+	at dev.menace.module.modules.movement.SpeedModule.onDisable(SpeedModule.java:56)
+	at dev.menace.module.BaseModule.setToggled(BaseModule.java:141)
+	at dev.menace.module.BaseModule.toggle(BaseModule.java:128)
+	at dev.menace.module.ModuleManager.lambda$loadModules$6(ModuleManager.java:139)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:175)
+	at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1382)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:418)
+	at dev.menace.module.ModuleManager.loadModules(ModuleManager.java:135)
+	at dev.menace.module.config.Config.load(Config.java:39)
+	at dev.menace.ui.clickgui.lime.components.FrameConfig.mouseClicked(FrameConfig.java:89)
+	at dev.menace.ui.clickgui.lime.components.FrameConfigs.mouseClicked(FrameConfigs.java:137)
+	at dev.menace.ui.clickgui.lime.LimeClickGUI.mouseClicked(LimeClickGUI.java:60)
+	at net.minecraft.client.gui.GuiScreen.handleMouseInput(GuiScreen.java:617)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:586)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1787)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1108)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:440)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at com.sun.media.sound.SoftMidiAudioFileReader.getAudioInputStream(SoftMidiAudioFileReader.java:134)
+	at javax.sound.sampled.AudioSystem.getAudioInputStream(AudioSystem.java:1113)
+	at dev.menace.utils.misc.SoundPlayer.playSound(SoundPlayer.java:13)
+	at dev.menace.module.BaseModule.onDisable(BaseModule.java:105)
+	at dev.menace.module.modules.movement.SpeedModule.onDisable(SpeedModule.java:56)
+	at dev.menace.module.BaseModule.setToggled(BaseModule.java:141)
+	at dev.menace.module.BaseModule.toggle(BaseModule.java:128)
+	at dev.menace.module.ModuleManager.lambda$loadModules$6(ModuleManager.java:139)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:175)
+	at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1382)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:418)
+	at dev.menace.module.ModuleManager.loadModules(ModuleManager.java:135)
+	at dev.menace.module.config.Config.load(Config.java:39)
+	at dev.menace.ui.clickgui.lime.components.FrameConfig.mouseClicked(FrameConfig.java:89)
+	at dev.menace.ui.clickgui.lime.components.FrameConfigs.mouseClicked(FrameConfigs.java:137)
+	at dev.menace.ui.clickgui.lime.LimeClickGUI.mouseClicked(LimeClickGUI.java:60)
+	at net.minecraft.client.gui.GuiScreen.handleMouseInput(GuiScreen.java:617)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:586)
+
+-- Affected screen --
+Details:
+	Screen name: dev.menace.ui.clickgui.lime.LimeClickGUI
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['ExterminateYT'/118, l='MpServer', x=572.00, y=69.00, z=210.22]]
+	Chunk stats: MultiplayerChunkCache: 441, 441
+	Level seed: 0
+	Level generator: ID 02 - largeBiomes, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 584.00,64.00,166.00 - World: (584,64,166), Chunk: (at 8,4,6 in 36,10; contains blocks 576,0,160 to 591,255,175), Region: (1,0; contains chunks 32,0 to 63,31, blocks 512,0,0 to 1023,255,511)
+	Level time: 38 game time, 19001 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 72 total; [EntitySkeleton['Skeleton'/12, l='MpServer', x=512.31, y=22.00, z=155.72], EntitySkeleton['Skeleton'/13, l='MpServer', x=505.50, y=22.00, z=155.50], EntityBat['Bat'/14, l='MpServer', x=506.16, y=66.56, z=181.09], EntityZombie['Zombie'/18, l='MpServer', x=511.31, y=47.00, z=218.59], EntityCreeper['Creeper'/20, l='MpServer', x=507.28, y=52.00, z=229.00], EntitySkeleton['Skeleton'/21, l='MpServer', x=505.50, y=53.00, z=228.50], EntitySkeleton['Skeleton'/22, l='MpServer', x=512.91, y=22.00, z=154.97], EntitySkeleton['Skeleton'/23, l='MpServer', x=517.50, y=23.00, z=151.50], EntitySquid['Squid'/24, l='MpServer', x=522.21, y=62.27, z=206.49], EntityCreeper['Creeper'/25, l='MpServer', x=525.47, y=55.00, z=193.69], EntitySquid['Squid'/26, l='MpServer', x=516.14, y=61.00, z=211.62], EntityWitch['Witch'/27, l='MpServer', x=525.34, y=46.00, z=226.06], EntityCreeper['Creeper'/28, l='MpServer', x=515.44, y=63.00, z=255.84], EntityZombie['Zombie'/29, l='MpServer', x=514.78, y=63.00, z=256.69], EntityBat['Bat'/30, l='MpServer', x=535.50, y=55.10, z=179.25], EntitySkeleton['Skeleton'/31, l='MpServer', x=530.50, y=57.00, z=182.50], EntityCreeper['Creeper'/32, l='MpServer', x=537.38, y=54.00, z=187.28], EntityCreeper['Creeper'/33, l='MpServer', x=541.50, y=56.00, z=180.50], EntityCreeper['Creeper'/34, l='MpServer', x=530.94, y=57.00, z=176.53], EntityZombie['Zombie'/35, l='MpServer', x=539.47, y=56.00, z=182.94], EntityZombie['Zombie'/36, l='MpServer', x=540.41, y=54.00, z=190.00], EntitySkeleton['Skeleton'/37, l='MpServer', x=534.50, y=62.00, z=196.50], EntitySkeleton['Skeleton'/38, l='MpServer', x=535.53, y=60.00, z=192.13], EntityCreeper['Creeper'/39, l='MpServer', x=532.53, y=51.00, z=226.38], EntityBat['Bat'/40, l='MpServer', x=542.09, y=57.88, z=284.22], EntitySkeleton['Skeleton'/42, l='MpServer', x=554.13, y=56.00, z=174.47], EntityCreeper['Creeper'/43, l='MpServer', x=554.53, y=57.00, z=190.28], EntityCreeper['Creeper'/44, l='MpServer', x=550.88, y=54.00, z=186.69], EntityZombie['Zombie'/45, l='MpServer', x=554.13, y=54.00, z=189.47], EntityEnderman['Enderman'/46, l='MpServer', x=547.59, y=55.00, z=185.28], EntityEnderman['Enderman'/47, l='MpServer', x=551.31, y=54.00, z=187.63], EntityCreeper['Creeper'/48, l='MpServer', x=552.84, y=53.00, z=188.34], EntitySpider['Spider'/49, l='MpServer', x=551.28, y=58.00, z=179.47], EntitySkeleton['Skeleton'/50, l='MpServer', x=549.28, y=58.00, z=180.75], EntitySkeleton['Skeleton'/51, l='MpServer', x=549.16, y=58.00, z=179.50], EntitySkeleton['Skeleton'/52, l='MpServer', x=556.50, y=51.00, z=186.50], EntityZombie['Zombie'/53, l='MpServer', x=553.44, y=42.97, z=202.72], EntityZombie['Zombie'/54, l='MpServer', x=559.50, y=43.28, z=206.97], EntitySkeleton['Skeleton'/55, l='MpServer', x=547.09, y=46.00, z=204.56], EntityCreeper['Creeper'/56, l='MpServer', x=554.03, y=58.00, z=283.75], EntityBat['Bat'/57, l='MpServer', x=554.25, y=58.56, z=285.00], EntityBat['Bat'/58, l='MpServer', x=550.03, y=59.44, z=284.81], EntityBat['Bat'/59, l='MpServer', x=550.81, y=58.94, z=282.19], EntityBat['Bat'/60, l='MpServer', x=555.66, y=59.78, z=281.03], EntityCreeper['Creeper'/62, l='MpServer', x=549.66, y=58.00, z=288.16], EntityBat['Bat'/65, l='MpServer', x=569.75, y=41.09, z=161.56], EntitySkeleton['Skeleton'/66, l='MpServer', x=565.16, y=38.00, z=160.50], EntityBat['Bat'/67, l='MpServer', x=575.31, y=39.44, z=154.75], EntityBat['Bat'/68, l='MpServer', x=571.47, y=62.10, z=190.25], EntityZombie['Zombie'/69, l='MpServer', x=560.47, y=43.22, z=199.94], EntityZombie['Zombie'/70, l='MpServer', x=561.69, y=58.00, z=286.97], EntityZombie['Zombie'/71, l='MpServer', x=557.69, y=58.00, z=286.13], EntityZombie['Zombie'/73, l='MpServer', x=564.66, y=58.00, z=289.41], EntityCreeper['Creeper'/74, l='MpServer', x=563.78, y=58.00, z=290.22], EntityZombie['Zombie'/78, l='MpServer', x=582.34, y=54.00, z=140.34], EntityBat['Bat'/79, l='MpServer', x=593.19, y=43.94, z=183.31], EntityBat['Bat'/80, l='MpServer', x=590.88, y=46.06, z=185.75], EntityZombie['Zombie'/81, l='MpServer', x=588.50, y=55.00, z=189.50], EntityBat['Bat'/82, l='MpServer', x=583.75, y=43.66, z=193.25], EntitySpider['Spider'/83, l='MpServer', x=580.69, y=38.00, z=262.31], EntityCreeper['Creeper'/84, l='MpServer', x=581.53, y=37.00, z=273.06], EntityBat['Bat'/95, l='MpServer', x=597.06, y=44.10, z=181.59], EntitySkeleton['Skeleton'/96, l='MpServer', x=599.09, y=53.00, z=189.47], EntityCreeper['Creeper'/97, l='MpServer', x=592.50, y=53.00, z=186.50], EntityZombie['Zombie'/98, l='MpServer', x=597.50, y=53.00, z=185.50], EntitySkeleton['Skeleton'/99, l='MpServer', x=594.91, y=25.00, z=280.53], EntitySkeleton['Skeleton'/100, l='MpServer', x=600.50, y=37.00, z=288.50], EntityCreeper['Creeper'/101, l='MpServer', x=599.53, y=37.00, z=289.50], EntitySkeleton['Skeleton'/103, l='MpServer', x=616.50, y=58.00, z=184.50], EntitySpider['Spider'/106, l='MpServer', x=631.97, y=22.00, z=216.50], EntityCreeper['Creeper'/109, l='MpServer', x=647.50, y=22.00, z=209.50], EntityPlayerSP['ExterminateYT'/118, l='MpServer', x=572.00, y=69.00, z=210.22]]
+	Retry entities: 0 total; []
+	Server brand: vanilla
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:404)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2775)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:461)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_202, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 596871264 bytes (569 MB) / 991428608 bytes (945 MB) up to 991428608 bytes (945 MB)
+	JVM Flags: 2 total; -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 13, tallocated: 99
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 512.15, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: gamerswordpack.zip
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-9700F CPU @ 3.00GHz
+	OptiFine Version: OptiFine_1.8.9_HD_U_M5
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 10
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: Insanity-Shader-Universal-v1.231.zip
+	OpenGlVersion: 4.6.0 NVIDIA 512.15
+	OpenGlRenderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8

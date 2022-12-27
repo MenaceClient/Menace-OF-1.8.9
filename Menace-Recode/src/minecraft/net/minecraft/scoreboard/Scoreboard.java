@@ -101,13 +101,7 @@ public class Scoreboard
         }
         else
         {
-            Map<ScoreObjective, Score> map = (Map)this.entitiesScoreObjectives.get(name);
-
-            if (map == null)
-            {
-                map = Maps.<ScoreObjective, Score>newHashMap();
-                this.entitiesScoreObjectives.put(name, map);
-            }
+            Map<ScoreObjective, Score> map = this.entitiesScoreObjectives.computeIfAbsent(name, k -> Maps.newHashMap());
 
             Score score = (Score)map.get(objective);
 
@@ -123,7 +117,7 @@ public class Scoreboard
 
     public Collection<Score> getSortedScores(ScoreObjective objective)
     {
-        List<Score> list = Lists.<Score>newArrayList();
+        List<Score> list = Lists.newArrayList();
 
         for (Map<ScoreObjective, Score> map : this.entitiesScoreObjectives.values())
         {

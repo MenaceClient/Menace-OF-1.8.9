@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class EventManager {
 
-	private Map<Class<? extends Event>, ArrayHelper<Data>> REGISTRY_MAP = new HashMap();
+	private final Map<Class<? extends Event>, ArrayHelper<Data>> REGISTRY_MAP = new HashMap<>();
 
 	public void register(Object o) {
 

@@ -6,12 +6,20 @@ import java.util.ArrayList;
 import com.google.gson.JsonObject;
 
 import dev.menace.Menace;
+import dev.menace.module.modules.render.ClickGuiModule;
 import dev.menace.module.settings.Setting;
 import dev.menace.module.settings.ToggleSetting;
 import dev.menace.utils.file.FileManager;
+import dev.menace.utils.misc.SoundPlayer;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.PositionedSoundRecord;
+import net.minecraft.util.ResourceLocation;
 
 public class BaseModule {
+
+	{
+		ModuleManager.modules.add(this);
+	}
 
 	public float optionAnim = 0;
 	public float optionAnimNow = 0;
@@ -85,10 +93,17 @@ public class BaseModule {
 	public void setup() {}
 
 	public void onEnable() {
+		if (Menace.instance.moduleManager.clickGuiModule.sounds.getValue() && !(this instanceof ClickGuiModule) && !Menace.instance.starting) {
+			SoundPlayer.playSound(new ResourceLocation("menace/sound/sigma_enable.wav"));
+		}
+
 		Menace.instance.eventManager.register(this);
 	}
 	
 	public void onDisable() {
+		if (Menace.instance.moduleManager.clickGuiModule.sounds.getValue() && !(this instanceof ClickGuiModule) && !Menace.instance.starting) {
+			SoundPlayer.playSound(new ResourceLocation("menace/sound/sigma_disable.wav"));
+		}
 		Menace.instance.eventManager.unregister(this);
 	}
 	

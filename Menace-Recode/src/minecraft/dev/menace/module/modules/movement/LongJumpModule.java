@@ -19,77 +19,73 @@ import net.minecraft.util.BlockPos;
 
 public class LongJumpModule extends BaseModule {
 
-	int C03Count = 0;
 	public boolean damage = false;
-	private boolean C03Sent = false;
+	boolean sent = false;
+	int count = 0;
+	boolean disable;
 	
 	public LongJumpModule() {
 		super("LongJump", Category.MOVEMENT, 0);
 	}
-	
+
 	@Override
 	public void onEnable() {
-		C03Count = 0;
-		C03Sent = false;
 		damage = false;
+		sent = false;
+		count = 0;
+		disable = false;
 		super.onEnable();
 	}
-	
+
+	@EventTarget
+	public void onMove(EventMove event) {
+		if (!sent) {
+			event.cancel();
+		}
+	}
+
 	@EventTarget
 	public void onPre(EventPreMotion event) {
-		if (C03Count >= 4 && !damage && !C03Sent) {
+
+		if (count >= 5 && !damage && !sent) {
 			PacketUtils.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(-1, -1, -1), 255, new ItemStack(Items.water_bucket), 0, 0.5f, 0));
 			PacketUtils.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY - 1.5, mc.thePlayer.posZ), 1, new net.minecraft.item.ItemStack(Blocks.stone.getItem(mc.theWorld, new BlockPos(-1, -1, -1))), 0f, 0.94f, 0f));
 			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 3.05, mc.thePlayer.posZ, false));
 			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
 			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY+0.41999998688697815, mc.thePlayer.posZ, true));
-			mc.thePlayer.motionX = 0.0;
-			mc.thePlayer.motionY = 0.0;
-			mc.thePlayer.motionZ = 0.0;
-			C03Sent = true;
+			sent = true;
 		}
-		
+
 		if (mc.thePlayer.hurtTime != 0) {
 			damage = true;
 		}
-		
-		if (!damage) {
+
+		if (!sent) {
 			return;
 		}
-		
-		if (mc.thePlayer.motionY > .5) {
-			mc.thePlayer.motionY = -.4F;
-            this.toggle();
-			mc.timer.timerSpeed = 1F;
-        }
-        if (damage) {
-            if (mc.thePlayer.onGround) {
-				mc.thePlayer.jump();
-            } else {
-				mc.thePlayer.sendQueue.getNetworkManager().sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(-1, -1, -1), 255, new ItemStack(Items.water_bucket), 0, 0.5f, 0));
-				mc.thePlayer.sendQueue.getNetworkManager().sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY - 1.5, mc.thePlayer.posZ), 1, new ItemStack(Blocks.stone.getItem(mc.theWorld, new BlockPos(-1, -1, -1))), 0, 0.94f, 0));
-				mc.thePlayer.motionY = .6F;
-                MovementUtils.strafe(6);
-            }
-        }
-	}
-	
-	@EventTarget
-	public void onMove(EventMove event) {
 		if (!damage) {
-			event.cancel();
+			if (mc.thePlayer.onGround) {
+				mc.thePlayer.jump();
+				MovementUtils.strafe(1.5F);
+			}
+		} else {
+			if (!disable) {
+				mc.thePlayer.motionY = 0.42;
+				disable = true;
+			}
+			MovementUtils.strafe(3.7F);
+		}
+
+		if (mc.thePlayer.onGround && disable) {
+			this.toggle();
 		}
 	}
-	
+
 	@EventTarget
 	public void onSendPacket(EventSendPacket event) {
-		if ((event.getPacket() instanceof C03PacketPlayer ||
-				event.getPacket() instanceof C03PacketPlayer.C04PacketPlayerPosition ||
-				event.getPacket() instanceof C03PacketPlayer.C05PacketPlayerLook ||
-				event.getPacket() instanceof C03PacketPlayer.C06PacketPlayerPosLook)
-				&& !damage && !C03Sent) {
-			event.setCancelled(true);
-			C03Count++;
+		if (event.getPacket() instanceof C03PacketPlayer && !damage && !sent) {
+			event.cancel();
+			count++;
 		}
 	}
 

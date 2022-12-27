@@ -2,6 +2,7 @@
   <configuration default="false" name="MenaceClient" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="Start" />
     <module name="Menace-Recode" />
+    <option name="PROGRAM_PARAMETERS" value="-menaceUUID 1830e30e-1cb4-31cd-9cd4-d6fe65148b96" />
     <option name="VM_PARAMETERS" value="-Xmx1024M -Xms1024M" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/jars" />
     <method v="2">

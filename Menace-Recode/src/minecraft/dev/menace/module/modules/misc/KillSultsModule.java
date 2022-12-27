@@ -147,7 +147,7 @@ public class KillSultsModule extends BaseModule {
 	public static @NotNull List<String> readInsults() {
 		List<String> s = new ArrayList<>();
 		try {
-			final URL url = new URL("https://menaceapi.cf/assets/876940587946589786/Insults.txt");
+			final URL url = new URL("https://menaceapi.cf/Insults.txt");
             URLConnection uc = url.openConnection();
             uc.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(uc.getInputStream(), StandardCharsets.UTF_8));

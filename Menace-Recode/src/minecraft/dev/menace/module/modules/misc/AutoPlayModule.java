@@ -40,6 +40,7 @@ public class AutoPlayModule extends BaseModule {
     public void onRecievePacket(EventReceivePacket event) {
         if (event.getPacket() instanceof S02PacketChat) {
             String message = ((S02PacketChat) event.getPacket()).getChatComponent().getUnformattedText();
+            if (message == null) return;
             if ((message.contains(mc.thePlayer.getName() + " was killed by ") || message.contains(mc.thePlayer.getName() + " died!")) && !newGame) {
                 ChatUtils.message("Sending you to a new game.");
                 new Thread(() -> {

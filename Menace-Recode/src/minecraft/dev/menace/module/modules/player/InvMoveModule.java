@@ -1,6 +1,7 @@
 package dev.menace.module.modules.player;
 
 import dev.menace.event.EventTarget;
+import dev.menace.event.events.EventReceivePacket;
 import dev.menace.event.events.EventSendPacket;
 import dev.menace.event.events.EventUpdate;
 import dev.menace.module.BaseModule;
@@ -15,6 +16,7 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.*;
+import net.minecraft.network.play.server.S2EPacketCloseWindow;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.input.Keyboard;
 
@@ -95,6 +97,15 @@ public class InvMoveModule extends BaseModule {
                 event.getPacket() instanceof C03PacketPlayer) {
             event.setCancelled(true);
             packets.add(event.getPacket());
+        }
+    }
+
+    @EventTarget
+    public void onRecievePacket(EventReceivePacket event) {
+        if (event.getPacket() instanceof S2EPacketCloseWindow) {
+            event.cancel();
+            PacketUtils.sendPacketNoEvent(new C0DPacketCloseWindow());
+            PacketUtils.sendPacketNoEvent(new C16PacketClientStatus(C16PacketClientStatus.EnumState.OPEN_INVENTORY_ACHIEVEMENT));
         }
     }
 
