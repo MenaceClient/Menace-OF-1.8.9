@@ -185,8 +185,8 @@ public class GuiPlayerTabOverlay extends Gui
                 }
 
                 Menace.instance.onlineMenaceUsers.forEach((username, ign) -> {
-                    if (!Objects.equals(username, Menace.instance.user.getUsername()) && ign != null && s1[0].contains(ign)) {
-                        s1[0] = s1[0].replace(ign, ign + " §r(§b" + username + "§r) ");
+                    if (ign != null && s1[0].contains(ign)) {
+                        s1[0] = s1[0].replace(ign, ign + " ï¿½r(ï¿½b" + username + "ï¿½r) ");
                     }
                 });
 

@@ -206,8 +206,8 @@ public class Menace {
 
 			final String[] formattedMessage = {((S02PacketChat) event.getPacket()).getChatComponent().getFormattedText()};
 			onlineMenaceUsers.forEach((username, ign) -> {
-				if (!Objects.equals(username, Menace.instance.user.getUsername()) && ign != null && formattedMessage[0].contains(ign)) {
-					formattedMessage[0] = formattedMessage[0].replace(ign, ign + " §r(§b" + username + "§r) ");
+				if (ign != null && formattedMessage[0].contains(ign)) {
+					formattedMessage[0] = formattedMessage[0].replace(ign, ign + " ï¿½r(ï¿½b" + username + "ï¿½r) ");
 				}
 			});
 
@@ -218,8 +218,8 @@ public class Menace {
 			final String[] formattedMessage = {packet.getMessage().getFormattedText()};
 
 			onlineMenaceUsers.forEach((username, ign) -> {
-				if (!Objects.equals(username, Menace.instance.user.getUsername()) && ign != null && formattedMessage[0].contains(ign)) {
-					formattedMessage[0] = formattedMessage[0].replace(ign, ign + " §r(§b" + username + "§r) ");
+				if (ign != null && formattedMessage[0].contains(ign)) {
+					formattedMessage[0] = formattedMessage[0].replace(ign, ign + " ï¿½r(ï¿½b" + username + "ï¿½r) ");
 				}
 			});
 
