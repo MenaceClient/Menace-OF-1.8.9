@@ -17,7 +17,7 @@ public class AntiCactusModule extends BaseModule {
 
     @EventTarget
     public void onCollide(@NotNull EventCollide event) {
-        if (event.getBlock() == Blocks.cactus) {
+        if (event.getBlock() == Blocks.cactus/* || event.getBlock() == Blocks.web*/) {
             event.setBoundingBox(Blocks.bedrock.getCollisionBoundingBox(mc.theWorld, new BlockPos(event.getPosX(), event.getPosY(), event.getPosZ()), Blocks.bedrock.getDefaultState()));
         }
     }

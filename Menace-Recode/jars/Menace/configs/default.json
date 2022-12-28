@@ -27,11 +27,7 @@
       "MaxCPS": 12.0,
       "TicksExisted": 10.0,
       "FOV": 360.0,
-      "Mode": "Single",
-      "Switch Delay": 100.0,
-      "Attack Event": "Pre",
       "Filter": "Distance",
-      "Rotation": "Bypass",
       "AutoBlock": "Fake",
       "KeepSprint": true,
       "NoSwing": false,
@@ -40,21 +36,6 @@
       "RayCast": true,
       "AutoDisable": true,
       "AntiBot": true,
-      "Players": true,
-      "Hostiles": true,
-      "Passives": false,
-      "Invisibles": false,
-      "Visible": true
-    }
-  },
-  "TestAura": {
-    "Toggled": false,
-    "Settings": {
-      "Reach": 3.0,
-      "FOV": 360.0,
-      "TicksExisted": 10.0,
-      "ThroughWalls": false,
-      "InInventory": false,
       "Players": true,
       "Hostiles": true,
       "Passives": false,
@@ -258,6 +239,7 @@
       "ItemRotation": 45.0,
       "SwingAnim": true,
       "AnythingBlock": false,
+      "1.7": false,
       "Visible": true
     }
   },
@@ -348,6 +330,7 @@
   "DevModule": {
     "Toggled": false,
     "Settings": {
+      "AntiAFK": true,
       "Visible": true
     }
   },

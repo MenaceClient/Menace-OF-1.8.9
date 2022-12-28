@@ -22,43 +22,22 @@
   "KillAura": {
     "Toggled": false,
     "Settings": {
-      "Reach": 6.6000000000000005,
-      "MinCPS": 20.0,
-      "MaxCPS": 20.0,
+      "Reach": 3.8000000000000003,
+      "MinCPS": 16.0,
+      "MaxCPS": 18.0,
       "TicksExisted": 0.0,
-      "FOV": 179.0,
-      "Mode": "Switch",
-      "Switch Delay": 10.0,
-      "Attack Event": "Pre",
+      "FOV": 360.0,
       "Filter": "Distance",
-      "Rotation": "Bypass",
       "AutoBlock": "Fake",
       "KeepSprint": true,
       "NoSwing": false,
       "ThroughWalls": true,
       "InInventory": true,
-      "RayCast": true,
+      "RayCast": false,
       "AutoDisable": true,
       "AntiBot": false,
       "Players": true,
       "Hostiles": true,
-      "Passives": false,
-      "Invisibles": false,
-      "Visible": true
-    }
-  },
-  "TestAura": {
-    "Toggled": false,
-    "Settings": {
-      "MinCPS": 18.0,
-      "MaxCPS": 20.0,
-      "Reach": 3.7,
-      "FOV": 360.0,
-      "TicksExisted": 10.0,
-      "ThroughWalls": true,
-      "InInventory": true,
-      "Players": true,
-      "Hostiles": false,
       "Passives": false,
       "Invisibles": false,
       "Visible": true
@@ -82,9 +61,9 @@
     "Toggled": false,
     "Settings": {
       "Mode": "Vanilla",
-      "VanillaMode": "Creative",
+      "VanillaMode": "Damage",
       "VerusMode": "Bob",
-      "OtherMode": "MatrixDamage",
+      "OtherMode": "NCPSlime",
       "DmgMode": "Jump",
       "Speed": 3.0,
       "Viewbob": 0.1,
@@ -98,10 +77,10 @@
     }
   },
   "Speed": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
-      "Mode": "BHop",
-      "Speed": 5.0,
+      "Mode": "BlocksMC",
+      "Speed": 1.0,
       "AutoDisable": true,
       "Visible": true
     }
@@ -114,7 +93,7 @@
     }
   },
   "Step": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Mode": "Vanilla",
       "Height": 4.0,
@@ -136,7 +115,7 @@
   "AntiVoid": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Teleport",
+      "Mode": "Flag",
       "Visible": true
     }
   },
@@ -150,10 +129,10 @@
     }
   },
   "InvManager": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
-      "Delay Min": 60.0,
-      "Delay Max": 70.0,
+      "Delay Min": 50.0,
+      "Delay Max": 60.0,
       "In Inventory": true,
       "CloseScreen": false,
       "Randomize": true,
@@ -175,14 +154,14 @@
     }
   },
   "NoFall": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Mode": "SpoofGround",
       "Visible": true
     }
   },
   "NoSlow": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Mode": "Vanilla",
       "Visible": true
@@ -200,9 +179,9 @@
     "Settings": {
       "Tower": true,
       "Tower Move": false,
-      "Tower Mode": "Normal",
+      "Tower Mode": "BlocksMC",
       "Tower Speed": 50.0,
-      "Tower Derp": true,
+      "Tower Derp": false,
       "Sprint": true,
       "KeepRotations": true,
       "SilentSwap": false,
@@ -225,7 +204,7 @@
   "ChestStealer": {
     "Toggled": true,
     "Settings": {
-      "Delay Min": 40.0,
+      "Delay Min": 50.0,
       "Delay Max": 60.0,
       "CloseScreen": true,
       "Randomize": true,
@@ -234,7 +213,7 @@
     }
   },
   "FastPlace": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Visible": true
     }
@@ -260,6 +239,7 @@
       "ItemRotation": 45.0,
       "SwingAnim": true,
       "AnythingBlock": false,
+      "1.7": false,
       "Visible": false
     }
   },
@@ -303,7 +283,7 @@
       "GameStats": true,
       "TargetHUD": true,
       "Notifications": true,
-      "TabGui": true,
+      "TabGui": false,
       "Custom Font": true,
       "Color": "Custom",
       "RBW Speed": 10.0,
@@ -341,7 +321,7 @@
     }
   },
   "AutoPlay": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "Delay": 700.0,
       "Visible": false
@@ -360,7 +340,7 @@
     }
   },
   "KillSults": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "Visible": false
     }

@@ -1,10 +1,13 @@
 package dev.menace;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import dev.menace.command.CommandManager;
 import dev.menace.event.EventManager;
 import dev.menace.event.EventTarget;
 import dev.menace.event.events.EventKey;
 import dev.menace.event.events.EventReceivePacket;
+import dev.menace.event.events.EventWorldChange;
 import dev.menace.module.ModuleManager;
 import dev.menace.module.config.ConfigManager;
 import dev.menace.ui.altmanager.LoginManager;
@@ -14,31 +17,35 @@ import dev.menace.ui.clickgui.menace.MenaceClickGui;
 import dev.menace.ui.hud.HUDManager;
 import dev.menace.utils.file.FileManager;
 import dev.menace.utils.irc.IRCClient;
+import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.misc.DiscordRP;
+import dev.menace.utils.misc.ServerUtils;
 import dev.menace.utils.notifications.Notification;
 import dev.menace.utils.notifications.NotificationManager;
 import dev.menace.utils.render.font.Fonts;
 import dev.menace.utils.render.font.MenaceFontRenderer;
-import dev.menace.utils.security.AntiSkidUtils;
-import dev.menace.utils.security.HWIDManager;
-import dev.menace.utils.security.MenaceUUIDHandler;
 import dev.menace.utils.security.MenaceUser;
 import fr.litarvan.openauth.microsoft.MicrosoftAuthenticationException;
+import jdk.nashorn.internal.parser.JSONParser;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.SoundCategory;
-import net.minecraft.client.audio.SoundEventAccessorComposite;
 import net.minecraft.network.play.server.S02PacketChat;
+import net.minecraft.network.play.server.S45PacketTitle;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.Display;
 import viamcp.ViaMCP;
 
 import java.awt.*;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Scanner;
-import java.util.UUID;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.*;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Menace {
@@ -56,6 +63,7 @@ public class Menace {
 	public DiscordRP discordRP;
 
 	public MenaceUser user;
+	public LinkedHashMap<String, String> onlineMenaceUsers = new LinkedHashMap<>();
 
 	//Fonts
 	public MenaceFontRenderer sfPro;
@@ -95,7 +103,7 @@ public class Menace {
 
 		hudManager = new HUDManager();
 
-		irc = new IRCClient("irc.freenode.net", 6667);
+		irc = new IRCClient("chat.freenode.net", 6667);
 		
 		discordRP = new DiscordRP();
 		discordRP.start();
@@ -195,7 +203,63 @@ public class Menace {
 			if (message != null && message.contains(" was killed by " + MC.thePlayer.getName())) {
 				this.hudManager.gameStatsElement.kills++;
 			}
+
+			final String[] formattedMessage = {((S02PacketChat) event.getPacket()).getChatComponent().getFormattedText()};
+			onlineMenaceUsers.forEach((username, ign) -> {
+				if (!Objects.equals(username, Menace.instance.user.getUsername()) && ign != null && formattedMessage[0].contains(ign)) {
+					formattedMessage[0] = formattedMessage[0].replace(ign, ign + " §r(§b" + username + "§r) ");
+				}
+			});
+
+			((S02PacketChat) event.getPacket()).setChatComponent(new ChatComponentText(formattedMessage[0]));
+
+		} else if (event.getPacket() instanceof S45PacketTitle) {
+			S45PacketTitle packet = (S45PacketTitle) event.getPacket();
+			final String[] formattedMessage = {packet.getMessage().getFormattedText()};
+
+			onlineMenaceUsers.forEach((username, ign) -> {
+				if (!Objects.equals(username, Menace.instance.user.getUsername()) && ign != null && formattedMessage[0].contains(ign)) {
+					formattedMessage[0] = formattedMessage[0].replace(ign, ign + " §r(§b" + username + "§r) ");
+				}
+			});
+
+			packet.setMessage(new ChatComponentText(formattedMessage[0]));
 		}
+	}
+
+	@EventTarget
+	public void onWorldChange(EventWorldChange event) {
+		onlineMenaceUsers.clear();
+
+		try {
+			final URL url = new URL("https://menaceapi.cf/getMenaceUsers/");
+			HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
+			uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
+			uc.setRequestMethod("GET");
+			int responseCode = uc.getResponseCode();
+			if (responseCode == HttpURLConnection.HTTP_OK) {
+				BufferedReader in = new BufferedReader(new InputStreamReader(uc.getInputStream()));
+				String inputLine;
+				StringBuilder response = new StringBuilder();
+
+				while ((inputLine = in.readLine()) != null) {
+					response.append(inputLine);
+				}
+				in.close();
+
+				JsonObject jsonObject = new JsonParser().parse(response.toString()).getAsJsonObject();
+				//System.out.println("Balls" + jsonObject);
+				if (jsonObject.has(ServerUtils.getRemoteIp())) {
+					JsonObject server = jsonObject.get(ServerUtils.getRemoteIp().toLowerCase()).getAsJsonObject();
+					server.entrySet().forEach(entry -> {
+						onlineMenaceUsers.put(entry.getKey(), entry.getValue().getAsString());
+					});
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public int getClientColor() {

@@ -27,7 +27,6 @@ public class ModuleManager {
 	ComboOneTapModule comboOneTapModule = new ComboOneTapModule();
 	CriticalsModule criticalsModule = new CriticalsModule();
 	public KillAuraModule killAuraModule = new KillAuraModule();
-	public TestAuraModule testAuraModule = new TestAuraModule();
 	//TPAuraModule tpAuraModule = new TPAuraModule();
 	public VelocityModule velocityModule = new VelocityModule();
 	

@@ -33,7 +33,7 @@ public class SpeedModule extends BaseModule {
 
     @Override
     public void setup() {
-        mode = new ListSetting("Mode", true, "BHop", new String[] {"BHop", "Strafe", "LowHop", "Experimental"});
+        mode = new ListSetting("Mode", true, "BHop", new String[] {"BHop", "Strafe", "LowHop", "BlocksMC"});
         speed = new SliderSetting("Speed", true, 1, 1, 10, true);
         autoDisable = new ToggleSetting("AutoDisable", true, true);
         this.rSetting(mode);
@@ -75,6 +75,20 @@ public class SpeedModule extends BaseModule {
                 MovementUtils.strafe(speed.getValueF() / 2);
             }
             MovementUtils.strafe();
+        } else if(mode.getValue().equalsIgnoreCase("BlocksMC")) {
+            if(!MovementUtils.shouldMove()) return;
+
+            mc.gameSettings.keyBindJump.pressed = false;
+            if(mc.thePlayer.onGround) {
+                mc.thePlayer.jump();
+                if(mc.thePlayer.isPotionActive(Potion.moveSpeed)){
+                    MovementUtils.strafe(0.6863f);
+                } else {
+                    MovementUtils.strafe(0.5f);
+                }
+            }
+            MovementUtils.strafe();
+
         }
     }
 

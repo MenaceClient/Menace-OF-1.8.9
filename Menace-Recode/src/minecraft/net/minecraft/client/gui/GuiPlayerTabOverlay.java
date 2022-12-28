@@ -6,6 +6,7 @@ import com.mojang.authlib.GameProfile;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 import dev.menace.Menace;
 import net.minecraft.client.Minecraft;
@@ -176,12 +177,18 @@ public class GuiPlayerTabOverlay extends Gui
             if (k4 < list.size())
             {
                 NetworkPlayerInfo networkplayerinfo1 = (NetworkPlayerInfo)list.get(k4);
-                String s1 = this.getPlayerName(networkplayerinfo1);
+                final String[] s1 = {this.getPlayerName(networkplayerinfo1)};
 
                 //SecurityFeatures
                 if (Menace.instance.moduleManager.securityFeaturesModule.isToggled()) {
-                    s1 = s1.replaceAll(mc.thePlayer.getName(), Menace.instance.user.getUsername());
+                    s1[0] = s1[0].replaceAll(mc.thePlayer.getName(), Menace.instance.user.getUsername());
                 }
+
+                Menace.instance.onlineMenaceUsers.forEach((username, ign) -> {
+                    if (!Objects.equals(username, Menace.instance.user.getUsername()) && ign != null && s1[0].contains(ign)) {
+                        s1[0] = s1[0].replace(ign, ign + " §r(§b" + username + "§r) ");
+                    }
+                });
 
                 GameProfile gameprofile = networkplayerinfo1.getGameProfile();
 
@@ -206,12 +213,12 @@ public class GuiPlayerTabOverlay extends Gui
 
                 if (networkplayerinfo1.getGameType() == WorldSettings.GameType.SPECTATOR)
                 {
-                    s1 = EnumChatFormatting.ITALIC + s1;
-                    this.mc.fontRendererObj.drawStringWithShadow(s1, (float)j2, (float)k2, -1862270977);
+                    s1[0] = EnumChatFormatting.ITALIC + s1[0];
+                    this.mc.fontRendererObj.drawStringWithShadow(s1[0], (float)j2, (float)k2, -1862270977);
                 }
                 else
                 {
-                    this.mc.fontRendererObj.drawStringWithShadow(s1, (float)j2, (float)k2, -1);
+                    this.mc.fontRendererObj.drawStringWithShadow(s1[0], (float)j2, (float)k2, -1);
                 }
 
                 if (scoreObjectiveIn != null && networkplayerinfo1.getGameType() != WorldSettings.GameType.SPECTATOR)

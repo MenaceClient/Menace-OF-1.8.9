@@ -24,6 +24,7 @@ public class AnimationsModule extends BaseModule {
 	SliderSetting itemrotate;
 	ToggleSetting swinganim;
 	ToggleSetting anythingblock;
+	ToggleSetting onedotseven;
 	
 	public AnimationsModule() {
 		super("Animations", Category.RENDER, 0);
@@ -45,6 +46,7 @@ public class AnimationsModule extends BaseModule {
 		itemrotate = new SliderSetting("ItemRotation", true, 45, 0, 360, true);
 		swinganim = new ToggleSetting("SwingAnim", true, false);
 		anythingblock = new ToggleSetting("AnythingBlock", true, false);
+		onedotseven = new ToggleSetting("1.7", true, false);
 		this.rSetting(blockMode);
 		this.rSetting(transX);
 		this.rSetting(transY);
@@ -56,11 +58,15 @@ public class AnimationsModule extends BaseModule {
 		this.rSetting(itemrotate);
 		this.rSetting(swinganim);
 		this.rSetting(anythingblock);
+		this.rSetting(onedotseven);
 	}
 
 	@EventTarget
 	public void onUpdate(EventUpdate event) {
 		this.setDisplayName(blockMode.getValue());
+		if (onedotseven.getValue() && (mc.thePlayer.isBlocking() && mc.gameSettings.keyBindPickBlock.pressed || mc.thePlayer.isEating() && mc.gameSettings.keyBindPickBlock.pressed)) {
+			mc.clickMouse();
+		}
 	}
 	
 	public boolean getAnythingBlock() {

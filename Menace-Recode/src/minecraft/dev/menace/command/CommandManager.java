@@ -39,11 +39,11 @@ public class CommandManager {
 	@EventTarget
 	public void onChat(@NotNull EventChatOutput event) {
 		if (event.getMessage().startsWith(this.prefix)) {
+			event.cancel();
 			parse(event.getMessage().replaceFirst(this.prefix, ""));
-			event.cancel();
 		} else if (event.getMessage().startsWith(this.ircPrefix)) {
-			Menace.instance.irc.sendMsg(event.getMessage().replaceFirst(this.ircPrefix, ""));
 			event.cancel();
+			Menace.instance.irc.sendMsg(event.getMessage().replaceFirst(this.ircPrefix, ""));
 		}
 	}
 	

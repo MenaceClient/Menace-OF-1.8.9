@@ -6,6 +6,10 @@ import com.google.common.collect.Lists;
 import dev.menace.Menace;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.util.List;
 import net.minecraft.client.multiplayer.GuiConnecting;
 import net.minecraft.client.multiplayer.ServerData;
@@ -406,6 +410,18 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
     {
     	Menace.instance.discordRP.update("Bypassing " + server.serverIP);
         Menace.instance.hudManager.gameStatsElement.reset();
+
+        //Send Menace servers the server ip
+        try {
+            final URL url = new URL("https://menaceapi.cf/updateUser/" + server.serverIP + "/" + Menace.instance.user.getUsername() + "/" + mc.session.getUsername() + "/false");
+            HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
+            uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
+            uc.setRequestMethod("GET");
+            int responseCode = uc.getResponseCode();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         this.mc.displayGuiScreen(new GuiConnecting(this, this.mc, server));
     }
 

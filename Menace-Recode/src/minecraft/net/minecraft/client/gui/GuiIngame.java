@@ -9,6 +9,7 @@ import dev.menace.event.events.Event2D;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -597,18 +598,25 @@ public class GuiIngame extends Gui
         {
             ++j;
             ScorePlayerTeam scoreplayerteam1 = scoreboard.getPlayersTeam(score1.getPlayerName());
-            String s1 = ScorePlayerTeam.formatPlayerName(scoreplayerteam1, score1.getPlayerName());
+            final String[] s1 = {ScorePlayerTeam.formatPlayerName(scoreplayerteam1, score1.getPlayerName())};
 
             //SecurityFeatures
             if (Menace.instance.moduleManager.securityFeaturesModule.isToggled()) {
-                s1 = s1.replaceAll(mc.thePlayer.getName(), Menace.instance.user.getUsername());
+                s1[0] = s1[0].replaceAll(mc.thePlayer.getName(), Menace.instance.user.getUsername());
             }
+
+            Menace.instance.onlineMenaceUsers.forEach((username, ign) -> {
+                if (!Objects.equals(username, Menace.instance.user.getUsername()) && ign != null && s1[0].contains(ign)) {
+                    s1[0] = s1[0].replace(ign, ign + " §r(§b" + username + "§r) ");
+                }
+            });
+
 
             String s2 = EnumChatFormatting.RED + "" + score1.getScorePoints();
             int k = j1 - j * this.getFontRenderer().FONT_HEIGHT;
             int l = scaledRes.getScaledWidth() - k1 + 2;
             drawRect(l1 - 2, k, l, k + this.getFontRenderer().FONT_HEIGHT, 1342177280);
-            this.getFontRenderer().drawString(s1, l1, k, 553648127);
+            this.getFontRenderer().drawString(s1[0], l1, k, 553648127);
             this.getFontRenderer().drawString(s2, l - this.getFontRenderer().getStringWidth(s2), k, 553648127);
 
             if (j == collection.size())

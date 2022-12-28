@@ -16,7 +16,7 @@ public class StrafeModule extends BaseModule {
 	
 	@EventTarget
 	public void onUpdate(EventUpdate event) {
-		if (MovementUtils.isMoving()) {
+		if (MovementUtils.shouldMove()) {
 			MovementUtils.strafe();
 		}
 	}

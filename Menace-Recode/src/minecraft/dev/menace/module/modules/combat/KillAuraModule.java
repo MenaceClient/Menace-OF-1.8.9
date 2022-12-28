@@ -24,40 +24,37 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemSword;
-import net.minecraft.network.play.client.C02PacketUseEntity;
-import net.minecraft.network.play.client.C03PacketPlayer;
-import net.minecraft.network.play.client.C0APacketAnimation;
+import net.minecraft.network.play.client.*;
 import net.minecraft.network.play.server.S0CPacketSpawnPlayer;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MovingObjectPosition;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @DontSaveState
 public class KillAuraModule extends BaseModule {
 
 	MSTimer delayTimer = new MSTimer();
-	MSTimer switchTimer = new MSTimer();
 	public final ArrayList<Entity> botlist = new ArrayList<>();
 	public EntityLivingBase target;
-	long nextDelay;
+	long delay;
 	boolean blocking;
 	public boolean shouldFakeBlock;
 	float[] lastRotations = new float[2];
 	Random rand = new Random();
-	public static float yaw2, pitch2;
 	public SliderSetting reach;
 	public SliderSetting minCPS;
 	public SliderSetting maxCPS;
 	SliderSetting ticksExisted;
 	SliderSetting fov;
 	public ListSetting mode;
-	SliderSetting switchDelay;
-	ListSetting attackevent;
 	ListSetting filter;
-	ListSetting rotation;
 	ListSetting autoblock;
 	public ToggleSetting keepSprint;
 	ToggleSetting noswing;
@@ -96,16 +93,7 @@ public class KillAuraModule extends BaseModule {
 		};
 		ticksExisted = new SliderSetting("TicksExisted", true, 10, 0 , 100, true);
 		fov = new SliderSetting("FOV", true, 360, 0, 360, false);
-		mode = new ListSetting("Mode", true, "Single", new String[] {"Single", "Switch", "Multi"});
-		switchDelay = new SliderSetting("Switch Delay", true, 100, 10, 1000, 10, true) {
-			@Override
-			public void constantCheck() {
-				this.setVisible(Menace.instance.moduleManager.killAuraModule.mode.getValue().equalsIgnoreCase("Switch"));
-			}
-		};
-		attackevent = new ListSetting("Attack Event", true, "Pre", new String[] {"Pre", "Post"});
 		filter = new ListSetting("Filter", true, "Health", new String[] {"Health", "Distance", "Angle", "TicksExisted"});
-		rotation = new ListSetting("Rotation", true, "None", new String[] {"None", "Basic", "Bypass", "Jitter", "SpinBot"});
 		autoblock = new ListSetting("AutoBlock", true, "None", new String[] {"None", "Fake", "Vanilla"});
 		keepSprint = new ToggleSetting("KeepSprint", true, true);
 		noswing = new ToggleSetting("NoSwing", true, false);
@@ -123,11 +111,7 @@ public class KillAuraModule extends BaseModule {
 		this.rSetting(maxCPS);
 		this.rSetting(ticksExisted);
 		this.rSetting(fov);
-		this.rSetting(mode);
-		this.rSetting(switchDelay);
-		this.rSetting(attackevent);
 		this.rSetting(filter);
-		this.rSetting(rotation);
 		this.rSetting(autoblock);
 		this.rSetting(keepSprint);
 		this.rSetting(noswing);
@@ -146,83 +130,15 @@ public class KillAuraModule extends BaseModule {
 	@Override
 	public void onEnable() {
 		delayTimer.reset();
-		switchTimer.reset();
-		target = null;
-		final int maxValue = (int) ((this.minCPS.getMax() - this.maxCPS.getValue()) * 20);
-		final int minValue = (int) ((this.minCPS.getMin() - this.minCPS.getValue()) * 20);
-
-		nextDelay = (long) (randomBetween(minValue, maxValue) - rand.nextInt(10) + rand.nextInt(10));
-		blocking = false;
-		shouldFakeBlock = false;
-		lastRotations[0] = mc.thePlayer.rotationYaw;
-		lastRotations[1] = mc.thePlayer.rotationPitch;
+		delay = (long) randomBetween(minCPS.getValue(), maxCPS.getValue());
+		lastRotations = new float[]{mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch};
 		super.onEnable();
 	}
 
 	@Override
 	public void onDisable() {
-		target = null;
-		unblock();
+		shouldFakeBlock = false;
 		super.onDisable();
-	}
-
-	@EventTarget
-	public void onPreMotion(EventPreMotion event) {
-		if (autoDisable.getValue() && mc.thePlayer.ticksExisted == 0) {
-			ChatUtils.message("Toggled Killaura due to death/world change");
-			this.toggle();
-		}
-		this.setDisplayName(rotation.getValue());
-		if (target == null) {
-			if (lastRotations[0] != mc.thePlayer.rotationYaw && lastRotations[1] != mc.thePlayer.rotationPitch) {
-				float[] requiredRotations = new float[] {mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch};
-				float[] newRotations = PlayerUtils.getFixedRotation(requiredRotations, lastRotations);
-				event.setYaw(newRotations[0]);
-				event.setPitch(newRotations[1]);
-				lastRotations = newRotations;
-			}
-		}
-		getTarget();
-		if (rotation.getValue().equalsIgnoreCase("Basic") && target != null) {
-			event.setYaw(PlayerUtils.getRotations(target)[0]);
-			event.setPitch(PlayerUtils.getRotations(target)[1]);
-		} else if (rotation.getValue().equalsIgnoreCase("Jitter") && target != null) {
-			float minYaw = PlayerUtils.getRotations(target.boundingBox.minX, target.posY, target.boundingBox.minZ)[0];
-			float maxYaw = PlayerUtils.getRotations(target.boundingBox.maxX, target.posY, target.boundingBox.maxZ)[0];
-			float yaw = MathUtils.randFloat(minYaw, maxYaw);
-			float minPitch = PlayerUtils.getRotations(target.posX, target.boundingBox.minY, target.posZ)[1];
-			float maxPitch = PlayerUtils.getRotations(target.posX, target.boundingBox.maxY, target.posZ)[1];
-			float pitch = MathUtils.randFloat(minPitch, maxPitch);
-			event.setYaw(yaw);
-			event.setPitch(pitch);
-		} else if (rotation.getValue().equalsIgnoreCase("Bypass") && target != null) {
-			event.setYaw(PlayerUtils.getFixedRotation(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox())), lastRotations)[0]);
-			event.setPitch(PlayerUtils.getFixedRotation(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox())), lastRotations)[1]);
-			lastRotations[0] = event.getYaw();
-			lastRotations[1] = event.getPitch();
-		}else if (rotation.getValue().equalsIgnoreCase("SpinBot") && target != null) {
-			pitch2 += 40;
-			yaw2 += 100f;
-			event.setYaw(yaw2);
-			event.setYaw(pitch2);
-		}
-
-		if (target != null) {
-			block();
-		} else {
-			unblock();
-		}
-
-		if (attackevent.getValue().equalsIgnoreCase("Pre")) {
-			attack();
-		}
-	}
-
-	@EventTarget
-	public void onPostMotion(EventPostMotion event) {
-		if (attackevent.getValue().equalsIgnoreCase("Post")) {
-			attack();
-		}
 	}
 
 	@EventTarget
@@ -233,116 +149,99 @@ public class KillAuraModule extends BaseModule {
 		}
 	}
 
-	public void getTarget() {
-		if ((mode.getValue().equalsIgnoreCase("Single") && isValid(target))
-				|| (mode.getValue().equalsIgnoreCase("Switch") &&
-				!switchTimer.hasTimePassed(switchDelay.getValueL()) && isValid(target))) return;
-		Comparator<Entity> entityFilter = null;
+	@EventTarget
+	public void onPre(EventPreMotion event) {
+
+		List<EntityLivingBase> targets = filter(mc.theWorld.loadedEntityList.stream().filter(EntityLivingBase.class::isInstance).map(EntityLivingBase.class::cast).collect(Collectors.toList()));
+
+		Comparator<EntityLivingBase> comparator = null;
 		switch (filter.getValue()) {
-
-			case "Health" :
-				entityFilter = Comparator.comparingInt(e -> (int) ((EntityLivingBase) e).getHealth());
+			case "Health":
+				comparator = Comparator.comparingDouble(EntityLivingBase::getHealth);
 				break;
-
-			case "Distance" :
-				entityFilter = (e1, e2) -> (int)mc.thePlayer.getDistanceToEntity(e1) - (int)mc.thePlayer.getDistanceToEntity(e2);
+			case "Distance":
+				comparator = Comparator.comparingDouble(entity -> mc.thePlayer.getDistanceToEntity(entity));
 				break;
-
-			case "Angle" :
-				entityFilter = (e1, e2) -> (int)MathUtils.getAngleDifference(mc.thePlayer.rotationYaw, PlayerUtils.getRotations(e1)[0]) - (int)MathUtils.getAngleDifference(mc.thePlayer.rotationYaw, PlayerUtils.getRotations(e2)[0]);
+			case "Angle":
+				comparator = Comparator.comparingDouble(entity -> MathUtils.getAngleDifference(mc.thePlayer.rotationYaw, PlayerUtils.getRotations(entity)[0]));
 				break;
-
-			case "TicksExisted" :
-				entityFilter = Comparator.comparingInt(e -> e.ticksExisted);
+			case "TicksExisted":
+				comparator = Comparator.comparingInt(entity -> entity.ticksExisted);
 				break;
 		}
 
-		assert entityFilter != null;
-		if (mc.theWorld.loadedEntityList.stream()
-				.filter(this::isValid).min(entityFilter).isPresent()) {
-			target = (EntityLivingBase) mc.theWorld.loadedEntityList.stream()
-					.filter(this::isValid).min(entityFilter).get();
+		targets.sort(comparator);
+
+		if (!targets.isEmpty()) {
+			EntityLivingBase target = targets.get(0);
+
+			if (autoblock.getValue().equalsIgnoreCase("Fake")) {
+				shouldFakeBlock = true;
+			} else if (autoblock.getValue().equalsIgnoreCase("Vanilla")) {
+				block();
+			}
+
+			if (raycast.getValue()) {
+				final MovingObjectPosition objectMouseOver = RayCastUtils.getMouseOver(reach.getValueF());
+				assert objectMouseOver != null;
+				if (target != objectMouseOver.entityHit && objectMouseOver.entityHit instanceof EntityLivingBase) {
+					target = (EntityLivingBase) objectMouseOver.entityHit;
+				}
+			}
+
+			event.setYaw(PlayerUtils.getFixedRotation(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox())), lastRotations)[0]);
+			event.setPitch(PlayerUtils.getFixedRotation(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox())), lastRotations)[1]);
+
+			if (delayTimer.hasTimePassed(1000 / delay)) {
+
+				if (noswing.getValue()) {
+					PacketUtils.sendPacket(new C0APacketAnimation());
+				} else {
+					mc.thePlayer.swingItem();
+				}
+
+				mc.playerController.attackEntity(mc.thePlayer, target);
+				delay = (long) randomBetween(minCPS.getValue(), maxCPS.getValue());
+				delayTimer.reset();
+
+			}
 		} else {
-			target = null;
+			lastRotations = new float[]{mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch};
+			shouldFakeBlock = false;
 		}
 	}
 
-	public void attack() {
-		if (!delayTimer.hasTimePassed(nextDelay) || target == null || Menace.instance.moduleManager.scaffoldModule.isToggled()) {
-			return;
-		}
-
-		if (raycast.getValue()) {
-			final MovingObjectPosition objectMouseOver = RayCastUtils.getMouseOver(reach.getValueF());
-			assert objectMouseOver != null;
-			if (target != objectMouseOver.entityHit && objectMouseOver.entityHit instanceof EntityLivingBase) {
-				target = (EntityLivingBase) objectMouseOver.entityHit;
-			}
-		}
-
-		if (noswing.getValue()) {
-			PacketUtils.addToSendQueue(new C0APacketAnimation());
-		} else {
-			mc.thePlayer.swingItem();
-		}
-
-		if (mode.getValue().equalsIgnoreCase("Multi")) {
-			mc.theWorld.loadedEntityList.stream()
-					.filter(this::isValid).forEach(e -> {
-						if (keepSprint.getValue()) {
-							PacketUtils.sendPacket(new C02PacketUseEntity(e, C02PacketUseEntity.Action.ATTACK));
-						} else {
-							mc.playerController.attackEntity(mc.thePlayer, e);
-						}
-					});
-		} else {
-			mc.playerController.attackEntity(mc.thePlayer, target);
-		}
-
-		final int maxValue = (int) ((this.minCPS.getMax() - this.maxCPS.getValue()) * 20);
-		final int minValue = (int) ((this.minCPS.getMin() - this.minCPS.getValue()) * 20);
-
-		nextDelay = (long) (randomBetween(minValue, maxValue) - rand.nextInt(10) + rand.nextInt(10));
-
-		delayTimer.reset();
+	public List<EntityLivingBase> filter(List<EntityLivingBase> targets) {
+		targets = targets.stream().filter(entity -> entity != mc.thePlayer).collect(Collectors.toList());
+		targets = targets.stream().filter(entity -> !entity.isDead && entity.getHealth() > 0).collect(Collectors.toList());
+		targets = targets.stream().filter(entity -> entity.getDistanceToEntity(mc.thePlayer) <= reach.getValue()).collect(Collectors.toList());
+		targets = targets.stream().filter(entity -> mc.thePlayer.canEntityBeSeen(entity) || throughwalls.getValue()).collect(Collectors.toList());
+		targets = targets.stream().filter(entity -> !entity.isInvisible() || invisibles.getValue()).collect(Collectors.toList());
+		targets = targets.stream().filter(entity -> entity.ticksExisted >= ticksExisted.getValue()).collect(Collectors.toList());
+		targets = targets.stream().filter(entity -> isInFOV(entity, fov.getValue())).collect(Collectors.toList());
+		targets = targets.stream().filter(entity -> mc.currentScreen == null || ininv.getValue()).collect(Collectors.toList());
+		targets = targets.stream().filter(entity -> !(entity instanceof EntityPlayer) || players.getValue()).collect(Collectors.toList());
+		targets = targets.stream().filter(entity -> !(entity instanceof EntityMob) || hostiles.getValue()).collect(Collectors.toList());
+		targets = targets.stream().filter(entity -> !(entity instanceof EntityAnimal) || passives.getValue()).collect(Collectors.toList());
+		targets = targets.stream().filter(entity -> !isBot(entity)).collect(Collectors.toList());
+		return targets;
 	}
 
 	public double randomBetween(final double min, final double max) {
 		return min + (rand.nextDouble() * (max - min));
 	}
 
-	private boolean isValid(Entity e) {
-		return e instanceof EntityLivingBase
-				&& e != mc.thePlayer
-				&& e != Menace.instance.moduleManager.blinkModule.fp
-				&& mc.thePlayer.getDistanceToEntity(e) <= reach.getValue()
-				&& isInFOV(e, fov.getValue())
-				&& !e.isDead
-				&& e.ticksExisted >= ticksExisted.getValueI()
-				&& ((EntityLivingBase) e).getHealth() > 0
-				&& (!(e instanceof EntityPlayer) || players.getValue())
-				&& (!(e instanceof EntityMob) || hostiles.getValue())
-				&& (!(e instanceof EntityAnimal) || passives.getValue())
-				&& (!e.isInvisible() || invisibles.getValue())
-				&& (mc.thePlayer.canEntityBeSeen(e) || throughwalls.getValue())
-				&& (ininv.getValue() || mc.currentScreen == null)
-				&& !isBot(e);
-	}
-
 	private void block() {
-		if (autoblock.getValue().equalsIgnoreCase("Fake")) shouldFakeBlock = true;
-		if (mc.thePlayer.getHeldItem() == null
-				|| !(mc.thePlayer.getHeldItem().getItem() instanceof ItemSword)
-				|| !autoblock.getValue().equalsIgnoreCase("Vanilla")) return;
-
+		if (mc.thePlayer.getHeldItem() == null || !(mc.thePlayer.getHeldItem().getItem() instanceof ItemSword)) return;
 		mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.getHeldItem());
+		//PacketUtils.addToSendQueue(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getCurrentItem()));
 		blocking = true;
 	}
 
 	private void unblock() {
-		shouldFakeBlock = false;
 		if (!blocking) return;
 		mc.playerController.onStoppedUsingItem(mc.thePlayer);
+		//PacketUtils.addToSendQueue(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
 		blocking = false;
 	}
 
