@@ -80,7 +80,7 @@ public class InvManagerModule extends BaseModule {
 		closeScreen = new ToggleSetting("CloseScreen", true, false) {
 			@Override
 			public void constantCheck() {
-				this.setValue(!Menace.instance.moduleManager.invManagerModule.inInv.getValue());
+				this.setVisible(Menace.instance.moduleManager.invManagerModule.inInv.getValue());
 			}
 		};
 		swordSet = new SliderSetting("Sword Slot", true, 1, 1, 9, true);
@@ -137,7 +137,7 @@ public class InvManagerModule extends BaseModule {
 
 			//TODO: Make this work
 
-			if (Menace.instance.moduleManager.killAuraModule.target != null || Menace.instance.moduleManager.scaffoldModule.isToggled()) {
+			if (Menace.instance.moduleManager.killAuraModule.trget != null || Menace.instance.moduleManager.scaffoldModule.isToggled() || mc.thePlayer.hurtTime > 0 || mc.currentScreen != null) {
 				return;
 			}
 
@@ -294,7 +294,7 @@ public class InvManagerModule extends BaseModule {
 			}
 		}
 
-		if (!delayTimer.hasTimePassed(nextDelay) || slotList.isEmpty()) return;
+		if (!delayTimer.hasTimePassed(nextDelay) || slotList.isEmpty() || !inInv.getValue()) return;
 
 		int o = randomize.getValue() ? MathUtils.randInt(0, slotList.size()) : 0;
 
@@ -388,14 +388,13 @@ public class InvManagerModule extends BaseModule {
 			delayTimer.reset();
 			nextDelay = MathUtils.randLong(minDelay.getValueL(), maxDelay.getValueL());
 			slotList.clear();
-		} else if (event.getPacket() instanceof C0APacketAnimation) {
-
 		}
 	}
 
 	private void scanInv() {
+		slotList.clear();
 		for (int i = 9; i < 45; ++i) {
-			if (mc.thePlayer.inventoryContainer.getSlot(i).getHasStack() && !slotList.contains(mc.thePlayer.inventoryContainer.getSlot(i))) {
+			if (mc.thePlayer.inventoryContainer.getSlot(i).getHasStack()) {
 				slotList.add(mc.thePlayer.inventoryContainer.getSlot(i));
 			}
 		}

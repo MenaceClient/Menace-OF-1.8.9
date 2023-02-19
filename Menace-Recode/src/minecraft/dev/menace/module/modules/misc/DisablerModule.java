@@ -56,7 +56,7 @@ public class DisablerModule extends BaseModule {
     @EventTarget
     public void onUpdate(EventUpdate event) {
 
-        if (timer.hasTimePassed(250L)) {
+        if (timer.hasTimePassed(750L)) {
             timer.reset();
             ChatUtils.message("Sending packet " + packetQueue.size() + "/ 300");
             if (!packetQueue.isEmpty()) {
@@ -78,6 +78,7 @@ public class DisablerModule extends BaseModule {
             event.cancel();
 
             packetQueue.add(packet);
+            ChatUtils.message("Added packet " + packetQueue.size() + "/ 300");
 
             if (packetQueue.size() > 300) {
                 ChatUtils.message("emptying queue");

@@ -174,7 +174,7 @@ public class VapeGui extends GuiScreen {
                 float cateY = windowY + 65;
                 for (Category m : Category.values()) {
                     if (m == category) {
-                        fs.drawString(m.name(), windowX + 20, cateY, -1);
+                        fs.drawString(m.getName(), windowX + 20, cateY, -1);
                         if (isHovered(windowX, windowY, windowX + width, windowY + 20, mouseX, mouseY) && Mouse.isButtonDown(0)) {
                             hy = cateY;
                         } else {
@@ -183,7 +183,7 @@ public class VapeGui extends GuiScreen {
                             }
                         }
                     } else {
-                        fs.drawString(m.name(), windowX + 20, cateY, new Color(108, 109, 113).getRGB());
+                        fs.drawString(m.getName(), windowX + 20, cateY, new Color(108, 109, 113).getRGB());
                     }
 
 

@@ -25,6 +25,8 @@ public class CommandManager {
 	ConfigCmd configCmd = new ConfigCmd();
 	IRCCmd ircCmd = new IRCCmd();
 	PrefixCmd prefixCmd = new PrefixCmd();
+	ScriptCmd scriptCmd = new ScriptCmd();
+	TeleportCmd teleportCmd = new TeleportCmd();
 	VClipCmd vClipCmd = new VClipCmd();
 
 	

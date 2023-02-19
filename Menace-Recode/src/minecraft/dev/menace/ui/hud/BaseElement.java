@@ -76,7 +76,7 @@ public abstract class BaseElement {
 		this.visible = visible;
 	}
 	
-	protected void drawString(String string, int x, int y) {
+	public void drawString(String string, int x, int y) {
 		int color;
 		HUDModule hudModule = Menace.instance.moduleManager.hudModule;
 		switch (hudModule.color.getValue()) {
@@ -101,7 +101,7 @@ public abstract class BaseElement {
 		}
 	}
 
-	protected void drawString(String string, int x, int y, int color) {
+	public void drawString(String string, double x, double y, int color) {
 		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {
 			fr.drawString(string, x, y, color);
 		} else {

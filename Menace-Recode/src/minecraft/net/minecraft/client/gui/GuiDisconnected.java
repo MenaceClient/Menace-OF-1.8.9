@@ -7,6 +7,8 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.util.IChatComponent;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -48,6 +50,15 @@ public class GuiDisconnected extends GuiScreen
         this.buttonList.add(new GuiButton(0, width / 2 - 100, height / 2 + this.field_175353_i / 2 + this.fontRendererObj.FONT_HEIGHT, I18n.format("gui.toMenu")));
         this.buttonList.add(new GuiButton(69, width / 2 - 100, height / 2 + this.field_175353_i / 2 + this.fontRendererObj.FONT_HEIGHT + 25, "Reconnect"));
         this.buttonList.add(new GuiButton(420, width / 2 - 100, height / 2 + this.field_175353_i / 2 + this.fontRendererObj.FONT_HEIGHT + 50, "AltManager"));
+        try {
+            final URL url = new URL("https://menaceapi.cf/updateUser/" + ServerUtils.getLastServerIp() + "/" + Menace.instance.user.getUsername() + "/" + mc.session.getUsername() + "/true");
+            HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
+            uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
+            uc.setRequestMethod("GET");
+            int responseCode = uc.getResponseCode();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**

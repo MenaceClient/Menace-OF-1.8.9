@@ -57,7 +57,7 @@ ofNaturalTextures:false
 ofEmissiveTextures:true
 ofLazyChunkLoading:true
 ofRenderRegions:false
-ofSmartAnimations:false
+ofSmartAnimations:true
 ofDynamicFov:false
 ofAlternateBlocks:true
 ofDynamicLights:3

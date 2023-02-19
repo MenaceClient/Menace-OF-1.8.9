@@ -13,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
@@ -31,25 +32,11 @@ public class StaffDetectorModule extends BaseModule {
 
     @Override
     public void setup() {
-        final boolean[] check = {false};
         Thread t = new Thread() {
             @Override
             public void run() {
-                MSTimer timer = new MSTimer();
-                timer.reset();
-                while (!check[0] && !timer.hasTimePassed(30000L)) {
-                    obStaffs = readURL();
-
-                    if (!obStaffs.contains("checking")) {
-                        check[0] = true;
-                        System.out.println("[Menace] Found " + obStaffs.size() + " staff");
-                    }
-                }
-
-                if (!check[0]) {
-                    obStaffs = readURL2();
-                    System.out.println("[Menace] Found " + obStaffs.size() + " staff using backup");
-                }
+                obStaffs = readURL();
+                System.out.println("[Menace] Found " + obStaffs.size() + " staff");
                 super.run();
             }
         };
@@ -63,6 +50,20 @@ public class StaffDetectorModule extends BaseModule {
     public void onEnable() {
         detected = false;
         super.onEnable();
+    }
+
+    @EventTarget
+    public void onWorld(EventWorldChange eventWorldChange) {
+        Thread t = new Thread() {
+            @Override
+            public void run() {
+                obStaffs = readURL();
+                System.out.println("[Menace] Found " + obStaffs.size() + " staff");
+                super.run();
+            }
+        };
+
+        t.start();
     }
 
     @EventTarget
@@ -160,30 +161,13 @@ public class StaffDetectorModule extends BaseModule {
     public static @NotNull List<String> readURL() {
         List<String> s = new ArrayList<>();
         try {
-            final URL url = new URL("https://add-my-brain.exit-scammed.repl.co/staff/");
+            final URL url = new URL("https://menaceapi.cf/getStaff/");
             URLConnection uc = url.openConnection();
             uc.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(uc.getInputStream(), StandardCharsets.UTF_8));
-            String hwid;
-            while ((hwid = bufferedReader.readLine()) != null) {
-                s.addAll(Arrays.asList(hwid.split(" ")));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return s;
-    }
-
-    public static @NotNull List<String> readURL2() {
-        List<String> s = new ArrayList<>();
-        try {
-            final URL url = new URL("https://themoskau.github.io/LiquidCloud/LiquidBounce/staffs.txt");
-            URLConnection uc = url.openConnection();
-            uc.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(uc.getInputStream(), StandardCharsets.UTF_8));
-            String hwid;
-            while ((hwid = bufferedReader.readLine()) != null) {
-                s.addAll(Arrays.asList(hwid.split(" ")));
+            String name;
+            while ((name = bufferedReader.readLine()) != null) {
+                s.add(name);
             }
         } catch (Exception e) {
             e.printStackTrace();

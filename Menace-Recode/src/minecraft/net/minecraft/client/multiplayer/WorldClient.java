@@ -21,10 +21,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.profiler.Profiler;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.src.Config;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
@@ -535,5 +532,21 @@ public class WorldClient extends World
     public boolean isPlayerUpdate()
     {
         return this.playerUpdate;
+    }
+
+    public Block getBlock(int p_147439_1_, int p_147439_2_, int p_147439_3_) {
+        if ((p_147439_1_ >= -30000000) && (p_147439_3_ >= -30000000) && (p_147439_1_ < 30000000) && (p_147439_3_ < 30000000) && (p_147439_2_ >= 0) && (p_147439_2_ < 256)) {
+            Chunk var4 = null;
+            try {
+                var4 = getChunkFromChunkCoords(p_147439_1_ >> 4, p_147439_3_ >> 4);
+                return var4.getBlock0(p_147439_1_ & 0xF, p_147439_2_, p_147439_3_ & 0xF);
+            } catch (Throwable var8) {
+                CrashReport var6 = CrashReport.makeCrashReport(var8, "Exception getting block type in world");
+                CrashReportCategory var7 = var6.makeCategory("Requested block coordinates");
+                var7.addCrashSection("Found chunk", Boolean.valueOf(var4 == null));
+                throw new ReportedException(var6);
+            }
+        }
+        return Blocks.air;
     }
 }

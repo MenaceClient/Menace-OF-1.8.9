@@ -422,6 +422,14 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
             throw new RuntimeException(e);
         }
 
+        new Thread() {
+            @Override
+            public void run() {
+                Menace.instance.updateOnline();
+                super.run();
+            }
+        }.start();
+
         this.mc.displayGuiScreen(new GuiConnecting(this, this.mc, server));
     }
 

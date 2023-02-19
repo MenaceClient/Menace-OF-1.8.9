@@ -4,6 +4,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import dev.menace.Menace;
 import dev.menace.command.BaseCommand;
+import dev.menace.module.ModuleManager;
 import dev.menace.module.config.Config;
 import dev.menace.utils.misc.ChatUtils;
 
@@ -29,7 +30,7 @@ public class ConfigCmd extends BaseCommand {
 			cfg.load();
 			ChatUtils.message("Loaded config " + args[1]);
 		} else if (args[0].equalsIgnoreCase("none")) {
-			Menace.instance.moduleManager.modules.forEach(module -> {
+			ModuleManager.modules.forEach(module -> {
 				if (module.isToggled()) {
 					module.toggle();
 				}

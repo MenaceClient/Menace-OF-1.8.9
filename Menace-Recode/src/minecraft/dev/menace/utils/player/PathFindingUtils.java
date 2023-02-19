@@ -1,55 +1,78 @@
 package dev.menace.utils.player;
 
-import dev.menace.utils.misc.MathUtils;
-import dev.menace.utils.world.BlockUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.Vec3;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
+public final class PathFindingUtils {
+    private static final Minecraft mc = Minecraft.getMinecraft();
 
-public class PathFindingUtils {
-
-    Minecraft mc = Minecraft.getMinecraft();
-
-    public ArrayList<BlockPos> findPath(double destX, double destY, double destZ) {
-        return findPath(new BlockPos(destX, destY, destZ));
-    }
-
-    public ArrayList<BlockPos> findPath(@NotNull EntityLivingBase destination) {
-        return findPath(new BlockPos(destination.posX, destination.posY, destination.posZ));
-    }
-
-    public ArrayList<BlockPos> findPath(@NotNull BlockPos destination) {
-        ArrayList<BlockPos> path = new ArrayList<>();
-        EntitySnowball destAsEntity = new EntitySnowball(mc.theWorld, destination.getX(), destination.getY(), destination.getZ());
-        if (mc.thePlayer.getDistanceToEntity(destAsEntity) < 5) {
-            path.add(destination);
-            return path;
+    public static ArrayList<Vec3> computePath(Vec3 topFrom, Vec3 to) {
+        if (!canPassThrow(new BlockPos(topFrom))) {
+            topFrom = topFrom.addVector(0.0D, 1.0D, 0.0D);
         }
 
-        double[] xList = MathUtils.interpolate(mc.thePlayer.posX, destination.getX(), (int) (mc.thePlayer.getDistanceToEntity(destAsEntity) / 8));
-        double[] yList = MathUtils.interpolate(mc.thePlayer.posY, destination.getY(), (int) (mc.thePlayer.getDistanceToEntity(destAsEntity) / 8));
-        double[] zList = MathUtils.interpolate(mc.thePlayer.posZ, destination.getZ(), (int) (mc.thePlayer.getDistanceToEntity(destAsEntity) / 8));
+        AStarCustomPathFinder pathfinder = new AStarCustomPathFinder(topFrom, to);
+        pathfinder.compute();
+        int i = 0;
+        Vec3 lastLoc = null;
+        Vec3 lastDashLoc = null;
+        ArrayList<Vec3> path = new ArrayList<>();
+        ArrayList<Vec3> pathFinderPath = pathfinder.getPath();
 
-        int o = 0;
+        for(Iterator<Vec3> var8 = pathFinderPath.iterator(); var8.hasNext(); ++i) {
+            Vec3 pathElm = var8.next();
+            if (i != 0 && i != pathFinderPath.size() - 1) {
+                boolean canContinue = true;
+                if (pathElm.squareDistanceTo(lastDashLoc) > 25.0D) {
+                    canContinue = false;
+                } else {
+                    double smallX = Math.min(lastDashLoc.getX(), pathElm.getX());
+                    double smallY = Math.min(lastDashLoc.getY(), pathElm.getY());
+                    double smallZ = Math.min(lastDashLoc.getZ(), pathElm.getZ());
+                    double bigX = Math.max(lastDashLoc.getX(), pathElm.getX());
+                    double bigY = Math.max(lastDashLoc.getY(), pathElm.getY());
+                    double bigZ = Math.max(lastDashLoc.getZ(), pathElm.getZ());
 
+                    label54:
+                    for(int x = (int)smallX; (double)x <= bigX; ++x) {
+                        for(int y = (int)smallY; (double)y <= bigY; ++y) {
+                            for(int z = (int)smallZ; (double)z <= bigZ; ++z) {
+                                if (!AStarCustomPathFinder.checkPositionValidity(new Vec3(x, y, z), false)) {
+                                    canContinue = false;
+                                    break label54;
+                                }
+                            }
+                        }
+                    }
+                }
 
-        while (o < xList.length) {
+                if (!canContinue) {
+                    path.add(lastLoc.addVector(0.5D, 0.0D, 0.5D));
+                    lastDashLoc = lastLoc;
+                }
+            } else {
+                if (lastLoc != null) {
+                    path.add(lastLoc.addVector(0.5D, 0.0D, 0.5D));
+                }
 
-            path.add(new BlockPos(xList[0], yList[0], zList[0]));
+                path.add(pathElm.addVector(0.5D, 0.0D, 0.5D));
+                lastDashLoc = pathElm;
+            }
 
-            o++;
+            lastLoc = pathElm;
         }
 
         return path;
     }
 
+    private static boolean canPassThrow(BlockPos pos) {
+        Block block = mc.theWorld.getBlockState(pos).getBlock();
+        return block.getMaterial() == Material.air || block.getMaterial() == Material.plants || block.getMaterial() == Material.vine || block == Blocks.ladder || block == Blocks.water || block == Blocks.flowing_water || block == Blocks.wall_sign || block == Blocks.standing_sign;
+    }
 }

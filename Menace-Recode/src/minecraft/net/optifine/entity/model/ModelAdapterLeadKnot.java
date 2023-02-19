@@ -1,5 +1,6 @@
 package net.optifine.entity.model;
 
+import dev.menace.utils.misc.ChatUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelLeashKnot;
@@ -45,14 +46,14 @@ public class ModelAdapterLeadKnot extends ModelAdapter
         RenderManager rendermanager = Minecraft.getMinecraft().getRenderManager();
         RenderLeashKnot renderleashknot = new RenderLeashKnot(rendermanager);
 
-        if (!Reflector.RenderLeashKnot_leashKnotModel.exists())
+        if (RenderLeashKnot.leashKnotModel == null)
         {
             Config.warn("Field not found: RenderLeashKnot.leashKnotModel");
             return null;
         }
         else
         {
-            Reflector.setFieldValue(renderleashknot, Reflector.RenderLeashKnot_leashKnotModel, modelBase);
+            RenderLeashKnot.leashKnotModel = (ModelLeashKnot)modelBase;
             renderleashknot.shadowSize = shadowSize;
             return renderleashknot;
         }

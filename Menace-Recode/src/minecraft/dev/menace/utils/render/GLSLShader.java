@@ -58,6 +58,34 @@ public class GLSLShader {
         glUseProgram(0);
     }
 
+    public GLSLShader(String fragmentShaderLocation, String vertexShaderLocation) throws IOException {
+        int program = glCreateProgram();
+        glAttachShader(program, createShader(GLSLShader.class.getResourceAsStream(vertexShaderLocation), GL_VERTEX_SHADER));
+        glAttachShader(program, createShader(GLSLShader.class.getResourceAsStream(fragmentShaderLocation), GL_FRAGMENT_SHADER));
+
+        glLinkProgram(program);
+
+        int linked = glGetProgrami(program, GL_LINK_STATUS);
+
+        // If linking failed
+        if (linked == 0) {
+            System.err.println(glGetProgramInfoLog(program, glGetProgrami(program, GL_INFO_LOG_LENGTH)));
+
+            throw new IllegalStateException("Shader failed to link");
+        }
+
+        this.programId = program;
+
+        // Setup uniforms
+        glUseProgram(program);
+
+        this.timeUniform = glGetUniformLocation(program, "time");
+        this.mouseUniform = glGetUniformLocation(program, "mouse");
+        this.resolutionUniform = glGetUniformLocation(program, "resolution");
+
+        glUseProgram(0);
+    }
+
     public void useShader(int width, int height, float mouseX, float mouseY, float time) {
         glUseProgram(this.programId);
 

@@ -1,10 +1,8 @@
 package dev.menace.module.modules.render;
 
-import java.awt.Color;
-
 import dev.menace.Menace;
 import dev.menace.event.EventTarget;
-import dev.menace.event.events.Event2D;
+import dev.menace.event.events.EventRender2D;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.module.settings.ListSetting;
@@ -13,7 +11,6 @@ import dev.menace.module.settings.ToggleSetting;
 import dev.menace.ui.hud.BaseElement;
 import dev.menace.ui.hud.HUDConfigScreen;
 import dev.menace.ui.hud.HUDManager;
-import javafx.scene.web.WebView;
 
 public class HUDModule extends BaseModule {
 
@@ -24,6 +21,7 @@ public class HUDModule extends BaseModule {
 	public SliderSetting arrayAlpha;
 	public ToggleSetting pos;
 	public ToggleSetting ping;
+	public ToggleSetting armour;
 	public ListSetting posMode;
 	public ToggleSetting gameStats;
 	public ToggleSetting targetHud;
@@ -73,6 +71,7 @@ public class HUDModule extends BaseModule {
 			}
 		};
 		ping = new ToggleSetting("Ping", true, true);
+		armour = new ToggleSetting("Armour", true, true);
 		gameStats = new ToggleSetting("GameStats", true, true);
 		targetHud = new ToggleSetting("TargetHUD", true, true);
 		notifications = new ToggleSetting("Notifications", true, true);
@@ -126,6 +125,7 @@ public class HUDModule extends BaseModule {
 		this.rSetting(pos);
 		this.rSetting(posMode);
 		this.rSetting(ping);
+		this.rSetting(armour);
 		this.rSetting(gameStats);
 		this.rSetting(targetHud);
 		this.rSetting(notifications);
@@ -148,7 +148,7 @@ public class HUDModule extends BaseModule {
 	}
 
 	@EventTarget
-	public void onRender2D(Event2D event) {
+	public void onRender2D(EventRender2D event) {
 		Menace.instance.hudManager.watermarkElement.setVisible(watermark.getValue());
 		Menace.instance.hudManager.arrayElement.setVisible(array.getValue());
 		Menace.instance.hudManager.posElement.setVisible(pos.getValue());
@@ -157,6 +157,7 @@ public class HUDModule extends BaseModule {
 		Menace.instance.hudManager.notificationElement.setVisible(notifications.getValue());
 		Menace.instance.hudManager.pingElement.setVisible(ping.getValue());
 		Menace.instance.hudManager.tabGuiElement.setVisible(tabGui.getValue());
+		Menace.instance.hudManager.armourElement.setVisible(armour.getValue());
 		
 		HUDManager.hudElements.stream().filter(BaseElement::isVisible).forEach(BaseElement::render);
 		

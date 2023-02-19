@@ -518,7 +518,7 @@ public class Chunk
     /**
      * Returns the block corresponding to the given coordinates inside a chunk.
      */
-    private Block getBlock0(int x, int y, int z)
+    public Block getBlock0(int x, int y, int z)
     {
         Block block = Blocks.air;
 

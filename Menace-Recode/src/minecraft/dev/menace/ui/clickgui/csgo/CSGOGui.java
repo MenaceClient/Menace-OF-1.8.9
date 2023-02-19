@@ -32,10 +32,8 @@ public class CSGOGui extends GuiScreen {
 
 		for (Category c : Category.values()) {
 
-			String categoryname = c.name().substring(0, 1).toUpperCase()
-					+ c.name().substring(1).toLowerCase();
-			CSCategoryButton cscb = new CSCategoryButton(x, y, mc.fontRendererObj.getStringWidth(categoryname),
-					mc.fontRendererObj.FONT_HEIGHT, 0xFFFFFFFF, categoryname, c);
+			CSCategoryButton cscb = new CSCategoryButton(x, y, mc.fontRendererObj.getStringWidth(c.getName()),
+					mc.fontRendererObj.FONT_HEIGHT, 0xFFFFFFFF, c.getName(), c);
 
 			this.buttons.add(cscb);
 

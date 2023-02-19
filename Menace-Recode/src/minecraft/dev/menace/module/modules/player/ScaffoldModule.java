@@ -9,19 +9,15 @@ import dev.menace.module.DontSaveState;
 import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
-import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.misc.MathUtils;
 import dev.menace.utils.player.InventoryUtils;
 import dev.menace.utils.player.MovementUtils;
 import dev.menace.utils.player.PacketUtils;
-import dev.menace.utils.player.PlayerUtils;
 import dev.menace.utils.render.RenderUtils;
 import dev.menace.utils.timer.MSTimer;
 import dev.menace.utils.world.BlockUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.EntityEgg;
-import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
@@ -31,7 +27,6 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -322,7 +317,7 @@ public class ScaffoldModule extends BaseModule {
     }
 
     @EventTarget
-    public void on3D(Event3D event) {
+    public void on3D(EventRender3D event) {
         if (!render.getValue()) return;
         BlockPos belowPlayer = new BlockPos(mc.thePlayer).down();
         if (keepY.getValue() && MovementUtils.isMoving()) {
@@ -332,7 +327,7 @@ public class ScaffoldModule extends BaseModule {
     }
 
     @EventTarget
-    public void on2D(Event2D event) {
+    public void on2D(EventRender2D event) {
         if (!render.getValue()) return;
 
     }

@@ -41,7 +41,7 @@ public class AntiVoidModule extends BaseModule {
             this.lastOnGroundZ = mc.thePlayer.posZ;
         }
 
-        if (mc.thePlayer.fallDistance > 1.0F && !BlockUtils.isBlockUnder(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ)) {
+        if (mc.thePlayer.fallDistance > 3.0F && !BlockUtils.isBlockUnder(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ)) {
             switch (mode.getValue()) {
                 case "Teleport":
                     mc.thePlayer.setPositionAndUpdate(lastOnGroundX, lastOnGroundY, lastOnGroundZ);

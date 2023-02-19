@@ -1,7 +1,7 @@
 package dev.menace.module.modules.render;
 
 import dev.menace.event.EventTarget;
-import dev.menace.event.events.Event3D;
+import dev.menace.event.events.EventRender3D;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.utils.render.RenderUtils;
@@ -14,7 +14,7 @@ public class ESPModule extends BaseModule {
     }
 
     @EventTarget
-    public void on3D(Event3D event) {
+    public void on3D(EventRender3D event) {
         mc.theWorld.playerEntities.forEach(p -> {
             if (p != mc.thePlayer) {
                 RenderUtils.drawEntityBox(p, Color.red, true);

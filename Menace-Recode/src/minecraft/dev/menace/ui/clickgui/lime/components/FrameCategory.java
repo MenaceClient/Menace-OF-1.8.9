@@ -98,7 +98,7 @@ public class FrameCategory implements Priority {
         }
 
         // Drawing category name
-        font.drawStringWithShadow(category.name(), x + 3, y + ((categoryNameHeight / 2F) - font.getHeight() / 2F) + 1, stringColor);
+        font.drawStringWithShadow(category.getName().toUpperCase(), x + 3, y + ((categoryNameHeight / 2F) - font.getHeight() / 2F) + 1, stringColor);
         
         GL11.glPushMatrix();
         GL11.glEnable(3089);

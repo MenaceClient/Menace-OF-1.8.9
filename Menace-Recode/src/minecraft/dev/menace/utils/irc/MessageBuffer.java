@@ -12,10 +12,7 @@ public class MessageBuffer {
     }
 
     public boolean hasCompleteMessage() {
-        if (buffer.contains("\r\n"))
-            return true;
-        else
-            return false;
+        return buffer.contains("\r\n");
     }
 
     public String getNextMessage() {

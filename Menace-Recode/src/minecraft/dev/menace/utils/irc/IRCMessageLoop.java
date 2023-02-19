@@ -91,10 +91,10 @@ public abstract class IRCMessageLoop implements Runnable {
             case "privmsg":
                 String target, content;
 
-                if (msg.content.equals("\001VERSION\001")) {
+                /*if (msg.content.equals("\001VERSION\001")) {
                     privmsg(msg.nickname, "Prototype IRC Client (Built to learn)");
                     return;
-                }
+                }*/
                 raw(msg);
                 break;
             case "001":

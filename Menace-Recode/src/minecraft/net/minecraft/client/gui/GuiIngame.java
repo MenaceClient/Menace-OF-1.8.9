@@ -5,11 +5,10 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 import dev.menace.Menace;
-import dev.menace.event.events.Event2D;
+import dev.menace.event.events.EventRender2D;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -173,8 +172,8 @@ public class GuiIngame extends Gui
             this.renderTooltip(scaledresolution, partialTicks);
         }
         
-        Event2D event2D = new Event2D(scaledresolution.getScaledWidth(), scaledresolution.getScaledHeight());
-        event2D.call();
+        EventRender2D eventRender2D = new EventRender2D(scaledresolution.getScaledWidth(), scaledresolution.getScaledHeight());
+        eventRender2D.call();
 
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(icons);
@@ -600,16 +599,16 @@ public class GuiIngame extends Gui
             ScorePlayerTeam scoreplayerteam1 = scoreboard.getPlayersTeam(score1.getPlayerName());
             final String[] s1 = {ScorePlayerTeam.formatPlayerName(scoreplayerteam1, score1.getPlayerName())};
 
+            Menace.instance.onlineMenaceUsers.forEach((username, ign) -> {
+                if (ign != null && s1[0].contains(ign)) {
+                    s1[0] = s1[0].replace(ign, ign + " §r(§b" + username + "§r)");
+                }
+            });
+
             //SecurityFeatures
             if (Menace.instance.moduleManager.securityFeaturesModule.isToggled()) {
                 s1[0] = s1[0].replaceAll(mc.thePlayer.getName(), Menace.instance.user.getUsername());
             }
-
-            Menace.instance.onlineMenaceUsers.forEach((username, ign) -> {
-                if (ign != null && s1[0].contains(ign)) {
-                    s1[0] = s1[0].replace(ign, ign + " ï¿½r(ï¿½b" + username + "ï¿½r) ");
-                }
-            });
 
 
             String s2 = EnumChatFormatting.RED + "" + score1.getScorePoints();

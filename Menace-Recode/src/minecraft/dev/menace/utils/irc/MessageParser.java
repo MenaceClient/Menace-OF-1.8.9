@@ -3,7 +3,7 @@ package dev.menace.utils.irc;
 import org.jetbrains.annotations.NotNull;
 
 public class MessageParser {
-    static @NotNull Message message(@NotNull String ircMessage) {
+    static Message message(String ircMessage) {
         Message message = new Message();
         int spIndex;
 

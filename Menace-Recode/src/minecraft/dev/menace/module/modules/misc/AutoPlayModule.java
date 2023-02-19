@@ -36,8 +36,8 @@ public class AutoPlayModule extends BaseModule {
         super.onEnable();
     }
 
-    @EventTarget
     public void onRecievePacket(EventReceivePacket event) {
+        if (!this.isToggled()) return;
         if (event.getPacket() instanceof S02PacketChat) {
             String message = ((S02PacketChat) event.getPacket()).getChatComponent().getUnformattedText();
             if (message == null) return;

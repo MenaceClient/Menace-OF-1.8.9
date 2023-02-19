@@ -16,7 +16,7 @@ ao:2
 renderClouds:false
 resourcePacks:["gamerswordpack.zip"]
 incompatibleResourcePacks:[]
-lastServer:coldpvp.com
+lastServer:flycode.cc
 lang:en_US
 chatVisibility:0
 chatColors:true

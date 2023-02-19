@@ -7,9 +7,11 @@ import dev.menace.event.EventManager;
 import dev.menace.event.EventTarget;
 import dev.menace.event.events.EventKey;
 import dev.menace.event.events.EventReceivePacket;
+import dev.menace.event.events.EventUpdate;
 import dev.menace.event.events.EventWorldChange;
 import dev.menace.module.ModuleManager;
 import dev.menace.module.config.ConfigManager;
+import dev.menace.scripting.ScriptManager;
 import dev.menace.ui.altmanager.LoginManager;
 import dev.menace.ui.clickgui.csgo.CSGOGui;
 import dev.menace.ui.clickgui.lime.LimeClickGUI;
@@ -17,7 +19,6 @@ import dev.menace.ui.clickgui.menace.MenaceClickGui;
 import dev.menace.ui.hud.HUDManager;
 import dev.menace.utils.file.FileManager;
 import dev.menace.utils.irc.IRCClient;
-import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.misc.DiscordRP;
 import dev.menace.utils.misc.ServerUtils;
 import dev.menace.utils.notifications.Notification;
@@ -25,27 +26,22 @@ import dev.menace.utils.notifications.NotificationManager;
 import dev.menace.utils.render.font.Fonts;
 import dev.menace.utils.render.font.MenaceFontRenderer;
 import dev.menace.utils.security.MenaceUser;
+import dev.menace.utils.timer.MSTimer;
 import fr.litarvan.openauth.microsoft.MicrosoftAuthenticationException;
-import jdk.nashorn.internal.parser.JSONParser;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.play.server.S02PacketChat;
 import net.minecraft.network.play.server.S45PacketTitle;
 import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.Display;
 import viamcp.ViaMCP;
 
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.*;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Menace {
@@ -59,11 +55,13 @@ public class Menace {
 	public ConfigManager configManager;
 	public NotificationManager notificationManager;
 	public HUDManager hudManager;
+	public ScriptManager scriptManager;
 	public IRCClient irc;
 	public DiscordRP discordRP;
 
 	public MenaceUser user;
 	public LinkedHashMap<String, String> onlineMenaceUsers = new LinkedHashMap<>();
+	MSTimer updateTimer = new MSTimer();
 
 	//Fonts
 	public MenaceFontRenderer sfPro;
@@ -102,6 +100,8 @@ public class Menace {
 		notificationManager = new NotificationManager();
 
 		hudManager = new HUDManager();
+
+		scriptManager = new ScriptManager();
 
 		irc = new IRCClient("chat.freenode.net", 6667);
 		
@@ -198,16 +198,18 @@ public class Menace {
 
 	@EventTarget
 	public void onReceive(@NotNull EventReceivePacket event) {
+		this.moduleManager.autoPlayModule.onRecievePacket(event);
 		if (event.getPacket() instanceof S02PacketChat) {
 			String message = ((S02PacketChat) event.getPacket()).getChatComponent().getUnformattedText();
 			if (message != null && message.contains(" was killed by " + MC.thePlayer.getName())) {
 				this.hudManager.gameStatsElement.kills++;
+				this.moduleManager.killFXModule.onKill(message.split(" ")[0]);
 			}
 
 			final String[] formattedMessage = {((S02PacketChat) event.getPacket()).getChatComponent().getFormattedText()};
 			onlineMenaceUsers.forEach((username, ign) -> {
 				if (ign != null && formattedMessage[0].contains(ign)) {
-					formattedMessage[0] = formattedMessage[0].replace(ign, ign + " ï¿½r(ï¿½b" + username + "ï¿½r) ");
+					formattedMessage[0] = formattedMessage[0].replace(ign, ign + " §r(§b" + username + "§r)");
 				}
 			});
 
@@ -219,7 +221,7 @@ public class Menace {
 
 			onlineMenaceUsers.forEach((username, ign) -> {
 				if (ign != null && formattedMessage[0].contains(ign)) {
-					formattedMessage[0] = formattedMessage[0].replace(ign, ign + " ï¿½r(ï¿½b" + username + "ï¿½r) ");
+					formattedMessage[0] = formattedMessage[0].replace(ign, ign + " §r(§b" + username + "§r)");
 				}
 			});
 
@@ -229,7 +231,34 @@ public class Menace {
 
 	@EventTarget
 	public void onWorldChange(EventWorldChange event) {
-		onlineMenaceUsers.clear();
+		new Thread() {
+			@Override
+			public void run() {
+				updateOnline();
+				super.run();
+			}
+		}.start();
+
+	}
+
+	@EventTarget
+	public void onUpdate(EventUpdate event) {
+		if (updateTimer.hasTimePassed(5000)) {
+			new Thread() {
+				@Override
+				public void run() {
+					updateOnline();
+					super.run();
+				}
+			}.start();
+		}
+	}
+
+	public void updateOnline() {
+
+		if (!updateTimer.hasTimePassed(300)) {
+			return;
+		}
 
 		try {
 			final URL url = new URL("https://menaceapi.cf/getMenaceUsers/");
@@ -248,17 +277,23 @@ public class Menace {
 				in.close();
 
 				JsonObject jsonObject = new JsonParser().parse(response.toString()).getAsJsonObject();
-				//System.out.println("Balls" + jsonObject);
-				if (jsonObject.has(ServerUtils.getRemoteIp())) {
-					JsonObject server = jsonObject.get(ServerUtils.getRemoteIp().toLowerCase()).getAsJsonObject();
-					server.entrySet().forEach(entry -> {
-						onlineMenaceUsers.put(entry.getKey(), entry.getValue().getAsString());
-					});
+				String ip = ServerUtils.getRemoteIp().toLowerCase().contains("49.12.67.79") || ServerUtils.getRemoteIp().toLowerCase().contains("blocksmc.com") ? "blocksmc.com" : ServerUtils.getRemoteIp().toLowerCase().split(":")[0];
+				if (jsonObject.has(ip)) {
+					JsonObject server = jsonObject.get(ip).getAsJsonObject();
+					if (server.entrySet() != null && server.entrySet().size() > 0 && !server.entrySet().isEmpty()) {
+						server.entrySet().forEach(entry -> {
+							if (entry != null && entry.getKey() != null && entry.getValue() != null && !entry.getValue().isJsonNull() && !entry.getValue().getAsString().isEmpty()) {
+								onlineMenaceUsers.put(entry.getKey(), entry.getValue().getAsString());
+							}
+						});
+					}
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		updateTimer.reset();
 
 	}
 

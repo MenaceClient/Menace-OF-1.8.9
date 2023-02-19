@@ -3,6 +3,8 @@ package net.minecraft.client.renderer.entity;
 import com.google.common.collect.Lists;
 import java.nio.FloatBuffer;
 import java.util.List;
+
+import dev.menace.Menace;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.FontRenderer;
@@ -641,7 +643,14 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
 
                 if (d0 < (double)(f * f))
                 {
-                    String s = entity.getDisplayName().getFormattedText();
+                    final String[] s = {entity.getDisplayName().getFormattedText()};
+
+                    Menace.instance.onlineMenaceUsers.forEach((username, ign) -> {
+                        if (ign != null && s[0].contains(ign)) {
+                            s[0] = s[0].replace(ign, ign + " §r(§b" + username + "§r)");
+                        }
+                    });
+
                     float f1 = 0.02666667F;
                     GlStateManager.alphaFunc(516, 0.1F);
 
@@ -660,7 +669,7 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
                         GlStateManager.enableBlend();
                         GlStateManager.disableTexture2D();
                         GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-                        int i = fontrenderer.getStringWidth(s) / 2;
+                        int i = fontrenderer.getStringWidth(s[0]) / 2;
                         Tessellator tessellator = Tessellator.getInstance();
                         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
                         worldrenderer.begin(7, DefaultVertexFormats.POSITION_COLOR);
@@ -671,7 +680,7 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
                         tessellator.draw();
                         GlStateManager.enableTexture2D();
                         GlStateManager.depthMask(true);
-                        fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, 0, 553648127);
+                        fontrenderer.drawString(s[0], -fontrenderer.getStringWidth(s[0]) / 2, 0, 553648127);
                         GlStateManager.enableLighting();
                         GlStateManager.disableBlend();
                         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -679,7 +688,7 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
                     }
                     else
                     {
-                        this.renderOffsetLivingLabel(entity, x, y - (entity.isChild() ? (double)(entity.height / 2.0F) : 0.0D), z, s, 0.02666667F, d0);
+                        this.renderOffsetLivingLabel(entity, x, y - (entity.isChild() ? (double)(entity.height / 2.0F) : 0.0D), z, s[0], 0.02666667F, d0);
                     }
                 }
             }

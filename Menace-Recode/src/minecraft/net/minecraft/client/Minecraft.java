@@ -884,14 +884,14 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
 		if (guiScreenIn == null && this.theWorld == null)
 		{
-			guiScreenIn = new GuiMainMenu();
+			guiScreenIn = new MenaceMainMenu();
 		}
 		else if (guiScreenIn == null && this.thePlayer.getHealth() <= 0.0F)
 		{
 			guiScreenIn = new GuiGameOver();
 		}
 
-		if (guiScreenIn instanceof GuiMainMenu)
+		if (guiScreenIn instanceof MenaceMainMenu)
 		{
 			this.gameSettings.showDebugProfilerChart = false;
 			this.ingameGUI.getChatGUI().clearChatMessages();
@@ -944,7 +944,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 		{
 			Menace.instance.stopClient();
 			try {
-				final URL url = new URL("https://menaceapi.cf/updateUser/" + ServerUtils.getRemoteIp() + "/" + Menace.instance.user.getUsername() + "/" + this.session.getUsername() + "/true");
+				final URL url = new URL("https://menaceapi.cf/updateUser/" + ServerUtils.getLastServerIp() + "/" + Menace.instance.user.getUsername() + "/" + this.session.getUsername() + "/true");
 				HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
 				uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
 				uc.setRequestMethod("GET");

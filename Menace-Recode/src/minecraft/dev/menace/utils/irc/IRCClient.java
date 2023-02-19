@@ -11,6 +11,7 @@ public class IRCClient extends IRCMessageLoop {
 
     // you have full access to PRIVMSG messages that are parsed.
     void raw(Message msg) {
+        if (!msg.target.startsWith("#")) return;
         ChatUtils.irc("§a" + msg.nickname + ":§b " + msg.content);
     }
 
@@ -25,7 +26,7 @@ public class IRCClient extends IRCMessageLoop {
 
     public void start() {
         nick(Menace.instance.user.getUsername());
-        user("menace", "null", "*", "Menace IRC Client v1.0 - " + Menace.instance.user.getUsername());
+        user("menace", "null", "null", "Menace IRC Client v1.0 - " + Menace.instance.user.getUsername());
         join("#menace-test");
         run();
     }

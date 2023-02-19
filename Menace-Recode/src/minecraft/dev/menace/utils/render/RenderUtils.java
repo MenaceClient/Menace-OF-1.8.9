@@ -15,10 +15,7 @@ import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Timer;
+import net.minecraft.util.*;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
 
@@ -672,12 +669,14 @@ public class RenderUtils {
 	}
 
 	public static void drawHead(ResourceLocation skin, int x, int y, int width, int height) {
+		GL11.glPushMatrix();
+		GL11.glEnable(3042);
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 		MC.getTextureManager().bindTexture(skin);
-		RenderUtils.drawScaledCustomSizeModalRect(x, y, 8F, 8F, 8, 8, width, height,
-				64F, 64F);
-		RenderUtils.drawScaledCustomSizeModalRect(x, y, 40F, 8F, 8, 8, width, height,
-				64F, 64F);
+		RenderUtils.drawScaledCustomSizeModalRect(x, y, 8F, 8F, 8, 8, width, height, 64F, 64F);
+		RenderUtils.drawScaledCustomSizeModalRect(x, y, 40F, 8F, 8, 8, width, height, 64F, 64F);
+		GL11.glDisable(3042);
+		GL11.glPopMatrix();
 	}
 
 	public static void quickDrawHead(ResourceLocation skin, int x, int y, int width, int height) {
@@ -733,6 +732,62 @@ public class RenderUtils {
 			glEnable(cap);
 		else
 			glDisable(cap);
+	}
+
+	public static void pre3D() {
+		GL11.glPushMatrix();
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GL11.glShadeModel(GL11.GL_SMOOTH);
+		GL11.glDisable(GL11.GL_TEXTURE_2D);
+		GL11.glEnable(GL11.GL_LINE_SMOOTH);
+		GL11.glDisable(GL11.GL_DEPTH_TEST);
+		GL11.glDisable(GL11.GL_LIGHTING);
+		GL11.glDepthMask(false);
+		GL11.glHint(GL11.GL_LINE_SMOOTH_HINT, GL11.GL_NICEST);
+	}
+
+	public static void post3D() {
+		GL11.glDepthMask(true);
+		GL11.glEnable(GL11.GL_DEPTH_TEST);
+		GL11.glDisable(GL11.GL_LINE_SMOOTH);
+		GL11.glEnable(GL11.GL_TEXTURE_2D);
+		GL11.glDisable(GL11.GL_BLEND);
+		GL11.glPopMatrix();
+		GL11.glColor4f(1, 1, 1, 1);
+	}
+
+	public static void lineWidth(float width) {
+		GL11.glLineWidth(width);
+	}
+
+	public static void glEnd() {
+		GL11.glEnd();
+	}
+
+	public static void glBegin(int mode) {
+		GL11.glBegin(mode);
+	}
+
+	public static void color4f(float red, float green, float blue, float alpha) {
+		GL11.glColor4f(red, green, blue, alpha);
+	}
+
+	public static void putVertex3d(double x, double y, double z) {
+		GL11.glVertex3d(x, y, z);
+	}
+
+	public static void putVertex3d(Vec3 vec) {
+		GL11.glVertex3d(vec.xCoord, vec.yCoord, vec.zCoord);
+	}
+
+	public static Vec3 getRenderPos(double x, double y, double z) {
+
+		x = x - MC.getRenderManager().renderPosX;
+		y = y - MC.getRenderManager().renderPosY;
+		z = z - MC.getRenderManager().renderPosZ;
+
+		return new Vec3(x, y, z);
 	}
 
 	/**

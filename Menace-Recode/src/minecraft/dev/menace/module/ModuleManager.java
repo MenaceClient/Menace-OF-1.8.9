@@ -1,7 +1,6 @@
 package dev.menace.module;
 
 import java.io.File;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import com.google.gson.JsonObject;
@@ -16,7 +15,6 @@ import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
 import dev.menace.utils.file.FileManager;
-import net.minecraft.crash.CrashReport;
 
 public class ModuleManager {
 
@@ -24,10 +22,9 @@ public class ModuleManager {
 
 	//COMBAT
 	AutoPotModule autoPotModule = new AutoPotModule();
-	ComboOneTapModule comboOneTapModule = new ComboOneTapModule();
 	CriticalsModule criticalsModule = new CriticalsModule();
 	public KillAuraModule killAuraModule = new KillAuraModule();
-	//TPAuraModule tpAuraModule = new TPAuraModule();
+	public TPAuraModule tpAuraModule = new TPAuraModule();
 	public VelocityModule velocityModule = new VelocityModule();
 	
 	//MOVEMENT
@@ -52,6 +49,7 @@ public class ModuleManager {
 	
 	//WORLD
 	AntiCactusModule antiCactusModule = new AntiCactusModule();
+	BedNukerModule bedNukerModule = new BedNukerModule();
 	public ChestStealerModule chestStealerModule = new ChestStealerModule();
 	FastPlaceModule fastPlaceModule = new FastPlaceModule();
 	TimerModule timerModule = new TimerModule();
@@ -59,6 +57,7 @@ public class ModuleManager {
 	//RENDER
 	public AnimationsModule animationsModule = new AnimationsModule();
 	CapeModule capeModule = new CapeModule();
+	ChestESPModule chestESPModule = new ChestESPModule();
 	public ClickGuiModule clickGuiModule = new ClickGuiModule();
 	ESPModule espModule = new ESPModule();
 	FullbrightModule fullbrightModule = new FullbrightModule();
@@ -72,12 +71,16 @@ public class ModuleManager {
 	public AutoPlayModule autoPlayModule = new AutoPlayModule();
 	DevModule devModule = new DevModule();
 	DisablerModule disablerModule = new DisablerModule();
-	public KillSultsModule killSultsModule = new KillSultsModule();
+	public KillFXModule killFXModule = new KillFXModule();
 	public SecurityFeaturesModule securityFeaturesModule = new SecurityFeaturesModule();
 	StaffDetectorModule staffDetectorModule = new StaffDetectorModule();
 
 	public ArrayList<BaseModule> getModules() {
 		return modules;
+	}
+
+	public void removeModule(BaseModule module) {
+		modules.remove(module);
 	}
 
 	public ArrayList<BaseModule> getActiveModules() {
@@ -134,7 +137,7 @@ public class ModuleManager {
 
 	public void loadModules(String configName) {
 		JsonObject configFile = FileManager.readJsonFromFile(new File(FileManager.getConfigFolder(), configName + ".json"));
-		this.modules.stream().filter(mod -> configFile.has(mod.getName())).forEach(module -> {
+		modules.stream().filter(mod -> configFile.has(mod.getName())).forEach(module -> {
 			JsonObject modSave = configFile.get(module.getName()).getAsJsonObject();
 			boolean toggled = modSave.get("Toggled").getAsBoolean();
 			if ((toggled && !module.isToggled()) || (!toggled && module.isToggled())) {
@@ -147,9 +150,21 @@ public class ModuleManager {
 						if (setting instanceof ToggleSetting) {
 							((ToggleSetting)setting).setValue(settingSave.get(setting.getName()).getAsBoolean());
 						} else if (setting instanceof SliderSetting) {
+							//((SliderSetting)setting).setValue(Math.min(settingSave.get(setting.getName()).getAsDouble(), ((SliderSetting)setting).getMax()));
 							((SliderSetting)setting).setValue(settingSave.get(setting.getName()).getAsDouble());
 						} else if (setting instanceof ListSetting) {
-							((ListSetting)setting).setValue(settingSave.get(setting.getName()).getAsString());
+							boolean found = false;
+							for (String s : ((ListSetting)setting).getOptions()) {
+								if (s.equalsIgnoreCase(settingSave.get(setting.getName()).getAsString()) && !found) {
+									((ListSetting)setting).setValue(s);
+									found = true;
+								}
+							}
+
+							if (!found) {
+								((ListSetting)setting).setValue(((ListSetting)setting).getDefaultValue());
+							}
+
 						}
 					}
 				});

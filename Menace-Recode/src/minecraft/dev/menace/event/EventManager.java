@@ -1,6 +1,7 @@
 package dev.menace.event;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -122,6 +123,10 @@ public class EventManager {
 
 	public ArrayHelper<Data> get(final Class<? extends Event> clazz) {
 		return REGISTRY_MAP.get(clazz);
+	}
+
+	public ArrayList<Class<? extends Event>> getClasses() {
+		return new ArrayList<>(REGISTRY_MAP.keySet());
 	}
 
 	public void shutdown() {

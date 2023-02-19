@@ -1,0 +1,63 @@
+---- Minecraft Crash Report ----
+// Don't do that.
+
+Time: 31/12/22 4:01 PM
+Description: Initializing game
+
+java.lang.NullPointerException: Initializing game
+	at org.lwjgl.opengl.Display.setIcon(Display.java:1222)
+	at net.minecraft.client.Minecraft.setWindowIcon(Minecraft.java:589)
+	at net.minecraft.client.Minecraft.startGame(Minecraft.java:419)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:340)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at org.lwjgl.opengl.Display.setIcon(Display.java:1222)
+	at net.minecraft.client.Minecraft.setWindowIcon(Minecraft.java:589)
+	at net.minecraft.client.Minecraft.startGame(Minecraft.java:419)
+
+-- Initialization --
+Details:
+Stacktrace:
+	at net.minecraft.client.Minecraft.run(Minecraft.java:340)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_202, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 907548528 bytes (865 MB) / 1029177344 bytes (981 MB) up to 1029177344 bytes (981 MB)
+	JVM Flags: 2 total; -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: ~~ERROR~~ RuntimeException: No OpenGL context found in the current thread.
+	GL Caps: 
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: gamerswordpack.zip
+	Current Language: ~~ERROR~~ NullPointerException: null
+	Profiler Position: N/A (disabled)
+	CPU: <unknown>
+	OptiFine Version: OptiFine_1.8.9_HD_U_M5
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 10
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: null
+	OpenGlRenderer: null
+	OpenGlVendor: null
+	CpuCount: 8

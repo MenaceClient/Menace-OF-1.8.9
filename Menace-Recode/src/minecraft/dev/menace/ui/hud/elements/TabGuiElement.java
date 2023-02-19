@@ -36,7 +36,7 @@ public class TabGuiElement extends BaseElement {
 
         HUDModule hudModule = Menace.instance.moduleManager.hudModule;
         int color = hudModule.color.getValue().equalsIgnoreCase("Custom") ? new Color(hudModule.red.getValueI(), hudModule.green.getValueI(), hudModule.blue.getValueI(), hudModule.alpha.getValueI()).getRGB() : ColorUtils.fade(hudModule.rainbowSpeed.getValueF(), -this.getAbsoluteY()).getRGB();
-        RenderUtils.drawRect(this.getAbsoluteX(), this.getAbsoluteY(), this.getAbsoluteX() + 75, this.getAbsoluteY() + 76, new Color(0, 0, 0, 90).getRGB());
+        RenderUtils.drawRect(this.getAbsoluteX(), this.getAbsoluteY(), this.getAbsoluteX() + 75, this.getAbsoluteY() + 76, new Color(0, 0, 0, 120).getRGB());
         RenderUtils.drawRect(this.getAbsoluteX() + 2, this.getAbsoluteY() + currentTab * 12 + 2, this.getAbsoluteX() + 73, this.getAbsoluteY() + currentTab * 12 + this.getFontHeight() + 6, color);
 
         int count = 0;
@@ -54,7 +54,7 @@ public class TabGuiElement extends BaseElement {
                 moduleIndex = modules - 1;
             }
 
-            RenderUtils.drawRect(this.getAbsoluteX() + 75, this.getAbsoluteY(), this.getAbsoluteX() + 150, this.getAbsoluteY() + size, new Color(0, 0, 0, 90).getRGB());
+            RenderUtils.drawRect(this.getAbsoluteX() + 75, this.getAbsoluteY(), this.getAbsoluteX() + 150, this.getAbsoluteY() + size, new Color(0, 0, 0, 120).getRGB());
             RenderUtils.drawRect(this.getAbsoluteX() + 77, this.getAbsoluteY() + moduleIndex * 12 + 2, this.getAbsoluteX() + 148, this.getAbsoluteY() + moduleIndex * 12 + this.getFontHeight() + 6, color);
 
             int count2 = 0;

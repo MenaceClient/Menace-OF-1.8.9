@@ -13,9 +13,7 @@ public class DiscordRP {
 	public void start() {
 		this.created = System.currentTimeMillis();
 		
-		DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler(user -> {
-			update("Authenticating...");
-		}).build();
+		DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler(user -> update("Authenticating...")).build();
 		
 		DiscordRPC.discordInitialize("815961665652785172", handlers, true);
 		

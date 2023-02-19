@@ -1,4 +1,9 @@
 {
+  "ArmourElement": {
+    "X": 486,
+    "Y": 483,
+    "Visible": true
+  },
   "ArrayElement": {
     "X": 920,
     "Y": 1,
@@ -6,7 +11,7 @@
   },
   "GameStatsElement": {
     "X": 2,
-    "Y": 15,
+    "Y": 14,
     "Visible": true
   },
   "NotificationElement": {
@@ -26,8 +31,8 @@
   },
   "TabGuiElement": {
     "X": 2,
-    "Y": 76,
-    "Visible": true
+    "Y": 75,
+    "Visible": false
   },
   "TargetHudElement": {
     "X": 440,
@@ -37,6 +42,11 @@
   "WatermarkElement": {
     "X": 2,
     "Y": 2,
+    "Visible": true
+  },
+  "SUSHUDScript": {
+    "X": 244,
+    "Y": 121,
     "Visible": true
   }
 }

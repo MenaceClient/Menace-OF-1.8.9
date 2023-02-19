@@ -21,6 +21,7 @@ import java.util.List;
 public class AutoPotModule extends BaseModule {
 
     MSTimer delayTimer = new MSTimer();
+    int stage;
 
     SliderSetting delay;
 
@@ -43,7 +44,7 @@ public class AutoPotModule extends BaseModule {
 
     @EventTarget
     public void onPre(EventPreMotion event) {
-        if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed) != null || !mc.thePlayer.onGround || !delayTimer.hasTimePassed(delay.getValueL())) return;
+        if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed) != null || !mc.thePlayer.onGround || !delayTimer.hasTimePassed(1000L + delay.getValueL())) return;
 
         int potionSlot = -1;
 
@@ -52,9 +53,7 @@ public class AutoPotModule extends BaseModule {
             if (s != null && s.getItem() instanceof ItemPotion && ItemPotion.isSplash(s.getMetadata())) {
                 List<Potion> effects = new ArrayList<>();
                 ItemPotion potion = (ItemPotion) s.getItem();
-                potion.getEffects(s.getMetadata()).forEach(p -> {
-                    effects.add(this.getPotionByID(p.getPotionID()));
-                });
+                potion.getEffects(s.getMetadata()).forEach(p -> effects.add(this.getPotionByID(p.getPotionID())));
 
                 if (!effects.contains(Potion.moveSpeed)) continue;
 
@@ -66,10 +65,15 @@ public class AutoPotModule extends BaseModule {
 
         int oldSlot = mc.thePlayer.inventory.currentItem;
 
-        PacketUtils.sendPacket(new C09PacketHeldItemChange(potionSlot));
         event.setPitch(90);
-        PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getStackInSlot(potionSlot)));
-        PacketUtils.sendPacket(new C09PacketHeldItemChange(oldSlot));
+        mc.thePlayer.inventory.currentItem = potionSlot;
+        mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.inventory.getStackInSlot(mc.thePlayer.inventory.currentItem));
+        mc.thePlayer.inventory.currentItem = oldSlot;
+        //PacketUtils.sendPacket(new C09PacketHeldItemChange(potionSlot));
+        //PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getStackInSlot(potionSlot)));
+        //PacketUtils.sendPacket(new C09PacketHeldItemChange(oldSlot));
+
+        delayTimer.reset();
     }
 
     @Contract(pure = true)

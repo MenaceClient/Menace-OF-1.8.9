@@ -11,7 +11,7 @@ public class VClipCmd extends BaseCommand {
 
 	@Override
 	public void call(String[] args) {
-		MC.thePlayer.setPosition(MC.thePlayer.posX, MC.thePlayer.posY + Double.parseDouble(args[0]), MC.thePlayer.posZ);
+		mc.thePlayer.setPosition(mc.thePlayer.posX, mc.thePlayer.posY + Double.parseDouble(args[0]), mc.thePlayer.posZ);
 		ChatUtils.message("VClipped " + args[0] + " blocks.");
 	}
 	

@@ -3,6 +3,7 @@ package dev.menace.event;
 import java.lang.reflect.InvocationTargetException;
 
 import dev.menace.Menace;
+import dev.menace.event.events.EventAll;
 
 public abstract class Event {
 
@@ -35,6 +36,10 @@ public abstract class Event {
 	
 
 	private static void call(Event event) {
+		if (!(event instanceof EventAll)) {
+			EventAll eventAll = new EventAll(event);
+			eventAll.call();
+		}
 		ArrayHelper<Data> dataList = Menace.instance.eventManager.get(event.getClass());
 		if (dataList != null) {
 			for (Data data : dataList) {

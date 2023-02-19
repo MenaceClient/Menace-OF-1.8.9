@@ -10,7 +10,7 @@ public class SoundPlayer {
 
     public static void playSound(ResourceLocation resourceLocation) {
         try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(SoundPlayer.class.getResourceAsStream("/assets/minecraft/" + resourceLocation.getResourcePath()));
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(ClassLoader.getSystemClassLoader().getClass().getResourceAsStream("/assets/minecraft/" + resourceLocation.getResourcePath()));
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();

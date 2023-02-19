@@ -11,7 +11,7 @@ public class BaseCommand {
 	String cmd;
 	String description;
 	String[] syntax;
-	protected Minecraft MC = Minecraft.getMinecraft();
+	protected Minecraft mc = Minecraft.getMinecraft();
 	
 	public BaseCommand(String cmd, String description, String... syntax) {
 		this.cmd = cmd;

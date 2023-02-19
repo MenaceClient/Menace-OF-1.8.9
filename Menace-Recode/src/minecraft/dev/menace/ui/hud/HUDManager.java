@@ -1,24 +1,19 @@
 package dev.menace.ui.hud;
 
-import java.awt.*;
-import java.io.File;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-
 import com.google.gson.JsonObject;
-
+import dev.menace.scripting.ScriptElement;
 import dev.menace.ui.hud.elements.*;
 import dev.menace.utils.file.FileManager;
-import dev.menace.utils.render.font.Fonts;
-import dev.menace.utils.render.font.MenaceFontRenderer;
-import net.minecraft.crash.CrashReport;
-import net.minecraft.util.ResourceLocation;
+
+import java.io.File;
+import java.util.ArrayList;
 
 public class HUDManager {
 
 	public static ArrayList<BaseElement> hudElements = new ArrayList<>();
 
 	//Elements
+	public ArmourElement armourElement = new ArmourElement();
 	public ArrayElement arrayElement = new ArrayElement();
 	public GameStatsElement gameStatsElement = new GameStatsElement();
 	public NotificationElement notificationElement = new NotificationElement();
@@ -35,7 +30,12 @@ public class HUDManager {
 			elementFile.addProperty("X", element.getAbsoluteX());
 			elementFile.addProperty("Y", element.getAbsoluteY());
 			elementFile.addProperty("Visible", element.isVisible());
-			hudFile.add(element.getClass().getSimpleName(), elementFile);
+
+			if (element instanceof ScriptElement) {
+				hudFile.add(((ScriptElement)element).getElementMap().getName(), elementFile);
+			} else {
+				hudFile.add(element.getClass().getSimpleName(), elementFile);
+			}
 		});
 		FileManager.writeJsonToFile(new File(FileManager.getHudFolder(), "Hud.json"), hudFile);
 	}
@@ -49,8 +49,16 @@ public class HUDManager {
 
 		JsonObject hudFile = FileManager.readJsonFromFile(new File(FileManager.getHudFolder(), "Hud.json"));
 		assert hudFile != null;
-		hudElements.stream().filter(e -> hudFile.has(e.getClass().getSimpleName())).forEach(element -> {
-			JsonObject elementSave = hudFile.get(element.getClass().getSimpleName()).getAsJsonObject();
+		hudElements.stream().filter(e -> hudFile.has(e.getClass().getSimpleName())
+				|| (e instanceof ScriptElement && hudFile.has(((ScriptElement)e).getElementMap().getName()))).forEach(element -> {
+
+			JsonObject elementSave;
+
+			if (element instanceof ScriptElement) {
+				elementSave = hudFile.get(((ScriptElement)element).getElementMap().getName()).getAsJsonObject();
+			} else {
+				elementSave = hudFile.get(element.getClass().getSimpleName()).getAsJsonObject();
+			}
 
 			element.setAbsolute(elementSave.get("X").getAsInt(), elementSave.get("Y").getAsInt());
 			element.setVisible(elementSave.get("Visible").getAsBoolean());

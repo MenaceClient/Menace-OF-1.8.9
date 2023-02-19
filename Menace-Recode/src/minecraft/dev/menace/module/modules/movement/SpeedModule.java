@@ -46,6 +46,7 @@ public class SpeedModule extends BaseModule {
     public void onEnable() {
         flagCount = 0;
         mc.timer.timerSpeed = 1.0F;
+        this.setDisplayName(mode.getValue());
         super.onEnable();
     }
 
@@ -76,26 +77,28 @@ public class SpeedModule extends BaseModule {
             }
             MovementUtils.strafe();
         } else if(mode.getValue().equalsIgnoreCase("BlocksMC")) {
-            if(!MovementUtils.shouldMove()) return;
+            if(!MovementUtils.shouldMove()) {
+                mc.timer.timerSpeed = 1.0f;
+                return;
+            }
 
             mc.gameSettings.keyBindJump.pressed = false;
             if(mc.thePlayer.onGround) {
                 mc.thePlayer.jump();
                 if(mc.thePlayer.isPotionActive(Potion.moveSpeed)){
-                    MovementUtils.strafe(0.6863f);
+                    MovementUtils.strafe(0.6893f);
                 } else {
-                    MovementUtils.strafe(0.5f);
+                    MovementUtils.strafe(0.48f);
                 }
             }
             MovementUtils.strafe();
-
         }
     }
 
     @EventTarget
     public void onMove(EventMove event) {
         if (mode.getValue().equalsIgnoreCase("LowHop")) {
-            if (!MovementUtils.isMoving()) return;
+            if (!MovementUtils.shouldMove()) return;
             mc.gameSettings.keyBindJump.pressed = false;
             if (mc.thePlayer.onGround) {
                 mc.thePlayer.jump();

@@ -2,7 +2,7 @@ package dev.menace.module.modules.movement;
 
 import dev.menace.Menace;
 import dev.menace.event.EventTarget;
-import dev.menace.event.events.Event3D;
+import dev.menace.event.events.EventRender3D;
 import dev.menace.event.events.EventMove;
 import dev.menace.event.events.EventPreMotion;
 import dev.menace.module.BaseModule;
@@ -36,7 +36,7 @@ public class TargetStrafeModule extends BaseModule {
     @EventTarget
     public void onMove(EventMove event) {
 
-        EntityLivingBase target = Menace.instance.moduleManager.killAuraModule.target;
+        EntityLivingBase target = Menace.instance.moduleManager.killAuraModule.trget;
 
         if (!Menace.instance.moduleManager.killAuraModule.isToggled() || target == null) {
             return;
@@ -47,16 +47,16 @@ public class TargetStrafeModule extends BaseModule {
     }
 
     @EventTarget
-    public void onRender3DEvent(Event3D event) {
+    public void onRender3DEvent(EventRender3D event) {
 
 
-        if (!Menace.instance.moduleManager.killAuraModule.isToggled() || Menace.instance.moduleManager.killAuraModule.target == null) {
+        if (!Menace.instance.moduleManager.killAuraModule.isToggled() || Menace.instance.moduleManager.killAuraModule.trget == null) {
             return;
         }
 
         final Color theme = Color.RED;
         final Color color = new Color(theme.getRed(), theme.getGreen(), theme.getBlue(), 62);
-        RenderUtils.circle(Menace.instance.moduleManager.killAuraModule.target, Menace.instance.moduleManager.killAuraModule.reach.getValue() - 1, color);
+        RenderUtils.circle(Menace.instance.moduleManager.killAuraModule.trget, Menace.instance.moduleManager.killAuraModule.reach.getValue() - 1, color);
     }
 
 }

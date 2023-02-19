@@ -42,7 +42,7 @@ public class KillAuraModule extends BaseModule {
 
 	MSTimer delayTimer = new MSTimer();
 	public final ArrayList<Entity> botlist = new ArrayList<>();
-	public EntityLivingBase target;
+	public EntityLivingBase trget;
 	long delay;
 	boolean blocking;
 	public boolean shouldFakeBlock;
@@ -138,6 +138,8 @@ public class KillAuraModule extends BaseModule {
 	@Override
 	public void onDisable() {
 		shouldFakeBlock = false;
+		blocking = false;
+		trget = null;
 		super.onDisable();
 	}
 
@@ -174,6 +176,7 @@ public class KillAuraModule extends BaseModule {
 
 		if (!targets.isEmpty()) {
 			EntityLivingBase target = targets.get(0);
+			trget = target;
 
 			if (autoblock.getValue().equalsIgnoreCase("Fake")) {
 				shouldFakeBlock = true;
@@ -208,6 +211,7 @@ public class KillAuraModule extends BaseModule {
 		} else {
 			lastRotations = new float[]{mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch};
 			shouldFakeBlock = false;
+			trget = null;
 		}
 	}
 

@@ -179,16 +179,16 @@ public class GuiPlayerTabOverlay extends Gui
                 NetworkPlayerInfo networkplayerinfo1 = (NetworkPlayerInfo)list.get(k4);
                 final String[] s1 = {this.getPlayerName(networkplayerinfo1)};
 
+                Menace.instance.onlineMenaceUsers.forEach((username, ign) -> {
+                    if (ign != null && s1[0].contains(ign)) {
+                        s1[0] = s1[0].replace(ign, ign + " §r(§b" + username + "§r)");
+                    }
+                });
+
                 //SecurityFeatures
                 if (Menace.instance.moduleManager.securityFeaturesModule.isToggled()) {
                     s1[0] = s1[0].replaceAll(mc.thePlayer.getName(), Menace.instance.user.getUsername());
                 }
-
-                Menace.instance.onlineMenaceUsers.forEach((username, ign) -> {
-                    if (ign != null && s1[0].contains(ign)) {
-                        s1[0] = s1[0].replace(ign, ign + " ï¿½r(ï¿½b" + username + "ï¿½r) ");
-                    }
-                });
 
                 GameProfile gameprofile = networkplayerinfo1.getGameProfile();
 

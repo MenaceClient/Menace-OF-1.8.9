@@ -6,12 +6,6 @@
       "Visible": true
     }
   },
-  "ComboOneTap": {
-    "Toggled": false,
-    "Settings": {
-      "Visible": true
-    }
-  },
   "Criticals": {
     "Toggled": false,
     "Settings": {
@@ -40,6 +34,15 @@
       "Hostiles": true,
       "Passives": false,
       "Invisibles": false,
+      "Visible": true
+    }
+  },
+  "TPAura": {
+    "Toggled": false,
+    "Settings": {
+      "CPS": 5.0,
+      "Targets": 1.0,
+      "Range": 300.0,
       "Visible": true
     }
   },
@@ -201,6 +204,14 @@
       "Visible": true
     }
   },
+  "BedNuker": {
+    "Toggled": false,
+    "Settings": {
+      "Radius": 3.0,
+      "Swing": true,
+      "Visible": true
+    }
+  },
   "ChestStealer": {
     "Toggled": false,
     "Settings": {
@@ -250,10 +261,16 @@
       "Visible": true
     }
   },
+  "ChestESP": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
   "ClickGui": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Menace",
+      "Mode": "Dropdown",
       "Sounds": true,
       "Visible": true
     }
@@ -280,6 +297,7 @@
       "Position": true,
       "Position Mode": "Single",
       "Ping": true,
+      "Armour": true,
       "GameStats": true,
       "TargetHUD": true,
       "Notifications": true,
@@ -330,7 +348,6 @@
   "DevModule": {
     "Toggled": false,
     "Settings": {
-      "AntiAFK": true,
       "Visible": true
     }
   },
@@ -340,9 +357,12 @@
       "Visible": true
     }
   },
-  "KillSults": {
+  "KillFX": {
     "Toggled": false,
     "Settings": {
+      "Insults": true,
+      "Valorant": true,
+      "Type": "Basic",
       "Visible": true
     }
   },
@@ -356,6 +376,13 @@
     "Toggled": false,
     "Settings": {
       "Visible": true
+    }
+  },
+  "TP": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true,
+      "Height": 5.0
     }
   }
 }

@@ -1,10 +1,7 @@
 package dev.menace.utils.misc;
 
 import dev.menace.Menace;
-import dev.menace.ui.custom.MenaceMainMenu;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiMainMenu;
-import net.minecraft.client.gui.GuiMultiplayer;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.multiplayer.GuiConnecting;
 import net.minecraft.client.multiplayer.ServerData;
@@ -20,6 +17,12 @@ public class ServerUtils {
             return;
 
         MC.displayGuiScreen(new GuiConnecting(parent, MC, serverData));
+    }
+
+    public static String getLastServerIp() {
+        if (serverData == null)
+            return "SinglePlayer";
+        return serverData.serverIP;
     }
 
     public static String getRemoteIp() {

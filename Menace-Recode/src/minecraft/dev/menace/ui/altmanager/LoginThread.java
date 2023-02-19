@@ -7,6 +7,13 @@ import dev.menace.utils.misc.MathUtils;
 import fr.litarvan.openauth.microsoft.MicrosoftAuthenticationException;
 import net.minecraft.client.Minecraft;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class LoginThread extends Thread {
 	
 	Minecraft MC = Minecraft.getMinecraft();
@@ -49,11 +56,36 @@ public class LoginThread extends Thread {
 			}
 			break;
 		case RNG:
-			String whitelisted_letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ12345678901234567890__";
 			String name = "";
-			while (name.length() < 14) {
-				name = name.concat(String.valueOf(whitelisted_letters.charAt(MathUtils.randInt(0, whitelisted_letters.length()))));
+			try {
+				final URL url = new URL("https://menacenamegen.pxzlz.repl.co/name");
+				HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
+				uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
+				uc.setRequestMethod("GET");
+				int responseCode = uc.getResponseCode();
+				if (responseCode == HttpURLConnection.HTTP_OK) {
+					BufferedReader in = new BufferedReader(new InputStreamReader(uc.getInputStream()));
+					String inputLine;
+					StringBuilder response = new StringBuilder();
+
+					while ((inputLine = in.readLine()) != null) {
+						response.append(inputLine);
+					}
+					in.close();
+
+					name = response.toString();
+				}
+			} catch (IOException e) {
+				throw new RuntimeException(e);
 			}
+
+			if (name.equals("")) {
+				String whitelisted_letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ12345678901234567890__";
+				while (name.length() < 14) {
+					name = name.concat(String.valueOf(whitelisted_letters.charAt(MathUtils.randInt(0, whitelisted_letters.length()))));
+				}
+			}
+
 			LoginManager.crackedLogin(name);
 			this.status = "§aLogged in as - " + MC.session.getUsername() + " (Cracked)§r";
 			break;

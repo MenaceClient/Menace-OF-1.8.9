@@ -185,10 +185,9 @@ public class OldServerPinger
     private void tryCompatibilityPing(final ServerData server)
     {
         final ServerAddress serveraddress = ServerAddress.fromString(server.serverIP);
-        ((Bootstrap)((Bootstrap)((Bootstrap)(new Bootstrap()).group((EventLoopGroup)NetworkManager.CLIENT_NIO_EVENTLOOP.getValue())).handler(new ChannelInitializer<Channel>()
+        (new Bootstrap()).group(NetworkManager.CLIENT_NIO_EVENTLOOP.getValue()).handler(new ChannelInitializer<Channel>()
         {
-            protected void initChannel(Channel p_initChannel_1_) throws Exception
-            {
+            protected void initChannel(Channel p_initChannel_1_) {
                 try
                 {
                     p_initChannel_1_.config().setOption(ChannelOption.TCP_NODELAY, Boolean.TRUE);
@@ -265,7 +264,7 @@ public class OldServerPinger
                         }
                     });
             }
-        })).channel(NioSocketChannel.class)).connect(serveraddress.getIP(), serveraddress.getPort());
+        }).channel(NioSocketChannel.class).connect(serveraddress.getIP(), serveraddress.getPort());
     }
 
     public void pingPendingNetworks()

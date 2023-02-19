@@ -4,6 +4,7 @@ import dev.menace.Menace;
 import dev.menace.ui.hud.BaseElement;
 import dev.menace.utils.render.RenderUtils;
 import net.minecraft.client.entity.AbstractClientPlayer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 
@@ -15,12 +16,19 @@ public class TargetHudElement extends BaseElement {
     DecimalFormat decimalFormat = new DecimalFormat("0.0");
 
     public TargetHudElement() {
+
         super(0.5, 0.5, true);
+
     }
 
     @Override
     public void render() {
-        EntityLivingBase target = Menace.instance.moduleManager.killAuraModule.target;
+        EntityLivingBase target;
+        if (Menace.instance.moduleManager.tpAuraModule.targets.size() > 0) {
+            target = Menace.instance.moduleManager.tpAuraModule.targets.get(0);
+        } else {
+            target = Menace.instance.moduleManager.killAuraModule.trget;
+        }
         if (!(target instanceof EntityPlayer)) return;
         int q = this.getStringWidth(decimalFormat.format(target.getHealth())) + mc.fontRendererObj.getStringWidth("\u2764");
         int width = Math.max(this.getStringWidth(target.getDisplayName().getUnformattedText()), q);

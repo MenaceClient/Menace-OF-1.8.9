@@ -213,4 +213,13 @@ public class Vec3
         double d2 = this.zCoord * (double)f - this.xCoord * (double)f1;
         return new Vec3(d0, d1, d2);
     }
+
+    public Vec3 floor() {
+        return new Vec3(Math.floor(this.xCoord), Math.floor(this.yCoord), Math.floor(this.zCoord));
+    }
+
+    public double getX() {return xCoord;}
+    public double getY() {return yCoord;}
+    public double getZ() {return zCoord;}
+
 }

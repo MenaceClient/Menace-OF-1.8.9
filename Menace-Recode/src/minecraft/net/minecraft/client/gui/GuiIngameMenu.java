@@ -63,7 +63,7 @@ public class GuiIngameMenu extends GuiScreen
                 this.mc.loadWorld((WorldClient)null);
 
                 try {
-                    final URL url = new URL("https://menaceapi.cf/updateUser/" + ServerUtils.getRemoteIp() + "/" + Menace.instance.user.getUsername() + "/" + mc.session.getUsername() + "/true");
+                    final URL url = new URL("https://menaceapi.cf/updateUser/" + ServerUtils.getLastServerIp() + "/" + Menace.instance.user.getUsername() + "/" + mc.session.getUsername() + "/true");
                     HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
                     uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
                     uc.setRequestMethod("GET");

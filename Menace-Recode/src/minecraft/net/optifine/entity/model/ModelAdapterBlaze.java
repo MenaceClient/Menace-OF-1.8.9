@@ -34,7 +34,7 @@ public class ModelAdapterBlaze extends ModelAdapter
 
             if (modelPart.equals("head"))
             {
-                return (ModelRenderer)Reflector.getFieldValue(modelblaze, Reflector.ModelBlaze_blazeHead);
+                return ModelBlaze.blazeHead;
             }
             else
             {
@@ -42,7 +42,7 @@ public class ModelAdapterBlaze extends ModelAdapter
 
                 if (modelPart.startsWith(s))
                 {
-                    ModelRenderer[] amodelrenderer = (ModelRenderer[])((ModelRenderer[])Reflector.getFieldValue(modelblaze, Reflector.ModelBlaze_blazeSticks));
+                    ModelRenderer[] amodelrenderer = ModelBlaze.blazeSticks;
 
                     if (amodelrenderer == null)
                     {

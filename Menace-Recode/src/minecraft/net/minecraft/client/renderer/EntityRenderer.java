@@ -3,16 +3,7 @@ package net.minecraft.client.renderer;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.gson.JsonSyntaxException;
-
-import dev.menace.event.events.Event3D;
-
-import java.io.IOException;
-import java.nio.FloatBuffer;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
-import java.util.concurrent.Callable;
+import dev.menace.event.events.EventRender3D;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.material.Material;
@@ -21,7 +12,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.GuiDownloadTerrain;
-import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.MapItemRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.particle.EffectRenderer;
@@ -59,20 +49,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.server.integrated.IntegratedServer;
 import net.minecraft.src.Config;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.ChatStyle;
-import net.minecraft.util.EntitySelectors;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.EnumWorldBlockLayer;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.MouseFilter;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.ReportedException;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldSettings;
@@ -99,6 +76,12 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 import org.lwjgl.opengl.GLContext;
 import org.lwjgl.util.glu.Project;
+
+import java.io.IOException;
+import java.nio.FloatBuffer;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.Callable;
 
 public class EntityRenderer implements IResourceManagerReloadListener
 {
@@ -1895,8 +1878,8 @@ public class EntityRenderer implements IResourceManagerReloadListener
             Reflector.callVoid(Reflector.ForgeHooksClient_dispatchRenderLast, new Object[] {renderglobal, Float.valueOf(partialTicks)});
         }
         
-        Event3D event3D = new Event3D(partialTicks);
-        event3D.call();
+        EventRender3D eventRender3D = new EventRender3D(partialTicks);
+        eventRender3D.call();
 
         this.mc.mcProfiler.endStartSection("hand");
 
@@ -2700,11 +2683,6 @@ public class EntityRenderer implements IResourceManagerReloadListener
             }
         }
 
-        if (this.mc.currentScreen instanceof GuiMainMenu)
-        {
-            this.updateMainMenu((GuiMainMenu)this.mc.currentScreen);
-        }
-
         if (this.updatedWorld != world)
         {
             RandomEntities.worldChanged(this.updatedWorld, world);
@@ -2737,39 +2715,6 @@ public class EntityRenderer implements IResourceManagerReloadListener
                 ChatComponentText chatcomponenttext = new ChatComponentText(I18n.format("of.message.openglError", new Object[] {Integer.valueOf(i), s}));
                 this.mc.ingameGUI.getChatGUI().printChatMessage(chatcomponenttext);
             }
-        }
-    }
-
-    private void updateMainMenu(GuiMainMenu p_updateMainMenu_1_)
-    {
-        try
-        {
-            String s = null;
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(new Date());
-            int i = calendar.get(5);
-            int j = calendar.get(2) + 1;
-
-            if (i == 8 && j == 4)
-            {
-                s = "Happy birthday, OptiFine!";
-            }
-
-            if (i == 14 && j == 8)
-            {
-                s = "Happy birthday, sp614x!";
-            }
-
-            if (s == null)
-            {
-                return;
-            }
-
-            Reflector.setFieldValue(p_updateMainMenu_1_, Reflector.GuiMainMenu_splashText, s);
-        }
-        catch (Throwable var6)
-        {
-            ;
         }
     }
 
