@@ -2,12 +2,14 @@ package dev.menace.ui.clickgui.menace;
 
 import dev.menace.Menace;
 import dev.menace.module.Category;
+import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.render.RenderUtils;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class MenaceClickGui extends GuiScreen {
 
@@ -37,7 +39,7 @@ public class MenaceClickGui extends GuiScreen {
         //main category button
         //TODO: if selected then \u02C5 or \u2304
 
-        mainPackageDropdown = true;
+        //mainPackageDropdown = true;
         if (false) {
             Menace.instance.jetbrainsMono.drawString("\u02C5", this.x + 10, this.y + 10, new Color(135,147,154,255).getRGB());
         } else {
@@ -61,4 +63,13 @@ public class MenaceClickGui extends GuiScreen {
         }
     }
 
+    @Override
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+
+        if (RenderUtils.hover(this.x + 10, this.y + 10, mouseX, mouseY, Menace.instance.jetbrainsMono.getStringWidth("modules") + 17, Menace.instance.jetbrainsMono.getHeight())) {
+            mainPackageDropdown = !mainPackageDropdown;
+        }
+
+        super.mouseClicked(mouseX, mouseY, mouseButton);
+    }
 }

@@ -21,6 +21,7 @@ public class ModuleManager {
 	public static ArrayList<BaseModule> modules = new ArrayList<>();
 
 	//COMBAT
+	public AntiBotModule antiBotModule = new AntiBotModule();
 	AutoPotModule autoPotModule = new AutoPotModule();
 	CriticalsModule criticalsModule = new CriticalsModule();
 	public KillAuraModule killAuraModule = new KillAuraModule();
@@ -52,6 +53,7 @@ public class ModuleManager {
 	BedNukerModule bedNukerModule = new BedNukerModule();
 	public ChestStealerModule chestStealerModule = new ChestStealerModule();
 	FastPlaceModule fastPlaceModule = new FastPlaceModule();
+	PhaseModule phaseModule = new PhaseModule();
 	TimerModule timerModule = new TimerModule();
 	
 	//RENDER

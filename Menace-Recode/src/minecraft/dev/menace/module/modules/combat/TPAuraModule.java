@@ -103,7 +103,7 @@ public class TPAuraModule extends BaseModule {
     }
 
     @EventTarget
-    public void onRecievePacket(@NotNull EventReceivePacket event) {
+    public void onRecievePacket(EventReceivePacket event) {
         /*if (event.getPacket() instanceof S08PacketPlayerPosLook) {
             event.cancel();
             S08PacketPlayerPosLook packet = (S08PacketPlayerPosLook) event.getPacket();

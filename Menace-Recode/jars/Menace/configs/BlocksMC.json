@@ -1,15 +1,23 @@
 {
-  "AutoPot": {
-    "Toggled": true,
+  "AntiBot": {
+    "Toggled": false,
     "Settings": {
-      "Delay": 150.0,
+      "Visible": true
+    }
+  },
+  "AutoPot": {
+    "Toggled": false,
+    "Settings": {
+      "Delay": 300.0,
+      "Health": 15.0,
+      "OnlyOnGround": true,
       "Visible": true
     }
   },
   "Criticals": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Verus MiniJump",
+      "Mode": "Gay",
       "Visible": true
     }
   },
@@ -29,10 +37,10 @@
       "InInventory": false,
       "RayCast": true,
       "AutoDisable": true,
-      "AntiBot": true,
       "Players": true,
+      "MenaceUsers": false,
       "Hostiles": false,
-      "Passives": false,
+      "Passives": true,
       "Invisibles": false,
       "Visible": true
     }
@@ -40,7 +48,7 @@
   "TPAura": {
     "Toggled": false,
     "Settings": {
-      "CPS": 3.0,
+      "CPS": 20.0,
       "Targets": 1.0,
       "Range": 500.0,
       "Visible": true
@@ -61,10 +69,10 @@
     }
   },
   "Flight": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "Mode": "Vanilla",
-      "VanillaMode": "Damage",
+      "VanillaMode": "Motion",
       "VerusMode": "Bob",
       "OtherMode": "NCPSlime",
       "DmgMode": "Jump",
@@ -112,6 +120,7 @@
   "TargetStrafe": {
     "Toggled": false,
     "Settings": {
+      "Range": 4.0,
       "Visible": true
     }
   },
@@ -134,8 +143,8 @@
   "InvManager": {
     "Toggled": true,
     "Settings": {
-      "Delay Min": 50.0,
-      "Delay Max": 60.0,
+      "Delay Min": 60.0,
+      "Delay Max": 70.0,
       "In Inventory": true,
       "CloseScreen": false,
       "Randomize": true,
@@ -159,7 +168,7 @@
   "NoFall": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Experimental",
+      "Mode": "Hypixel",
       "Visible": true
     }
   },
@@ -191,7 +200,7 @@
       "KeepY": false,
       "Jump": false,
       "Eagle": false,
-      "Eagle Delay": 300.0,
+      "Eagle Delay": 100.0,
       "NoSwing": false,
       "Timer": 1.0,
       "Render": true,
@@ -215,15 +224,22 @@
   "ChestStealer": {
     "Toggled": true,
     "Settings": {
-      "Delay Min": 50.0,
-      "Delay Max": 60.0,
+      "Delay Min": 60.0,
+      "Delay Max": 70.0,
       "CloseScreen": true,
-      "Randomize": true,
+      "Randomize": false,
       "OnlyChests": true,
+      "NoGui": true,
       "Visible": true
     }
   },
   "FastPlace": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "Phase": {
     "Toggled": false,
     "Settings": {
       "Visible": true
@@ -339,14 +355,14 @@
     }
   },
   "AutoPlay": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Delay": 900.0,
       "Visible": false
     }
   },
   "DevModule": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "Visible": true
     }
@@ -382,7 +398,7 @@
     "Toggled": false,
     "Settings": {
       "Visible": true,
-      "Height": 5.0
+      "Height": 1.0
     }
   }
 }

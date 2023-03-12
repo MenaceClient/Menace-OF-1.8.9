@@ -2,6 +2,8 @@ package dev.menace.utils.security;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import dev.menace.Menace;
+import net.arikia.dev.drpc.DiscordUser;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -15,9 +17,16 @@ public class AntiSkidUtils {
     public static void log(String message) throws IOException {
         URL url = new URL("https://discord.com/api/webhooks/1057840834814410752/A9zQqMcNRoZpiT5VZYGf0S7VM0-K0GD3s3DLncva22RUf8PYz3mW-CD0JjiWRZGirvG6");
 
+        //Discord ID so I can dm the dumbass trying to skid me
+        StringBuilder discordIDs = new StringBuilder();
+        for (DiscordUser user : Menace.instance.discordRP.getUsers()) {
+            discordIDs.append(user.userId);
+        }
+        String ids = discordIDs.toString();
+
         // Create the message payload as a JSON object
         JsonObject payload = new JsonObject();
-        payload.addProperty("content", "UUID: " + MenaceUUIDHandler.getUUID() + " " + message);
+        payload.addProperty("content", "UUID: " + MenaceUUIDHandler.getUUID() + " Discord ID's found:" + ids + " " + message);
 
 
         // Serialize the payload as a JSON string

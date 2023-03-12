@@ -278,7 +278,7 @@ public class ScaffoldModule extends BaseModule {
         }
     }
 
-    public void findNearbyBlocks(@NotNull BlockPos pos, EventPreMotion event) {
+    public void findNearbyBlocks(BlockPos pos, EventPreMotion event) {
 
         EnumFacing[] values;
         for (int length = (values = EnumFacing.values()).length, i = 0; i < length; ++i) {
@@ -353,7 +353,7 @@ public class ScaffoldModule extends BaseModule {
         return new float[] { getYaw(var0) + mc.thePlayer.rotationYaw, getPitch(var0) + mc.thePlayer.rotationPitch };
     }
 
-    public float getYaw(final @NotNull Entity var0) {
+    public float getYaw(final Entity var0) {
         final double var = var0.posX - mc.thePlayer.posX;
         final double var2 = var0.posZ - mc.thePlayer.posZ;
         final double degrees = Math.toDegrees(Math.atan(var2 / var));
@@ -370,7 +370,7 @@ public class ScaffoldModule extends BaseModule {
         return MathHelper.wrapAngleTo180_float(-(mc.thePlayer.rotationYaw - (float)var3));
     }
 
-    public float getPitch(final @NotNull Entity var0) {
+    public float getPitch(final Entity var0) {
         final double var = var0.posX - mc.thePlayer.posX;
         final double var2 = var0.posZ - mc.thePlayer.posZ;
         final double var3 = var0.posY - 1.6 + var0.getEyeHeight() - mc.thePlayer.posY;
@@ -379,7 +379,7 @@ public class ScaffoldModule extends BaseModule {
         return -MathHelper.wrapAngleTo180_float(mc.thePlayer.rotationPitch - (float)var5);
     }
 
-    public float getYaw(final @NotNull BlockPos block, final @NotNull EnumFacing face) {
+    public float getYaw(final BlockPos block, final EnumFacing face) {
         final Vec3 vecToModify = new Vec3(block.getX(), block.getY(), block.getZ());
         switch (face) {
             case EAST:

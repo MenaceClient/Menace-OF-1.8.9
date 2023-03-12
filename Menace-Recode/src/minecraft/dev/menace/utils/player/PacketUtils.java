@@ -1,8 +1,5 @@
 package dev.menace.utils.player;
 
-import dev.menace.event.events.EventSendPacket;
-import io.netty.util.concurrent.Future;
-import io.netty.util.concurrent.GenericFutureListener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;

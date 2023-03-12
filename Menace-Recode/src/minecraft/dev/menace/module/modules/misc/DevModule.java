@@ -43,8 +43,8 @@ public class DevModule extends BaseModule {
 	}
 
 	@EventTarget
-	public void onEvent(EventAll event) {
-		ChatUtils.message("Event: " + event.getEvent().getClass().getSimpleName().replaceFirst("E", "e"));
+	public void onEvent(EventUpdate event) {
+		HackerDetect.updateChecks();
 	}
 
 }

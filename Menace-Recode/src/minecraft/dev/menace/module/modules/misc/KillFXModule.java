@@ -186,7 +186,7 @@ public class KillFXModule extends BaseModule {
 		}
 	}
 
-	public static @NotNull List<String> readInsults() {
+	public static List<String> readInsults() {
 		List<String> s = new ArrayList<>();
 		try {
 			final URL url = new URL("https://menaceapi.cf/Insults.txt");

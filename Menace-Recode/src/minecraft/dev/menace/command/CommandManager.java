@@ -23,6 +23,7 @@ public class CommandManager {
 	BindCmd bindCmd = new BindCmd();
 	BindsCmd bindsCmd = new BindsCmd();
 	ConfigCmd configCmd = new ConfigCmd();
+	HelpCmd helpCmd = new HelpCmd();
 	IRCCmd ircCmd = new IRCCmd();
 	PrefixCmd prefixCmd = new PrefixCmd();
 	ScriptCmd scriptCmd = new ScriptCmd();
@@ -39,7 +40,7 @@ public class CommandManager {
 	}
 	
 	@EventTarget
-	public void onChat(@NotNull EventChatOutput event) {
+	public void onChat(EventChatOutput event) {
 		if (event.getMessage().startsWith(this.prefix)) {
 			event.cancel();
 			parse(event.getMessage().replaceFirst(this.prefix, ""));
@@ -49,7 +50,7 @@ public class CommandManager {
 		}
 	}
 	
-	private void parse(@NotNull String command) {
+	private void parse(String command) {
 		String cmdName = command.split(" ")[0];
 		cmds.stream().filter(c -> c.getCmd().equalsIgnoreCase(cmdName)).forEach(cmd -> {
 			String[] args = command.split(" ");

@@ -7,7 +7,7 @@ import dev.menace.utils.misc.ChatUtils;
 public class ReloadHUDCmd extends BaseCommand {
 
     public ReloadHUDCmd() {
-        super("ReloadHUD", "Reloads the HUD if you changed the file.", ".ReloadHUD");
+        super("ReloadHUD", "Reloads the HUD if you changed the file.", "ReloadHUD");
     }
 
     @Override

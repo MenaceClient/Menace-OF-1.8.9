@@ -38,7 +38,7 @@ public class VelocityModule extends BaseModule {
 	}
 
 	@EventTarget
-	public void onRecievePacket(@NotNull EventReceivePacket event) {
+	public void onRecievePacket(EventReceivePacket event) {
 		if (event.getPacket() instanceof S12PacketEntityVelocity) {
 			if (mode.getValue().equalsIgnoreCase("Simple")) {
 				event.cancel();

@@ -66,7 +66,7 @@ public class NoSlowModule extends BaseModule {
     }
 
     @EventTarget
-    public void onSlowdown(@NotNull EventSlowdown event) {
+    public void onSlowdown(EventSlowdown event) {
         event.cancel();
     }
 }

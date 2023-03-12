@@ -102,4 +102,8 @@ public class PlayerMap {
         return mc.thePlayer.getHealth();
     }
 
+    public static void jump() {
+        mc.thePlayer.jump();
+    }
+
 }

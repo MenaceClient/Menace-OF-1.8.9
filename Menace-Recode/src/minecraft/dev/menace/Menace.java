@@ -2,6 +2,7 @@ package dev.menace;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import dev.menace.anticheat.HackerDetect;
 import dev.menace.command.CommandManager;
 import dev.menace.event.EventManager;
 import dev.menace.event.EventTarget;
@@ -56,6 +57,7 @@ public class Menace {
 	public NotificationManager notificationManager;
 	public HUDManager hudManager;
 	public ScriptManager scriptManager;
+	public HackerDetect hackerDetect;
 	public IRCClient irc;
 	public DiscordRP discordRP;
 
@@ -102,6 +104,8 @@ public class Menace {
 		hudManager = new HUDManager();
 
 		scriptManager = new ScriptManager();
+
+		hackerDetect = new HackerDetect();
 
 		irc = new IRCClient("chat.freenode.net", 6667);
 		
@@ -197,7 +201,7 @@ public class Menace {
 	}
 
 	@EventTarget
-	public void onReceive(@NotNull EventReceivePacket event) {
+	public void onReceive(EventReceivePacket event) {
 		this.moduleManager.autoPlayModule.onRecievePacket(event);
 		if (event.getPacket() instanceof S02PacketChat) {
 			String message = ((S02PacketChat) event.getPacket()).getChatComponent().getUnformattedText();

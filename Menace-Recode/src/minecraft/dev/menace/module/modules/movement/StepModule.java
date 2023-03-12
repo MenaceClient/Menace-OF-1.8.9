@@ -48,7 +48,7 @@ public class StepModule extends BaseModule {
 	}
 	
 	@EventTarget
-	public void onStep(@NotNull EventStep event) {
+	public void onStep(EventStep event) {
 		if (mode.getValue().equalsIgnoreCase("Verus")) {
 			PacketUtils.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(-1, -1, -1), 255, new ItemStack(Items.water_bucket), 0, 0.5f, 0));
 			PacketUtils.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY - 1.5, mc.thePlayer.posZ), 1, new net.minecraft.item.ItemStack(Blocks.stone.getItem(mc.theWorld, new BlockPos(-1, -1, -1))), 0f, 0.94f, 0f));

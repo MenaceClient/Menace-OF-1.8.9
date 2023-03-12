@@ -383,7 +383,7 @@ public class InvManagerModule extends BaseModule {
 	}
 
 	@EventTarget
-	public void onSendPacket(@NotNull EventSendPacket event) {
+	public void onSendPacket(EventSendPacket event) {
 		if (event.getPacket() instanceof C0DPacketCloseWindow) {
 			delayTimer.reset();
 			nextDelay = MathUtils.randLong(minDelay.getValueL(), maxDelay.getValueL());

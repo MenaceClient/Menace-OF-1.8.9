@@ -8,7 +8,6 @@ import dev.menace.module.settings.Setting;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
 import dev.menace.utils.render.RenderUtils;
-import dev.menace.utils.render.font.Fonts;
 import dev.menace.utils.render.font.MenaceFontRenderer;
 import dev.menace.utils.timer.MSTimer;
 import net.minecraft.client.Minecraft;
@@ -17,7 +16,6 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
-import org.jetbrains.annotations.NotNull;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
@@ -440,7 +438,7 @@ public class VapeGui extends GuiScreen {
         }
     }
 
-    public int findArray(float @NotNull [] a, float b) {
+    public int findArray(float[] a, float b) {
         for (int i = 0; i < a.length; i++) {
             if (a[i] == b) {
                 return i;

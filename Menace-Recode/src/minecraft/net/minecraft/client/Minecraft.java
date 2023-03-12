@@ -10,6 +10,8 @@ import com.mojang.authlib.properties.Property;
 import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import dev.menace.Menace;
+import dev.menace.event.Event;
+import dev.menace.event.events.EventAttack;
 import dev.menace.event.events.EventKey;
 import dev.menace.event.events.EventMouse;
 import dev.menace.event.events.EventWorldChange;
@@ -1423,12 +1425,18 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 		{
 			EventMouse eventMouse = new EventMouse(1);
 			eventMouse.call();
+
+			if (objectMouseOver != null && this.objectMouseOver.typeOfHit == MovingObjectPosition.MovingObjectType.ENTITY) {
+				EventAttack eA = new EventAttack(this.objectMouseOver.entityHit, true);
+				eA.call();
+			}
+
 			//this.thePlayer.swingItem();
 			AttackOrder.sendConditionalSwing(this.objectMouseOver);
 
 			if (this.objectMouseOver == null)
 			{
-				logger.error("Null returned as \'hitResult\', this shouldn\'t happen!");
+				logger.error("Null returned as 'hitResult', this shouldn't happen!");
 
 				if (this.playerController.isNotCreative())
 				{
@@ -1441,6 +1449,10 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 				switch (this.objectMouseOver.typeOfHit)
 				{
 				case ENTITY:
+
+					EventAttack eA2 = new EventAttack(this.objectMouseOver.entityHit, false);
+					eA2.call();
+
 					//this.playerController.attackEntity(this.thePlayer, this.objectMouseOver.entityHit);
 					AttackOrder.sendFixedAttack(this.thePlayer, this.objectMouseOver.entityHit);
 					break;

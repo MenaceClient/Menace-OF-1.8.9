@@ -1022,7 +1022,7 @@ public abstract class EntityLivingBase extends Entity
     /**
      * Called when the mob's health reaches 0.
      */
-    public void onDeath(@NotNull DamageSource cause)
+    public void onDeath(DamageSource cause)
     {
         Entity entity = cause.getEntity();
         EntityLivingBase entitylivingbase = this.getAttackingEntity();

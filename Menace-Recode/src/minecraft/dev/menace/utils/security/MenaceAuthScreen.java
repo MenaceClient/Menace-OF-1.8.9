@@ -143,6 +143,8 @@ extends GuiScreen {
 		this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
 		status = "§eLogging in...";
 
+		AntiVM.run();
+
 		if (username.getText() == null) {
 			status = "§cPlease type in your UID.";
 			return;

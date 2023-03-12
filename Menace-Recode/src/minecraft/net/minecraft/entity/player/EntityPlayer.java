@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import com.mojang.authlib.GameProfile;
 
 import dev.menace.Menace;
+import dev.menace.anticheat.PlayerVL;
 import dev.menace.event.events.EventDeath;
 import dev.menace.utils.misc.ChatUtils;
 
@@ -178,14 +179,14 @@ public abstract class EntityPlayer extends EntityLivingBase
     public final GameProfile gameProfile;
     private boolean hasReducedDebug = false;
 
+    //MenaceNCP
+    public PlayerVL playerVL = new PlayerVL(this);
+
+
     /**
      * An instance of a fishing rod's hook. If this isn't null, the icon image of the fishing rod is slightly different
      */
     public EntityFishHook fishEntity;
-    
-    // Menace ac required
-    public int flags=0;
-    public boolean reported=false;
 
     public EntityPlayer(World worldIn, GameProfile gameProfileIn)
     {

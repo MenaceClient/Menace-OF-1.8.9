@@ -1,206 +1,724 @@
-[14:40:29] [Client thread/INFO]: Setting user: Player733
-[14:40:29] [Client thread/INFO]: (Session ID is token:0:Player733)
-[14:40:30] [Client thread/INFO]: [OptiFine] *** Reflector Forge ***
-[14:40:30] [Client thread/INFO]: [OptiFine] *** Reflector Vanilla ***
-[14:40:30] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event$Result
-[14:40:30] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraft.launchwrapper.Launch
-[14:40:30] [Client thread/INFO]: LWJGL Version: 2.9.4
-[14:40:30] [Client thread/INFO]: [OptiFine] 
-[14:40:30] [Client thread/INFO]: [OptiFine] OptiFine_1.8.9_HD_U_M5
-[14:40:30] [Client thread/INFO]: [OptiFine] Build: null
-[14:40:30] [Client thread/INFO]: [OptiFine] OS: Windows 10 (amd64) version 10.0
-[14:40:30] [Client thread/INFO]: [OptiFine] Java: 1.8.0_202, Oracle Corporation
-[14:40:30] [Client thread/INFO]: [OptiFine] VM: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
-[14:40:30] [Client thread/INFO]: [OptiFine] LWJGL: 2.9.4
-[14:40:30] [Client thread/INFO]: [OptiFine] OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2, version 4.6.0 NVIDIA 516.94, NVIDIA Corporation
-[14:40:30] [Client thread/INFO]: [OptiFine] OpenGL Version: 4.6.0
-[14:40:30] [Client thread/INFO]: [OptiFine] Maximum texture size: 32768x32768
-[14:40:30] [VersionCheck/INFO]: [OptiFine] Checking for new version
-[14:40:30] [Client thread/INFO]: [Shaders] OpenGL Version: 4.6.0 NVIDIA 516.94
-[14:40:30] [Client thread/INFO]: [Shaders] Vendor:  NVIDIA Corporation
-[14:40:30] [Client thread/INFO]: [Shaders] Renderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
-[14:40:30] [Client thread/INFO]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0 
-[14:40:30] [Client thread/INFO]: [Shaders] GL_MAX_DRAW_BUFFERS: 8
-[14:40:30] [Client thread/INFO]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8
-[14:40:30] [Client thread/INFO]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32
-[14:40:30] [Client thread/INFO]: [Shaders] Load shaders configuration.
-[14:40:30] [Client thread/INFO]: [Shaders] No shaderpack loaded.
-[14:40:30] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.Loader
-[14:40:30] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.SplashProgress
-[14:40:30] [Client thread/INFO]: Reloading ResourceManager: Default, gamerswordpack.zip
-[14:40:30] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: optifine.OptiFineClassTransformer
-[14:40:30] [Client thread/INFO]: [OptiFine] *** Reloading textures ***
-[14:40:30] [Client thread/INFO]: [OptiFine] Resource packs: gamerswordpack.zip
-[14:40:30] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.Attributes
-[14:40:30] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.preDraw
-[14:40:30] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.postDraw
-[14:40:30] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[14:40:31] [VersionCheck/INFO]: [OptiFine] Version found: M5
-[14:40:31] [Thread-6/INFO]: Initializing LWJGL OpenAL
-[14:40:31] [Thread-6/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[14:40:31] [Thread-6/INFO]: OpenAL initialized.
-[14:40:31] [Sound Library Loader/INFO]: Sound engine started
-[14:40:31] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ForgeHooksClient
-[14:40:32] [Client thread/INFO]: [OptiFine] Mipmap levels: 4
-[14:40:32] [Client thread/INFO]: [OptiFine] Multitexture: false
-[14:40:32] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/0_glass_white/glass_pane_white.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/0_glass_white/glass_white.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/10_glass_purple/glass_pane_purple.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/10_glass_purple/glass_purple.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/11_glass_blue/glass_blue.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/11_glass_blue/glass_pane_blue.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/12_glass_brown/glass_brown.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/12_glass_brown/glass_pane_brown.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/13_glass_green/glass_green.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/13_glass_green/glass_pane_green.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/14_glass_red/glass_pane_red.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/14_glass_red/glass_red.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/15_glass_black/glass_black.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/15_glass_black/glass_pane_black.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/1_glass_orange/glass_orange.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/1_glass_orange/glass_pane_orange.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/2_glass_magenta/glass_magenta.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/2_glass_magenta/glass_pane_magenta.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/3_glass_light_blue/glass_light_blue.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/3_glass_light_blue/glass_pane_light_blue.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/4_glass_yellow/glass_pane_yellow.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/4_glass_yellow/glass_yellow.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/5_glass_lime/glass_lime.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/5_glass_lime/glass_pane_lime.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/6_glass_pink/glass_pane_pink.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/6_glass_pink/glass_pink.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/8_glass_silver/glass_pane_silver.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/8_glass_silver/glass_silver.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/9_glass_cyan/glass_cyan.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/9_glass_cyan/glass_pane_cyan.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/bookshelf.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/sandstone.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
-[14:40:32] [Client thread/INFO]: [OptiFine] BetterGrass: Parsing default configuration optifine/bettergrass.properties
-[14:40:32] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/diamond_ore, 1 -> 16
-[14:40:32] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/emerald_ore, 1 -> 16
-[14:40:32] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/gold_ore, 1 -> 16
-[14:40:32] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/coal_ore, 1 -> 16
-[14:40:32] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/lapis_ore, 1 -> 16
-[14:40:32] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/iron_ore, 1 -> 16
-[14:40:32] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/redstone_ore, 1 -> 16
-[14:40:33] [Client thread/INFO]: Created: 1024x1024 textures-atlas
-[14:40:33] [Client thread/INFO]: [OptiFine] Animated sprites: 11
-[14:40:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader
-[14:40:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ItemModelMesherForge
-[14:40:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.registry.RenderingRegistry
-[14:40:33] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeModContainer
-[14:40:34] [Via-Mappingloader-0/INFO]: Loading 1.12 -> 1.13 mappings...
-[14:40:34] [Via-Mappingloader-1/INFO]: Loading 1.13 -> 1.13.2 mappings...
-[14:40:34] [Via-Mappingloader-2/INFO]: Loading 1.13.2 -> 1.14 mappings...
-[14:40:34] [Via-Mappingloader-3/INFO]: Loading 1.14 -> 1.15 mappings...
-[14:40:34] [Via-Mappingloader-0/INFO]: Loading block connection mappings ...
-[14:40:34] [Via-Mappingloader-4/INFO]: Loading 1.15 -> 1.16 mappings...
-[14:40:35] [Via-Mappingloader-3/INFO]: Loading 1.16 -> 1.16.2 mappings...
-[14:40:35] [Via-Mappingloader-2/INFO]: Loading 1.16.2 -> 1.17 mappings...
-[14:40:35] [Via-Mappingloader-4/INFO]: Loading 1.17 -> 1.18 mappings...
-[14:40:35] [Via-Mappingloader-1/INFO]: Loading 1.18 -> 1.19 mappings...
-[14:40:35] [Client thread/INFO]: Loading translations...
-[14:40:35] [Via-Mappingloader-2/INFO]: Loading 1.10 -> 1.9.4 mappings...
-[14:40:35] [Via-Mappingloader-0/INFO]: Loading 1.11 -> 1.10 mappings...
-[14:40:35] [Via-Mappingloader-1/INFO]: Loading 1.12 -> 1.11 mappings...
-[14:40:35] [Via-Mappingloader-1/INFO]: Loading 1.13 -> 1.12 mappings...
-[14:40:35] [Via-Mappingloader-4/INFO]: Loading 1.13.2 -> 1.13 mappings...
-[14:40:35] [Via-Mappingloader-4/INFO]: Loading 1.14 -> 1.13.2 mappings...
-[14:40:35] [Via-Mappingloader-0/INFO]: Loading 1.15 -> 1.14 mappings...
-[14:40:35] [Via-Mappingloader-1/INFO]: Loading 1.16 -> 1.15 mappings...
-[14:40:35] [Via-Mappingloader-4/INFO]: Loading 1.16.2 -> 1.16 mappings...
-[14:40:35] [Via-Mappingloader-1/INFO]: Loading 1.17 -> 1.16.2 mappings...
-[14:40:35] [Via-Mappingloader-1/INFO]: Loading 1.18 -> 1.17 mappings...
-[14:40:35] [Via-Mappingloader-1/INFO]: Loading 1.19 -> 1.18 mappings...
-[14:40:35] [ViaMCP-0/INFO]: ViaVersion detected server version: 1.8.x (47)
-[14:40:35] [ViaMCP-0/WARN]: This version of Minecraft is extremely outdated and support for it has reached its end of life. You will still be able to run Via on this Minecraft version, but we are unlikely to provide any further fixes or help with problems specific to legacy Minecraft versions. Please consider updating to give your players a better experience and to avoid issues that have long been fixed.
-[14:40:35] [ViaMCP-0/WARN]: You are running an outdated Java version, please consider updating it to at least Java 17 (your version is 1.8.0_202). At some point in the future, ViaVersion will no longer be compatible with this version of Java.
-[14:40:35] [ViaMCP-0/WARN]: There is a newer plugin version available: 4.5.1, you're on: 4.1.1
-[14:40:35] [ViaMCP-0/INFO]: Finished mapping loading, shutting down loader executor!
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkWatchEvent$UnWatch
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.relauncher.CoreModManager
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.DimensionManager
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Pre
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Post
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$CameraSetup
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$FogColors
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.EventBus
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.ExtendedBlockState
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.FMLClientHandler
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.FMLCommonHandler
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.biome.BiomeGenBase.getWaterColorMultiplier
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addDestroyEffects
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addHitEffects
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canCreatureSpawn
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canRenderInLayer
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.doesSideBlockRendering
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getBedDirection
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getExtendedState
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightOpacity
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightValue
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.hasTileEntity
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isAir
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBed
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBedFoot
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isSideSolid
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.ChunkCache.isSideSolid
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.canRiderInteract
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.captureDrops
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.capturedDrops
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRenderInPass
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRiderSit
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.ForgeEventFactory
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeHooks
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.item.Item.delegate
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getDurabilityForDisplay
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getModel
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.onEntitySwing
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.shouldCauseReequipAnimation
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.showDurabilityBar
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.potion.PotionEffect.isCurativeItem
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.canRenderBreaking
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.getRenderBoundingBox
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.hasFastRenderer
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.shouldRenderInPass
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.countEntities
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.getPerWorldStorage
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getCloudRenderer
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSkyRenderer
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getWeatherRenderer
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSaveFolder
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.GuiModList
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IColoredBakedQuad
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.IExtendedBlockState
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IModel
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.IRenderHandler
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.LightUtil
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.MinecraftForge
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.MinecraftForgeClient
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.ModContainer
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader$VanillaLoader
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderBlockOverlayEvent$OverlayType
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderItemInFrameEvent
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Pre
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Post
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Pre
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Post
-[14:40:39] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.WorldEvent$Load
-[14:40:39] [Client thread/INFO]: [OptiFine] *** Reloading custom textures ***
-[14:40:39] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky1.properties
-[14:40:39] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky2.properties
-[14:40:39] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky3.properties
-[14:40:39] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky4.properties
-[14:40:39] [Client thread/INFO]: [OptiFine] Enable face culling: acacia_leaves, birch_leaves, dark_oak_leaves, jungle_leaves, oak_leaves, spruce_leaves
-[14:40:45] [Client thread/INFO]: Connecting to anticheat-test.com, 25565
-[14:40:46] [Client thread/INFO]: [CHAT]                                      
-[14:40:49] [Client thread/INFO]: [CHAT] §r§7If people are annoying you with potions do /settings and turn off potions§r
-[14:41:09] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r
-[14:41:09] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r
-[14:41:16] [Client thread/INFO]: Stopping!
-[14:41:16] [Client thread/INFO]: SoundSystem shutting down...
-[14:41:16] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[09:33:12] [Client thread/INFO]: Setting user: Player320
+[09:33:12] [Client thread/INFO]: (Session ID is token:0:Player320)
+[09:33:13] [Client thread/INFO]: [OptiFine] *** Reflector Forge ***
+[09:33:13] [Client thread/INFO]: [OptiFine] *** Reflector Vanilla ***
+[09:33:13] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event$Result
+[09:33:13] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraft.launchwrapper.Launch
+[09:33:13] [Client thread/INFO]: LWJGL Version: 2.9.4
+[09:33:14] [Client thread/INFO]: [OptiFine] 
+[09:33:14] [Client thread/INFO]: [OptiFine] OptiFine_1.8.9_HD_U_M5
+[09:33:14] [Client thread/INFO]: [OptiFine] Build: null
+[09:33:14] [Client thread/INFO]: [OptiFine] OS: Windows 10 (amd64) version 10.0
+[09:33:14] [Client thread/INFO]: [OptiFine] Java: 1.8.0_202, Oracle Corporation
+[09:33:14] [Client thread/INFO]: [OptiFine] VM: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+[09:33:14] [Client thread/INFO]: [OptiFine] LWJGL: 2.9.4
+[09:33:14] [Client thread/INFO]: [OptiFine] OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2, version 4.6.0 NVIDIA 516.94, NVIDIA Corporation
+[09:33:14] [Client thread/INFO]: [OptiFine] OpenGL Version: 4.6.0
+[09:33:14] [Client thread/INFO]: [OptiFine] Maximum texture size: 32768x32768
+[09:33:14] [VersionCheck/INFO]: [OptiFine] Checking for new version
+[09:33:14] [Client thread/INFO]: [Shaders] OpenGL Version: 4.6.0 NVIDIA 516.94
+[09:33:14] [Client thread/INFO]: [Shaders] Vendor:  NVIDIA Corporation
+[09:33:14] [Client thread/INFO]: [Shaders] Renderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+[09:33:14] [Client thread/INFO]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0 
+[09:33:14] [Client thread/INFO]: [Shaders] GL_MAX_DRAW_BUFFERS: 8
+[09:33:14] [Client thread/INFO]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8
+[09:33:14] [Client thread/INFO]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32
+[09:33:14] [Client thread/INFO]: [Shaders] Load shaders configuration.
+[09:33:14] [Client thread/INFO]: [Shaders] No shaderpack loaded.
+[09:33:14] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.Loader
+[09:33:14] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.SplashProgress
+[09:33:14] [Client thread/INFO]: Reloading ResourceManager: Default, gamerswordpack.zip
+[09:33:14] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: optifine.OptiFineClassTransformer
+[09:33:14] [Client thread/INFO]: [OptiFine] *** Reloading textures ***
+[09:33:14] [Client thread/INFO]: [OptiFine] Resource packs: gamerswordpack.zip
+[09:33:14] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.Attributes
+[09:33:14] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.preDraw
+[09:33:14] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.postDraw
+[09:33:14] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[09:33:14] [VersionCheck/INFO]: [OptiFine] Version found: M5
+[09:33:14] [Thread-6/INFO]: Initializing LWJGL OpenAL
+[09:33:14] [Thread-6/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[09:33:14] [Thread-6/INFO]: OpenAL initialized.
+[09:33:14] [Sound Library Loader/INFO]: Sound engine started
+[09:33:15] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ForgeHooksClient
+[09:33:15] [Client thread/INFO]: [OptiFine] Mipmap levels: 4
+[09:33:15] [Client thread/INFO]: [OptiFine] Multitexture: false
+[09:33:15] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/0_glass_white/glass_pane_white.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/0_glass_white/glass_white.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/10_glass_purple/glass_pane_purple.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/10_glass_purple/glass_purple.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/11_glass_blue/glass_blue.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/11_glass_blue/glass_pane_blue.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/12_glass_brown/glass_brown.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/12_glass_brown/glass_pane_brown.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/13_glass_green/glass_green.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/13_glass_green/glass_pane_green.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/14_glass_red/glass_pane_red.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/14_glass_red/glass_red.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/15_glass_black/glass_black.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/15_glass_black/glass_pane_black.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/1_glass_orange/glass_orange.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/1_glass_orange/glass_pane_orange.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/2_glass_magenta/glass_magenta.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/2_glass_magenta/glass_pane_magenta.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/3_glass_light_blue/glass_light_blue.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/3_glass_light_blue/glass_pane_light_blue.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/4_glass_yellow/glass_pane_yellow.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/4_glass_yellow/glass_yellow.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/5_glass_lime/glass_lime.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/5_glass_lime/glass_pane_lime.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/6_glass_pink/glass_pane_pink.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/6_glass_pink/glass_pink.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/8_glass_silver/glass_pane_silver.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/8_glass_silver/glass_silver.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/9_glass_cyan/glass_cyan.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/9_glass_cyan/glass_pane_cyan.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/bookshelf.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/sandstone.properties
+[09:33:15] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
+[09:33:15] [Client thread/INFO]: [OptiFine] BetterGrass: Parsing default configuration optifine/bettergrass.properties
+[09:33:16] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/diamond_ore, 1 -> 16
+[09:33:16] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/emerald_ore, 1 -> 16
+[09:33:16] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/gold_ore, 1 -> 16
+[09:33:16] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/coal_ore, 1 -> 16
+[09:33:16] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/lapis_ore, 1 -> 16
+[09:33:16] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/iron_ore, 1 -> 16
+[09:33:16] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/redstone_ore, 1 -> 16
+[09:33:16] [Client thread/INFO]: Created: 1024x1024 textures-atlas
+[09:33:16] [Client thread/INFO]: [OptiFine] Animated sprites: 11
+[09:33:16] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader
+[09:33:16] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ItemModelMesherForge
+[09:33:16] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.registry.RenderingRegistry
+[09:33:16] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeModContainer
+[09:33:18] [Via-Mappingloader-0/INFO]: Loading 1.12 -> 1.13 mappings...
+[09:33:18] [Via-Mappingloader-1/INFO]: Loading 1.13 -> 1.13.2 mappings...
+[09:33:18] [Via-Mappingloader-2/INFO]: Loading 1.13.2 -> 1.14 mappings...
+[09:33:18] [Via-Mappingloader-3/INFO]: Loading 1.14 -> 1.15 mappings...
+[09:33:18] [Via-Mappingloader-0/INFO]: Loading block connection mappings ...
+[09:33:18] [Via-Mappingloader-6/INFO]: Loading 1.16.2 -> 1.17 mappings...
+[09:33:18] [Via-Mappingloader-5/INFO]: Loading 1.16 -> 1.16.2 mappings...
+[09:33:18] [Via-Mappingloader-4/INFO]: Loading 1.15 -> 1.16 mappings...
+[09:33:18] [Via-Mappingloader-1/INFO]: Loading 1.17 -> 1.18 mappings...
+[09:33:18] [Via-Mappingloader-2/INFO]: Loading 1.18 -> 1.19 mappings...
+[09:33:18] [Client thread/INFO]: Loading translations...
+[09:33:18] [Via-Mappingloader-4/INFO]: Loading 1.10 -> 1.9.4 mappings...
+[09:33:18] [Via-Mappingloader-4/INFO]: Loading 1.11 -> 1.10 mappings...
+[09:33:18] [Via-Mappingloader-0/INFO]: Loading 1.12 -> 1.11 mappings...
+[09:33:18] [Via-Mappingloader-2/INFO]: Loading 1.13 -> 1.12 mappings...
+[09:33:18] [Via-Mappingloader-0/INFO]: Loading 1.13.2 -> 1.13 mappings...
+[09:33:18] [Via-Mappingloader-0/INFO]: Loading 1.14 -> 1.13.2 mappings...
+[09:33:18] [Via-Mappingloader-2/INFO]: Loading 1.15 -> 1.14 mappings...
+[09:33:18] [Via-Mappingloader-2/INFO]: Loading 1.16 -> 1.15 mappings...
+[09:33:19] [Via-Mappingloader-0/INFO]: Loading 1.16.2 -> 1.16 mappings...
+[09:33:19] [Via-Mappingloader-2/INFO]: Loading 1.17 -> 1.16.2 mappings...
+[09:33:19] [Via-Mappingloader-2/INFO]: Loading 1.18 -> 1.17 mappings...
+[09:33:19] [Via-Mappingloader-2/INFO]: Loading 1.19 -> 1.18 mappings...
+[09:33:19] [ViaMCP-0/INFO]: ViaVersion detected server version: 1.8.x (47)
+[09:33:19] [ViaMCP-0/WARN]: This version of Minecraft is extremely outdated and support for it has reached its end of life. You will still be able to run Via on this Minecraft version, but we are unlikely to provide any further fixes or help with problems specific to legacy Minecraft versions. Please consider updating to give your players a better experience and to avoid issues that have long been fixed.
+[09:33:19] [ViaMCP-0/WARN]: You are running an outdated Java version, please consider updating it to at least Java 17 (your version is 1.8.0_202). At some point in the future, ViaVersion will no longer be compatible with this version of Java.
+[09:33:19] [ViaMCP-0/WARN]: There is a newer plugin version available: 4.5.1, you're on: 4.1.1
+[09:33:19] [ViaMCP-0/INFO]: Finished mapping loading, shutting down loader executor!
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkWatchEvent$UnWatch
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.relauncher.CoreModManager
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.DimensionManager
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Pre
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Post
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$CameraSetup
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$FogColors
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.EventBus
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.ExtendedBlockState
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.FMLClientHandler
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.FMLCommonHandler
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.biome.BiomeGenBase.getWaterColorMultiplier
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addDestroyEffects
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addHitEffects
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canCreatureSpawn
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canRenderInLayer
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.doesSideBlockRendering
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getBedDirection
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getExtendedState
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightOpacity
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightValue
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.hasTileEntity
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isAir
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBed
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBedFoot
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isSideSolid
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.ChunkCache.isSideSolid
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.canRiderInteract
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.captureDrops
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.capturedDrops
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRenderInPass
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRiderSit
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.ForgeEventFactory
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeHooks
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.item.Item.delegate
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getDurabilityForDisplay
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getModel
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.onEntitySwing
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.shouldCauseReequipAnimation
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.showDurabilityBar
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.potion.PotionEffect.isCurativeItem
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.canRenderBreaking
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.getRenderBoundingBox
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.hasFastRenderer
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.shouldRenderInPass
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.countEntities
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.getPerWorldStorage
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getCloudRenderer
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSkyRenderer
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getWeatherRenderer
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSaveFolder
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.GuiModList
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IColoredBakedQuad
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.IExtendedBlockState
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IModel
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.IRenderHandler
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.LightUtil
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.MinecraftForge
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.MinecraftForgeClient
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.ModContainer
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader$VanillaLoader
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderBlockOverlayEvent$OverlayType
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderItemInFrameEvent
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Pre
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Post
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Pre
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Post
+[09:33:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.WorldEvent$Load
+[09:33:22] [Client thread/INFO]: [OptiFine] *** Reloading custom textures ***
+[09:33:22] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky1.properties
+[09:33:23] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky2.properties
+[09:33:23] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky3.properties
+[09:33:23] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky4.properties
+[09:33:23] [Client thread/INFO]: [OptiFine] Enable face culling: acacia_leaves, birch_leaves, dark_oak_leaves, jungle_leaves, oak_leaves, spruce_leaves
+[09:33:34] [Client thread/INFO]: Connecting to anticheat-test.com, 25565
+[09:33:36] [Client thread/INFO]: [CHAT] §r§f §r§f §r§1 §r§0 §r§2 §r§f §r§f §r§2 §r§0 §r§4 §r§3 §r§9 §r§2 §r§0 §r§0 §r§3 §r§9 §r§2 §r§0 §r§0 §r§3 §r§9 §r§2 §r§0 §r§0 §r§3 §r§6 §r§3 §r§6 §r§3 §r§6 §r§3 §r§6 §r§3 §r§6 §r§3 §r§6 §r
+[09:33:38] [Client thread/INFO]: [CHAT] §r§7use /help for commands and stuff§r
+[09:33:48] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Loaded config BlocksMC
+[09:33:49] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=1]
+[09:33:49] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=2]
+[09:33:49] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=3]
+[09:33:50] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=4]
+[09:33:50] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=5]
+[09:33:50] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=6]
+[09:33:50] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=7]
+[09:33:50] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=8]
+[09:33:50] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=9]
+[09:33:50] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=10]
+[09:33:52] [Client thread/INFO]: [CHAT] §rMindOfOwO §r§7» §ri want to rape some nigger on cold§r§r
+[09:33:54] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=1]
+[09:33:55] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=1]
+[09:33:55] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=2]
+[09:33:55] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=3]
+[09:33:55] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=4]
+[09:33:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=5]
+[09:33:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=6]
+[09:33:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=7]
+[09:33:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=8]
+[09:33:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=9]
+[09:33:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=1]
+[09:33:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=2]
+[09:33:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=3]
+[09:33:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=4]
+[09:33:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=5]
+[09:33:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=6]
+[09:33:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=7]
+[09:33:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=8]
+[09:33:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged ppPoopooMan1235 for Speed[VL=1]
+[09:33:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=9]
+[09:33:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=10]
+[09:33:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=1]
+[09:33:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=2]
+[09:33:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=3]
+[09:33:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=4]
+[09:33:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=5]
+[09:33:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=6]
+[09:33:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=7]
+[09:33:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=8]
+[09:33:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=9]
+[09:33:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=10]
+[09:33:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=1]
+[09:33:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=2]
+[09:33:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=3]
+[09:33:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=4]
+[09:33:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=5]
+[09:33:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=6]
+[09:33:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=7]
+[09:33:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=8]
+[09:33:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=9]
+[09:33:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=10]
+[09:33:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=1]
+[09:33:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=2]
+[09:33:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=3]
+[09:33:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=4]
+[09:33:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=5]
+[09:33:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=6]
+[09:33:59] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=7]
+[09:33:59] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=8]
+[09:33:59] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=9]
+[09:33:59] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=10]
+[09:33:59] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=1]
+[09:33:59] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=2]
+[09:33:59] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=3]
+[09:33:59] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=4]
+[09:33:59] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=5]
+[09:33:59] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=6]
+[09:33:59] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=7]
+[09:33:59] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=8]
+[09:33:59] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=9]
+[09:33:59] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=10]
+[09:33:59] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=1]
+[09:33:59] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=2]
+[09:33:59] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=3]
+[09:33:59] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=4]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=5]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=6]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=7]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=8]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=9]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=10]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=1]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=2]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=3]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=4]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=1]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=5]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=6]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=7]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=2]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=3]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=8]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=4]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=9]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=5]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=10]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=6]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=1]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=7]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=2]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=8]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=3]
+[09:34:00] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=9]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=4]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=10]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=5]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=1]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=6]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=2]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=7]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=3]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=8]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=9]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=10]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=1]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=2]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=3]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=4]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=4]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=5]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=6]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=7]
+[09:34:01] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=8]
+[09:34:02] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=9]
+[09:34:02] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=1]
+[09:34:02] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=2]
+[09:34:02] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=3]
+[09:34:02] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=4]
+[09:34:02] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=5]
+[09:34:02] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=6]
+[09:34:03] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=7]
+[09:34:03] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=8]
+[09:34:03] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=9]
+[09:34:03] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=10]
+[09:34:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=1]
+[09:34:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=1]
+[09:34:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=2]
+[09:34:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=3]
+[09:34:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=4]
+[09:34:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=5]
+[09:34:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=6]
+[09:34:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=7]
+[09:34:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=8]
+[09:34:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=9]
+[09:34:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=10]
+[09:34:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=1]
+[09:34:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=1]
+[09:34:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=2]
+[09:34:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged ksyz for Speed[VL=1]
+[09:34:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=3]
+[09:34:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=4]
+[09:34:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=5]
+[09:34:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=6]
+[09:34:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=7]
+[09:34:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=8]
+[09:34:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=9]
+[09:34:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=10]
+[09:34:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=1]
+[09:34:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=2]
+[09:34:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=3]
+[09:34:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=4]
+[09:34:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=5]
+[09:34:17] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=1]
+[09:34:17] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=2]
+[09:34:17] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=3]
+[09:34:17] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=4]
+[09:34:37] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.anvil
+[09:34:43] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=1]
+[09:34:43] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=2]
+[09:34:43] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=3]
+[09:34:43] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=1]
+[09:34:43] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=2]
+[09:34:44] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=3]
+[09:34:44] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=4]
+[09:34:44] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=5]
+[09:34:52] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r§r
+[09:34:52] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r§r
+[09:34:55] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=1]
+[09:34:55] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=2]
+[09:34:55] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=3]
+[09:34:55] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=4]
+[09:34:55] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=5]
+[09:34:55] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=6]
+[09:34:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=7]
+[09:34:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=8]
+[09:34:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=9]
+[09:34:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=10]
+[09:34:56] [Client thread/INFO]: [CHAT] §rMindOfOwO §r§7» §rbruh§r§r
+[09:34:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=1]
+[09:34:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=2]
+[09:34:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=3]
+[09:34:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=4]
+[09:34:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=5]
+[09:34:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=6]
+[09:34:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=7]
+[09:34:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=8]
+[09:34:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=9]
+[09:34:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=10]
+[09:34:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=1]
+[09:34:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=2]
+[09:34:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=3]
+[09:34:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=4]
+[09:34:59] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r§r
+[09:35:00] [Client thread/INFO]: [CHAT] §rMindOfOwO §r§7» §rverus is so shit§r§r
+[09:35:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=1]
+[09:35:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=2]
+[09:35:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=3]
+[09:35:06] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=1]
+[09:35:06] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=2]
+[09:35:06] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=3]
+[09:35:07] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=4]
+[09:35:07] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=1]
+[09:35:07] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=5]
+[09:35:07] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=2]
+[09:35:07] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed[VL=6]
+[09:35:08] [Client thread/INFO]: [CHAT] §rppPoopooMan1235 §r§7» §rdo u think my client is good for a free client§r§r
+[09:35:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=3]
+[09:35:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=4]
+[09:35:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=5]
+[09:35:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=6]
+[09:35:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=7]
+[09:35:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=8]
+[09:35:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=9]
+[09:35:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=10]
+[09:35:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=1]
+[09:35:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=2]
+[09:35:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=3]
+[09:35:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=4]
+[09:35:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=5]
+[09:35:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=6]
+[09:35:09] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r§r
+[09:35:09] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r§r
+[09:35:11] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r§r
+[09:35:13] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r§r
+[09:35:13] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r§r
+[09:35:13] [Client thread/INFO]: [CHAT] §rMindOfOwO §r§7» §rno§r§r
+[09:35:14] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r§r
+[09:35:17] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=1]
+[09:35:17] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=2]
+[09:35:17] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed[VL=3]
+[09:35:22] [Client thread/INFO]: [CHAT] §rppPoopooMan1235 §r§7» §rwhat do u recommend thats better§r§r
+[09:35:36] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=1]
+[09:35:36] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=2]
+[09:35:36] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=3]
+[09:35:37] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed[VL=4]
+[09:35:44] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r§r
+[09:35:44] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r§r
+[09:35:46] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r§r
+[09:35:54] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r§r
+[09:35:54] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r§r
+[09:35:59] [Client thread/INFO]: [CHAT] §r§cStop trying to exploit my fucking region tracker, thanks!§r§r
+[09:35:59] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r§r
+[09:35:59] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r§r
+[09:35:59] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r§r
+[09:36:02] [Client thread/INFO]: [CHAT] §rMindOfOwO §r§7» §ri havent used a free client in ages§r§r
+[09:36:03] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=1]
+[09:36:03] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=2]
+[09:36:04] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r§r
+[09:36:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=3]
+[09:36:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=4]
+[09:36:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=5]
+[09:36:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=6]
+[09:36:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=7]
+[09:36:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=8]
+[09:36:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=9]
+[09:36:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=10]
+[09:36:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=1]
+[09:36:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=2]
+[09:36:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=3]
+[09:36:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=4]
+[09:36:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=5]
+[09:36:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=6]
+[09:36:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=7]
+[09:36:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=8]
+[09:36:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=9]
+[09:36:04] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=10]
+[09:36:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=1]
+[09:36:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=2]
+[09:36:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=3]
+[09:36:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=4]
+[09:36:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=5]
+[09:36:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=6]
+[09:36:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=7]
+[09:36:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=8]
+[09:36:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=9]
+[09:36:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=10]
+[09:36:24] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=1]
+[09:36:24] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=2]
+[09:36:24] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=3]
+[09:36:24] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=4]
+[09:36:24] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=5]
+[09:36:24] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=6]
+[09:36:24] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed[VL=7]
+[09:36:52] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=1]
+[09:36:52] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=2]
+[09:36:52] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=3]
+[09:36:52] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=4]
+[09:36:52] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=5]
+[09:36:52] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=6]
+[09:36:52] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=7]
+[09:36:52] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=8]
+[09:36:54] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=9]
+[09:36:54] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=10]
+[09:36:54] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=1]
+[09:36:54] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=2]
+[09:36:54] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=3]
+[09:36:54] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=4]
+[09:36:54] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=5]
+[09:36:54] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=6]
+[09:36:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=1]
+[09:36:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=2]
+[09:36:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=3]
+[09:36:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=4]
+[09:36:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=5]
+[09:36:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=6]
+[09:36:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=7]
+[09:36:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=8]
+[09:36:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=9]
+[09:36:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=10]
+[09:36:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed [VL=1]
+[09:36:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed [VL=2]
+[09:36:56] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed [VL=3]
+[09:36:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=1]
+[09:36:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=2]
+[09:36:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=3]
+[09:36:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=4]
+[09:36:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=5]
+[09:36:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=6]
+[09:36:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=7]
+[09:36:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=8]
+[09:36:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=9]
+[09:36:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=10]
+[09:36:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed [VL=4]
+[09:36:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=1]
+[09:36:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed [VL=5]
+[09:36:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=2]
+[09:36:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=3]
+[09:36:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=4]
+[09:36:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=5]
+[09:36:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged Appolon_ for Speed [VL=6]
+[09:37:06] [Client thread/INFO]: [CHAT] §rMindOfOwO §r§7» §rdamm thats crazy§r§r
+[09:37:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=1]
+[09:37:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=2]
+[09:37:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=3]
+[09:37:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=4]
+[09:37:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=5]
+[09:37:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=6]
+[09:37:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=7]
+[09:37:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=8]
+[09:37:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=9]
+[09:37:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=10]
+[09:37:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=1]
+[09:37:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=2]
+[09:37:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=3]
+[09:37:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=4]
+[09:37:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=5]
+[09:37:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=6]
+[09:37:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=7]
+[09:37:08] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=8]
+[09:37:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=9]
+[09:37:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=10]
+[09:37:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=1]
+[09:37:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=2]
+[09:37:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=3]
+[09:37:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=4]
+[09:37:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=5]
+[09:37:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=6]
+[09:37:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=7]
+[09:37:09] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=8]
+[09:37:10] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=9]
+[09:37:10] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=10]
+[09:37:10] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=1]
+[09:37:10] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=2]
+[09:37:10] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=3]
+[09:37:10] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=4]
+[09:37:11] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=5]
+[09:37:11] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=6]
+[09:37:11] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=7]
+[09:37:14] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=8]
+[09:37:14] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=9]
+[09:37:19] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r§r
+[09:37:19] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r§r
+[09:37:20] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=10]
+[09:37:20] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=11]
+[09:37:23] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r§r
+[09:37:24] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r§r
+[09:37:24] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r§r
+[09:37:25] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r§r
+[09:37:25] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r§r
+[09:37:25] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r§r
+[09:37:26] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r§r
+[09:37:27] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r§r
+[09:37:27] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r§r
+[09:37:28] [Client thread/INFO]: [CHAT] §rpizzamicke1234 §r§7» §rah yes§r§r
+[09:37:30] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r§r
+[09:37:30] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r§r
+[09:37:30] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r§r
+[09:37:34] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r§r
+[09:37:34] [Client thread/INFO]: [CHAT] §rpizzamicke1234 §r§7» §rbing chilling§r§r
+[09:37:35] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r§r
+[09:37:35] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r§r
+[09:37:36] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r§r
+[09:37:36] [Client thread/INFO]: [CHAT] §rMindOfOwO §r§7» §rno verus fast bow§r§r
+[09:37:36] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r§r
+[09:37:36] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r§r
+[09:37:37] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r§r
+[09:37:37] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r§r
+[09:37:37] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r§r
+[09:37:39] [Client thread/INFO]: [CHAT] §rMindOfOwO §r§7» §rsmh§r§r
+[09:37:41] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r§r
+[09:37:43] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r§r
+[09:37:43] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r§r
+[09:37:43] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r§r
+[09:37:45] [Client thread/INFO]: [CHAT] §rpizzamicke1234 §r§7» §r:skull:§r§r
+[09:37:45] [Client thread/INFO]: [CHAT] §r§aBlocks are now placeable§r§r
+[09:37:45] [Client thread/INFO]: [CHAT] §r§7§oUse /items to get items§r§r
+[09:37:46] [Client thread/INFO]: [CHAT] §r§cBlocks are no-longer placeable§r§r
+[09:37:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed [VL=1]
+[09:37:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed [VL=2]
+[09:37:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed [VL=3]
+[09:37:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed [VL=1]
+[09:37:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed [VL=2]
+[09:37:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed [VL=3]
+[09:37:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed [VL=4]
+[09:37:57] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged jacobisbadgamer for Speed [VL=5]
+[09:37:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed [VL=4]
+[09:37:58] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed [VL=5]
+[09:38:02] [Client thread/INFO]: [CHAT] §r§cSabo307§r§7 was killed by §r§cbernilede§r§r
+[09:38:03] [Client thread/INFO]: [CHAT] §rpizzamicke1234 §r§7» §rlmao why does this work§r§r
+[09:38:07] [Client thread/INFO]: [CHAT] §rpizzamicke1234 §r§7» §ryas§r§r
+[09:38:13] [Client thread/INFO]: [CHAT] §rMindOfOwO §r§7» §rbow go pew§r§r
+[09:38:23] [Client thread/INFO]: [CHAT] §rMindOfOwO §r§7» §rcum arrows§r§r
+[09:38:25] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=1]
+[09:38:25] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=2]
+[09:38:26] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=3]
+[09:38:26] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=4]
+[09:38:26] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=5]
+[09:38:26] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=6]
+[09:38:26] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=7]
+[09:38:26] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=8]
+[09:38:26] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=9]
+[09:38:26] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=1]
+[09:38:26] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=2]
+[09:38:27] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=3]
+[09:38:27] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=4]
+[09:38:28] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=5]
+[09:38:28] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=6]
+[09:38:28] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=7]
+[09:38:28] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=8]
+[09:38:28] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=9]
+[09:38:28] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=10]
+[09:38:29] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=11]
+[09:38:29] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=12]
+[09:38:29] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=13]
+[09:38:29] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=14]
+[09:38:29] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=15]
+[09:38:29] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=16]
+[09:38:29] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=17]
+[09:38:29] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=18]
+[09:38:29] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=19]
+[09:38:29] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=20]
+[09:38:29] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=21]
+[09:38:29] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=22]
+[09:38:30] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=23]
+[09:38:30] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=24]
+[09:38:30] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=25]
+[09:38:30] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged xNitrenox for Speed [VL=1]
+[09:38:30] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged xNitrenox for Speed [VL=2]
+[09:38:30] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged xNitrenox for Speed [VL=3]
+[09:38:31] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=26]
+[09:38:31] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=27]
+[09:38:31] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=28]
+[09:38:31] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=29]
+[09:38:31] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=30]
+[09:38:45] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=31]
+[09:38:45] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=32]
+[09:38:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.anvil
+[09:38:46] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.anvil
+[09:38:48] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.anvil
+[09:38:48] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.anvil
+[09:38:49] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.anvil
+[09:38:52] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged ppPoopooMan1235 for Speed [VL=1]
+[09:38:52] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.anvil
+[09:38:53] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.anvil
+[09:38:54] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed [VL=1]
+[09:38:54] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed [VL=2]
+[09:38:54] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed [VL=3]
+[09:38:54] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=33]
+[09:38:54] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=34]
+[09:38:54] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed [VL=4]
+[09:38:55] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed [VL=5]
+[09:38:55] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed [VL=6]
+[09:38:55] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged pizzamicke1234 for Speed [VL=7]
+[09:39:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged 0x4q for Speed [VL=1]
+[09:39:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged 0x4q for Speed [VL=2]
+[09:39:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged 0x4q for Speed [VL=3]
+[09:39:05] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged 0x4q for Speed [VL=4]
+[09:39:06] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged 0x4q for Speed [VL=5]
+[09:39:06] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged 0x4q for Speed [VL=6]
+[09:39:06] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged 0x4q for Speed [VL=7]
+[09:39:06] [Client thread/INFO]: [CHAT] §rpizzamicke1234 §r§7» §ryeet§r§r
+[09:39:10] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=35]
+[09:39:10] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=36]
+[09:39:10] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=37]
+[09:39:10] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=38]
+[09:39:10] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=39]
+[09:39:10] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=40]
+[09:39:11] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=41]
+[09:39:11] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=42]
+[09:39:11] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=43]
+[09:39:11] [Client thread/INFO]: [CHAT] §0[§4MenaceNCP§0]§r Flagged MindOfOwO for Speed [VL=44]
+[09:39:19] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.anvil
+[09:39:19] [Client thread/INFO]: [CHAT] §rMindOfOwO §r§7» §rlets do more arrows§r§r
+[09:39:35] [Client thread/INFO]: [CHAT] §rMindOfOwO §r§7» §rlemme spam§r§r
+[09:39:35] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.anvil
+[09:39:35] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:step.anvil
+[09:39:46] [Client thread/INFO]: [CHAT] §rMindOfOwO §r§7» §rthere is a cd§r§r
+[09:39:49] [Client thread/INFO]: [CHAT] §rMindOfOwO §r§7» §rbecause packets§r§r
+[09:39:55] [Client thread/INFO]: Stopping!
+[09:39:55] [Client thread/INFO]: SoundSystem shutting down...
+[09:39:55] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com

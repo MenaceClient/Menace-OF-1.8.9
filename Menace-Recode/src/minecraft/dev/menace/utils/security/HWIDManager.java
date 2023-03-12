@@ -111,7 +111,7 @@ public class HWIDManager {
 		}
 	}
 
-	public static @NotNull String getHWID() {
+	public static String getHWID() {
 		StringBuilder s = new StringBuilder();
 		String main = System.getenv("PROCESSOR_IDENTIFIER") + System.getenv("COMPUTERNAME") + System.getProperty("user.name").trim();
 		byte[] bytes;
@@ -184,7 +184,7 @@ public class HWIDManager {
 		}
 	}
 
-	public static @NotNull String sendDiscordRequest(String id) {
+	public static String sendDiscordRequest(String id) {
 		try {
 			final URL url = new URL("https://menaceapi.cf/getDiscordByID/" + id);
 			HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
@@ -266,7 +266,7 @@ public class HWIDManager {
 		}
     }
 
-	public static @NotNull String getDiscord() {
+	public static String getDiscord() {
 		String discordID;
 		try {
 			final URL url = new URL("https://menaceapi.cf/getDiscordID/" + getHWID());
@@ -296,8 +296,7 @@ public class HWIDManager {
 		return sendDiscordRequest(discordID);
 	}
 
-    @Contract(" -> new")
-	public static @NotNull MenaceUser getUser() {
+	public static MenaceUser getUser() {
     	return new MenaceUser(getUsername(), getDiscord(), getHWID(), getUID());
     }
 

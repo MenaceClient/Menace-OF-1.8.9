@@ -6,7 +6,7 @@ import dev.menace.utils.misc.ChatUtils;
 public class VClipCmd extends BaseCommand {
 
 	public VClipCmd() {
-		super("VClip", "Allows you to teleport up and down blocks.", "$vclip <amount>");
+		super("VClip", "Allows you to teleport up and down blocks.", "vclip <amount>");
 	}
 
 	@Override

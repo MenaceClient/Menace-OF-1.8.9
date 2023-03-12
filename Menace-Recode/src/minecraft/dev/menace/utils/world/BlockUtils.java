@@ -37,7 +37,7 @@ public class BlockUtils {
         return block.getMaterial() == Material.air || block.getMaterial() == Material.plants || block.getMaterial() == Material.vine || block == Blocks.ladder || block == Blocks.water || block == Blocks.flowing_water || block == Blocks.wall_sign || block == Blocks.standing_sign;
     }
 
-    public static @NotNull List<BlockPos> searchForBlocksInRadius(Block block, double radius) {
+    public static List<BlockPos> searchForBlocksInRadius(Block block, double radius) {
         List<BlockPos> blocks = new ArrayList<>();
         for (int x = (int) (MC.thePlayer.posX - radius); x < (int) (MC.thePlayer.posX + radius); x++) {
             for (int y = (int) (MC.thePlayer.posY - radius); y < (int) (MC.thePlayer.posY + radius); y++) {

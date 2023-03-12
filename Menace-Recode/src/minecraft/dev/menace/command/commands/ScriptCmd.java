@@ -8,7 +8,7 @@ import dev.menace.utils.misc.ChatUtils;
 public class ScriptCmd extends BaseCommand {
 
     public ScriptCmd() {
-        super("Script", "Reload your scripts", ".script reload");
+        super("Script", "Reload your scripts", "script reload");
     }
 
     @Override

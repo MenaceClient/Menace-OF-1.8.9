@@ -81,7 +81,7 @@ public class RenderUtils {
 		glEnd();
 	}
 
-	public static void drawBlock(@NotNull BlockPos blockPos, @NotNull Color color, float thickness) {
+	public static void drawBlock(BlockPos blockPos, Color color, float thickness) {
 		double x = (double) blockPos.getX() - Minecraft.getMinecraft().getRenderManager().renderPosX;
 		double y = (double) blockPos.getY() - Minecraft.getMinecraft().getRenderManager().renderPosY;
 		double z = (double) blockPos.getZ() - Minecraft.getMinecraft().getRenderManager().renderPosZ;
@@ -129,7 +129,7 @@ public class RenderUtils {
 		tessellator.draw();
 	}
 
-	public static void drawBoundingBox(@NotNull AxisAlignedBB aa) {
+	public static void drawBoundingBox(AxisAlignedBB aa) {
 		Tessellator tessellator = Tessellator.getInstance();
 		WorldRenderer worldRenderer = tessellator.getWorldRenderer();
 		worldRenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
@@ -560,7 +560,7 @@ public class RenderUtils {
 		tessellator.draw();
 	}
 
-	public static void drawImage(float x, float y, final int width, final int height, final ResourceLocation image, @NotNull Color color) {
+	public static void drawImage(float x, float y, final int width, final int height, final ResourceLocation image, Color color) {
 		GL11.glDisable(2929);
 		GL11.glEnable(3042);
 		GL11.glDepthMask(false);
@@ -652,7 +652,7 @@ public class RenderUtils {
 		GL11.glClear(0);
 	}
 
-	public static void draw2DImage(ResourceLocation image, float x, float y, int width, int height, @NotNull Color c) {
+	public static void draw2DImage(ResourceLocation image, float x, float y, int width, int height, Color c) {
 
 		GL11.glDisable(GL11.GL_DEPTH_TEST);
 		GL11.glEnable(GL11.GL_BLEND);
@@ -708,7 +708,7 @@ public class RenderUtils {
 		setGlCap(cap, true);
 	}
 
-	public static void enableGlCap(final int @NotNull ... caps) {
+	public static void enableGlCap(final int ... caps) {
 		for (final int cap : caps)
 			setGlCap(cap, true);
 	}

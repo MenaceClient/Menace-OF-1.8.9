@@ -25,7 +25,7 @@ public class TimeChangerModule extends BaseModule {
     }
 
     @EventTarget
-    public void onRecieve(@NotNull EventReceivePacket event) {
+    public void onRecieve(EventReceivePacket event) {
         if (event.getPacket() instanceof S03PacketTimeUpdate) {
             event.cancel();
         }

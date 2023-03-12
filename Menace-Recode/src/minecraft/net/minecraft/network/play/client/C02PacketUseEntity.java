@@ -19,7 +19,7 @@ public class C02PacketUseEntity implements Packet<INetHandlerPlayServer>
     {
     }
 
-    public C02PacketUseEntity(@NotNull Entity entity, C02PacketUseEntity.Action action)
+    public C02PacketUseEntity(Entity entity, C02PacketUseEntity.Action action)
     {
         this.entityId = entity.getEntityId();
         this.setAction(action);
@@ -34,7 +34,7 @@ public class C02PacketUseEntity implements Packet<INetHandlerPlayServer>
     /**
      * Reads the raw packet data from the data stream.
      */
-    public void readPacketData(@NotNull PacketBuffer buf) throws IOException
+    public void readPacketData(PacketBuffer buf) throws IOException
     {
         this.entityId = buf.readVarIntFromBuffer();
         this.setAction((C02PacketUseEntity.Action)buf.readEnumValue(C02PacketUseEntity.Action.class));

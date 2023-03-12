@@ -15,15 +15,15 @@ public class PlayerUtils {
 
 	private static final Minecraft MC = Minecraft.getMinecraft();
 	
-	public static float @NotNull [] getRotations(@NotNull Entity entity) {
+	public static float[] getRotations(Entity entity) {
 		return getRotations(entity.posX, entity.posY, entity.posZ);
 	}
 	
-	public static float @NotNull [] getRotations(@NotNull BlockPos pos) {
+	public static float[] getRotations(BlockPos pos) {
 		return getRotations(pos.getX(), pos.getY(), pos.getZ());
 	}
 	
-    public static float @NotNull [] getRotations(double x, double y, double z) {
+    public static float[] getRotations(double x, double y, double z) {
 		double diffX = x - MC.thePlayer.posX;
 		double diffY = y - (MC.thePlayer.posY + MC.thePlayer.getEyeHeight()) + 1;
 		double diffZ = z - MC.thePlayer.posZ;
@@ -35,7 +35,7 @@ public class PlayerUtils {
         return new float[] { yaw, pitch };
     }
 
-    public static float[] getRotations2(@NotNull Entity entity) {
+    public static float[] getRotations2(Entity entity) {
         double deltaX = entity.posX + (entity.posX - entity.lastTickPosX) - MC.thePlayer.posX;
         double deltaY = entity.posY - 3.5 + entity.getEyeHeight() - MC.thePlayer.posY + MC.thePlayer.getEyeHeight();
         double deltaZ = entity.posZ + (entity.posZ - entity.lastTickPosZ) - MC.thePlayer.posZ;
@@ -52,7 +52,7 @@ public class PlayerUtils {
         return new float[]{yaw, pitch};
     }
 
-    public static float @NotNull [] getDirectionToBlock(final double x, final double y, final double z, final @NotNull EnumFacing enumfacing) {
+    public static float[] getDirectionToBlock(final double x, final double y, final double z, final EnumFacing enumfacing) {
         final EntityEgg var4 = new EntityEgg(MC.theWorld);
         var4.posX = x + 0.5D;
         var4.posY = y + 0.5D;
@@ -63,7 +63,7 @@ public class PlayerUtils {
         return getRotationsForBlock(var4.posX, var4.posY, var4.posZ);
     }
 
-    public static float @NotNull [] getRotationsForBlock(final double posX, final double posY, final double posZ) {
+    public static float[] getRotationsForBlock(final double posX, final double posY, final double posZ) {
         final EntityPlayerSP player = MC.thePlayer;
         final double x = posX - player.posX;
         final double y = posY - (player.posY + (double) player.getEyeHeight());
@@ -120,8 +120,7 @@ public class PlayerUtils {
         return new float[]{fixedYaw, fixedPitch};
     }
 
-    @Contract(" -> new")
-    public static @NotNull Vec3 getEyesPos() {
+    public static Vec3 getEyesPos() {
         return new Vec3(MC.thePlayer.posX, MC.thePlayer.posY + MC.thePlayer.getEyeHeight(), MC.thePlayer.posZ);
     }
 

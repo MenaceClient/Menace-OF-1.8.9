@@ -111,7 +111,7 @@ public class SpeedModule extends BaseModule {
     }
 
     @EventTarget
-    public void onRecievePacket(@NotNull EventReceivePacket event) {
+    public void onRecievePacket(EventReceivePacket event) {
         if (event.getPacket() instanceof S08PacketPlayerPosLook) {
             flagCount++;
 

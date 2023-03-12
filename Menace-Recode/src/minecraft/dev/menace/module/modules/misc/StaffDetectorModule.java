@@ -67,7 +67,7 @@ public class StaffDetectorModule extends BaseModule {
     }
 
     @EventTarget
-    public void onRecievePacket(@NotNull EventReceivePacket event) {
+    public void onRecievePacket(EventReceivePacket event) {
         if (event.getPacket() instanceof S1DPacketEntityEffect) {
             Entity entity = mc.theWorld.getEntityByID(((S1DPacketEntityEffect)event.getPacket()).getEntityId());
             if (entity != null && (obStaffs.contains(entity.getName()) || obStaffs.contains(entity.getDisplayName().getUnformattedText()))) {
@@ -151,6 +151,17 @@ public class StaffDetectorModule extends BaseModule {
                 }
             }
         }
+        if (event.getPacket() instanceof S0CPacketSpawnPlayer) {
+            Entity entity = mc.theWorld.getEntityByID(((S0CPacketSpawnPlayer)event.getPacket()).getEntityID());
+
+            if (entity != null && (obStaffs.contains(entity.getName()) || obStaffs.contains(entity.getDisplayName().getUnformattedText()))) {
+                if (!detected) {
+                    ChatUtils.message("Staff Detected! (" + entity.getName() + ")");
+                    mc.thePlayer.sendChatMessage("/leave");
+                    detected = true;
+                }
+            }
+        }
     }
 
     @EventTarget
@@ -158,7 +169,7 @@ public class StaffDetectorModule extends BaseModule {
         detected = false;
     }
 
-    public static @NotNull List<String> readURL() {
+    public static List<String> readURL() {
         List<String> s = new ArrayList<>();
         try {
             final URL url = new URL("https://menaceapi.cf/getStaff/");

@@ -19,6 +19,26 @@ public class ChatUtils {
 		MC.thePlayer.addChatMessage(IChatComponent.Serializer.jsonToComponent(jsonObject.toString()));
 	}
 
+	public static void noPrefix(String message) {
+
+		if (MC.thePlayer == null) return;
+
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.addProperty("text", message);
+
+		MC.thePlayer.addChatMessage(IChatComponent.Serializer.jsonToComponent(jsonObject.toString()));
+	}
+
+	public static void anticheat(String message) {
+
+		if (MC.thePlayer == null) return;
+
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.addProperty("text", "§0[§4MenaceNCP§0]§r " + message);
+
+		MC.thePlayer.addChatMessage(IChatComponent.Serializer.jsonToComponent(jsonObject.toString()));
+	}
+
 	public static void irc(String message) {
 
 		if (MC.thePlayer == null) return;

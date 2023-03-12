@@ -11,7 +11,7 @@ import dev.menace.utils.misc.ChatUtils;
 public class ConfigCmd extends BaseCommand {
 
 	public ConfigCmd() {
-		super("Config", "Save and load your configs", ".config save <name>", ".config load <name>");
+		super("Config", "Save and load your configs", "config save <name>", "config load <name>");
 	}
 
 	@Override

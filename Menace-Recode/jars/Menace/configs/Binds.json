@@ -1,9 +1,9 @@
 {
+  "AntiBot": 0,
   "AutoPot": 0,
-  "ComboOneTap": 0,
   "Criticals": 0,
   "KillAura": 19,
-  "TPAura": 38,
+  "TPAura": 0,
   "Velocity": 0,
   "AirHop": 0,
   "Flight": 47,
@@ -14,7 +14,7 @@
   "Strafe": 0,
   "TargetStrafe": 0,
   "AntiVoid": 0,
-  "Blink": 0,
+  "Blink": 37,
   "InvManager": 45,
   "InvMove": 0,
   "NoFall": 37,
@@ -25,6 +25,7 @@
   "BedNuker": 0,
   "ChestStealer": 0,
   "FastPlace": 0,
+  "Phase": 0,
   "Timer": 0,
   "Animations": 0,
   "Cape": 0,
@@ -38,7 +39,10 @@
   "XRay": 0,
   "AutoLogin": 0,
   "AutoPlay": 0,
-  "KillSults": 0,
+  "DevModule": 25,
+  "Disabler": 0,
+  "KillFX": 0,
   "SecurityFeatures": 0,
-  "StaffDetector": 0
+  "StaffDetector": 0,
+  "TP": 0
 }

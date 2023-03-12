@@ -23,7 +23,7 @@ public class ConfigManager {
         configs = grabConfigs();
     }
 
-    private @NotNull List<Config> grabConfigs() {
+    private List<Config> grabConfigs() {
         List<Config> list = new ArrayList<>();
 
         for (File file : Objects.requireNonNull(FileManager.getConfigFolder().listFiles())) {

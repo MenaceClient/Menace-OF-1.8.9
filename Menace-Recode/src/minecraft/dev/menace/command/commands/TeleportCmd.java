@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class TeleportCmd extends BaseCommand {
     public TeleportCmd() {
-        super("Teleport", "Teleport to an entity within a 500 block range", ".teleport <entity>", ".tp <entity>");
+        super("Teleport", "Teleport to an entity within a 500 block range", "teleport <entity>");
     }
 
     @Override

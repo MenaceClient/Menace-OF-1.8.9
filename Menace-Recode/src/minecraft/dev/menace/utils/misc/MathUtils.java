@@ -49,8 +49,7 @@ public class MathUtils {
      * @param count count of output interpolated numbers
      * @return array of interpolated number with specified count
      */
-    @Contract(pure = true)
-    public static double @NotNull [] interpolate(double start, double end, int count) {
+    public static double[] interpolate(double start, double end, int count) {
         if (count < 2) {
             throw new IllegalArgumentException("interpolate: illegal count!");
         }

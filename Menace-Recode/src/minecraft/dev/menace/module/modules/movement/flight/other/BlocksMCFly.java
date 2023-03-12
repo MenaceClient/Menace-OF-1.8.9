@@ -43,7 +43,7 @@ public class BlocksMCFly extends FlightBase {
     }
 
     @Override
-    public void onReceivePacket(@NotNull EventReceivePacket event) {
+    public void onReceivePacket(EventReceivePacket event) {
         if (event.getPacket() instanceof S08PacketPlayerPosLook && canFly) {
             flagCount++;
         }

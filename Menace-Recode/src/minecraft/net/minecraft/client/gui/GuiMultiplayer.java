@@ -406,7 +406,7 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
         }
     }
 
-    private void connectToServer(@NotNull ServerData server)
+    private void connectToServer(ServerData server)
     {
     	Menace.instance.discordRP.update("Bypassing " + server.serverIP);
         Menace.instance.hudManager.gameStatsElement.reset();

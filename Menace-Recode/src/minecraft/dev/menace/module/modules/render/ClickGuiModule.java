@@ -28,9 +28,10 @@ public class ClickGuiModule extends BaseModule {
 	
 	@Override
 	public void setup() {
-		mode = new ListSetting("Mode", true, "Dropdown", new String[] {"Dropdown", "Panel", "Dashboard"/*, "Menace"*/});
+		mode = new ListSetting("Mode", true, "Dropdown", new String[] {"Dropdown", "Panel", "Dashboard", "Menace"});
 		sounds = new ToggleSetting("Sounds", true, true);
 		this.rSetting(mode);
+		//TODO: fix sound or remove this
 		this.rSetting(sounds);
 		super.setup();
 	}

@@ -7,6 +7,7 @@ import dev.menace.event.events.EventMove;
 import dev.menace.event.events.EventPreMotion;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
+import dev.menace.module.settings.SliderSetting;
 import dev.menace.utils.player.MovementUtils;
 import dev.menace.utils.player.PlayerUtils;
 import dev.menace.utils.render.RenderUtils;
@@ -18,8 +19,25 @@ public class TargetStrafeModule extends BaseModule {
 
     private boolean direction = true;
 
+    SliderSetting range;
+
     public TargetStrafeModule() {
         super("TargetStrafe", Category.MOVEMENT, 0);
+    }
+
+    @Override
+    public void setup() {
+        range = new SliderSetting("Range", true, 4.0, 1.0, 7.0, true) {
+            @Override
+            public void constantCheck() {
+                if (getValue() > Menace.instance.moduleManager.killAuraModule.reach.getValue()) {
+                    setValue(Menace.instance.moduleManager.killAuraModule.reach.getValue());
+                }
+                super.constantCheck();
+            }
+        };
+        this.rSetting(range);
+        super.setup();
     }
 
     @EventTarget
@@ -42,7 +60,7 @@ public class TargetStrafeModule extends BaseModule {
             return;
         }
 
-        MovementUtils.setSpeed(event, MovementUtils.getSpeed(), PlayerUtils.getRotations(target)[0], direction ? 1 : -1, mc.thePlayer.getDistanceToEntity(target) <= (Menace.instance.moduleManager.killAuraModule.reach.getValue() - 0.5) ?  0.0 : 1.0);
+        MovementUtils.setSpeed(event, MovementUtils.getSpeed(), PlayerUtils.getRotations(target)[0], direction ? 1 : -1, mc.thePlayer.getDistanceToEntity(target) <= (range.getValue() - 0.5) ?  0.0 : 1.0);
 
     }
 
@@ -56,7 +74,7 @@ public class TargetStrafeModule extends BaseModule {
 
         final Color theme = Color.RED;
         final Color color = new Color(theme.getRed(), theme.getGreen(), theme.getBlue(), 62);
-        RenderUtils.circle(Menace.instance.moduleManager.killAuraModule.trget, Menace.instance.moduleManager.killAuraModule.reach.getValue() - 1, color);
+        RenderUtils.circle(Menace.instance.moduleManager.killAuraModule.trget, range.getValue() - 1, color);
     }
 
 }

@@ -11,7 +11,7 @@ public class ColorUtils {
 		return Color.HSBtoRGB(hue, saturation, brightness);
 	}
 
-	public static @NotNull Color fade(float speed, float off) {
+	public static Color fade(float speed, float off) {
 		double time = (double) System.currentTimeMillis() / speed;
 		time += off;
 		time %= 255.0f;

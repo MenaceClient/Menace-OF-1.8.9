@@ -65,6 +65,7 @@ public class FlightModule extends BaseModule {
 
 				case OTHER:
 					otherValues.add(fm.getName());
+
 					break;
 
 				default:

@@ -3,6 +3,8 @@
     "Toggled": false,
     "Settings": {
       "Delay": 100.0,
+      "Health": 10.0,
+      "OnlyOnGround": true,
       "Visible": true
     }
   },
@@ -16,7 +18,7 @@
   "KillAura": {
     "Toggled": false,
     "Settings": {
-      "Reach": 3.0,
+      "Reach": 7.0,
       "MinCPS": 11.0,
       "MaxCPS": 12.0,
       "TicksExisted": 10.0,
@@ -31,6 +33,7 @@
       "AutoDisable": true,
       "AntiBot": true,
       "Players": true,
+      "MenaceUsers": true,
       "Hostiles": true,
       "Passives": false,
       "Invisibles": false,
@@ -112,6 +115,7 @@
   "TargetStrafe": {
     "Toggled": true,
     "Settings": {
+      "Range": 4.0,
       "Visible": true
     }
   },
@@ -184,14 +188,14 @@
       "Tower Move": false,
       "Tower Mode": "Normal",
       "Tower Speed": 42.0,
-      "Tower Derp": false,
-      "Sprint": false,
+      "Tower Derp": true,
+      "Sprint": true,
       "KeepRotations": true,
-      "SilentSwap": false,
+      "SilentSwap": true,
       "KeepY": false,
       "Jump": false,
-      "Eagle": true,
-      "Eagle Delay": 200.0,
+      "Eagle": false,
+      "Eagle Delay": 100.0,
       "NoSwing": false,
       "Timer": 1.0,
       "Render": true,
@@ -220,6 +224,7 @@
       "CloseScreen": true,
       "Randomize": true,
       "OnlyChests": true,
+      "NoGui": true,
       "Visible": true
     }
   },
@@ -270,7 +275,7 @@
   "ClickGui": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Dropdown",
+      "Mode": "Menace",
       "Sounds": true,
       "Visible": true
     }

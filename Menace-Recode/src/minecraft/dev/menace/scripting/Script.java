@@ -8,6 +8,7 @@ import dev.menace.module.settings.ToggleSetting;
 import dev.menace.scripting.mappings.*;
 import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.player.MovementUtils;
+import dev.menace.utils.player.PacketUtils;
 import dev.menace.utils.render.RenderUtils;
 import jdk.internal.dynalink.beans.StaticClass;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
@@ -57,6 +58,7 @@ public class Script {
         scriptEngine.put("ChatUtils", StaticClass.forClass(ChatUtils.class));
         scriptEngine.put("MovementUtils", StaticClass.forClass(MovementUtils.class));
         scriptEngine.put("RenderUtils", StaticClass.forClass(RenderUtils.class));
+        scriptEngine.put("PacketUtils", StaticClass.forClass(PacketUtils.class));
         scriptEngine.put("mc", StaticClass.forClass(Minecraft.getMinecraft().getClass()));
 
         //List all Event classes and bind them

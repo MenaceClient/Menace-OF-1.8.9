@@ -1,6 +1,7 @@
 package dev.menace.anticheat.check;
 
 import dev.menace.anticheat.HackerDetect;
+import dev.menace.anticheat.PlayerVL;
 import dev.menace.utils.misc.ChatUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,11 +19,9 @@ public class BaseCheck {
         this.name = name;
     }
 
-    public void update(EntityPlayer player) {
+    public void update(PlayerVL vl) {}
 
-    }
-
-    public void flag(EntityPlayer player) {
-        ChatUtils.message("Flagged " + player.getName() + " for " + this.name + "[VL=" + (player.flags++) + "]");
+    public String getCheckName() {
+        return name;
     }
 }

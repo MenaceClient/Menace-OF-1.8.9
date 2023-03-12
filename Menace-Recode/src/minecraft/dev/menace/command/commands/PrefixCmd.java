@@ -7,7 +7,7 @@ import dev.menace.utils.misc.ChatUtils;
 public class PrefixCmd extends BaseCommand {
 
 	public PrefixCmd() {
-		super("Prefix", "Changes the chat prefix.", "$prefix <newPrefix>");
+		super("Prefix", "Changes the chat prefix.", "prefix <newPrefix>");
 	}
 
 	@Override

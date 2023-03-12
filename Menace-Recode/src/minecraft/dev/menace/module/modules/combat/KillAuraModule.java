@@ -41,7 +41,6 @@ import java.util.stream.Collectors;
 public class KillAuraModule extends BaseModule {
 
 	MSTimer delayTimer = new MSTimer();
-	public final ArrayList<Entity> botlist = new ArrayList<>();
 	public EntityLivingBase trget;
 	long delay;
 	boolean blocking;
@@ -62,8 +61,8 @@ public class KillAuraModule extends BaseModule {
 	ToggleSetting ininv;
 	ToggleSetting raycast;
 	ToggleSetting autoDisable;
-	ToggleSetting antiBot;
 	ToggleSetting players;
+	ToggleSetting menaceUsers;
 	ToggleSetting hostiles;
 	ToggleSetting passives;
 	ToggleSetting invisibles;
@@ -101,8 +100,8 @@ public class KillAuraModule extends BaseModule {
 		ininv = new ToggleSetting("InInventory", true, false);
 		raycast = new ToggleSetting("RayCast", true, false);
 		autoDisable = new ToggleSetting("AutoDisable", true, true);
-		antiBot = new ToggleSetting("AntiBot", true, true);
 		players = new ToggleSetting("Players", true, true);
+		menaceUsers = new ToggleSetting("MenaceUsers", true, true);
 		hostiles = new ToggleSetting("Hostiles", true, true);
 		passives = new ToggleSetting("Passives", true, false);
 		invisibles = new ToggleSetting("Invisibles", true, false);
@@ -119,8 +118,8 @@ public class KillAuraModule extends BaseModule {
 		this.rSetting(ininv);
 		this.rSetting(raycast);
 		this.rSetting(autoDisable);
-		this.rSetting(antiBot);
 		this.rSetting(players);
+		this.rSetting(menaceUsers);
 		this.rSetting(hostiles);
 		this.rSetting(passives);
 		this.rSetting(invisibles);
@@ -227,6 +226,7 @@ public class KillAuraModule extends BaseModule {
 		targets = targets.stream().filter(entity -> !(entity instanceof EntityPlayer) || players.getValue()).collect(Collectors.toList());
 		targets = targets.stream().filter(entity -> !(entity instanceof EntityMob) || hostiles.getValue()).collect(Collectors.toList());
 		targets = targets.stream().filter(entity -> !(entity instanceof EntityAnimal) || passives.getValue()).collect(Collectors.toList());
+		targets = targets.stream().filter(entity -> !Menace.instance.onlineMenaceUsers.containsValue(entity.getName()) || menaceUsers.getValue()).collect(Collectors.toList());
 		targets = targets.stream().filter(entity -> !isBot(entity)).collect(Collectors.toList());
 		return targets;
 	}
@@ -255,31 +255,8 @@ public class KillAuraModule extends BaseModule {
 		return (angleDiff > 0 && angleDiff < angle) || (-angle < angleDiff && angleDiff < 0);
 	}
 
-	@EventTarget
-	public void onSendPacket(@NotNull EventReceivePacket event) {
-		if (event.getPacket() instanceof S0CPacketSpawnPlayer) {
-			S0CPacketSpawnPlayer packet = (S0CPacketSpawnPlayer) event.getPacket();
-			double posX = packet.getX() / 32D;
-			double posY = packet.getY() / 32D;
-			double posZ = packet.getZ() / 32D;
-
-			double diffX = mc.thePlayer.posX - posX;
-			double diffY = mc.thePlayer.posY - posY;
-			double diffZ = mc.thePlayer.posZ - posZ;
-
-			double dist = Math.sqrt(diffX * diffX + diffY * diffY + diffZ * diffZ);
-
-			if (dist <= 17D && posX != mc.thePlayer.posX && posY != mc.thePlayer.posY && posZ != mc.thePlayer.posZ) {
-				botlist.add(mc.theWorld.getEntityByID(packet.getEntityID()));
-			}
-		}
-	}
-
 	private boolean isBot(Entity e) {
-		if (!Menace.instance.moduleManager.killAuraModule.antiBot.getValue()) {
-			return false;
-		} else {
-			return botlist.contains(e);
-		}
+		AntiBotModule antiBotModule = Menace.instance.moduleManager.antiBotModule;
+		return antiBotModule.isToggled() && e instanceof EntityPlayer && antiBotModule.bots.contains(e);
 	}
 }

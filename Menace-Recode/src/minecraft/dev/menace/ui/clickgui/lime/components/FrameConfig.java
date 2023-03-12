@@ -32,7 +32,7 @@ public class FrameConfig implements Priority {
 
     MenaceFontRenderer font = Menace.instance.productSans20;
 
-    public FrameConfig(@NotNull Config config, FrameConfigs owner, int x, int y)
+    public FrameConfig(Config config, FrameConfigs owner, int x, int y)
     {
         this.config = config;
         this.components = new ArrayList<>();

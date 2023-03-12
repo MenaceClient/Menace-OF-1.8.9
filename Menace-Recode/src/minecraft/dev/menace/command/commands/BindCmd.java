@@ -14,7 +14,7 @@ public class BindCmd extends BaseCommand {
 	}
 
 	@Override
-	public void call(String @NotNull [] args) {
+	public void call(String[] args) {
 		
 		Menace.instance.moduleManager
 		.getModules()

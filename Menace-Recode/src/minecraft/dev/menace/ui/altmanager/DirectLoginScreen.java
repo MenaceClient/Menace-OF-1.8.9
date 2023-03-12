@@ -31,7 +31,7 @@ extends GuiScreen {
 	}
 
 	@Override
-	protected void actionPerformed(@NotNull GuiButton button) {
+	protected void actionPerformed(GuiButton button) {
 		switch (button.id) {
 		case 2: {
 			this.mc.displayGuiScreen(this.previousScreen);

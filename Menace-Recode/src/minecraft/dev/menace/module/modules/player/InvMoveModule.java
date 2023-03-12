@@ -63,7 +63,7 @@ public class InvMoveModule extends BaseModule {
     }
 
     @EventTarget
-    public void onUpdate(@NotNull EventUpdate event) {
+    public void onUpdate(EventUpdate event) {
         if (mc.currentScreen instanceof GuiContainer || mc.currentScreen instanceof VapeGui || mc.currentScreen instanceof LimeClickGUI || mc.currentScreen instanceof CSGOGui) {
             mc.gameSettings.keyBindForward.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindForward);
             mc.gameSettings.keyBindBack.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindBack);

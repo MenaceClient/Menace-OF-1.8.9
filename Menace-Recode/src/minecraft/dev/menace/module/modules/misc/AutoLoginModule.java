@@ -14,7 +14,7 @@ public class AutoLoginModule extends BaseModule {
     }
 
     @EventTarget
-    public void onRecievePacket(@NotNull EventReceivePacket event) {
+    public void onRecievePacket(EventReceivePacket event) {
         if (event.getPacket() instanceof S02PacketChat) {
             String message = ((S02PacketChat)event.getPacket()).getChatComponent().getUnformattedText();
             if (message.contains("/register <password> <password>")) {
