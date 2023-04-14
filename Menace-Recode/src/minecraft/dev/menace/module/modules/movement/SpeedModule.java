@@ -4,6 +4,7 @@ import dev.menace.event.EventTarget;
 import dev.menace.event.events.EventMove;
 import dev.menace.event.events.EventPreMotion;
 import dev.menace.event.events.EventReceivePacket;
+import dev.menace.event.events.EventUpdate;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.module.settings.ListSetting;
@@ -13,11 +14,8 @@ import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.player.MovementUtils;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.network.play.server.S08PacketPlayerPosLook;
+import net.minecraft.network.play.server.S12PacketEntityVelocity;
 import net.minecraft.potion.Potion;
-import net.minecraft.util.AxisAlignedBB;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
 
 public class SpeedModule extends BaseModule {
 
@@ -33,7 +31,7 @@ public class SpeedModule extends BaseModule {
 
     @Override
     public void setup() {
-        mode = new ListSetting("Mode", true, "BHop", new String[] {"BHop", "Strafe", "LowHop", "BlocksMC"});
+        mode = new ListSetting("Mode", true, "BHop", new String[] {"BHop", "Strafe", "LowHop", "BlocksMC", "Experimental"});
         speed = new SliderSetting("Speed", true, 1, 1, 10, true);
         autoDisable = new ToggleSetting("AutoDisable", true, true);
         this.rSetting(mode);
@@ -55,6 +53,22 @@ public class SpeedModule extends BaseModule {
         mc.gameSettings.keyBindJump.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindJump);
         mc.timer.timerSpeed = 1.0f;
         super.onDisable();
+    }
+
+    @EventTarget
+    public void onUpdate(EventUpdate event) {
+        if (mode.getValue().equalsIgnoreCase("Experimental")) {
+            if (!MovementUtils.shouldMove()) {
+                return;
+            }
+
+            if (mc.thePlayer.onGround) {
+                mc.thePlayer.jump();
+            } else {
+                mc.thePlayer.motionY = -0.427;
+            }
+
+        }
     }
 
     @EventTarget
@@ -95,6 +109,14 @@ public class SpeedModule extends BaseModule {
         }
     }
 
+    public void velocityBoost(S12PacketEntityVelocity packetEntityVelocity) {
+        if (mode.getValue().equalsIgnoreCase("BlocksMC")) {
+            if (packetEntityVelocity.getEntityID() == mc.thePlayer.getEntityId() && mc.thePlayer.hurtTime > 0 && mc.thePlayer.hurtTime < 5) {
+                //MovementUtils.strafe(0.7f);
+            }
+        }
+    }
+
     @EventTarget
     public void onMove(EventMove event) {
         if (mode.getValue().equalsIgnoreCase("LowHop")) {
@@ -111,11 +133,11 @@ public class SpeedModule extends BaseModule {
     }
 
     @EventTarget
-    public void onRecievePacket(EventReceivePacket event) {
+    public void onReceivePacket(EventReceivePacket event) {
         if (event.getPacket() instanceof S08PacketPlayerPosLook) {
             flagCount++;
 
-            if (flagCount >= 3) {
+            if (flagCount >= 3 && autoDisable.getValue()) {
                 ChatUtils.message("Toggled Speed due to flag.");
                 this.toggle();
             }

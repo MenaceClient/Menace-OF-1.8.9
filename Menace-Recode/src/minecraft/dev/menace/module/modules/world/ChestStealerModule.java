@@ -13,20 +13,30 @@ import dev.menace.ui.hud.BaseElement;
 import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.misc.MathUtils;
 import dev.menace.utils.player.InventoryUtils;
+import dev.menace.utils.player.MovementUtils;
+import dev.menace.utils.player.PlayerUtils;
 import dev.menace.utils.render.ColorUtils;
 import dev.menace.utils.render.RenderUtils;
 import dev.menace.utils.render.font.MenaceFontRenderer;
 import dev.menace.utils.timer.MSTimer;
+import dev.menace.utils.world.BlockUtils;
+import net.minecraft.block.BlockChest;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.projectile.EntityEgg;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
 import net.minecraft.network.play.client.C0DPacketCloseWindow;
 import net.minecraft.network.play.server.S2DPacketOpenWindow;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -35,6 +45,7 @@ import java.util.List;
 
 public class ChestStealerModule extends BaseModule {
 
+	private boolean direction = true;
 	int slotAmt;
 	List<Slot> slotList = new ArrayList<>();
 	MSTimer delayTimer = new MSTimer();
@@ -147,8 +158,57 @@ public class ChestStealerModule extends BaseModule {
 	}
 
 	@EventTarget
+	public void onPre(EventPreMotion event) {
+		if (mc.gameSettings.keyBindLeft.isKeyDown()) {
+			direction = true;
+		} else if (mc.gameSettings.keyBindRight.isKeyDown()) {
+			direction = false;
+		} else if (mc.thePlayer.isCollidedHorizontally) {
+			direction = !direction;
+		}
+	}
+
+	/*@EventTarget
+	public void onMove(EventMove event) {
+
+		if (!isInChest || !noGui.getValue() || chestPos == null) {
+			return;
+		}
+
+		EntityEgg entityEgg = new EntityEgg(mc.theWorld);
+		entityEgg.setPosition(chestPos.getX(), chestPos.getY(), chestPos.getZ());
+		entityEgg.lastTickPosX = chestPos.getX();
+		entityEgg.lastTickPosY = chestPos.getY();
+		entityEgg.lastTickPosZ = chestPos.getZ();
+		MovementUtils.setSpeed(event, MovementUtils.getSpeed(), PlayerUtils.getRotations(entityEgg)[0], direction ? 1 : -1, mc.thePlayer.getDistanceToEntity(entityEgg) <= 3 ?  0.0 : 1.0);
+
+	}
+
+	@EventTarget
+	public void onRender3DEvent(EventRender3D event) {
+		if (!isInChest || !noGui.getValue() || chestPos == null) {
+			return;
+		}
+
+		final Color theme = Color.RED;
+		final Color color = new Color(theme.getRed(), theme.getGreen(), theme.getBlue(), 62);
+		EntityEgg entityEgg = new EntityEgg(mc.theWorld);
+		entityEgg.setPosition(chestPos.getX(), chestPos.getY(), chestPos.getZ());
+		entityEgg.lastTickPosX = chestPos.getX();
+		entityEgg.lastTickPosY = chestPos.getY();
+		entityEgg.lastTickPosZ = chestPos.getZ();
+		RenderUtils.circle(entityEgg, 2, color);
+	}*/
+
+	@EventTarget
 	public void onSendPacket(EventSendPacket event) {
-		if (event.getPacket() instanceof C0DPacketCloseWindow) {
+		/*if (event.getPacket() instanceof C08PacketPlayerBlockPlacement) {
+			C08PacketPlayerBlockPlacement packet = (C08PacketPlayerBlockPlacement) event.getPacket();
+			if (packet.getStack() != null && BlockUtils.getBlock(packet.getPosition()) instanceof BlockChest) {
+				ChatUtils.message("Chest opened");
+				chestPos = packet.getPosition();
+			}
+		} else*/ if (event.getPacket() instanceof C0DPacketCloseWindow) {
 			reset();
 		}
 	}

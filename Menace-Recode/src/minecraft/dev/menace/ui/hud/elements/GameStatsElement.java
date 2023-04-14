@@ -1,20 +1,21 @@
 package dev.menace.ui.hud.elements;
 
 import dev.menace.Menace;
-import dev.menace.event.EventTarget;
-import dev.menace.event.events.EventDeath;
 import dev.menace.module.modules.render.HUDModule;
 import dev.menace.ui.hud.BaseElement;
-import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.render.ColorUtils;
+import dev.menace.utils.render.GLSLShader;
 import dev.menace.utils.render.RenderUtils;
 import dev.menace.utils.timer.MSTimer;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
-import org.jetbrains.annotations.NotNull;
+import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
 
 import java.awt.*;
+import java.io.IOException;
 import java.time.LocalTime;
 
 public class GameStatsElement extends BaseElement {
@@ -27,11 +28,11 @@ public class GameStatsElement extends BaseElement {
     }
 
     public void start() {
-        Menace.instance.eventManager.register(this);
+        //mc.entityRenderer.loadShader(new ResourceLocation("shaders/post/blur.json"));
     }
 
     public void stop() {
-        Menace.instance.eventManager.unregister(this);
+        //mc.entityRenderer.stopUseShader();
     }
 
     public void reset() {

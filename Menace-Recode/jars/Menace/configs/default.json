@@ -1,4 +1,10 @@
 {
+  "AntiBot": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
   "AutoPot": {
     "Toggled": false,
     "Settings": {
@@ -24,6 +30,7 @@
       "TicksExisted": 10.0,
       "FOV": 360.0,
       "Filter": "Distance",
+      "AttackPoint": "Head",
       "AutoBlock": "Fake",
       "KeepSprint": true,
       "NoSwing": false,
@@ -31,7 +38,6 @@
       "InInventory": false,
       "RayCast": true,
       "AutoDisable": true,
-      "AntiBot": true,
       "Players": true,
       "MenaceUsers": true,
       "Hostiles": true,
@@ -123,6 +129,8 @@
     "Toggled": false,
     "Settings": {
       "Mode": "Teleport",
+      "Fall Distance": 3.0,
+      "Smart Disable": true,
       "Visible": true
     }
   },
@@ -193,10 +201,14 @@
       "KeepRotations": true,
       "SilentSwap": true,
       "KeepY": false,
-      "Jump": false,
+      "Bypass": false,
+      "BlocksMC": false,
       "Eagle": false,
       "Eagle Delay": 100.0,
       "NoSwing": false,
+      "Boost": false,
+      "Jump": false,
+      "LowHop": false,
       "Timer": 1.0,
       "Render": true,
       "Visible": true
@@ -229,6 +241,12 @@
     }
   },
   "FastPlace": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "Phase": {
     "Toggled": false,
     "Settings": {
       "Visible": true
@@ -276,7 +294,7 @@
     "Toggled": false,
     "Settings": {
       "Mode": "Menace",
-      "Sounds": true,
+      "Sounds": false,
       "Visible": true
     }
   },
@@ -359,6 +377,17 @@
   "Disabler": {
     "Toggled": false,
     "Settings": {
+      "Mode": "PingSpoof",
+      "Delay": 300.0,
+      "MaxPackets": 300.0,
+      "Transactions": true,
+      "Silent": true,
+      "Visible": true
+    }
+  },
+  "ExitFlag": {
+    "Toggled": false,
+    "Settings": {
       "Visible": true
     }
   },
@@ -371,9 +400,22 @@
       "Visible": true
     }
   },
+  "MenaceNCP": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
   "SecurityFeatures": {
     "Toggled": false,
     "Settings": {
+      "Visible": true
+    }
+  },
+  "Spoofer": {
+    "Toggled": false,
+    "Settings": {
+      "Mode": "Vanilla",
       "Visible": true
     }
   },

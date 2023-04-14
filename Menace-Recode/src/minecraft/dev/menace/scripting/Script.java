@@ -50,16 +50,16 @@ public class Script {
         scriptEngine.put("Script", StaticClass.forClass(ScriptMap.class));
         scriptEngine.put("Module", StaticClass.forClass(ModuleMap.class));
         scriptEngine.put("HudElement", StaticClass.forClass(ElementMap.class));
-        scriptEngine.put("SliderSetting", StaticClass.forClass(SliderSetting.class));
-        scriptEngine.put("BooleanSetting", StaticClass.forClass(ToggleSetting.class));
-        scriptEngine.put("ListSetting", StaticClass.forClass(ListSetting.class));
+        scriptEngine.put("SliderSetting", StaticClass.forClass(SliderSettingMap.class));
+        scriptEngine.put("BooleanSetting", StaticClass.forClass(ToggleSettingMap.class));
+        scriptEngine.put("ListSetting", StaticClass.forClass(ListSettingMap.class));
         scriptEngine.put("Player", StaticClass.forClass(PlayerMap.class));
         scriptEngine.put("EventList", StaticClass.forClass(EventListMap.class));
-        scriptEngine.put("ChatUtils", StaticClass.forClass(ChatUtils.class));
-        scriptEngine.put("MovementUtils", StaticClass.forClass(MovementUtils.class));
-        scriptEngine.put("RenderUtils", StaticClass.forClass(RenderUtils.class));
-        scriptEngine.put("PacketUtils", StaticClass.forClass(PacketUtils.class));
-        scriptEngine.put("mc", StaticClass.forClass(Minecraft.getMinecraft().getClass()));
+        scriptEngine.put("ChatUtils", StaticClass.forClass(ChatUtilsMap.class));
+        //scriptEngine.put("MovementUtils", StaticClass.forClass(MovementUtils.class));
+        //scriptEngine.put("RenderUtils", StaticClass.forClass(RenderUtils.class));
+        scriptEngine.put("PacketUtils", StaticClass.forClass(PacketUtilsMap.class));
+        //scriptEngine.put("mc", StaticClass.forClass(Minecraft.getMinecraft().getClass()));
 
         //List all Event classes and bind them
         for (Class<? extends Event> clazz : Menace.instance.eventManager.getClasses()) {

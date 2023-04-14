@@ -22,6 +22,7 @@ import dev.menace.module.Category;
 import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.ToggleSetting;
 import dev.menace.utils.file.FileManager;
+import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.misc.MathUtils;
 import dev.menace.utils.misc.SoundPlayer;
 import dev.menace.utils.render.RenderUtils;
@@ -157,7 +158,7 @@ public class KillFXModule extends BaseModule {
 	}
 
 	public void valOverlay() {
-		if (killTimer.hasTimePassed(10000)) {
+		if (killTimer.hasTimePassed(15000)) {
 			killTimer.reset();
 			killcount = 1;
 		}
@@ -182,7 +183,16 @@ public class KillFXModule extends BaseModule {
 		if (!valOverlaySet.getValue()) return;
 
 		if (!killTimer.hasTimePassed(1000)) {
-			RenderUtils.drawImage(430, 390, 100, 100, new ResourceLocation("menace/killfx/" + valTypeSet.getValue().toLowerCase() + "_kill_banner.png"), new Color(255, 255, 255, 0));
+			RenderUtils.drawImage(430, 355, 100, 100, new ResourceLocation("menace/killfx/" + valTypeSet.getValue().toLowerCase() + "_kill_banner.png"), new Color(255, 255, 255, 0));
+		}
+
+		//Render kill timer progress bar starting from the max time and going down to 0
+		//new Color(87,183,171,255).getRGB()
+		float progress = (float) killTimer.timePassed() / 15000;
+		progress = 1 - progress;
+		if (progress > 0) {
+			RenderUtils.drawHollowRect(390, 460, 570, 470, 1, -1);
+			RenderUtils.drawRect(391, 461, 391 + (180 * progress), 469, new Color(87, 183, 171, 255).getRGB());
 		}
 	}
 

@@ -72,9 +72,12 @@ public class ModuleManager {
 	AutoLoginModule autoLoginModule = new AutoLoginModule();
 	public AutoPlayModule autoPlayModule = new AutoPlayModule();
 	DevModule devModule = new DevModule();
-	DisablerModule disablerModule = new DisablerModule();
+	public DisablerModule disablerModule = new DisablerModule();
+	ExitFlagModule exitFlagModule = new ExitFlagModule();
 	public KillFXModule killFXModule = new KillFXModule();
+	HackerDetectModule hackerDetectModule = new HackerDetectModule();
 	public SecurityFeaturesModule securityFeaturesModule = new SecurityFeaturesModule();
+	SpooferModule spooferModule = new SpooferModule();
 	StaffDetectorModule staffDetectorModule = new StaffDetectorModule();
 
 	public ArrayList<BaseModule> getModules() {

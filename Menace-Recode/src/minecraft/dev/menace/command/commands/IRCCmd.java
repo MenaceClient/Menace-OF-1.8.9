@@ -6,7 +6,7 @@ import dev.menace.utils.misc.ChatUtils;
 
 public class IRCCmd extends BaseCommand {
     public IRCCmd() {
-        super("irc", "Chat in the IRC", "irc <message>");
+        super("IRC", "Chat in the IRC", "irc <message>");
     }
 
     @Override

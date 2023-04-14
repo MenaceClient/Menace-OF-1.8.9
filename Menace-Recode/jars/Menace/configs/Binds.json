@@ -14,7 +14,7 @@
   "Strafe": 0,
   "TargetStrafe": 0,
   "AntiVoid": 0,
-  "Blink": 37,
+  "Blink": 48,
   "InvManager": 45,
   "InvMove": 0,
   "NoFall": 37,
@@ -40,9 +40,12 @@
   "AutoLogin": 0,
   "AutoPlay": 0,
   "DevModule": 25,
-  "Disabler": 0,
+  "Disabler": 38,
+  "ExitFlag": 0,
   "KillFX": 0,
+  "MenaceNCP": 0,
   "SecurityFeatures": 0,
+  "Spoofer": 0,
   "StaffDetector": 0,
   "TP": 0
 }

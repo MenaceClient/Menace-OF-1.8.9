@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import dev.menace.module.Category;
@@ -35,9 +36,16 @@ public class LimeClickGUI extends GuiScreen {
     @Override
     public void initGui()
     {
+        //mc.entityRenderer.loadShader(new ResourceLocation("shaders/post/blur.json"));
         categories.forEach(FrameCategory::initGui);
         config.initGui();
         super.initGui();
+    }
+
+    @Override
+    public void onGuiClosed() {
+        //mc.entityRenderer.stopUseShader();
+        super.onGuiClosed();
     }
 
     @Override

@@ -55,6 +55,11 @@ public class MovementUtils {
         mc.thePlayer.motionZ = 0;
     }
 
+    public static void stopHoriz() {
+        mc.thePlayer.motionX = 0;
+        mc.thePlayer.motionZ = 0;
+    }
+
     public static void setSpeed(EventMove moveEvent, double moveSpeed, float pseudoYaw, double pseudoStrafe, double pseudoForward) {
         double forward = pseudoForward;
         double strafe = pseudoStrafe;

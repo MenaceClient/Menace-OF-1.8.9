@@ -176,8 +176,8 @@ extends GuiScreen {
 
 		if (!HWIDManager.isWhitelisted()) {
 			try {
-				AntiSkidUtils.log("User not whitelisted. (uid: " + username.getText() + ")");
-			} catch (IOException e) {
+				AntiSkidUtils.terminate("Your HWID is not whitelisted please contact the admins to get it reset", 0x04, "HWID not whitelisted");
+			} catch (Exception e) {
 				throw new RuntimeException(e);
 			}
 			status = "§cHWID not whitelisted.";

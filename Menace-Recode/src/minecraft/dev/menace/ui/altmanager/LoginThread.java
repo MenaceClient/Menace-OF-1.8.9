@@ -57,34 +57,13 @@ public class LoginThread extends Thread {
 			break;
 		case RNG:
 			String name = "";
-			try {
-				final URL url = new URL("https://menacenamegen.pxzlz.repl.co/name");
-				HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
-				uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
-				uc.setRequestMethod("GET");
-				int responseCode = uc.getResponseCode();
-				if (responseCode == HttpURLConnection.HTTP_OK) {
-					BufferedReader in = new BufferedReader(new InputStreamReader(uc.getInputStream()));
-					String inputLine;
-					StringBuilder response = new StringBuilder();
 
-					while ((inputLine = in.readLine()) != null) {
-						response.append(inputLine);
-					}
-					in.close();
+			String[] firstNames = new String[]{"Time", "Past", "Future", "Dev", "Fly", "Flying", "Soar", "Soaring", "Power", "Falling", "Fall", "Jump", "Cliff", "Mountain", "Rend", "Red", "Blue", "Green", "Yellow", "Gold", "Demon", "Demonic", "Panda", "Cat", "Kitty", "Kitten", "Zero", "Memory", "Trooper", "XX", "Bandit", "Fear", "Light", "Glow", "Tread", "Deep", "Deeper", "Deepest", "Mine", "Your", "Worst", "Enemy", "Hostile", "Force", "Video", "Game", "Donkey", "Mule", "Colt", "Cult", "Cultist", "Magnum", "Gun", "Assault", "Recon", "Trap", "Trapper", "Redeem", "Code", "Script", "Writer", "Near", "Close", "Open", "Cube", "Circle", "Geo", "Genome", "Germ", "Spaz", "Sped", "Skid", "Shot", "Echo", "Beta", "Alpha", "Gamma", "Omega", "Seal", "Squid", "Money", "Cash", "Lord", "King", "Ominous", "Flow", "Skull"};
+			String[] lastNames = new String[]{"Duke","Rest","Fire","Flame","Morrow","Break","Breaker","Numb","Ice","Cold","Rotten","Sick","Sickly","Janitor","Camel","Rooster","Sand","Desert","Dessert","Hurdle","Racer","Eraser","Erase","Big","Small","Short","Tall","Sith","Bounty","Hunter","Cracked","Broken","Sad","Happy","Joy","Joyful","Crimson","Destiny","Deceit","Lies","Lie","Honest","Destined","Bloxxer","Hawk","Eagle","Hawker","Walker","Zombie","Sarge","Capt","Captain","Punch","One","Two","Uno","Slice","Slash","Melt","Melted","Melting","Fell","Wolf","Hound","Legacy","Sharp","Dead","Mew","Chuckle","Bubba","Bubble","Sandwich","Smasher","Extreme","Multi","Universe","Ultimate","Death","Ready","Monkey","Elevator","Wrench","Grease","Head","Theme","Grand","Cool","Kid","Boy","Girl","Vortex","Paradox","Omen", "Bussy"};
 
-					name = response.toString();
-				}
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
+			name = firstNames[MathUtils.randInt(0, firstNames.length)] + lastNames[MathUtils.randInt(0, lastNames.length)] + MathUtils.randInt(0, 9999);
 
-			if (name.equals("")) {
-				String whitelisted_letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ12345678901234567890__";
-				while (name.length() < 14) {
-					name = name.concat(String.valueOf(whitelisted_letters.charAt(MathUtils.randInt(0, whitelisted_letters.length()))));
-				}
-			}
+			name = name.length() > 16 ? name.substring(0, 16) : name;
 
 			LoginManager.crackedLogin(name);
 			this.status = "§aLogged in as - " + MC.session.getUsername() + " (Cracked)§r";

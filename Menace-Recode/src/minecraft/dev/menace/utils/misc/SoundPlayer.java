@@ -1,5 +1,6 @@
 package dev.menace.utils.misc;
 
+
 import net.minecraft.util.ResourceLocation;
 
 import javax.sound.sampled.*;
@@ -13,7 +14,7 @@ public class SoundPlayer {
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+        } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
             throw new RuntimeException(e);
         }
     }

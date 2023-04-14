@@ -6,11 +6,11 @@
     }
   },
   "AutoPot": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
-      "Delay": 300.0,
+      "Delay": 100.0,
       "Health": 15.0,
-      "OnlyOnGround": true,
+      "OnlyOnGround": false,
       "Visible": true
     }
   },
@@ -25,21 +25,22 @@
     "Toggled": false,
     "Settings": {
       "Reach": 3.8000000000000003,
-      "MinCPS": 14.0,
-      "MaxCPS": 16.0,
+      "MinCPS": 16.0,
+      "MaxCPS": 18.0,
       "TicksExisted": 0.0,
       "FOV": 360.0,
       "Filter": "Distance",
+      "AttackPoint": "Cock",
       "AutoBlock": "Fake",
       "KeepSprint": true,
       "NoSwing": false,
-      "ThroughWalls": false,
+      "ThroughWalls": true,
       "InInventory": false,
-      "RayCast": true,
+      "RayCast": false,
       "AutoDisable": true,
       "Players": true,
       "MenaceUsers": false,
-      "Hostiles": false,
+      "Hostiles": true,
       "Passives": true,
       "Invisibles": false,
       "Visible": true
@@ -48,9 +49,9 @@
   "TPAura": {
     "Toggled": false,
     "Settings": {
-      "CPS": 20.0,
+      "CPS": 10.0,
       "Targets": 1.0,
-      "Range": 500.0,
+      "Range": 140.0,
       "Visible": true
     }
   },
@@ -69,14 +70,14 @@
     }
   },
   "Flight": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
-      "Mode": "Vanilla",
-      "VanillaMode": "Motion",
+      "Mode": "Other",
+      "VanillaMode": "Damage",
       "VerusMode": "Bob",
       "OtherMode": "NCPSlime",
-      "DmgMode": "Jump",
-      "Speed": 4.0,
+      "DmgMode": "Verus",
+      "Speed": 5.0,
       "Viewbob": 0.1,
       "Visible": true
     }
@@ -91,8 +92,8 @@
     "Toggled": false,
     "Settings": {
       "Mode": "BlocksMC",
-      "Speed": 1.0,
-      "AutoDisable": true,
+      "Speed": 7.0,
+      "AutoDisable": false,
       "Visible": true
     }
   },
@@ -120,14 +121,16 @@
   "TargetStrafe": {
     "Toggled": false,
     "Settings": {
-      "Range": 4.0,
+      "Range": 7.0,
       "Visible": true
     }
   },
   "AntiVoid": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
-      "Mode": "Scaffold",
+      "Mode": "Blink",
+      "Fall Distance": 3.0,
+      "Smart Disable": false,
       "Visible": true
     }
   },
@@ -135,19 +138,19 @@
     "Toggled": false,
     "Settings": {
       "FakePlayer": true,
-      "Pulse": false,
-      "PulseAmount": 50.0,
+      "Pulse": true,
+      "PulseAmount": 20.0,
       "Visible": true
     }
   },
   "InvManager": {
     "Toggled": true,
     "Settings": {
-      "Delay Min": 60.0,
-      "Delay Max": 70.0,
+      "Delay Min": 30.0,
+      "Delay Max": 50.0,
       "In Inventory": true,
       "CloseScreen": false,
-      "Randomize": true,
+      "Randomize": false,
       "Sword Slot": 1.0,
       "Pick Slot": 2.0,
       "Axe Slot": 3.0,
@@ -158,9 +161,9 @@
     }
   },
   "InvMove": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
-      "Rotate": true,
+      "Rotate": false,
       "Blink": false,
       "Visible": true
     }
@@ -168,7 +171,7 @@
   "NoFall": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Hypixel",
+      "Mode": "Verus",
       "Visible": true
     }
   },
@@ -180,7 +183,7 @@
     }
   },
   "SafeWalk": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "InAir": false,
       "Visible": true
@@ -198,10 +201,14 @@
       "KeepRotations": true,
       "SilentSwap": false,
       "KeepY": false,
-      "Jump": false,
+      "Bypass": false,
+      "BlocksMC": true,
       "Eagle": false,
       "Eagle Delay": 100.0,
       "NoSwing": false,
+      "Boost": false,
+      "Jump": false,
+      "LowHop": true,
       "Timer": 1.0,
       "Render": true,
       "Visible": true
@@ -224,10 +231,10 @@
   "ChestStealer": {
     "Toggled": true,
     "Settings": {
-      "Delay Min": 60.0,
-      "Delay Max": 70.0,
+      "Delay Min": 30.0,
+      "Delay Max": 50.0,
       "CloseScreen": true,
-      "Randomize": false,
+      "Randomize": true,
       "OnlyChests": true,
       "NoGui": true,
       "Visible": true
@@ -248,22 +255,22 @@
   "Timer": {
     "Toggled": false,
     "Settings": {
-      "Speed": 6.4,
+      "Speed": 1.1,
       "Visible": true
     }
   },
   "Animations": {
     "Toggled": true,
     "Settings": {
-      "Blocking Mode": "Avatar",
+      "Blocking Mode": "ETB",
       "TranslateX": 0.2,
       "TranslateY": 0.2,
       "TranslateZ": 0.0,
-      "ItemPosX": 0.56,
-      "ItemPosY": -0.52,
-      "ItemPosZ": -0.71999997,
-      "ItemScale": 0.30000000000000004,
-      "ItemRotation": 45.0,
+      "ItemPosX": 0.5,
+      "ItemPosY": -0.4,
+      "ItemPosZ": -0.8,
+      "ItemScale": 0.2,
+      "ItemRotation": 40.0,
       "SwingAnim": true,
       "AnythingBlock": false,
       "1.7": false,
@@ -351,24 +358,35 @@
   "AutoLogin": {
     "Toggled": true,
     "Settings": {
-      "Visible": false
+      "Visible": true
     }
   },
   "AutoPlay": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
-      "Delay": 900.0,
-      "Visible": false
+      "Delay": 500.0,
+      "Visible": true
     }
   },
   "DevModule": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Visible": true
     }
   },
   "Disabler": {
     "Toggled": false,
+    "Settings": {
+      "Mode": "PingSpoof",
+      "Delay": 237.0,
+      "MaxPackets": 287.0,
+      "Transactions": true,
+      "Silent": false,
+      "Visible": true
+    }
+  },
+  "ExitFlag": {
+    "Toggled": true,
     "Settings": {
       "Visible": true
     }
@@ -382,23 +400,36 @@
       "Visible": true
     }
   },
+  "MenaceNCP": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
   "SecurityFeatures": {
     "Toggled": true,
     "Settings": {
       "Visible": true
     }
   },
+  "Spoofer": {
+    "Toggled": true,
+    "Settings": {
+      "Mode": "Null",
+      "Visible": true
+    }
+  },
   "StaffDetector": {
     "Toggled": true,
     "Settings": {
-      "Visible": false
+      "Visible": true
     }
   },
   "TP": {
     "Toggled": false,
     "Settings": {
       "Visible": true,
-      "Height": 1.0
+      "Height": 5.0
     }
   }
 }

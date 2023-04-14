@@ -11,16 +11,9 @@
 package dev.menace.utils.render;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.FileResourcePack;
-import net.minecraft.client.resources.ResourcePackFileNotFoundException;
-import net.minecraft.client.resources.ResourcePackRepository;
-import net.minecraft.util.ResourceLocation;
 
 import static org.lwjgl.opengl.GL20.*;
 
@@ -125,5 +118,9 @@ public class GLSLShader {
         }
 
         return new String(out.toByteArray(), StandardCharsets.UTF_8);
+    }
+
+    public int getProgramId() {
+        return programId;
     }
 }

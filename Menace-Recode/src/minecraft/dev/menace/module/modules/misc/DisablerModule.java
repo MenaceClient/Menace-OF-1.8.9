@@ -1,114 +1,111 @@
 package dev.menace.module.modules.misc;
 
-import com.mojang.authlib.GameProfile;
-import dev.menace.Menace;
 import dev.menace.event.EventTarget;
 import dev.menace.event.events.*;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
-import dev.menace.utils.misc.ChatUtils;
-import dev.menace.utils.player.PacketUtils;
-import dev.menace.utils.timer.MSTimer;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.inventory.Container;
-import net.minecraft.network.Packet;
-import net.minecraft.network.PacketThreadUtil;
-import net.minecraft.network.play.client.*;
-import net.minecraft.network.play.server.S32PacketConfirmTransaction;
+import dev.menace.module.modules.misc.disabler.DisablerBase;
+import dev.menace.module.modules.misc.disabler.DisablerMode;
+import dev.menace.module.settings.ListSetting;
+import dev.menace.module.settings.SliderSetting;
+import dev.menace.module.settings.ToggleSetting;
 
-import java.util.Queue;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.ArrayList;
 
 public class DisablerModule extends BaseModule {
 
-    MSTimer timer = new MSTimer();
-    Queue<Packet<?>> packetQueue = new ConcurrentLinkedDeque<>();
+    DisablerBase disabler;
+
+
+    public ListSetting mode;
+    public ToggleSetting silent;
+    public SliderSetting pingSpoofDelay;
+    public SliderSetting pingSpoofMaxPackets;
+    public ToggleSetting pingSpoofTransaction;
 
     public DisablerModule() {
         super("Disabler", Category.MISC, 0);
     }
 
     @Override
+    public void setup() {
+        ArrayList<String> values = new ArrayList<>();
+        for (DisablerMode dm : DisablerMode.values()) {
+            values.add(dm.getName());
+        }
+        mode = new ListSetting("Mode", true, "PingSpoof", values.toArray(new String[] {}));
+        pingSpoofDelay = new SliderSetting("Delay", true, 300, 100, 1000, true) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(mode.getValue().equalsIgnoreCase("PingSpoof"));
+                super.constantCheck();
+            }
+        };
+        pingSpoofMaxPackets = new SliderSetting("MaxPackets", true, 300, 100, 1000, true) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(mode.getValue().equalsIgnoreCase("PingSpoof"));
+                super.constantCheck();
+            }
+        };
+        pingSpoofTransaction = new ToggleSetting("Transactions", true, true) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(mode.getValue().equalsIgnoreCase("PingSpoof"));
+                super.constantCheck();
+            }
+        };
+        silent = new ToggleSetting("Silent", true, true) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(mode.getValue().equalsIgnoreCase("VerusTransaction"));
+                super.constantCheck();
+            }
+        };
+        this.rSetting(mode);
+        this.rSetting(pingSpoofDelay);
+        this.rSetting(pingSpoofMaxPackets);
+        this.rSetting(pingSpoofTransaction);
+        this.rSetting(silent);
+        super.setup();
+    }
+
+    @Override
     public void onEnable() {
-        this.setDisplayName("Experimental");
-        timer.reset();
+        for (DisablerMode dm : DisablerMode.values()) {
+            if (dm.getName().equalsIgnoreCase(mode.getValue())) {
+                this.setDisplayName(dm.getGoofyName());
+                disabler = dm.getDisabler();
+            }
+        }
+        disabler.onEnable();
         super.onEnable();
     }
 
     @Override
     public void onDisable() {
-        /*long delay = 10;
-        while (!packetQueue.isEmpty()) {
-            PacketUtils.sendPacketNoEventDelayed(packetQueue.poll(), delay);
-            delay += 10;
-        }*/
-        packetQueue.clear();
+        disabler.onDisable();
         super.onDisable();
     }
 
     @EventTarget
-    public void onTeleport(EventTeleport event) {
-
-    }
-
-    @EventTarget
     public void onUpdate(EventUpdate event) {
-
-        if (timer.hasTimePassed(750L)) {
-            timer.reset();
-            ChatUtils.message("Sending packet " + packetQueue.size() + "/ 300");
-            if (!packetQueue.isEmpty()) {
-                PacketUtils.sendPacketNoEvent(packetQueue.poll());
-            }
-        }
-
+        disabler.onUpdate();
     }
 
     @EventTarget
-    public void onSendPacket(EventSendPacket event) {
-        if (event.getPacket() instanceof C0FPacketConfirmTransaction) {
-            C0FPacketConfirmTransaction packet = (C0FPacketConfirmTransaction) event.getPacket();
-
-            if (isInventory(packet.getUid())) {
-                return;
-            }
-
-            event.cancel();
-
-            packetQueue.add(packet);
-            ChatUtils.message("Added packet " + packetQueue.size() + "/ 300");
-
-            if (packetQueue.size() > 300) {
-                ChatUtils.message("emptying queue");
-                packetQueue.clear();
-            }
-        } else if (event.getPacket() instanceof C00PacketKeepAlive) {
-            C00PacketKeepAlive packet = (C00PacketKeepAlive) event.getPacket();
-            packet.setkey(1337);
-            event.cancel();
-            packetQueue.add(packet);
-        } else if (event.getPacket() instanceof C0BPacketEntityAction) {
-            event.cancel();
-        }
+    public void onPacketSend(EventSendPacket event) {
+        disabler.onSendPacket(event);
     }
 
     @EventTarget
-    public void onReceivePacket(EventReceivePacket event) {
+    public void onPacketReceive(EventReceivePacket event) {
+        disabler.onReceivePacket(event);
     }
 
     @EventTarget
     public void onWorldChange(EventWorldChange event) {
-        ChatUtils.message("emptying queue");
-        while (!packetQueue.isEmpty()) {
-            PacketUtils.sendPacketNoEvent(packetQueue.poll());
-        }
-        timer.reset();
-    }
-
-    boolean isInventory(short action) {
-        return action > 0 && action < 100;
+        disabler.onWorldChange(event);
     }
 
 }

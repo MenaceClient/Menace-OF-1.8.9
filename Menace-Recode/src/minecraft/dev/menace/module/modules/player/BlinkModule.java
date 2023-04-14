@@ -13,13 +13,9 @@ import dev.menace.module.settings.ToggleSetting;
 import dev.menace.utils.player.PacketUtils;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.network.Packet;
-import net.minecraft.network.play.client.C02PacketUseEntity;
-import net.minecraft.network.play.client.C03PacketPlayer;
+import net.minecraft.network.play.client.*;
 import net.minecraft.network.play.client.C03PacketPlayer.C04PacketPlayerPosition;
 import net.minecraft.network.play.client.C03PacketPlayer.C06PacketPlayerPosLook;
-import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
-import net.minecraft.network.play.client.C0APacketAnimation;
-import net.minecraft.network.play.client.C0BPacketEntityAction;
 
 public class BlinkModule extends BaseModule {
 
@@ -41,11 +37,7 @@ public class BlinkModule extends BaseModule {
 		pulseAmount = new SliderSetting("PulseAmount", false, 50, 1, 100, 10, true) {
 			@Override
 			public void constantCheck() {
-				if (Menace.instance.moduleManager.blinkModule.pulse.getValue()) {
-					this.setVisible(true);
-				} else {
-					this.setVisible(false);
-				}
+				this.setVisible(Menace.instance.moduleManager.blinkModule.pulse.getValue());
 				super.constantCheck();
 			}
 		};
@@ -71,11 +63,14 @@ public class BlinkModule extends BaseModule {
 	public void onSendPacket(EventSendPacket event) {
 		this.setDisplayName("Packets: " + packets.size());
 		if (packets.size() >= pulseAmount.getValue() && pulse.getValue()) blink();
+
+		if (event.getPacket() instanceof C03PacketPlayer)
+			event.cancel();
+
 		if (event.getPacket() instanceof C04PacketPlayerPosition || event.getPacket() instanceof C06PacketPlayerPosLook ||
 				event.getPacket() instanceof C08PacketPlayerBlockPlacement ||
 				event.getPacket() instanceof C0APacketAnimation ||
-				event.getPacket() instanceof C0BPacketEntityAction || event.getPacket() instanceof C02PacketUseEntity ||
-				event.getPacket() instanceof C03PacketPlayer) {
+				event.getPacket() instanceof C0BPacketEntityAction || event.getPacket() instanceof C02PacketUseEntity) {
                 event.setCancelled(true);
                 packets.add(event.getPacket());
         } 

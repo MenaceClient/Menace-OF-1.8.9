@@ -36,13 +36,13 @@ public class AnimationsModule extends BaseModule {
 	            "Shield", "SigmaNew", "SigmaOld", "Slide", "SlideDown", "HSlide", "Swong", "VisionFX",
 	            "Swank", "Jello", "1.7", "None", "Rotate"};
 		blockMode = new ListSetting("Blocking Mode", true, "Jello", o);
-		transX = new SliderSetting("TranslateX", true, 0, 0, 1.5, 0.1, false);
-		transY = new SliderSetting("TranslateY", true, 0, 0, 0.5, 0.1, false);
-		transZ = new SliderSetting("TranslateZ", true, 0, 0, -2, 0.1, false);
-		itemposX = new SliderSetting("ItemPosX", true, 0.56, -1, 1, 0.1, false);
-		itemposY = new SliderSetting("ItemPosY", true, -0.52, -1, 1, 0.1, false);
-		itemposZ = new SliderSetting("ItemPosZ", true, -0.71999997, -1, 1, 0.1, false);
-		itemscale = new SliderSetting("ItemScale", true, 0.4, 0, 2, 0.1, false);
+		transX = new SliderSetting("TranslateX", true, 0, 0, 1.5, 0.05, false);
+		transY = new SliderSetting("TranslateY", true, 0, 0, 0.5, 0.05, false);
+		transZ = new SliderSetting("TranslateZ", true, 0, 0, -2, 0.05, false);
+		itemposX = new SliderSetting("ItemPosX", true, 0.56, -1, 1, 0.05, false);
+		itemposY = new SliderSetting("ItemPosY", true, -0.52, -1, 1, 0.05, false);
+		itemposZ = new SliderSetting("ItemPosZ", true, -0.71999997, -1, 1, 0.05, false);
+		itemscale = new SliderSetting("ItemScale", true, 0.4, 0, 2, 0.05, false);
 		itemrotate = new SliderSetting("ItemRotation", true, 45, 0, 360, true);
 		swinganim = new ToggleSetting("SwingAnim", true, false);
 		anythingblock = new ToggleSetting("AnythingBlock", true, false);

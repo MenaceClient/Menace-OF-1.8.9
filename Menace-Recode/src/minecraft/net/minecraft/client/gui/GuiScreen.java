@@ -657,7 +657,7 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
     {
         if (this.mc.theWorld != null)
         {
-            this.drawGradientRect(0, 0, this.width, this.height, -1072689136, -804253680);
+            this.drawGradientRect(0, 0, width, height, -1072689136, -804253680);
         }
         else
         {

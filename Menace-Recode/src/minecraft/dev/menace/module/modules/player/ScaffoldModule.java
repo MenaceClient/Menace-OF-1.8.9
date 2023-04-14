@@ -54,10 +54,14 @@ public class ScaffoldModule extends BaseModule {
     ToggleSetting keepRotations;
     ToggleSetting silentSwap;
     ToggleSetting keepY;
-    ToggleSetting jump;
+    ToggleSetting bypass;
+    ToggleSetting blocksMC;
     public ToggleSetting eagle;
     SliderSetting eagleDelay;
     ToggleSetting noSwing;
+    public ToggleSetting boost;
+    public ToggleSetting jump;
+    ToggleSetting lowhop;
     SliderSetting timer;
     ToggleSetting render;
 
@@ -99,18 +103,53 @@ public class ScaffoldModule extends BaseModule {
         sprint = new ToggleSetting("Sprint", true, false);
         keepRotations = new ToggleSetting("KeepRotations", true, true);
         silentSwap = new ToggleSetting("SilentSwap", true, false);
-        keepY = new ToggleSetting("KeepY", true, false);
-        jump = new ToggleSetting("Jump", true, false);
-        eagle = new ToggleSetting("Eagle", true, false);
-        eagleDelay = new SliderSetting("Eagle Delay", false, 200, 100, 1000, 100, true) {
+        bypass = new ToggleSetting("Bypass", true, false);
+        blocksMC = new ToggleSetting("BlocksMC", true, false) {
             @Override
             public void constantCheck() {
-                this.setVisible(Menace.instance.moduleManager.scaffoldModule.eagle.getValue());
+                this.setVisible(bypass.getValue());
                 super.constantCheck();
             }
         };
+        eagle = new ToggleSetting("Eagle", true, false) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(bypass.getValue());
+                super.constantCheck();
+            }
+        };
+        eagleDelay = new SliderSetting("Eagle Delay", false, 200, 100, 1000, 100, true) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(Menace.instance.moduleManager.scaffoldModule.eagle.getValue() && bypass.getValue());
+                super.constantCheck();
+            }
+        };
+        keepY = new ToggleSetting("KeepY", true, false);
         noSwing = new ToggleSetting("NoSwing", true, false);
-        timer = new SliderSetting("Timer", true, 1, 1, 5, 0.1, false);
+        boost = new ToggleSetting("Boost", true, false);
+        jump = new ToggleSetting("Jump", true, false) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(Menace.instance.moduleManager.scaffoldModule.boost.getValue());
+                super.constantCheck();
+            }
+        };
+        lowhop = new ToggleSetting("LowHop", true, false) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(Menace.instance.moduleManager.scaffoldModule.boost.getValue()
+                    && Menace.instance.moduleManager.scaffoldModule.jump.getValue());
+                super.constantCheck();
+            }
+        };
+        timer = new SliderSetting("Timer", true, 1, 1, 5, 0.1, false) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(Menace.instance.moduleManager.scaffoldModule.boost.getValue());
+                super.constantCheck();
+            }
+        };
         render = new ToggleSetting("Render", true, true);
         this.rSetting(tower);
         this.rSetting(towerMove);
@@ -121,10 +160,14 @@ public class ScaffoldModule extends BaseModule {
         this.rSetting(keepRotations);
         this.rSetting(silentSwap);
         this.rSetting(keepY);
-        this.rSetting(jump);
+        this.rSetting(bypass);
+        this.rSetting(blocksMC);
         this.rSetting(eagle);
         this.rSetting(eagleDelay);
         this.rSetting(noSwing);
+        this.rSetting(boost);
+        this.rSetting(jump);
+        this.rSetting(lowhop);
         this.rSetting(timer);
         this.rSetting(render);
         super.setup();
@@ -157,23 +200,28 @@ public class ScaffoldModule extends BaseModule {
     @EventTarget
     public void onUpdate(EventUpdate event) {
         mc.timer.timerSpeed = timer.getValueF();
+        if (jump.getValue() && !lowhop.getValue() && mc.thePlayer.onGround && MovementUtils.isMoving()) {
+            mc.thePlayer.jump();
+        }
     }
 
     @EventTarget
     public void onPre(EventPreMotion event) {
         if (mc.thePlayer.onGround && !MovementUtils.isMoving() && startY != mc.thePlayer.posY - 1) startY = mc.thePlayer.posY - 1;
-        if (jump.getValue() && mc.thePlayer.onGround && MovementUtils.isMoving()) {
-            mc.thePlayer.jump();
-        }
         mc.thePlayer.setSprinting(sprint.getValue());
         if (towerDerp.getValue() && isTowering) {
             event.setYaw(derpYaw);
             event.setPitch(90);
             derpYaw += 100f;
         } else if (rotation[0] != -69696969 && keepRotations.getValue()) {
-            event.setYaw(rotation[0]);
+            double randomYaw = 0;
+            if (blocksMC.getValue()) {
+               randomYaw = Math.random() * 20 - 10;
+            }
+            event.setYaw((float) randomYaw + rotation[0]);
             event.setPitch(rotation[1]);
         }
+
         BlockPos belowPlayer = new BlockPos(mc.thePlayer).down();
         if (keepY.getValue() && MovementUtils.isMoving()) {
             belowPlayer = new BlockPos(mc.thePlayer.posX, startY, mc.thePlayer.posZ);
@@ -238,6 +286,34 @@ public class ScaffoldModule extends BaseModule {
         findNearbyBlocks(belowPlayer, event);
     }
 
+    public void findNearbyBlocks(BlockPos pos, EventPreMotion event) {
+
+        EnumFacing[] values;
+        for (int length = (values = EnumFacing.values()).length, i = 0; i < length; ++i) {
+            final EnumFacing side = values[i];
+            final BlockPos neighbor = pos.offset(side);
+            if (BlockUtils.getMaterial(pos).isReplaceable() && BlockUtils.getBlock(neighbor).canCollideCheck(mc.theWorld.getBlockState(neighbor), false)) {
+                placeBlockSimple(pos, event);
+                return;
+            }
+        }
+
+        for (int amt = 1; amt < 4; amt++) {
+            for (int sides = EnumFacing.values().length, side_ = 0; side_ < sides; side_++) {
+                BlockPos newPos = pos.offset(EnumFacing.values()[side_], amt);
+                EnumFacing[] values2;
+                for (int length = (values2 = EnumFacing.values()).length, i = 0; i < length; ++i) {
+                    final EnumFacing side = values2[i];
+                    final BlockPos neighbor = newPos.offset(side);
+                    if (BlockUtils.getMaterial(newPos).isReplaceable() && BlockUtils.getBlock(neighbor).canCollideCheck(mc.theWorld.getBlockState(neighbor), false)) {
+                        placeBlockSimple(newPos, event);
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
     public void placeBlockSimple(final BlockPos pos, EventPreMotion event) {
         final Vec3 eyesPos = new Vec3(mc.thePlayer.posX, mc.thePlayer.posY + mc.thePlayer.getEyeHeight(), mc.thePlayer.posZ);
         EnumFacing[] values;
@@ -278,31 +354,12 @@ public class ScaffoldModule extends BaseModule {
         }
     }
 
-    public void findNearbyBlocks(BlockPos pos, EventPreMotion event) {
-
-        EnumFacing[] values;
-        for (int length = (values = EnumFacing.values()).length, i = 0; i < length; ++i) {
-            final EnumFacing side = values[i];
-            final BlockPos neighbor = pos.offset(side);
-            if (BlockUtils.getMaterial(pos).isReplaceable() && BlockUtils.getBlock(neighbor).canCollideCheck(mc.theWorld.getBlockState(neighbor), false)) {
-                placeBlockSimple(pos, event);
-                return;
-            }
-        }
-
-        for (int amt = 1; amt < 4; amt++) {
-            for (int sides = EnumFacing.values().length, side_ = 0; side_ < sides; side_++) {
-                BlockPos newPos = pos.offset(EnumFacing.values()[side_], amt);
-                EnumFacing[] values2;
-                for (int length = (values2 = EnumFacing.values()).length, i = 0; i < length; ++i) {
-                    final EnumFacing side = values2[i];
-                    final BlockPos neighbor = newPos.offset(side);
-                    if (BlockUtils.getMaterial(newPos).isReplaceable() && BlockUtils.getBlock(neighbor).canCollideCheck(mc.theWorld.getBlockState(neighbor), false)) {
-                        placeBlockSimple(newPos, event);
-                        return;
-                    }
-                }
-            }
+    @EventTarget
+    public void onMove(EventMove event) {
+        if (jump.getValue() && lowhop.getValue() && mc.thePlayer.onGround && MovementUtils.isMoving()) {
+            mc.thePlayer.jump();
+            mc.thePlayer.motionY = 0;
+            event.setY(0.3);
         }
     }
 

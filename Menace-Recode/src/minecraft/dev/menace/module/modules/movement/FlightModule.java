@@ -102,7 +102,8 @@ public class FlightModule extends BaseModule {
 			@Override
 			public void constantCheck() {
 				this.setVisible(Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Vanilla")
-						&& Menace.instance.moduleManager.flightModule.vanillaMode.getValue().equalsIgnoreCase("Damage"));
+						&& (Menace.instance.moduleManager.flightModule.vanillaMode.getValue().equalsIgnoreCase("Damage")
+						|| Menace.instance.moduleManager.flightModule.vanillaMode.getValue().equalsIgnoreCase("Motion")));
 			}
 		};
 		viewbobbingYaw = new SliderSetting("Viewbob", false, 0.1, 0, 0.5, 0.1, false);

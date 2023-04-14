@@ -4,20 +4,22 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL13.GL_MULTISAMPLE;
 
 import java.awt.Color;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.*;
-import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL13;
+import org.lwjgl.opengl.GL20;
+import org.lwjgl.opengl.GL30;
 
 public class RenderUtils {
 
@@ -208,6 +210,14 @@ public class RenderUtils {
 
 		// replacement
 		//		LWJGLUtil.drawRect(left, top, right - left, bottom - top, color);
+	}
+
+	public static void drawHollowRect(int left, int top, int right, int bottom, int width, int color) {
+		//Draws a hollow rectangle with a specified width.
+		drawRect(left, top, right, top + width, color);
+		drawRect(left, top, left + width, bottom, color);
+		drawRect(right - width, top, right, bottom, color);
+		drawRect(left, bottom - width, right, bottom, color);
 	}
 
 	public static void drawHorizontalLine(int startX, int endX, int y, int color) {

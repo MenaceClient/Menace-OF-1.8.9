@@ -16,8 +16,8 @@ ao:2
 renderClouds:false
 resourcePacks:["gamerswordpack.zip"]
 incompatibleResourcePacks:[]
-lastServer:tree.ac
-lang:en_US
+lastServer:e5573.minehut.gg
+lang:en_GB
 chatVisibility:0
 chatColors:true
 chatLinks:true

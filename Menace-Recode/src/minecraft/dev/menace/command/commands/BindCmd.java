@@ -10,7 +10,7 @@ import dev.menace.utils.misc.ChatUtils;
 public class BindCmd extends BaseCommand {
 
 	public BindCmd() {
-		super("bind", "bind a module", "bind <module> <key>");
+		super("Bind", "bind a module", "bind <module> <key>");
 	}
 
 	@Override

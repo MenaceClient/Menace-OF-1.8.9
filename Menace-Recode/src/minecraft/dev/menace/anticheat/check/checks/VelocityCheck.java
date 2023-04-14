@@ -11,7 +11,7 @@ public class VelocityCheck extends BaseCheck {
 
     @Override
     public void update(PlayerVL vl) {
-        if (vl.getPlayer().hurtTime > 0 && vl.getPlayer().lastTickPosX == vl.getPlayer().posX && vl.getPlayer().posZ == vl.getPlayer().lastTickPosZ
+        if (vl.getPlayer().hurtTime > 5 && vl.getPlayer().lastTickPosX == vl.getPlayer().posX && vl.getPlayer().posZ == vl.getPlayer().lastTickPosZ
                 && !mc.theWorld.checkBlockCollision(vl.getPlayer().boundingBox.expand(0.05, 0, 0.05))) {
             vl.addVL(1, this.getCheckName());
         }

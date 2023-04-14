@@ -172,7 +172,7 @@ public class HWIDManager {
 				if (response.toString().equals("cope")) {
 					return false;
 				} else if (!response.toString().equals(s.toString())) {
-					AntiSkidUtils.log("A user with the hwid " + getHWID() + " tried to intercept the hwid system.");
+					AntiSkidUtils.terminate("We detected you attempting to intercept the HWID system if you think this is an error please contact the admins.", 0x03, "Someone tried to intercept the HWID system.");
 					return false;
 				} else return response.toString().equals(s.toString());
 			} else {

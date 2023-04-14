@@ -26,6 +26,7 @@ import dev.menace.utils.notifications.Notification;
 import dev.menace.utils.notifications.NotificationManager;
 import dev.menace.utils.render.font.Fonts;
 import dev.menace.utils.render.font.MenaceFontRenderer;
+import dev.menace.utils.security.AntiSkidUtils;
 import dev.menace.utils.security.MenaceUser;
 import dev.menace.utils.timer.MSTimer;
 import fr.litarvan.openauth.microsoft.MicrosoftAuthenticationException;
@@ -34,7 +35,6 @@ import net.minecraft.network.play.server.S02PacketChat;
 import net.minecraft.network.play.server.S45PacketTitle;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ResourceLocation;
-import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.Display;
 import viamcp.ViaMCP;
 
@@ -205,7 +205,7 @@ public class Menace {
 		this.moduleManager.autoPlayModule.onRecievePacket(event);
 		if (event.getPacket() instanceof S02PacketChat) {
 			String message = ((S02PacketChat) event.getPacket()).getChatComponent().getUnformattedText();
-			if (message != null && message.contains(" was killed by " + MC.thePlayer.getName())) {
+			if (message != null && message.contains(" killed by " + MC.thePlayer.getName())) {
 				this.hudManager.gameStatsElement.kills++;
 				this.moduleManager.killFXModule.onKill(message.split(" ")[0]);
 			}

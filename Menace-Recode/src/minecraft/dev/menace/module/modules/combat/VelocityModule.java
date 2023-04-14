@@ -42,6 +42,7 @@ public class VelocityModule extends BaseModule {
 		if (event.getPacket() instanceof S12PacketEntityVelocity) {
 			if (mode.getValue().equalsIgnoreCase("Simple")) {
 				event.cancel();
+				Menace.instance.moduleManager.speedModule.velocityBoost((S12PacketEntityVelocity) event.getPacket());
 			} else if (mode.getValue().equalsIgnoreCase("Bypass")) {
 				S12PacketEntityVelocity packet = (S12PacketEntityVelocity) event.getPacket();
 				packet.motionX = 0;

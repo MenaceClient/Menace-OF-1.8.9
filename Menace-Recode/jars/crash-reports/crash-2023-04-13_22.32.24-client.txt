@@ -1,0 +1,81 @@
+---- Minecraft Crash Report ----
+// Would you like a cupcake?
+
+Time: 13/04/23 10:32 PM
+Description: Updating screen events
+
+java.lang.NullPointerException: Updating screen events
+	at dev.menace.utils.security.AntiSkidUtils.runErrorPanel(AntiSkidUtils.java:77)
+	at dev.menace.utils.security.AntiSkidUtils.terminate(AntiSkidUtils.java:20)
+	at dev.menace.Menace.postinit(Menace.java:177)
+	at dev.menace.utils.security.MenaceAuthScreen.login(MenaceAuthScreen.java:193)
+	at dev.menace.utils.security.MenaceAuthScreen.keyTyped(MenaceAuthScreen.java:123)
+	at net.minecraft.client.gui.GuiScreen.handleKeyboardInput(GuiScreen.java:628)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:579)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1713)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1023)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:362)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at dev.menace.utils.security.AntiSkidUtils.runErrorPanel(AntiSkidUtils.java:77)
+	at dev.menace.utils.security.AntiSkidUtils.terminate(AntiSkidUtils.java:20)
+	at dev.menace.Menace.postinit(Menace.java:177)
+	at dev.menace.utils.security.MenaceAuthScreen.login(MenaceAuthScreen.java:193)
+	at dev.menace.utils.security.MenaceAuthScreen.keyTyped(MenaceAuthScreen.java:123)
+	at net.minecraft.client.gui.GuiScreen.handleKeyboardInput(GuiScreen.java:628)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:579)
+
+-- Affected screen --
+Details:
+	Screen name: dev.menace.utils.security.MenaceAuthScreen
+Stacktrace:
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1713)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1023)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:362)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_202, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 877935800 bytes (837 MB) / 1039663104 bytes (991 MB) up to 1039663104 bytes (991 MB)
+	JVM Flags: 2 total; -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 516.94, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: gamerswordpack.zip
+	Current Language: English (UK)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-9700F CPU @ 3.00GHz
+	OptiFine Version: OptiFine_1.8.9_HD_U_M5
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 10
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 516.94
+	OpenGlRenderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8

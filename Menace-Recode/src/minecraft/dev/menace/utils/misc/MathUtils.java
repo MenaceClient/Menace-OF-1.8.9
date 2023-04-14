@@ -42,6 +42,11 @@ public class MathUtils {
         return angle;
     }
 
+    public static double precisionRound (double value, int precision) {
+        int scale = (int) Math.pow(10, precision);
+        return (double) Math.round(value * scale) / scale;
+    }
+
     /***
      * Interpolating method
      * @param start start of the interval

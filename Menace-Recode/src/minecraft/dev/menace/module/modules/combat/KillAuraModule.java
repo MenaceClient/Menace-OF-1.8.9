@@ -26,9 +26,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemSword;
 import net.minecraft.network.play.client.*;
 import net.minecraft.network.play.server.S0CPacketSpawnPlayer;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -54,6 +52,7 @@ public class KillAuraModule extends BaseModule {
 	SliderSetting fov;
 	public ListSetting mode;
 	ListSetting filter;
+	ListSetting attackPoint;
 	ListSetting autoblock;
 	public ToggleSetting keepSprint;
 	ToggleSetting noswing;
@@ -93,6 +92,7 @@ public class KillAuraModule extends BaseModule {
 		ticksExisted = new SliderSetting("TicksExisted", true, 10, 0 , 100, true);
 		fov = new SliderSetting("FOV", true, 360, 0, 360, false);
 		filter = new ListSetting("Filter", true, "Health", new String[] {"Health", "Distance", "Angle", "TicksExisted"});
+		attackPoint = new ListSetting("AttackPoint", true, "Head", new String[] {"Head", "Body", "Cock", "Feet", "Closest"});
 		autoblock = new ListSetting("AutoBlock", true, "None", new String[] {"None", "Fake", "Vanilla"});
 		keepSprint = new ToggleSetting("KeepSprint", true, true);
 		noswing = new ToggleSetting("NoSwing", true, false);
@@ -101,7 +101,7 @@ public class KillAuraModule extends BaseModule {
 		raycast = new ToggleSetting("RayCast", true, false);
 		autoDisable = new ToggleSetting("AutoDisable", true, true);
 		players = new ToggleSetting("Players", true, true);
-		menaceUsers = new ToggleSetting("MenaceUsers", true, true);
+		menaceUsers = new ToggleSetting("MenaceUsers", true, false);
 		hostiles = new ToggleSetting("Hostiles", true, true);
 		passives = new ToggleSetting("Passives", true, false);
 		invisibles = new ToggleSetting("Invisibles", true, false);
@@ -111,6 +111,7 @@ public class KillAuraModule extends BaseModule {
 		this.rSetting(ticksExisted);
 		this.rSetting(fov);
 		this.rSetting(filter);
+		this.rSetting(attackPoint);
 		this.rSetting(autoblock);
 		this.rSetting(keepSprint);
 		this.rSetting(noswing);
@@ -152,6 +153,11 @@ public class KillAuraModule extends BaseModule {
 
 	@EventTarget
 	public void onPre(EventPreMotion event) {
+		this.setDisplayName(filter.getValue());
+
+		if (Menace.instance.moduleManager.scaffoldModule.isToggled()) {
+			return;
+		}
 
 		List<EntityLivingBase> targets = filter(mc.theWorld.loadedEntityList.stream().filter(EntityLivingBase.class::isInstance).map(EntityLivingBase.class::cast).collect(Collectors.toList()));
 
@@ -191,8 +197,27 @@ public class KillAuraModule extends BaseModule {
 				}
 			}
 
-			event.setYaw(PlayerUtils.getFixedRotation(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox())), lastRotations)[0]);
-			event.setPitch(PlayerUtils.getFixedRotation(PlayerUtils.getRotations(PlayerUtils.getCenter(target.getEntityBoundingBox())), lastRotations)[1]);
+			Vec3 attackPos = PlayerUtils.getCenter(target.getEntityBoundingBox());
+			switch (attackPoint.getValue()) {
+				case "Head":
+					attackPos = PlayerUtils.getHead(target.getEntityBoundingBox());
+					break;
+				case "Body":
+					attackPos = PlayerUtils.getCenter(target.getEntityBoundingBox());
+					break;
+				case "Cock":
+					attackPos = PlayerUtils.getCock(target.getEntityBoundingBox());
+					break;
+				case "Feet":
+					attackPos = PlayerUtils.getFeet(target.getEntityBoundingBox());
+					break;
+				case "Closest":
+					attackPos = PlayerUtils.getClosestPoint(target.getEntityBoundingBox(), PlayerUtils.getEyesPos(), lastRotations);
+					break;
+			}
+
+			event.setYaw(lastRotations[0] = PlayerUtils.getFixedRotation(PlayerUtils.getRotations(attackPos), lastRotations)[0]);
+			event.setPitch(lastRotations[1] = PlayerUtils.getFixedRotation(PlayerUtils.getRotations(attackPos), lastRotations)[1]);
 
 			if (delayTimer.hasTimePassed(1000 / delay)) {
 

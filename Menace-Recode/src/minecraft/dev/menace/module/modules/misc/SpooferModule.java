@@ -23,7 +23,7 @@ public class SpooferModule extends BaseModule {
     @Override
     public void setup() {
 
-        mode = new ListSetting("Mode", true, "Vanilla", new String[] {"Vanilla", "Lunar", "CheatBreaker", "Null"});
+        mode = new ListSetting("Mode", true, "Vanilla", new String[] {"Vanilla", "Forge", "Lunar", "LabyMod", "PVP Lounge", "CheatBreaker", "Geyser", "Null"});
 
         this.rSetting(mode);
         super.setup();
@@ -31,37 +31,52 @@ public class SpooferModule extends BaseModule {
 
     @EventTarget
     public void onSendPacket(EventSendPacket event) {
+        this.setDisplayName(mode.getValue());
         if (event.getPacket() instanceof C17PacketCustomPayload) {
-            C17PacketCustomPayload packet = (C17PacketCustomPayload) event.getPacket();
-            if (packet.getChannelName().startsWith("MC|Brand")) {
-                event.cancel();
-
-                String name = "vanilla";
-
-                switch (mode.getValue()) {
-                    case "Vanilla":
-                        name = "vanilla";
-                        break;
-                    case "Lunar":
-                        String addition = "";
-                        String whitelisted_letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ12345678901234567890__";
-                        while (addition.length() < 7) {
-                            addition = addition.concat(String.valueOf(whitelisted_letters.charAt(MathUtils.randInt(0, whitelisted_letters.length()))));
-                        }
-                        name = "lunarclient:" + addition;
-                        break;
-                    case "CheatBreaker":
-                        name = "CB";
-                        break;
-                    case "Null":
-                        name = "null";
-                        break;
+            final C17PacketCustomPayload packet = (C17PacketCustomPayload) event.getPacket();
+            switch (mode.getValue()) {
+                case "Vanilla": {
+                    packet.setData(createPacketBuffer("vanilla", true));
+                    break;
                 }
-
-                C17PacketCustomPayload newPacket = new C17PacketCustomPayload("MC|Brand", (new PacketBuffer(Unpooled.buffer())).writeString(name));
-                PacketUtils.sendPacketNoEvent(newPacket);
+                case "Forge": {
+                    packet.setData(createPacketBuffer("FML", true));
+                    break;
+                }
+                case "Lunar": {
+                    packet.setChannel("REGISTER");
+                    packet.setData(createPacketBuffer("Lunar-Client", false));
+                    break;
+                }
+                case "LabyMod": {
+                    packet.setData(createPacketBuffer("LMC", true));
+                    break;
+                }
+                case "PvP Lounge": {
+                    packet.setData(createPacketBuffer("PLC18", false));
+                    break;
+                }
+                case "CheatBreaker": {
+                    packet.setData(createPacketBuffer("CB", true));
+                    break;
+                }
+                case "Geyser": {
+                    packet.setData(createPacketBuffer("Geyser", false));
+                    break;
+                }
+                case "Null": {
+                    packet.setData(null);
+                    break;
+                }
             }
         }
+    }
+
+    private PacketBuffer createPacketBuffer(final String data, final boolean string) {
+        if (string)
+            return new PacketBuffer(Unpooled.buffer()).writeString(data);
+        else
+            return new PacketBuffer(Unpooled.wrappedBuffer(data.getBytes()));
     }
 
 }

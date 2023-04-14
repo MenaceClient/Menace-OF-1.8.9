@@ -78,14 +78,11 @@ public class SoundHandler implements IResourceManagerReloadListener, ITickable
                     }
                     catch (RuntimeException runtimeexception)
                     {
-                        logger.warn((String)"Invalid sounds.json", (Throwable)runtimeexception);
+                        logger.warn("Invalid sounds.json", runtimeexception);
                     }
                 }
             }
-            catch (IOException var11)
-            {
-                ;
-            }
+            catch (IOException ignored) {}
         }
     }
 
@@ -95,7 +92,7 @@ public class SoundHandler implements IResourceManagerReloadListener, ITickable
 
         try
         {
-            map = (Map)GSON.fromJson((Reader)(new InputStreamReader(stream)), TYPE);
+            map = GSON.fromJson(new InputStreamReader(stream), TYPE);
         }
         finally
         {

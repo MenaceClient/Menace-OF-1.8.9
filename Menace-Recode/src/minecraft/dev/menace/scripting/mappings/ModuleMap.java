@@ -22,21 +22,21 @@ public class ModuleMap {
         module.setModuleMap(this);
     }
 
-    public SliderSetting addSliderSetting(String name, boolean visible, double value, double min, double max, boolean intOnly) {
-        SliderSetting setting = new SliderSetting(name, visible, value, min, max, intOnly);
-        module.rSetting(setting);
+    public SliderSettingMap addSliderSetting(String name, boolean visible, double value, double min, double max, boolean intOnly) {
+        SliderSettingMap setting = new SliderSettingMap(name, visible, value, min, max, intOnly);
+        module.rSetting(setting.getSetting());
         return setting;
     }
 
-    public ToggleSetting addBooleanSetting(String name, boolean visible, boolean value) {
-        ToggleSetting setting = new ToggleSetting(name, visible, value);
-        module.rSetting(setting);
+    public ToggleSettingMap addBooleanSetting(String name, boolean visible, boolean value) {
+        ToggleSettingMap setting = new ToggleSettingMap(name, visible, value);
+        module.rSetting(setting.getSetting());
         return setting;
     }
 
-    public ListSetting addListSetting(String name, boolean visible, String value, String[] options) {
-        ListSetting setting = new ListSetting(name, visible, value, options);
-        module.rSetting(setting);
+    public ListSettingMap addListSetting(String name, boolean visible, String value, String[] options) {
+        ListSettingMap setting = new ListSettingMap(name, visible, value, options);
+        module.rSetting(setting.getSetting());
         return setting;
     }
 

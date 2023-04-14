@@ -74,8 +74,44 @@ public class PlayerUtils {
         return new float[]{yaw, pitch};
     }
 
+    public static Vec3 getHead(final AxisAlignedBB bb) {
+        return new Vec3(bb.minX + (bb.maxX - bb.minX) * 0.5, bb.maxY, bb.minZ + (bb.maxZ - bb.minZ) * 0.5);
+    }
+
     public static Vec3 getCenter(final AxisAlignedBB bb) {
         return new Vec3(bb.minX + (bb.maxX - bb.minX) * 0.5, bb.minY + (bb.maxY - bb.minY) * 0.5, bb.minZ + (bb.maxZ - bb.minZ) * 0.5);
+    }
+
+    public static Vec3 getCock(final AxisAlignedBB bb) {
+        return new Vec3(bb.minX + (bb.maxX - bb.minX) * 0.5, bb.minY + (bb.maxY - bb.minY) * 0.3, bb.minZ + (bb.maxZ - bb.minZ) * 0.5);
+    }
+
+    public static Vec3 getFeet(final AxisAlignedBB bb) {
+        return new Vec3(bb.minX + (bb.maxX - bb.minX) * 0.5, bb.minY, bb.minZ + (bb.maxZ - bb.minZ) * 0.5);
+    }
+
+    public static Vec3 getClosestPoint(final AxisAlignedBB bb, final Vec3 pos, float[] rotations) {
+        final Vec3[] points = new Vec3[] {
+                new Vec3(bb.minX, bb.minY, bb.minZ),
+                new Vec3(bb.minX, bb.minY, bb.maxZ),
+                new Vec3(bb.minX, bb.maxY, bb.minZ),
+                new Vec3(bb.minX, bb.maxY, bb.maxZ),
+                new Vec3(bb.maxX, bb.minY, bb.minZ),
+                new Vec3(bb.maxX, bb.minY, bb.maxZ),
+                new Vec3(bb.maxX, bb.maxY, bb.minZ),
+                new Vec3(bb.maxX, bb.maxY, bb.maxZ)
+        };
+        double minDist = Double.MAX_VALUE;
+        Vec3 closest = null;
+        for (final Vec3 point : points) {
+            final double dist = pos.squareDistanceTo(point);
+            if (dist < minDist) {
+                minDist = dist;
+                closest = point;
+            }
+        }
+        return closest;
+        //return new Vec3(Math.max(bb.minX, Math.min(pos.xCoord, bb.maxX)), Math.max(bb.minY, Math.min(pos.yCoord, bb.maxY)), Math.max(bb.minZ, Math.min(pos.zCoord, bb.maxZ)));
     }
 
     public static float[] getRotations(final Vec3 vec) {
@@ -153,5 +189,15 @@ public class PlayerUtils {
 
         return 0.0;
     }
-	
+
+    public static boolean isBlockUnder() {
+        for (int offset = 0; offset < MC.thePlayer.posY + MC.thePlayer.getEyeHeight(); offset += 2) {
+            final AxisAlignedBB boundingBox = MC.thePlayer.getEntityBoundingBox().offset(0, -offset, 0);
+
+            if (!MC.theWorld.getCollidingBoundingBoxes(MC.thePlayer, boundingBox).isEmpty())
+                return true;
+        }
+        return false;
+    }
+
 }

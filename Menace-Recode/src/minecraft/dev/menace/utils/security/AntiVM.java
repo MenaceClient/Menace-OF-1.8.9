@@ -23,21 +23,19 @@ public class AntiVM
                         for (int n = closePhrase.length, n2 = 0; n2 < n; ++n2) {
                             final String str = closePhrase[n2];
                             if (model.contains(str)) {
-                                AntiSkidUtils.log("VM Detected: " + model);
-                                Minecraft.getMinecraft().shutdownMinecraftApplet();
+                                AntiSkidUtils.terminate("You seem to be running Menace in a virtual machine if you  think this is an error please contact the admins.", 0x01, "VM Detected: " + model);
                                 return false;
                             }
                         }
                     }
                     else if (model.equals(closePhrase[0])) {
-                        AntiSkidUtils.log("VM Detected: " + model);
-                        Minecraft.getMinecraft().shutdownMinecraftApplet();
+                        AntiSkidUtils.terminate("You seem to be running Menace in a virtual machine if you  think this is an error please contact the admins.", 0x02, "VM Detected: " + model);
                         return false;
                     }
                 }
             }
         }
-        catch (IOException e) {
+        catch (Exception e) {
             e.printStackTrace();
         }
         return true;

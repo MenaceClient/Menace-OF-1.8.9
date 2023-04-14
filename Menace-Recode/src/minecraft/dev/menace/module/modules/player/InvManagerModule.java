@@ -57,6 +57,8 @@ public class InvManagerModule extends BaseModule {
 		super("InvManager", Category.PLAYER, 0);
 	}
 
+	private int threshold = 10;
+
 	@Override
 	public void setup() {
 		minDelay = new SliderSetting("Delay Min", true, 90, 0, 1000, 10, true) {
@@ -155,15 +157,17 @@ public class InvManagerModule extends BaseModule {
 			slotList.remove(slot);
 			int i = slot.slotNumber;
 			ItemStack is = slot.getStack();
+			int durabilityThreshold = 50;
 
 			//Sword
-			if (InventoryUtils.getDamage(is) > damage && (is.getItem() instanceof ItemSword)) {
+			if (is.getItem() instanceof ItemSword && is.getMaxDamage() - is.getItemDamage() > durabilityThreshold) {
 				InventoryUtils.swap(i, swordSlot);
 				PacketUtils.sendPacketNoEvent(new C0DPacketCloseWindow());
 				delayTimer.reset();
 				nextDelay = MathUtils.randLong(minDelay.getValueL(), maxDelay.getValueL());
 				return;
 			}
+
 
 			//Pickaxe
 			if (InventoryUtils.getToolEffect(is) > pickValue && is.getItem() instanceof ItemPickaxe) {
@@ -361,7 +365,7 @@ public class InvManagerModule extends BaseModule {
 		//Clean
 		if (is != null && (InventoryUtils.TRASH.contains(is.getItem()) ||
 				(Objects.requireNonNull(is).getItem() instanceof ItemBlock && InventoryUtils.BLOCK_BLACKLIST.contains(((ItemBlock)is.getItem()).getBlock())))
-			|| Objects.requireNonNull(is).getItem() instanceof ItemArmor) {
+				|| Objects.requireNonNull(is).getItem() instanceof ItemArmor) {
 			InventoryUtils.drop(i);
 		} else if (i != 36 + swordSlot && is.getItem() instanceof ItemSword) {
 			InventoryUtils.drop(i);

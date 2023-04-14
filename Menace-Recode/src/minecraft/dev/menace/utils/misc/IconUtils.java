@@ -10,7 +10,11 @@ public final class IconUtils {
 
     public static ByteBuffer[] getFavicon() {
         try {
-            return new ByteBuffer[] {readImageToBuffer(ClassLoader.getSystemClassLoader().getClass().getResourceAsStream("/assets/minecraft/menace/icon_16x16.png")), readImageToBuffer(ClassLoader.getSystemClassLoader().getClass().getResourceAsStream("/assets/minecraft/menace/icon_32x32.png"))};
+            return new ByteBuffer[] {
+                    readImageToBuffer(ClassLoader.getSystemClassLoader().getClass().getResourceAsStream("/assets/minecraft/menace/icon_16x16.png")),
+                    readImageToBuffer(ClassLoader.getSystemClassLoader().getClass().getResourceAsStream("/assets/minecraft/menace/icon_32x32.png")),
+                    //$$$ Windows 11 Bypass $$$
+                    readImageToBuffer(ClassLoader.getSystemClassLoader().getClass().getResourceAsStream("/assets/minecraft/menace/icon_64x64.png"))};
         }catch(IOException e) {
             e.printStackTrace();
         }
