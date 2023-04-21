@@ -19,7 +19,8 @@ import dev.menace.ui.clickgui.lime.LimeClickGUI;
 import dev.menace.ui.clickgui.intellij.IntellijClickGui;
 import dev.menace.ui.hud.HUDManager;
 import dev.menace.utils.file.FileManager;
-import dev.menace.utils.irc.IRCClient;
+import dev.menace.utils.irc.IRCUtils;
+import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.misc.DiscordRP;
 import dev.menace.utils.misc.ServerUtils;
 import dev.menace.utils.notifications.Notification;
@@ -34,6 +35,7 @@ import net.minecraft.network.play.server.S02PacketChat;
 import net.minecraft.network.play.server.S45PacketTitle;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ResourceLocation;
+import org.jibble.pircbot.IrcException;
 import org.lwjgl.opengl.Display;
 import viamcp.ViaMCP;
 
@@ -57,7 +59,7 @@ public class Menace {
 	public HUDManager hudManager;
 	public ScriptManager scriptManager;
 	public HackerDetect hackerDetect;
-	public IRCClient irc;
+	public IRCUtils ircBot;
 	public DiscordRP discordRP;
 
 	public MenaceUser user;
@@ -111,8 +113,6 @@ public class Menace {
 		scriptManager = new ScriptManager();
 
 		hackerDetect = new HackerDetect();
-
-		irc = new IRCClient("chat.freenode.net", 6667);
 		
 		discordRP = new DiscordRP();
 		discordRP.start();
@@ -180,7 +180,16 @@ public class Menace {
 		new Thread() {
 			@Override
 			public void run() {
-				irc.start();
+				ircBot = new IRCUtils();
+				ircBot.setVerbose(false);
+				ircBot.setAutoNickChange(true);
+				try {
+					ircBot.connect("chat.freenode.net");
+				} catch (IOException | IrcException e) {
+					System.out.println("[Menace] Failed to connect to IRC");
+					throw new RuntimeException(e);
+				}
+				ircBot.joinChannel("#MenaceIRC5573");
 				super.run();
 			}
 		}.start();
@@ -193,7 +202,7 @@ public class Menace {
 		moduleManager.saveModules(this.configManager.getLoadedConfig().getName());
 		hudManager.gameStatsElement.stop();
 		hudManager.tabGuiElement.stop();
-		irc.stop();
+		ircBot.quitServer("Left the Game");
 		eventManager.unregister(this);
 	}
 	

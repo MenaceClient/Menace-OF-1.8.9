@@ -351,5 +351,6 @@
     <orderEntry type="library" name="ViaSnakeYaml-1.30" level="project" />
     <orderEntry type="library" name="ViaVersion-4.4.3-SNAPSHOT" level="project" />
     <orderEntry type="library" name="ViaBackwards-4.4.3-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="pircbot" level="project" />
   </component>
 </module>

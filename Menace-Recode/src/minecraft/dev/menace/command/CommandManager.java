@@ -47,7 +47,7 @@ public class CommandManager {
 			parse(event.getMessage().replaceFirst(this.prefix, ""));
 		} else if (event.getMessage().startsWith(this.ircPrefix)) {
 			event.cancel();
-			Menace.instance.irc.sendMsg(event.getMessage().replaceFirst(this.ircPrefix, ""));
+			Menace.instance.ircBot.sendMessage(event.getMessage().replaceFirst(this.ircPrefix, ""));
 		}
 	}
 	

@@ -78,8 +78,6 @@ public class StepModule extends BaseModule {
 			} else {
 				if (event.getStepHeight() < 1) return;
 
-				ChatUtils.message("Step");
-
 				fakeJump();
 				PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.41999998688698, mc.thePlayer.posZ, true));
 				PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.7531999805212, mc.thePlayer.posZ, true));
