@@ -5,13 +5,13 @@
     "Visible": true
   },
   "ArrayElement": {
-    "X": 920,
+    "X": 921,
     "Y": 1,
     "Visible": true
   },
   "GameStatsElement": {
-    "X": 2,
-    "Y": 14,
+    "X": 1,
+    "Y": 15,
     "Visible": true
   },
   "NotificationElement": {
@@ -30,9 +30,9 @@
     "Visible": true
   },
   "TabGuiElement": {
-    "X": 2,
-    "Y": 75,
-    "Visible": false
+    "X": 1,
+    "Y": 76,
+    "Visible": true
   },
   "TargetHudElement": {
     "X": 440,
@@ -40,13 +40,8 @@
     "Visible": true
   },
   "WatermarkElement": {
-    "X": 2,
-    "Y": 2,
-    "Visible": true
-  },
-  "SUSHUDScript": {
-    "X": 244,
-    "Y": 121,
+    "X": 1,
+    "Y": 1,
     "Visible": true
   }
 }

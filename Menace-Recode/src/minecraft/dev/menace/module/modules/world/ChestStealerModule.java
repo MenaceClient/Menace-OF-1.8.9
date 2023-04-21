@@ -50,8 +50,8 @@ public class ChestStealerModule extends BaseModule {
 	List<Slot> slotList = new ArrayList<>();
 	MSTimer delayTimer = new MSTimer();
 	long nextDelay;
-	boolean isInChest;
-	GuiChest guiChest;
+	public boolean isInChest;
+	public GuiChest guiChest;
 	private final MenaceFontRenderer fr = Menace.instance.sfPro;
 
 	public SliderSetting minDelay;

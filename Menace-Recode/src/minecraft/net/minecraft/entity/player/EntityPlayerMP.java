@@ -14,6 +14,7 @@ import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockFenceGate;
 import net.minecraft.block.BlockWall;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.client.resources.DefaultPlayerSkin;
 import net.minecraft.crash.CrashReport;

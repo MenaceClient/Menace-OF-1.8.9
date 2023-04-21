@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import dev.menace.Menace;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
+import dev.menace.module.ModuleManager;
 
 public class CSCategoryButton extends CSButton {
 
@@ -69,8 +70,8 @@ public class CSCategoryButton extends CSButton {
 		this.buttons.clear();
 		int x = this.x + 65;
 		int y = 110;
-		for (int i = 0; i < Menace.instance.moduleManager.modules.size(); i++) {
-			BaseModule m = Menace.instance.moduleManager.modules.get(i); 
+		for (int i = 0; i < ModuleManager.modules.size(); i++) {
+			BaseModule m = ModuleManager.modules.get(i);
 			if (m.getCategory() == this.category) {
 				CSModButton csm = new CSModButton(x, y, fr.getStringWidth(m.getName()), fr.FONT_HEIGHT, 0xFFFFFFFF,
 						m.getName(), m);

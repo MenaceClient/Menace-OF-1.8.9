@@ -1,5 +1,9 @@
 package dev.menace.utils.player;
 
+import dev.menace.event.events.EventPreMotion;
+import dev.menace.utils.misc.ChatUtils;
+import dev.menace.utils.misc.MathUtils;
+import dev.menace.utils.world.BlockUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockLiquid;
@@ -7,13 +11,15 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.EntityEgg;
+import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
+import net.minecraft.network.play.client.C0APacketAnimation;
 import net.minecraft.util.*;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class PlayerUtils {
 
-	private static final Minecraft MC = Minecraft.getMinecraft();
+	private static final Minecraft mc = Minecraft.getMinecraft();
 	
 	public static float[] getRotations(Entity entity) {
 		return getRotations(entity.posX, entity.posY, entity.posZ);
@@ -24,9 +30,9 @@ public class PlayerUtils {
 	}
 	
     public static float[] getRotations(double x, double y, double z) {
-		double diffX = x - MC.thePlayer.posX;
-		double diffY = y - (MC.thePlayer.posY + MC.thePlayer.getEyeHeight()) + 1;
-		double diffZ = z - MC.thePlayer.posZ;
+		double diffX = x - mc.thePlayer.posX;
+		double diffY = y - (mc.thePlayer.posY + mc.thePlayer.getEyeHeight()) + 1;
+		double diffZ = z - mc.thePlayer.posZ;
 
 		double diffXZ = Math.sqrt(diffX * diffX + diffZ * diffZ);
 
@@ -36,9 +42,9 @@ public class PlayerUtils {
     }
 
     public static float[] getRotations2(Entity entity) {
-        double deltaX = entity.posX + (entity.posX - entity.lastTickPosX) - MC.thePlayer.posX;
-        double deltaY = entity.posY - 3.5 + entity.getEyeHeight() - MC.thePlayer.posY + MC.thePlayer.getEyeHeight();
-        double deltaZ = entity.posZ + (entity.posZ - entity.lastTickPosZ) - MC.thePlayer.posZ;
+        double deltaX = entity.posX + (entity.posX - entity.lastTickPosX) - mc.thePlayer.posX;
+        double deltaY = entity.posY - 3.5 + entity.getEyeHeight() - mc.thePlayer.posY + mc.thePlayer.getEyeHeight();
+        double deltaZ = entity.posZ + (entity.posZ - entity.lastTickPosZ) - mc.thePlayer.posZ;
         double distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaZ, 2));
         float yaw = (float) Math.toDegrees(-Math.atan(deltaX / deltaZ));
         float pitch = (float) -Math.toDegrees(Math.atan(deltaY / distance));
@@ -53,7 +59,7 @@ public class PlayerUtils {
     }
 
     public static float[] getDirectionToBlock(final double x, final double y, final double z, final EnumFacing enumfacing) {
-        final EntityEgg var4 = new EntityEgg(MC.theWorld);
+        final EntityEgg var4 = new EntityEgg(mc.theWorld);
         var4.posX = x + 0.5D;
         var4.posY = y + 0.5D;
         var4.posZ = z + 0.5D;
@@ -64,7 +70,7 @@ public class PlayerUtils {
     }
 
     public static float[] getRotationsForBlock(final double posX, final double posY, final double posZ) {
-        final EntityPlayerSP player = MC.thePlayer;
+        final EntityPlayerSP player = mc.thePlayer;
         final double x = posX - player.posX;
         final double y = posY - (player.posY + (double) player.getEyeHeight());
         final double z = posZ - player.posZ;
@@ -72,6 +78,82 @@ public class PlayerUtils {
         final float yaw = (float) (Math.atan2(z, x) * 180.0D / Math.PI) - 90.0F;
         final float pitch = (float) (-(Math.atan2(y, dist) * 180.0D / Math.PI));
         return new float[]{yaw, pitch};
+    }
+
+    public static float[] getRotsNew(final BlockPos pos, final EnumFacing facing) {
+        final float yaw = getYaw(pos, facing);
+        final float[] rots2 = getDirectionToBlock(pos.getX(), pos.getY(), pos.getZ(), facing);
+        return new float[] { (float)(yaw + ThreadLocalRandom.current().nextDouble(-1.0, 1.0)), mc.thePlayer.onGround ? 80.31f : Math.min(90.0f, rots2[1]) };
+    }
+
+    public static float[] getDirectionToBlock(final int var0, final int var1, final int var2, final EnumFacing var3) {
+        final EntityEgg var4 = new EntityEgg(mc.theWorld);
+        var4.posX = var0 + 0.5;
+        var4.posY = var1 + 0.5;
+        var4.posZ = var2 + 0.5;
+        var4.posX += var3.getDirectionVec().getX() * 0.25;
+        var4.posY += var3.getDirectionVec().getY() * 0.25;
+        var4.posZ += var3.getDirectionVec().getZ() * 0.25;
+        return getDirectionToEntity(var4);
+    }
+
+    public static float[] getDirectionToEntity(final Entity var0) {
+        return new float[] { getYaw(var0) + mc.thePlayer.rotationYaw, getPitch(var0) + mc.thePlayer.rotationPitch };
+    }
+
+    public static float getYaw(final Entity var0) {
+        final double var = var0.posX - mc.thePlayer.posX;
+        final double var2 = var0.posZ - mc.thePlayer.posZ;
+        final double degrees = Math.toDegrees(Math.atan(var2 / var));
+        double var3;
+        if (var2 < 0.0 && var < 0.0) {
+            var3 = 90.0 + degrees;
+        }
+        else if (var2 < 0.0 && var > 0.0) {
+            var3 = -90.0 + degrees;
+        }
+        else {
+            var3 = Math.toDegrees(-Math.atan(var / var2));
+        }
+        return MathHelper.wrapAngleTo180_float(-(mc.thePlayer.rotationYaw - (float)var3));
+    }
+
+    public static float getPitch(final Entity var0) {
+        final double var = var0.posX - mc.thePlayer.posX;
+        final double var2 = var0.posZ - mc.thePlayer.posZ;
+        final double var3 = var0.posY - 1.6 + var0.getEyeHeight() - mc.thePlayer.posY;
+        final double var4 = MathHelper.sqrt_double(var * var + var2 * var2);
+        final double var5 = -Math.toDegrees(Math.atan(var3 / var4));
+        return -MathHelper.wrapAngleTo180_float(mc.thePlayer.rotationPitch - (float)var5);
+    }
+
+    public static float getYaw(final BlockPos block, final EnumFacing face) {
+        final Vec3 vecToModify = new Vec3(block.getX(), block.getY(), block.getZ());
+        switch (face) {
+            case EAST:
+            case WEST: {
+                vecToModify.zCoord += 0.5;
+                break;
+            }
+            case SOUTH:
+            case NORTH: {
+                vecToModify.xCoord += 0.5;
+                break;
+            }
+            case UP:
+            case DOWN: {
+                vecToModify.xCoord += 0.5;
+                vecToModify.zCoord += 0.5;
+                break;
+            }
+        }
+        final double x = vecToModify.xCoord - mc.thePlayer.posX;
+        final double z = vecToModify.zCoord - mc.thePlayer.posZ;
+        float yaw = (float)(Math.atan2(z, x) * 180.0 / 3.141592653589793) - 90.0f;
+        if (yaw < 0.0f) {
+            yaw -= 360.0f;
+        }
+        return yaw;
     }
 
     public static Vec3 getHead(final AxisAlignedBB bb) {
@@ -157,14 +239,14 @@ public class PlayerUtils {
     }
 
     public static Vec3 getEyesPos() {
-        return new Vec3(MC.thePlayer.posX, MC.thePlayer.posY + MC.thePlayer.getEyeHeight(), MC.thePlayer.posZ);
+        return new Vec3(mc.thePlayer.posX, mc.thePlayer.posY + mc.thePlayer.getEyeHeight(), mc.thePlayer.posZ);
     }
 
     public static boolean isInLiquid() {
-        for (int x = MathHelper.floor_double(MC.thePlayer.boundingBox.minY); x < MathHelper.floor_double(MC.thePlayer.boundingBox.maxX) + 1; ++x) {
-            for (int z = MathHelper.floor_double(MC.thePlayer.boundingBox.minZ); z < MathHelper.floor_double(MC.thePlayer.boundingBox.maxZ) + 1; ++z) {
-                BlockPos pos = new BlockPos(x, (int) MC.thePlayer.boundingBox.minY, z);
-                Block block = MC.theWorld.getBlockState(pos).getBlock();
+        for (int x = MathHelper.floor_double(mc.thePlayer.boundingBox.minY); x < MathHelper.floor_double(mc.thePlayer.boundingBox.maxX) + 1; ++x) {
+            for (int z = MathHelper.floor_double(mc.thePlayer.boundingBox.minZ); z < MathHelper.floor_double(mc.thePlayer.boundingBox.maxZ) + 1; ++z) {
+                BlockPos pos = new BlockPos(x, (int) mc.thePlayer.boundingBox.minY, z);
+                Block block = mc.theWorld.getBlockState(pos).getBlock();
                 if (block != null && !(block instanceof BlockAir))
                     return block instanceof BlockLiquid;
             }
@@ -172,14 +254,20 @@ public class PlayerUtils {
         return false;
     }
 
+    public static boolean isOnGround(Entity entity) {
+        AxisAlignedBB playerBoundingBox = entity.getEntityBoundingBox();
+        AxisAlignedBB customBox = new AxisAlignedBB(playerBoundingBox.maxX, entity.posY - 1, playerBoundingBox.maxZ, playerBoundingBox.minX, entity.posY, playerBoundingBox.minZ);
+        return mc.theWorld.checkBlockCollision(customBox);
+    }
+
     public static double calculateGround() {
-        AxisAlignedBB playerBoundingBox = MC.thePlayer.getEntityBoundingBox();
+        AxisAlignedBB playerBoundingBox = mc.thePlayer.getEntityBoundingBox();
         double blockHeight = 1.0;
-        double ground = MC.thePlayer.posY;
+        double ground = mc.thePlayer.posY;
 
         while (ground > 0.0) {
             AxisAlignedBB customBox = new AxisAlignedBB(playerBoundingBox.maxX, ground + blockHeight, playerBoundingBox.maxZ, playerBoundingBox.minX, ground, playerBoundingBox.minZ);
-            if (MC.theWorld.checkBlockCollision(customBox)) {
+            if (mc.theWorld.checkBlockCollision(customBox)) {
                 if (blockHeight <= 0.05) return ground + blockHeight;
                 ground += blockHeight;
                 blockHeight = 0.05;
@@ -191,13 +279,57 @@ public class PlayerUtils {
     }
 
     public static boolean isBlockUnder() {
-        for (int offset = 0; offset < MC.thePlayer.posY + MC.thePlayer.getEyeHeight(); offset += 2) {
-            final AxisAlignedBB boundingBox = MC.thePlayer.getEntityBoundingBox().offset(0, -offset, 0);
+        for (int offset = 0; offset < mc.thePlayer.posY + mc.thePlayer.getEyeHeight(); offset += 2) {
+            final AxisAlignedBB boundingBox = mc.thePlayer.getEntityBoundingBox().offset(0, -offset, 0);
 
-            if (!MC.theWorld.getCollidingBoundingBoxes(MC.thePlayer, boundingBox).isEmpty())
+            if (!mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, boundingBox).isEmpty())
                 return true;
         }
         return false;
+    }
+
+    public static boolean placeBlockSimple(final BlockPos pos) {
+        final Vec3 eyesPos = new Vec3(mc.thePlayer.posX, mc.thePlayer.posY + mc.thePlayer.getEyeHeight(), mc.thePlayer.posZ);
+        EnumFacing[] values;
+        for (int length = (values = EnumFacing.values()).length, i = 0; i < length; ++i) {
+            final EnumFacing side = values[i];
+            final BlockPos neighbor = pos.offset(side);
+            final EnumFacing side2 = side.getOpposite();
+            if (BlockUtils.getBlock(neighbor).canCollideCheck(mc.theWorld.getBlockState(neighbor), false)) {
+                final Vec3 hitVec = new Vec3(neighbor).addVector(0.5, 0.5, 0.5).add(new Vec3(side2.getDirectionVec()).scale(0.5));
+                if (eyesPos.squareDistanceTo(hitVec) <= 36.0) {
+
+                    mc.playerController.onPlayerRightClick(mc.thePlayer, mc.theWorld, mc.thePlayer.getCurrentEquippedItem(), neighbor, side2, hitVec);
+
+                    mc.thePlayer.swingItem();
+
+                    mc.rightClickDelayTimer = 4;
+
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static void placeBlockPacket(final BlockPos pos) {
+        final Vec3 eyesPos = new Vec3(mc.thePlayer.posX, mc.thePlayer.posY + mc.thePlayer.getEyeHeight(), mc.thePlayer.posZ);
+        EnumFacing[] values;
+        for (int length = (values = EnumFacing.values()).length, i = 0; i < length; ++i) {
+            final EnumFacing side = values[i];
+            final BlockPos neighbor = pos.offset(side);
+            final EnumFacing side2 = side.getOpposite();
+            if (BlockUtils.getBlock(neighbor).canCollideCheck(mc.theWorld.getBlockState(neighbor), false)) {
+                final Vec3 hitVec = new Vec3(neighbor).addVector(0.5, 0.5, 0.5).add(new Vec3(side2.getDirectionVec()).scale(0.5));
+                if (eyesPos.squareDistanceTo(hitVec) <= 36.0) {
+
+                    float f = (float)(hitVec.xCoord - (double)neighbor.getX());
+                    float f1 = (float)(hitVec.yCoord - (double)neighbor.getY());
+                    float f2 = (float)(hitVec.zCoord - (double)neighbor.getZ());
+                    PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(neighbor, side.getIndex(), mc.thePlayer.inventory.getCurrentItem(), f, f1, f2));
+                }
+            }
+        }
     }
 
 }

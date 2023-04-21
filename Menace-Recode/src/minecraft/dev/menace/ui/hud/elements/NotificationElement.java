@@ -27,7 +27,7 @@ public class NotificationElement extends BaseElement {
 
             RenderUtils.drawRect(this.getAbsoluteX() + 46, y, this.getAbsoluteX() + 49, y + 10, notif.getColor().getRGB());
             RenderUtils.drawRect(this.getAbsoluteX() - this.getStringWidth(notif.getContents()) + 44, y, this.getAbsoluteX() + 46, y + 10, Color.black.getRGB());
-            this.drawString(notif.getContents(), this.getAbsoluteX() - this.getStringWidth(notif.getContents()) + 45, y + 2, -1);
+            this.drawString(notif.getContents(), this.getAbsoluteX() - this.getStringWidth(notif.getContents()) + 45, y, -1);
 
             y-=11;
         }

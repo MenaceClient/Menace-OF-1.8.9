@@ -95,7 +95,9 @@ extends GuiScreen {
 		this.buttonList.add(new GuiButton(2, width / 2 - 100, var3 + 72 + 12 + 24, "Back"));
 		this.buttonList.add(new GuiButton(0, width / 2, var3 + 72 + 12, 100, 20, "Login"));
 		this.username = new GuiTextField(var3, this.mc.fontRendererObj, width / 2 - 100, 60, 200, 20);
+		this.username.setMaxStringLength(50);
 		this.password = new GuiPasswordField(this.mc.fontRendererObj, width / 2 - 100, 100, 200, 20);
+		this.password.setMaxStringLength(50);
 		this.username.setFocused(true);
 		Keyboard.enableRepeatEvents(true);
 	}

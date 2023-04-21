@@ -24,14 +24,17 @@ public class PlayerVL {
 
     public void addVL(int vl, String check) {
         this.vl += vl;
-        ChatUtils.anticheat("Flagged " + player.getName() + " for " + check + " [VL=" + this.vl + "]");
+        if (Menace.instance.moduleManager.hackerDetectModule.showVl.getValue()) {
+            ChatUtils.anticheat("Flagged " + player.getName() + " for " + check + " [VL=" + this.vl + "]");
+        }
     }
 
     @EventTarget
     public void handleVL(EventUpdate event) {
         if (vl >= 10) {
-            //vl = 0;
-            //vlTimer.reset();
+            ChatUtils.anticheat("Detected " + player.getName() + " cheating [VL=" + vl + "]");
+            vl = 0;
+            vlTimer.reset();
             //ChatUtils.anticheat("");
             //reported = true;
             //flag();

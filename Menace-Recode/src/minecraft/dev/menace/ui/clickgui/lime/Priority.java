@@ -18,5 +18,5 @@ public interface Priority {
 
     int moduleHeight = 15;
 
-    boolean hoveredColor = false;
+    boolean hoveredColor = true;
 }

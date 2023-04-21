@@ -78,6 +78,7 @@ public class MenaceMainMenu extends GuiScreen implements GuiYesNoCallback {
    private final GLSLShader backgroundShader;
    private long initTime = System.currentTimeMillis();
    MenaceFontRenderer text;
+   MenaceFontRenderer largeText;
    private boolean L;
    private GuiScreen M;
    private GuiButton modButton;
@@ -92,7 +93,8 @@ public class MenaceMainMenu extends GuiScreen implements GuiYesNoCallback {
       this.L = false;
       this.splashText = "missingno";
       BufferedReader bufferedreader = null;
-      text = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/SF-Pro.ttf"), 30, Font.PLAIN), true, true);
+      text = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/SF-Pro.ttf"), 30, Font.PLAIN), true);
+      largeText = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/SF-Pro.ttf"), 110, Font.PLAIN), true);
       try {
          List<String> list = Lists.newArrayList();
          bufferedreader = new BufferedReader(new InputStreamReader(Minecraft.getMinecraft().getResourceManager().getResource(splashTexts).getInputStream(), Charsets.UTF_8));
@@ -240,7 +242,7 @@ public class MenaceMainMenu extends GuiScreen implements GuiYesNoCallback {
       GL11.glEnd();
       GL20.glUseProgram(0);
 
-      this.text.drawCenteredString("Menace", (float)(width / 2), (height / 4 - 24), (new Color(199, 7, 7, 255)).getRGB());
+      this.largeText.drawCenteredString("Menace", (float)(width / 2), ((float) height / 4 - 24), (new Color(199, 7, 7, 255)).getRGB());
 
       this.drawExit(mouseX, mouseY);
       this.drawOptions(mouseX, mouseY);
@@ -267,7 +269,7 @@ public class MenaceMainMenu extends GuiScreen implements GuiYesNoCallback {
       boolean hovered = RenderUtils.hover(x1, y1, mouseX, mouseY, w, h);
       RenderUtils.drawRect((float)x1, (float)y1, (float)x2, (float)y2, hovered ? (new Color(203, 26, 26, 255)).getRGB() : Color.black.getRGB());
       RenderUtils.drawRect((float)x1, (float)y1 + 17, (float)x2, (float)y2, (new Color(200, 0, 0)).getRGB());
-      this.text.drawCenteredString("Exit", (float)((x1 + x2) / 2), (float)((y1 + y2 - 15) / 2), Color.white.getRGB());
+      this.text.drawCenteredString("Exit", (float)((x1 + x2) / 2), (float)((y1 + y2 - 3) / 2), Color.white.getRGB());
    }
 
    private void drawOptions(int mouseX, int mouseY) {
@@ -281,7 +283,7 @@ public class MenaceMainMenu extends GuiScreen implements GuiYesNoCallback {
       boolean hovered = RenderUtils.hover(x1, y1, mouseX, mouseY, w, h);
       RenderUtils.drawRect((float)x1, (float)y1, (float)x2, (float)y2, hovered ? (new Color(203, 26, 26, 255)).getRGB() : Color.black.getRGB());
       RenderUtils.drawRect((float)x1, (float)y1 + 17, (float)x2, (float)y2, (new Color(200, 0, 0)).getRGB());
-      this.text.drawCenteredString("Settings", (float)((x1 + x2) / 2), (float)((y1 + y2 - 15) / 2), Color.white.getRGB());
+      this.text.drawCenteredString("Settings", (float)((x1 + x2) / 2), (float)((y1 + y2 - 3) / 2), Color.white.getRGB());
    }
 
    private void drawAltmanager(int mouseX, int mouseY) {
@@ -295,7 +297,7 @@ public class MenaceMainMenu extends GuiScreen implements GuiYesNoCallback {
       boolean hovered = RenderUtils.hover(x1, y1, mouseX, mouseY, w, h);
       RenderUtils.drawRect((float)x1, (float)y1, (float)x2, (float)y2, hovered ? (new Color(203, 26, 26, 255)).getRGB() : Color.black.getRGB());
       RenderUtils.drawRect((float)x1, (float)y1 + 17, (float)x2, (float)y2, (new Color(200, 0, 0)).getRGB());
-      this.text.drawCenteredString("Login", (float)((x1 + x2) / 2), (float)((y1 + y2 - 15) / 2), Color.white.getRGB());
+      this.text.drawCenteredString("Login", (float)((x1 + x2) / 2), (float)((y1 + y2 - 3) / 2), Color.white.getRGB());
    }
 
    public void drawSinglePlayer(int mouseX, int mouseY) {
@@ -308,7 +310,7 @@ public class MenaceMainMenu extends GuiScreen implements GuiYesNoCallback {
       boolean hovered = RenderUtils.hover(x1, l1, mouseX, mouseY, w, h);
       RenderUtils.drawRect((float)x1, (float)l1, (float)x2, (float)y2, hovered ? (new Color(203, 26, 26, 255)).getRGB() : Color.black.getRGB());
       RenderUtils.drawRect((float)x1, (float)l1 + 17, (float)x2, (float)y2, (new Color(200, 0, 0)).getRGB());
-      this.text.drawCenteredString("Singleplayer", (float)((x1 + x2) / 2), (float)((l1 + y2 - 15) / 2), Color.white.getRGB());
+      this.text.drawCenteredString("Singleplayer", (float)((x1 + x2) / 2), (float)((l1 + y2 - 3) / 2), Color.white.getRGB());
    }
 
    public void drawMultiPlayer(int mouseX, int mouseY) {
@@ -322,7 +324,7 @@ public class MenaceMainMenu extends GuiScreen implements GuiYesNoCallback {
       boolean hovered = RenderUtils.hover(x1, y1, mouseX, mouseY, w, h);
       RenderUtils.drawRect((float)x1, (float)y1, (float)x2, (float)y2, hovered ? (new Color(203, 26, 26, 255)).getRGB() : Color.black.getRGB());
       RenderUtils.drawRect((float)x1, (float)y1 + 17, (float)x2, (float)y2, (new Color(200, 0, 0)).getRGB());
-      this.text.drawCenteredString("Multiplayer", (float)((x1 + x2) / 2), (float)((y1 + y2 - 15) / 2), Color.white.getRGB());
+      this.text.drawCenteredString("Multiplayer", (float)((x1 + x2) / 2), (float)((y1 + y2 - 3) / 2), Color.white.getRGB());
    }
 
    protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {

@@ -64,7 +64,6 @@ public class AutoPlayModule extends BaseModule {
                         PacketUtils.sendPacketNoEvent(new C09PacketHeldItemChange(7));
                         PacketUtils.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getStackInSlot(7)));
                         PacketUtils.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getStackInSlot(7)));
-                        mc.thePlayer.inventory.currentItem = 0;
                     }
                     catch (Exception e) {
                         e.printStackTrace();
@@ -81,7 +80,6 @@ public class AutoPlayModule extends BaseModule {
                         PacketUtils.sendPacketNoEvent(new C09PacketHeldItemChange(7));
                         PacketUtils.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getStackInSlot(7)));
                         PacketUtils.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getStackInSlot(7)));
-                        mc.thePlayer.inventory.currentItem = 0;
                     }
                     catch (Exception e) {
                         e.printStackTrace();
@@ -94,6 +92,10 @@ public class AutoPlayModule extends BaseModule {
 
     @EventTarget
     public void onWorldChange(EventWorldChange event) {
+        if (newGame) {
+            PacketUtils.sendPacketNoEvent(new C09PacketHeldItemChange(0));
+            mc.thePlayer.inventory.currentItem = 0;
+        }
         newGame = false;
     }
 

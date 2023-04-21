@@ -959,12 +959,4 @@ public class ItemRenderer
     {
         this.equippedProgress = 0.0F;
     }
-
-    /**
-     * Resets equippedProgress
-     */
-    public void resetEquippedProgress2()
-    {
-        this.equippedProgress = 0.0F;
-    }
 }

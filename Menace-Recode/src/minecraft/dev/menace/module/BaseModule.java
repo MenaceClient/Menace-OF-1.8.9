@@ -136,14 +136,14 @@ public class BaseModule {
 		}
 		
 		if (this.toggled == toggled) return;
-		
-		if (this.toggled) {
-			this.onDisable();
-		} else {
-			this.onEnable();
-		}
-		
+
 		this.toggled = toggled;
+
+		if (this.toggled) {
+			this.onEnable();
+		} else {
+			this.onDisable();
+		}
 	}
 	
 	public void rSetting(Setting setting) {

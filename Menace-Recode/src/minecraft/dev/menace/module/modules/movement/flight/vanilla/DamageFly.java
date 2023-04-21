@@ -7,8 +7,11 @@ import dev.menace.event.events.EventMove;
 import dev.menace.event.events.EventPreMotion;
 import dev.menace.event.events.EventSendPacket;
 import dev.menace.module.modules.movement.flight.FlightBase;
+import dev.menace.utils.misc.ChatUtils;
+import dev.menace.utils.notifications.Notification;
 import dev.menace.utils.player.MovementUtils;
 import dev.menace.utils.player.PacketUtils;
+import dev.menace.utils.player.PlayerUtils;
 import dev.menace.utils.timer.MSTimer;
 import net.minecraft.block.BlockAir;
 import net.minecraft.entity.Entity;
@@ -25,6 +28,8 @@ import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+
+import java.awt.*;
 
 public class DamageFly extends FlightBase {
 	public boolean flyable = false;
@@ -43,12 +48,12 @@ public class DamageFly extends FlightBase {
 	@Override
 	public void onEnable() {
 
-		if (!mc.thePlayer.onGround) {
+		if (!PlayerUtils.isOnGround(mc.thePlayer)) {
+			Menace.instance.notificationManager.registerNotification(new Notification("Flight", "You can only enable this fly on the ground.", 1000L, Color.YELLOW));
 			Menace.instance.moduleManager.flightModule.setToggled(false);
-			//Menace.instance.notificationManager.addNotification(new Notification("You can only enable this fly on the ground.", Color.YELLOW, 1000L));
 			return;
 		}
-		
+
 		if (Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Basic")) {
 			mc.getNetHandler().addToSendQueue(new C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 3.25, mc.thePlayer.posZ, false));
 			mc.getNetHandler().addToSendQueue(new C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
@@ -60,11 +65,11 @@ public class DamageFly extends FlightBase {
 			mc.timer.timerSpeed = 0.5f;
 			timer.reset();
 		} else if (Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Verus")) {
-			
+
 			C03Count = 0;
 			C03Sent = false;
 			damage = false;
-			
+
 		} else if (Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Bow")) {
 			damage = false;
 			oldYaw = mc.thePlayer.rotationYaw;
@@ -77,7 +82,7 @@ public class DamageFly extends FlightBase {
 
 	@Override
 	public void onPreMotion(EventPreMotion event) {
-		if (!Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Bow") || damage || shot) return;	
+		if (!Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Bow") || damage || shot) return;
 		if (mc.thePlayer.getHeldItem() != null &&
 				mc.thePlayer.getHeldItem().getItem() instanceof ItemBow) {
 			C07PacketPlayerDigging C07 = new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN);
@@ -125,7 +130,7 @@ public class DamageFly extends FlightBase {
 			timer.reset();
 			C03Sent = true;
 		}
-		
+
 		if (Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Jump") && jumpCount < 3 && mc.thePlayer.onGround) {
 			mc.thePlayer.jump();
 			jumpCount++;
@@ -153,7 +158,7 @@ public class DamageFly extends FlightBase {
 			//Menace.instance.notificationManager.addNotification(new Notification("Slowing down fly", 1000L));
 			flyable = false;
 		}
-		
+
 		if (!flyable && Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Verus")) {
 			mc.gameSettings.keyBindJump.pressed = false;
 			if (mc.thePlayer.onGround) {
@@ -181,7 +186,7 @@ public class DamageFly extends FlightBase {
 
 	@Override
 	public void onSendPacket(EventSendPacket event) {
-		
+
 		if ((event.getPacket() instanceof C03PacketPlayer ||
 				event.getPacket() instanceof C03PacketPlayer.C04PacketPlayerPosition ||
 				event.getPacket() instanceof C03PacketPlayer.C05PacketPlayerLook ||
@@ -191,7 +196,7 @@ public class DamageFly extends FlightBase {
 			event.setCancelled(true);
 			C03Count++;
 		}
-		
+
 		if (event.getPacket() instanceof C03PacketPlayer && damage && flyable) {
 			((C03PacketPlayer) event.getPacket()).setOnGround(true);
 		}
@@ -199,7 +204,7 @@ public class DamageFly extends FlightBase {
 				jumpCount < 3 && event.getPacket() instanceof C03PacketPlayer) {
 			((C03PacketPlayer) event.getPacket()).setOnGround(false);
 		}
-		
+
 	}
 
 	@Override
@@ -218,18 +223,18 @@ public class DamageFly extends FlightBase {
 
 	@Override
 	public void onMove(EventMove event) {
-		
+
 		if (doUp) {
 			event.setY(0.5);
 			this.launchY += 0.5;
 			doUp = false;
 		}
-		
+
 		if (flyable && mc.gameSettings.keyBindJump.isKeyDown()) {
 			event.setY(0.5);
 			this.launchY += 0.5;
 		}
-		
+
 		if (!damage) {
 			event.setX(0);
 			event.setZ(0);

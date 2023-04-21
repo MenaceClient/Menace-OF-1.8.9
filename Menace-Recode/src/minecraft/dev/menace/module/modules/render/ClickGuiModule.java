@@ -1,7 +1,7 @@
 package dev.menace.module.modules.render;
 
 import dev.menace.module.settings.ToggleSetting;
-import dev.menace.ui.clickgui.menace.MenaceClickGui;
+import dev.menace.ui.clickgui.intellij.IntellijClickGui;
 import dev.menace.ui.clickgui.vape.VapeGui;
 import org.lwjgl.input.Keyboard;
 
@@ -17,7 +17,7 @@ public class ClickGuiModule extends BaseModule {
 
 	public CSGOGui csgoGui;
 	public LimeClickGUI limeGui;
-	public MenaceClickGui menaceGui;
+	public IntellijClickGui intellijClickGui;
 	
 	ListSetting mode;
 	public ToggleSetting sounds;
@@ -55,7 +55,7 @@ public class ClickGuiModule extends BaseModule {
 				mc.displayGuiScreen(new VapeGui());
 				break;
 			case "Menace" :
-				mc.displayGuiScreen(menaceGui);
+				mc.displayGuiScreen(intellijClickGui);
 				break;
 		}
 	}

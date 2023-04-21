@@ -26,6 +26,5 @@ public class HelpCmd extends BaseCommand {
             ChatUtils.noPrefix("§5" + cmd.getCmd()+ " - §r" + cmd.getDescription() + " - {" + sb + "}");
         }
         ChatUtils.message("===Help===");
-        super.call(args);
     }
 }

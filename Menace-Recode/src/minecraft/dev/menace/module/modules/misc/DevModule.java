@@ -7,6 +7,7 @@ import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.player.PacketUtils;
+import dev.menace.utils.player.PlayerUtils;
 import dev.menace.utils.world.BlockUtils;
 import net.minecraft.network.play.client.C0BPacketEntityAction;
 import org.lwjgl.input.Keyboard;
@@ -24,7 +25,7 @@ public class DevModule extends BaseModule {
 
 	@Override
 	public void onEnable() {
-		//ChatUtils.message("Block: " + BlockUtils.getBlockUnder(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ));
+		ChatUtils.message("Ground: " + PlayerUtils.calculateGround());
 		super.onEnable();
 	}
 }

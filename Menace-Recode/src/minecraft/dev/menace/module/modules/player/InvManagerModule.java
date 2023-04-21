@@ -291,11 +291,7 @@ public class InvManagerModule extends BaseModule {
 		}
 
 		if (slotList.isEmpty()) {
-			for (int i = 9; i < 45; ++i) {
-				if (mc.thePlayer.inventoryContainer.getSlot(i).getHasStack()) {
-					slotList.add(mc.thePlayer.inventoryContainer.getSlot(i));
-				}
-			}
+			scanInv();
 		}
 
 		if (!delayTimer.hasTimePassed(nextDelay) || slotList.isEmpty() || !inInv.getValue()) return;
@@ -363,7 +359,7 @@ public class InvManagerModule extends BaseModule {
 		}
 
 		//Clean
-		if (is != null && (InventoryUtils.TRASH.contains(is.getItem()) ||
+		if (is != null && is.getItem() != null && (InventoryUtils.TRASH.contains(is.getItem()) ||
 				(Objects.requireNonNull(is).getItem() instanceof ItemBlock && InventoryUtils.BLOCK_BLACKLIST.contains(((ItemBlock)is.getItem()).getBlock())))
 				|| Objects.requireNonNull(is).getItem() instanceof ItemArmor) {
 			InventoryUtils.drop(i);

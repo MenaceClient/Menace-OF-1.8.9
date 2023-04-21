@@ -5,10 +5,7 @@ import dev.menace.utils.misc.ChatUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class ConfigManager {
 
@@ -49,8 +46,8 @@ public class ConfigManager {
         this.loadedConfig = loadedConfig;
     }
 
-    public Config getConfigByName(String name) {
-        return getConfigs().stream().filter(c -> c.getName().equalsIgnoreCase(name)).findFirst().get();
+    public Optional<Config> getConfigByName(String name) {
+        return getConfigs().stream().filter(c -> c.getName().equalsIgnoreCase(name)).findFirst();
     }
 
 }

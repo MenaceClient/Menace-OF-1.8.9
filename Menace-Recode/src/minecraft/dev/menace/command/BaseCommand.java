@@ -2,7 +2,7 @@ package dev.menace.command;
 
 import net.minecraft.client.Minecraft;
 
-public class BaseCommand {
+public abstract class BaseCommand {
 
 	{
 		CommandManager.cmds.add(this);
@@ -19,8 +19,8 @@ public class BaseCommand {
 		this.syntax = syntax;
 	}
 
-	public void call(String[] args) {}
-	
+	public abstract void call(String[] args);
+
 	public String getCmd() {
 		return cmd;
 	}

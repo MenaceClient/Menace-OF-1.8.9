@@ -438,15 +438,6 @@ public class VapeGui extends GuiScreen {
         }
     }
 
-    public int findArray(float[] a, float b) {
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] == b) {
-                return i;
-            }
-        }
-        return 0;
-    }
-
     @Override
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
         float typeX = windowX + 20;

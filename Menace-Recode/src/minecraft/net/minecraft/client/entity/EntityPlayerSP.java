@@ -4,6 +4,7 @@ import dev.menace.Menace;
 import dev.menace.event.events.*;
 import dev.menace.event.events.EventStep.StepState;
 import dev.menace.module.modules.movement.SprintModule;
+import dev.menace.utils.misc.ChatUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockFenceGate;
@@ -770,7 +771,7 @@ public class EntityPlayerSP extends AbstractClientPlayer
 		boolean flag2 = this.movementInput.moveForward >= f;
 		this.movementInput.updatePlayerMoveState();
 
-		if (getHeldItem() != null && this.isUsingItem() && !this.isRiding()) {
+		if (this.getHeldItem() != null && this.isUsingItem() && !this.isRiding()) {
 			final EventSlowdown slowDownEvent = new EventSlowdown(0.2F, 0.2F);
 			slowDownEvent.call();
 			if (!slowDownEvent.isCancelled()) {
@@ -1098,7 +1099,7 @@ public class EntityPlayerSP extends AbstractClientPlayer
 					z = d8;
 					this.setEntityBoundingBox(axisalignedbb3);
 				} else {
-					EventStep postStep = new EventStep(-1f, StepState.POST);
+					EventStep postStep = new EventStep((float) ((float) 1 + y), StepState.POST);
 					postStep.call();
 				}
 			}

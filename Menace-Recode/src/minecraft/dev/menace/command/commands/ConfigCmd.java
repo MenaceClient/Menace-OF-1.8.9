@@ -1,5 +1,6 @@
 package dev.menace.command.commands;
 
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import dev.menace.Menace;
@@ -22,24 +23,24 @@ public class ConfigCmd extends BaseCommand {
 			Menace.instance.configManager.reload();
 		} else if (args[0].equalsIgnoreCase("load")) {
 			Menace.instance.configManager.reload();
-			Config cfg = Menace.instance.configManager.getConfigByName(args[1]);
-			if (cfg == null) {
+			Optional<Config> cfg = Menace.instance.configManager.getConfigByName(args[1]);
+			if (!cfg.isPresent()) {
 				ChatUtils.message("Config " + args[1] + " does not exist.");
 				return;
 			}
-			cfg.load();
+			cfg.get().load();
 			ChatUtils.message("Loaded config " + args[1]);
 		} else if (args[0].equalsIgnoreCase("none")) {
 			ModuleManager.modules.forEach(module -> {
 				if (module.isToggled()) {
 					module.toggle();
 				}
-				
+
 				module.setKeybindNoSave(0);
-				
+
 			});
 		}
 	}
-	
+
 
 }

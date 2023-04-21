@@ -1,369 +1,755 @@
 package dev.menace.utils.render.font;
 
-import net.minecraft.client.renderer.texture.*;
-import net.minecraft.client.*;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
+import org.lwjgl.BufferUtils;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.util.vector.Vector2f;
+
 import java.awt.*;
-import org.lwjgl.opengl.*;
-import net.minecraft.client.renderer.*;
-import net.minecraft.util.*;
-import java.util.*;
-import java.util.List;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
-public class MenaceFontRenderer extends CFont
-{
-    protected CharData[] boldChars;
-    protected CharData[] italicChars;
-    protected CharData[] boldItalicChars;
-    private final int[] colorCode;
-    protected DynamicTexture texBold;
-    protected DynamicTexture texItalic;
-    protected DynamicTexture texItalicBold;
+/**
+ * Made by MemesValkyrie for Faint.
+ * <p>
+ * Just a little fontrenderer for minecraft I wrote. Should work with any font size
+ * without any graphical glitches, but because of this setup takes forever. Feel free to make any edits.
+ * <p>
+ * Created by Zeb on 12/19/2016.
+ */
+public class MenaceFontRenderer {
 
-    public MenaceFontRenderer(final Font font, final boolean antiAlias, final boolean fractionalMetrics) {
-        super(font, antiAlias, fractionalMetrics);
-        this.boldChars = new CharData[256];
-        this.italicChars = new CharData[256];
-        this.boldItalicChars = new CharData[256];
-        this.colorCode = new int[32];
-        this.setupMinecraftColorcodes();
-        this.setupBoldItalicIDs();
+    /**
+     * The font to be drawn.
+     */
+    private Font font;
+
+    /**
+     * If fractional metrics should be used in the font renderer.
+     */
+    private boolean fractionalMetrics = false;
+
+
+
+    /**
+     * All the character data information (x = type  y = unicode index)
+     */
+    private CharacterData[][] characterData;
+
+    /**
+     * All the color codes used in minecraft.
+     */
+    private int[] colorCodes = new int[32];
+
+    /**
+     * The margin on each texture.
+     */
+    private static final int MARGIN = 4;
+
+    /**
+     * The character that invokes color in a string when rendered.
+     */
+    private static final char COLOR_INVOKER = '\247';
+
+    /**
+     * The random offset in obfuscated text.
+     */
+    private static int RANDOM_OFFSET = 1;
+
+    public MenaceFontRenderer(Font font) {
+        this(font, 16*16*16*16);
     }
 
-    public float drawString(final String text, final float x, final float y, final int color) {
-        return this.drawString(text, x, y, color, false);
+    public MenaceFontRenderer(Font font, int characterCount) {
+        this(font, characterCount, true);
     }
 
-    public float drawString(final String text, final double x, final double y, final int color) {
-        return this.drawString(text, x, y, color, false);
+    public MenaceFontRenderer(Font font, boolean fractionalMetrics) {
+        this(font, 16*16*16*16, fractionalMetrics);
     }
 
-    public float drawStringWithShadow(final String text, final float x, final float y, final int color) {
-        final float shadowWidth = this.drawString(text, x + 0.5, y + 0.5, color, true);
-        return Math.max(shadowWidth, this.drawString(text, x, y, color, false));
-    }
-
-    public float drawStringWithShadow(final String text, final double x, final double y, final int color) {
-        final float shadowWidth = this.drawString(text, x + 0.5, y + 0.5, color, true);
-        return Math.max(shadowWidth, this.drawString(text, x, y, color, false));
-    }
-
-    public float drawCenteredString(final String text, final float x, final float y, final int color) {
-        return this.drawString(text, x - this.getStringWidth(text) / 2, y, color);
-    }
-
-    public float drawCenteredString(final String text, final double x, final double y, final int color) {
-        return this.drawString(text, x - this.getStringWidth(text) / 2, y, color);
-    }
-
-    public float drawCenteredStringWithShadow(final String text, final float x, final float y, final int color) {
-        final float shadowWidth = this.drawString(text, x - this.getStringWidth(text) / 2 + 0.5, y + 0.5, color, true);
-        return this.drawString(text, x - this.getStringWidth(text) / 2, y, color);
-    }
-
-    public float drawCenteredStringWithShadow(final String text, final double x, final double y, final int color) {
-        final float shadowWidth = this.drawString(text, x - this.getStringWidth(text) / 2 + 0.5, y + 0.5, color, true);
-        return this.drawString(text, x - this.getStringWidth(text) / 2, y, color);
-    }
-
-    public float drawString(final String text, double x, double y, int color, final boolean shadow) {
-        --x;
-        if (text == null) {
-            return 0.0f;
+    public MenaceFontRenderer(Font font, int characterCount, boolean fractionalMetrics) {
+        this.font = font;
+        this.fractionalMetrics = fractionalMetrics;
+        this.characterData = new CharacterData[3][characterCount];
+        for (int i = 0; i < 256; i++) {
+            characterData[0][i] = getCharacterData(0, (char) i);
         }
-        if (color == 553648127) {
-            color = 16777215;
+        // Generates all the character textures.
+    }
+
+
+
+    private CharacterData getCharacterData(int type, char character) {
+        // So it won't need to prerender for like 10 minutes
+        if (characterData[type][character] != null) return characterData[type][character];
+
+        // Quickly generates the colors.
+        generateColors();
+
+        // Changes the type of the font to the given type.
+        Font font = this.font.deriveFont(type);
+
+        // An image just to get font data.
+        BufferedImage utilityImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+
+        // The graphics of the utility image.
+        Graphics2D utilityGraphics = (Graphics2D) utilityImage.getGraphics();
+
+        // Sets the font of the utility image to the font.
+        utilityGraphics.setFont(font);
+
+        // The font metrics of the utility image.
+        FontMetrics fontMetrics = utilityGraphics.getFontMetrics();
+
+        // The character at the current index.
+        // The width and height of the character according to the font.
+        Rectangle2D characterBounds = fontMetrics.getStringBounds(character + "", utilityGraphics);
+
+        // The width of the character texture.
+        float width = (float) characterBounds.getWidth() + (2 * MARGIN);
+
+        // The height of the character texture.
+        float height = (float) characterBounds.getHeight();
+
+        // The image that the character will be rendered to.
+        int textWidth = MathHelper.ceiling_double_int(width);
+        int textHeight = MathHelper.ceiling_double_int(height);
+        textWidth = Math.max(1, textWidth);
+        textHeight = Math.max(1, textHeight);
+        BufferedImage characterImage = new BufferedImage(textWidth, textHeight, BufferedImage.TYPE_INT_ARGB);
+        // The graphics of the character image.
+        Graphics2D graphics = (Graphics2D) characterImage.getGraphics();
+
+        // Sets the font to the input font/
+        graphics.setFont(font);
+
+        // Sets the color to white with no alpha.
+        graphics.setColor(new Color(255, 255, 255, 0));
+
+        // Fills the entire image with the color above, makes it transparent.
+        graphics.fillRect(0, 0, characterImage.getWidth(), characterImage.getHeight());
+
+        // Sets the color to white to draw the character.
+        graphics.setColor(Color.WHITE);
+
+        // Enables anti-aliasing so the font doesn't have aliasing.
+        graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        graphics.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, this.fractionalMetrics ? RenderingHints.VALUE_FRACTIONALMETRICS_ON : RenderingHints.VALUE_FRACTIONALMETRICS_OFF);
+
+        // Draws the character.
+        graphics.drawString(character + "", MARGIN, fontMetrics.getAscent());
+
+        // Generates a new texture id.
+        int textureId = GlStateManager.generateTexture();
+
+        // Allocates the texture in opengl.
+        createTexture(textureId, characterImage);
+
+        // Initiates the character data and stores it in the data array.
+        CharacterData characterData1 = new CharacterData(characterImage.getWidth(), characterImage.getHeight(), textureId);
+        characterData[type][character] = characterData1;
+        return characterData1;
+    }
+
+    /**
+     * Uploads the opengl texture.
+     *
+     * @param textureId The texture id to upload to.
+     * @param image     The image to upload.
+     */
+    private void createTexture(int textureId, BufferedImage image) {
+        // Array of all the colors in the image.
+        int[] pixels = new int[image.getWidth() * image.getHeight()];
+
+        // Fetches all the colors in the image.
+        image.getRGB(0, 0, image.getWidth(), image.getHeight(), pixels, 0, image.getWidth());
+
+        // Buffer that will store the texture data.
+        ByteBuffer buffer = BufferUtils.createByteBuffer(image.getWidth() * image.getHeight() * 4); //4 for RGBA, 3 for RGB
+
+        // Puts all the pixel data into the buffer.
+        for (int y = 0; y < image.getHeight(); y++) {
+            for (int x = 0; x < image.getWidth(); x++) {
+
+                // The pixel in the image.
+                int pixel = pixels[y * image.getWidth() + x];
+
+                // Puts the data into the byte buffer.
+                buffer.put((byte)((pixel >> 16) & 0xFF));
+                buffer.put((byte)((pixel >> 8) & 0xFF));
+                buffer.put((byte)(pixel & 0xFF));
+                buffer.put((byte)((pixel >> 24) & 0xFF));
+            }
         }
-        if ((color & 0xFC000000) == 0x0) {
-            color |= 0xFF000000;
-        }
+
+        // Flips the byte buffer, not sure why this is needed.
+        buffer.flip();
+
+        // Binds the opengl texture by the texture id.
+        GlStateManager.bindTexture(textureId);
+
+        // Sets the texture parameter stuff.
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
+
+        // Uploads the texture to opengl.
+        GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL11.GL_RGBA, image.getWidth(), image.getHeight(), 0, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, buffer);
+
+        // Binds the opengl texture 0.
+        GlStateManager.bindTexture(0);
+    }
+
+    /**
+     * Renders the given string.
+     *
+     * @param text  The text to be rendered.
+     * @param x     The x position of the text.
+     * @param y     The y position of the text.
+     * @param color The color of the text.
+     */
+    public void drawString(String text, float x, float y, int color) {
+        renderString(text, x, y, color, false);
+    }
+
+    public void drawString(String text, float x, float y, int color, boolean shadow) {
         if (shadow) {
-            color = ((color & 0xFCFCFC) >> 2 | (color & new Color(14, 14, 14, 150).getRGB()));
+            drawStringWithShadow(text, x, y, color);
+        } else {
+            drawString(text, x, y, color);
         }
-        CharData[] currentData = this.charData;
-        final float alpha = (color >> 24 & 0xFF) / 255.0f;
-        boolean randomCase = false;
-        boolean bold = false;
-        boolean italic = false;
+    }
+
+    public void drawString(String text, double x, double y, int color) {
+        renderString(text, (float) x, (float) y, color, false);
+    }
+
+    public void drawString(String text, double x, double y, int color, boolean shadow) {
+        if (shadow) {
+            drawStringWithShadow(text, (float) x, (float) y, color);
+        } else {
+            drawString(text, x, y, color);
+        }
+    }
+
+    /**
+     * Renders the given string.
+     *
+     * @param text  The text to be rendered.
+     * @param x     The x position of the text.
+     * @param y     The y position of the text.
+     * @param color The color of the text.
+     */
+    public void drawStringWithShadow(String text, float x, float y, int color) {
+        GL11.glTranslated(0.5, 0.5, 0);
+        renderString(text, x, y, color, true);
+        GL11.glTranslated(-0.5, -0.5, 0);
+        renderString(text, x, y, color, false);
+    }
+
+    public void drawCenteredStringWithShadow(String text, float x, float y, int color) {
+        drawStringWithShadow(text, x - getStringWidth(text)/2f, y, color);
+    }
+
+    public void drawHorizontallyCenteredString(String text, float x, float y, int color) {
+        drawString(text, x - getStringWidth(text)/2f, y, color);
+    }
+    public void drawVerticallyCenteredString(String text, float x, float y, int color) {
+        drawString(text, x, y - getStringHeight(text)/2f, color);
+    }
+    public void drawCenteredString(String text, float x, float y, int color) {
+        drawString(text, x - getStringWidth(text)/2f, y - getStringHeight(text)/2f, color);
+    }
+
+    /**
+     * Renders the given string.
+     *
+     * @param text   The text to be rendered.
+     * @param x      The x position of the text.
+     * @param y      The y position of the text.
+     * @param shadow If the text should be rendered with the shadow color.
+     * @param color  The color of the text.
+     */
+    private void renderString(String text, float x, float y, int color, boolean shadow) {
+        // Returns if the text is empty.
+        if (text.length() == 0) return;
+
+        // Pushes the matrix to store gl values.
+        GL11.glPushMatrix();
+
+        // Scales down to make the font look better.
+        GlStateManager.scale(0.5, 0.5, 1);
+
+        // Removes half the margin to render in the right spot.
+        x -= MARGIN / 2;
+        y -= MARGIN / 2;
+
+        // Adds 0.5 to x and y.
+        x += 0.5F;
+        y += 0.5F;
+
+        // Doubles the position because of the scaling.
+        x *= 2;
+        y *= 2;
+
+        // The character texture set to be used. (Regular by default)
+        int type = Font.PLAIN;
+
+        // Booleans to handle the style.
+        boolean underlined = false;
         boolean strikethrough = false;
-        boolean underline = false;
-        final boolean render = true;
-        x *= 2.0;
-        y = (y - 3.0) * 2.0;
-        if (render) {
-            GL11.glPushMatrix();
-            GlStateManager.scale(0.5, 0.5, 0.5);
-            GlStateManager.enableBlend();
-            GlStateManager.blendFunc(770, 771);
-            GlStateManager.color((color >> 16 & 0xFF) / 255.0f, (color >> 8 & 0xFF) / 255.0f, (color & 0xFF) / 255.0f, alpha);
-            final int size = text.length();
-            GlStateManager.enableTexture2D();
-            GlStateManager.bindTexture(this.tex.getGlTextureId());
-            GL11.glBindTexture(3553, this.tex.getGlTextureId());
-            for (int i = 0; i < size; ++i) {
-                final char character = text.charAt(i);
-                if (String.valueOf(character).equals("§") && i < size) {
-                    int colorIndex = 21;
-                    try {
-                        colorIndex = "0123456789abcdefklmnor".indexOf(text.charAt(i + 1));
-                    }
-                    catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    if (colorIndex < 16) {
-                        bold = false;
-                        italic = false;
-                        randomCase = false;
-                        underline = false;
-                        strikethrough = false;
-                        GlStateManager.bindTexture(this.tex.getGlTextureId());
-                        currentData = this.charData;
-                        if (colorIndex < 0 || colorIndex > 15) {
-                            colorIndex = 15;
-                        }
-                        if (shadow) {
-                            colorIndex += 16;
-                        }
-                        final int colorcode = this.colorCode[colorIndex];
-                        GlStateManager.color((colorcode >> 16 & 0xFF) / 255.0f, (colorcode >> 8 & 0xFF) / 255.0f, (colorcode & 0xFF) / 255.0f, alpha);
-                    }
-                    else if (colorIndex == 16) {
-                        randomCase = true;
-                    }
-                    else if (colorIndex == 17) {
-                        bold = true;
-                        if (italic) {
-                            GlStateManager.bindTexture(this.texItalicBold.getGlTextureId());
-                            currentData = this.boldItalicChars;
-                        }
-                        else {
-                            GlStateManager.bindTexture(this.texBold.getGlTextureId());
-                            currentData = this.boldChars;
-                        }
-                    }
-                    else if (colorIndex == 18) {
-                        strikethrough = true;
-                    }
-                    else if (colorIndex == 19) {
-                        underline = true;
-                    }
-                    else if (colorIndex == 20) {
-                        italic = true;
-                        if (bold) {
-                            GlStateManager.bindTexture(this.texItalicBold.getGlTextureId());
-                            currentData = this.boldItalicChars;
-                        }
-                        else {
-                            GlStateManager.bindTexture(this.texItalic.getGlTextureId());
-                            currentData = this.italicChars;
-                        }
-                    }
-                    else if (colorIndex == 21) {
-                        bold = false;
-                        italic = false;
-                        randomCase = false;
-                        underline = false;
-                        strikethrough = false;
-                        GlStateManager.color((color >> 16 & 0xFF) / 255.0f, (color >> 8 & 0xFF) / 255.0f, (color & 0xFF) / 255.0f, alpha);
-                        GlStateManager.bindTexture(this.tex.getGlTextureId());
-                        currentData = this.charData;
-                    }
-                    ++i;
+        boolean obfuscated = false;
+
+        // The length of the text used for the draw loop.
+        int length = text.length();
+
+        // The multiplier.
+        float multiplier = (shadow ? 4 : 1);
+
+        float a = (float)(color >> 24 & 255) / 255F;
+        float r = (float)(color >> 16 & 255) / 255F;
+        float g = (float)(color >> 8 & 255) / 255F;
+        float b = (float)(color & 255) / 255F;
+
+        GlStateManager.color(r / multiplier, g / multiplier, b / multiplier, a);
+
+        // Loops through the text.
+        for (int i = 0; i < length; i++) {
+            // The character at the index of 'i'.
+            char character = text.charAt(i);
+
+            // The previous character.
+            char previous = i > 0 ? text.charAt(i - 1) : '.';
+
+            // Continues if the previous color was the color invoker.
+            if (previous == COLOR_INVOKER) continue;
+
+            // Sets the color if the character is the color invoker and the character index is less than the length.
+            if (character == COLOR_INVOKER && i < length) {
+
+                // The color index of the character after the current character.
+                int index = "0123456789abcdefklmnor".indexOf(text.toLowerCase(Locale.ENGLISH).charAt(i + 1));
+
+                // If the color character index is of the normal color invoking characters.
+                if (index < 16) {
+                    // Resets all the styles.
+                    obfuscated = false;
+                    strikethrough = false;
+                    underlined = false;
+
+                    // Sets the character data to the regular type.
+                    type = Font.PLAIN;
+
+                    // Clamps the index just to be safe in case an odd character somehow gets in here.
+                    if (index < 0 || index > 15) index = 15;
+
+                    // Adds 16 to the color index to get the darker shadow color.
+                    if (shadow) index += 16;
+
+                    // Gets the text color from the color codes array.
+                    int textColor = this.colorCodes[index];
+
+                    // Sets the current color.
+                    GL11.glColor4d((textColor >> 16) / 255d, (textColor >> 8 & 255) / 255d, (textColor & 255) / 255d, a);
+                } else if (index == 16)
+                    obfuscated = true;
+                else if (index == 17)
+                    // Sets the character data to the bold type.
+                    type = Font.BOLD;
+
+                else if (index == 18)
+                    strikethrough = true;
+                else if (index == 19)
+                    underlined = true;
+                else if (index == 20)
+                    // Sets the character data to the italics type.
+                    type = Font.ITALIC;
+
+                else if (index == 21) {
+                    // Resets the style.
+                    obfuscated = false;
+                    strikethrough = false;
+                    underlined = false;
+
+                    // Sets the character data to the regular type.
+                    type = Font.PLAIN;
+
+                    // Sets the color to white
+                    GL11.glColor4d(1 * (shadow ? 0.25 : 1), 1 * (shadow ? 0.25 : 1), 1 * (shadow ? 0.25 : 1), a);
                 }
-                else if (character < currentData.length && character >= '\0') {
-                    GL11.glBegin(4);
-                    this.drawChar(currentData, character, (float)x, (float)y);
-                    GL11.glEnd();
-                    if (strikethrough) {
-                        this.drawLine(x, y + currentData[character].height / 2, x + currentData[character].width - 8.0, y + currentData[character].height / 2, 1.0f);
-                    }
-                    if (underline) {
-                        this.drawLine(x, y + currentData[character].height - 2.0, x + currentData[character].width - 8.0, y + currentData[character].height - 2.0, 1.0f);
-                    }
-                    x += currentData[character].width - 8 + this.charOffset;
-                }
+            } else {
+                // Continues to not crash!
+                if (character > characterData[0].length - 1) continue;
+
+                // Sets the character to a random char if obfuscated is enabled.
+                if (obfuscated)
+                    character = (char)(((int) character) + RANDOM_OFFSET);
+
+                // Draws the character.
+                drawChar(character, type, x, y);
+
+                // The character data for the given character.
+                CharacterData charData = getCharacterData(type, character);
+
+                // Draws the strikethrough line if enabled.
+                if (strikethrough)
+                    drawLine(new Vector2f(0, charData.height / 2f), new Vector2f(charData.width, charData.height / 2f), 3);
+
+                // Draws the underline if enabled.
+                if (underlined)
+                    drawLine(new Vector2f(0, charData.height - 15), new Vector2f(charData.width, charData.height - 15), 3);
+
+                // Adds to the offset.
+                x += charData.width - (2 * MARGIN);
             }
-            GL11.glHint(3155, 4352);
-            GL11.glPopMatrix();
         }
-        return (float)x / 2.0f;
+
+        // Restores previous values.
+        GL11.glPopMatrix();
+
+        // Sets the color back to white so no odd rendering problems happen.
+        //This interferes with other rendering, so I removed it.
+        GlStateManager.color(1, 1, 1, 1);
+
+        GlStateManager.bindTexture(0);
     }
 
-    @Override
+    public int getHeight() {
+        return (int) getHeight("Ay@|");
+    }
+
+    // Alias for getHeight
+    public int getStringHeight(String text) {
+        return (int) getHeight(text);
+    }
+
+    // Alias for getWidth
     public int getStringWidth(String text) {
-        if (text == null) {
-            return 0;
-        }
-        text = EnumChatFormatting.getTextWithoutFormattingCodes(text);
-        int width = 0;
-        final CharData[] currentData = this.charData;
-        final boolean bold = false;
-        final boolean italic = false;
-        for (int size = text.length(), i = 0; i < size; ++i) {
-            final char character = text.charAt(i);
-            if (character < currentData.length) {
-                width += currentData[character].width - 8 + this.charOffset;
+        return (int) getWidth(text);
+    }
+
+    /**
+     * Gets the width of the given text.
+     *
+     * @param text The text to get the width of.
+     * @return The width of the given text.
+     */
+    public float getWidth(String text) {
+
+        // The width of the string.
+        float width = 0;
+
+        // The character texture set to be used. (Regular by default)
+        int type = Font.PLAIN;
+
+        // The length of the text.
+        int length = text.length();
+
+        // Loops through the text.
+        for (int i = 0; i < length; i++) {
+            // The character at the index of 'i'.
+            char character = text.charAt(i);
+
+            // The previous character.
+            char previous = i > 0 ? text.charAt(i - 1) : '.';
+
+            // Continues if the previous color was the color invoker.
+            if (previous == COLOR_INVOKER) continue;
+
+            // Sets the color if the character is the color invoker and the character index is less than the length.
+            if (character == COLOR_INVOKER && i < length) {
+
+                // The color index of the character after the current character.
+                int index = "0123456789abcdefklmnor".indexOf(text.toLowerCase(Locale.ENGLISH).charAt(i + 1));
+
+                if (index == 17)
+                    // Sets the character data to the bold type.
+                    type = Font.BOLD;
+                else if (index == 20)
+                    // Sets the character data to the italics type.
+                    type = Font.ITALIC;
+                else if (index == 21)
+                    // Sets the character data to the regular type.
+                    type = Font.PLAIN;
+            } else {
+                // Continues to not crash!
+                if (character > 255) continue;
+
+                // The character data for the given character.
+                CharacterData charData = getCharacterData(type, character);
+
+                // Adds to the offset.
+                width += (charData.width - (2 * MARGIN)) / 2;
             }
         }
-        return width / 2;
+
+        // Returns the width.
+        return width + MARGIN / 2;
     }
 
-    public int getStringWidthCust(final String text) {
-        if (text == null) {
-            return 0;
-        }
-        int width = 0;
-        CharData[] currentData = this.charData;
-        boolean bold = false;
-        boolean italic = false;
-        for (int size = text.length(), i = 0; i < size; ++i) {
-            final char character = text.charAt(i);
-            if (String.valueOf(character).equals("§") && i < size) {
-                final int colorIndex = "0123456789abcdefklmnor".indexOf(character);
-                if (colorIndex < 16) {
-                    bold = false;
-                    italic = false;
-                }
-                else if (colorIndex == 17) {
-                    bold = true;
-                    if (italic) {
-                        currentData = this.boldItalicChars;
-                    }
-                    else {
-                        currentData = this.boldChars;
-                    }
-                }
-                else if (colorIndex == 20) {
-                    italic = true;
-                    if (bold) {
-                        currentData = this.boldItalicChars;
-                    }
-                    else {
-                        currentData = this.italicChars;
-                    }
-                }
-                else if (colorIndex == 21) {
-                    bold = false;
-                    italic = false;
-                    currentData = this.charData;
-                }
-                ++i;
+    /**
+     * Gets the height of the given text.
+     *
+     * @param text The text to get the height of.
+     * @return The height of the given text.
+     */
+    public float getHeight(String text) {
+
+        // The height of the string.
+        float height = 0;
+
+        // The character texture set to be used. (Regular by default)
+        int type = Font.PLAIN;
+
+        // The length of the text.
+        int length = text.length();
+
+        // Loops through the text.
+        for (int i = 0; i < length; i++) {
+            // The character at the index of 'i'.
+            char character = text.charAt(i);
+
+            // The previous character.
+            char previous = i > 0 ? text.charAt(i - 1) : '.';
+
+            // Continues if the previous color was the color invoker.
+            if (previous == COLOR_INVOKER) continue;
+
+            // Sets the color if the character is the color invoker and the character index is less than the length.
+            if (character == COLOR_INVOKER && i < length) {
+
+                // The color index of the character after the current character.
+                int index = "0123456789abcdefklmnor".indexOf(text.toLowerCase(Locale.ENGLISH).charAt(i + 1));
+
+                if (index == 17)
+                    // Sets the character data to the bold type.
+                    type = Font.BOLD;
+                else if (index == 20)
+                    // Sets the character data to the italics type.
+                    type = Font.ITALIC;
+                else if (index == 21)
+                    // Sets the character data to the regular type.
+                    type = Font.PLAIN;
+            } else {
+                // Continues to not crash!
+                if (character > 255) continue;
+
+                // The character data for the given character.
+                CharacterData charData = getCharacterData(type, character);
+
+                // Sets the height if its bigger.
+                height = Math.max(height, charData.height);
             }
-            else if (character < currentData.length && character >= '\0') {
-                width += currentData[character].width - 8 + this.charOffset;
-            }
         }
-        return (width - this.charOffset) / 2;
+
+        // Returns the height.
+        return height / 2 - MARGIN / 2;
     }
 
-    @Override
-    public void setFont(final Font font) {
-        super.setFont(font);
-        this.setupBoldItalicIDs();
-    }
+    /**
+     * Draws the character.
+     *
+     * @param character     The character to be drawn.
+     * @param type          Char type, can be 0 to 2, or Font.PLAIN, Font.BOLD, Font.ITALIC
+     */
+    private void drawChar(char character, int type, float x, float y) {
+        // The char data that stores the character data.
+        CharacterData charData = getCharacterData(type, character);
 
-    @Override
-    public void setAntiAlias(final boolean antiAlias) {
-        super.setAntiAlias(antiAlias);
-        this.setupBoldItalicIDs();
-    }
+        // Binds the character data texture.
+        charData.bind();
+        GL11.glPushMatrix();
 
-    @Override
-    public void setFractionalMetrics(final boolean fractionalMetrics) {
-        super.setFractionalMetrics(fractionalMetrics);
-        this.setupBoldItalicIDs();
-    }
+        // Enables blending.
+        GL11.glEnable(GL11.GL_BLEND);
 
-    private void setupBoldItalicIDs() {
-        this.texBold = this.setupTexture(this.font.deriveFont(Font.BOLD), this.antiAlias, this.fractionalMetrics, this.boldChars);
-        this.texItalic = this.setupTexture(this.font.deriveFont(Font.ITALIC), this.antiAlias, this.fractionalMetrics, this.italicChars);
-        this.texItalicBold = this.setupTexture(this.font.deriveFont(Font.BOLD | Font.ITALIC), this.antiAlias, this.fractionalMetrics, this.boldItalicChars);
-    }
+        // Sets the blending function.
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
-    private void drawLine(final double x, final double y, final double x1, final double y1, final float width) {
-        GL11.glDisable(3553);
-        GL11.glLineWidth(width);
-        GL11.glBegin(1);
-        GL11.glVertex2d(x, y);
-        GL11.glVertex2d(x1, y1);
+        // Begins drawing the quad.
+        GL11.glBegin(GL11.GL_QUADS); {
+            // Maps out where the texture should be drawn.
+            GL11.glTexCoord2f(0, 0);
+            GL11.glVertex2d(x, y);
+            GL11.glTexCoord2f(0, 1);
+            GL11.glVertex2d(x, y + charData.height);
+            GL11.glTexCoord2f(1, 1);
+            GL11.glVertex2d(x + charData.width, y + charData.height);
+            GL11.glTexCoord2f(1, 0);
+            GL11.glVertex2d(x + charData.width, y);
+        }
+        // Ends the quad.
         GL11.glEnd();
-        GL11.glEnable(3553);
+
+        GL11.glDisable(GL11.GL_BLEND);
+        GL11.glPopMatrix();
+
+        // Binds the opengl texture by the texture id.
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
     }
 
-    public List<String> wrapWords(final String text, final double width) {
-        final List<String> finalWords = new ArrayList<>();
-        if (this.getStringWidth(text) > width) {
-            final String[] words = text.split(" ");
-            StringBuilder currentWord = new StringBuilder();
-            char lastColorCode = '\uffff';
-            for (final String word : words) {
-                for (int i = 0; i < word.toCharArray().length; ++i) {
-                    final char c = word.toCharArray()[i];
-                    if (String.valueOf(c).equals("§") && i < word.toCharArray().length - 1) {
-                        lastColorCode = word.toCharArray()[i + 1];
-                    }
-                }
-                if (this.getStringWidth(currentWord + word + " ") < width) {
-                    currentWord.append(word).append(" ");
-                }
-                else {
-                    finalWords.add(currentWord.toString());
-                    currentWord = new StringBuilder("" + lastColorCode + word + " ");
-                }
-            }
-            if (currentWord.length() > 0) {
-                if (this.getStringWidth(currentWord.toString()) < width) {
-                    finalWords.add("" + lastColorCode + currentWord + " ");
-                }
-                else {
-                    finalWords.addAll(this.formatString(currentWord.toString(), width));
-                }
-            }
+    /**
+     * Draws a line from start to end with the given width.
+     *
+     * @param start The starting point of the line.
+     * @param end   The ending point of the line.
+     * @param width The thickness of the line.
+     */
+    private void drawLine(Vector2f start, Vector2f end, float width) {
+        // Disables textures so we can draw a solid line.
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
+
+        // Sets the width.
+        GL11.glLineWidth(width);
+
+        // Begins drawing the line.
+        GL11.glBegin(GL11.GL_LINES); {
+            GL11.glVertex2f(start.x, start.y);
+            GL11.glVertex2f(end.x, end.y);
         }
-        else {
-            finalWords.add(text);
-        }
-        return finalWords;
+        // Ends drawing the line.
+        GL11.glEnd();
+
+        // Enables texturing back on.
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
     }
 
-    public List<String> formatString(final String string, final double width) {
-        final List<String> finalWords = new ArrayList<String>();
-        StringBuilder currentWord = new StringBuilder();
-        char lastColorCode = '\uffff';
-        final char[] chars = string.toCharArray();
-        for (int i = 0; i < chars.length; ++i) {
-            final char c = chars[i];
-            if (String.valueOf(c).equals("§") && i < chars.length - 1) {
-                lastColorCode = chars[i + 1];
-            }
-            if (this.getStringWidth(currentWord.toString() + c) < width) {
-                currentWord.append(c);
-            }
-            else {
-                finalWords.add(currentWord.toString());
-                currentWord = new StringBuilder("" + lastColorCode + String.valueOf(c));
-            }
-        }
-        if (currentWord.length() > 0) {
-            finalWords.add(currentWord.toString());
-        }
-        return finalWords;
-    }
+    /**
+     * Generates all the colors.
+     */
+    private void generateColors() {
+        // Iterates through 32 colors.
+        for (int i = 0; i < 32; i++) {
+            // Not sure what this variable is.
+            int thingy = (i >> 3 & 1) * 85;
 
-    private void setupMinecraftColorcodes() {
-        for (int index = 0; index < 32; ++index) {
-            final int noClue = (index >> 3 & 0x1) * 85;
-            int red = (index >> 2 & 0x1) * 170 + noClue;
-            int green = (index >> 1 & 0x1) * 170 + noClue;
-            int blue = (index & 0x1) * 170 + noClue;
-            if (index == 6) {
-                red += 85;
-            }
-            if (index >= 16) {
+            // The red value of the color.
+            int red = (i >> 2 & 1) * 170 + thingy;
+
+            // The green value of the color.
+            int green = (i >> 1 & 1) * 170 + thingy;
+
+            // The blue value of the color.
+            int blue = (i >> 0 & 1) * 170 + thingy;
+
+            // Increments the red by 85, not sure why does this in minecraft's font renderer.
+            if (i == 6) red += 85;
+
+            // Used to make the shadow darker.
+            if (i >= 16) {
                 red /= 4;
                 green /= 4;
                 blue /= 4;
             }
-            this.colorCode[index] = ((red & 0xFF) << 16 | (green & 0xFF) << 8 | (blue & 0xFF));
+
+            // Sets the color in the color code at the index of 'i'.
+            this.colorCodes[i] = (red & 255) << 16 | (green & 255) << 8 | blue & 255;
         }
     }
+
+    public Font getFont() {
+        return font;
+    }
+
+    /**
+     * Class that holds the data for each character.
+     */
+    static class CharacterData {
+
+
+
+        /**
+         * The width of the character.
+         */
+        public float width;
+
+        /**
+         * The height of the character.
+         */
+        public float height;
+
+        /**
+         * The id of the character texture.
+         */
+        private int textureId;
+
+        public CharacterData(float width, float height, int textureId) {
+            this.width = width;
+            this.height = height;
+            this.textureId = textureId;
+        }
+
+        /**
+         * Binds the texture.
+         */
+        public void bind() {
+            // Binds the opengl texture by the texture id.
+            GL11.glBindTexture(GL11.GL_TEXTURE_2D, textureId);
+        }
+    }
+
+    public static class FontRendererData {
+        private final String fontLocation;
+        private final int fontSize;
+
+        public FontRendererData(String fontLocation, int fontSize) {
+            this.fontLocation = fontLocation;
+            this.fontSize = fontSize;
+        }
+
+        public String getFontLocation() {
+            return fontLocation;
+        }
+        public int getFontSize() {
+            return fontSize;
+        }
+
+
+    }
+
+    //private static final Map<FontRendererData, MenaceFontRenderer> cachedFontRenderers = new HashMap<>();
+
+    /*public static MenaceFontRenderer getFontRenderer(String fontLocation, int fontSize) throws IOException, FontFormatException {
+        FontRendererData data = new FontRendererData(fontLocation, fontSize);
+        MenaceFontRenderer renderer = cachedFontRenderers.get(data);
+        if (renderer == null) {
+            InputStream resourceAsStream = MenaceFontRenderer.class.getClassLoader().getResourceAsStream(fontLocation);
+            if (resourceAsStream == null) {
+                throw new IllegalStateException("Font is not found!");
+            }
+            renderer = new MenaceFontRenderer(Font.createFont(Font.TRUETYPE_FONT,
+                    resourceAsStream
+            ).deriveFont(Font.PLAIN, fontSize), 16*16*16*16);
+            cachedFontRenderers.put(data, renderer);
+        }
+        return renderer;
+    }
+
+    public static MenaceFontRenderer getFontRenderer(ResourceLocation fontLocation, int fontSize) throws IOException, FontFormatException {
+        FontRendererData data = new FontRendererData(fontLocation.getResourcePath(), fontSize);
+        MenaceFontRenderer renderer = cachedFontRenderers.get(data);
+        if (renderer == null) {
+            InputStream resourceAsStream =  Minecraft.getMinecraft().getResourceManager().getResource(fontLocation).getInputStream();
+            if (resourceAsStream == null) {
+                throw new IllegalStateException("Font is not found!");
+            }
+            renderer = new MenaceFontRenderer(Font.createFont(Font.TRUETYPE_FONT,
+                    resourceAsStream
+            ).deriveFont(Font.PLAIN, fontSize), 16*16*16*16);
+            cachedFontRenderers.put(data, renderer);
+        }
+        return renderer;
+    }*/
+
 }

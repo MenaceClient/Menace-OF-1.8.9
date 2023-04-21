@@ -9,7 +9,7 @@ import dev.menace.ui.clickgui.csgo.buttons.CSCategoryButton;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiScreen;
 
-public class CSGOGui extends GuiScreen {
+public class  CSGOGui extends GuiScreen {
 
 	public ArrayList<CSCategoryButton> buttons = new ArrayList<CSCategoryButton>();
 

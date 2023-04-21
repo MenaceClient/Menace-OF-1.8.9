@@ -44,11 +44,11 @@ public class GameStatsElement extends BaseElement {
     public void render() {
         RenderUtils.drawRoundedRect(this.getAbsoluteX(), this.getAbsoluteY(), this.getAbsoluteX() + this.getStringWidth("") + 150, this.getAbsoluteY() + 60, 5, new Color(0, 0, 0, 120).getRGB());
 
-        this.drawString("Statistics", this.getAbsoluteX() + 50, this.getAbsoluteY() + 3	, -1);
+        this.drawString("Statistics", this.getAbsoluteX() + 50, this.getAbsoluteY() + 3	, Color.white.getRGB());
 
         HUDModule hudModule = Menace.instance.moduleManager.hudModule;
         int color = hudModule.color.getValue().equalsIgnoreCase("Custom") ? new Color(hudModule.red.getValueI(), hudModule.green.getValueI(), hudModule.blue.getValueI(), hudModule.alpha.getValueI()).getRGB() : ColorUtils.fade(hudModule.rainbowSpeed.getValueF(), -this.getAbsoluteY()).getRGB();
-        RenderUtils.drawRect(this.getAbsoluteX(), this.getAbsoluteY() + 12, this.getAbsoluteX() + 150, this.getAbsoluteY() + 14, color);
+        RenderUtils.drawRect(this.getAbsoluteX(), this.getAbsoluteY() + 15, this.getAbsoluteX() + 150, this.getAbsoluteY() + 17, color);
 
         String username = Menace.instance.moduleManager.securityFeaturesModule.isToggled() ? Menace.instance.user.getUsername() : Minecraft.getMinecraft().getSession().getUsername();
 

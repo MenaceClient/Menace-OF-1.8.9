@@ -27,6 +27,7 @@ public class InvMoveModule extends BaseModule {
 
     private final Queue<Packet<?>> packets = new ConcurrentLinkedDeque<>();
 
+    ToggleSetting sprint;
     ToggleSetting rotate;
     ToggleSetting blink;
 
@@ -36,8 +37,10 @@ public class InvMoveModule extends BaseModule {
 
     @Override
     public void setup() {
+        sprint = new ToggleSetting("Sprint", true, true);
         rotate = new ToggleSetting("Rotate", true, true);
         blink = new ToggleSetting("Blink", true, false);
+        this.rSetting(sprint);
         this.rSetting(rotate);
         this.rSetting(blink);
         super.setup();
@@ -70,7 +73,15 @@ public class InvMoveModule extends BaseModule {
             mc.gameSettings.keyBindRight.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindRight);
             mc.gameSettings.keyBindLeft.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindLeft);
             mc.gameSettings.keyBindJump.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindJump);
-            mc.gameSettings.keyBindSprint.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindSprint);
+
+            //Bypassi
+            if (sprint.getValue()) {
+                mc.gameSettings.keyBindSprint.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindSprint);
+            } else {
+                mc.gameSettings.keyBindSprint.pressed = false;
+                mc.thePlayer.setSprinting(false);
+            }
+
             if (rotate.getValue()) {
                 if (Keyboard.isKeyDown(Keyboard.KEY_RIGHT)) {
                     mc.thePlayer.rotationYaw += 1;

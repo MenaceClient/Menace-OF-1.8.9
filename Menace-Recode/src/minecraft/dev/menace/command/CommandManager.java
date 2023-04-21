@@ -28,6 +28,7 @@ public class CommandManager {
 	PrefixCmd prefixCmd = new PrefixCmd();
 	ScriptCmd scriptCmd = new ScriptCmd();
 	TeleportCmd teleportCmd = new TeleportCmd();
+	ToggleCmd toggleCmd = new ToggleCmd();
 	VClipCmd vClipCmd = new VClipCmd();
 
 	

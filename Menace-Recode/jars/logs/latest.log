@@ -1,201 +1,341 @@
-[11:00:18] [Client thread/INFO]: Setting user: Player597
-[11:00:18] [Client thread/INFO]: (Session ID is token:0:Player597)
-[11:00:19] [Client thread/INFO]: [OptiFine] *** Reflector Forge ***
-[11:00:19] [Client thread/INFO]: [OptiFine] *** Reflector Vanilla ***
-[11:00:19] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event$Result
-[11:00:19] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraft.launchwrapper.Launch
-[11:00:19] [Client thread/INFO]: LWJGL Version: 2.9.4
-[11:00:19] [Client thread/INFO]: [OptiFine] 
-[11:00:19] [Client thread/INFO]: [OptiFine] OptiFine_1.8.9_HD_U_M5
-[11:00:19] [Client thread/INFO]: [OptiFine] Build: null
-[11:00:19] [Client thread/INFO]: [OptiFine] OS: Windows 10 (amd64) version 10.0
-[11:00:19] [Client thread/INFO]: [OptiFine] Java: 1.8.0_202, Oracle Corporation
-[11:00:19] [Client thread/INFO]: [OptiFine] VM: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
-[11:00:19] [Client thread/INFO]: [OptiFine] LWJGL: 2.9.4
-[11:00:19] [Client thread/INFO]: [OptiFine] OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2, version 4.6.0 NVIDIA 516.94, NVIDIA Corporation
-[11:00:19] [Client thread/INFO]: [OptiFine] OpenGL Version: 4.6.0
-[11:00:19] [Client thread/INFO]: [OptiFine] Maximum texture size: 32768x32768
-[11:00:19] [VersionCheck/INFO]: [OptiFine] Checking for new version
-[11:00:19] [Client thread/INFO]: [Shaders] OpenGL Version: 4.6.0 NVIDIA 516.94
-[11:00:19] [Client thread/INFO]: [Shaders] Vendor:  NVIDIA Corporation
-[11:00:19] [Client thread/INFO]: [Shaders] Renderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
-[11:00:19] [Client thread/INFO]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0 
-[11:00:19] [Client thread/INFO]: [Shaders] GL_MAX_DRAW_BUFFERS: 8
-[11:00:19] [Client thread/INFO]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8
-[11:00:19] [Client thread/INFO]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32
-[11:00:19] [Client thread/INFO]: [Shaders] Load shaders configuration.
-[11:00:19] [Client thread/INFO]: [Shaders] No shaderpack loaded.
-[11:00:19] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.Loader
-[11:00:19] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.SplashProgress
-[11:00:19] [Client thread/INFO]: Reloading ResourceManager: Default, gamerswordpack.zip
-[11:00:19] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: optifine.OptiFineClassTransformer
-[11:00:19] [Client thread/INFO]: [OptiFine] *** Reloading textures ***
-[11:00:19] [Client thread/INFO]: [OptiFine] Resource packs: gamerswordpack.zip
-[11:00:19] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.Attributes
-[11:00:19] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.preDraw
-[11:00:19] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.postDraw
-[11:00:19] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[11:00:19] [Thread-6/INFO]: Initializing LWJGL OpenAL
-[11:00:19] [Thread-6/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[11:00:20] [Thread-6/INFO]: OpenAL initialized.
-[11:00:20] [Sound Library Loader/INFO]: Sound engine started
-[11:00:21] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ForgeHooksClient
-[11:00:21] [Client thread/INFO]: [OptiFine] Mipmap levels: 4
-[11:00:21] [Client thread/INFO]: [OptiFine] Multitexture: false
-[11:00:21] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/0_glass_white/glass_pane_white.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/0_glass_white/glass_white.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/10_glass_purple/glass_pane_purple.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/10_glass_purple/glass_purple.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/11_glass_blue/glass_blue.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/11_glass_blue/glass_pane_blue.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/12_glass_brown/glass_brown.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/12_glass_brown/glass_pane_brown.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/13_glass_green/glass_green.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/13_glass_green/glass_pane_green.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/14_glass_red/glass_pane_red.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/14_glass_red/glass_red.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/15_glass_black/glass_black.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/15_glass_black/glass_pane_black.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/1_glass_orange/glass_orange.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/1_glass_orange/glass_pane_orange.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/2_glass_magenta/glass_magenta.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/2_glass_magenta/glass_pane_magenta.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/3_glass_light_blue/glass_light_blue.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/3_glass_light_blue/glass_pane_light_blue.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/4_glass_yellow/glass_pane_yellow.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/4_glass_yellow/glass_yellow.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/5_glass_lime/glass_lime.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/5_glass_lime/glass_pane_lime.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/6_glass_pink/glass_pane_pink.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/6_glass_pink/glass_pink.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/8_glass_silver/glass_pane_silver.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/8_glass_silver/glass_silver.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/9_glass_cyan/glass_cyan.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/9_glass_cyan/glass_pane_cyan.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/bookshelf.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/sandstone.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
-[11:00:21] [Client thread/INFO]: [OptiFine] BetterGrass: Parsing default configuration optifine/bettergrass.properties
-[11:00:21] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/diamond_ore, 1 -> 16
-[11:00:21] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/emerald_ore, 1 -> 16
-[11:00:21] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/gold_ore, 1 -> 16
-[11:00:22] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/coal_ore, 1 -> 16
-[11:00:22] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/lapis_ore, 1 -> 16
-[11:00:22] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/iron_ore, 1 -> 16
-[11:00:22] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/redstone_ore, 1 -> 16
-[11:00:22] [Client thread/INFO]: Created: 1024x1024 textures-atlas
-[11:00:22] [Client thread/INFO]: [OptiFine] Animated sprites: 11
-[11:00:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader
-[11:00:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ItemModelMesherForge
-[11:00:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.registry.RenderingRegistry
-[11:00:22] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeModContainer
-[11:00:24] [Via-Mappingloader-0/INFO]: Loading 1.12 -> 1.13 mappings...
-[11:00:24] [Via-Mappingloader-1/INFO]: Loading 1.13 -> 1.13.2 mappings...
-[11:00:24] [Via-Mappingloader-2/INFO]: Loading 1.13.2 -> 1.14 mappings...
-[11:00:24] [Via-Mappingloader-3/INFO]: Loading 1.14 -> 1.15 mappings...
-[11:00:24] [Via-Mappingloader-0/INFO]: Loading block connection mappings ...
-[11:00:24] [Via-Mappingloader-5/INFO]: Loading 1.16 -> 1.16.2 mappings...
-[11:00:24] [Via-Mappingloader-3/INFO]: Loading 1.16.2 -> 1.17 mappings...
-[11:00:24] [Via-Mappingloader-4/INFO]: Loading 1.15 -> 1.16 mappings...
-[11:00:24] [Via-Mappingloader-4/INFO]: Loading 1.17 -> 1.18 mappings...
-[11:00:24] [Via-Mappingloader-5/INFO]: Loading 1.18 -> 1.19 mappings...
-[11:00:24] [Client thread/INFO]: Loading translations...
-[11:00:25] [Via-Mappingloader-3/INFO]: Loading 1.10 -> 1.9.4 mappings...
-[11:00:25] [Via-Mappingloader-5/INFO]: Loading 1.11 -> 1.10 mappings...
-[11:00:25] [Via-Mappingloader-0/INFO]: Loading 1.12 -> 1.11 mappings...
-[11:00:25] [Via-Mappingloader-0/INFO]: Loading 1.13 -> 1.12 mappings...
-[11:00:25] [Via-Mappingloader-5/INFO]: Loading 1.13.2 -> 1.13 mappings...
-[11:00:25] [Via-Mappingloader-5/INFO]: Loading 1.14 -> 1.13.2 mappings...
-[11:00:25] [Via-Mappingloader-4/INFO]: Loading 1.15 -> 1.14 mappings...
-[11:00:25] [Via-Mappingloader-4/INFO]: Loading 1.16 -> 1.15 mappings...
-[11:00:25] [Via-Mappingloader-0/INFO]: Loading 1.16.2 -> 1.16 mappings...
-[11:00:25] [Via-Mappingloader-0/INFO]: Loading 1.17 -> 1.16.2 mappings...
-[11:00:25] [Via-Mappingloader-0/INFO]: Loading 1.18 -> 1.17 mappings...
-[11:00:25] [Via-Mappingloader-0/INFO]: Loading 1.19 -> 1.18 mappings...
-[11:00:25] [ViaMCP-0/INFO]: ViaVersion detected server version: 1.8.x (47)
-[11:00:25] [ViaMCP-0/WARN]: This version of Minecraft is extremely outdated and support for it has reached its end of life. You will still be able to run Via on this Minecraft version, but we are unlikely to provide any further fixes or help with problems specific to legacy Minecraft versions. Please consider updating to give your players a better experience and to avoid issues that have long been fixed.
-[11:00:25] [ViaMCP-0/WARN]: You are running an outdated Java version, please consider updating it to at least Java 17 (your version is 1.8.0_202). At some point in the future, ViaVersion will no longer be compatible with this version of Java.
-[11:00:25] [ViaMCP-0/WARN]: There is a newer plugin version available: 4.6.2, you're on: 4.4.3
-[11:00:25] [ViaMCP-0/INFO]: Finished mapping loading, shutting down loader executor!
-[11:00:29] [VersionCheck/INFO]: [OptiFine] Version found: M5
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkWatchEvent$UnWatch
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.relauncher.CoreModManager
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.DimensionManager
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Pre
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Post
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$CameraSetup
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$FogColors
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.EventBus
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.ExtendedBlockState
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.FMLClientHandler
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.FMLCommonHandler
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.biome.BiomeGenBase.getWaterColorMultiplier
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addDestroyEffects
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addHitEffects
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canCreatureSpawn
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canRenderInLayer
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.doesSideBlockRendering
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getBedDirection
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getExtendedState
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightOpacity
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightValue
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.hasTileEntity
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isAir
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBed
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBedFoot
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isSideSolid
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.ChunkCache.isSideSolid
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.canRiderInteract
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.captureDrops
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.capturedDrops
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRenderInPass
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRiderSit
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.ForgeEventFactory
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeHooks
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.item.Item.delegate
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getDurabilityForDisplay
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getModel
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.onEntitySwing
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.shouldCauseReequipAnimation
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.showDurabilityBar
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.potion.PotionEffect.isCurativeItem
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.canRenderBreaking
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.getRenderBoundingBox
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.hasFastRenderer
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.shouldRenderInPass
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.countEntities
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.getPerWorldStorage
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getCloudRenderer
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSkyRenderer
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getWeatherRenderer
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSaveFolder
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.GuiModList
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IColoredBakedQuad
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.IExtendedBlockState
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IModel
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.IRenderHandler
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.LightUtil
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.MinecraftForge
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.MinecraftForgeClient
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.ModContainer
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader$VanillaLoader
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderBlockOverlayEvent$OverlayType
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderItemInFrameEvent
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Pre
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Post
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Pre
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Post
-[11:00:29] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.WorldEvent$Load
-[11:00:29] [Client thread/INFO]: [OptiFine] *** Reloading custom textures ***
-[11:00:29] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky1.properties
-[11:00:29] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky2.properties
-[11:00:29] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky3.properties
-[11:00:29] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky4.properties
-[11:00:29] [Client thread/INFO]: [OptiFine] Enable face culling: acacia_leaves, birch_leaves, dark_oak_leaves, jungle_leaves, oak_leaves, spruce_leaves
-[11:00:32] [Client thread/INFO]: Stopping!
-[11:00:32] [Client thread/INFO]: SoundSystem shutting down...
-[11:00:32] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[11:22:05] [Client thread/INFO]: Setting user: Player124
+[11:22:05] [Client thread/INFO]: (Session ID is token:0:Player124)
+[11:22:06] [Client thread/INFO]: [OptiFine] *** Reflector Forge ***
+[11:22:06] [Client thread/INFO]: [OptiFine] *** Reflector Vanilla ***
+[11:22:06] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event$Result
+[11:22:06] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraft.launchwrapper.Launch
+[11:22:06] [Client thread/INFO]: LWJGL Version: 2.9.4
+[11:22:06] [Client thread/INFO]: [OptiFine] 
+[11:22:06] [Client thread/INFO]: [OptiFine] OptiFine_1.8.9_HD_U_M5
+[11:22:06] [Client thread/INFO]: [OptiFine] Build: null
+[11:22:06] [Client thread/INFO]: [OptiFine] OS: Windows 10 (amd64) version 10.0
+[11:22:06] [Client thread/INFO]: [OptiFine] Java: 1.8.0_202, Oracle Corporation
+[11:22:06] [Client thread/INFO]: [OptiFine] VM: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+[11:22:06] [Client thread/INFO]: [OptiFine] LWJGL: 2.9.4
+[11:22:06] [Client thread/INFO]: [OptiFine] OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2, version 4.6.0 NVIDIA 516.94, NVIDIA Corporation
+[11:22:06] [Client thread/INFO]: [OptiFine] OpenGL Version: 4.6.0
+[11:22:06] [Client thread/INFO]: [OptiFine] Maximum texture size: 32768x32768
+[11:22:06] [VersionCheck/INFO]: [OptiFine] Checking for new version
+[11:22:07] [Client thread/INFO]: [Shaders] OpenGL Version: 4.6.0 NVIDIA 516.94
+[11:22:07] [Client thread/INFO]: [Shaders] Vendor:  NVIDIA Corporation
+[11:22:07] [Client thread/INFO]: [Shaders] Renderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+[11:22:07] [Client thread/INFO]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0 
+[11:22:07] [Client thread/INFO]: [Shaders] GL_MAX_DRAW_BUFFERS: 8
+[11:22:07] [Client thread/INFO]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8
+[11:22:07] [Client thread/INFO]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32
+[11:22:07] [Client thread/INFO]: [Shaders] Load shaders configuration.
+[11:22:07] [Client thread/INFO]: [Shaders] No shaderpack loaded.
+[11:22:07] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.Loader
+[11:22:07] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.SplashProgress
+[11:22:07] [Client thread/INFO]: Reloading ResourceManager: Default, gamerswordpack.zip
+[11:22:07] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: optifine.OptiFineClassTransformer
+[11:22:07] [Client thread/INFO]: [OptiFine] *** Reloading textures ***
+[11:22:07] [Client thread/INFO]: [OptiFine] Resource packs: gamerswordpack.zip
+[11:22:07] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.Attributes
+[11:22:07] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.preDraw
+[11:22:07] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.postDraw
+[11:22:07] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[11:22:07] [VersionCheck/INFO]: [OptiFine] Version found: M5
+[11:22:07] [Thread-6/INFO]: Initializing LWJGL OpenAL
+[11:22:07] [Thread-6/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[11:22:07] [Thread-6/INFO]: OpenAL initialized.
+[11:22:07] [Sound Library Loader/INFO]: Sound engine started
+[11:22:08] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ForgeHooksClient
+[11:22:08] [Client thread/INFO]: [OptiFine] Mipmap levels: 4
+[11:22:08] [Client thread/INFO]: [OptiFine] Multitexture: false
+[11:22:08] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
+[11:22:08] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/0_glass_white/glass_pane_white.properties
+[11:22:08] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/0_glass_white/glass_white.properties
+[11:22:08] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/10_glass_purple/glass_pane_purple.properties
+[11:22:08] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/10_glass_purple/glass_purple.properties
+[11:22:08] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/11_glass_blue/glass_blue.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/11_glass_blue/glass_pane_blue.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/12_glass_brown/glass_brown.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/12_glass_brown/glass_pane_brown.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/13_glass_green/glass_green.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/13_glass_green/glass_pane_green.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/14_glass_red/glass_pane_red.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/14_glass_red/glass_red.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/15_glass_black/glass_black.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/15_glass_black/glass_pane_black.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/1_glass_orange/glass_orange.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/1_glass_orange/glass_pane_orange.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/2_glass_magenta/glass_magenta.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/2_glass_magenta/glass_pane_magenta.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/3_glass_light_blue/glass_light_blue.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/3_glass_light_blue/glass_pane_light_blue.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/4_glass_yellow/glass_pane_yellow.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/4_glass_yellow/glass_yellow.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/5_glass_lime/glass_lime.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/5_glass_lime/glass_pane_lime.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/6_glass_pink/glass_pane_pink.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/6_glass_pink/glass_pink.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/8_glass_silver/glass_pane_silver.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/8_glass_silver/glass_silver.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/9_glass_cyan/glass_cyan.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/9_glass_cyan/glass_pane_cyan.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/bookshelf.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/sandstone.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
+[11:22:09] [Client thread/INFO]: [OptiFine] BetterGrass: Parsing default configuration optifine/bettergrass.properties
+[11:22:09] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/diamond_ore, 1 -> 16
+[11:22:09] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/emerald_ore, 1 -> 16
+[11:22:09] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/gold_ore, 1 -> 16
+[11:22:09] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/coal_ore, 1 -> 16
+[11:22:09] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/lapis_ore, 1 -> 16
+[11:22:09] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/iron_ore, 1 -> 16
+[11:22:09] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/redstone_ore, 1 -> 16
+[11:22:09] [Client thread/INFO]: Created: 1024x1024 textures-atlas
+[11:22:09] [Client thread/INFO]: [OptiFine] Animated sprites: 11
+[11:22:10] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader
+[11:22:10] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ItemModelMesherForge
+[11:22:10] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.registry.RenderingRegistry
+[11:22:10] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeModContainer
+[11:22:12] [Via-Mappingloader-0/INFO]: Loading 1.12 -> 1.13 mappings...
+[11:22:12] [Via-Mappingloader-1/INFO]: Loading 1.13 -> 1.13.2 mappings...
+[11:22:12] [Via-Mappingloader-2/INFO]: Loading 1.13.2 -> 1.14 mappings...
+[11:22:12] [Via-Mappingloader-3/INFO]: Loading 1.14 -> 1.15 mappings...
+[11:22:12] [Via-Mappingloader-4/INFO]: Loading 1.15 -> 1.16 mappings...
+[11:22:12] [Via-Mappingloader-0/INFO]: Loading block connection mappings ...
+[11:22:12] [Via-Mappingloader-1/INFO]: Loading 1.16 -> 1.16.2 mappings...
+[11:22:12] [Via-Mappingloader-3/INFO]: Loading 1.16.2 -> 1.17 mappings...
+[11:22:12] [Via-Mappingloader-4/INFO]: Loading 1.17 -> 1.18 mappings...
+[11:22:12] [Via-Mappingloader-2/INFO]: Loading 1.18 -> 1.19 mappings...
+[11:22:12] [Client thread/INFO]: Loading translations...
+[11:22:12] [Via-Mappingloader-1/INFO]: Loading 1.10 -> 1.9.4 mappings...
+[11:22:12] [Via-Mappingloader-2/INFO]: Loading 1.11 -> 1.10 mappings...
+[11:22:12] [Via-Mappingloader-0/INFO]: Loading 1.12 -> 1.11 mappings...
+[11:22:12] [Via-Mappingloader-0/INFO]: Loading 1.13 -> 1.12 mappings...
+[11:22:12] [Via-Mappingloader-2/INFO]: Loading 1.13.2 -> 1.13 mappings...
+[11:22:12] [Via-Mappingloader-1/INFO]: Loading 1.14 -> 1.13.2 mappings...
+[11:22:12] [Via-Mappingloader-2/INFO]: Loading 1.15 -> 1.14 mappings...
+[11:22:12] [Via-Mappingloader-4/INFO]: Loading 1.16 -> 1.15 mappings...
+[11:22:12] [Via-Mappingloader-3/INFO]: Loading 1.16.2 -> 1.16 mappings...
+[11:22:12] [Via-Mappingloader-5/INFO]: Loading 1.17 -> 1.16.2 mappings...
+[11:22:12] [Via-Mappingloader-3/INFO]: Loading 1.19 -> 1.18 mappings...
+[11:22:13] [Via-Mappingloader-6/INFO]: Loading 1.18 -> 1.17 mappings...
+[11:22:13] [ViaMCP-0/INFO]: ViaVersion detected server version: 1.8.x (47)
+[11:22:13] [ViaMCP-0/WARN]: This version of Minecraft is extremely outdated and support for it has reached its end of life. You will still be able to run Via on this Minecraft version, but we are unlikely to provide any further fixes or help with problems specific to legacy Minecraft versions. Please consider updating to give your players a better experience and to avoid issues that have long been fixed.
+[11:22:13] [ViaMCP-0/WARN]: You are running an outdated Java version, please consider updating it to at least Java 17 (your version is 1.8.0_202). At some point in the future, ViaVersion will no longer be compatible with this version of Java.
+[11:22:13] [ViaMCP-0/WARN]: There is a newer plugin version available: 4.6.2, you're on: 4.4.3
+[11:22:13] [ViaMCP-0/INFO]: Finished mapping loading, shutting down loader executor!
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkWatchEvent$UnWatch
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.relauncher.CoreModManager
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.DimensionManager
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Pre
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Post
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$CameraSetup
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$FogColors
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.EventBus
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.ExtendedBlockState
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.FMLClientHandler
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.FMLCommonHandler
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.biome.BiomeGenBase.getWaterColorMultiplier
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addDestroyEffects
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addHitEffects
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canCreatureSpawn
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canRenderInLayer
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.doesSideBlockRendering
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getBedDirection
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getExtendedState
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightOpacity
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightValue
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.hasTileEntity
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isAir
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBed
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBedFoot
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isSideSolid
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.ChunkCache.isSideSolid
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.canRiderInteract
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.captureDrops
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.capturedDrops
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRenderInPass
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRiderSit
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.ForgeEventFactory
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeHooks
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.item.Item.delegate
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getDurabilityForDisplay
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getModel
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.onEntitySwing
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.shouldCauseReequipAnimation
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.showDurabilityBar
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.potion.PotionEffect.isCurativeItem
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.canRenderBreaking
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.getRenderBoundingBox
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.hasFastRenderer
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.shouldRenderInPass
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.countEntities
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.getPerWorldStorage
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getCloudRenderer
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSkyRenderer
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getWeatherRenderer
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSaveFolder
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.GuiModList
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IColoredBakedQuad
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.IExtendedBlockState
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IModel
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.IRenderHandler
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.LightUtil
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.MinecraftForge
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.MinecraftForgeClient
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.ModContainer
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader$VanillaLoader
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderBlockOverlayEvent$OverlayType
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderItemInFrameEvent
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Pre
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Post
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Pre
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Post
+[11:22:17] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.WorldEvent$Load
+[11:22:17] [Client thread/INFO]: [OptiFine] *** Reloading custom textures ***
+[11:22:17] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky1.properties
+[11:22:17] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky2.properties
+[11:22:17] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky3.properties
+[11:22:17] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky4.properties
+[11:22:17] [Client thread/INFO]: [OptiFine] Enable face culling: acacia_leaves, birch_leaves, dark_oak_leaves, jungle_leaves, oak_leaves, spruce_leaves
+[11:22:29] [Client thread/INFO]: Connecting to eu.loyisa.cn, 25565
+[11:22:32] [Client thread/INFO]: [CHAT]        
+[11:22:32] [Client thread/INFO]: [CHAT] [+] ExterminateYT
+[11:22:33] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYour client brand is vanilla§r
+[11:22:35] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] ExterminateYT §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=383.535(+383.535) Details:§r§7 distance=§r§c5.14§r§7 locationfrom=§r§c233.97, 62.00, 186.43§r§7 locationto=§r§c238.60, 62.42, 184.24§r§7 tags=§r§cwalkspeed+hbufuse(0.0/1.0)+hspeed§r
+[11:22:39] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Loaded config BlocksMC
+[11:22:41] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=390.659(+7.124) Details:§r§7 distance=§r§c0.44§r§7 locationfrom=§r§c234.93, 62.75, 181.90§r§7 locationto=§r§c235.00, 63.00, 181.54§r§7 tags=§r§cwalkspeed+bunnyfly(8)+bunnyfly(8)+hspeed§r§r
+[11:22:41] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=397.783(+7.124) Details:§r§7 distance=§r§c0.44§r§7 locationfrom=§r§c234.94, 62.75, 181.81§r§7 locationto=§r§c235.00, 63.00, 181.46§r§7 tags=§r§cwalkspeed+bunnyfly(8)+bunnyfly(8)+hspeed§r§r
+[11:22:42] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=404.907(+7.124) Details:§r§7 distance=§r§c0.44§r§7 locationfrom=§r§c234.95, 62.75, 181.73§r§7 locationto=§r§c235.02, 63.00, 181.38§r§7 tags=§r§cwalkspeed+bunnyfly(8)+bunnyfly(8)+hspeed§r§r
+[11:22:42] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=412.031(+7.124) Details:§r§7 distance=§r§c0.44§r§7 locationfrom=§r§c234.96, 62.75, 181.65§r§7 locationto=§r§c235.03, 63.00, 181.30§r§7 tags=§r§cwalkspeed+bunnyfly(8)+bunnyfly(8)+hspeed§r§r
+[11:22:57] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=412.47(+0.439) Details:§r§7 distance=§r§c0.38§r§7 locationfrom=§r§c234.87, 62.75, 180.23§r§7 locationto=§r§c234.92, 63.00, 179.94§r§7 tags=§r§cwalkspeed+hspeed§r§r
+[11:22:58] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=421.348(+8.878) Details:§r§7 distance=§r§c0.56§r§7 locationfrom=§r§c234.75, 62.00, 180.91§r§7 locationto=§r§c234.81, 62.42, 180.54§r§7 tags=§r§cwalkspeed+hspeed§r§r
+[11:22:58] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=430.225(+8.878) Details:§r§7 distance=§r§c0.56§r§7 locationfrom=§r§c234.76, 62.00, 180.82§r§7 locationto=§r§c234.82, 62.42, 180.45§r§7 tags=§r§cwalkspeed+hspeed§r§r
+[11:22:59] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=439.103(+8.878) Details:§r§7 distance=§r§c0.56§r§7 locationfrom=§r§c234.77, 62.00, 180.74§r§7 locationto=§r§c234.83, 62.42, 180.37§r§7 tags=§r§cwalkspeed+hspeed§r§r
+[11:23:17] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=445.893(+6.79) Details:§r§7 distance=§r§c0.43§r§7 locationfrom=§r§c237.27, 62.75, 169.43§r§7 locationto=§r§c237.53, 63.00, 169.19§r§7 tags=§r§cwalkspeed+bunnyfly(8)+bunnyfly(8)+hspeed§r§r
+[11:23:20] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=277.422(+23.798) Details:§r§7 distance=§r§c0.61§r§7 locationfrom=§r§c220.75, 62.00, 163.56§r§7 locationto=§r§c220.13, 62.00, 163.54§r§7 tags=§r§cwalkspeed(2)+bunnyenv+bunnyenv+hbufuse(0.0/1.0)+hspeed+groundstep§r§r
+[11:23:21] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=309.912(+32.49) Details:§r§7 distance=§r§c0.61§r§7 locationfrom=§r§c220.67, 62.00, 163.56§r§7 locationto=§r§c220.06, 62.00, 163.55§r§7 tags=§r§cwalkspeed+bunnyenv+bunnyenv+hspeed+groundstep§r§r
+[11:23:23] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=342.422(+32.51) Details:§r§7 distance=§r§c0.61§r§7 locationfrom=§r§c219.41, 62.00, 162.58§r§7 locationto=§r§c219.06, 62.00, 163.08§r§7 tags=§r§cwalkspeed+bunnyenv+bunnyenv+hspeed+groundstep§r§r
+[11:23:23] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=369.711(+27.289) Details:§r§7 distance=§r§c0.56§r§7 locationfrom=§r§c219.47, 62.00, 162.60§r§7 locationto=§r§c220.00, 62.00, 162.76§r§7 tags=§r§cwalkspeed+bunnyenv+bunnyenv+hspeed+groundstep§r§r
+[11:23:48] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
+[11:23:58] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=2.915(+2.915)§r§r
+[11:25:56] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
+[11:26:16] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYou selected: Vanilla§r§r
+[11:26:16] [Client thread/FATAL]: Error executing task
+java.util.concurrent.ExecutionException: java.lang.IllegalStateException: Player is either on another team or not on any team. Cannot remove from team 'BAZMY_Z330'.
+	at java.util.concurrent.FutureTask.report(FutureTask.java:122) ~[?:1.8.0_202]
+	at java.util.concurrent.FutureTask.get(FutureTask.java:192) ~[?:1.8.0_202]
+	at net.minecraft.util.Util.runTask(Util.java:20) [Menace-Recode/:?]
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:904) [Menace-Recode/:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:351) [Menace-Recode/:?]
+	at net.minecraft.client.main.Main.main(Main.java:123) [Menace-Recode/:?]
+	at Start.main(Start.java:9) [Menace-Recode/:?]
+Caused by: java.lang.IllegalStateException: Player is either on another team or not on any team. Cannot remove from team 'BAZMY_Z330'.
+	at net.minecraft.scoreboard.Scoreboard.removePlayerFromTeam(Scoreboard.java:351) ~[Menace-Recode/:?]
+	at net.minecraft.client.network.NetHandlerPlayClient.handleTeams(NetHandlerPlayClient.java:1984) ~[Menace-Recode/:?]
+	at net.minecraft.network.play.server.S3EPacketTeams.processPacket(S3EPacketTeams.java:140) ~[Menace-Recode/:?]
+	at net.minecraft.network.play.server.S3EPacketTeams.processPacket(S3EPacketTeams.java:12) ~[Menace-Recode/:?]
+	at net.minecraft.network.PacketThreadUtil$1.run(PacketThreadUtil.java:22) ~[Menace-Recode/:?]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[?:1.8.0_202]
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266) ~[?:1.8.0_202]
+	at java.util.concurrent.FutureTask.run(FutureTask.java) ~[?:1.8.0_202]
+	at net.minecraft.util.Util.runTask(Util.java:19) ~[Menace-Recode/:?]
+	... 4 more
+[11:26:27] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYou selected: NoCheatPlus§r§r
+[11:27:24] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7HitlahsBf §r(§bPxzlz§r)§r§r
+[11:27:27] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYou selected: OldNoCheatPlus§r§r
+[11:27:29] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7HitlahsBf §r(§bPxzlz§r)§r§r
+[11:27:36] [Client thread/INFO]: [CHAT] §r§3User§r HitlahsBf §r(§bPxzlz§r): oh§r§r
+[11:27:41] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=0.755(+0.201)§r§r
+[11:27:45] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=0.854(+0.099)§r§r
+[11:27:49] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=1.054(+0.2)§r§r
+[11:27:53] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=1.355(+0.301)§r§r
+[11:27:56] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=1.654(+0.299)§r§r
+[11:28:00] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=1.655(+0.001)§r§r
+[11:28:04] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=1.954(+0.299)§r§r
+[11:28:04] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
+[11:28:08] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=2.255(+0.301)§r§r
+[11:28:11] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=2.554(+0.299)§r§r
+[11:28:15] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=2.654(+0.1)§r§r
+[11:28:19] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=2.855(+0.201)§r§r
+[11:29:07] [Client thread/INFO]: Connecting to eu.loyisa.cn, 25565
+[11:29:09] [Client thread/INFO]: [CHAT]        
+[11:29:09] [Client thread/INFO]: [CHAT] [+] ExterminateYT
+[11:29:09] [Netty Client IO #0/ERROR]: java.lang.NullPointerException
+[11:29:10] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYour client brand is §r§r
+[11:29:10] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.passable§r§f vl=1(+1)§r§r
+[11:29:15] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=40(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c220.70, 62.00, 167.27§r§7 locationto=§r§c220.80, 63.00, 167.28§r§7 tags=§r§cvdistrel§r§r
+[11:29:15] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=80(+40) Details:§r§7 distance=§r§c1.01§r§7 locationfrom=§r§c220.70, 62.00, 167.28§r§7 locationto=§r§c220.80, 63.00, 167.31§r§7 tags=§r§cvdistrel§r§r
+[11:29:18] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=120(+40) Details:§r§7 distance=§r§c1.04§r§7 locationfrom=§r§c224.02, 62.00, 171.37§r§7 locationto=§r§c224.07, 63.00, 171.10§r§7 tags=§r§cvdistrel§r§r
+[11:29:18] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=160(+40) Details:§r§7 distance=§r§c1.01§r§7 locationfrom=§r§c223.91, 62.00, 171.30§r§7 locationto=§r§c223.81, 63.00, 171.22§r§7 tags=§r§cvdistrel§r§r
+[11:29:18] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=200(+40) Details:§r§7 distance=§r§c1.01§r§7 locationfrom=§r§c223.81, 62.00, 171.30§r§7 locationto=§r§c223.71, 63.00, 171.22§r§7 tags=§r§cvdistrel§r§r
+[11:29:19] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=240(+40) Details:§r§7 distance=§r§c1.01§r§7 locationfrom=§r§c223.70, 62.00, 171.30§r§7 locationto=§r§c223.60, 63.00, 171.22§r§7 tags=§r§cvdistrel§r§r
+[11:29:19] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=280(+40) Details:§r§7 distance=§r§c1.01§r§7 locationfrom=§r§c223.72, 62.00, 171.30§r§7 locationto=§r§c223.75, 63.00, 171.20§r§7 tags=§r§cvdistrel§r§r
+[11:29:20] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=320(+40) Details:§r§7 distance=§r§c1.01§r§7 locationfrom=§r§c223.72, 62.00, 171.30§r§7 locationto=§r§c223.80, 63.00, 171.22§r§7 tags=§r§cvdistrel§r§r
+[11:29:20] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=360(+40) Details:§r§7 distance=§r§c1.01§r§7 locationfrom=§r§c223.82, 62.00, 171.30§r§7 locationto=§r§c223.85, 63.00, 171.20§r§7 tags=§r§cvdistrel§r§r
+[11:29:20] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=400(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c223.81, 62.00, 171.30§r§7 locationto=§r§c223.81, 63.00, 171.20§r§7 tags=§r§cvdistrel§r§r
+[11:29:21] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=440(+40) Details:§r§7 distance=§r§c1.01§r§7 locationfrom=§r§c223.80, 62.00, 171.30§r§7 locationto=§r§c223.78, 63.00, 171.20§r§7 tags=§r§cvdistrel§r§r
+[11:29:21] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=480(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c223.80, 62.00, 171.30§r§7 locationto=§r§c223.79, 63.00, 171.20§r§7 tags=§r§cvdistrel§r§r
+[11:29:24] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=520(+40) Details:§r§7 distance=§r§c1.02§r§7 locationfrom=§r§c224.03, 62.00, 171.34§r§7 locationto=§r§c223.95, 63.00, 171.18§r§7 tags=§r§cvdistrel§r§r
+[11:29:27] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=560(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c224.03, 62.00, 171.34§r§7 locationto=§r§c224.05, 63.00, 171.25§r§7 tags=§r§cvdistrel§r§r
+[11:29:27] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=600(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c224.03, 62.00, 171.34§r§7 locationto=§r§c224.04, 63.00, 171.25§r§7 tags=§r§cvdistrel§r§r
+[11:29:28] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=640(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c224.03, 62.00, 171.34§r§7 locationto=§r§c224.04, 63.00, 171.24§r§7 tags=§r§cvdistrel§r§r
+[11:29:31] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=680(+40) Details:§r§7 distance=§r§c1.02§r§7 locationfrom=§r§c224.11, 62.00, 171.30§r§7 locationto=§r§c224.08, 63.00, 171.12§r§7 tags=§r§cvdistrel§r§r
+[11:29:33] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYou selected: NoCheatPlus§r§r
+[11:29:35] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=49.064(+40) Details:§r§7 distance=§r§c1.03§r§7 locationfrom=§r§c224.36, 62.00, 171.35§r§7 locationto=§r§c224.35, 63.00, 171.08§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:29:36] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=89.064(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c224.36, 62.00, 171.35§r§7 locationto=§r§c224.36, 63.00, 171.25§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:29:36] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=129.064(+40) Details:§r§7 distance=§r§c1.01§r§7 locationfrom=§r§c224.36, 62.00, 171.35§r§7 locationto=§r§c224.35, 63.00, 171.18§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:29:36] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=169.064(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c224.35, 62.00, 171.30§r§7 locationto=§r§c224.35, 63.00, 171.20§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:29:37] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=209.064(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c224.35, 62.00, 171.30§r§7 locationto=§r§c224.34, 63.00, 171.20§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:29:37] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=249.064(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c224.34, 62.00, 171.30§r§7 locationto=§r§c224.34, 63.00, 171.20§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:29:38] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=289.064(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c224.34, 62.00, 171.30§r§7 locationto=§r§c224.33, 63.00, 171.20§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:30:12] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
+[11:30:19] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7HitlahsBf §r(§bPxzlz§r)§r§r
+[11:30:21] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Step
+[11:30:21] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=329.064(+40) Details:§r§7 distance=§r§c1.03§r§7 locationfrom=§r§c224.37, 62.00, 171.40§r§7 locationto=§r§c224.34, 63.00, 171.14§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:30:23] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7HitlahsBf §r(§bPxzlz§r)§r§r
+[11:30:31] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYou selected: NoCheatPlus§r§r
+[11:30:34] [Client thread/INFO]: Connecting to eu.loyisa.cn, 25565
+[11:30:35] [Client thread/INFO]: [CHAT]        
+[11:30:35] [Netty Client IO #10/ERROR]: java.lang.NullPointerException
+[11:30:35] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7Exterminate §r(§bExterminate§r)§r§r
+[11:30:36] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYour client brand is §r§r
+[11:30:36] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.passable§r§f vl=1(+1)§r§r
+[11:30:37] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Step
+[11:30:38] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=74.444(+40) Details:§r§7 distance=§r§c1.03§r§7 locationfrom=§r§c226.35, 62.00, 168.14§r§7 locationto=§r§c226.10, 63.00, 168.14§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:30:38] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7HitlahsBf §r(§bPxzlz§r)§r§r
+[11:30:46] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Step
+[11:30:46] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=43.8(+40) Details:§r§7 distance=§r§c1.01§r§7 locationfrom=§r§c223.01, 62.00, 171.32§r§7 locationto=§r§c222.91, 63.00, 171.25§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:30:55] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Step
+[11:30:55] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=40.62(+40) Details:§r§7 distance=§r§c1.03§r§7 locationfrom=§r§c223.57, 62.00, 171.52§r§7 locationto=§r§c223.58, 63.00, 171.28§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:30:55] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Step
+[11:30:55] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=80.62(+40) Details:§r§7 distance=§r§c1.02§r§7 locationfrom=§r§c223.58, 62.00, 171.30§r§7 locationto=§r§c223.59, 63.00, 171.09§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:30:55] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Step
+[11:30:56] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=120.62(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c223.59, 62.00, 171.30§r§7 locationto=§r§c223.60, 63.00, 171.20§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:30:56] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Step
+[11:30:56] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=160.62(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c223.59, 62.00, 171.30§r§7 locationto=§r§c223.60, 63.00, 171.20§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:30:56] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Step
+[11:30:57] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=200.62(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c223.60, 62.00, 171.30§r§7 locationto=§r§c223.61, 63.00, 171.20§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:30:57] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Step
+[11:30:57] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=240.62(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c223.60, 62.00, 171.30§r§7 locationto=§r§c223.61, 63.00, 171.20§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:30:57] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Step
+[11:30:57] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=280.62(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c223.61, 62.00, 171.30§r§7 locationto=§r§c223.61, 63.00, 171.20§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:30:57] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Step
+[11:30:58] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=320.62(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c223.61, 62.00, 171.30§r§7 locationto=§r§c223.61, 63.00, 171.20§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:30:58] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bblockinteract.visible§r§f vl=1.461(+1)§r§r
+[11:30:58] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Step
+[11:30:58] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=360.62(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c223.61, 62.00, 171.30§r§7 locationto=§r§c223.61, 63.00, 171.20§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:30:58] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bblockinteract.visible§r§f vl=2.446(+1)§r§r
+[11:30:58] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Step
+[11:30:58] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bblockinteract.visible§r§f vl=3.446(+1)§r§r
+[11:30:59] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=400.62(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c223.61, 62.00, 171.30§r§7 locationto=§r§c223.61, 63.00, 171.20§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:30:59] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Step
+[11:30:59] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=440.62(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c223.61, 62.00, 171.30§r§7 locationto=§r§c223.61, 63.00, 171.20§r§7 tags=§r§cusingitem+vdistrel§r§r
+[11:30:59] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Step
+[11:30:59] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=480.62(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c223.61, 62.00, 171.30§r§7 locationto=§r§c223.60, 63.00, 171.20§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:31:00] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Step
+[11:31:00] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=520.62(+40) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c223.60, 62.00, 171.30§r§7 locationto=§r§c223.60, 63.00, 171.20§r§7 tags=§r§cusingitem+vdistrel§r§r
+[11:31:05] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Step
+[11:31:05] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=422.704(+40) Details:§r§7 distance=§r§c1.03§r§7 locationfrom=§r§c223.57, 62.00, 171.41§r§7 locationto=§r§c223.55, 63.00, 171.15§r§7 tags=§r§cwalkspeed+vdistrel§r§r
+[11:31:07] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=440.119(+17.415) Details:§r§7 distance=§r§c0.46§r§7 locationfrom=§r§c223.58, 63.00, 170.63§r§7 locationto=§r§c223.58, 63.00, 170.17§r§7 tags=§r§cwalkspeed+bunnyenv+bunnyenv+hspeed+groundstep§r§r
+[11:31:45] [Client thread/INFO]: Stopping!
+[11:31:45] [Client thread/INFO]: SoundSystem shutting down...
+[11:31:45] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com

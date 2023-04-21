@@ -6,7 +6,7 @@ public class Vec3
     public double xCoord;
 
     /** Y coordinate of Vec3D */
-    public final double yCoord;
+    public double yCoord;
 
     /** Z coordinate of Vec3D */
     public double zCoord;
@@ -222,4 +222,21 @@ public class Vec3
     public double getY() {return yCoord;}
     public double getZ() {return zCoord;}
 
+    public void rotateAroundX(float x) {
+        double d1 = this.xCoord;
+        double d2 = this.yCoord * (double)MathHelper.cos(x) + this.zCoord * (double)MathHelper.sin(x);
+        double d3 = this.zCoord * (double)MathHelper.cos(x) - this.yCoord * (double)MathHelper.sin(x);
+        this.xCoord = d1;
+        this.yCoord = d2;
+        this.zCoord = d3;
+    }
+
+    public void rotateAroundY(float y) {
+        double d0 = this.xCoord * (double)MathHelper.cos(y) + this.zCoord * (double)MathHelper.sin(y);
+        double d1 = this.yCoord;
+        double d2 = this.zCoord * (double)MathHelper.cos(y) - this.xCoord * (double)MathHelper.sin(y);
+        this.xCoord = d0;
+        this.yCoord = d1;
+        this.zCoord = d2;
+    }
 }

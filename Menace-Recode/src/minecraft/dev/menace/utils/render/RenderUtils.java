@@ -198,7 +198,9 @@ public class RenderUtils {
 
 	public static void drawRect(int left, int top, int right, int bottom, int color) {
 		// default
+		GL11.glPushMatrix();
 		Gui.drawRect(left, top, right, bottom, color);
+		GL11.glPopMatrix();
 
 		// replacement
 		//		LWJGLUtil.drawRect(left, top, right - left, bottom - top, color);
@@ -206,7 +208,9 @@ public class RenderUtils {
 
 	public static void drawRect(double left, double top, double right, double bottom, int color) {
 		// default
+		GL11.glPushMatrix();
 		Gui.drawRect(left, top, right, bottom, color);
+		GL11.glPopMatrix();
 
 		// replacement
 		//		LWJGLUtil.drawRect(left, top, right - left, bottom - top, color);
@@ -318,7 +322,7 @@ public class RenderUtils {
 		glEnable(GL_LINE_SMOOTH);
 		glLineWidth(1);
 
-		glColor4f(red, green, blue, alpha);
+		GlStateManager.color(red, green, blue, alpha);
 		glBegin(GL_POLYGON);
 
 		double degree = Math.PI / 180;
@@ -456,7 +460,7 @@ public class RenderUtils {
 		int width = MC.fontRendererObj.getStringWidth(name) / 2;
 		GL11.glPushMatrix();
 		GL11.glPopMatrix();
-		GL11.glColor4f(1, 1, 1, 1);
+		GlStateManager.color(1, 1, 1, 1);
 		Gui.drawRect(-width - 1, -(MC.fontRendererObj.FONT_HEIGHT + 8), (-width - 1) + 2 + width * 2, -(MC.fontRendererObj.FONT_HEIGHT - 1), 0);
 		GL11.glScalef(0.5f, 0.5f, 0.5f);
 		MC.fontRendererObj.drawStringWithShadow(name, -(width), -(MC.fontRendererObj.FONT_HEIGHT + 7), color);
@@ -466,7 +470,7 @@ public class RenderUtils {
 		GL11.glEnable(2896);
 		GL11.glEnable(2929);
 		GL11.glPopMatrix();
-		GL11.glColor4f(1f, 1f, 1f, 1f);
+		GlStateManager.color(1f, 1f, 1f, 1f);
 	}
 
 	public static void drawEntityBox(final Entity entity, final Color color, final boolean outline) {
@@ -571,16 +575,18 @@ public class RenderUtils {
 	}
 
 	public static void drawImage(float x, float y, final int width, final int height, final ResourceLocation image, Color color) {
-		GL11.glDisable(2929);
-		GL11.glEnable(3042);
+		GL11.glPushMatrix();
+		GL11.glDisable(GL_DEPTH_TEST);
+		GL11.glEnable(GL_BLEND);
 		GL11.glDepthMask(false);
 		OpenGlHelper.glBlendFunc(770, 771, 1, 0);
-		GL11.glColor4f(color.getRed() / 255F, color.getGreen() / 255F, color.getBlue() / 255F, 1.0f);
+		GlStateManager.color(color.getRed() / 255F, color.getGreen() / 255F, color.getBlue() / 255F, 1.0f);
 		Minecraft.getMinecraft().getTextureManager().bindTexture(image);
 		Gui.drawModalRectWithCustomSizedTexture((int) x, (int) y, 0.0f, 0.0f, width, height, (float) width, (float) height);
 		GL11.glDepthMask(true);
-		GL11.glDisable(3042);
-		GL11.glEnable(2929);
+		GL11.glDisable(GL_BLEND);
+		GL11.glEnable(GL_DEPTH_TEST);
+		GL11.glPopMatrix();
 	}
 
 	public static void circle(final Entity entity, final double rad, Color color) {
@@ -602,7 +608,7 @@ public class RenderUtils {
 		final double z = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * MC.timer.renderPartialTicks - MC.getRenderManager().viewerPosZ;
 
 		for (int i = 0; i <= 90; ++i) {
-			GL11.glColor4d(color.getRed() / 255.0, color.getGreen() / 255.0, color.getBlue() / 255.0, 0.5);
+			GlStateManager.color(color.getRed() / 255.0, color.getGreen() / 255.0, color.getBlue() / 255.0, 0.5);
 
 			GL11.glVertex3d(x + rad * Math.cos(i * 6.283185307179586 / 45.0), y, z + rad * Math.sin(i * 6.283185307179586 / 45.0));
 		}
@@ -639,7 +645,7 @@ public class RenderUtils {
 			GL11.glDisable(3553);
 		}
 		GL11.glBlendFunc(770, 771);
-		GL11.glColor4f(red, green, blue, alpha);
+		GlStateManager.color(red, green, blue, alpha);
 		GL11.glBegin(9);
 		int i = 0;
 		while (i <= 360) {
@@ -668,14 +674,14 @@ public class RenderUtils {
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glDepthMask(false);
 		OpenGlHelper.glBlendFunc(770, 771, 1, 0);
-		GL11.glColor4f(c.getRed() / 255f, c.getGreen()/255f, c.getBlue() / 255f, c.getAlpha());
+		GlStateManager.color(c.getRed() / 255f, c.getGreen()/255f, c.getBlue() / 255f, c.getAlpha());
 		MC.getTextureManager().bindTexture(image);
 		Gui.drawModalRectWithCustomSizedTexture((int) x, (int) y, 0.0f, 0.0f, width, height, width, height);
 
 		GL11.glDepthMask(true);
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glEnable(GL11.GL_DEPTH_TEST);
-		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 
 	public static void drawHead(ResourceLocation skin, int x, int y, int width, int height) {
@@ -764,7 +770,7 @@ public class RenderUtils {
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glPopMatrix();
-		GL11.glColor4f(1, 1, 1, 1);
+		GlStateManager.color(1, 1, 1, 1);
 	}
 
 	public static void lineWidth(float width) {
@@ -780,7 +786,7 @@ public class RenderUtils {
 	}
 
 	public static void color4f(float red, float green, float blue, float alpha) {
-		GL11.glColor4f(red, green, blue, alpha);
+		GlStateManager.color(red, green, blue, alpha);
 	}
 
 	public static void putVertex3d(double x, double y, double z) {

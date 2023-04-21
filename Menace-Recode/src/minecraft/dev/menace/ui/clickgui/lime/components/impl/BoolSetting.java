@@ -36,6 +36,11 @@ public class BoolSetting extends Component implements Priority {
     @Override
     public void drawScreen(int mouseX, int mouseY)
     {
+        ToggleSetting set = (ToggleSetting) getSetting();
+        if (animation.isReversed() == set.getValue()) {
+            animation.setReversed(!set.getValue());
+        }
+
         animation.update();
         font.drawStringWithShadow(getSetting().getName(), x + 5, y + (getOffset() / 2F - (font.getHeight() / 2F)), -1);
         RenderUtils.drawFilledCircle(x + defaultWidth - 10, (int) (y + (getOffset() / 2F - (font.getHeight() / 2F)) + 6.75f), 5, new Color(darkerMainColor));

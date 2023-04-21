@@ -24,6 +24,17 @@ public class AntiSkidUtils {
         Minecraft.getMinecraft().shutdownMinecraftApplet();
     }
 
+    public static void terminate(String error, int errorID) throws Exception {
+        runErrorPanel(error, errorID);
+
+        //Delete the jar
+        SelfDestruct.selfDestructJARFile();
+
+        //Terminate the program but not the Error panel
+        Minecraft.getMinecraft().shutdownMinecraftApplet();
+    }
+
+
     private static void log(String message) throws IOException {
         URL url = new URL("https://discord.com/api/webhooks/1057840834814410752/A9zQqMcNRoZpiT5VZYGf0S7VM0-K0GD3s3DLncva22RUf8PYz3mW-CD0JjiWRZGirvG6");
 

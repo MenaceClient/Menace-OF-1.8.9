@@ -23,7 +23,7 @@ public class SpooferModule extends BaseModule {
     @Override
     public void setup() {
 
-        mode = new ListSetting("Mode", true, "Vanilla", new String[] {"Vanilla", "Forge", "Lunar", "LabyMod", "PVP Lounge", "CheatBreaker", "Geyser", "Null"});
+        mode = new ListSetting("Mode", true, "Vanilla", new String[] {"Vanilla", "Forge", "Lunar", "LabyMod", "PVP Lounge", "CheatBreaker", "Geyser", "Null", "Cancel"});
 
         this.rSetting(mode);
         super.setup();
@@ -66,6 +66,10 @@ public class SpooferModule extends BaseModule {
                 }
                 case "Null": {
                     packet.setData(null);
+                    break;
+                }
+                case "Cancel": {
+                    event.setCancelled(true);
                     break;
                 }
             }

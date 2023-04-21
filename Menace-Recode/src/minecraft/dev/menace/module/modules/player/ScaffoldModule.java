@@ -13,6 +13,7 @@ import dev.menace.utils.misc.MathUtils;
 import dev.menace.utils.player.InventoryUtils;
 import dev.menace.utils.player.MovementUtils;
 import dev.menace.utils.player.PacketUtils;
+import dev.menace.utils.player.PlayerUtils;
 import dev.menace.utils.render.RenderUtils;
 import dev.menace.utils.timer.MSTimer;
 import dev.menace.utils.world.BlockUtils;
@@ -214,12 +215,14 @@ public class ScaffoldModule extends BaseModule {
             event.setPitch(90);
             derpYaw += 100f;
         } else if (rotation[0] != -69696969 && keepRotations.getValue()) {
+
             double randomYaw = 0;
             if (blocksMC.getValue()) {
                randomYaw = Math.random() * 20 - 10;
             }
+
             event.setYaw((float) randomYaw + rotation[0]);
-            event.setPitch(rotation[1]);
+            event.setPitch(MathUtils.clamp((float) (randomYaw + rotation[1]), -90, 90));
         }
 
         BlockPos belowPlayer = new BlockPos(mc.thePlayer).down();
@@ -326,11 +329,13 @@ public class ScaffoldModule extends BaseModule {
                 if (eyesPos.squareDistanceTo(hitVec) <= 36.0) {
 
                     if (keepRotations.getValue()) {
-                        rotation = getRotsNew(neighbor, side2);
+                        rotation = PlayerUtils.getRotsNew(neighbor, side2);
                     } else {
-                        event.setYaw(getRotsNew(neighbor, side2)[0]);
-                        event.setPitch(MathUtils.clamp(getRotsNew(neighbor, side2)[1], -90F, 90F));
+                        event.setYaw(PlayerUtils.getRotsNew(neighbor, side2)[0]);
+                        event.setPitch(MathUtils.clamp(PlayerUtils.getRotsNew(neighbor, side2)[1], -90F, 90F));
                     }
+
+
 
                     if (silentSwap.getValue() && swappedSlot != -1) {
                         mc.playerController.onPlayerRightClick(mc.thePlayer, mc.theWorld, mc.thePlayer.inventory.getStackInSlot(swappedSlot), neighbor, side2, hitVec);
@@ -387,82 +392,6 @@ public class ScaffoldModule extends BaseModule {
     public void on2D(EventRender2D event) {
         if (!render.getValue()) return;
 
-    }
-
-    public float[] getRotsNew(final BlockPos pos, final EnumFacing facing) {
-        final float yaw = this.getYaw(pos, facing);
-        final float[] rots2 = this.getDirectionToBlock(pos.getX(), pos.getY(), pos.getZ(), facing);
-        return new float[] { (float)(yaw + ThreadLocalRandom.current().nextDouble(-1.0, 1.0)), mc.thePlayer.onGround ? 80.31f : Math.min(90.0f, rots2[1]) };
-    }
-
-    public float[] getDirectionToBlock(final int var0, final int var1, final int var2, final EnumFacing var3) {
-        final EntityEgg var4 = new EntityEgg(this.mc.theWorld);
-        var4.posX = var0 + 0.5;
-        var4.posY = var1 + 0.5;
-        var4.posZ = var2 + 0.5;
-        var4.posX += var3.getDirectionVec().getX() * 0.25;
-        var4.posY += var3.getDirectionVec().getY() * 0.25;
-        var4.posZ += var3.getDirectionVec().getZ() * 0.25;
-        return getDirectionToEntity(var4);
-    }
-
-    public float[] getDirectionToEntity(final Entity var0) {
-        return new float[] { getYaw(var0) + mc.thePlayer.rotationYaw, getPitch(var0) + mc.thePlayer.rotationPitch };
-    }
-
-    public float getYaw(final Entity var0) {
-        final double var = var0.posX - mc.thePlayer.posX;
-        final double var2 = var0.posZ - mc.thePlayer.posZ;
-        final double degrees = Math.toDegrees(Math.atan(var2 / var));
-        double var3;
-        if (var2 < 0.0 && var < 0.0) {
-            var3 = 90.0 + degrees;
-        }
-        else if (var2 < 0.0 && var > 0.0) {
-            var3 = -90.0 + degrees;
-        }
-        else {
-            var3 = Math.toDegrees(-Math.atan(var / var2));
-        }
-        return MathHelper.wrapAngleTo180_float(-(mc.thePlayer.rotationYaw - (float)var3));
-    }
-
-    public float getPitch(final Entity var0) {
-        final double var = var0.posX - mc.thePlayer.posX;
-        final double var2 = var0.posZ - mc.thePlayer.posZ;
-        final double var3 = var0.posY - 1.6 + var0.getEyeHeight() - mc.thePlayer.posY;
-        final double var4 = MathHelper.sqrt_double(var * var + var2 * var2);
-        final double var5 = -Math.toDegrees(Math.atan(var3 / var4));
-        return -MathHelper.wrapAngleTo180_float(mc.thePlayer.rotationPitch - (float)var5);
-    }
-
-    public float getYaw(final BlockPos block, final EnumFacing face) {
-        final Vec3 vecToModify = new Vec3(block.getX(), block.getY(), block.getZ());
-        switch (face) {
-            case EAST:
-            case WEST: {
-                vecToModify.zCoord += 0.5;
-                break;
-            }
-            case SOUTH:
-            case NORTH: {
-                vecToModify.xCoord += 0.5;
-                break;
-            }
-            case UP:
-            case DOWN: {
-                vecToModify.xCoord += 0.5;
-                vecToModify.zCoord += 0.5;
-                break;
-            }
-        }
-        final double x = vecToModify.xCoord - this.mc.thePlayer.posX;
-        final double z = vecToModify.zCoord - this.mc.thePlayer.posZ;
-        float yaw = (float)(Math.atan2(z, x) * 180.0 / 3.141592653589793) - 90.0f;
-        if (yaw < 0.0f) {
-            yaw -= 360.0f;
-        }
-        return yaw;
     }
 
 }

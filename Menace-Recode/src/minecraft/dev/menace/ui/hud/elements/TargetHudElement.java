@@ -37,7 +37,7 @@ public class TargetHudElement extends BaseElement {
         this.drawString(target.getDisplayName().getUnformattedText(), this.getAbsoluteX() + 40, this.getAbsoluteY() + 5, -1);
         this.drawString(decimalFormat.format(target.getHealth()), this.getAbsoluteX() + 40, this.getAbsoluteY() + 20, -1);
         int w = this.getStringWidth(decimalFormat.format(target.getHealth()));
-        mc.fontRendererObj.drawString("\u2764", this.getAbsoluteX() + w + 43, this.getAbsoluteY() + 19, Color.red.getRGB());
+        mc.fontRendererObj.drawString("\u2764", this.getAbsoluteX() + w + 43, this.getAbsoluteY() + 20, Color.red.getRGB());
     }
 
     @Override

@@ -39,7 +39,7 @@ extends GuiScreen {
 
 	public MenaceAuthScreen(GuiScreen previousScreen) {
 		this.previousScreen = previousScreen;
-		text = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/SF-Pro.ttf"), 30, Font.PLAIN), true, true);
+		text = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/SF-Pro.ttf"), 30, Font.PLAIN), true);
 		try {
 			this.backgroundShader = new GLSLShader("/assets/minecraft/menace/shaders/radar.fsh");
 		} catch (IOException e) {
@@ -87,7 +87,7 @@ extends GuiScreen {
 		boolean hovered = RenderUtils.hover(x1, y1, mouseX, mouseY, w, h);
 		RenderUtils.drawRect((float)x1, (float)y1, (float)x2, (float)y2, hovered ? (new Color(255, 0, 0, 80)).getRGB() : (new Color(153, 9, 9, 80)).getRGB());
 		RenderUtils.drawRect((float)x1, (float)y1 + 20, (float)x2, (float)y2, (new Color(200, 0, 0)).getRGB());
-		this.text.drawCenteredString("Exit", (float)((x1 + x2) / 2), (float)((y1 + y2 - 16) / 2), Color.black.getRGB());
+		this.text.drawCenteredString("Exit", (float)((x1 + x2) / 2), (float)((y1 + y2 - 5) / 2), Color.black.getRGB());
 	}
 
 	private void drawLogin(int mouseX, int mouseY) {
@@ -101,7 +101,7 @@ extends GuiScreen {
 		boolean hovered = RenderUtils.hover(x1, y1, mouseX, mouseY, w, h);
 		RenderUtils.drawRect((float)x1, (float)y1, (float)x2, (float)y2, hovered ? (new Color(255, 0, 0, 80)).getRGB() : (new Color(153, 9, 9, 80)).getRGB());
 		RenderUtils.drawRect((float)x1, (float)y1 + 20, (float)x2, (float)y2, (new Color(200, 0, 0)).getRGB());
-		this.text.drawCenteredString("Login", (float)((x1 + x2) / 2), (float)((y1 + y2 - 20) / 2), Color.black.getRGB());
+		this.text.drawCenteredString("Login", (float)((x1 + x2) / 2), (float)((y1 + y2 - 5) / 2), Color.black.getRGB());
 	}
 
 	@Override

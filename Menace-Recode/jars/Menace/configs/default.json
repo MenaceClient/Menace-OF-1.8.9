@@ -163,8 +163,16 @@
   "InvMove": {
     "Toggled": true,
     "Settings": {
+      "Sprint": true,
       "Rotate": true,
       "Blink": false,
+      "Visible": true
+    }
+  },
+  "Jesus": {
+    "Toggled": false,
+    "Settings": {
+      "Mode": "Collide",
       "Visible": true
     }
   },
@@ -403,6 +411,7 @@
   "MenaceNCP": {
     "Toggled": false,
     "Settings": {
+      "Show VL": true,
       "Visible": true
     }
   },

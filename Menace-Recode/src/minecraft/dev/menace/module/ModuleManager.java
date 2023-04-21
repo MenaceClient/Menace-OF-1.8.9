@@ -43,6 +43,7 @@ public class ModuleManager {
 	public BlinkModule blinkModule = new BlinkModule();
 	public InvManagerModule invManagerModule = new InvManagerModule();
 	InvMoveModule invMoveModule = new InvMoveModule();
+	JesusModule jesusModule = new JesusModule();
 	NoFallModule noFallModule = new NoFallModule();
 	NoSlowModule noSlowModule = new NoSlowModule();
 	public SafeWalkModule safeWalkModule = new SafeWalkModule();
@@ -75,7 +76,7 @@ public class ModuleManager {
 	public DisablerModule disablerModule = new DisablerModule();
 	ExitFlagModule exitFlagModule = new ExitFlagModule();
 	public KillFXModule killFXModule = new KillFXModule();
-	HackerDetectModule hackerDetectModule = new HackerDetectModule();
+	public HackerDetectModule hackerDetectModule = new HackerDetectModule();
 	public SecurityFeaturesModule securityFeaturesModule = new SecurityFeaturesModule();
 	SpooferModule spooferModule = new SpooferModule();
 	StaffDetectorModule staffDetectorModule = new StaffDetectorModule();

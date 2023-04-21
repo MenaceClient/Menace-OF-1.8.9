@@ -16,7 +16,7 @@ import dev.menace.scripting.ScriptManager;
 import dev.menace.ui.altmanager.LoginManager;
 import dev.menace.ui.clickgui.csgo.CSGOGui;
 import dev.menace.ui.clickgui.lime.LimeClickGUI;
-import dev.menace.ui.clickgui.menace.MenaceClickGui;
+import dev.menace.ui.clickgui.intellij.IntellijClickGui;
 import dev.menace.ui.hud.HUDManager;
 import dev.menace.utils.file.FileManager;
 import dev.menace.utils.irc.IRCClient;
@@ -26,7 +26,6 @@ import dev.menace.utils.notifications.Notification;
 import dev.menace.utils.notifications.NotificationManager;
 import dev.menace.utils.render.font.Fonts;
 import dev.menace.utils.render.font.MenaceFontRenderer;
-import dev.menace.utils.security.AntiSkidUtils;
 import dev.menace.utils.security.MenaceUser;
 import dev.menace.utils.timer.MSTimer;
 import fr.litarvan.openauth.microsoft.MicrosoftAuthenticationException;
@@ -65,6 +64,9 @@ public class Menace {
 	public LinkedHashMap<String, String> onlineMenaceUsers = new LinkedHashMap<>();
 	MSTimer updateTimer = new MSTimer();
 
+	//Misc
+	public boolean borderlessFullscreen = true;
+
 	//Fonts
 	public MenaceFontRenderer sfPro;
 	public MenaceFontRenderer productSans20;
@@ -74,12 +76,12 @@ public class Menace {
 	public MenaceFontRenderer jetbrainsMono;
 
 	public void initFonts() {
-		sfPro = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/SF-Pro.ttf"), 20, Font.PLAIN), true, true);
-		productSans20 = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/ProductSans.ttf"), 20, Font.PLAIN), true, true);
-		productSans24 = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/ProductSans.ttf"), 20, Font.PLAIN), true, true);
-		ascii24 = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/ascii.ttf"), 24, Font.PLAIN), true, true);
-		ascii18 = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/ascii.ttf"), 18, Font.PLAIN), true, true);
-		jetbrainsMono = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/JetBrainsMono-Regular.ttf"), 15, Font.PLAIN), true, true);
+		sfPro = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/SF-Pro.ttf"), 20, Font.PLAIN), true);
+		productSans20 = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/ProductSans.ttf"), 20, Font.PLAIN), true);
+		productSans24 = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/ProductSans.ttf"), 20, Font.PLAIN), true);
+		ascii24 = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/ascii.ttf"), 24, Font.PLAIN),  true);
+		ascii18 = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/ascii.ttf"), 18, Font.PLAIN),  true);
+		jetbrainsMono = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/JetBrainsMono-Regular.ttf"), 15, Font.PLAIN), true);
 	}
 
 	public void startClient() {
@@ -87,6 +89,9 @@ public class Menace {
 		System.out.println("[Menace] Starting Client...");
 		
 		Display.setTitle("Menace 1.8.9 - Recode");
+
+		//Borderless Fullscreen
+
 		
 		FileManager.init();
 		
@@ -166,7 +171,7 @@ public class Menace {
 
 		moduleManager.clickGuiModule.csgoGui = new CSGOGui();
 		moduleManager.clickGuiModule.limeGui = new LimeClickGUI();
-		moduleManager.clickGuiModule.menaceGui = new MenaceClickGui();
+		moduleManager.clickGuiModule.intellijClickGui = new IntellijClickGui();
 
 		starting = false;
 	}

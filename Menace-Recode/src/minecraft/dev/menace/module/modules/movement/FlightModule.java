@@ -139,8 +139,8 @@ public class FlightModule extends BaseModule {
 		flightMode.launchY = mc.thePlayer.posY;
 		flightMode.launchZ = mc.thePlayer.posZ;
 
-		flightMode.onEnable();
 		super.onEnable();
+		flightMode.onEnable();
 	}
 	
 	@EventTarget
@@ -171,8 +171,8 @@ public class FlightModule extends BaseModule {
 	
 	@Override
 	public void onDisable() {
-		flightMode.onDisable();
 		super.onDisable();
+		flightMode.onDisable();
 	}
 
 }

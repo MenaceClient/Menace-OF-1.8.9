@@ -5,11 +5,21 @@ import dev.menace.event.EventTarget;
 import dev.menace.event.events.EventUpdate;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
+import dev.menace.module.settings.ToggleSetting;
 
 public class HackerDetectModule extends BaseModule {
 
+    public ToggleSetting showVl;
+
     public HackerDetectModule() {
         super("MenaceNCP", Category.MISC, 0);
+    }
+
+    @Override
+    public void setup() {
+        showVl = new ToggleSetting("Show VL", true, true);
+        this.rSetting(showVl);
+        super.setup();
     }
 
     @EventTarget

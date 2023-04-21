@@ -612,6 +612,11 @@ public class GlStateManager
         }
     }
 
+    public static void color(double colorRed, double colorGreen, double colorBlue, double colorAlpha)
+    {
+        color((float)colorRed, (float)colorGreen, (float)colorBlue, (float)colorAlpha);
+    }
+
     public static void color(float colorRed, float colorGreen, float colorBlue)
     {
         color(colorRed, colorGreen, colorBlue, 1.0F);
