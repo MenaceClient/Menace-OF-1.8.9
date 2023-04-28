@@ -325,11 +325,9 @@ public class Menace {
 
 				JsonObject server = new JsonParser().parse(response.toString()).getAsJsonObject();
 				if (server.entrySet() != null && server.entrySet().size() > 0 && !server.entrySet().isEmpty()) {
-					server.entrySet().forEach(entry -> {
-						if (entry != null && entry.getKey() != null && entry.getValue() != null && !entry.getValue().isJsonNull() && !entry.getValue().getAsString().isEmpty()) {
-							onlineMenaceUsers.put(entry.getKey(), entry.getValue().getAsString());
-						}
-					});
+					//WTF
+					Map<String, String> map = server.entrySet().stream().filter(entry -> entry != null && entry.getKey() != null && entry.getValue() != null && !entry.getValue().isJsonNull() && !entry.getValue().getAsString().isEmpty()).collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue().getAsString()));
+					onlineMenaceUsers = new LinkedHashMap<>(map);
 				}
 
 			}
