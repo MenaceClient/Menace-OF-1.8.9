@@ -219,7 +219,7 @@ public class Menace {
 			final String[] formattedMessage = {((S02PacketChat) event.getPacket()).getChatComponent().getFormattedText()};
 			onlineMenaceUsers.forEach((username, ign) -> {
 				if (ign != null && formattedMessage[0].contains(ign)) {
-					formattedMessage[0] = formattedMessage[0].replace(ign, ign + " §r(§b" + username + "§r)");
+					formattedMessage[0] = formattedMessage[0].replace(ign, ign + " Â§r(Â§b" + username + "Â§r)");
 				}
 			});
 
@@ -231,7 +231,7 @@ public class Menace {
 
 			onlineMenaceUsers.forEach((username, ign) -> {
 				if (ign != null && formattedMessage[0].contains(ign)) {
-					formattedMessage[0] = formattedMessage[0].replace(ign, ign + " §r(§b" + username + "§r)");
+					formattedMessage[0] = formattedMessage[0].replace(ign, ign + " Â§r(Â§b" + username + "Â§r)");
 				}
 			});
 
@@ -320,6 +320,8 @@ public class Menace {
 					response.append(inputLine);
 				}
 				in.close();
+				
+				onlineMenaceUsers.clear();
 
 				JsonObject server = new JsonParser().parse(response.toString()).getAsJsonObject();
 				if (server.entrySet() != null && server.entrySet().size() > 0 && !server.entrySet().isEmpty()) {
