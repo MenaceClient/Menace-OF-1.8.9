@@ -29,14 +29,19 @@
     "Y": 530,
     "Visible": true
   },
+  "ScoreboardElement": {
+    "X": 865,
+    "Y": 216,
+    "Visible": true
+  },
   "TabGuiElement": {
     "X": 1,
     "Y": 76,
-    "Visible": true
+    "Visible": false
   },
   "TargetHudElement": {
-    "X": 440,
-    "Y": 289,
+    "X": 442,
+    "Y": 278,
     "Visible": true
   },
   "WatermarkElement": {

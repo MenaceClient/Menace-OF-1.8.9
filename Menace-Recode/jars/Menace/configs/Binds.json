@@ -1,6 +1,7 @@
 {
   "AntiBot": 0,
   "AutoPot": 0,
+  "BackTracker": 0,
   "Criticals": 0,
   "KillAura": 19,
   "TPAura": 0,
@@ -17,6 +18,7 @@
   "Blink": 48,
   "InvManager": 45,
   "InvMove": 0,
+  "Jesus": 0,
   "NoFall": 37,
   "NoSlow": 0,
   "SafeWalk": 33,

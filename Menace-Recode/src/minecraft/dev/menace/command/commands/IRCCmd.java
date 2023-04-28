@@ -4,8 +4,10 @@ import dev.menace.Menace;
 import dev.menace.command.BaseCommand;
 import dev.menace.utils.misc.ChatUtils;
 import org.jibble.pircbot.IrcException;
+import org.jibble.pircbot.User;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class IRCCmd extends BaseCommand {
     public IRCCmd() {
@@ -17,6 +19,10 @@ public class IRCCmd extends BaseCommand {
         if (args[0] != null) {
 
             if (args[0].equalsIgnoreCase("connect")) {
+                if (Menace.instance.ircBot.isConnected()) {
+                    ChatUtils.message("Already connected to IRC");
+                    return;
+                }
                 ChatUtils.message("Connecting to IRC (This may take a second)...");
                 new Thread(() -> {
                     try {
@@ -32,11 +38,19 @@ public class IRCCmd extends BaseCommand {
                 Menace.instance.ircBot.quitServer("Disconnected by user");
                 ChatUtils.message("Disconnected from the IRC");
                 return;
+            } else if (args[0].equalsIgnoreCase("online")) {
+                StringBuilder sb = new StringBuilder();
+                for (User user : Menace.instance.ircBot.getUsers("#MenaceIRC5573")) {
+                    sb.append(user.getNick()).append(", ");
+                }
+                sb.delete(sb.length() - 2, sb.length());
+                ChatUtils.message("Online: " + sb);
+                return;
             }
 
             StringBuilder sb = new StringBuilder();
             for (String s : args) {
-                sb.append(s);
+                sb.append(s).append(" ");
             }
 
             Menace.instance.ircBot.sendMessage(sb.toString());

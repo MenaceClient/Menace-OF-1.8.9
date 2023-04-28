@@ -12,7 +12,9 @@ import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
 import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.player.MovementUtils;
+import dev.menace.utils.player.PacketUtils;
 import net.minecraft.client.settings.GameSettings;
+import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.server.S08PacketPlayerPosLook;
 import net.minecraft.network.play.server.S12PacketEntityVelocity;
 import net.minecraft.potion.Potion;
@@ -31,7 +33,7 @@ public class SpeedModule extends BaseModule {
 
     @Override
     public void setup() {
-        mode = new ListSetting("Mode", true, "BHop", new String[] {"BHop", "Strafe", "LowHop", "BlocksMC", "Experimental"});
+        mode = new ListSetting("Mode", true, "BHop", new String[] {"BHop", "Strafe", "LowHop", "BlocksMC", "WTF", "NCPLowHop", "Experimental"});
         speed = new SliderSetting("Speed", true, 1, 1, 10, true);
         autoDisable = new ToggleSetting("AutoDisable", true, true);
         this.rSetting(mode);
@@ -58,7 +60,7 @@ public class SpeedModule extends BaseModule {
 
     @EventTarget
     public void onUpdate(EventUpdate event) {
-        if (mode.getValue().equalsIgnoreCase("Experimental")) {
+        if (mode.getValue().equalsIgnoreCase("WTF")) {
             if (!MovementUtils.shouldMove()) {
                 return;
             }
@@ -111,6 +113,27 @@ public class SpeedModule extends BaseModule {
                 }
             }
             MovementUtils.strafe();
+        } else if (mode.getValue().equalsIgnoreCase("NCPLowHop")) {
+            //Method by Exterminate (Lowest lowhop ever, trust)
+            if (!MovementUtils.shouldMove()) return;
+            if (mc.thePlayer.onGround) {
+                mc.timer.timerSpeed = 0.95f;
+                mc.thePlayer.jump();
+                if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
+                    if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier() == 0) {
+                        MovementUtils.strafe(0.5893f);
+                    } else if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier() == 1) {
+                        MovementUtils.strafe(0.67f);
+                    }
+                } else {
+                    MovementUtils.strafe(0.485f);
+                }
+            } else if (mc.thePlayer.motionY < 0.16 && mc.thePlayer.motionY > 0.0) {
+                mc.thePlayer.motionY = -0.1;
+            } else if (mc.thePlayer.motionY < 0.0 && mc.thePlayer.motionY > -0.3) {
+                mc.timer.timerSpeed = 1.2F;
+            }
+            MovementUtils.strafe();
         }
     }
 
@@ -134,6 +157,15 @@ public class SpeedModule extends BaseModule {
                 event.setY(0.41999998688698);
             }
             MovementUtils.strafe();
+        } else if (mode.getValue().equalsIgnoreCase("Experimental")) {
+            if (!MovementUtils.shouldMove()) return;
+            mc.gameSettings.keyBindJump.pressed = false;
+            if (mc.thePlayer.onGround) {
+                mc.thePlayer.jump();
+                mc.thePlayer.motionY = 0.0;
+                event.setY(0.1);
+                MovementUtils.strafe(0.5f);
+            }
         }
     }
 

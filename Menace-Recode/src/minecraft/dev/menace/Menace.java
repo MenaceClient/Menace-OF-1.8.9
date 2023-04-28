@@ -6,10 +6,7 @@ import dev.menace.anticheat.HackerDetect;
 import dev.menace.command.CommandManager;
 import dev.menace.event.EventManager;
 import dev.menace.event.EventTarget;
-import dev.menace.event.events.EventKey;
-import dev.menace.event.events.EventReceivePacket;
-import dev.menace.event.events.EventUpdate;
-import dev.menace.event.events.EventWorldChange;
+import dev.menace.event.events.*;
 import dev.menace.module.ModuleManager;
 import dev.menace.module.config.ConfigManager;
 import dev.menace.scripting.ScriptManager;
@@ -42,6 +39,7 @@ import viamcp.ViaMCP;
 import java.awt.*;
 import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.InetAddress;
 import java.net.URL;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -89,18 +87,15 @@ public class Menace {
 	public void startClient() {
 		starting = true;
 		System.out.println("[Menace] Starting Client...");
-		
+
 		Display.setTitle("Menace 1.8.9 - Recode");
 
-		//Borderless Fullscreen
-
-		
 		FileManager.init();
-		
+
 		eventManager = new EventManager();
-		
+
 		moduleManager = new ModuleManager();
-		
+
 		cmdManager = new CommandManager();
 		cmdManager.init();
 
@@ -113,20 +108,17 @@ public class Menace {
 		scriptManager = new ScriptManager();
 
 		hackerDetect = new HackerDetect();
-		
+
 		discordRP = new DiscordRP();
 		discordRP.start();
-		
+
 		eventManager.register(this);
-		
-		try
-		{
-		  ViaMCP.getInstance().start();
-		  ViaMCP.getInstance().initAsyncSlider();
-		}
-		catch (Exception e)
-		{
-		  e.printStackTrace();
+
+		try {
+			ViaMCP.getInstance().start();
+			ViaMCP.getInstance().initAsyncSlider();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		File yes = new File("D:/ez/lol/sex/halal/____.____");
@@ -194,7 +186,7 @@ public class Menace {
 			}
 		}.start();
 	}
-	
+
 	public void stopClient() {
 		System.out.println("[Menace] Stopping client...");
 		discordRP.stop();
@@ -205,7 +197,7 @@ public class Menace {
 		ircBot.quitServer("Left the Game");
 		eventManager.unregister(this);
 	}
-	
+
 	@EventTarget
 	public void onKey(EventKey event) {
 		moduleManager.getModules().stream().filter(m -> m.getKeybind() == event.getKey()).forEach(module -> {
@@ -248,6 +240,40 @@ public class Menace {
 	}
 
 	@EventTarget
+	public void onConnection(EventConnection event) {
+		if (event.getState() == EventConnection.State.CONNECTING) {
+			Menace.instance.discordRP.update("Bypassing " + ServerUtils.getRemoteIp());
+			Menace.instance.hudManager.gameStatsElement.reset();
+			try {
+				final URL url = new URL("https://menaceapi.cf/updateUser/" + ServerUtils.getRemoteIp().split(":")[0] + "/" + Menace.instance.user.getUsername() + "/" + MC.session.getUsername() + "/false");
+				HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
+				uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
+				uc.setRequestMethod("GET");
+				int responseCode = uc.getResponseCode();
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+			new Thread() {
+				@Override
+				public void run() {
+					updateOnline();
+					super.run();
+				}
+			}.start();
+		} else {
+			try {
+				final URL url = new URL("https://menaceapi.cf/updateUser/" + ServerUtils.getLastServerIp().split(":")[0] + "/" + Menace.instance.user.getUsername() + "/" + MC.session.getUsername() + "/true");
+				HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
+				uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
+				uc.setRequestMethod("GET");
+				int responseCode = uc.getResponseCode();
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+		}
+	}
+
+	@EventTarget
 	public void onWorldChange(EventWorldChange event) {
 		new Thread() {
 			@Override
@@ -279,7 +305,8 @@ public class Menace {
 		}
 
 		try {
-			final URL url = new URL("https://menaceapi.cf/getMenaceUsers/");
+			String ip = ServerUtils.getRemoteIp().toLowerCase().contains("49.12.67.79") || ServerUtils.getRemoteIp().toLowerCase().contains("blocksmc.com") ? "blocksmc.com" : ServerUtils.getRemoteIp().toLowerCase().split(":")[0];
+			final URL url = new URL("https://menaceapi.cf/getMenaceUsers/" + ip);
 			HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
 			uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
 			uc.setRequestMethod("GET");
@@ -294,18 +321,15 @@ public class Menace {
 				}
 				in.close();
 
-				JsonObject jsonObject = new JsonParser().parse(response.toString()).getAsJsonObject();
-				String ip = ServerUtils.getRemoteIp().toLowerCase().contains("49.12.67.79") || ServerUtils.getRemoteIp().toLowerCase().contains("blocksmc.com") ? "blocksmc.com" : ServerUtils.getRemoteIp().toLowerCase().split(":")[0];
-				if (jsonObject.has(ip)) {
-					JsonObject server = jsonObject.get(ip).getAsJsonObject();
-					if (server.entrySet() != null && server.entrySet().size() > 0 && !server.entrySet().isEmpty()) {
-						server.entrySet().forEach(entry -> {
-							if (entry != null && entry.getKey() != null && entry.getValue() != null && !entry.getValue().isJsonNull() && !entry.getValue().getAsString().isEmpty()) {
-								onlineMenaceUsers.put(entry.getKey(), entry.getValue().getAsString());
-							}
-						});
-					}
+				JsonObject server = new JsonParser().parse(response.toString()).getAsJsonObject();
+				if (server.entrySet() != null && server.entrySet().size() > 0 && !server.entrySet().isEmpty()) {
+					server.entrySet().forEach(entry -> {
+						if (entry != null && entry.getKey() != null && entry.getValue() != null && !entry.getValue().isJsonNull() && !entry.getValue().getAsString().isEmpty()) {
+							onlineMenaceUsers.put(entry.getKey(), entry.getValue().getAsString());
+						}
+					});
 				}
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

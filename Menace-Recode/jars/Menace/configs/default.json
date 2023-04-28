@@ -213,10 +213,13 @@
       "BlocksMC": false,
       "Eagle": false,
       "Eagle Delay": 100.0,
+      "ClampPitch": false,
+      "NotOnBlock": false,
       "NoSwing": false,
       "Boost": false,
       "Jump": false,
       "LowHop": false,
+      "Mode": "Verus",
       "Timer": 1.0,
       "Render": true,
       "Visible": true

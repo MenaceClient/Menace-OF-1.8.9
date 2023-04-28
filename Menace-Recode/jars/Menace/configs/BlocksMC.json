@@ -14,32 +14,42 @@
       "Visible": true
     }
   },
+  "BackTracker": {
+    "Toggled": false,
+    "Settings": {
+      "Delay": 700.0,
+      "Max Packets": 100.0,
+      "Only Target": true,
+      "Visible": true
+    }
+  },
   "Criticals": {
     "Toggled": false,
     "Settings": {
-      "Mode": "MiniJump",
+      "Mode": "NCP",
       "Visible": true
     }
   },
   "KillAura": {
     "Toggled": false,
     "Settings": {
-      "Reach": 3.8000000000000003,
+      "Reach": 3.8,
       "MinCPS": 16.0,
       "MaxCPS": 18.0,
       "TicksExisted": 0.0,
       "FOV": 360.0,
       "Filter": "Distance",
       "AttackPoint": "Cock",
-      "AutoBlock": "Pre",
+      "AutoBlock": "Fake",
       "KeepSprint": true,
       "NoSwing": false,
       "ThroughWalls": false,
       "InInventory": false,
       "RayCast": true,
+      "Cancel Click": true,
       "AutoDisable": true,
       "Players": true,
-      "MenaceUsers": false,
+      "MenaceUsers": true,
       "Hostiles": true,
       "Passives": true,
       "Invisibles": false,
@@ -73,11 +83,11 @@
     "Toggled": false,
     "Settings": {
       "Mode": "Other",
-      "VanillaMode": "FakeGround",
-      "VerusMode": "Bob",
+      "VanillaMode": "Damage",
+      "VerusMode": "Jump",
       "OtherMode": "NCPSlime",
       "DmgMode": "Verus",
-      "Speed": 5.0,
+      "Speed": 3.0,
       "Viewbob": 0.1,
       "Visible": true
     }
@@ -91,9 +101,9 @@
   "Speed": {
     "Toggled": false,
     "Settings": {
-      "Mode": "BlocksMC",
+      "Mode": "NCPLowHop",
       "Speed": 7.0,
-      "AutoDisable": false,
+      "AutoDisable": true,
       "Visible": true
     }
   },
@@ -105,9 +115,9 @@
     }
   },
   "Step": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
-      "Mode": "NCP",
+      "Mode": "Spider",
       "Height": 1.0,
       "Visible": true
     }
@@ -121,7 +131,7 @@
   "TargetStrafe": {
     "Toggled": false,
     "Settings": {
-      "Range": 3.8000000000000003,
+      "Range": 2.0,
       "Visible": true
     }
   },
@@ -138,7 +148,7 @@
     "Toggled": false,
     "Settings": {
       "FakePlayer": true,
-      "Pulse": true,
+      "Pulse": false,
       "PulseAmount": 20.0,
       "Visible": true
     }
@@ -161,7 +171,7 @@
     }
   },
   "InvMove": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Sprint": false,
       "Rotate": false,
@@ -179,7 +189,7 @@
   "NoFall": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Experimental",
+      "Mode": "Verus",
       "Visible": true
     }
   },
@@ -205,7 +215,7 @@
       "Tower Mode": "BlocksMC",
       "Tower Speed": 50.0,
       "Tower Derp": false,
-      "Sprint": true,
+      "Sprint": false,
       "KeepRotations": true,
       "SilentSwap": false,
       "KeepY": false,
@@ -213,10 +223,13 @@
       "BlocksMC": true,
       "Eagle": false,
       "Eagle Delay": 100.0,
+      "ClampPitch": false,
+      "NotOnBlock": false,
       "NoSwing": false,
       "Boost": false,
       "Jump": false,
       "LowHop": false,
+      "Mode": "NCP",
       "Timer": 1.0,
       "Render": true,
       "Visible": true
@@ -270,9 +283,9 @@
   "Animations": {
     "Toggled": true,
     "Settings": {
-      "Blocking Mode": "Push",
+      "Blocking Mode": "Exhibition",
       "TranslateX": 0.15000000000000002,
-      "TranslateY": 0.2,
+      "TranslateY": 0.1,
       "TranslateZ": 0.0,
       "ItemPosX": 0.5,
       "ItemPosY": -0.4,
@@ -386,8 +399,8 @@
     "Toggled": false,
     "Settings": {
       "Mode": "PingSpoof",
-      "Delay": 230.0,
-      "MaxPackets": 302.0,
+      "Delay": 366.0,
+      "MaxPackets": 352.0,
       "Transactions": true,
       "Silent": false,
       "Visible": true
@@ -424,7 +437,7 @@
   "Spoofer": {
     "Toggled": true,
     "Settings": {
-      "Mode": "Null",
+      "Mode": "Cancel",
       "Visible": true
     }
   },

@@ -2,10 +2,7 @@ package dev.menace.module.modules.combat;
 
 import dev.menace.Menace;
 import dev.menace.event.EventTarget;
-import dev.menace.event.events.EventPostMotion;
-import dev.menace.event.events.EventPreMotion;
-import dev.menace.event.events.EventReceivePacket;
-import dev.menace.event.events.EventWorldChange;
+import dev.menace.event.events.*;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.module.DontSaveState;
@@ -61,6 +58,7 @@ public class KillAuraModule extends BaseModule {
     ToggleSetting throughwalls;
     ToggleSetting ininv;
     ToggleSetting raycast;
+    ToggleSetting cancelClick;
     ToggleSetting autoDisable;
     ToggleSetting players;
     ToggleSetting menaceUsers;
@@ -94,13 +92,14 @@ public class KillAuraModule extends BaseModule {
         ticksExisted = new SliderSetting("TicksExisted", true, 10, 0 , 100, true);
         fov = new SliderSetting("FOV", true, 360, 0, 360, false);
         filter = new ListSetting("Filter", true, "Health", new String[] {"Health", "Distance", "Angle", "TicksExisted"});
-        attackPoint = new ListSetting("AttackPoint", true, "Head", new String[] {"Head", "Body", "Cock", "Feet", "Closest"});
+        attackPoint = new ListSetting("AttackPoint", true, "Head", new String[] {"Head", "Eyes", "Body", "Cock", "Feet", "Closest"});
         autoblock = new ListSetting("AutoBlock", true, "None", new String[] {"None", "Fake", "Pre", "Post", "NoInteract", "Test"});
         keepSprint = new ToggleSetting("KeepSprint", true, true);
         noswing = new ToggleSetting("NoSwing", true, false);
         throughwalls = new ToggleSetting("ThroughWalls", true, false);
         ininv = new ToggleSetting("InInventory", true, false);
         raycast = new ToggleSetting("RayCast", true, false);
+        cancelClick = new ToggleSetting("Cancel Click", true, false);
         autoDisable = new ToggleSetting("AutoDisable", true, true);
         players = new ToggleSetting("Players", true, true);
         menaceUsers = new ToggleSetting("MenaceUsers", true, false);
@@ -120,6 +119,7 @@ public class KillAuraModule extends BaseModule {
         this.rSetting(throughwalls);
         this.rSetting(ininv);
         this.rSetting(raycast);
+        this.rSetting(cancelClick);
         this.rSetting(autoDisable);
         this.rSetting(players);
         this.rSetting(menaceUsers);
@@ -210,6 +210,9 @@ public class KillAuraModule extends BaseModule {
                 case "Head":
                     attackPos = PlayerUtils.getHead(target.getEntityBoundingBox());
                     break;
+                case "Eyes":
+                    attackPos = PlayerUtils.getEyes(target);
+                    break;
                 case "Body":
                     attackPos = PlayerUtils.getCenter(target.getEntityBoundingBox());
                     break;
@@ -265,6 +268,13 @@ public class KillAuraModule extends BaseModule {
         }
     }
 
+    @EventTarget
+    public void onMouseClick(EventMouse event) {
+        if (event.getButton() == 1 && cancelClick.getValue()) {
+            event.setCancelled(true);
+        }
+    }
+
     public List<EntityLivingBase> filter(List<EntityLivingBase> targets) {
         targets = targets.stream().filter(entity -> entity != mc.thePlayer).collect(Collectors.toList());
         targets = targets.stream().filter(entity -> !entity.isDead && entity.getHealth() > 0).collect(Collectors.toList());
@@ -278,6 +288,8 @@ public class KillAuraModule extends BaseModule {
         targets = targets.stream().filter(entity -> !(entity instanceof EntityMob) || hostiles.getValue()).collect(Collectors.toList());
         targets = targets.stream().filter(entity -> !(entity instanceof EntityAnimal) || passives.getValue()).collect(Collectors.toList());
         targets = targets.stream().filter(entity -> !Menace.instance.onlineMenaceUsers.containsValue(entity.getName()) || menaceUsers.getValue()).collect(Collectors.toList());
+        targets = targets.stream().filter(entity -> entity != Menace.instance.moduleManager.blinkModule.fp).collect(Collectors.toList());
+        targets = targets.stream().filter(entity -> !(entity instanceof EntityPlayer && Menace.instance.moduleManager.backTrackerModule.fakePos.contains(entity))).collect(Collectors.toList());
         targets = targets.stream().filter(entity -> !isBot(entity)).collect(Collectors.toList());
         return targets;
     }
@@ -288,6 +300,7 @@ public class KillAuraModule extends BaseModule {
 
     private void block() {
         if (mc.thePlayer.getHeldItem() == null || !(mc.thePlayer.getHeldItem().getItem() instanceof ItemSword)) return;
+        mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.getHeldItem());
         mc.gameSettings.keyBindDrop.pressed = true;
         blocking = true;
     }

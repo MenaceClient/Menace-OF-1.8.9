@@ -7,9 +7,12 @@ import com.google.common.collect.Lists;
 import dev.menace.Menace;
 import dev.menace.event.events.EventRender2D;
 
+import java.awt.*;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -341,7 +344,7 @@ public class GuiIngame extends Gui
 
         if (scoreobjective1 != null)
         {
-            this.renderScoreboard(scoreobjective1, scaledresolution);
+            this.renderScoreboard(scoreobjective1);
         }
 
         GlStateManager.enableBlend();
@@ -557,17 +560,11 @@ public class GuiIngame extends Gui
         }
     }
 
-    private void renderScoreboard(ScoreObjective objective, ScaledResolution scaledRes)
+    private void renderScoreboard(ScoreObjective objective)
     {
         Scoreboard scoreboard = objective.getScoreboard();
         Collection<Score> collection = scoreboard.getSortedScores(objective);
-        List<Score> list = Lists.newArrayList(Iterables.filter(collection, new Predicate<Score>()
-        {
-            public boolean apply(Score p_apply_1_)
-            {
-                return p_apply_1_.getPlayerName() != null && !p_apply_1_.getPlayerName().startsWith("#");
-            }
-        }));
+        List<Score> list = collection.stream().filter(p_apply_1_ -> p_apply_1_.getPlayerName() != null && !p_apply_1_.getPlayerName().startsWith("#")).collect(Collectors.toList());
 
         if (list.size() > 15)
         {
@@ -578,20 +575,27 @@ public class GuiIngame extends Gui
             collection = list;
         }
 
-        int i = this.getFontRenderer().getStringWidth(objective.getDisplayName());
+        int i = Menace.instance.hudManager.scoreboardElement.getStringWidth(objective.getDisplayName());
 
         for (Score score : collection)
         {
             ScorePlayerTeam scoreplayerteam = scoreboard.getPlayersTeam(score.getPlayerName());
             String s = ScorePlayerTeam.formatPlayerName(scoreplayerteam, score.getPlayerName()) + ": " + EnumChatFormatting.RED + score.getScorePoints();
-            i = Math.max(i, this.getFontRenderer().getStringWidth(s));
+            i = Math.max(i, Menace.instance.hudManager.scoreboardElement.getStringWidth(s));
         }
 
-        int i1 = collection.size() * this.getFontRenderer().FONT_HEIGHT;
-        int j1 = scaledRes.getScaledHeight() / 2 + i1 / 3;
-        int k1 = 3;
-        int l1 = scaledRes.getScaledWidth() - i - k1;
-        int j = 0;
+        int fontHeight = Menace.instance.hudManager.scoreboardElement.getFontHeight();
+        int i1 = collection.size() * fontHeight;
+        int j1 = Menace.instance.hudManager.scoreboardElement.getAbsoluteY() + i1;
+        int l1 = Menace.instance.hudManager.scoreboardElement.getAbsoluteX();
+        int j = -1;
+
+        //Set the element width & height to the width & height of the scoreboard
+        Menace.instance.hudManager.scoreboardElement.setWidth(i + 4);
+        Menace.instance.hudManager.scoreboardElement.setHeight(i1 + 4);
+
+        //Draw only one rectangle that covers the whole scoreboard because the other rectangles overlap the text
+        drawRect(l1, Menace.instance.hudManager.scoreboardElement.getAbsoluteY() - 1, l1 + i + 4, j1 + fontHeight + 1, 0x60000000);
 
         for (Score score1 : collection)
         {
@@ -612,18 +616,17 @@ public class GuiIngame extends Gui
 
 
             String s2 = EnumChatFormatting.RED + "" + score1.getScorePoints();
-            int k = j1 - j * this.getFontRenderer().FONT_HEIGHT;
-            int l = scaledRes.getScaledWidth() - k1 + 2;
-            drawRect(l1 - 2, k, l, k + this.getFontRenderer().FONT_HEIGHT, 1342177280);
-            this.getFontRenderer().drawString(s1[0], l1, k, 553648127);
-            this.getFontRenderer().drawString(s2, l - this.getFontRenderer().getStringWidth(s2), k, 553648127);
+            int k = j1 - j * fontHeight;
+            int l = Menace.instance.hudManager.scoreboardElement.getAbsoluteX() + i;
+            //drawRect(l1, k, l + 2, k + fontHeight, 1342177280);
+            Menace.instance.hudManager.scoreboardElement.drawString(s1[0], l1 + 2, k, -1);
+            Menace.instance.hudManager.scoreboardElement.drawString(s2, l - Menace.instance.hudManager.scoreboardElement.getStringWidth(s2) + 2, k, Color.red.getRGB());
 
-            if (j == collection.size())
+            if (j == collection.size() - 1)
             {
                 String s3 = objective.getDisplayName();
-                drawRect(l1 - 2, k - this.getFontRenderer().FONT_HEIGHT - 1, l, k - 1, 1610612736);
-                drawRect(l1 - 2, k - 1, l, k, 1342177280);
-                this.getFontRenderer().drawString(s3, l1 + i / 2 - this.getFontRenderer().getStringWidth(s3) / 2, k - this.getFontRenderer().FONT_HEIGHT, 553648127);
+                //drawRect(l1, k - 1 - fontHeight, l + 2, k, 1610612736);
+                Menace.instance.hudManager.scoreboardElement.drawString(s3, l1 + i - Menace.instance.hudManager.scoreboardElement.getStringWidth(s3) + 2, k - fontHeight, -1);
             }
         }
     }

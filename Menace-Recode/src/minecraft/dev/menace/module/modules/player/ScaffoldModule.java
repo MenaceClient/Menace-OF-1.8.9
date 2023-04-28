@@ -24,6 +24,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
 import net.minecraft.network.play.client.C09PacketHeldItemChange;
 import net.minecraft.network.play.client.C0APacketAnimation;
+import net.minecraft.potion.Potion;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
@@ -59,10 +60,13 @@ public class ScaffoldModule extends BaseModule {
     ToggleSetting blocksMC;
     public ToggleSetting eagle;
     SliderSetting eagleDelay;
+    ToggleSetting clampPitch;
+    ToggleSetting notOnBlock;
     ToggleSetting noSwing;
     public ToggleSetting boost;
     public ToggleSetting jump;
     ToggleSetting lowhop;
+    ListSetting lowhopMode;
     SliderSetting timer;
     ToggleSetting render;
 
@@ -126,6 +130,20 @@ public class ScaffoldModule extends BaseModule {
                 super.constantCheck();
             }
         };
+        clampPitch = new ToggleSetting("ClampPitch", true, false) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(bypass.getValue());
+                super.constantCheck();
+            }
+        };
+        notOnBlock = new ToggleSetting("NotOnBlock", true, false) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(bypass.getValue());
+                super.constantCheck();
+            }
+        };
         keepY = new ToggleSetting("KeepY", true, false);
         noSwing = new ToggleSetting("NoSwing", true, false);
         boost = new ToggleSetting("Boost", true, false);
@@ -141,6 +159,15 @@ public class ScaffoldModule extends BaseModule {
             public void constantCheck() {
                 this.setVisible(Menace.instance.moduleManager.scaffoldModule.boost.getValue()
                     && Menace.instance.moduleManager.scaffoldModule.jump.getValue());
+                super.constantCheck();
+            }
+        };
+        lowhopMode = new ListSetting("Mode", true, "Verus", new String[]{"Verus", "NCP"}) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(Menace.instance.moduleManager.scaffoldModule.boost.getValue()
+                        && Menace.instance.moduleManager.scaffoldModule.jump.getValue()
+                        && Menace.instance.moduleManager.scaffoldModule.lowhop.getValue());
                 super.constantCheck();
             }
         };
@@ -165,10 +192,13 @@ public class ScaffoldModule extends BaseModule {
         this.rSetting(blocksMC);
         this.rSetting(eagle);
         this.rSetting(eagleDelay);
+        this.rSetting(clampPitch);
+        this.rSetting(notOnBlock);
         this.rSetting(noSwing);
         this.rSetting(boost);
         this.rSetting(jump);
         this.rSetting(lowhop);
+        this.rSetting(lowhopMode);
         this.rSetting(timer);
         this.rSetting(render);
         super.setup();
@@ -199,14 +229,6 @@ public class ScaffoldModule extends BaseModule {
     }
 
     @EventTarget
-    public void onUpdate(EventUpdate event) {
-        mc.timer.timerSpeed = timer.getValueF();
-        if (jump.getValue() && !lowhop.getValue() && mc.thePlayer.onGround && MovementUtils.isMoving()) {
-            mc.thePlayer.jump();
-        }
-    }
-
-    @EventTarget
     public void onPre(EventPreMotion event) {
         if (mc.thePlayer.onGround && !MovementUtils.isMoving() && startY != mc.thePlayer.posY - 1) startY = mc.thePlayer.posY - 1;
         mc.thePlayer.setSprinting(sprint.getValue());
@@ -216,13 +238,19 @@ public class ScaffoldModule extends BaseModule {
             derpYaw += 100f;
         } else if (rotation[0] != -69696969 && keepRotations.getValue()) {
 
-            double randomYaw = 0;
             if (blocksMC.getValue()) {
-               randomYaw = Math.random() * 20 - 10;
+                double randomYaw = Math.random() * 20 - 10;
+                event.setYaw((float) randomYaw + rotation[0]);
+                event.setPitch(MathUtils.clamp((float) (randomYaw + rotation[1]), -90, 90));
+            } else {
+                if (clampPitch.getValue()) {
+                    event.setYaw(rotation[0]);
+                    event.setPitch(MathUtils.clamp(rotation[1], -90, 90));
+                } else {
+                    event.setYaw(rotation[0]);
+                    event.setPitch(rotation[1]);
+                }
             }
-
-            event.setYaw((float) randomYaw + rotation[0]);
-            event.setPitch(MathUtils.clamp((float) (randomYaw + rotation[1]), -90, 90));
         }
 
         BlockPos belowPlayer = new BlockPos(mc.thePlayer).down();
@@ -244,6 +272,28 @@ public class ScaffoldModule extends BaseModule {
                     return;
                 }
             }
+        }
+
+        //Boost
+        mc.timer.timerSpeed = timer.getValueF();
+        if (jump.getValue() && !lowhop.getValue() && mc.thePlayer.onGround && MovementUtils.isMoving()) {
+            mc.thePlayer.jump();
+        } else if (jump.getValue() && lowhop.getValue() && lowhopMode.getValue().equalsIgnoreCase("NCP") && MovementUtils.shouldMove()) {
+            if (mc.thePlayer.onGround) {
+                mc.thePlayer.jump();
+                if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
+                    if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier() == 0) {
+                        MovementUtils.strafe(0.5893f);
+                    } else if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier() == 1) {
+                        MovementUtils.strafe(0.6893f);
+                    }
+                } else {
+                    MovementUtils.strafe(0.485f);
+                }
+            } else if (mc.thePlayer.motionY < 0.16 && mc.thePlayer.motionY > 0.0) {
+                mc.thePlayer.motionY = -0.1;
+            }
+            MovementUtils.strafe();
         }
 
         if (mc.gameSettings.keyBindJump.isKeyDown() && tower.getValue() && ((!keepY.getValue() && towerMove.getValue()) || !MovementUtils.isMoving()) && towerMode.getValue().equalsIgnoreCase("Normal")) {
@@ -326,7 +376,8 @@ public class ScaffoldModule extends BaseModule {
             final EnumFacing side2 = side.getOpposite();
             if (BlockUtils.getBlock(neighbor).canCollideCheck(mc.theWorld.getBlockState(neighbor), false)) {
                 final Vec3 hitVec = new Vec3(neighbor).addVector(0.5, 0.5, 0.5).add(new Vec3(side2.getDirectionVec()).scale(0.5));
-                if (eyesPos.squareDistanceTo(hitVec) <= 36.0) {
+                //Thanks hentajj!!!
+                if (eyesPos.squareDistanceTo(hitVec) <= 36.0 && (mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, mc.thePlayer.getEntityBoundingBox().offset(0, -0.0001, 0)).isEmpty() || !notOnBlock.getValue())) {
 
                     if (keepRotations.getValue()) {
                         rotation = PlayerUtils.getRotsNew(neighbor, side2);
@@ -361,7 +412,7 @@ public class ScaffoldModule extends BaseModule {
 
     @EventTarget
     public void onMove(EventMove event) {
-        if (jump.getValue() && lowhop.getValue() && mc.thePlayer.onGround && MovementUtils.isMoving()) {
+        if (jump.getValue() && lowhop.getValue() && lowhopMode.getValue().equalsIgnoreCase("Verus") && mc.thePlayer.onGround && MovementUtils.isMoving()) {
             mc.thePlayer.jump();
             mc.thePlayer.motionY = 0;
             event.setY(0.3);

@@ -2,6 +2,7 @@ package net.minecraft.client.gui;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.InetAddress;
 import java.net.URL;
 
 import dev.menace.Menace;
@@ -61,16 +62,6 @@ public class GuiIngameMenu extends GuiScreen
                 button.enabled = false;
                 this.mc.theWorld.sendQuittingDisconnectingPacket();
                 this.mc.loadWorld((WorldClient)null);
-
-                try {
-                    final URL url = new URL("https://menaceapi.cf/updateUser/" + ServerUtils.getLastServerIp() + "/" + Menace.instance.user.getUsername() + "/" + mc.session.getUsername() + "/true");
-                    HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
-                    uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
-                    uc.setRequestMethod("GET");
-                    int responseCode = uc.getResponseCode();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
 
                 if (flag)
                 {

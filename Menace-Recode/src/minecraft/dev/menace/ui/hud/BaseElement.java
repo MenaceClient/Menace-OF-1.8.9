@@ -108,6 +108,14 @@ public abstract class BaseElement {
 			mc.fontRendererObj.drawString(string, x, y, color);
 		}
 	}
+
+	public void drawCenteredString(String string, float x, float y, int color) {
+		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {
+			fr.drawCenteredString(string, x, y, color);
+		} else {
+			mc.fontRendererObj.drawCenteredString(string, x, y, color);
+		}
+	}
 	
 	protected int getStringWidth(String string) {
 		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {

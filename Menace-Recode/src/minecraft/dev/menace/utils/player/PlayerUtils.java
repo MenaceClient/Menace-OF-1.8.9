@@ -160,6 +160,10 @@ public class PlayerUtils {
         return new Vec3(bb.minX + (bb.maxX - bb.minX) * 0.5, bb.maxY, bb.minZ + (bb.maxZ - bb.minZ) * 0.5);
     }
 
+    public static Vec3 getEyes(Entity entity) {
+        return new Vec3(entity.posX, entity.posY + entity.getEyeHeight(), entity.posZ);
+    }
+
     public static Vec3 getCenter(final AxisAlignedBB bb) {
         return new Vec3(bb.minX + (bb.maxX - bb.minX) * 0.5, bb.minY + (bb.maxY - bb.minY) * 0.5, bb.minZ + (bb.maxZ - bb.minZ) * 0.5);
     }

@@ -19,6 +19,7 @@ public class HUDManager {
 	public NotificationElement notificationElement = new NotificationElement();
 	public PingElement pingElement = new PingElement();
 	public PosElement posElement = new PosElement();
+	public ScoreboardElement scoreboardElement = new ScoreboardElement();
 	public TabGuiElement tabGuiElement = new TabGuiElement();
 	public TargetHudElement targetHudElement = new TargetHudElement();
 	public WatermarkElement watermarkElement = new WatermarkElement();

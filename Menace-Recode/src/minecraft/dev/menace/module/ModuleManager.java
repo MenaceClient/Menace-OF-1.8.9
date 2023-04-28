@@ -23,6 +23,7 @@ public class ModuleManager {
 	//COMBAT
 	public AntiBotModule antiBotModule = new AntiBotModule();
 	AutoPotModule autoPotModule = new AutoPotModule();
+	public BackTrackerModule backTrackerModule = new BackTrackerModule();
 	CriticalsModule criticalsModule = new CriticalsModule();
 	public KillAuraModule killAuraModule = new KillAuraModule();
 	public TPAuraModule tpAuraModule = new TPAuraModule();
@@ -72,7 +73,7 @@ public class ModuleManager {
 	//MISC
 	AutoLoginModule autoLoginModule = new AutoLoginModule();
 	public AutoPlayModule autoPlayModule = new AutoPlayModule();
-	DevModule devModule = new DevModule();
+	public DevModule devModule = new DevModule();
 	public DisablerModule disablerModule = new DisablerModule();
 	ExitFlagModule exitFlagModule = new ExitFlagModule();
 	public KillFXModule killFXModule = new KillFXModule();

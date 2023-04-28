@@ -2,7 +2,6 @@ package dev.menace.utils.irc;
 
 import dev.menace.Menace;
 import dev.menace.utils.misc.ChatUtils;
-import net.minecraft.client.Minecraft;
 import org.jibble.pircbot.PircBot;
 
 public class IRCUtils extends PircBot
@@ -26,8 +25,7 @@ public class IRCUtils extends PircBot
 
     @Override
     protected void onQuit(String sourceNick, String sourceLogin, String sourceHostname, String reason) {
-        ChatUtils.message("You have been disconnected from the IRC server.");
+        //ChatUtils.message("You have been disconnected from the IRC server.");
         super.onQuit(sourceNick, sourceLogin, sourceHostname, reason);
     }
-
 }

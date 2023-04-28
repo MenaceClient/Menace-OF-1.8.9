@@ -1,5 +1,6 @@
 package dev.menace.utils.render.font;
 
+import dev.menace.utils.misc.ChatUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.MathHelper;

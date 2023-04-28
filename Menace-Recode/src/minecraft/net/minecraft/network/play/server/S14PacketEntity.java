@@ -61,27 +61,27 @@ public class S14PacketEntity implements Packet<INetHandlerPlayClient>
         return worldIn.getEntityByID(this.entityId);
     }
 
-    public byte func_149062_c()
+    public byte getPosX()
     {
         return this.posX;
     }
 
-    public byte func_149061_d()
+    public byte getPosY()
     {
         return this.posY;
     }
 
-    public byte func_149064_e()
+    public byte getPosZ()
     {
         return this.posZ;
     }
 
-    public byte func_149066_f()
+    public byte getYaw()
     {
         return this.yaw;
     }
 
-    public byte func_149063_g()
+    public byte getPitch()
     {
         return this.pitch;
     }

@@ -108,10 +108,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.Proxy;
-import java.net.SocketAddress;
-import java.net.URL;
+import java.net.*;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.text.DecimalFormat;
@@ -850,7 +847,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 		try {
 			Menace.instance.stopClient();
 			try {
-				final URL url = new URL("https://menaceapi.cf/updateUser/" + ServerUtils.getLastServerIp() + "/" + Menace.instance.user.getUsername() + "/" + this.session.getUsername() + "/true");
+				final URL url = new URL("https://menaceapi.cf/updateUser/" + ServerUtils.getLastServerIp().split(":")[0]+ "/" + Menace.instance.user.getUsername() + "/" + this.session.getUsername() + "/true");
 				HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
 				uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
 				uc.setRequestMethod("GET");
@@ -1251,6 +1248,10 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 		if (this.leftClickCounter <= 0) {
 			EventMouse eventMouse = new EventMouse(1);
 			eventMouse.call();
+
+			if (eventMouse.isCancelled()) {
+				return;
+			}
 
 			if (objectMouseOver != null && this.objectMouseOver.typeOfHit == MovingObjectPosition.MovingObjectType.ENTITY) {
 				EventAttack eA = new EventAttack(this.objectMouseOver.entityHit, true);
