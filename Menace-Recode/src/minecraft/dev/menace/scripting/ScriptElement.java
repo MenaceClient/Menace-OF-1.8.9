@@ -1,6 +1,6 @@
 package dev.menace.scripting;
 
-import dev.menace.scripting.mappings.ElementMap;
+import dev.menace.scripting.js.mappings.ElementMap;
 import dev.menace.ui.hud.BaseElement;
 
 public class ScriptElement extends BaseElement {

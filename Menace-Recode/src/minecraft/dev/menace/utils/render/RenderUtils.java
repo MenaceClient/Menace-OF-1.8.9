@@ -9,6 +9,8 @@ import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
 
+import dev.menace.scripting.js.JSMapping;
+import dev.menace.scripting.js.MappedName;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.*;
@@ -21,6 +23,7 @@ import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 
+@JSMapping
 public class RenderUtils {
 
 	private static final Map<Integer, Boolean> glCapMap = new HashMap<>();
@@ -196,26 +199,21 @@ public class RenderUtils {
 		tessellator.draw();
 	}
 
+	@MappedName(86)
 	public static void drawRect(int left, int top, int right, int bottom, int color) {
-		// default
 		GL11.glPushMatrix();
 		Gui.drawRect(left, top, right, bottom, color);
 		GL11.glPopMatrix();
-
-		// replacement
-		//		LWJGLUtil.drawRect(left, top, right - left, bottom - top, color);
 	}
 
+	@MappedName(86)
 	public static void drawRect(double left, double top, double right, double bottom, int color) {
-		// default
 		GL11.glPushMatrix();
 		Gui.drawRect(left, top, right, bottom, color);
 		GL11.glPopMatrix();
-
-		// replacement
-		//		LWJGLUtil.drawRect(left, top, right - left, bottom - top, color);
 	}
 
+	@MappedName(87)
 	public static void drawHollowRect(int left, int top, int right, int bottom, int width, int color) {
 		//Draws a hollow rectangle with a specified width.
 		drawRect(left, top, right, top + width, color);

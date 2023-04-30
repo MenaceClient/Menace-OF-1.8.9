@@ -7,18 +7,17 @@ import net.minecraft.network.Packet;
 public class PacketUtils {
 
 	private static final Minecraft MC = Minecraft.getMinecraft();
-	private static final NetworkManager netManager = MC.getNetHandler().getNetworkManager();
 
 	public static void sendPacket(Packet packetIn) {
-		netManager.sendPacket(packetIn);
+		MC.getNetHandler().getNetworkManager().sendPacket(packetIn);
 	}
 
 	public static void sendPacketNoEvent(Packet packetIn) {
-		netManager.sendPacketNoEvent(packetIn);
+		MC.getNetHandler().getNetworkManager().sendPacketNoEvent(packetIn);
 	}
 
 	public static void sendPacketNoEventDelayed(Packet packetIn, long delay) {
-		netManager.sendPacketNoEventDelayed(packetIn, delay);
+		MC.getNetHandler().getNetworkManager().sendPacketNoEventDelayed(packetIn, delay);
 	}
 	
 	public static void addToSendQueue(Packet packetIn) {

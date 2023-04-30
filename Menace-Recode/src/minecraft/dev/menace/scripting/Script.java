@@ -5,20 +5,22 @@ import dev.menace.event.Event;
 import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
-import dev.menace.scripting.mappings.*;
+import dev.menace.scripting.js.JSMapping;
+import dev.menace.scripting.js.JSRemapper;
+import dev.menace.scripting.js.mappings.*;
 import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.player.MovementUtils;
-import dev.menace.utils.player.PacketUtils;
 import dev.menace.utils.render.RenderUtils;
+import dev.menace.utils.security.StringGrabber;
 import jdk.internal.dynalink.beans.StaticClass;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
-import net.minecraft.client.Minecraft;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -40,6 +42,8 @@ public class Script {
 
         script = script.replaceAll("import\\s.*;", "");
 
+        //Remap Script
+        script = JSRemapper.remap(script);
 
         scriptEngine.eval(script);
 
@@ -50,21 +54,24 @@ public class Script {
         scriptEngine.put("Script", StaticClass.forClass(ScriptMap.class));
         scriptEngine.put("Module", StaticClass.forClass(ModuleMap.class));
         scriptEngine.put("HudElement", StaticClass.forClass(ElementMap.class));
-        scriptEngine.put("SliderSetting", StaticClass.forClass(SliderSettingMap.class));
-        scriptEngine.put("BooleanSetting", StaticClass.forClass(ToggleSettingMap.class));
-        scriptEngine.put("ListSetting", StaticClass.forClass(ListSettingMap.class));
+        scriptEngine.put("SliderSetting", StaticClass.forClass(SliderSetting.class));
+        scriptEngine.put("BooleanSetting", StaticClass.forClass(ToggleSetting.class));
+        scriptEngine.put("ListSetting", StaticClass.forClass(ListSetting.class));
         scriptEngine.put("Player", StaticClass.forClass(PlayerMap.class));
         scriptEngine.put("EventList", StaticClass.forClass(EventListMap.class));
-        scriptEngine.put("ChatUtils", StaticClass.forClass(ChatUtilsMap.class));
-        //scriptEngine.put("MovementUtils", StaticClass.forClass(MovementUtils.class));
-        //scriptEngine.put("RenderUtils", StaticClass.forClass(RenderUtils.class));
+        scriptEngine.put("ChatUtils", StaticClass.forClass(ChatUtils.class));
+        scriptEngine.put("MovementUtils", StaticClass.forClass(MovementUtils.class));
+        scriptEngine.put("RenderUtils", StaticClass.forClass(RenderUtils.class));
         scriptEngine.put("PacketUtils", StaticClass.forClass(PacketUtilsMap.class));
         //scriptEngine.put("mc", StaticClass.forClass(Minecraft.getMinecraft().getClass()));
 
         //List all Event classes and bind them
         for (Class<? extends Event> clazz : Menace.instance.eventManager.getClasses()) {
-            scriptEngine.put(clazz.getSimpleName(), StaticClass.forClass(clazz));
+            scriptEngine.put(StringGrabber.getString(clazz.getAnnotation(JSMapping.class).value()), StaticClass.forClass(clazz));
         }
+
+        //Not obfed
+        scriptEngine.put("GL11", StaticClass.forClass(org.lwjgl.opengl.GL11.class));
 
     }
 

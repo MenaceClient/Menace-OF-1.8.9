@@ -6,7 +6,7 @@ import dev.menace.event.events.EventAll;
 import dev.menace.event.events.EventUpdate;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
-import dev.menace.scripting.mappings.ModuleMap;
+import dev.menace.scripting.js.mappings.ModuleMap;
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
 
 public class ScriptModule extends BaseModule {

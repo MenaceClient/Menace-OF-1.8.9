@@ -16,7 +16,6 @@ import dev.menace.ui.clickgui.lime.LimeClickGUI;
 public class ClickGuiModule extends BaseModule {
 
 	public CSGOGui csgoGui;
-	public LimeClickGUI limeGui;
 	public IntellijClickGui intellijClickGui;
 	
 	ListSetting mode;
@@ -28,7 +27,7 @@ public class ClickGuiModule extends BaseModule {
 	
 	@Override
 	public void setup() {
-		mode = new ListSetting("Mode", true, "Dropdown", new String[] {"Dropdown", "Panel", "Dashboard", "Menace"});
+		mode = new ListSetting("Mode", true, "Dropdown", new String[] {"Dropdown", "Panel", "Dashboard", "IntelliJ"});
 		sounds = new ToggleSetting("Sounds", true, false);
 		this.rSetting(mode);
 		//TODO: fix sound or remove this
@@ -39,23 +38,25 @@ public class ClickGuiModule extends BaseModule {
 	@Override
 	public void onEnable() {
 		super.onEnable();
-		if (mc.currentScreen instanceof CSGOGui || mc.currentScreen instanceof LimeClickGUI) {
+		if (mc.currentScreen instanceof CSGOGui
+				|| mc.currentScreen instanceof LimeClickGUI
+				|| mc.currentScreen instanceof VapeGui
+				|| mc.currentScreen instanceof IntellijClickGui) {
 			return;
 		}
 		
 		switch (mode.getValue()) {
 			case "Dropdown" :
-				limeGui.config.reload();
-				mc.displayGuiScreen(limeGui);
+				mc.displayGuiScreen(new LimeClickGUI());
 				break;
 			case "Panel" :
-				mc.displayGuiScreen(csgoGui);
+				mc.displayGuiScreen(new CSGOGui());
 				break;
 			case "Dashboard" :
 				mc.displayGuiScreen(new VapeGui());
 				break;
-			case "Menace" :
-				mc.displayGuiScreen(intellijClickGui);
+			case "IntelliJ" :
+				mc.displayGuiScreen(new IntellijClickGui());
 				break;
 		}
 	}

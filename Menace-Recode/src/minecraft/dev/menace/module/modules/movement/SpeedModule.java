@@ -116,6 +116,10 @@ public class SpeedModule extends BaseModule {
         } else if (mode.getValue().equalsIgnoreCase("NCPLowHop")) {
             //Method by Exterminate (Lowest lowhop ever, trust)
             if (!MovementUtils.shouldMove()) return;
+
+            //Anti Retard
+            mc.gameSettings.keyBindJump.pressed = false;
+
             if (mc.thePlayer.onGround) {
                 mc.timer.timerSpeed = 0.95f;
                 mc.thePlayer.jump();
@@ -166,6 +170,7 @@ public class SpeedModule extends BaseModule {
                 event.setY(0.1);
                 MovementUtils.strafe(0.5f);
             }
+            MovementUtils.strafe();
         }
     }
 

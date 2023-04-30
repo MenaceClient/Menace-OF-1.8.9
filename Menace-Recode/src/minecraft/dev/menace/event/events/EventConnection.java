@@ -1,7 +1,10 @@
 package dev.menace.event.events;
 
 import dev.menace.event.Event;
+import dev.menace.scripting.js.JSMapping;
+import dev.menace.scripting.js.MappedName;
 
+@JSMapping(110)
 public class EventConnection extends Event {
 
     private final State state;
@@ -11,6 +14,7 @@ public class EventConnection extends Event {
 
     }
 
+    @MappedName(58)
     public State getState() {
         return state;
     }

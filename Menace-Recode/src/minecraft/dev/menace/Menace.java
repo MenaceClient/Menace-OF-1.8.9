@@ -1,5 +1,6 @@
 package dev.menace;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import dev.menace.anticheat.HackerDetect;
@@ -20,6 +21,7 @@ import dev.menace.utils.irc.IRCUtils;
 import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.misc.DiscordRP;
 import dev.menace.utils.misc.ServerUtils;
+import dev.menace.utils.misc.TranslatorUtils;
 import dev.menace.utils.notifications.Notification;
 import dev.menace.utils.notifications.NotificationManager;
 import dev.menace.utils.render.font.Fonts;
@@ -43,6 +45,8 @@ import java.net.InetAddress;
 import java.net.URL;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Menace {
 
@@ -161,10 +165,6 @@ public class Menace {
 			moduleManager.saveKeys();
 		}
 
-		moduleManager.clickGuiModule.csgoGui = new CSGOGui();
-		moduleManager.clickGuiModule.limeGui = new LimeClickGUI();
-		moduleManager.clickGuiModule.intellijClickGui = new IntellijClickGui();
-
 		starting = false;
 	}
 
@@ -211,6 +211,12 @@ public class Menace {
 		this.moduleManager.autoPlayModule.onRecievePacket(event);
 		if (event.getPacket() instanceof S02PacketChat) {
 			String message = ((S02PacketChat) event.getPacket()).getChatComponent().getUnformattedText();
+
+			//Check for non-ascii
+			if (message != null && !message.matches("\\A\\p{ASCII}*\\z") && !message.contains("§")) {
+				ChatUtils.message("Translated: " + TranslatorUtils.translate(message));
+			}
+
 			if (message != null && message.contains(" killed by " + MC.thePlayer.getName())) {
 				this.hudManager.gameStatsElement.kills++;
 				this.moduleManager.killFXModule.onKill(message.split(" ")[0]);
@@ -287,7 +293,7 @@ public class Menace {
 
 	@EventTarget
 	public void onUpdate(EventUpdate event) {
-		if (updateTimer.hasTimePassed(5000)) {
+		if (updateTimer.hasTimePassed(7000)) {
 			new Thread() {
 				@Override
 				public void run() {
@@ -306,7 +312,7 @@ public class Menace {
 
 		try {
 			String ip = ServerUtils.getRemoteIp().toLowerCase().contains("49.12.67.79") || ServerUtils.getRemoteIp().toLowerCase().contains("blocksmc.com") ? "blocksmc.com" : ServerUtils.getRemoteIp().toLowerCase().split(":")[0];
-			final URL url = new URL("https://menaceapi.cf/getMenaceUsers/" + ip);
+			final URL url = new URL("https://menaceapi.cf/getMenaceUsers/" + ip + "/");
 			HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
 			uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
 			uc.setRequestMethod("GET");
@@ -323,11 +329,9 @@ public class Menace {
 
 				JsonObject server = new JsonParser().parse(response.toString()).getAsJsonObject();
 				if (server.entrySet() != null && server.entrySet().size() > 0 && !server.entrySet().isEmpty()) {
-					server.entrySet().forEach(entry -> {
-						if (entry != null && entry.getKey() != null && entry.getValue() != null && !entry.getValue().isJsonNull() && !entry.getValue().getAsString().isEmpty()) {
-							onlineMenaceUsers.put(entry.getKey(), entry.getValue().getAsString());
-						}
-					});
+					//WTF
+					Map<String, String> map = server.entrySet().stream().filter(entry -> entry != null && entry.getKey() != null && entry.getValue() != null && !entry.getValue().isJsonNull() && !entry.getValue().getAsString().isEmpty()).collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue().getAsString()));
+					onlineMenaceUsers = new LinkedHashMap<>(map);
 				}
 
 			}

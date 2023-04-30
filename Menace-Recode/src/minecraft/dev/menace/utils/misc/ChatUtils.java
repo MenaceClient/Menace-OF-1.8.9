@@ -2,13 +2,17 @@ package dev.menace.utils.misc;
 
 import com.google.gson.JsonObject;
 import dev.menace.Menace;
+import dev.menace.scripting.js.JSMapping;
+import dev.menace.scripting.js.MappedName;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.IChatComponent;
 
+@JSMapping(111)
 public class ChatUtils {
 
 	static Minecraft MC = Menace.instance.MC;
 
+	@MappedName(76)
 	public static void message(String message) {
 
 		if (MC.thePlayer == null) return;

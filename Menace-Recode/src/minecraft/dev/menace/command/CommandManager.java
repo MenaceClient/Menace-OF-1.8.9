@@ -10,6 +10,7 @@ import dev.menace.event.EventTarget;
 import dev.menace.event.events.EventChatOutput;
 import dev.menace.module.ModuleManager;
 import dev.menace.utils.misc.ChatUtils;
+import dev.menace.utils.misc.TranslatorUtils;
 import net.minecraft.crash.CrashReport;
 import org.jetbrains.annotations.NotNull;
 

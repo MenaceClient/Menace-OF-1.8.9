@@ -55,9 +55,9 @@ public class DamageFly extends FlightBase {
 		}
 
 		if (Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Basic")) {
-			mc.getNetHandler().addToSendQueue(new C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 3.25, mc.thePlayer.posZ, false));
-			mc.getNetHandler().addToSendQueue(new C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
-			mc.getNetHandler().addToSendQueue(new C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, true));
+			PacketUtils.sendPacketNoEvent(new C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 3.25, mc.thePlayer.posZ, false));
+			PacketUtils.sendPacketNoEvent(new C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
+			PacketUtils.sendPacketNoEvent(new C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, true));
 			mc.thePlayer.motionX = 0.0;
 			mc.thePlayer.motionY = 0.0;
 			mc.thePlayer.motionZ = 0.0;

@@ -60,7 +60,7 @@ public class NoSlowModule extends BaseModule {
     public void onRecievePacket(EventReceivePacket event) {
         if (mc.thePlayer == null || mc.theWorld == null) return;
         if((mode.getValue().equalsIgnoreCase("Hypixel") || mode.getValue().equalsIgnoreCase("NCP")) && mc.thePlayer.isBlocking() && MovementUtils.isMoving() && event.getPacket() instanceof S30PacketWindowItems) {
-            mc.thePlayer.sendQueue.addToSendQueue(new C08PacketPlayerBlockPlacement(mc.thePlayer.getHeldItem()));
+            PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(mc.thePlayer.getHeldItem()));
             event.setCancelled(true);
         }
     }

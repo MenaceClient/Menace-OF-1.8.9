@@ -1,7 +1,7 @@
 {
   "ArmourElement": {
     "X": 486,
-    "Y": 483,
+    "Y": 482,
     "Visible": true
   },
   "ArrayElement": {
@@ -30,8 +30,8 @@
     "Visible": true
   },
   "ScoreboardElement": {
-    "X": 865,
-    "Y": 216,
+    "X": 874,
+    "Y": 218,
     "Visible": true
   },
   "TabGuiElement": {

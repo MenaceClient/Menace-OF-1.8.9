@@ -1,7 +1,10 @@
 package dev.menace.event.events;
 
 import dev.menace.event.Event;
+import dev.menace.scripting.js.JSMapping;
+import dev.menace.scripting.js.MappedName;
 
+@JSMapping(98)
 public class EventMouse extends Event {
 
     private int button;
@@ -10,6 +13,7 @@ public class EventMouse extends Event {
         this.button = button;
     }
 
+    @MappedName(63)
     public int getButton() {
         return button;
     }

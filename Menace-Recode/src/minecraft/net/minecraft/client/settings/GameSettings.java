@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.google.gson.Gson;
+import dev.menace.Menace;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundCategory;
 import net.minecraft.client.gui.GuiNewChat;
@@ -608,6 +609,12 @@ public class GameSettings
             this.entityShadows = !this.entityShadows;
         }
 
+        if (settingsOption == Options.BORDERLESS_FULLSCREEN) {
+            Menace.instance.borderlessFullscreen = !Menace.instance.borderlessFullscreen;
+            this.difficulty.toggleFullscreen();
+            this.difficulty.toggleFullscreen();
+        }
+
         if (settingsOption == GameSettings.Options.enumFloat)
         {
             this.field_181151_V = !this.field_181151_V;
@@ -1151,6 +1158,11 @@ public class GameSettings
                                     this.setModelPartEnabled(enumplayermodelparts, astring[1].equals("true"));
                                 }
                             }
+
+                            if (astring[0].equals("borderless_fullscreen"))
+                            {
+                                Menace.instance.borderlessFullscreen = astring[1].equals("true");
+                            }
                         }
                         catch (Exception exception)
                         {
@@ -1294,6 +1306,8 @@ public class GameSettings
             {
                 printwriter.println("modelPart_" + enumplayermodelparts.getPartName() + ":" + this.mapSoundLevels.contains(enumplayermodelparts));
             }
+
+            printwriter.println("borderless_fullscreen:" + Menace.instance.borderlessFullscreen);
 
             printwriter.close();
         }
@@ -2012,6 +2026,8 @@ public class GameSettings
         {
             this.advancedItemTooltips = !this.advancedItemTooltips;
         }
+
+
     }
 
     @SuppressWarnings("unused")
@@ -3239,7 +3255,7 @@ public class GameSettings
         return -1;
     }
 
-    public static enum Options
+    public enum Options
     {
         INVERT_MOUSE("options.invertMouse", false, true),
         SENSITIVITY("options.sensitivity", true, false),
@@ -3347,7 +3363,10 @@ public class GameSettings
         CUSTOM_GUIS("of.options.CUSTOM_GUIS", false, false),
         RENDER_REGIONS("of.options.RENDER_REGIONS", false, false),
         SHOW_GL_ERRORS("of.options.SHOW_GL_ERRORS", false, false),
-        SMART_ANIMATIONS("of.options.SMART_ANIMATIONS", false, false);
+        SMART_ANIMATIONS("of.options.SMART_ANIMATIONS", false, false),
+
+        //Menace Borderless Fullscreen
+        BORDERLESS_FULLSCREEN("options.borderless_fullscreen", false, true);
 
         private final boolean enumBoolean;
         private final boolean enumString;

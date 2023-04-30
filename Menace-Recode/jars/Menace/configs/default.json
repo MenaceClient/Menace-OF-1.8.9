@@ -14,6 +14,15 @@
       "Visible": true
     }
   },
+  "BackTracker": {
+    "Toggled": false,
+    "Settings": {
+      "Delay": 1000.0,
+      "Max Packets": 100.0,
+      "Only Target": true,
+      "Visible": true
+    }
+  },
   "Criticals": {
     "Toggled": false,
     "Settings": {
@@ -37,6 +46,7 @@
       "ThroughWalls": false,
       "InInventory": false,
       "RayCast": true,
+      "Cancel Click": false,
       "AutoDisable": true,
       "Players": true,
       "MenaceUsers": true,
@@ -304,7 +314,7 @@
   "ClickGui": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Menace",
+      "Mode": "Dropdown",
       "Sounds": false,
       "Visible": true
     }

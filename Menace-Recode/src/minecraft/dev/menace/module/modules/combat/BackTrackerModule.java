@@ -9,7 +9,6 @@ import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
-import dev.menace.utils.player.PacketUtils;
 import dev.menace.utils.render.RenderUtils;
 import dev.menace.utils.timer.MSTimer;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
@@ -61,8 +60,10 @@ public class BackTrackerModule extends BaseModule {
         for (EntityPlayer player : fakePos) {
             mc.theWorld.removeEntity(player);
         }
+        while (!packets.isEmpty()) {
+            packets.poll().processPacket(mc.getNetHandler());
+        }
         fakePos.clear();
-        packets.clear();
         super.onDisable();
     }
 
@@ -70,7 +71,7 @@ public class BackTrackerModule extends BaseModule {
     public void onUpdate(EventUpdate event) {
         if (delayTimer.hasTimePassed(delay.getValueL())) {
             if (!packets.isEmpty()) {
-                PacketUtils.sendPacketNoEvent(packets.poll());
+                packets.poll().processPacket(mc.getNetHandler());
             }
             delayTimer.reset();
         }
@@ -86,7 +87,7 @@ public class BackTrackerModule extends BaseModule {
                         mc.theWorld.removeEntity(p);
                         fakePos.remove(p);
                         while (!packets.isEmpty()) {
-                            PacketUtils.sendPacketNoEvent(packets.poll());
+                            packets.poll().processPacket(mc.getNetHandler());
                         }
                     }
                 });
@@ -117,7 +118,7 @@ public class BackTrackerModule extends BaseModule {
 
             packets.add((S14PacketEntity) event.getPacket());
             if (packets.size() > maxPackets.getValue()) {
-                PacketUtils.sendPacketNoEvent(packets.poll());
+                Objects.requireNonNull(packets.poll()).processPacket(mc.getNetHandler());
             }
             event.cancel();
         }

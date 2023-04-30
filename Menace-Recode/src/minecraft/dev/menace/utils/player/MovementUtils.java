@@ -1,6 +1,8 @@
 package dev.menace.utils.player;
 
 import dev.menace.event.events.EventMove;
+import dev.menace.scripting.js.JSMapping;
+import dev.menace.scripting.js.MappedName;
 import net.minecraft.client.Minecraft;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.BlockPos;
@@ -9,14 +11,17 @@ import net.minecraft.util.Vec3;
 
 import java.util.ArrayList;
 
+@JSMapping
 public class MovementUtils {
 
 	private static final Minecraft mc = Minecraft.getMinecraft();
 
+    @MappedName(77)
 	public static boolean isMoving() {
 		return mc.thePlayer.motionX != 0 && mc.thePlayer.motionZ != 0;
 	}
 
+    @MappedName(78)
     public static boolean shouldMove() {
         return mc.gameSettings.keyBindForward.isKeyDown()
             || mc.gameSettings.keyBindBack.isKeyDown()
@@ -24,10 +29,12 @@ public class MovementUtils {
             || mc.gameSettings.keyBindLeft.isKeyDown();
     }
 
+    @MappedName(79)
 	public static float getSpeed() {
         return MathHelper.sqrt_double(mc.thePlayer.motionX * mc.thePlayer.motionX + mc.thePlayer.motionZ * mc.thePlayer.motionZ);
     }
 
+    @MappedName(80)
     public static double getBaseMoveSpeed() {
         double baseSpeed = 0.2873;
         if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
@@ -37,10 +44,12 @@ public class MovementUtils {
         return baseSpeed;
     }
 
+    @MappedName(81)
     public static void strafe() {
         strafe(getSpeed());
     }
 
+    @MappedName(81)
     public static void strafe(final float speed) {
         if (!isMoving()) return;
 
@@ -49,17 +58,20 @@ public class MovementUtils {
         mc.thePlayer.motionZ = Math.cos(yaw) * speed;
     }
 
+    @MappedName(82)
     public static void stop() {
         mc.thePlayer.motionX = 0;
         mc.thePlayer.motionY = 0;
         mc.thePlayer.motionZ = 0;
     }
 
+    @MappedName(83)
     public static void stopHoriz() {
         mc.thePlayer.motionX = 0;
         mc.thePlayer.motionZ = 0;
     }
 
+    @MappedName(84)
     public static void setSpeed(EventMove moveEvent, double moveSpeed, float pseudoYaw, double pseudoStrafe, double pseudoForward) {
         double forward = pseudoForward;
         double strafe = pseudoStrafe;
@@ -88,6 +100,7 @@ public class MovementUtils {
         }
     }
 
+    @MappedName(85)
     public static double getDirection() {
         float rotationYaw = mc.thePlayer.rotationYaw;
 

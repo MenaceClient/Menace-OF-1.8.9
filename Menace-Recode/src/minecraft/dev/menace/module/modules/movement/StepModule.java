@@ -28,14 +28,18 @@ public class StepModule extends BaseModule {
 	int ncpTicks = 0;
 	int stepAmt = 0;
 
+	//MotionStep
+	int motionStepState = 0;
+
 	public StepModule() {
 		super("Step", Category.MOVEMENT, 0);
 	}
 
 	@Override
 	public void setup() {
-		mode = new ListSetting("Mode", true, "Vanilla", new String[] {"Vanilla", "Verus", "OldNCP", "NCP", "Spider"});
-		height = new SliderSetting("Height", true, 1, 1, 10, true);
+		//matrix is just jumping then setting motionY to 0 after colliding <-- Thx hentajj
+		mode = new ListSetting("Mode", true, "Vanilla", new String[] {"Vanilla", "Verus", "OldNCP", "NCP", "Motion", "Spider"});
+		height = new SliderSetting("Height", true, 1, 1, 10, 0.5, false);
 		this.rSetting(mode);
 		this.rSetting(height);
 		super.setup();
@@ -45,6 +49,7 @@ public class StepModule extends BaseModule {
 	public void onEnable() {
 		ncpTicks = 0;
 		stepAmt = 0;
+		motionStepState = 0;
 		super.onEnable();
 	}
 
@@ -62,6 +67,14 @@ public class StepModule extends BaseModule {
 	public void onPreMotion(EventPreMotion event) {
 		if (mode.getValue().equalsIgnoreCase("Spider") && mc.thePlayer.isCollidedHorizontally) {
 			mc.thePlayer.motionY = 0.1;
+		} else if (mode.getValue().equalsIgnoreCase("Motion")) {
+			if (motionStepState == 1) {
+				mc.thePlayer.jump();
+				motionStepState = 2;
+			} else if (motionStepState == 2 && !mc.thePlayer.isCollidedHorizontally) {
+				mc.thePlayer.motionY = 0;
+				motionStepState = 0;
+			}
 		}
 	}
 
@@ -74,17 +87,27 @@ public class StepModule extends BaseModule {
 			if (!canStep()) return;
 
 			if (event.getState() == EventStep.StepState.PRE) {
-				event.setStepHeight(1f);
+				event.setStepHeight(mode.getValue().equalsIgnoreCase("NCP") ? 1f : Math.min(height.getValueF(), 2));
 			} else {
 				if (event.getStepHeight() < 1) return;
 
-				fakeJump();
-				PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.41999998688698, mc.thePlayer.posZ, true));
-				PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.7531999805212, mc.thePlayer.posZ, true));
+				double[] packets = new double[0];
+				if (event.getStepHeight() == 1) {
+					packets = new double[] {0.41999998688698, 0.7531999805212};
+				} else if (event.getStepHeight() == 1.5) {
+					packets = new double[] {0.4, 0.75, 0.5, 0.41, 0.83, 1.16, 1.41999998688698};
+					//packets = new double[] {0.41999998688698, 0.7531999805212, 0.5, 0.39, 0.69, 0.83, 0.51, 1.16, 1.41999998688698};
+				} else if (event.getStepHeight() == 2) {
+					packets = new double[] {0.4, 0.75, 0.5, 0.41, 0.83, 1.16, 1.41999998688698, 1.57, 1.58, 1.42};
+				}
 
+				fakeJump();
+				for (double offset : packets) {
+					PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + offset, mc.thePlayer.posZ, true));
+				}
 
 				if (mode.getValue().equalsIgnoreCase("NCP")) {
-					PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 1, mc.thePlayer.posZ, true));
+					PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + event.getStepHeight(), mc.thePlayer.posZ, true));
 					stepAmt++;
 					if (stepAmt == 1) {
 						ncpTicks = 0;
@@ -93,6 +116,11 @@ public class StepModule extends BaseModule {
 			}
 			return;
 		} else if (mode.getValue().equalsIgnoreCase("Spider")) {
+			return;
+		} else if (mode.getValue().equalsIgnoreCase("Motion")) {
+			if (event.getState() == EventStep.StepState.PRE && canStep()) {
+				motionStepState = 1;
+			}
 			return;
 		}
 

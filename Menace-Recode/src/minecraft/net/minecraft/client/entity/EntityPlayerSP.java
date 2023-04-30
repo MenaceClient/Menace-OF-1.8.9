@@ -1099,7 +1099,7 @@ public class EntityPlayerSP extends AbstractClientPlayer
 					z = d8;
 					this.setEntityBoundingBox(axisalignedbb3);
 				} else {
-					EventStep postStep = new EventStep((float) ((float) 1 + y), StepState.POST);
+					EventStep postStep = new EventStep((float) (eventStep.getStepHeight() + y), StepState.POST);
 					postStep.call();
 				}
 			}

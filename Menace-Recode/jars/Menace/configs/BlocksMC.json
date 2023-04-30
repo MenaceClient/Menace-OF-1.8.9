@@ -17,8 +17,8 @@
   "BackTracker": {
     "Toggled": false,
     "Settings": {
-      "Delay": 700.0,
-      "Max Packets": 100.0,
+      "Delay": 500.0,
+      "Max Packets": 150.0,
       "Only Target": true,
       "Visible": true
     }
@@ -33,7 +33,7 @@
   "KillAura": {
     "Toggled": false,
     "Settings": {
-      "Reach": 3.8,
+      "Reach": 3.8000000000000003,
       "MinCPS": 16.0,
       "MaxCPS": 18.0,
       "TicksExisted": 0.0,
@@ -83,11 +83,11 @@
     "Toggled": false,
     "Settings": {
       "Mode": "Other",
-      "VanillaMode": "Damage",
+      "VanillaMode": "FakeGround",
       "VerusMode": "Jump",
       "OtherMode": "NCPSlime",
       "DmgMode": "Verus",
-      "Speed": 3.0,
+      "Speed": 1.0,
       "Viewbob": 0.1,
       "Visible": true
     }
@@ -102,7 +102,7 @@
     "Toggled": false,
     "Settings": {
       "Mode": "NCPLowHop",
-      "Speed": 7.0,
+      "Speed": 10.0,
       "AutoDisable": true,
       "Visible": true
     }
@@ -115,9 +115,9 @@
     }
   },
   "Step": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
-      "Mode": "Spider",
+      "Mode": "NCP",
       "Height": 1.0,
       "Visible": true
     }
@@ -131,7 +131,7 @@
   "TargetStrafe": {
     "Toggled": false,
     "Settings": {
-      "Range": 2.0,
+      "Range": 1.0,
       "Visible": true
     }
   },
@@ -154,7 +154,7 @@
     }
   },
   "InvManager": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Delay Min": 30.0,
       "Delay Max": 50.0,
@@ -182,14 +182,14 @@
   "Jesus": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Collide",
+      "Mode": "Motion",
       "Visible": true
     }
   },
   "NoFall": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Verus",
+      "Mode": "VulcanTest",
       "Visible": true
     }
   },
@@ -217,7 +217,7 @@
       "Tower Derp": false,
       "Sprint": false,
       "KeepRotations": true,
-      "SilentSwap": false,
+      "SilentSwap": true,
       "KeepY": false,
       "Bypass": false,
       "BlocksMC": true,
@@ -284,7 +284,7 @@
     "Toggled": true,
     "Settings": {
       "Blocking Mode": "Exhibition",
-      "TranslateX": 0.15000000000000002,
+      "TranslateX": 0.2,
       "TranslateY": 0.1,
       "TranslateZ": 0.0,
       "ItemPosX": 0.5,

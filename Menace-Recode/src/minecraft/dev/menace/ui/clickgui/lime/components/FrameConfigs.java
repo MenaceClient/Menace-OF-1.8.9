@@ -56,13 +56,6 @@ public class FrameConfigs implements Priority {
         });
     }
 
-    public void reload() {
-        configs.clear();
-        Menace.instance.configManager.getConfigs().forEach(c -> {
-            configs.add(new FrameConfig(c, this, 0, 0));
-        });
-    }
-
     public void initGui()
     {
         this.animation.setSpeed(100).reset();
