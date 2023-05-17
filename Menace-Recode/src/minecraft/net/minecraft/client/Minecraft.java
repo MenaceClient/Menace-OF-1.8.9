@@ -847,7 +847,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 		try {
 			Menace.instance.stopClient();
 			try {
-				final URL url = new URL("https://menaceapi.cf/updateUser/" + ServerUtils.getLastServerIp().split(":")[0]+ "/" + Menace.instance.user.getUsername() + "/" + this.session.getUsername() + "/true");
+				final URL url = new URL(Menace.instance.apiURL + "/updateUser/" + ServerUtils.getLastServerIp().split(":")[0]+ "/" + Menace.instance.user.getUsername() + "/" + this.session.getUsername() + "/true");
 				HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
 				uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
 				uc.setRequestMethod("GET");

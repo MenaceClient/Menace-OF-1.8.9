@@ -81,6 +81,7 @@ public class ModuleManager {
 	public SecurityFeaturesModule securityFeaturesModule = new SecurityFeaturesModule();
 	SpooferModule spooferModule = new SpooferModule();
 	StaffDetectorModule staffDetectorModule = new StaffDetectorModule();
+	TranslatorModule translatorModule = new TranslatorModule();
 
 	public ArrayList<BaseModule> getModules() {
 		return modules;

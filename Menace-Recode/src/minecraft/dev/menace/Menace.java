@@ -1,6 +1,5 @@
 package dev.menace;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import dev.menace.anticheat.HackerDetect;
@@ -12,16 +11,11 @@ import dev.menace.module.ModuleManager;
 import dev.menace.module.config.ConfigManager;
 import dev.menace.scripting.ScriptManager;
 import dev.menace.ui.altmanager.LoginManager;
-import dev.menace.ui.clickgui.csgo.CSGOGui;
-import dev.menace.ui.clickgui.lime.LimeClickGUI;
-import dev.menace.ui.clickgui.intellij.IntellijClickGui;
 import dev.menace.ui.hud.HUDManager;
 import dev.menace.utils.file.FileManager;
 import dev.menace.utils.irc.IRCUtils;
-import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.misc.DiscordRP;
 import dev.menace.utils.misc.ServerUtils;
-import dev.menace.utils.misc.TranslatorUtils;
 import dev.menace.utils.notifications.Notification;
 import dev.menace.utils.notifications.NotificationManager;
 import dev.menace.utils.render.font.Fonts;
@@ -41,11 +35,11 @@ import viamcp.ViaMCP;
 import java.awt.*;
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.InetAddress;
 import java.net.URL;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Menace {
@@ -53,6 +47,7 @@ public class Menace {
 	public static Menace instance = new Menace();
 	public boolean starting;
 	public Minecraft MC = Minecraft.getMinecraft();
+	public String apiURL = "https://api.menaceclient.me/";
 	public EventManager eventManager;
 	public ModuleManager moduleManager;
 	public CommandManager cmdManager;
@@ -212,11 +207,6 @@ public class Menace {
 		if (event.getPacket() instanceof S02PacketChat) {
 			String message = ((S02PacketChat) event.getPacket()).getChatComponent().getUnformattedText();
 
-			//Check for non-ascii
-			if (message != null && !message.matches("\\A\\p{ASCII}*\\z") && !message.contains("§")) {
-				ChatUtils.message("Translated: " + TranslatorUtils.translate(message));
-			}
-
 			if (message != null && message.contains(" killed by " + MC.thePlayer.getName())) {
 				this.hudManager.gameStatsElement.kills++;
 				this.moduleManager.killFXModule.onKill(message.split(" ")[0]);
@@ -225,7 +215,7 @@ public class Menace {
 			final String[] formattedMessage = {((S02PacketChat) event.getPacket()).getChatComponent().getFormattedText()};
 			onlineMenaceUsers.forEach((username, ign) -> {
 				if (ign != null && formattedMessage[0].contains(ign)) {
-					formattedMessage[0] = formattedMessage[0].replace(ign, ign + " Â§r(Â§b" + username + "Â§r)");
+					formattedMessage[0] = formattedMessage[0].replace(ign, ign + " §r(§b" + username + "§r)");
 				}
 			});
 
@@ -233,11 +223,12 @@ public class Menace {
 
 		} else if (event.getPacket() instanceof S45PacketTitle) {
 			S45PacketTitle packet = (S45PacketTitle) event.getPacket();
+			if (packet == null || packet.getMessage() == null || packet.getMessage().getFormattedText() == null) return;
 			final String[] formattedMessage = {packet.getMessage().getFormattedText()};
 
 			onlineMenaceUsers.forEach((username, ign) -> {
 				if (ign != null && formattedMessage[0].contains(ign)) {
-					formattedMessage[0] = formattedMessage[0].replace(ign, ign + " Â§r(Â§b" + username + "Â§r)");
+					formattedMessage[0] = formattedMessage[0].replace(ign, ign + " §r(§b" + username + "§r)");
 				}
 			});
 
@@ -251,7 +242,7 @@ public class Menace {
 			Menace.instance.discordRP.update("Bypassing " + ServerUtils.getRemoteIp());
 			Menace.instance.hudManager.gameStatsElement.reset();
 			try {
-				final URL url = new URL("https://menaceapi.cf/updateUser/" + ServerUtils.getRemoteIp().split(":")[0] + "/" + Menace.instance.user.getUsername() + "/" + MC.session.getUsername() + "/false");
+				final URL url = new URL( apiURL + "/updateUser/" + ServerUtils.getRemoteIp().split(":")[0] + "/" + Menace.instance.user.getUsername() + "/" + MC.session.getUsername() + "/false");
 				HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
 				uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
 				uc.setRequestMethod("GET");
@@ -268,7 +259,7 @@ public class Menace {
 			}.start();
 		} else {
 			try {
-				final URL url = new URL("https://menaceapi.cf/updateUser/" + ServerUtils.getLastServerIp().split(":")[0] + "/" + Menace.instance.user.getUsername() + "/" + MC.session.getUsername() + "/true");
+				final URL url = new URL(apiURL + "/updateUser/" + ServerUtils.getLastServerIp().split(":")[0] + "/" + Menace.instance.user.getUsername() + "/" + MC.session.getUsername() + "/true");
 				HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
 				uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
 				uc.setRequestMethod("GET");
@@ -312,7 +303,7 @@ public class Menace {
 
 		try {
 			String ip = ServerUtils.getRemoteIp().toLowerCase().contains("49.12.67.79") || ServerUtils.getRemoteIp().toLowerCase().contains("blocksmc.com") ? "blocksmc.com" : ServerUtils.getRemoteIp().toLowerCase().split(":")[0];
-			final URL url = new URL("https://menaceapi.cf/getMenaceUsers/" + ip + "/");
+			final URL url = new URL(apiURL + "/getMenaceUsers/" + ip + "/");
 			HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
 			uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
 			uc.setRequestMethod("GET");
@@ -326,8 +317,6 @@ public class Menace {
 					response.append(inputLine);
 				}
 				in.close();
-				
-				onlineMenaceUsers.clear();
 
 				JsonObject server = new JsonParser().parse(response.toString()).getAsJsonObject();
 				if (server.entrySet() != null && server.entrySet().size() > 0 && !server.entrySet().isEmpty()) {

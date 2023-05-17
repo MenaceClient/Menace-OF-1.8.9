@@ -102,6 +102,13 @@ public class StringGrabber {
                 return "getScript";
             case 48:
                 return "getEntity";
+            default:
+                return getString2(input);
+        }
+    }
+
+    private static String getString2(int input) {
+        switch (input) {
             case 49:
                 return "isPreAttack";
             case 50:
@@ -180,6 +187,13 @@ public class StringGrabber {
                 return "drawRect";
             case 87:
                 return "drawHollowRect";
+            default:
+                return getString3(input);
+        }
+    }
+
+    private static String getString3(int input) {
+        switch (input) {
             case 88:
                 return "onEnable";
             case 89:

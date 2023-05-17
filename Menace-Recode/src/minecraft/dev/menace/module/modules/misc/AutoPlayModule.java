@@ -39,8 +39,8 @@ public class AutoPlayModule extends BaseModule {
     public void onRecievePacket(EventReceivePacket event) {
         if (!this.isToggled()) return;
         if (event.getPacket() instanceof S02PacketChat) {
+            if (event.getPacket() == null || ((S02PacketChat) event.getPacket()).getChatComponent() == null || ((S02PacketChat) event.getPacket()).getChatComponent().getFormattedText() == null) return;
             String message = ((S02PacketChat) event.getPacket()).getChatComponent().getUnformattedText();
-            if (message == null) return;
             if ((message.contains(mc.thePlayer.getName() + " was killed by ") || message.contains(mc.thePlayer.getName() + " died!")) && !newGame) {
                 ChatUtils.message("Sending you to a new game.");
                 new Thread(() -> {

@@ -12,6 +12,7 @@ import dev.menace.utils.player.MovementUtils;
 import dev.menace.utils.player.PacketUtils;
 import net.minecraft.network.play.client.C07PacketPlayerDigging;
 import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
+import net.minecraft.network.play.client.C0BPacketEntityAction;
 import net.minecraft.network.play.server.S30PacketWindowItems;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -45,8 +46,8 @@ public class NoSlowModule extends BaseModule {
 
     @EventTarget
     public void onSendPacket(EventSendPacket event) {
+        //kys
         if(mode.getValue().equalsIgnoreCase("Hypixel") && mc.thePlayer.isBlocking() && MovementUtils.isMoving()) {
-            //kys
             if (event.getPacket() instanceof C08PacketPlayerBlockPlacement) {
                 C08PacketPlayerBlockPlacement packet = (C08PacketPlayerBlockPlacement) event.getPacket();
                 if (packet.getPosition() == field_179726_a) {
@@ -59,7 +60,7 @@ public class NoSlowModule extends BaseModule {
     @EventTarget
     public void onRecievePacket(EventReceivePacket event) {
         if (mc.thePlayer == null || mc.theWorld == null) return;
-        if((mode.getValue().equalsIgnoreCase("Hypixel") || mode.getValue().equalsIgnoreCase("NCP")) && mc.thePlayer.isBlocking() && MovementUtils.isMoving() && event.getPacket() instanceof S30PacketWindowItems) {
+        if((mode.getValue().equalsIgnoreCase("Hypixel") || mode.getValue().equalsIgnoreCase("NCP")) && (mc.thePlayer.isBlocking() || mc.thePlayer.isEating()) && MovementUtils.isMoving() && event.getPacket() instanceof S30PacketWindowItems) {
             PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(mc.thePlayer.getHeldItem()));
             event.setCancelled(true);
         }

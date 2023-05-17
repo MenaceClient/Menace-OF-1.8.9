@@ -5,7 +5,7 @@
     "Visible": true
   },
   "ArrayElement": {
-    "X": 921,
+    "X": 920,
     "Y": 1,
     "Visible": true
   },
@@ -16,21 +16,21 @@
   },
   "NotificationElement": {
     "X": 910,
-    "Y": 529,
+    "Y": 530,
     "Visible": true
   },
   "PingElement": {
-    "X": 2,
-    "Y": 518,
+    "X": 1,
+    "Y": 520,
     "Visible": true
   },
   "PosElement": {
-    "X": 2,
+    "X": 1,
     "Y": 530,
     "Visible": true
   },
   "ScoreboardElement": {
-    "X": 874,
+    "X": 869,
     "Y": 218,
     "Visible": true
   },
@@ -40,8 +40,8 @@
     "Visible": false
   },
   "TargetHudElement": {
-    "X": 442,
-    "Y": 278,
+    "X": 440,
+    "Y": 277,
     "Visible": true
   },
   "WatermarkElement": {

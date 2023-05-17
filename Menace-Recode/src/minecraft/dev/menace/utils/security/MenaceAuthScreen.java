@@ -159,7 +159,7 @@ extends GuiScreen {
 		}
 
 		try {
-			URL url = new URL("https://menaceapi.cf/");
+			URL url = new URL(Menace.instance.apiURL);
 			HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
 			uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
 			uc.setRequestMethod("GET");

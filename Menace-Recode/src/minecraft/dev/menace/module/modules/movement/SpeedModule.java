@@ -66,8 +66,10 @@ public class SpeedModule extends BaseModule {
             }
 
             if (mc.thePlayer.onGround) {
+                mc.timer.timerSpeed = 2f;
                 mc.thePlayer.jump();
             } else {
+                mc.timer.timerSpeed = 0.98f;
                 mc.thePlayer.motionY = -0.427;
             }
 
@@ -125,7 +127,7 @@ public class SpeedModule extends BaseModule {
                 mc.thePlayer.jump();
                 if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
                     if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier() == 0) {
-                        MovementUtils.strafe(0.5893f);
+                        MovementUtils.strafe(0.58f);
                     } else if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier() == 1) {
                         MovementUtils.strafe(0.67f);
                     }

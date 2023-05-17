@@ -30,7 +30,7 @@ public class CriticalsModule extends BaseModule {
 
     @Override
     public void setup() {
-        mode = new ListSetting("Mode", true, "Packet", new String[] {"Packet", "MiniJump", "Jump", "Verus MiniJump", "NCP", "Gay"});
+        mode = new ListSetting("Mode", true, "Packet", new String[] {"Packet", "MiniJump", "Jump", "Verus MiniJump", "OldNCP", "NCP", "Gay"});
         this.rSetting(mode);
     }
 
@@ -66,13 +66,20 @@ public class CriticalsModule extends BaseModule {
                     mc.thePlayer.jump();
                 } else if (mode.getValue().equalsIgnoreCase("Verus MiniJump")) {
                     shouldCrit = true;
-                } else if (mode.getValue().equalsIgnoreCase("NCP")) {
+                } else if (mode.getValue().equalsIgnoreCase("OldNCP") && canCrit()) {
                     PacketUtils.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.11, mc.thePlayer.posZ, false));
-                    PacketUtils.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
+                    PacketUtils.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.1100013579, mc.thePlayer.posZ, false));
+                    PacketUtils.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.0000013579, mc.thePlayer.posZ, false));
+                } else if (mode.getValue().equalsIgnoreCase("NCP") && canCrit()) {
+                    //PacketUtils.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY - 0.01, mc.thePlayer.posZ, false));
+                    mc.thePlayer.posY -= 0.05;
+                    PacketUtils.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.11, mc.thePlayer.posZ, false));
+                    PacketUtils.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.0000013579, mc.thePlayer.posZ, false));
                 } else if (mode.getValue().equalsIgnoreCase("Gay")) {
                     PacketUtils.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, Integer.MAX_VALUE, mc.thePlayer.posZ, false));
                     PacketUtils.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
                 }
+                mc.thePlayer.onCriticalHit(mc.theWorld.getEntityByID(packet.entityId));
             }
         }
     }

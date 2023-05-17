@@ -2,6 +2,7 @@
  * Copyright 2015-2021 Adrien 'Litarvan' Navratil
  *
  * This file is part of OpenAuth.
+
  * OpenAuth is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,11 +30,11 @@ import fr.litarvan.openauth.microsoft.model.request.XSTSAuthorizationProperties;
 import fr.litarvan.openauth.microsoft.model.request.XboxLiveLoginProperties;
 import fr.litarvan.openauth.microsoft.model.request.XboxLoginRequest;
 import fr.litarvan.openauth.microsoft.model.response.*;
-import org.lwjgl.Sys;
 
 import java.io.UnsupportedEncodingException;
 import java.net.*;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -46,17 +47,16 @@ import java.util.regex.Pattern;
  * Microsoft authenticator
  *
  * <p>
- *     This class can be used to authenticate a player using its Microsoft account.
- *     Use {@link #loginWithCredentials} to retrieve a player profile from his Microsoft credentials,
- *     or {@link #loginWithWebview} to use a webview with Microsoft login form.
+ * This class can be used to authenticate a player using its Microsoft account.
+ * Use {@link #loginWithCredentials} to retrieve a player profile from his Microsoft credentials,
+ * or {@link #loginWithWebview} to use a webview with Microsoft login form.
  * </p>
  *
- * @version 1.1.0
  * @author Litarvan
+ * @version 1.1.0
  */
-public class MicrosoftAuthenticator
-{
-    public static final String MICROSOFT_AUTHORIZATION_ENDPOINT = "https://login.live.com/oauth20_authorize.srf";
+public class MicrosoftAuthenticator {
+    public static final String MICROSOFT_AUTHORIZATION_ENDPOINT = "https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize";
     public static final String MICROSOFT_TOKEN_ENDPOINT = "https://login.live.com/oauth20_token.srf";
     public static final String MICROSOFT_REDIRECTION_ENDPOINT = "https://login.live.com/oauth20_desktop.srf";
 
@@ -79,24 +79,19 @@ public class MicrosoftAuthenticator
 
     private final HttpClient http;
 
-    public MicrosoftAuthenticator()
-    {
+    public MicrosoftAuthenticator() {
         this.http = new HttpClient();
     }
-
 
     /**
      * Logs in a player using its Microsoft account credentials, and retrieve its Minecraft profile
      *
-     * @param email Player Microsoft account e-mail
+     * @param email    Player Microsoft account e-mail
      * @param password Player Microsoft account password
-     *
      * @return The player Minecraft profile
-     *
      * @throws MicrosoftAuthenticationException Thrown if one of the several HTTP requests failed at some point
      */
-    public MicrosoftAuthResult loginWithCredentials(String email, String password) throws MicrosoftAuthenticationException
-    {
+    public MicrosoftAuthResult loginWithCredentials(String email, String password) throws MicrosoftAuthenticationException {
         CookieHandler currentHandler = CookieHandler.getDefault();
         CookieHandler.setDefault(new CookieManager(null, CookiePolicy.ACCEPT_ALL));
 
@@ -117,9 +112,9 @@ public class MicrosoftAuthenticator
         }
 
         try {
-            return loginWithTokens(extractTokens(result.getURL().toString()));
+            return loginWithTokens(extractTokens(result.getURL().toString()),true);
         } catch (MicrosoftAuthenticationException e) {
-            if (match("identity/confirm", http.readResponse(result)) != null) {
+            if (match("(identity/confirm)", http.readResponse(result)) != null) {
                 throw new MicrosoftAuthenticationException(
                         "User has enabled double-authentication or must allow sign-in on https://account.live.com/activity"
                 );
@@ -136,11 +131,9 @@ public class MicrosoftAuthenticator
      * {@link #loginWithAsyncWebview()}</b>
      *
      * @return The player Minecraft profile
-     *
      * @throws MicrosoftAuthenticationException Thrown if one of the several HTTP requests failed at some point
      */
-    public MicrosoftAuthResult loginWithWebview() throws MicrosoftAuthenticationException
-    {
+    public MicrosoftAuthResult loginWithWebview() throws MicrosoftAuthenticationException {
         try {
             return loginWithAsyncWebview().get();
         } catch (InterruptedException | ExecutionException e) {
@@ -153,14 +146,18 @@ public class MicrosoftAuthenticator
      *
      * @return A future resolved by the player Minecraft profile
      */
-    public CompletableFuture<MicrosoftAuthResult> loginWithAsyncWebview()
-    {
+    public CompletableFuture<MicrosoftAuthResult> loginWithAsyncWebview() {
+        if(!System.getProperty("java.version").startsWith("1."))
+            CookieHandler.setDefault(new CookieManager());
+
         String url = String.format("%s?%s", MICROSOFT_AUTHORIZATION_ENDPOINT, http.buildParams(getLoginParams()));
         LoginFrame frame = new LoginFrame();
 
         return frame.start(url).thenApplyAsync(result -> {
             try {
-                return loginWithTokens(extractTokens(result));
+                if(result != null)
+                    return loginWithTokens(extractTokens(result),true);
+                else return null;
             } catch (MicrosoftAuthenticationException e) {
                 throw new CompletionException(e);
             }
@@ -171,13 +168,10 @@ public class MicrosoftAuthenticator
      * Logs in a player using a Microsoft account refresh token retrieved earlier.
      *
      * @param refreshToken Player Microsoft account refresh token
-     *
      * @return The player Minecraft profile
-     *
      * @throws MicrosoftAuthenticationException Thrown if one of the several HTTP requests failed at some point
      */
-    public MicrosoftAuthResult loginWithRefreshToken(String refreshToken) throws MicrosoftAuthenticationException
-    {
+    public MicrosoftAuthResult loginWithRefreshToken(String refreshToken) throws MicrosoftAuthenticationException {
         Map<String, String> params = getLoginParams();
         params.put("refresh_token", refreshToken);
         params.put("grant_type", "refresh_token");
@@ -187,7 +181,7 @@ public class MicrosoftAuthenticator
                 params, MicrosoftRefreshResponse.class
         );
 
-        return loginWithTokens(new AuthTokens(response.getAccessToken() , response.getRefreshToken()));
+        return loginWithTokens(new AuthTokens(response.getAccessToken(), response.getRefreshToken()),true);
     }
 
     /**
@@ -195,13 +189,23 @@ public class MicrosoftAuthenticator
      * <b>If the token was retrieved using Azure AAD/MSAL, it should be prefixed with d=</b>
      *
      * @param tokens Player Microsoft account tokens pair
-     *
      * @return The player Minecraft profile
-     *
      * @throws MicrosoftAuthenticationException Thrown if one of the several HTTP requests failed at some point
      */
-    public MicrosoftAuthResult loginWithTokens(AuthTokens tokens) throws MicrosoftAuthenticationException
-    {
+    public MicrosoftAuthResult loginWithTokens(AuthTokens tokens) throws MicrosoftAuthenticationException {
+        return loginWithTokens(tokens,true);
+    }
+
+    /**
+     * Logs in a player using a Microsoft account tokens retrieved earlier.
+     * <b>If the token was retrieved using Azure AAD/MSAL, it should be prefixed with d=</b>
+     *
+     * @param tokens Player Microsoft account tokens pair
+     * @param retrieveProfile Whether to retrieve the player profile
+     * @return The player Minecraft profile
+     * @throws MicrosoftAuthenticationException Thrown if one of the several HTTP requests failed at some point
+     */
+    public MicrosoftAuthResult loginWithTokens(AuthTokens tokens, boolean retrieveProfile) throws MicrosoftAuthenticationException {
         XboxLoginResponse xboxLiveResponse = xboxLiveLogin(tokens.getAccessToken());
         XboxLoginResponse xstsResponse = xstsLogin(xboxLiveResponse.getToken());
 
@@ -216,19 +220,26 @@ public class MicrosoftAuthenticator
         if (Arrays.stream(storeResponse.getItems()).noneMatch(item -> item.getName().equals(MINECRAFT_STORE_IDENTIFIER))) {
             throw new MicrosoftAuthenticationException("Player didn't buy Minecraft Java Edition or did not migrate its account");
         }
+        MinecraftProfile profile = null;
+        if (retrieveProfile) {
+            profile = http.getJson(
+                    MINECRAFT_PROFILE_ENDPOINT,
+                    minecraftResponse.getAccessToken(),
+                    MinecraftProfile.class
+            );
+        }
 
-        MinecraftProfile profile = http.getJson(
-                MINECRAFT_PROFILE_ENDPOINT,
+        return new MicrosoftAuthResult(
+                profile,
                 minecraftResponse.getAccessToken(),
-                MinecraftProfile.class
+                tokens.getRefreshToken(),
+                xboxLiveResponse.getDisplayClaims().getUsers()[0].getUserHash(),
+                Base64.getEncoder().encodeToString(minecraftResponse.getUsername().getBytes())
         );
-
-        return new MicrosoftAuthResult(profile, minecraftResponse.getAccessToken(), tokens.getRefreshToken());
     }
 
 
-    protected PreAuthData preAuthRequest() throws MicrosoftAuthenticationException
-    {
+    protected PreAuthData preAuthRequest() throws MicrosoftAuthenticationException {
         Map<String, String> params = getLoginParams();
         params.put("display", "touch");
         params.put("locale", "en");
@@ -241,8 +252,7 @@ public class MicrosoftAuthenticator
         return new PreAuthData(ppft, urlPost);
     }
 
-    protected XboxLoginResponse xboxLiveLogin(String accessToken) throws MicrosoftAuthenticationException
-    {
+    protected XboxLoginResponse xboxLiveLogin(String accessToken) throws MicrosoftAuthenticationException {
         XboxLiveLoginProperties properties = new XboxLiveLoginProperties("RPS", XBOX_LIVE_AUTH_HOST, accessToken);
         XboxLoginRequest<XboxLiveLoginProperties> request = new XboxLoginRequest<>(
                 properties, XBOX_LIVE_AUTH_RELAY, "JWT"
@@ -251,9 +261,8 @@ public class MicrosoftAuthenticator
         return http.postJson(XBOX_LIVE_AUTHORIZATION_ENDPOINT, request, XboxLoginResponse.class);
     }
 
-    protected XboxLoginResponse xstsLogin(String xboxLiveToken) throws MicrosoftAuthenticationException
-    {
-        XSTSAuthorizationProperties properties = new XSTSAuthorizationProperties("RETAIL", new String[] { xboxLiveToken });
+    protected XboxLoginResponse xstsLogin(String xboxLiveToken) throws MicrosoftAuthenticationException {
+        XSTSAuthorizationProperties properties = new XSTSAuthorizationProperties("RETAIL", new String[]{xboxLiveToken});
         XboxLoginRequest<XSTSAuthorizationProperties> request = new XboxLoginRequest<>(
                 properties, MINECRAFT_AUTH_RELAY, "JWT"
         );
@@ -261,15 +270,13 @@ public class MicrosoftAuthenticator
         return http.postJson(XSTS_AUTHORIZATION_ENDPOINT, request, XboxLoginResponse.class);
     }
 
-    protected MinecraftLoginResponse minecraftLogin(String userHash, String xstsToken) throws MicrosoftAuthenticationException
-    {
+    protected MinecraftLoginResponse minecraftLogin(String userHash, String xstsToken) throws MicrosoftAuthenticationException {
         MinecraftLoginRequest request = new MinecraftLoginRequest(String.format("XBL3.0 x=%s;%s", userHash, xstsToken));
         return http.postJson(MINECRAFT_AUTH_ENDPOINT, request, MinecraftLoginResponse.class);
     }
 
 
-    protected Map<String, String> getLoginParams()
-    {
+    protected Map<String, String> getLoginParams() {
         Map<String, String> params = new HashMap<>();
         params.put("client_id", XBOX_LIVE_CLIENT_ID);
         params.put("redirect_uri", MICROSOFT_REDIRECTION_ENDPOINT);
@@ -279,13 +286,11 @@ public class MicrosoftAuthenticator
         return params;
     }
 
-    protected AuthTokens extractTokens(String url) throws MicrosoftAuthenticationException
-    {
+    protected AuthTokens extractTokens(String url) throws MicrosoftAuthenticationException {
         return new AuthTokens(extractValue(url, "access_token"), extractValue(url, "refresh_token"));
     }
 
-    protected String extractValue(String url, String key) throws MicrosoftAuthenticationException
-    {
+    protected String extractValue(String url, String key) throws MicrosoftAuthenticationException {
         String matched = match(key + "=([^&]*)", url);
         if (matched == null) {
             throw new MicrosoftAuthenticationException("Invalid credentials or tokens");
@@ -298,8 +303,7 @@ public class MicrosoftAuthenticator
         }
     }
 
-    protected String match(String regex, String content)
-    {
+    protected String match(String regex, String content) {
         Matcher matcher = Pattern.compile(regex).matcher(content);
         if (!matcher.find()) {
             return null;

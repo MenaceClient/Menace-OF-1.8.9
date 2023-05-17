@@ -1,5 +1,6 @@
 package dev.menace.module.modules.misc;
 
+import dev.menace.Menace;
 import dev.menace.event.EventTarget;
 import dev.menace.event.events.EventReceivePacket;
 import dev.menace.event.events.EventWorldChange;
@@ -172,14 +173,17 @@ public class StaffDetectorModule extends BaseModule {
     public static List<String> readURL() {
         List<String> s = new ArrayList<>();
         try {
-            final URL url = new URL("https://menaceapi.cf/getStaff/");
+            final URL url = new URL(Menace.instance.apiURL + "/getStaff/");
             URLConnection uc = url.openConnection();
             uc.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(uc.getInputStream(), StandardCharsets.UTF_8));
+
             String name;
             while ((name = bufferedReader.readLine()) != null) {
                 s.add(name);
             }
+            bufferedReader.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

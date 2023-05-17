@@ -43,13 +43,13 @@
       "AutoBlock": "Fake",
       "KeepSprint": true,
       "NoSwing": false,
-      "ThroughWalls": false,
+      "ThroughWalls": true,
       "InInventory": false,
       "RayCast": true,
       "Cancel Click": true,
       "AutoDisable": true,
       "Players": true,
-      "MenaceUsers": true,
+      "MenaceUsers": false,
       "Hostiles": true,
       "Passives": true,
       "Invisibles": false,
@@ -83,11 +83,11 @@
     "Toggled": false,
     "Settings": {
       "Mode": "Other",
-      "VanillaMode": "FakeGround",
+      "VanillaMode": "Damage",
       "VerusMode": "Jump",
       "OtherMode": "NCPSlime",
-      "DmgMode": "Verus",
-      "Speed": 1.0,
+      "DmgMode": "Jump",
+      "Speed": 4.0,
       "Viewbob": 0.1,
       "Visible": true
     }
@@ -149,12 +149,12 @@
     "Settings": {
       "FakePlayer": true,
       "Pulse": false,
-      "PulseAmount": 20.0,
+      "PulseAmount": 10.0,
       "Visible": true
     }
   },
   "InvManager": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "Delay Min": 30.0,
       "Delay Max": 50.0,
@@ -189,7 +189,7 @@
   "NoFall": {
     "Toggled": false,
     "Settings": {
-      "Mode": "VulcanTest",
+      "Mode": "Experimental",
       "Visible": true
     }
   },
@@ -215,7 +215,7 @@
       "Tower Mode": "BlocksMC",
       "Tower Speed": 50.0,
       "Tower Derp": false,
-      "Sprint": false,
+      "Sprint": true,
       "KeepRotations": true,
       "SilentSwap": true,
       "KeepY": false,
@@ -276,14 +276,14 @@
   "Timer": {
     "Toggled": false,
     "Settings": {
-      "Speed": 1.1,
+      "Speed": 2.3000000000000003,
       "Visible": true
     }
   },
   "Animations": {
     "Toggled": true,
     "Settings": {
-      "Blocking Mode": "Exhibition",
+      "Blocking Mode": "Slide",
       "TranslateX": 0.2,
       "TranslateY": 0.1,
       "TranslateZ": 0.0,
@@ -385,7 +385,7 @@
   "AutoPlay": {
     "Toggled": true,
     "Settings": {
-      "Delay": 500.0,
+      "Delay": 700.0,
       "Visible": true
     }
   },
@@ -443,6 +443,12 @@
   },
   "StaffDetector": {
     "Toggled": true,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "Translator": {
+    "Toggled": false,
     "Settings": {
       "Visible": true
     }

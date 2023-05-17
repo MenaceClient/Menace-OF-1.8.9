@@ -1,26 +1,16 @@
 package dev.menace.module.modules.movement;
 
 import dev.menace.event.EventTarget;
-import dev.menace.event.events.EventMove;
 import dev.menace.event.events.EventPreMotion;
-import dev.menace.event.events.EventSendPacket;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.player.MovementUtils;
-import dev.menace.utils.player.PacketUtils;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.play.client.C03PacketPlayer;
-import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
-import net.minecraft.network.play.client.C03PacketPlayer.C04PacketPlayerPosition;
-import net.minecraft.util.BlockPos;
+import dev.menace.utils.player.PlayerUtils;
+import net.minecraft.potion.Potion;
 
 public class LongJumpModule extends BaseModule {
 
-	public boolean damage = false;
-	boolean sent = false;
 	int count = 0;
 	boolean disable;
 	
@@ -30,62 +20,52 @@ public class LongJumpModule extends BaseModule {
 
 	@Override
 	public void onEnable() {
-		damage = false;
-		sent = false;
+
+		if (!mc.thePlayer.onGround) {
+			ChatUtils.message("You must be on the ground to use this!");
+			this.toggle();
+			return;
+		}
+
 		count = 0;
 		disable = false;
 		super.onEnable();
 	}
 
 	@EventTarget
-	public void onMove(EventMove event) {
-		if (!sent) {
-			event.cancel();
-		}
-	}
-
-	@EventTarget
 	public void onPre(EventPreMotion event) {
 
-		if (count >= 5 && !damage && !sent) {
-			PacketUtils.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(-1, -1, -1), 255, new ItemStack(Items.water_bucket), 0, 0.5f, 0));
-			PacketUtils.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY - 1.5, mc.thePlayer.posZ), 1, new net.minecraft.item.ItemStack(Blocks.stone.getItem(mc.theWorld, new BlockPos(-1, -1, -1))), 0f, 0.94f, 0f));
-			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 3.05, mc.thePlayer.posZ, false));
-			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
-			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY+0.41999998688697815, mc.thePlayer.posZ, true));
-			sent = true;
+		if (count == 0) {
+			mc.thePlayer.jump();
+			mc.thePlayer.setPosition(mc.thePlayer.posX, mc.thePlayer.posY - 0.1, mc.thePlayer.posZ);
+			mc.thePlayer.motionY = 0.45;
+			if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
+				if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier() == 0) {
+					MovementUtils.strafe(0.5893f);
+				} else if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier() == 1) {
+					MovementUtils.strafe(0.67f);
+				}
+			} else {
+				MovementUtils.strafe(0.525f);
+			}
+			count++;
 		}
 
-		if (mc.thePlayer.hurtTime != 0) {
-			damage = true;
+		if (mc.thePlayer.motionY < 0.0 && count >= 1) {
+			ChatUtils.message("MotionY: " + mc.thePlayer.motionY);
+
+			mc.thePlayer.motionY = (Math.round(mc.thePlayer.motionY * 100.0) / 100.0);
+
+			ChatUtils.message("New MotionY: " + mc.thePlayer.motionY);
+			count++;
+			disable = true;
 		}
 
-		if (!sent) {
-			return;
-		}
-		if (!damage) {
-			if (mc.thePlayer.onGround) {
-				mc.thePlayer.jump();
-				MovementUtils.strafe(1.5F);
-			}
-		} else {
-			if (!disable) {
-				mc.thePlayer.motionY = 0.42;
-				disable = true;
-			}
-			MovementUtils.strafe(3.7F);
-		}
+		MovementUtils.strafe();
 
 		if (mc.thePlayer.onGround && disable) {
+			MovementUtils.stop();
 			this.toggle();
-		}
-	}
-
-	@EventTarget
-	public void onSendPacket(EventSendPacket event) {
-		if (event.getPacket() instanceof C03PacketPlayer && !damage && !sent) {
-			event.cancel();
-			count++;
 		}
 	}
 

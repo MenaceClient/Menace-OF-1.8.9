@@ -1,5 +1,6 @@
 package dev.menace.utils.security;
 
+import dev.menace.Menace;
 import dev.menace.utils.misc.ChatUtils;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -141,7 +142,7 @@ public class HWIDManager {
 
 	public static boolean isWhitelisted() {
 		try {
-			final URL url = new URL("https://menaceapi.cf/isWhitelisted/" + getHWID());
+			final URL url = new URL(Menace.instance.apiURL + "/isWhitelisted/" + getHWID());
 			HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
 			uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
 			uc.setRequestMethod("GET");
@@ -186,7 +187,7 @@ public class HWIDManager {
 
 	public static String sendDiscordRequest(String id) {
 		try {
-			final URL url = new URL("https://menaceapi.cf/getDiscordByID/" + id);
+			final URL url = new URL(Menace.instance.apiURL + "/getDiscordByID/" + id);
 			HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
 			uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
 			uc.setRequestMethod("GET");
@@ -214,7 +215,7 @@ public class HWIDManager {
 
     public static int getUID() {
 		try {
-			final URL url = new URL("https://menaceapi.cf/getUID/" + getHWID());
+			final URL url = new URL(Menace.instance.apiURL + "/getUID/" + getHWID());
 			HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
 			uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
 			uc.setRequestMethod("GET");
@@ -241,7 +242,7 @@ public class HWIDManager {
     
     public static String getUsername() {
 		try {
-			final URL url = new URL("https://menaceapi.cf/getUsername/" + getHWID());
+			final URL url = new URL(Menace.instance.apiURL + "/getUsername/" + getHWID());
 			HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
 			uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
 			uc.setRequestMethod("GET");
@@ -269,7 +270,7 @@ public class HWIDManager {
 	public static String getDiscord() {
 		String discordID;
 		try {
-			final URL url = new URL("https://menaceapi.cf/getDiscordID/" + getHWID());
+			final URL url = new URL(Menace.instance.apiURL + "/getDiscordID/" + getHWID());
 			HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
 			uc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
 			uc.setRequestMethod("GET");

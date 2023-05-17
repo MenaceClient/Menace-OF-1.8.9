@@ -1,13 +1,27 @@
 package dev.menace.module.modules.misc;
 
+import dev.menace.event.EventTarget;
+import dev.menace.event.events.EventSendPacket;
+import dev.menace.event.events.EventTeleport;
+import dev.menace.event.events.EventUpdate;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
+import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.player.PacketUtils;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.client.C03PacketPlayer;
+import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
+import net.minecraft.util.BlockPos;
 import org.lwjgl.input.Keyboard;
+
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class DevModule extends BaseModule {
 
+	Queue<C03PacketPlayer> packetQueue = new ConcurrentLinkedDeque<>();
 
 	public DevModule() {
 		super("DevModule", Category.MISC, Keyboard.KEY_P);
@@ -20,19 +34,31 @@ public class DevModule extends BaseModule {
 
 	@Override
 	public void onEnable() {
-		for (int i=0; i<10; i++) {
-			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.41999998688698, mc.thePlayer.posZ, false));
-			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.7531999805212, mc.thePlayer.posZ, false));
-			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 1, mc.thePlayer.posZ, false));
-			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.8, mc.thePlayer.posZ, false));
-			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.6, mc.thePlayer.posZ, false));
-			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.3, mc.thePlayer.posZ, false));
-			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.1, mc.thePlayer.posZ, false));
-			PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
-		}
+
 		super.onEnable();
 	}
 
+	@Override
+	public void onDisable() {
+		packetQueue.clear();
+		super.onDisable();
+	}
+
+	@EventTarget
+	public void onUpdate(EventUpdate event) {
+	}
+
+	@EventTarget
+	public void onSendPacket(EventSendPacket event) {
+
+	}
+
+	@EventTarget
+	public void onTeleport(EventTeleport event) {
+		event.cancel();
+		ChatUtils.message("Edited teleport to " + event.getPosX() + ", " + event.getPosY() + ", " + event.getPosZ());
+		//this.toggle();
+	}
 
 
 }
