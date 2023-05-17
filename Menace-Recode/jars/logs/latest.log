@@ -1,1236 +1,216 @@
-[20:17:24] [Client thread/INFO]: Setting user: Player609
-[20:17:24] [Client thread/INFO]: (Session ID is token:0:Player609)
-[20:17:26] [Client thread/INFO]: [OptiFine] *** Reflector Forge ***
-[20:17:26] [Client thread/INFO]: [OptiFine] *** Reflector Vanilla ***
-[20:17:26] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event$Result
-[20:17:26] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraft.launchwrapper.Launch
-[20:17:26] [Client thread/INFO]: LWJGL Version: 2.9.4
-[20:17:26] [Client thread/INFO]: [OptiFine] 
-[20:17:26] [Client thread/INFO]: [OptiFine] OptiFine_1.8.9_HD_U_M5
-[20:17:26] [Client thread/INFO]: [OptiFine] Build: null
-[20:17:26] [Client thread/INFO]: [OptiFine] OS: Windows 10 (amd64) version 10.0
-[20:17:26] [Client thread/INFO]: [OptiFine] Java: 1.8.0_372, BellSoft
-[20:17:26] [Client thread/INFO]: [OptiFine] VM: OpenJDK 64-Bit Server VM (mixed mode), BellSoft
-[20:17:26] [Client thread/INFO]: [OptiFine] LWJGL: 2.9.4
-[20:17:26] [Client thread/INFO]: [OptiFine] OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2, version 4.6.0 NVIDIA 516.94, NVIDIA Corporation
-[20:17:26] [Client thread/INFO]: [OptiFine] OpenGL Version: 4.6.0
-[20:17:26] [Client thread/INFO]: [OptiFine] Maximum texture size: 32768x32768
-[20:17:26] [VersionCheck/INFO]: [OptiFine] Checking for new version
-[20:17:26] [Client thread/INFO]: [Shaders] OpenGL Version: 4.6.0 NVIDIA 516.94
-[20:17:26] [Client thread/INFO]: [Shaders] Vendor:  NVIDIA Corporation
-[20:17:26] [Client thread/INFO]: [Shaders] Renderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
-[20:17:26] [Client thread/INFO]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0 
-[20:17:26] [Client thread/INFO]: [Shaders] GL_MAX_DRAW_BUFFERS: 8
-[20:17:26] [Client thread/INFO]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8
-[20:17:26] [Client thread/INFO]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32
-[20:17:26] [Client thread/INFO]: [Shaders] Load shaders configuration.
-[20:17:26] [Client thread/INFO]: [Shaders] No shaderpack loaded.
-[20:17:26] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.Loader
-[20:17:26] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.SplashProgress
-[20:17:26] [VersionCheck/INFO]: [OptiFine] Version found: M5
-[20:17:26] [Client thread/INFO]: Reloading ResourceManager: Default, gamerswordpack.zip
-[20:17:26] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: optifine.OptiFineClassTransformer
-[20:17:26] [Client thread/INFO]: [OptiFine] *** Reloading textures ***
-[20:17:26] [Client thread/INFO]: [OptiFine] Resource packs: gamerswordpack.zip
-[20:17:26] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.Attributes
-[20:17:26] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.preDraw
-[20:17:26] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.postDraw
-[20:17:26] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[20:17:27] [Thread-6/INFO]: Initializing LWJGL OpenAL
-[20:17:27] [Thread-6/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[20:17:27] [Thread-6/INFO]: OpenAL initialized.
-[20:17:27] [Sound Library Loader/INFO]: Sound engine started
-[20:17:28] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ForgeHooksClient
-[20:17:28] [Client thread/INFO]: [OptiFine] Mipmap levels: 4
-[20:17:28] [Client thread/INFO]: [OptiFine] Multitexture: false
-[20:17:28] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/0_glass_white/glass_pane_white.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/0_glass_white/glass_white.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/10_glass_purple/glass_pane_purple.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/10_glass_purple/glass_purple.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/11_glass_blue/glass_blue.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/11_glass_blue/glass_pane_blue.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/12_glass_brown/glass_brown.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/12_glass_brown/glass_pane_brown.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/13_glass_green/glass_green.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/13_glass_green/glass_pane_green.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/14_glass_red/glass_pane_red.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/14_glass_red/glass_red.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/15_glass_black/glass_black.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/15_glass_black/glass_pane_black.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/1_glass_orange/glass_orange.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/1_glass_orange/glass_pane_orange.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/2_glass_magenta/glass_magenta.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/2_glass_magenta/glass_pane_magenta.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/3_glass_light_blue/glass_light_blue.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/3_glass_light_blue/glass_pane_light_blue.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/4_glass_yellow/glass_pane_yellow.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/4_glass_yellow/glass_yellow.properties
-[20:17:28] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/5_glass_lime/glass_lime.properties
-[20:17:29] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/5_glass_lime/glass_pane_lime.properties
-[20:17:29] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/6_glass_pink/glass_pane_pink.properties
-[20:17:29] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/6_glass_pink/glass_pink.properties
-[20:17:29] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/8_glass_silver/glass_pane_silver.properties
-[20:17:29] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/8_glass_silver/glass_silver.properties
-[20:17:29] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/9_glass_cyan/glass_cyan.properties
-[20:17:29] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/9_glass_cyan/glass_pane_cyan.properties
-[20:17:29] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/bookshelf.properties
-[20:17:29] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/sandstone.properties
-[20:17:29] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
-[20:17:29] [Client thread/INFO]: [OptiFine] BetterGrass: Parsing default configuration optifine/bettergrass.properties
-[20:17:29] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/diamond_ore, 1 -> 16
-[20:17:29] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/emerald_ore, 1 -> 16
-[20:17:29] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/gold_ore, 1 -> 16
-[20:17:29] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/coal_ore, 1 -> 16
-[20:17:29] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/lapis_ore, 1 -> 16
-[20:17:29] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/iron_ore, 1 -> 16
-[20:17:30] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/redstone_ore, 1 -> 16
-[20:17:30] [Client thread/INFO]: Created: 1024x1024 textures-atlas
-[20:17:30] [Client thread/INFO]: [OptiFine] Animated sprites: 11
-[20:17:30] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader
-[20:17:30] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ItemModelMesherForge
-[20:17:30] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.registry.RenderingRegistry
-[20:17:30] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeModContainer
-[20:17:33] [Via-Mappingloader-0/INFO]: Loading 1.12 -> 1.13 mappings...
-[20:17:33] [Via-Mappingloader-1/INFO]: Loading 1.13 -> 1.13.2 mappings...
-[20:17:33] [Via-Mappingloader-2/INFO]: Loading 1.13.2 -> 1.14 mappings...
-[20:17:33] [Via-Mappingloader-4/INFO]: Loading 1.15 -> 1.16 mappings...
-[20:17:33] [Via-Mappingloader-3/INFO]: Loading 1.14 -> 1.15 mappings...
-[20:17:33] [Via-Mappingloader-5/INFO]: Loading 1.16 -> 1.16.2 mappings...
-[20:17:33] [Via-Mappingloader-6/INFO]: Loading 1.16.2 -> 1.17 mappings...
-[20:17:33] [Client thread/INFO]: Loading translations...
-[20:17:33] [Via-Mappingloader-7/INFO]: Loading 1.17 -> 1.18 mappings...
-[20:17:33] [Via-Mappingloader-8/INFO]: Loading 1.18 -> 1.19 mappings...
-[20:17:33] [Via-Mappingloader-11/INFO]: Loading 1.12 -> 1.11 mappings...
-[20:17:33] [Via-Mappingloader-9/INFO]: Loading 1.10 -> 1.9.4 mappings...
-[20:17:33] [Via-Mappingloader-10/INFO]: Loading 1.11 -> 1.10 mappings...
-[20:17:33] [Via-Mappingloader-0/INFO]: Loading block connection mappings ...
-[20:17:33] [Via-Mappingloader-11/INFO]: Loading 1.16 -> 1.15 mappings...
-[20:17:33] [Via-Mappingloader-6/INFO]: Loading 1.16.2 -> 1.16 mappings...
-[20:17:33] [Via-Mappingloader-5/INFO]: Loading 1.17 -> 1.16.2 mappings...
-[20:17:33] [Via-Mappingloader-12/INFO]: Loading 1.13.2 -> 1.13 mappings...
-[20:17:33] [Via-Mappingloader-12/INFO]: Loading 1.15 -> 1.14 mappings...
-[20:17:33] [Via-Mappingloader-3/INFO]: Loading 1.14 -> 1.13.2 mappings...
-[20:17:34] [Via-Mappingloader-2/INFO]: Loading 1.18 -> 1.17 mappings...
-[20:17:34] [Via-Mappingloader-7/INFO]: Loading 1.19 -> 1.18 mappings...
-[20:17:34] [ViaMCP-0/INFO]: ViaVersion detected server version: 1.8.x (47)
-[20:17:34] [ViaMCP-0/WARN]: This version of Minecraft is extremely outdated and support for it has reached its end of life. You will still be able to run Via on this Minecraft version, but we are unlikely to provide any further fixes or help with problems specific to legacy Minecraft versions. Please consider updating to give your players a better experience and to avoid issues that have long been fixed.
-[20:17:34] [ViaMCP-0/WARN]: You are running an outdated Java version, please consider updating it to at least Java 17 (your version is 1.8.0_372). At some point in the future, ViaVersion will no longer be compatible with this version of Java.
-[20:17:34] [ViaMCP-0/WARN]: There is a newer plugin version available: 4.6.2, you're on: 4.4.3
-[20:17:34] [Via-Mappingloader-3/INFO]: Loading 1.13 -> 1.12 mappings...
-[20:17:34] [ViaMCP-0/INFO]: Finished mapping loading, shutting down loader executor!
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkWatchEvent$UnWatch
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.relauncher.CoreModManager
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.DimensionManager
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Pre
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Post
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$CameraSetup
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$FogColors
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.EventBus
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.ExtendedBlockState
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.FMLClientHandler
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.FMLCommonHandler
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.biome.BiomeGenBase.getWaterColorMultiplier
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addDestroyEffects
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addHitEffects
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canCreatureSpawn
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canRenderInLayer
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.doesSideBlockRendering
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getBedDirection
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getExtendedState
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightOpacity
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightValue
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.hasTileEntity
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isAir
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBed
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBedFoot
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isSideSolid
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.ChunkCache.isSideSolid
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.canRiderInteract
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.captureDrops
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.capturedDrops
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRenderInPass
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRiderSit
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.ForgeEventFactory
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeHooks
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.item.Item.delegate
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getDurabilityForDisplay
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getModel
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.onEntitySwing
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.shouldCauseReequipAnimation
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.showDurabilityBar
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.potion.PotionEffect.isCurativeItem
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.canRenderBreaking
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.getRenderBoundingBox
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.hasFastRenderer
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.shouldRenderInPass
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.countEntities
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.getPerWorldStorage
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getCloudRenderer
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSkyRenderer
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getWeatherRenderer
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSaveFolder
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.GuiModList
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IColoredBakedQuad
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.IExtendedBlockState
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IModel
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.IRenderHandler
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.LightUtil
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.MinecraftForge
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.MinecraftForgeClient
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.ModContainer
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader$VanillaLoader
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderBlockOverlayEvent$OverlayType
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderItemInFrameEvent
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Pre
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Post
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Pre
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Post
-[20:17:37] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.WorldEvent$Load
-[20:17:37] [Client thread/INFO]: [OptiFine] *** Reloading custom textures ***
-[20:17:38] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky1.properties
-[20:17:38] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky2.properties
-[20:17:38] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky3.properties
-[20:17:38] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky4.properties
-[20:17:38] [Client thread/INFO]: [OptiFine] Enable face culling: acacia_leaves, birch_leaves, dark_oak_leaves, jungle_leaves, oak_leaves, spruce_leaves
-[20:18:13] [Client thread/INFO]: Connecting to eu.loyisa.cn, 25565
-[20:18:15] [Client thread/INFO]: [CHAT]        
-[20:18:15] [Client thread/INFO]: [CHAT] [+] ExterminateYT
-[20:18:15] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYour client brand is vanilla§r
-[20:18:18] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] ExterminateYT §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=435.8(+435.752) Details:§r§7 distance=§r§c5.14§r§7 locationfrom=§r§c215.23, 62.00, 114.68§r§7 locationto=§r§c214.75, 62.42, 119.78§r§7 tags=§r§cwalkspeed(1)+doublebunny+doublebunny+hbufuse(0.0/1.0)+hspeed§r
-[20:18:18] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] ExterminateYT §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=919.81(+484.01) Details:§r§7 distance=§r§c5.14§r§7 locationfrom=§r§c215.23, 62.00, 114.75§r§7 locationto=§r§c214.75, 62.42, 119.86§r§7 tags=§r§cwalkspeed+ediblebunny+ediblebunny+hspeed§r
-[20:18:22] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Loaded config BLocksMC
-[20:18:48] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05919200077819823
-[20:18:48] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.06
-[20:18:48] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.1372000026702881
-[20:18:48] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.14
-[20:18:48] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.215600004196167
-[20:18:48] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.22
-[20:18:49] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.2940000057220459
-[20:18:49] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.29
-[20:18:49] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.3626000070571899
-[20:18:49] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.36
-[20:18:49] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.43120000839233397
-[20:18:49] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.43
-[20:18:49] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:18:49] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:19:24] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05919200077819823
-[20:19:24] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.04000000000000001
-[20:19:24] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.039200000762939446
-[20:19:24] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.060000000000000005
-[20:19:24] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.019600000381469723
-[20:19:24] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.08
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.020000000000000004
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05880000114440918
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.04000000000000001
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.039200000762939446
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.060000000000000005
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.019600000381469723
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.08
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.020000000000000004
-[20:19:25] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=54.059(+40) Details:§r§7 distance=§r§c0.34§r§7 locationfrom=§r§c220.95, 63.34, 124.46§r§7 locationto=§r§c221.29, 63.40, 124.46§r§7 tags=§r§cwalkspeed+hbufuse(0.1352611744000427/1.0)+vdistrel+vdistsb(1.402/1.35)§r§r
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.020000000000000004
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05880000114440918
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.04000000000000001
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.039200000762939446
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.060000000000000005
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.019600000381469723
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.08
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.020000000000000004
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05880000114440918
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.04000000000000001
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.039200000762939446
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.060000000000000005
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.019600000381469723
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.08
-[20:19:25] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=61.139(+7.08) Details:§r§7 distance=§r§c0.11§r§7 locationfrom=§r§c218.27, 62.06, 124.46§r§7 locationto=§r§c218.36, 62.12, 124.46§r§7 tags=§r§cwalkspeed+vdistrel§r§r
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.020000000000000004
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05880000114440918
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.04000000000000001
-[20:19:25] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=158.139(+97) Details:§r§7 distance=§r§c0.07§r§7 locationfrom=§r§c218.44, 62.20, 124.46§r§7 locationto=§r§c218.51, 62.20, 124.46§r§7 tags=§r§cwalkspeed+ychdec+lowjump§r§r
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:19:25] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.020000000000000004
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05880000114440918
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.04000000000000001
-[20:19:26] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=167.45(+9.31) Details:§r§7 distance=§r§c0.43§r§7 locationfrom=§r§c218.20, 62.02, 124.46§r§7 locationto=§r§c218.58, 62.22, 124.46§r§7 tags=§r§cwalkspeed+bunnyenv+bunnyenv+hspeed§r§r
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.020000000000000004
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05880000114440918
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.04000000000000001
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.039200000762939446
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.060000000000000005
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.019600000381469723
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.08
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.020000000000000004
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05880000114440918
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.04000000000000001
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.039200000762939446
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.060000000000000005
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.019600000381469723
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.08
-[20:19:26] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=174.49(+7.04) Details:§r§7 distance=§r§c0.04§r§7 locationfrom=§r§c218.20, 62.04, 124.46§r§7 locationto=§r§c218.20, 62.08, 124.46§r§7 tags=§r§cvdistrel§r§r
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:19:26] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: 0.020000000000000004
-[20:19:26] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=177.65(+3.16) Details:§r§7 distance=§r§c0.06§r§7 locationfrom=§r§c218.20, 62.22, 124.46§r§7 locationto=§r§c218.20, 62.28, 124.46§r§7 tags=§r§cvdistrel§r§r
-[20:19:26] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=196.01(+18.36) Details:§r§7 distance=§r§c0.08§r§7 locationfrom=§r§c218.20, 62.34, 124.46§r§7 locationto=§r§c218.20, 62.42, 124.46§r§7 tags=§r§cvdistrel§r§r
-[20:19:26] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=270.21(+74.2) Details:§r§7 distance=§r§c0.40§r§7 locationfrom=§r§c218.20, 62.42, 124.46§r§7 locationto=§r§c218.20, 62.02, 124.46§r§7 tags=§r§cvdistrel§r§r
-[20:19:47] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
-[20:19:53] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05919200077819823
-[20:19:53] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.06999999999999999
-[20:19:54] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.14700000286102294
-[20:19:54] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.16
-[20:19:54] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=172.859(+26.848) Details:§r§7 distance=§r§c0.74§r§7 locationfrom=§r§c217.70, 62.00, 124.52§r§7 locationto=§r§c218.35, 62.35, 124.52§r§7 tags=§r§cwalkspeed+hbufuse(0.0/1.0)+hspeed§r§r
-[20:19:54] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:19:54] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.09
-[20:19:54] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:19:54] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.09
-[20:20:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05919200077819823
-[20:20:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.06999999999999999
-[20:20:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.14700000286102294
-[20:20:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.16
-[20:20:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.2352000045776367
-[20:20:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.25
-[20:20:10] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=60.089(+6.96) Details:§r§7 distance=§r§c0.53§r§7 locationfrom=§r§c218.62, 62.35, 125.54§r§7 locationto=§r§c219.00, 62.71, 125.54§r§7 tags=§r§cwalkspeed+bunnyenv+bunnyenv+hbufuse(0.540512376372627/1.0)+vdistrel§r§r
-[20:20:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:20:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.09
-[20:20:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:20:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.09
-[20:20:33] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05919200077819823
-[20:20:33] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.049999999999999996
-[20:20:33] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.12740000247955321
-[20:20:33] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.12000000000000001
-[20:20:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=72.047(+30.084) Details:§r§7 distance=§r§c0.74§r§7 locationfrom=§r§c217.66, 62.00, 125.53§r§7 locationto=§r§c218.31, 62.35, 125.51§r§7 tags=§r§cwalkspeed+hbufuse(0.0/1.0)+hspeed§r§r
-[20:20:33] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:20:33] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.07
-[20:20:33] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:20:33] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.07
-[20:20:35] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05919200077819823
-[20:20:35] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.049999999999999996
-[20:20:35] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.12740000247955321
-[20:20:35] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.12000000000000001
-[20:20:35] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.1960000038146973
-[20:20:35] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.19
-[20:20:35] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=79.007(+6.96) Details:§r§7 distance=§r§c0.36§r§7 locationfrom=§r§c216.64, 62.35, 125.56§r§7 locationto=§r§c216.64, 62.71, 125.56§r§7 tags=§r§cvdistrel§r§r
-[20:20:35] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:20:35] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.07
-[20:20:35] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:20:35] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.07
-[20:21:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05919200077819823
-[20:21:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.06
-[20:21:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.1372000026702881
-[20:21:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.14
-[20:21:04] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=115.517(+36.51) Details:§r§7 distance=§r§c0.74§r§7 locationfrom=§r§c217.85, 62.00, 125.57§r§7 locationto=§r§c218.50, 62.35, 125.56§r§7 tags=§r§cwalkspeed+hspeed§r§r
-[20:21:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:21:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:21:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:21:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:21:12] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bTeleport complete!§r§r
-[20:21:18] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bTeleport complete!§r§r
-[20:21:25] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bTeleport complete!§r§r
-[20:21:34] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05919200077819823
-[20:21:34] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.06
-[20:21:34] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.1372000026702881
-[20:21:34] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.14
-[20:21:34] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.215600004196167
-[20:21:34] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.22
-[20:21:35] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.2940000057220459
-[20:21:35] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.29
-[20:21:35] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.3626000070571899
-[20:21:35] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.36
-[20:21:35] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.43120000839233397
-[20:21:35] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.43
-[20:21:35] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:21:35] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:21:35] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bblockbreak.noswing§r§f vl=2.017(+1)§r§r
-[20:21:36] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bblockbreak.noswing§r§f vl=2.816(+1)§r§r
-[20:21:49] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=56.78(+56.767) Details:§r§7 distance=§r§c0.71§r§7 locationfrom=§r§c212.98, 61.00, 162.30§r§7 locationto=§r§c213.10, 61.42, 161.74§r§7 tags=§r§clostsprint+walkspeed(2)+ediblebunny+bunnyhop+hacc(1.163/1.15)§r§r
-[20:21:50] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=88.865(+32.085) Details:§r§7 distance=§r§c0.74§r§7 locationfrom=§r§c212.93, 61.00, 162.35§r§7 locationto=§r§c212.61, 61.42, 162.87§r§7 tags=§r§cwalkspeed+hspeed§r§r
-[20:21:52] [Netty Client IO #8/INFO]: [CHAT] §0[§4Menace§0]§r Toggled Speed due to flag.
-[20:21:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=122.853(+33.988) Details:§r§7 distance=§r§c0.42§r§7 locationfrom=§r§c210.29, 61.75, 161.23§r§7 locationto=§r§c210.04, 62.00, 161.00§r§7 tags=§r§clostsprint+walkspeed+bunnyfriction+bunnyfly(8)+hacc(1.156/1.15)§r§r
-[20:21:55] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
-[20:21:57] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7B0DUd0§r§r
-[20:21:59] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=1.863(+1.863)§r§r
-[20:22:00] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=4.654(+3.163)§r§r
-[20:22:01] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7B0DUd0§r§r
-[20:22:02] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=7.859(+3.205)§r§r
-[20:22:02] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=8.475(+3.445)§r§r
-[20:22:03] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=10.057(+4.633)§r§r
-[20:22:07] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=12.098(+2.041)§r§r
-[20:22:12] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.106(+0.106) Details:§r§7 reachdistance=§r§c4.126§r§r
-[20:22:12] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=3.505(+3.503)§r§r
-[20:22:16] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=88.1(+41.11) Details:§r§7 tags=§r§ccombined.yawrate§r§r
-[20:22:16] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=94.193(+60.922) Details:§r§7 tags=§r§ccombined.yawrate§r§r
-[20:22:16] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=100.485(+62.922) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:22:16] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=106.977(+64.922) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:22:16] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=113.809(+68.322) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:22:17] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=120.981(+71.722) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:22:19] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=72.054(+32.4) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:22:20] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=75.494(+34.4) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:22:22] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=46.251(+33.1) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:22:22] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=49.761(+35.1) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:22:22] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=53.541(+37.8) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:22:22] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=57.591(+40.5) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:22:23] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=61.841(+42.5) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:22:25] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.522(+0.522) Details:§r§7 reachdistance=§r§c4.542§r§r
-[20:22:25] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=2.73(+2.73)§r§r
-[20:22:28] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=1.707(+0.2)§r§r
-[20:22:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=1.907(+0.2)§r§r
-[20:22:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=2.215(+1.922)§r§r
-[20:22:35] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=2.106(+0.199)§r§r
-[20:22:39] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=2.307(+0.201)§r§r
-[20:22:43] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=2.507(+0.2)§r§r
-[20:22:47] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=2.607(+0.1)§r§r
-[20:22:51] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=2.807(+0.2)§r§r
-[20:22:51] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05919200077819823
-[20:22:51] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.06
-[20:22:52] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.1372000026702881
-[20:22:52] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.14
-[20:22:52] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.215600004196167
-[20:22:52] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.22
-[20:22:52] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.2940000057220459
-[20:22:52] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.29
-[20:22:52] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.3626000070571899
-[20:22:52] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.36
-[20:22:52] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.43120000839233397
-[20:22:52] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.43
-[20:22:52] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:22:52] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:23:21] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05919200077819823
-[20:23:21] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.067
-[20:23:21] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.14406000280380252
-[20:23:21] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.14700000000000002
-[20:23:21] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.22246000432968144
-[20:23:21] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.227
-[20:23:21] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.3008600058555603
-[20:23:21] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.307
-[20:23:21] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.3792600073814392
-[20:23:21] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.387
-[20:23:21] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.4576600089073181
-[20:23:21] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.467
-[20:23:21] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:23:21] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08700000000000001
-[20:23:41] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05919200077819823
-[20:23:41] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.06999999999999999
-[20:23:41] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.14700000286102294
-[20:23:41] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.16
-[20:23:41] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.2352000045776367
-[20:23:41] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.25
-[20:23:41] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.32340000629425053
-[20:23:41] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.33
-[20:23:41] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.4018000078201294
-[20:23:41] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.41000000000000003
-[20:23:41] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.48020000934600837
-[20:23:41] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.49
-[20:23:41] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:23:41] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.09
-[20:23:41] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=30.747(+3.66) Details:§r§7 distance=§r§c0.52§r§7 locationfrom=§r§c221.82, 62.49, 124.34§r§7 locationto=§r§c222.14, 62.08, 124.34§r§7 tags=§r§cwalkspeed+hbufuse(0.008128194118056042/1.0)+vdistrel§r§r
-[20:23:43] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§binventory.inventorymove§r§f vl=1(+1)§r§r
-[20:24:00] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05919200077819823
-[20:24:00] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.06
-[20:24:00] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.1372000026702881
-[20:24:00] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.14
-[20:24:00] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.215600004196167
-[20:24:00] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.22
-[20:24:00] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.2940000057220459
-[20:24:00] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.29
-[20:24:00] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.3626000070571899
-[20:24:00] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.36
-[20:24:00] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=35.486(+7.744) Details:§r§7 distance=§r§c0.42§r§7 locationfrom=§r§c219.07, 63.02, 124.60§r§7 locationto=§r§c219.44, 63.22, 124.60§r§7 tags=§r§cwalkspeed+hspeed§r§r
-[20:24:00] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:24:00] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:24:00] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:24:00] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:24:03] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
-[20:24:58] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05919200077819823
-[20:24:58] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.06
-[20:24:58] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.1372000026702881
-[20:24:58] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.14
-[20:24:58] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.215600004196167
-[20:24:58] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.22
-[20:24:58] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.2940000057220459
-[20:24:58] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.29
-[20:24:58] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.3626000070571899
-[20:24:58] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.36
-[20:24:58] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.43120000839233397
-[20:24:58] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.43
-[20:24:58] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:24:58] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:24:58] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=48.102(+40) Details:§r§7 distance=§r§c0.36§r§7 locationfrom=§r§c219.74, 63.29, 124.50§r§7 locationto=§r§c220.09, 63.39, 124.50§r§7 tags=§r§cwalkspeed+hbufuse(0.2443420875251378/1.0)+vdistrel+vdistsb(1.393/1.35)§r§r
-[20:25:18] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05919200077819823
-[20:25:18] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.05919200077819823
-[20:25:18] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=36.008(+10.016) Details:§r§7 distance=§r§c0.74§r§7 locationfrom=§r§c217.61, 62.00, 124.30§r§7 locationto=§r§c218.26, 62.35, 124.30§r§7 tags=§r§cwalkspeed+hbufuse(0.0/1.0)+hspeed§r§r
-[20:25:18] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:25:18] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.0784000015258789
-[20:25:18] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:25:18] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.0784000015258789
-[20:25:42] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: 0.1107488768557196
-[20:25:42] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05919200077819823
-[20:25:42] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.06
-[20:25:42] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.1372000026702881
-[20:25:42] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.14
-[20:25:42] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.215600004196167
-[20:25:42] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.22
-[20:25:42] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.2940000057220459
-[20:25:42] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.29
-[20:25:42] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.3626000070571899
-[20:25:42] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.36
-[20:25:42] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.43120000839233397
-[20:25:42] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.43
-[20:25:42] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:25:42] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:26:03] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r @MotionY: 0.1107488768557196
-[20:26:03] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.05919200077819823
-[20:26:03] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.06
-[20:26:03] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.1372000026702881
-[20:26:03] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.14
-[20:26:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.215600004196167
-[20:26:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.22
-[20:26:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.2940000057220459
-[20:26:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.29
-[20:26:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.3626000070571899
-[20:26:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.36
-[20:26:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.43120000839233397
-[20:26:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.43
-[20:26:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:26:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:26:11] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
-[20:26:30] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.04886877904412876
-[20:26:30] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.05
-[20:26:30] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.12740000247955321
-[20:26:30] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.13
-[20:26:30] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.20580000400543214
-[20:26:30] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.21
-[20:26:30] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.28420000553131103
-[20:26:30] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.28
-[20:26:30] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.35280000686645513
-[20:26:30] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.35
-[20:26:30] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.4214000082015991
-[20:26:30] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.42
-[20:26:30] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:26:30] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:26:37] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.04886877904412876
-[20:26:37] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.05
-[20:26:37] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.12740000247955321
-[20:26:37] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.13
-[20:26:37] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.20580000400543214
-[20:26:37] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.21
-[20:26:37] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.28420000553131103
-[20:26:37] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.28
-[20:26:37] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.35280000686645513
-[20:26:37] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.35
-[20:26:37] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.4214000082015991
-[20:26:37] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.42
-[20:26:37] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:26:37] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:26:40] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.04886877904412876
-[20:26:40] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.05
-[20:26:40] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.12740000247955321
-[20:26:40] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.13
-[20:26:40] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.20580000400543214
-[20:26:40] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.21
-[20:26:40] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.28420000553131103
-[20:26:40] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.28
-[20:26:40] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.35280000686645513
-[20:26:40] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.35
-[20:26:40] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.4214000082015991
-[20:26:40] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.42
-[20:26:40] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.49000000953674316
-[20:26:40] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.49
-[20:26:40] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.5586000108718872
-[20:26:40] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.56
-[20:26:41] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:26:41] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:26:45] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.04886877904412876
-[20:26:45] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.05
-[20:26:45] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.12740000247955321
-[20:26:45] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.13
-[20:26:45] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.20580000400543214
-[20:26:45] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.21
-[20:26:45] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.28420000553131103
-[20:26:45] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.28
-[20:26:46] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.35280000686645513
-[20:26:46] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.35
-[20:26:46] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.4214000082015991
-[20:26:46] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.42
-[20:26:46] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.49000000953674316
-[20:26:46] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.49
-[20:26:46] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.5586000108718872
-[20:26:46] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.56
-[20:26:46] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:26:46] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:26:47] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bblockinteract.direction§r§f vl=0.008(+0.008)§r§r
-[20:26:50] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.04886877904412876
-[20:26:50] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.05
-[20:26:50] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.12740000247955321
-[20:26:50] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.13
-[20:26:50] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.20580000400543214
-[20:26:50] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.21
-[20:26:50] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.28420000553131103
-[20:26:50] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.28
-[20:26:50] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.35280000686645513
-[20:26:50] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.35
-[20:26:50] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.4214000082015991
-[20:26:50] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.42
-[20:26:50] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.49000000953674316
-[20:26:50] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.49
-[20:26:50] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.5586000108718872
-[20:26:50] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.56
-[20:26:50] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:26:50] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:26:50] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=36.123(+3.055) Details:§r§7 distance=§r§c0.58§r§7 locationfrom=§r§c222.58, 62.88, 123.56§r§7 locationto=§r§c222.90, 62.39, 123.56§r§7 tags=§r§cwalkspeed+hspeed§r§r
-[20:26:51] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bblockinteract.direction§r§f vl=0.479(+0.471)§r§r
-[20:26:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bblockinteract.direction§r§f vl=1.128(+0.649)§r§r
-[20:26:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=38.124(+2.001) Details:§r§7 distance=§r§c0.19§r§7 locationfrom=§r§c217.57, 63.02, 123.97§r§7 locationto=§r§c217.40, 63.00, 124.04§r§7 tags=§r§csneaking+hspeed§r§r
-[20:26:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=57.325(+19.201) Details:§r§7 distance=§r§c0.36§r§7 locationfrom=§r§c217.57, 63.02, 123.97§r§7 locationto=§r§c217.24, 63.00, 124.11§r§7 tags=§r§csneaking+hspeed§r§r
-[20:26:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=85.918(+28.593) Details:§r§7 distance=§r§c0.46§r§7 locationfrom=§r§c217.57, 63.02, 123.97§r§7 locationto=§r§c217.15, 63.00, 124.15§r§7 tags=§r§csneaking+hspeed§r§r
-[20:27:00] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7T__D§r§r
-[20:27:01] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bTeleport complete!§r§r
-[20:27:07] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bTeleport complete!§r§r
-[20:27:09] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7T___D§r§r
-[20:27:12] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bTeleport complete!§r§r
-[20:27:12] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: can i test haks on someone??§r§r
-[20:27:17] [Client thread/INFO]: [CHAT] §r§5Dev§r Exterminate §r(§bExterminate§r): sure§r§r
-[20:27:33] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: how do I tp u here§r§r
-[20:27:40] [Client thread/INFO]: [CHAT] §r§5Dev§r Exterminate §r(§bExterminate§r): where r u§r§r
-[20:27:40] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: im in the red part of the scaffold area§r§r
-[20:27:55] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: yay ok go§r§r
-[20:27:59] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7df_H5§r§r
-[20:28:02] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7SESHtilldeath§r§r
-[20:28:04] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: not that good§r§r
-[20:28:05] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: wait§r§r
-[20:28:06] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7df_H5§r§r
-[20:28:10] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: ok try again§r§r
-[20:28:15] [Client thread/INFO]: [CHAT] §r§5Dev§r Exterminate §r(§bExterminate§r): dont use sword§r§r
-[20:28:18] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: ok§r§r
-[20:28:19] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
-[20:28:20] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=2.29(+0.001)§r§r
-[20:28:31] [Client thread/INFO]: [CHAT] §r§5Dev§r Exterminate §r(§bExterminate§r): do u want me to turn off velo?§r§r
-[20:28:36] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: syre§r§r
-[20:28:46] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: and no no kb§r§r
-[20:28:49] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: ok so go§r§r
-[20:28:54] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=223.823(+190.313) Details:§r§7 distance=§r§c0.55§r§7 locationfrom=§r§c287.39, 62.87, 193.31§r§7 locationto=§r§c287.61, 63.27, 193.00§r§7 tags=§r§cdirty+walkspeed+bunnyenv+bunnyenv+hspeed+vdistrel+airjump+vaccdirty§r§r
-[20:28:54] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=275.23(+51.407) Details:§r§7 distance=§r§c0.89§r§7 locationfrom=§r§c284.36, 62.00, 197.75§r§7 locationto=§r§c283.60, 62.46, 197.72§r§7 tags=§r§cwalkspeed+hspeed+vdistrel§r§r
-[20:28:55] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=276.74(+1.51) Details:§r§7 distance=§r§c0.47§r§7 locationfrom=§r§c284.82, 62.00, 197.68§r§7 locationto=§r§c284.65, 62.36, 197.93§r§7 tags=§r§cwalkspeed+bunnyenv+bunnyenv+hspeed§r§r
-[20:28:55] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=278.701(+1.961) Details:§r§7 distance=§r§c0.60§r§7 locationfrom=§r§c285.14, 62.00, 197.63§r§7 locationto=§r§c285.15, 62.36, 197.16§r§7 tags=§r§cdirty+walkspeed+bunnyenv+hvel+bunnyenv+hspeed§r§r
-[20:28:56] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=290.192(+11.49) Details:§r§7 distance=§r§c0.56§r§7 locationfrom=§r§c285.41, 62.00, 197.97§r§7 locationto=§r§c285.83, 62.36, 197.99§r§7 tags=§r§cdirty+walkspeed+bunnyenv+hvel+bunnyenv+hspeed§r§r
-[20:28:56] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=293.265(+3.073) Details:§r§7 distance=§r§c0.48§r§7 locationfrom=§r§c285.41, 62.00, 197.97§r§7 locationto=§r§c285.69, 62.36, 198.12§r§7 tags=§r§cwalkspeed+hspeed§r§r
-[20:28:57] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=345.302(+52.038) Details:§r§7 distance=§r§c0.90§r§7 locationfrom=§r§c285.36, 62.00, 197.51§r§7 locationto=§r§c285.49, 62.46, 198.27§r§7 tags=§r§cwalkspeed+hspeed+vdistrel§r§r
-[20:28:58] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=350.432(+5.13) Details:§r§7 distance=§r§c0.54§r§7 locationfrom=§r§c285.50, 62.00, 196.28§r§7 locationto=§r§c285.13, 62.36, 196.14§r§7 tags=§r§cdirty+walkspeed+bunnyenv+hvel+bunnyenv+hspeed§r§r
-[20:28:58] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7Geuxy§r§r
-[20:28:59] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=359.976(+9.544) Details:§r§7 distance=§r§c0.43§r§7 locationfrom=§r§c285.69, 62.00, 195.89§r§7 locationto=§r§c285.50, 62.00, 196.28§r§7 tags=§r§cdirty+walkspeed+bunnyenv+hvel+bunnyenv+hspeed+groundstep§r§r
-[20:28:59] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=361.995(+2.019) Details:§r§7 distance=§r§c0.31§r§7 locationfrom=§r§c285.69, 62.00, 195.89§r§7 locationto=§r§c285.54, 62.00, 196.16§r§7 tags=§r§cwalkspeed+hspeed+groundstep§r§r
-[20:28:59] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=420.124(+58.129) Details:§r§7 distance=§r§c0.95§r§7 locationfrom=§r§c285.82, 62.00, 195.68§r§7 locationto=§r§c285.06, 62.46, 195.33§r§7 tags=§r§cwalkspeed+hspeed+vdistrel§r§r
-[20:29:00] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bUse /back to teleport to your last death location!§r§r
-[20:29:03] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: yes§r§r
-[20:29:05] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bTeleported to your last death location!§r§r
-[20:29:09] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: was it obvious i was locking on or no§r§r
-[20:29:14] [Client thread/INFO]: [CHAT] §r§5Dev§r Exterminate §r(§bExterminate§r): im being flagged :skull:§r§r
-[20:29:21] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: bro I wasnt xd§r§r
-[20:29:29] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: this time u fight back§r§r
-[20:29:38] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7latiao_owo§r§r
-[20:29:42] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=1.144(+1.136) Details:§r§7 reachdistance=§r§c5.156§r§r
-[20:29:42] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=3.861(+3.563)§r§r
-[20:29:42] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=1.795(+0.652) Details:§r§7 reachdistance=§r§c4.672§r§r
-[20:29:42] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=5.934(+2.074)§r§r
-[20:29:42] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=1.96(+0.164) Details:§r§7 reachdistance=§r§c4.184§r§r
-[20:29:42] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=7.689(+1.755)§r§r
-[20:29:45] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=113.575(+113.574) Details:§r§7 distance=§r§c0.94§r§7 locationfrom=§r§c273.32, 63.17, 199.97§r§7 locationto=§r§c273.52, 63.63, 199.18§r§7 tags=§r§cdirty+walkspeed+hvel+hspeed+vdistrel+vaccdirty§r§r
-[20:29:45] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=5.166(+2.017)§r§r
-[20:29:46] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=141.01(+27.435) Details:§r§7 distance=§r§c0.26§r§7 locationfrom=§r§c274.01, 62.94, 200.09§r§7 locationto=§r§c273.78, 62.84, 200.16§r§7 tags=§r§cdirty+walkspeed+vdistrel+ychdec§r§r
-[20:29:48] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=141.902(+0.892) Details:§r§7 distance=§r§c0.50§r§7 locationfrom=§r§c277.69, 62.00, 204.43§r§7 locationto=§r§c277.97, 62.28, 204.13§r§7 tags=§r§cdirty+walkspeed+bunnyenv+hvel+bunnyenv+hspeed§r§r
-[20:29:48] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=4.014(+1.369)§r§r
-[20:29:48] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=153.622(+11.72) Details:§r§7 distance=§r§c0.55§r§7 locationfrom=§r§c276.25, 62.00, 205.12§r§7 locationto=§r§c276.63, 62.36, 204.96§r§7 tags=§r§cdirty+walkspeed+bunnyenv+hvel+bunnyenv+hspeed§r§r
-[20:29:48] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=1.984(+1.655) Details:§r§7 reachdistance=§r§c5.675§r§r
-[20:29:49] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=3.572(+1.588) Details:§r§7 reachdistance=§r§c5.608§r§r
-[20:29:49] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=164.885(+11.263) Details:§r§7 distance=§r§c0.54§r§7 locationfrom=§r§c273.78, 62.00, 205.37§r§7 locationto=§r§c274.13, 62.36, 205.58§r§7 tags=§r§cwalkspeed+bunnyenv+bunnyenv+hspeed§r§r
-[20:29:51] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=195.074(+30.189) Details:§r§7 distance=§r§c0.87§r§7 locationfrom=§r§c273.90, 62.00, 203.42§r§7 locationto=§r§c274.22, 62.50, 202.78§r§7 tags=§r§cdirty+walkspeed(2)+hvel+hspeed+vdistrel§r§r
-[20:29:51] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=259.296(+64.222) Details:§r§7 distance=§r§c1.01§r§7 locationfrom=§r§c272.53, 62.00, 204.95§r§7 locationto=§r§c273.33, 62.46, 204.56§r§7 tags=§r§cwalkspeed+hspeed+vdistrel§r§r
-[20:29:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=3.448(+2.606)§r§r
-[20:29:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=1.873(+0.937) Details:§r§7 reachdistance=§r§c4.957§r§r
-[20:29:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=2.415(+0.542) Details:§r§7 reachdistance=§r§c4.562§r§r
-[20:29:53] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=269.915(+10.619) Details:§r§7 distance=§r§c0.53§r§7 locationfrom=§r§c271.43, 62.00, 205.12§r§7 locationto=§r§c271.81, 62.36, 205.23§r§7 tags=§r§cwalkspeed+bunnyenv+bunnyenv+hspeed§r§r
-[20:29:53] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=3.255(+1.49)§r§r
-[20:29:54] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=334.758(+64.843) Details:§r§7 distance=§r§c1.01§r§7 locationfrom=§r§c271.43, 62.00, 205.12§r§7 locationto=§r§c272.32, 62.46, 204.99§r§7 tags=§r§cwalkspeed+hspeed+vdistrel§r§r
-[20:30:03] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: ok§r§r
-[20:30:07] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: i didnt pre-gap§r§r
-[20:30:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.04886877904412876
-[20:30:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.05
-[20:30:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.12740000247955321
-[20:30:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.13
-[20:30:10] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=341.718(+6.96) Details:§r§7 distance=§r§c0.36§r§7 locationfrom=§r§c270.23, 62.35, 208.02§r§7 locationto=§r§c270.23, 62.71, 208.02§r§7 tags=§r§cvdistrel§r§r
-[20:30:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:30:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:30:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:30:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:30:27] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
-[20:30:30] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bAll scaffold areas will be cleaned in 60 seconds!§r§r
-[20:30:40] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: go§r§r
-[20:30:45] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=3.302(+2.756)§r§r
-[20:30:48] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=2.999(+1.646)§r§r
-[20:30:50] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=11.259(+51.092) Details:§r§7 tags=§r§ccombined.yawrate§r§r
-[20:30:50] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=16.568(+53.092) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:30:50] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=22.217(+56.492) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:30:50] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=28.066(+58.492) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:30:51] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=34.185(+61.192) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:30:51] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=40.575(+63.892) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:30:51] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=47.164(+65.892) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:30:51] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=53.953(+67.892) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:30:51] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=60.942(+69.892) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:30:51] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=68.131(+71.892) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:30:51] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=75.521(+73.892) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:30:51] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=83.448(+79.273) Details:§r§7 tags=§r§ccombined.yawrate§r§r
-[20:30:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=92.151(+87.034) Details:§r§7 tags=§r§ccombined.yawrate§r§r
-[20:30:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=101.055(+89.034) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:30:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=110.158(+91.034) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:30:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=119.461(+93.034) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:30:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=128.965(+95.034) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:30:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=138.668(+97.034) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:30:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=148.572(+99.034) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:30:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=158.675(+101.034) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:30:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=168.978(+103.034) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:30:53] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bUse /back to teleport to your last death location!§r§r
-[20:30:54] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Toggled Killaura due to world change
-[20:30:55] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: YEDS§r§r
-[20:30:58] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bTeleported to your last death location!§r§r
-[20:31:00] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bAll scaffold areas will be cleaned in 30 seconds!§r§r
-[20:31:01] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: and I wasnt flagged once§r§r
-[20:31:02] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=1.046(+1.044) Details:§r§7 reachdistance=§r§c5.064§r§r
-[20:31:02] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=3.362(+3.256)§r§r
-[20:31:02] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=1.625(+0.579) Details:§r§7 reachdistance=§r§c4.599§r§r
-[20:31:02] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=5.266(+1.904)§r§r
-[20:31:25] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bAll scaffold areas will be cleaned in 5 seconds!§r§r
-[20:31:29] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=4.541(+1.171)§r§r
-[20:31:30] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.821(+0.155) Details:§r§7 reachdistance=§r§c4.175§r§r
-[20:31:30] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=7.277(+3.644)§r§r
-[20:31:35] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: go§r§r
-[20:31:44] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=4.597(+1.616)§r§r
-[20:31:45] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=6.932(+3.255)§r§r
-[20:31:48] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.585(+0.54) Details:§r§7 reachdistance=§r§c4.56§r§r
-[20:31:48] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=3.809(+1.992)§r§r
-[20:31:48] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.8(+0.215) Details:§r§7 reachdistance=§r§c4.235§r§r
-[20:32:10] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: df_H5 come here§r§r
-[20:32:14] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=1.477(+1.31)§r§r
-[20:32:14] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=2.719(+1.242)§r§r
-[20:32:15] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=3.374(+1.634)§r§r
-[20:32:17] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=3.35(+1.19)§r§r
-[20:32:17] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.119(+0.115) Details:§r§7 reachdistance=§r§c4.135§r§r
-[20:32:25] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7SESHtilldeath§r§r
-[20:32:26] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7df_H5§r§r
-[20:32:26] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: ncp must be bad for u to do that§r§r
-[20:32:35] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
-[20:32:41] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7Geuxy§r§r
-[20:32:45] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Loaded config BlocksMC
-[20:32:48] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: again§r§r
-[20:32:50] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: come here§r§r
-[20:32:53] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: Exterminate §r(§bExterminate§r)§r§r
-[20:32:56] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: ok go§r§r
-[20:33:00] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=3.269(+1.897)§r§r
-[20:33:00] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=27.199(+31.374) Details:§r§7 tags=§r§ccombined.yawrate§r§r
-[20:33:00] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=31.361(+41.617) Details:§r§7 tags=§r§ccombined.yawrate§r§r
-[20:33:01] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=36.547(+51.859) Details:§r§7 tags=§r§ccombined.yawrate§r§r
-[20:33:01] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=41.933(+53.859) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:33:01] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=47.412(+54.797) Details:§r§7 tags=§r§ccombined.yawrate§r§r
-[20:33:01] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=50.359(+29.464) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:33:01] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=56.239(+58.797) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:33:01] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=62.318(+60.797) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:33:01] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=68.598(+62.797) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:33:01] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=75.078(+64.797) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:33:01] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=81.757(+66.797) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:33:13] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.35(+0.348) Details:§r§7 reachdistance=§r§c4.368§r§r
-[20:33:13] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=2.143(+2.07)§r§r
-[20:33:13] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.981(+0.63) Details:§r§7 reachdistance=§r§c4.65§r§r
-[20:33:13] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=3.93(+1.787)§r§r
-[20:33:18] [Client thread/INFO]: [CHAT] §r§5Dev§r Exterminate §r(§bExterminate§r): ur armour§r§r
-[20:33:24] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: who is here§r§r
-[20:33:29] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=371.285(+371.285) Details:§r§7 distance=§r§c5.00§r§7 locationfrom=§r§c265.50, 62.00, 181.50§r§7 locationto=§r§c270.50, 62.00, 181.50§r§7 tags=§r§cwalkspeed+hbufuse(0.0/1.0)+hspeed+groundstep§r§r
-[20:33:29] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=842.555(+471.27) Details:§r§7 distance=§r§c5.00§r§7 locationfrom=§r§c265.50, 62.00, 181.50§r§7 locationto=§r§c270.50, 62.00, 181.50§r§7 tags=§r§cwalkspeed+hspeed+groundstep§r§r
-[20:33:29] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=1313.825(+471.27) Details:§r§7 distance=§r§c5.00§r§7 locationfrom=§r§c265.50, 62.00, 181.50§r§7 locationto=§r§c270.50, 62.00, 181.50§r§7 tags=§r§cwalkspeed+hspeed+groundstep§r§r
-[20:33:29] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=1313.84(+0.015) Details:§r§7 distance=§r§c0.29§r§7 locationfrom=§r§c265.50, 62.00, 181.50§r§7 locationto=§r§c265.21, 62.00, 181.53§r§7 tags=§r§cwalkspeed+hspeed+groundstep§r§r
-[20:33:30] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=1785.11(+471.27) Details:§r§7 distance=§r§c5.00§r§7 locationfrom=§r§c265.50, 62.00, 181.50§r§7 locationto=§r§c270.50, 62.00, 181.50§r§7 tags=§r§cwalkspeed+hspeed+groundstep§r§r
-[20:33:30] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=2256.38(+471.27) Details:§r§7 distance=§r§c5.00§r§7 locationfrom=§r§c265.50, 62.00, 181.50§r§7 locationto=§r§c270.50, 62.00, 181.50§r§7 tags=§r§cwalkspeed+hspeed+groundstep§r§r
-[20:33:30] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=2727.65(+471.27) Details:§r§7 distance=§r§c5.00§r§7 locationfrom=§r§c265.50, 62.00, 181.50§r§7 locationto=§r§c270.50, 62.00, 181.50§r§7 tags=§r§cwalkspeed+hspeed+groundstep§r§r
-[20:33:30] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=3198.92(+471.27) Details:§r§7 distance=§r§c5.00§r§7 locationfrom=§r§c265.50, 62.00, 181.50§r§7 locationto=§r§c270.50, 62.00, 181.50§r§7 tags=§r§cwalkspeed+hspeed+groundstep§r§r
-[20:33:30] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=3670.19(+471.27) Details:§r§7 distance=§r§c5.00§r§7 locationfrom=§r§c265.50, 62.00, 181.50§r§7 locationto=§r§c270.50, 62.00, 181.50§r§7 tags=§r§cwalkspeed+hspeed+groundstep§r§r
-[20:33:30] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=4141.46(+471.27) Details:§r§7 distance=§r§c5.00§r§7 locationfrom=§r§c265.50, 62.00, 181.50§r§7 locationto=§r§c270.50, 62.00, 181.50§r§7 tags=§r§cwalkspeed+hspeed+groundstep§r§r
-[20:33:30] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=4612.73(+471.27) Details:§r§7 distance=§r§c5.00§r§7 locationfrom=§r§c265.50, 62.00, 181.50§r§7 locationto=§r§c270.50, 62.00, 181.50§r§7 tags=§r§cwalkspeed+hspeed+groundstep§r§r
-[20:33:30] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7Geuxy§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=5084(+471.27) Details:§r§7 distance=§r§c5.00§r§7 locationfrom=§r§c265.50, 62.00, 181.50§r§7 locationto=§r§c270.50, 62.00, 181.50§r§7 tags=§r§cwalkspeed+hspeed+groundstep§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=5555.27(+471.27) Details:§r§7 distance=§r§c5.00§r§7 locationfrom=§r§c265.50, 62.00, 181.50§r§7 locationto=§r§c270.50, 62.00, 181.50§r§7 tags=§r§cwalkspeed+hspeed+groundstep§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=6026.54(+471.27) Details:§r§7 distance=§r§c5.00§r§7 locationfrom=§r§c265.50, 62.00, 181.50§r§7 locationto=§r§c270.50, 62.00, 181.50§r§7 tags=§r§cwalkspeed+hspeed+groundstep§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=6497.81(+471.27) Details:§r§7 distance=§r§c5.00§r§7 locationfrom=§r§c265.50, 62.00, 181.50§r§7 locationto=§r§c270.50, 62.00, 181.50§r§7 tags=§r§cwalkspeed+hspeed+groundstep§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=6969.08(+471.27) Details:§r§7 distance=§r§c5.00§r§7 locationfrom=§r§c265.50, 62.00, 181.50§r§7 locationto=§r§c270.50, 62.00, 181.50§r§7 tags=§r§cwalkspeed+hspeed+groundstep§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=0.2(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=0.4(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=0.6(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=0.8(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=1(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=1.2(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=1.4(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=1.6(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=1.8(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=2(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=2.2(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=2.4(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=7440.35(+471.27) Details:§r§7 distance=§r§c5.00§r§7 locationfrom=§r§c265.50, 62.00, 181.50§r§7 locationto=§r§c270.50, 62.00, 181.50§r§7 tags=§r§cwalkspeed+hspeed+groundstep§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=2.6(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=2.8(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=3(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=3.2(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=3.4(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=3.6(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=3.8(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=4(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=4.2(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=4.4(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=4.6(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=4.8(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=5(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=5.2(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=5.4(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=5.6(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=5.8(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=6(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=2.2(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=2.4(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=2.6(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=2.8(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=3(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=3.2(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=3.4(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=3.6(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=3.8(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=4(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=4.2(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=4.4(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=4.6(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=4.8(+0.2)§r§r
-[20:33:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=5(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=5.2(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=5.4(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=5.6(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=5.8(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=6(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=6.2(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=6.4(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=6.6(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=6.8(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=7(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=7.2(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=7.4(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=7.6(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=7.8(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=8(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=8.2(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=8.4(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=8.6(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=8.8(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=9(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=9.2(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=9.4(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=9.6(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=9.8(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=10(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=10.2(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=10.4(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=10.6(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=10.8(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=11(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=11.2(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=11.4(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=11.6(+0.2)§r§r
-[20:33:32] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=7.8(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=8(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=8.2(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=8.4(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=8.6(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=8.8(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=9(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=9.2(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=9.4(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=9.6(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=9.8(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=10(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=10.2(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=10.4(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=10.6(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=10.8(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=11(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=11.2(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=11.4(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=11.6(+0.2)§r§r
-[20:33:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=0.6(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=0.8(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=1(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=1.2(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=1.4(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=1.6(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=1.8(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=2(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=2.2(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=2.4(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=2.6(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=2.8(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=3(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=3.2(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=3.4(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=3.6(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=3.8(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=4(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=4.2(+0.2)§r§r
-[20:33:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bnet.flyingfrequency§r§f vl=4.4(+0.2)§r§r
-[20:33:52] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7B0DUd0§r§r
-[20:34:04] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: ok go§r§r
-[20:34:09] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=6.308(+2.377)§r§r
-[20:34:10] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=1.246(+0.618) Details:§r§7 reachdistance=§r§c4.638§r§r
-[20:34:11] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=4.672(+2.605)§r§r
-[20:34:14] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=37.876(+36.914) Details:§r§7 tags=§r§ccombined.yawrate§r§r
-[20:34:14] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=43.455(+55.794) Details:§r§7 tags=§r§ccombined.yawrate§r§r
-[20:34:15] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=49.235(+57.794) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:34:15] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=55.214(+59.794) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:34:15] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=61.394(+61.794) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:34:15] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=67.843(+64.494) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:34:15] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=74.492(+66.494) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:34:15] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=81.472(+69.794) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:34:15] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=88.651(+71.794) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:34:16] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=96.031(+73.794) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:34:16] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=103.61(+75.794) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:34:16] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=111.389(+77.794) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:34:16] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=119.369(+79.794) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:34:16] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=127.618(+82.494) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:34:22] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.249(+0.237) Details:§r§7 reachdistance=§r§c4.257§r§r
-[20:34:23] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: wait potions§r§r
-[20:34:23] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=3.317(+3.289)§r§r
-[20:34:24] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=1.525(+1.443) Details:§r§7 reachdistance=§r§c5.463§r§r
-[20:34:24] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=5.058(+1.741)§r§r
-[20:34:25] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7TriedWool805295§r§r
-[20:34:26] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7SESHtilldeath§r§r
-[20:34:31] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: no potions again§r§r
-[20:34:36] [Client thread/INFO]: [CHAT] §r§5Dev§r latiao_owo: use /heal§r§r
-[20:34:40] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: gp§r§r
-[20:34:43] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
-[20:34:44] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: go§r§r
-[20:34:48] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=7.17(+2.112)§r§r
-[20:34:49] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=9.412(+2.242)§r§r
-[20:34:51] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=4.895(+3.316)§r§r
-[20:34:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=1.058(+0.927) Details:§r§7 reachdistance=§r§c4.947§r§r
-[20:34:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=6.566(+1.671)§r§r
-[20:34:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=1.877(+0.819) Details:§r§7 reachdistance=§r§c4.839§r§r
-[20:34:53] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=72.333(+33.729) Details:§r§7 tags=§r§ccombined.yawrate§r§r
-[20:34:55] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=38.555(+32.8) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:34:55] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=42.105(+35.5) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:34:55] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=45.855(+37.5) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:34:55] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=49.805(+39.5) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:34:56] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=53.955(+41.5) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:35:07] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: i hit u way more§r§r
-[20:35:13] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.096(+0.091) Details:§r§7 reachdistance=§r§c4.111§r§r
-[20:35:13] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=4.409(+4.396)§r§r
-[20:35:13] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.187(+0.091) Details:§r§7 reachdistance=§r§c4.111§r§r
-[20:35:13] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=6.388(+1.979)§r§r
-[20:35:13] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.277(+0.091) Details:§r§7 reachdistance=§r§c4.111§r§r
-[20:35:13] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=8.367(+1.979)§r§r
-[20:35:13] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.368(+0.091) Details:§r§7 reachdistance=§r§c4.111§r§r
-[20:35:13] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=10.155(+1.789)§r§r
-[20:35:14] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.459(+0.091) Details:§r§7 reachdistance=§r§c4.111§r§r
-[20:35:14] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=11.699(+1.543)§r§r
-[20:35:28] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7latiao_owo§r§r
-[20:35:35] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7latiao_owo§r§r
-[20:35:54] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.821(+0.813) Details:§r§7 reachdistance=§r§c4.833§r§r
-[20:35:54] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=1.991(+1.78)§r§r
-[20:35:54] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=1.065(+0.244) Details:§r§7 reachdistance=§r§c4.264§r§r
-[20:35:54] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=3.536(+1.545)§r§r
-[20:35:54] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=1.502(+1.066) Details:§r§7 reachdistance=§r§c5.086§r§r
-[20:35:54] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=3.522(+2.074)§r§r
-[20:35:55] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=2.09(+0.588) Details:§r§7 reachdistance=§r§c4.608§r§r
-[20:35:55] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=5.066(+1.544)§r§r
-[20:35:55] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=2.448(+0.358) Details:§r§7 reachdistance=§r§c4.378§r§r
-[20:35:55] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=9.632(+4.566)§r§r
-[20:36:03] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: pvp§r§r
-[20:36:04] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bAll scaffold areas will be cleaned in 60 seconds!§r§r
-[20:36:06] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYou selected: Vanilla§r§r
-[20:36:10] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Teleporting to Geuxy
-[20:36:15] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Teleporting to Geuxy
-[20:36:29] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Online: Exterminate
-[20:36:31] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7TriedWool805295§r§r
-[20:36:34] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bAll scaffold areas will be cleaned in 30 seconds!§r§r
-[20:36:34] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7TriedWool805295§r§r
-[20:36:46] [Client thread/INFO]: [CHAT] §r§7[§r§fme §r§b-> §r§fGeuxy§r§7] §r§fhvh? §r§r
-[20:36:51] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
-[20:36:55] [Client thread/INFO]: [CHAT] §r§7[§r§fGeuxy §r§b-> §r§fme§r§7] §r§fkk §r§r
-[20:36:59] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bAll scaffold areas will be cleaned in 5 seconds!§r§r
-[20:37:10] [Client thread/INFO]: [CHAT] §r§7[§r§fme §r§b-> §r§fGeuxy§r§7] §r§fncp §r§r
-[20:37:14] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYou selected: NoCheatPlus§r§r
-[20:37:37] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7latiao_owo§r§r
-[20:37:48] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=8.888(+1.182)§r§r
-[20:37:48] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=10.573(+1.686)§r§r
-[20:37:48] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=12.31(+1.737)§r§r
-[20:37:48] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=13.574(+1.264)§r§r
-[20:37:50] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=5.361(+1.803)§r§r
-[20:37:51] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=5.647(+1.358)§r§r
-[20:37:52] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=4.621(+0.104)§r§r
-[20:38:01] [Client thread/INFO]: [CHAT] §r§3User§r ImYourDadBoogie: dont use pots§r§r
-[20:38:05] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7TriedWool805295§r§r
-[20:38:08] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7TriedWool805295§r§r
-[20:38:16] [Client thread/INFO]: [CHAT] §r§5Dev§r Exterminate §r(§bExterminate§r): i threw one after the fight was over :skull:§r§r
-[20:38:22] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7B0DUd0§r§r
-[20:38:22] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.552(+0.483) Details:§r§7 reachdistance=§r§c4.503§r§r
-[20:38:22] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.607(+0.055) Details:§r§7 reachdistance=§r§c4.075§r§r
-[20:38:26] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7TriedWool805295§r§r
-[20:38:27] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=4.403(+1.445)§r§r
-[20:38:28] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=4.839(+1.317)§r§r
-[20:38:29] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=6.618(+1.779)§r§r
-[20:38:29] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7TriedWool805295§r§r
-[20:38:29] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=9.089(+2.471)§r§r
-[20:38:30] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=9.234(+1.963)§r§r
-[20:38:41] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=3.182(+2.389)§r§r
-[20:38:59] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
-[20:39:02] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=4.735(+1.553)§r§r
-[20:39:03] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=6.25(+2.463)§r§r
-[20:39:03] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=6.773(+1.773)§r§r
-[20:39:04] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=6.348(+0.93)§r§r
-[20:39:24] [Client thread/INFO]: [CHAT] §r§7[§r§fme §r§b-> §r§fGeuxy§r§7] §r§fncp §r§r
-[20:39:28] [Client thread/INFO]: [CHAT] §r§7[§r§fGeuxy §r§b-> §r§fme§r§7] §r§foh lol §r§r
-[20:39:45] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7TriedWool805295§r§r
-[20:39:50] [Client thread/INFO]: [CHAT] §r§7[§r§fme §r§b-> §r§fGeuxy§r§7] §r§ftp aura moment §r§r
-[20:39:52] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7TriedWool805295§r§r
-[20:39:54] [Client thread/INFO]: [CHAT] §r§7[§r§fGeuxy §r§b-> §r§fme§r§7] §r§fxd §r§r
-[20:39:54] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7B0DUd0§r§r
-[20:40:15] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7ImYourDadBoogie§r§r
-[20:40:55] [Client thread/INFO]: [CHAT] §r§7[§r§fme §r§b-> §r§fGeuxy§r§7] §r§fno enchants? §r§r
-[20:40:58] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7baldo_is_doped§r§r
-[20:40:59] [Client thread/INFO]: [CHAT] §r§7[§r§fGeuxy §r§b-> §r§fme§r§7] §r§fkk §r§r
-[20:41:07] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
-[20:41:15] [Client thread/INFO]: [CHAT] §r§7[§r§fme §r§b-> §r§fGeuxy§r§7] §r§fpots are allowed §r§r
-[20:41:20] [Client thread/INFO]: [CHAT] §r§7[§r§fGeuxy §r§b-> §r§fme§r§7] §r§foh §r§r
-[20:41:26] [Client thread/INFO]: [CHAT] §r§7[§r§fme §r§b-> §r§fGeuxy§r§7] §r§for nah §r§r
-[20:41:29] [Client thread/INFO]: [CHAT] §r§7[§r§fGeuxy §r§b-> §r§fme§r§7] §r§fnah ig §r§r
-[20:41:34] [Client thread/INFO]: [CHAT] §r§7[§r§fme §r§b-> §r§fGeuxy§r§7] §r§fk §r§r
-[20:41:38] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bAll scaffold areas will be cleaned in 60 seconds!§r§r
-[20:41:55] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=1.783(+1.783)§r§r
-[20:42:07] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7iSucroze§r§r
-[20:42:10] [Client thread/INFO]: [CHAT] §r§5Dev§r Geuxy: i forgot to change targetstrafe distance§r§r
-[20:42:14] [Client thread/INFO]: [CHAT] §r§5Dev§r Exterminate §r(§bExterminate§r): lol§r§r
-[20:42:33] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bAll scaffold areas will be cleaned in 5 seconds!§r§r
-[20:42:36] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=1.903(+1.887)§r§r
-[20:42:38] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=2.942(+2.542)§r§r
-[20:42:38] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=3.949(+1.007)§r§r
-[20:42:39] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=0.474(+0.2)§r§r
-[20:42:42] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bUse /back to teleport to your last death location!§r§r
-[20:42:43] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Toggled Killaura due to world change
-[20:42:46] [Netty Client IO #8/INFO]: [CHAT] §0[§4Menace§0]§r Toggled Speed due to flag.
-[20:42:46] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bTeleported to your last death location!§r§r
-[20:43:11] [Client thread/INFO]: [CHAT] §r§5Dev§r Geuxy: just /heal§r§r
-[20:43:15] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
-[20:43:24] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7TriedWool805295§r§r
-[20:43:25] [Client thread/INFO]: [CHAT] §r§5Dev§r Exterminate §r(§bExterminate§r): but the extra hearts :<§r§r
-[20:43:27] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7TriedWool805295§r§r
-[20:43:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=1.398(+1.181)§r§r
-[20:43:35] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=0.673(+0.199)§r§r
-[20:43:39] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=0.874(+0.201)§r§r
-[20:43:43] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=0.974(+0.1)§r§r
-[20:43:44] [Client thread/INFO]: [CHAT] §r§5Dev§r Geuxy: wtf are those double hits§r§r
-[20:43:49] [Client thread/INFO]: [CHAT] §r§5Dev§r Exterminate §r(§bExterminate§r): lol§r§r
-[20:43:51] [Client thread/INFO]: [CHAT] §rUnknown command. Type "/help" for help.§r§r
-[20:43:53] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7iSucroze§r§r
-[20:43:55] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYou have been healed!§r§r
-[20:44:11] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=1.695(+1.694)§r§r
-[20:44:19] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=1.233(+1.185)§r§r
-[20:44:21] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=0.106(+0.101)§r§r
-[20:44:22] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=3.241(+32.226) Details:§r§7 tags=§r§ccombined.yawrate§r§r
-[20:44:23] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=1.326(+1.314)§r§r
-[20:44:23] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=7.08(+38.395) Details:§r§7 tags=§r§ccombined.yawrate§r§r
-[20:44:29] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.04886877904412876
-[20:44:29] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.05
-[20:44:29] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.12740000247955321
-[20:44:29] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.13
-[20:44:29] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.20580000400543214
-[20:44:29] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.21
-[20:44:29] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.28420000553131103
-[20:44:29] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.28
-[20:44:29] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.35280000686645513
-[20:44:29] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.35
-[20:44:29] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.4214000082015991
-[20:44:29] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.42
-[20:44:29] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:44:29] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:44:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=2.557(+1.231)§r§r
-[20:44:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=2.63(+1.583)§r§r
-[20:44:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=3.922(+1.818)§r§r
-[20:44:37] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=1.098(+0.2)§r§r
-[20:44:38] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7LEl_FENG§r§r
-[20:44:38] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=2.887(+2.36)§r§r
-[20:44:39] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=5.045(+31.796) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:44:39] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=8.425(+33.796) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:44:39] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=12.005(+35.796) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:44:40] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=15.784(+37.796) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:44:40] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=19.764(+39.796) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:44:40] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=23.155(+43.796) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:44:40] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=27.735(+45.796) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:44:40] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=32.515(+47.796) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:44:41] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bcombined.improbable§r§f vl=37.494(+49.796) Details:§r§7 tags=§r§cfight.speed§r§r
-[20:44:41] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=1.298(+0.2)§r§r
-[20:44:45] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=1.398(+0.1)§r§r
-[20:44:46] [Client thread/INFO]: [CHAT] §r§5Dev§r Geuxy: that was huge regen§r§r
-[20:44:53] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=1.343(+0.001)§r§r
-[20:44:57] [Client thread/INFO]: [CHAT] §r§5Dev§r Exterminate §r(§bExterminate§r): autopot is hella unfair§r§r
-[20:44:58] [Client thread/INFO]: [CHAT] §r§3User§r LEl_FENG: regen?§r§r
-[20:45:03] [Client thread/INFO]: [CHAT] /heal, /health, /help
-[20:45:04] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYou have been healed!§r§r
-[20:45:09] [Client thread/INFO]: [CHAT] §rUnknown command. Type "/help" for help.§r§r
-[20:45:23] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
-[20:45:27] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=2.214(+1.827)§r§r
-[20:45:27] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.224(+0.224) Details:§r§7 reachdistance=§r§c4.244§r§r
-[20:45:27] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=3.283(+1.512)§r§r
-[20:45:28] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=4.174(+2.073)§r§r
-[20:45:28] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=4.277(+0.103)§r§r
-[20:45:28] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=6.69(+2.413)§r§r
-[20:45:28] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=9.146(+2.456)§r§r
-[20:45:28] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=10.41(+1.264)§r§r
-[20:45:29] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=10.241(+1.913)§r§r
-[20:45:29] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=1.537(+0.299)§r§r
-[20:45:29] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=11.57(+1.329)§r§r
-[20:45:29] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=13.271(+1.701)§r§r
-[20:45:29] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=14.707(+1.437)§r§r
-[20:45:33] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=1.638(+0.101)§r§r
-[20:45:35] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bUse /back to teleport to your last death location!§r§r
-[20:45:37] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Toggled Killaura due to world change
-[20:45:41] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bTeleported to your last death location!§r§r
-[20:45:56] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.04886877904412876
-[20:45:56] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.05
-[20:45:56] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.12740000247955321
-[20:45:56] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.13
-[20:45:56] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.20580000400543214
-[20:45:56] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.21
-[20:45:56] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.28420000553131103
-[20:45:56] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.28
-[20:45:56] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.35280000686645513
-[20:45:56] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.35
-[20:45:56] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.4214000082015991
-[20:45:56] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.42
-[20:45:56] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:45:56] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:45:56] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=36.292(+5.179) Details:§r§7 distance=§r§c0.36§r§7 locationfrom=§r§c263.67, 63.27, 173.79§r§7 locationto=§r§c263.36, 63.14, 173.67§r§7 tags=§r§cwalkspeed+hspeed§r§r
-[20:46:03] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.04886877904412876
-[20:46:03] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.05
-[20:46:03] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.12740000247955321
-[20:46:03] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.13
-[20:46:03] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.20580000400543214
-[20:46:03] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.21
-[20:46:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.28420000553131103
-[20:46:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.28
-[20:46:04] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=42.178(+8.548) Details:§r§7 distance=§r§c0.46§r§7 locationfrom=§r§c266.30, 62.71, 173.46§r§7 locationto=§r§c266.30, 62.99, 173.09§r§7 tags=§r§cwalkspeed+hspeed§r§r
-[20:46:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:46:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:46:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:46:04] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:46:13] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.04886877904412876
-[20:46:13] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.05
-[20:46:14] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.12740000247955321
-[20:46:14] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.13
-[20:46:14] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.20580000400543214
-[20:46:14] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.21
-[20:46:14] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.28420000553131103
-[20:46:14] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.28
-[20:46:14] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.35280000686645513
-[20:46:14] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.35
-[20:46:14] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.4214000082015991
-[20:46:14] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.42
-[20:46:14] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:46:14] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:46:23] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=1.629(+1.417)§r§r
-[20:46:26] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.reach§r§f vl=0.033(+0.033) Details:§r§7 reachdistance=§r§c4.053§r§r
-[20:46:26] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=2.455(+2.236)§r§r
-[20:46:30] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=5.538(+3.9)§r§r
-[20:46:30] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=1.521(+1.434)§r§r
-[20:46:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=1.323(+0.107)§r§r
-[20:46:31] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=1.432(+0.109)§r§r
-[20:46:34] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=5.638(+0.1)§r§r
-[20:46:38] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.fastheal§r§f vl=5.738(+0.1)§r§r
-[20:46:44] [Client thread/INFO]: [CHAT] /heal, /health, /help
-[20:46:45] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYou have been healed!§r§r
-[20:47:00] [Client thread/INFO]: [CHAT] §r§8[§r§a+§r§8] §r§7Xenobolic§r§r
-[20:47:12] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bAll scaffold areas will be cleaned in 60 seconds!§r§r
-[20:47:17] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.04886877904412876
-[20:47:17] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.05
-[20:47:17] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.12740000247955321
-[20:47:17] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.13
-[20:47:17] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.20580000400543214
-[20:47:17] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.21
-[20:47:17] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.28420000553131103
-[20:47:17] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.28
-[20:47:17] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.35280000686645513
-[20:47:17] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.35
-[20:47:17] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.4214000082015991
-[20:47:17] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.42
-[20:47:17] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:47:17] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:47:19] [Client thread/INFO]: [CHAT] §r§5Dev§r Geuxy: me when no health check§r§r
-[20:47:23] [Client thread/INFO]: [CHAT] §r§5Dev§r Exterminate §r(§bExterminate§r): W autopot§r§r
-[20:47:31] [Client thread/INFO]: [CHAT] §r§5Dev§r Geuxy: i didnt check health yet§r§r
-[20:47:31] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
-[20:47:40] [Client thread/INFO]: [CHAT] §r§3User§r LEl_FENG: no health check?§r§r
-[20:47:44] [Client thread/INFO]: [CHAT] §r§3User§r LEl_FENG: regen§r§r
-[20:48:03] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7TriedWool805295§r§r
-[20:48:13] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=57.5(+57.5) Details:§r§7 distance=§r§c1.02§r§7 locationfrom=§r§c236.20, 63.00, 164.37§r§7 locationto=§r§c236.05, 64.00, 164.48§r§7 tags=§r§cwalkspeed+vdistrel§r§r
-[20:48:26] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=84.139(+57.5) Details:§r§7 distance=§r§c1.00§r§7 locationfrom=§r§c236.63, 63.00, 164.55§r§7 locationto=§r§c236.63, 64.00, 164.55§r§7 tags=§r§cvdistrel§r§r
-[20:49:39] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
-[20:49:42] [Client thread/INFO]: [CHAT] §r§7[§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bfight.direction§r§f vl=1.23(+1.229)§r§r
-[20:49:43] [Client thread/INFO]: [CHAT] §r§3User§r LEl_FENG: 1.9 sword§r§r
-[20:50:09] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYou selected: Vanilla§r§r
-[20:50:26] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7LEl_FENG§r§r
-[20:50:47] [Client thread/INFO]: [CHAT] §r§5Dev§r Geuxy: love §rcombined.improbable§r§r
-[20:50:53] [Client thread/INFO]: [CHAT] §r§5Dev§r Exterminate §r(§bExterminate§r): fr§r§r
-[20:51:36] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Toggled TPAura due to world change
-[20:51:38] [Client thread/INFO]: Connecting to eu.loyisa.cn, 25565
-[20:51:40] [Client thread/INFO]: [CHAT]        
-[20:51:40] [Client thread/INFO]: [CHAT] [+] ExterminateYT
-[20:51:40] [Client thread/INFO]: [CHAT] §r§5Dev§r Geuxy: LOL§r§r
-[20:51:45] [Client thread/INFO]: [CHAT] §r§5Dev§r Geuxy: i still cant get tpaura to work because i dont pathfind§r§r
-[20:51:45] [Client thread/INFO]: [CHAT] §r§3User§r baldo_is_doped: shut§r§r
-[20:51:47] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
-[20:51:51] [Client thread/INFO]: [CHAT] §r§5Dev§r Exterminate §r(§bExterminate§r): too many packets§r§r
-[20:52:01] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§7baldo_is_doped§r§r
-[20:52:40] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:damage.thorns
-[20:52:40] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:damage.thorns
-[20:52:40] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:damage.thorns
-[20:52:40] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:damage.thorns
-[20:52:40] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:damage.thorns
-[20:52:40] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:damage.thorns
-[20:52:40] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:damage.thorns
-[20:52:40] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:damage.thorns
-[20:52:41] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:damage.thorns
-[20:52:41] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:damage.thorns
-[20:52:41] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:damage.thorns
-[20:52:41] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:damage.thorns
-[20:52:41] [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:damage.thorns
-[20:52:46] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bAll scaffold areas will be cleaned in 60 seconds!§r§r
-[20:53:16] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bAll scaffold areas will be cleaned in 30 seconds!§r§r
-[20:53:41] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bAll scaffold areas will be cleaned in 5 seconds!§r§r
-[20:53:51] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Loaded config BLocksMC
-[20:53:55] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
-[20:53:56] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYou selected: NoCheatPlus§r§r
-[20:54:06] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.04886877904412876
-[20:54:06] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.05
-[20:54:06] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.12740000247955321
-[20:54:06] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.13
-[20:54:06] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.20580000400543214
-[20:54:06] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.21
-[20:54:06] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.28420000553131103
-[20:54:06] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.28
-[20:54:06] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.35280000686645513
-[20:54:06] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.35
-[20:54:06] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.4214000082015991
-[20:54:06] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.42
-[20:54:06] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r MotionY: -0.0784000015258789
-[20:54:06] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r New MotionY: -0.08
-[20:54:48] [Client thread/INFO]: Stopping!
-[20:54:48] [Client thread/INFO]: SoundSystem shutting down...
-[20:54:48] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[22:34:42] [Client thread/INFO]: Setting user: Player62
+[22:34:42] [Client thread/INFO]: (Session ID is token:0:Player62)
+[22:34:44] [Client thread/INFO]: [OptiFine] *** Reflector Forge ***
+[22:34:44] [Client thread/INFO]: [OptiFine] *** Reflector Vanilla ***
+[22:34:44] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event$Result
+[22:34:44] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraft.launchwrapper.Launch
+[22:34:44] [Client thread/INFO]: LWJGL Version: 2.9.4
+[22:34:44] [Client thread/INFO]: [OptiFine] 
+[22:34:44] [Client thread/INFO]: [OptiFine] OptiFine_1.8.9_HD_U_M5
+[22:34:44] [Client thread/INFO]: [OptiFine] Build: null
+[22:34:44] [Client thread/INFO]: [OptiFine] OS: Windows 10 (amd64) version 10.0
+[22:34:44] [Client thread/INFO]: [OptiFine] Java: 1.8.0_372, BellSoft
+[22:34:44] [Client thread/INFO]: [OptiFine] VM: OpenJDK 64-Bit Server VM (mixed mode), BellSoft
+[22:34:44] [Client thread/INFO]: [OptiFine] LWJGL: 2.9.4
+[22:34:44] [Client thread/INFO]: [OptiFine] OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2, version 4.6.0 NVIDIA 516.94, NVIDIA Corporation
+[22:34:44] [Client thread/INFO]: [OptiFine] OpenGL Version: 4.6.0
+[22:34:44] [Client thread/INFO]: [OptiFine] Maximum texture size: 32768x32768
+[22:34:44] [VersionCheck/INFO]: [OptiFine] Checking for new version
+[22:34:44] [Client thread/INFO]: [Shaders] OpenGL Version: 4.6.0 NVIDIA 516.94
+[22:34:44] [Client thread/INFO]: [Shaders] Vendor:  NVIDIA Corporation
+[22:34:44] [Client thread/INFO]: [Shaders] Renderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+[22:34:44] [Client thread/INFO]: [Shaders] Capabilities:  2.0  2.1  3.0  3.2  4.0 
+[22:34:44] [Client thread/INFO]: [Shaders] GL_MAX_DRAW_BUFFERS: 8
+[22:34:44] [Client thread/INFO]: [Shaders] GL_MAX_COLOR_ATTACHMENTS_EXT: 8
+[22:34:44] [Client thread/INFO]: [Shaders] GL_MAX_TEXTURE_IMAGE_UNITS: 32
+[22:34:44] [Client thread/INFO]: [Shaders] Load shaders configuration.
+[22:34:44] [Client thread/INFO]: [Shaders] No shaderpack loaded.
+[22:34:44] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.Loader
+[22:34:44] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.SplashProgress
+[22:34:44] [Client thread/INFO]: Reloading ResourceManager: Default, gamerswordpack.zip
+[22:34:44] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: optifine.OptiFineClassTransformer
+[22:34:44] [Client thread/INFO]: [OptiFine] *** Reloading textures ***
+[22:34:44] [Client thread/INFO]: [OptiFine] Resource packs: gamerswordpack.zip
+[22:34:44] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.Attributes
+[22:34:44] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.preDraw
+[22:34:44] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.client.renderer.vertex.VertexFormatElement$EnumUsage.postDraw
+[22:34:44] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[22:34:44] [VersionCheck/INFO]: [OptiFine] Version found: M5
+[22:34:44] [Thread-6/INFO]: Initializing LWJGL OpenAL
+[22:34:44] [Thread-6/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[22:34:44] [Thread-6/INFO]: OpenAL initialized.
+[22:34:45] [Sound Library Loader/INFO]: Sound engine started
+[22:34:45] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ForgeHooksClient
+[22:34:46] [Client thread/INFO]: [OptiFine] Mipmap levels: 4
+[22:34:46] [Client thread/INFO]: [OptiFine] Multitexture: false
+[22:34:46] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/0_glass_white/glass_pane_white.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/0_glass_white/glass_white.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/10_glass_purple/glass_pane_purple.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/10_glass_purple/glass_purple.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/11_glass_blue/glass_blue.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/11_glass_blue/glass_pane_blue.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/12_glass_brown/glass_brown.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/12_glass_brown/glass_pane_brown.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/13_glass_green/glass_green.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/13_glass_green/glass_pane_green.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/14_glass_red/glass_pane_red.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/14_glass_red/glass_red.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/15_glass_black/glass_black.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/15_glass_black/glass_pane_black.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/1_glass_orange/glass_orange.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/1_glass_orange/glass_pane_orange.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/2_glass_magenta/glass_magenta.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/2_glass_magenta/glass_pane_magenta.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/3_glass_light_blue/glass_light_blue.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/3_glass_light_blue/glass_pane_light_blue.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/4_glass_yellow/glass_pane_yellow.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/4_glass_yellow/glass_yellow.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/5_glass_lime/glass_lime.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/5_glass_lime/glass_pane_lime.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/6_glass_pink/glass_pane_pink.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/6_glass_pink/glass_pink.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/8_glass_silver/glass_pane_silver.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/8_glass_silver/glass_silver.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/9_glass_cyan/glass_cyan.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/9_glass_cyan/glass_pane_cyan.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/bookshelf.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] ConnectedTextures: mcpatcher/ctm/default/sandstone.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] Multipass connected textures: false
+[22:34:46] [Client thread/INFO]: [OptiFine] BetterGrass: Parsing default configuration optifine/bettergrass.properties
+[22:34:46] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/diamond_ore, 1 -> 16
+[22:34:46] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/emerald_ore, 1 -> 16
+[22:34:46] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/gold_ore, 1 -> 16
+[22:34:46] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/coal_ore, 1 -> 16
+[22:34:46] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/lapis_ore, 1 -> 16
+[22:34:47] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/iron_ore, 1 -> 16
+[22:34:47] [Client thread/INFO]: [OptiFine] Scaled too small texture: minecraft:blocks/redstone_ore, 1 -> 16
+[22:34:47] [Client thread/INFO]: Created: 1024x1024 textures-atlas
+[22:34:47] [Client thread/INFO]: [OptiFine] Animated sprites: 11
+[22:34:47] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader
+[22:34:47] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.ItemModelMesherForge
+[22:34:47] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.registry.RenderingRegistry
+[22:34:47] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeModContainer
+[22:34:49] [Via-Mappingloader-0/INFO]: Loading 1.12 -> 1.13 mappings...
+[22:34:49] [Via-Mappingloader-1/INFO]: Loading 1.13 -> 1.13.2 mappings...
+[22:34:49] [Via-Mappingloader-2/INFO]: Loading 1.13.2 -> 1.14 mappings...
+[22:34:50] [Via-Mappingloader-0/INFO]: Loading block connection mappings ...
+[22:34:50] [Via-Mappingloader-4/INFO]: Loading 1.15 -> 1.16 mappings...
+[22:34:50] [Via-Mappingloader-3/INFO]: Loading 1.14 -> 1.15 mappings...
+[22:34:50] [Via-Mappingloader-1/INFO]: Loading 1.16 -> 1.16.2 mappings...
+[22:34:50] [Via-Mappingloader-5/INFO]: Loading 1.16.2 -> 1.17 mappings...
+[22:34:50] [Via-Mappingloader-6/INFO]: Loading 1.17 -> 1.18 mappings...
+[22:34:50] [Client thread/INFO]: Loading translations...
+[22:34:50] [Via-Mappingloader-7/INFO]: Loading 1.18 -> 1.19 mappings...
+[22:34:50] [Via-Mappingloader-0/INFO]: Loading 1.13 -> 1.12 mappings...
+[22:34:50] [Via-Mappingloader-8/INFO]: Loading 1.10 -> 1.9.4 mappings...
+[22:34:50] [Via-Mappingloader-9/INFO]: Loading 1.11 -> 1.10 mappings...
+[22:34:50] [Via-Mappingloader-10/INFO]: Loading 1.12 -> 1.11 mappings...
+[22:34:50] [Via-Mappingloader-2/INFO]: Loading 1.13.2 -> 1.13 mappings...
+[22:34:50] [Via-Mappingloader-8/INFO]: Loading 1.14 -> 1.13.2 mappings...
+[22:34:50] [Via-Mappingloader-4/INFO]: Loading 1.15 -> 1.14 mappings...
+[22:34:50] [Via-Mappingloader-6/INFO]: Loading 1.16 -> 1.15 mappings...
+[22:34:50] [Via-Mappingloader-7/INFO]: Loading 1.16.2 -> 1.16 mappings...
+[22:34:50] [Via-Mappingloader-8/INFO]: Loading 1.17 -> 1.16.2 mappings...
+[22:34:50] [Via-Mappingloader-0/INFO]: Loading 1.18 -> 1.17 mappings...
+[22:34:50] [Via-Mappingloader-0/INFO]: Loading 1.19 -> 1.18 mappings...
+[22:34:50] [ViaMCP-0/INFO]: ViaVersion detected server version: 1.8.x (47)
+[22:34:50] [ViaMCP-0/WARN]: This version of Minecraft is extremely outdated and support for it has reached its end of life. You will still be able to run Via on this Minecraft version, but we are unlikely to provide any further fixes or help with problems specific to legacy Minecraft versions. Please consider updating to give your players a better experience and to avoid issues that have long been fixed.
+[22:34:50] [ViaMCP-0/WARN]: You are running an outdated Java version, please consider updating it to at least Java 17 (your version is 1.8.0_372). At some point in the future, ViaVersion will no longer be compatible with this version of Java.
+[22:34:50] [ViaMCP-0/WARN]: There is a newer plugin version available: 4.6.2, you're on: 4.4.3
+[22:34:50] [ViaMCP-0/INFO]: Finished mapping loading, shutting down loader executor!
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: mods.betterfoliage.client.BetterFoliageClient
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.ChunkWatchEvent$UnWatch
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.relauncher.CoreModManager
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.DimensionManager
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Pre
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.GuiScreenEvent$DrawScreenEvent$Post
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$CameraSetup
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.EntityViewRenderEvent$FogColors
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.Event
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.eventhandler.EventBus
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.ExtendedBlockState
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.FMLClientHandler
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.FMLCommonHandler
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.biome.BiomeGenBase.getWaterColorMultiplier
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addDestroyEffects
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.addHitEffects
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canCreatureSpawn
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.canRenderInLayer
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.doesSideBlockRendering
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getBedDirection
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getExtendedState
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightOpacity
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.getLightValue
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.hasTileEntity
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isAir
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBed
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isBedFoot
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.block.Block.isSideSolid
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.ChunkCache.isSideSolid
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.canRiderInteract
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.captureDrops
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.entity.Entity.capturedDrops
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRenderInPass
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.entity.Entity.shouldRiderSit
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.ForgeEventFactory
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.ForgeHooks
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Field not present: net.minecraft.item.Item.delegate
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getDurabilityForDisplay
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.getModel
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.onEntitySwing
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.shouldCauseReequipAnimation
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.item.Item.showDurabilityBar
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.potion.PotionEffect.isCurativeItem
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.canRenderBreaking
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.getRenderBoundingBox
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.hasFastRenderer
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.tileentity.TileEntity.shouldRenderInPass
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.countEntities
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.World.getPerWorldStorage
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getCloudRenderer
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSkyRenderer
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getWeatherRenderer
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Method not present: net.minecraft.world.WorldProvider.getSaveFolder
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.client.GuiModList
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IColoredBakedQuad
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.property.IExtendedBlockState
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.IModel
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.IRenderHandler
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.pipeline.LightUtil
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.MinecraftForge
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.MinecraftForgeClient
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.fml.common.ModContainer
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.model.ModelLoader$VanillaLoader
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderBlockOverlayEvent$OverlayType
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderItemInFrameEvent
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Pre
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Post
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Pre
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.client.event.RenderLivingEvent$Specials$Post
+[22:34:54] [Client thread/INFO]: [OptiFine] (Reflector) Class not present: net.minecraftforge.event.world.WorldEvent$Load
+[22:34:54] [Client thread/INFO]: [OptiFine] *** Reloading custom textures ***
+[22:34:54] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky1.properties
+[22:34:55] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky2.properties
+[22:34:55] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky3.properties
+[22:34:55] [Client thread/INFO]: [OptiFine] CustomSky properties: mcpatcher/sky/world0/sky4.properties
+[22:34:55] [Client thread/INFO]: [OptiFine] Enable face culling: acacia_leaves, birch_leaves, dark_oak_leaves, jungle_leaves, oak_leaves, spruce_leaves
+[22:35:00] [Client thread/INFO]: Connecting to eu.loyisa.cn, 25565
+[22:35:02] [Client thread/INFO]: [CHAT]        
+[22:35:02] [Client thread/INFO]: [CHAT] [+] ExterminateYT
+[22:35:03] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYour client brand is vanilla§r
+[22:35:08] [Client thread/INFO]: [CHAT] §r§8[§r§c-§r§8] §r§71095days§r
+[22:35:09] [Client thread/INFO]: [CHAT] §0[§4Menace§0]§r Loaded config BlocksMC
+[22:35:13] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYou selected: Vanilla§r§r
+[22:35:23] [Client thread/INFO]: [CHAT] §r§3User§r Harcic: [FDPClient] I have a good FDP config, don't blame me§r§r
+[22:35:36] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYou selected: OldNoCheatPlus§r§r
+[22:35:38] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.survivalfly§r§f vl=106.031(+106.031) Details:§r§7 distance=§r§c1.35§r§7 locationfrom=§r§c247.36, 62.42, 165.64§r§7 locationto=§r§c247.48, 62.42, 166.98§r§7 tags=§r§cpermchecks+hspeed+ychdec+lowjump_set§r§r
+[22:35:39] [Client thread/INFO]: [CHAT] §r§7[§r§fO§r§9NC§r§cP§r§7] Exterminate §r(§bExterminate§r)§r§f failed §r§bmoving.passable§r§f vl=1(+1)§r§r
+[22:35:44] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bYou selected: NoCheatPlus§r§r
+[22:36:19] [Client thread/INFO]: [CHAT] §r§b§lDiona§r§f >> §r§bOur Discord: §r§bhttps://discord.gg/fdmkfts§r§r
+[22:36:35] [Client thread/INFO]: [CHAT] §r§3User§r Qiuchu29716: @Failed anticheat in HuaYuting???????93?§r§r
+[22:36:40] [Client thread/INFO]: [CHAT] §r§3User§r Harcic: [FDPClient] I need help, teach me how to play!§r§r
+[22:37:16] [Client thread/INFO]: Stopping!
+[22:37:16] [Client thread/INFO]: SoundSystem shutting down...
+[22:37:16] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com

@@ -36,6 +36,9 @@
       "Reach": 3.8000000000000003,
       "MinCPS": 16.0,
       "MaxCPS": 18.0,
+      "Mode": "Single",
+      "SwitchDelay": 152.0,
+      "SwitchAmount": 2.0,
       "TicksExisted": 0.0,
       "FOV": 360.0,
       "Filter": "Distance",
@@ -82,10 +85,11 @@
   "Flight": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Other",
+      "Mode": "NCP",
       "VanillaMode": "Damage",
       "VerusMode": "Jump",
-      "OtherMode": "NCPSlime",
+      "NCPMode": "NCPSlime",
+      "OtherMode": "BlocksMC",
       "DmgMode": "Jump",
       "Speed": 4.0,
       "Viewbob": 0.1,
@@ -276,7 +280,7 @@
   "Timer": {
     "Toggled": false,
     "Settings": {
-      "Speed": 2.3000000000000003,
+      "Speed": 0.30000000000000004,
       "Visible": true
     }
   },
@@ -326,7 +330,7 @@
     }
   },
   "Fullbright": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Visible": false
     }

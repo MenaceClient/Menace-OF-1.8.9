@@ -54,6 +54,7 @@ public class LongJumpModule extends BaseModule {
 		if (mc.thePlayer.motionY < 0.0 && count >= 1) {
 			ChatUtils.message("MotionY: " + mc.thePlayer.motionY);
 
+			//TODO: Make a better glide
 			mc.thePlayer.motionY = (Math.round(mc.thePlayer.motionY * 100.0) / 100.0);
 
 			ChatUtils.message("New MotionY: " + mc.thePlayer.motionY);

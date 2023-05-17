@@ -12,6 +12,7 @@ import dev.menace.module.settings.ToggleSetting;
 import dev.menace.utils.render.RenderUtils;
 import dev.menace.utils.timer.MSTimer;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.server.S14PacketEntity;
 import org.lwjgl.input.Keyboard;
@@ -81,7 +82,7 @@ public class BackTrackerModule extends BaseModule {
     public void onRecievePacket(EventReceivePacket event) {
         if (event.getPacket() instanceof S14PacketEntity) {
 
-            if (onlyTarget.getValue() && ((S14PacketEntity)event.getPacket()).getEntity(mc.theWorld) != Menace.instance.moduleManager.killAuraModule.trget && fakePos != null) {
+            if (onlyTarget.getValue() && !Menace.instance.moduleManager.killAuraModule.trget.contains((EntityLivingBase) ((S14PacketEntity)event.getPacket()).getEntity(mc.theWorld))  && fakePos != null) {
                 fakePos.forEach(p -> {
                     if (Objects.equals(p.getUniqueID(), ((S14PacketEntity)event.getPacket()).getEntity(mc.theWorld).getUniqueID())) {
                         mc.theWorld.removeEntity(p);

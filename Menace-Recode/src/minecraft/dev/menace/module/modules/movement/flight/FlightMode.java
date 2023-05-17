@@ -1,5 +1,6 @@
 package dev.menace.module.modules.movement.flight;
 
+import dev.menace.module.modules.movement.flight.ncp.*;
 import dev.menace.module.modules.movement.flight.other.*;
 import dev.menace.module.modules.movement.flight.vanilla.*;
 import dev.menace.module.modules.movement.flight.verus.*;
@@ -12,14 +13,15 @@ public enum FlightMode {
 	DAMAGE("Damage", new DamageFly(), FlightType.VANILLA),
 	VERUSJUMP("Jump", new VerusJumpFly(), FlightType.VERUS),
 	VERUSBOB("Bob", new VerusBobFly(), FlightType.VERUS),
-	BLOCKSMC("NCPSlime", new BlocksMCFly(), FlightType.OTHER),
+	NCPSLIME("NCPSlime", new NCPSlimeFly(), FlightType.NCP),
+	OLDNCP("OldNCP", new OldNCPFly(), FlightType.NCP),
 	MATRIXDAMAGEFLY("MatrixDamage", new MatrixDamageFly(), FlightType.OTHER);
 	
 	
 	final String name;
 	final FlightBase flight;
 	final FlightType flightType;
-	private FlightMode(String name, FlightBase flight, FlightType flightType) {
+	FlightMode(String name, FlightBase flight, FlightType flightType) {
 		this.name = name;
 		this.flight = flight;
 		this.flightType = flightType;
@@ -38,9 +40,10 @@ public enum FlightMode {
 	public enum FlightType {
 		VANILLA("Vanilla"),
 		VERUS("Verus"),
+		NCP("NCP"),
 		OTHER("Other");
 		
-		String name;
+		final String name;
 		private FlightType(String name) {
 			this.name = name;
 		}

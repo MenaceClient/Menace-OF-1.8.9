@@ -54,7 +54,8 @@ public class TargetStrafeModule extends BaseModule {
     @EventTarget
     public void onMove(EventMove event) {
 
-        EntityLivingBase target = Menace.instance.moduleManager.killAuraModule.trget;
+        //TODO: Allow for multiple targets
+        EntityLivingBase target = Menace.instance.moduleManager.killAuraModule.trget.get(0);
 
         if (!Menace.instance.moduleManager.killAuraModule.isToggled() || target == null) {
             return;
@@ -68,13 +69,13 @@ public class TargetStrafeModule extends BaseModule {
     public void onRender3DEvent(EventRender3D event) {
 
 
-        if (!Menace.instance.moduleManager.killAuraModule.isToggled() || Menace.instance.moduleManager.killAuraModule.trget == null) {
+        if (!Menace.instance.moduleManager.killAuraModule.isToggled() || !Menace.instance.moduleManager.killAuraModule.trget.isEmpty()) {
             return;
         }
 
         final Color theme = Color.RED;
         final Color color = new Color(theme.getRed(), theme.getGreen(), theme.getBlue(), 62);
-        RenderUtils.circle(Menace.instance.moduleManager.killAuraModule.trget, range.getValue() - 1, color);
+        RenderUtils.circle(Menace.instance.moduleManager.killAuraModule.trget.get(0), range.getValue() - 1, color);
     }
 
 }

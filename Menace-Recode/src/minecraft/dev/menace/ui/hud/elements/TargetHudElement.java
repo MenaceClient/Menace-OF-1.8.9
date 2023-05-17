@@ -27,7 +27,9 @@ public class TargetHudElement extends BaseElement {
         if (Menace.instance.moduleManager.tpAuraModule.targets.size() > 0) {
             target = Menace.instance.moduleManager.tpAuraModule.targets.get(0);
         } else {
-            target = Menace.instance.moduleManager.killAuraModule.trget;
+            //TODO: Allow for multiple targets
+            if (Menace.instance.moduleManager.killAuraModule.trget.size() == 0) return;
+            target = Menace.instance.moduleManager.killAuraModule.trget.get(0);
         }
         if (!(target instanceof EntityPlayer)) return;
         int q = this.getStringWidth(decimalFormat.format(target.getHealth())) + mc.fontRendererObj.getStringWidth("\u2764");

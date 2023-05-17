@@ -38,18 +38,26 @@ import java.util.stream.Collectors;
 public class KillAuraModule extends BaseModule {
 
     MSTimer delayTimer = new MSTimer();
-    public EntityLivingBase trget;
+    public final ArrayList<EntityLivingBase> trget = new ArrayList<>();
     long delay;
     public boolean blocking;
     public boolean shouldFakeBlock;
     float[] lastRotations = new float[2];
     Random rand = new Random();
+
+    //Switch
+    int switchIndex;
+    MSTimer switchTimer = new MSTimer();
+
+    //Settings
     public SliderSetting reach;
     public SliderSetting minCPS;
     public SliderSetting maxCPS;
+    ListSetting mode;
+    SliderSetting switchDelay;
+    SliderSetting switchAmount;
     SliderSetting ticksExisted;
     SliderSetting fov;
-    public ListSetting mode;
     ListSetting filter;
     ListSetting attackPoint;
     ListSetting autoblock;
@@ -89,6 +97,19 @@ public class KillAuraModule extends BaseModule {
                 }
             }
         };
+        mode = new ListSetting("Mode", true, "Single", new String[] {"Single", "Switch", "Multi"});
+        switchDelay = new SliderSetting("SwitchDelay", true, 100, 0, 1000, true) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(Menace.instance.moduleManager.killAuraModule.mode.getValue().equalsIgnoreCase("Switch"));
+            }
+        };
+        switchAmount = new SliderSetting("SwitchAmount", true, 2, 2, 10, true) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(Menace.instance.moduleManager.killAuraModule.mode.getValue().equalsIgnoreCase("Switch"));
+            }
+        };
         ticksExisted = new SliderSetting("TicksExisted", true, 10, 0 , 100, true);
         fov = new SliderSetting("FOV", true, 360, 0, 360, false);
         filter = new ListSetting("Filter", true, "Health", new String[] {"Health", "Distance", "Angle", "TicksExisted"});
@@ -109,6 +130,9 @@ public class KillAuraModule extends BaseModule {
         this.rSetting(reach);
         this.rSetting(minCPS);
         this.rSetting(maxCPS);
+        this.rSetting(mode);
+        this.rSetting(switchDelay);
+        this.rSetting(switchAmount);
         this.rSetting(ticksExisted);
         this.rSetting(fov);
         this.rSetting(filter);
@@ -132,6 +156,8 @@ public class KillAuraModule extends BaseModule {
     @Override
     public void onEnable() {
         delayTimer.reset();
+        switchTimer.reset();
+        switchIndex = 0;
         delay = (long) randomBetween(minCPS.getValue(), maxCPS.getValue());
         lastRotations = new float[]{mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch};
         super.onEnable();
@@ -141,7 +167,7 @@ public class KillAuraModule extends BaseModule {
     public void onDisable() {
         shouldFakeBlock = false;
         unblock();
-        trget = null;
+        trget.clear();
         super.onDisable();
     }
 
@@ -182,8 +208,22 @@ public class KillAuraModule extends BaseModule {
         targets.sort(comparator);
 
         if (!targets.isEmpty()) {
-            EntityLivingBase target = targets.get(0);
-            trget = target;
+            trget.clear();
+            trget.addAll(targets);
+
+            EntityLivingBase target;
+            if (mode.getValue().equals("Switch")) {
+                if (switchTimer.hasTimePassed(switchDelay.getValueL())) {
+                    switchIndex++;
+                    switchTimer.reset();
+                    if (switchIndex >= switchAmount.getValue() || switchIndex >= targets.size()) {
+                        switchIndex = 0;
+                    }
+                }
+                target = targets.get(switchIndex);
+            } else {
+                target = targets.get(0);
+            }
 
             if (Menace.instance.moduleManager.chestStealerModule.isInChest) {
                 PacketUtils.sendPacket(new C0DPacketCloseWindow(Menace.instance.moduleManager.chestStealerModule.guiChest.inventorySlots.windowId));
@@ -247,7 +287,13 @@ public class KillAuraModule extends BaseModule {
                     mc.thePlayer.swingItem();
                 }
 
-                mc.playerController.attackEntity(mc.thePlayer, target);
+                if (mode.getValue().equalsIgnoreCase("Multi")) {
+                    for (EntityLivingBase entity : targets) {
+                        mc.playerController.attackEntity(mc.thePlayer, entity);
+                    }
+                } else {
+                    mc.playerController.attackEntity(mc.thePlayer, target);
+                }
                 delay = (long) randomBetween(minCPS.getValue(), maxCPS.getValue());
                 delayTimer.reset();
             }
@@ -255,7 +301,6 @@ public class KillAuraModule extends BaseModule {
             lastRotations = new float[]{mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch};
             shouldFakeBlock = false;
             unblock();
-            trget = null;
         }
     }
 

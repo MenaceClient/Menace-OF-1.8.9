@@ -26,21 +26,22 @@ import dev.menace.module.settings.ToggleSetting;
 
 @DontSaveState
 public class FlightModule extends BaseModule {
-	
+
 	FlightBase flightMode;
-	
+
 	public ListSetting mode;
 	ListSetting vanillaMode;
 	ListSetting verusMode;
 	ListSetting otherMode;
+	ListSetting ncpMode;
 	public ListSetting dmgMode;
 	public SliderSetting speed;
 	SliderSetting viewbobbingYaw;
-	
+
 	public FlightModule() {
 		super("Flight", "Fly like a bird!", Category.MOVEMENT, Keyboard.KEY_F);
 	}
-	
+
 	@Override
 	public void setup() {
 		ArrayList<String> values = new ArrayList<>();
@@ -48,9 +49,10 @@ public class FlightModule extends BaseModule {
 			values.add(fm.getName());
 		}
 		mode = new ListSetting("Mode", true, "Vanilla", values.toArray(new String[] {}));
-		
+
 		ArrayList<String> vanillaValues = new ArrayList<>();
 		ArrayList<String> verusValues = new ArrayList<>();
+		ArrayList<String> ncpValues = new ArrayList<>();
 		ArrayList<String> otherValues = new ArrayList<>();
 		for (FlightMode fm : FlightMode.values()) {
 			switch (fm.getType())
@@ -63,16 +65,19 @@ public class FlightModule extends BaseModule {
 					verusValues.add(fm.getName());
 					break;
 
+				case NCP:
+					ncpValues.add(fm.getName());
+					break;
+
 				case OTHER:
 					otherValues.add(fm.getName());
-
 					break;
 
 				default:
 					break;
 			}
 		}
-		
+
 		vanillaMode = new ListSetting("VanillaMode", true, "Creative", vanillaValues.toArray(new String[] {})) {
 			@Override
 			public void constantCheck() {
@@ -83,6 +88,12 @@ public class FlightModule extends BaseModule {
 			@Override
 			public void constantCheck() {
 				this.setVisible(Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Verus"));
+			}
+		};
+		ncpMode = new ListSetting("NCPMode", false, "OldNCP", ncpValues.toArray(new String[] {})) {
+			@Override
+			public void constantCheck() {
+				this.setVisible(Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("NCP"));
 			}
 		};
 		otherMode = new ListSetting("OtherMode", false, "BlocksMC", otherValues.toArray(new String[] {})) {
@@ -103,20 +114,22 @@ public class FlightModule extends BaseModule {
 			public void constantCheck() {
 				this.setVisible(Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Vanilla")
 						&& (Menace.instance.moduleManager.flightModule.vanillaMode.getValue().equalsIgnoreCase("Damage")
-						|| Menace.instance.moduleManager.flightModule.vanillaMode.getValue().equalsIgnoreCase("Motion")));
+						|| Menace.instance.moduleManager.flightModule.vanillaMode.getValue().equalsIgnoreCase("Motion"))
+						|| (Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("NCP") && Menace.instance.moduleManager.flightModule.ncpMode.getValue().equals("OldNCP")));
 			}
 		};
 		viewbobbingYaw = new SliderSetting("Viewbob", false, 0.1, 0, 0.5, 0.1, false);
 		this.rSetting(mode);
 		this.rSetting(vanillaMode);
 		this.rSetting(verusMode);
+		this.rSetting(ncpMode);
 		this.rSetting(otherMode);
 		this.rSetting(dmgMode);
 		this.rSetting(speed);
 		this.rSetting(viewbobbingYaw);
 		super.setup();
 	}
-	
+
 	@Override
 	public void onEnable() {
 		for (FlightMode fm : FlightMode.values()) {
@@ -128,13 +141,17 @@ public class FlightModule extends BaseModule {
 				this.setDisplayName(fm.getName());
 				flightMode = fm.getFlight();
 				break;
+			} else if(ncpMode.getValue().equalsIgnoreCase(fm.getName()) && mode.getValue().equalsIgnoreCase("ncp")) {
+				this.setDisplayName(fm.getName());
+				flightMode = fm.getFlight();
+				break;
 			} else if (otherMode.getValue().equalsIgnoreCase(fm.getName()) && mode.getValue().equalsIgnoreCase("Other")) {
 				this.setDisplayName(fm.getName());
 				flightMode = fm.getFlight();
 				break;
 			}
 		}
-		
+
 		flightMode.launchX = mc.thePlayer.posX;
 		flightMode.launchY = mc.thePlayer.posY;
 		flightMode.launchZ = mc.thePlayer.posZ;
@@ -142,14 +159,14 @@ public class FlightModule extends BaseModule {
 		super.onEnable();
 		flightMode.onEnable();
 	}
-	
+
 	@EventTarget
 	public void onUpdate(EventUpdate event) {
 		if (mc.thePlayer.onGround) {
 			flightMode.launchY = mc.thePlayer.posY;
 		}
 		flightMode.onUpdate();
-		}
+	}
 	@EventTarget
 	public void onCollide(EventCollide event) {flightMode.onCollide(event);}
 	@EventTarget
@@ -168,7 +185,7 @@ public class FlightModule extends BaseModule {
 	public void onReceivePacket(EventReceivePacket event) {flightMode.onReceivePacket(event);}
 	@EventTarget
 	public void onJump(EventJump event) {flightMode.onJump(event);}
-	
+
 	@Override
 	public void onDisable() {
 		super.onDisable();
