@@ -10,7 +10,7 @@
     "Settings": {
       "Delay": 100.0,
       "Health": 15.0,
-      "OnlyOnGround": true,
+      "OnlyOnGround": false,
       "Visible": true
     }
   },
@@ -36,9 +36,9 @@
       "Reach": 3.8000000000000003,
       "MinCPS": 16.0,
       "MaxCPS": 18.0,
-      "Mode": "Single",
-      "SwitchDelay": 152.0,
-      "SwitchAmount": 2.0,
+      "Mode": "Switch",
+      "SwitchDelay": 216.0,
+      "SwitchAmount": 3.0,
       "TicksExisted": 0.0,
       "FOV": 360.0,
       "Filter": "Distance",
@@ -48,7 +48,7 @@
       "NoSwing": false,
       "ThroughWalls": true,
       "InInventory": false,
-      "RayCast": true,
+      "RayCast": false,
       "Cancel Click": true,
       "AutoDisable": true,
       "Players": true,
@@ -62,7 +62,7 @@
   "TPAura": {
     "Toggled": false,
     "Settings": {
-      "CPS": 10.0,
+      "CPS": 12.0,
       "Targets": 1.0,
       "Range": 140.0,
       "Visible": true
@@ -86,12 +86,12 @@
     "Toggled": false,
     "Settings": {
       "Mode": "NCP",
-      "VanillaMode": "Damage",
+      "VanillaMode": "Motion",
       "VerusMode": "Jump",
       "NCPMode": "NCPSlime",
-      "OtherMode": "BlocksMC",
-      "DmgMode": "Jump",
-      "Speed": 4.0,
+      "OtherMode": "MatrixDamage",
+      "DmgMode": "Bow",
+      "Speed": 5.0,
       "Viewbob": 0.1,
       "Visible": true
     }
@@ -99,6 +99,9 @@
   "LongJump": {
     "Toggled": false,
     "Settings": {
+      "Mode": "New NCP",
+      "Speed": 4.0,
+      "Height": 1.4,
       "Visible": true
     }
   },
@@ -350,6 +353,7 @@
       "TargetHUD": true,
       "Notifications": true,
       "TabGui": false,
+      "Spotify": true,
       "Custom Font": true,
       "Color": "Custom",
       "RBW Speed": 10.0,
@@ -452,7 +456,7 @@
     }
   },
   "Translator": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "Visible": true
     }

@@ -19,12 +19,13 @@ import dev.menace.Menace;
 
 public class FileManager {
 
-	private static Gson gson = new Gson();
+	private static final Gson gson = new Gson();
 
-	private static File menaceFolder = new File("Menace");
-	private static File hudFolder = new File(menaceFolder, "hud");
-	private static File configFolder = new File(menaceFolder, "configs");
-	private static File scriptFolder = new File(menaceFolder, "scripts");
+	private static final File menaceFolder = new File("Menace");
+	private static final File hudFolder = new File(menaceFolder, "hud");
+	private static final File configFolder = new File(menaceFolder, "configs");
+	private static final File scriptFolder = new File(menaceFolder, "scripts");
+
 	//private static File betaFolder = new File(menaceFolder, "beta");
 
 	public static void init() {

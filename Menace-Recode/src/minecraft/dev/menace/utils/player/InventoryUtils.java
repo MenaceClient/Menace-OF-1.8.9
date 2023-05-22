@@ -107,6 +107,8 @@ public class InventoryUtils {
 			damage += sword.getDamageVsEntity();
 		}
 
+		//TODO: Check durability
+
 		damage += (float)EnchantmentHelper.getEnchantmentLevel(Enchantment.sharpness.effectId, stack) * 1.25F + (float)EnchantmentHelper.getEnchantmentLevel(Enchantment.fireAspect.effectId, stack) * 0.01F;
 		return damage;
 	}

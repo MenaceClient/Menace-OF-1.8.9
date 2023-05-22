@@ -4,8 +4,10 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL13.GL_MULTISAMPLE;
 
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.nio.ByteBuffer;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,13 +17,13 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.*;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL13;
-import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GL30;
+
+import javax.imageio.ImageIO;
 
 @JSMapping
 public class RenderUtils {
@@ -580,6 +582,29 @@ public class RenderUtils {
 		OpenGlHelper.glBlendFunc(770, 771, 1, 0);
 		GlStateManager.color(color.getRed() / 255F, color.getGreen() / 255F, color.getBlue() / 255F, 1.0f);
 		Minecraft.getMinecraft().getTextureManager().bindTexture(image);
+		Gui.drawModalRectWithCustomSizedTexture((int) x, (int) y, 0.0f, 0.0f, width, height, (float) width, (float) height);
+		GL11.glDepthMask(true);
+		GL11.glDisable(GL_BLEND);
+		GL11.glEnable(GL_DEPTH_TEST);
+		GL11.glPopMatrix();
+	}
+
+	public static void drawImageFromLink(String url, float x, float y, final int width, final int height, Color color) {
+		GL11.glPushMatrix();
+		GL11.glDisable(GL_DEPTH_TEST);
+		GL11.glEnable(GL_BLEND);
+		GL11.glDepthMask(false);
+		OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+		GlStateManager.color(color.getRed() / 255F, color.getGreen() / 255F, color.getBlue() / 255F, 1.0f);
+		BufferedImage texture;
+		try {
+			URL textureUrl = new URL(url);
+			texture = ImageIO.read(textureUrl);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		ResourceLocation resourceLocation = Minecraft.getMinecraft().getTextureManager().getDynamicTextureLocation("image", new DynamicTexture(texture));
+		Minecraft.getMinecraft().getTextureManager().bindTexture(resourceLocation);
 		Gui.drawModalRectWithCustomSizedTexture((int) x, (int) y, 0.0f, 0.0f, width, height, (float) width, (float) height);
 		GL11.glDepthMask(true);
 		GL11.glDisable(GL_BLEND);

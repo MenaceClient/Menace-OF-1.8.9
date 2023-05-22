@@ -36,6 +36,9 @@
       "Reach": 7.0,
       "MinCPS": 11.0,
       "MaxCPS": 12.0,
+      "Mode": "Single",
+      "SwitchDelay": 100.0,
+      "SwitchAmount": 2.0,
       "TicksExisted": 10.0,
       "FOV": 360.0,
       "Filter": "Distance",
@@ -85,6 +88,7 @@
       "Mode": "Vanilla",
       "VanillaMode": "Damage",
       "VerusMode": "Jump",
+      "NCPMode": "OldNCP",
       "OtherMode": "BlocksMC",
       "DmgMode": "Basic",
       "Speed": 8.0,
@@ -346,6 +350,7 @@
       "TargetHUD": true,
       "Notifications": true,
       "TabGui": false,
+      "Spotify": false,
       "Custom Font": true,
       "Color": "Custom",
       "RBW Speed": 10.0,
@@ -442,6 +447,12 @@
     }
   },
   "StaffDetector": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "Translator": {
     "Toggled": false,
     "Settings": {
       "Visible": true

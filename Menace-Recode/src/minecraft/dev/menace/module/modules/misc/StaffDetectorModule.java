@@ -90,6 +90,7 @@ public class StaffDetectorModule extends BaseModule {
             }
         }
         if (event.getPacket() instanceof S20PacketEntityProperties) {
+
             Entity entity = mc.theWorld.getEntityByID(((S20PacketEntityProperties)event.getPacket()).getEntityId());
             if (entity != null && (obStaffs.contains(entity.getName()) || obStaffs.contains(entity.getDisplayName().getUnformattedText()))) {
                 if (!detected) {

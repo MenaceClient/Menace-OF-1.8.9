@@ -34,9 +34,14 @@
     "Y": 218,
     "Visible": true
   },
-  "TabGuiElement": {
+  "SpotifyElement": {
     "X": 1,
     "Y": 76,
+    "Visible": true
+  },
+  "TabGuiElement": {
+    "X": 1,
+    "Y": 117,
     "Visible": false
   },
   "TargetHudElement": {

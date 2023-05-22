@@ -4,6 +4,7 @@ import dev.menace.event.events.EventMove;
 import dev.menace.scripting.js.JSMapping;
 import dev.menace.scripting.js.MappedName;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
@@ -32,6 +33,11 @@ public class MovementUtils {
     @MappedName(79)
 	public static float getSpeed() {
         return MathHelper.sqrt_double(mc.thePlayer.motionX * mc.thePlayer.motionX + mc.thePlayer.motionZ * mc.thePlayer.motionZ);
+    }
+
+    @MappedName(79)
+    public static float getSpeed(EntityLivingBase entity) {
+        return MathHelper.sqrt_double(entity.motionX * entity.motionX + entity.motionZ * entity.motionZ);
     }
 
     @MappedName(80)

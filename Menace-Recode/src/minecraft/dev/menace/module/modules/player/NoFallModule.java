@@ -39,7 +39,7 @@ public class NoFallModule extends BaseModule {
 
 	@Override
 	public void setup() {
-		mode = new ListSetting("Mode", true, "SpoofGround", new String[] {"SpoofGround", "NoGround", "Verus", "VulcanTest", "Hypixel", "Experimental"});
+		mode = new ListSetting("Mode", true, "SpoofGround", new String[] {"SpoofGround", "NoGround", "Verus", "Vulcan", "Hypixel", "Experimental"});
 		this.rSetting(mode);
 		super.setup();
 	}
@@ -83,7 +83,7 @@ public class NoFallModule extends BaseModule {
 
 	@EventTarget
 	public void onMove(EventMove event) {
-		if (mode.getValue().equalsIgnoreCase("VulcanTest")) {
+		if (mode.getValue().equalsIgnoreCase("Vulcan")) {
 
 			if (mc.thePlayer.fallDistance == 0)
 				fallDist = 0;
@@ -91,7 +91,7 @@ public class NoFallModule extends BaseModule {
 			fallDist += mc.thePlayer.fallDistance - lastTickFallDist;
 			lastTickFallDist = mc.thePlayer.fallDistance;
 
-			double num = 0.015625; //0.015625
+			double num = 0.015625; //Funny Number
 
 			double mathGround = Math.round(event.getY() / num) * num;
 

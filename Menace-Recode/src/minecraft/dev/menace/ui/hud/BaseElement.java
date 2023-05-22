@@ -116,7 +116,23 @@ public abstract class BaseElement {
 			mc.fontRendererObj.drawCenteredString(string, x, y, color);
 		}
 	}
-	
+
+	protected String wrapString(String string, int width) {
+		if (getStringWidth(string) <= width) {
+			return string;
+		} else {
+			return wrapString(string.substring(0, string.length() - 1), width);
+		}
+	}
+
+	protected String reverseWrapString(String string, int width) {
+		if (getStringWidth(string) <= width) {
+			return string;
+		} else {
+			return reverseWrapString(string.substring(1), width);
+		}
+	}
+
 	protected int getStringWidth(String string) {
 		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {
 			return fr.getStringWidth(string);
@@ -132,5 +148,5 @@ public abstract class BaseElement {
 			return mc.fontRendererObj.FONT_HEIGHT;
 		}
 	}
-	
+
 }

@@ -14,6 +14,9 @@ public class PlayerVL {
     private int vl;
     //private boolean reported;
 
+    //Check Helpers
+    public long blockingTicks = 0;
+
     public PlayerVL(EntityPlayer player) {
         this.player = player;
         vlTimer.reset();

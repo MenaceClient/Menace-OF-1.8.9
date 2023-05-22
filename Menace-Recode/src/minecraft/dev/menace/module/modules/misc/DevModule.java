@@ -1,13 +1,14 @@
 package dev.menace.module.modules.misc;
 
+import dev.menace.Menace;
 import dev.menace.event.EventTarget;
-import dev.menace.event.events.EventSendPacket;
-import dev.menace.event.events.EventTeleport;
-import dev.menace.event.events.EventUpdate;
+import dev.menace.event.events.*;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.utils.misc.ChatUtils;
+import dev.menace.utils.player.MovementUtils;
 import dev.menace.utils.player.PacketUtils;
+import dev.menace.utils.player.PlayerUtils;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -21,7 +22,8 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class DevModule extends BaseModule {
 
-	Queue<C03PacketPlayer> packetQueue = new ConcurrentLinkedDeque<>();
+	boolean damage = false;
+	double y = 0;
 
 	public DevModule() {
 		super("DevModule", Category.MISC, Keyboard.KEY_P);
@@ -40,12 +42,24 @@ public class DevModule extends BaseModule {
 
 	@Override
 	public void onDisable() {
-		packetQueue.clear();
 		super.onDisable();
 	}
 
 	@EventTarget
 	public void onUpdate(EventUpdate event) {
+
+		ChatUtils.message("Speed: " + MovementUtils.getSpeed());
+
+	}
+
+	@EventTarget
+	public void onPre(EventPreMotion event) {
+
+	}
+
+	@EventTarget
+	public void onMove(EventMove event) {
+
 	}
 
 	@EventTarget
@@ -55,9 +69,7 @@ public class DevModule extends BaseModule {
 
 	@EventTarget
 	public void onTeleport(EventTeleport event) {
-		event.cancel();
-		ChatUtils.message("Edited teleport to " + event.getPosX() + ", " + event.getPosY() + ", " + event.getPosZ());
-		//this.toggle();
+
 	}
 
 

@@ -19,8 +19,11 @@ public class TranslatorModule extends BaseModule {
         if (event.getPacket() instanceof S02PacketChat) {
             String message = ((S02PacketChat) event.getPacket()).getChatComponent().getUnformattedText();
 
+            //Remove all §<letter>
+            message = message.replaceAll("§.", "");
+
             //Check for non-ascii
-            if (message != null && !message.matches("\\A\\p{ASCII}*\\z") && !message.contains("§") && !message.contains("|")) {
+            if (!message.matches("\\A\\p{ASCII}*\\z") && !message.contains("|")) {
                 ChatUtils.message("Translated: " + TranslatorUtils.translate(message));
             }
         }

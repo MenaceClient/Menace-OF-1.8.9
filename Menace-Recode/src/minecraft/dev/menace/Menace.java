@@ -21,6 +21,7 @@ import dev.menace.utils.notifications.NotificationManager;
 import dev.menace.utils.render.font.Fonts;
 import dev.menace.utils.render.font.MenaceFontRenderer;
 import dev.menace.utils.security.MenaceUser;
+import dev.menace.utils.spotify.SpotifyUtils;
 import dev.menace.utils.timer.MSTimer;
 import fr.litarvan.openauth.microsoft.MicrosoftAuthenticationException;
 import net.minecraft.client.Minecraft;
@@ -57,6 +58,7 @@ public class Menace {
 	public ScriptManager scriptManager;
 	public HackerDetect hackerDetect;
 	public IRCUtils ircBot;
+	public SpotifyUtils spotifyUtils;
 	public DiscordRP discordRP;
 
 	public MenaceUser user;
@@ -84,6 +86,7 @@ public class Menace {
 	}
 
 	public void startClient() {
+
 		starting = true;
 		System.out.println("[Menace] Starting Client...");
 
@@ -110,6 +113,8 @@ public class Menace {
 
 		discordRP = new DiscordRP();
 		discordRP.start();
+
+		spotifyUtils = new SpotifyUtils();
 
 		eventManager.register(this);
 
@@ -180,6 +185,8 @@ public class Menace {
 				super.run();
 			}
 		}.start();
+
+		spotifyUtils.auth();
 	}
 
 	public void stopClient() {

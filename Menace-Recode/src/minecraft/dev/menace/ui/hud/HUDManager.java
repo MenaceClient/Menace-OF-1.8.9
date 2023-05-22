@@ -20,6 +20,7 @@ public class HUDManager {
 	public PingElement pingElement = new PingElement();
 	public PosElement posElement = new PosElement();
 	public ScoreboardElement scoreboardElement = new ScoreboardElement();
+	public SpotifyElement spotifyElement = new SpotifyElement();
 	public TabGuiElement tabGuiElement = new TabGuiElement();
 	public TargetHudElement targetHudElement = new TargetHudElement();
 	public WatermarkElement watermarkElement = new WatermarkElement();

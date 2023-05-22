@@ -376,7 +376,7 @@ public class ScaffoldModule extends BaseModule {
             final EnumFacing side2 = side.getOpposite();
             if (BlockUtils.getBlock(neighbor).canCollideCheck(mc.theWorld.getBlockState(neighbor), false)) {
                 final Vec3 hitVec = new Vec3(neighbor).addVector(0.5, 0.5, 0.5).add(new Vec3(side2.getDirectionVec()).scale(0.5));
-                //Thanks hentajj!!!
+                //Thanks Geuxy!!
                 if (eyesPos.squareDistanceTo(hitVec) <= 36.0 && (mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, mc.thePlayer.getEntityBoundingBox().offset(0, -0.0001, 0)).isEmpty() || !notOnBlock.getValue())) {
 
                     if (keepRotations.getValue()) {

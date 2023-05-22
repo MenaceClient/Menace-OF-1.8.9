@@ -298,6 +298,7 @@ public class KillAuraModule extends BaseModule {
                 delayTimer.reset();
             }
         } else {
+            trget.clear();
             lastRotations = new float[]{mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch};
             shouldFakeBlock = false;
             unblock();
@@ -315,7 +316,7 @@ public class KillAuraModule extends BaseModule {
 
     @EventTarget
     public void onMouseClick(EventMouse event) {
-        if (event.getButton() == 1 && cancelClick.getValue()) {
+        if (event.getButton() == 1 && cancelClick.getValue() && !trget.isEmpty()) {
             event.setCancelled(true);
         }
     }

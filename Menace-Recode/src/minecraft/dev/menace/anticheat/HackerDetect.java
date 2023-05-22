@@ -17,6 +17,7 @@ public class HackerDetect {
 
     //Checks
     NoFallCheck noFallCheck = new NoFallCheck();
+    NoSlowCheck noSlowCheck = new NoSlowCheck();
     SpeedCheck speedCheck = new SpeedCheck();
     StepCheck stepCheck = new StepCheck();
     UnlegitRotationCheck unlegitRotationCheck = new UnlegitRotationCheck();

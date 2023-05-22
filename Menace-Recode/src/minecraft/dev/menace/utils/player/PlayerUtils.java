@@ -58,6 +58,10 @@ public class PlayerUtils {
         return new float[]{yaw, pitch};
     }
 
+    public static float[] getDirectionToBlock(BlockPos pos, EnumFacing enumFacing) {
+        return getDirectionToBlock(pos.getX(), pos.getY(), pos.getZ(), enumFacing);
+    }
+
     public static float[] getDirectionToBlock(final double x, final double y, final double z, final EnumFacing enumfacing) {
         final EntityEgg var4 = new EntityEgg(mc.theWorld);
         var4.posX = x + 0.5D;

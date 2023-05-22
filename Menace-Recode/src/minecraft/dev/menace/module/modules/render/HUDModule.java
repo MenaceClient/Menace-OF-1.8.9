@@ -27,6 +27,7 @@ public class HUDModule extends BaseModule {
 	public ToggleSetting targetHud;
 	public ToggleSetting notifications;
 	public ToggleSetting tabGui;
+	public ToggleSetting spotify;
 	public ToggleSetting customFont;
 	public ListSetting color;
 	public SliderSetting rainbowSpeed;
@@ -76,6 +77,7 @@ public class HUDModule extends BaseModule {
 		targetHud = new ToggleSetting("TargetHUD", true, true);
 		notifications = new ToggleSetting("Notifications", true, true);
 		tabGui = new ToggleSetting("TabGui", true, false);
+		spotify = new ToggleSetting("Spotify", true, false);
 		customFont = new ToggleSetting("Custom Font", true, false);
 		color = new ListSetting("Color", true, "Custom", new String[] {"Fade", "Custom"});
 		rainbowSpeed = new SliderSetting("RBW Speed", true, 10, 1, 100, true) {
@@ -130,6 +132,7 @@ public class HUDModule extends BaseModule {
 		this.rSetting(targetHud);
 		this.rSetting(notifications);
 		this.rSetting(tabGui);
+		this.rSetting(spotify);
 		this.rSetting(customFont);
 		this.rSetting(color);
 		this.rSetting(rainbowSpeed);
@@ -157,6 +160,7 @@ public class HUDModule extends BaseModule {
 		Menace.instance.hudManager.notificationElement.setVisible(notifications.getValue());
 		Menace.instance.hudManager.pingElement.setVisible(ping.getValue());
 		Menace.instance.hudManager.tabGuiElement.setVisible(tabGui.getValue());
+		Menace.instance.hudManager.spotifyElement.setVisible(spotify.getValue());
 		Menace.instance.hudManager.armourElement.setVisible(armour.getValue());
 		
 		HUDManager.hudElements.stream().filter(BaseElement::isVisible).forEach(BaseElement::render);

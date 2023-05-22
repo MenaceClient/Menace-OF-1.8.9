@@ -42,7 +42,7 @@ public class GameStatsElement extends BaseElement {
 
     @Override
     public void render() {
-        RenderUtils.drawRoundedRect(this.getAbsoluteX(), this.getAbsoluteY(), this.getAbsoluteX() + this.getStringWidth("") + 150, this.getAbsoluteY() + 60, 5, new Color(0, 0, 0, 120).getRGB());
+        RenderUtils.drawRoundedRect(this.getAbsoluteX(), this.getAbsoluteY(), this.getAbsoluteX() + 150, this.getAbsoluteY() + 60, 5, new Color(0, 0, 0, 120).getRGB());
 
         this.drawString("Statistics", this.getAbsoluteX() + 50, this.getAbsoluteY() + 3	, Color.white.getRGB());
 

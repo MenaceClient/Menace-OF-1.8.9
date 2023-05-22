@@ -28,6 +28,7 @@ public class CommandManager {
 	IRCCmd ircCmd = new IRCCmd();
 	PrefixCmd prefixCmd = new PrefixCmd();
 	ScriptCmd scriptCmd = new ScriptCmd();
+	SpotifyCmd spotifyCmd = new SpotifyCmd();
 	TeleportCmd teleportCmd = new TeleportCmd();
 	ToggleCmd toggleCmd = new ToggleCmd();
 	VClipCmd vClipCmd = new VClipCmd();
