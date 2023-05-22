@@ -75,16 +75,15 @@ public class SpotifyElement extends BaseElement {
 
             int length = songName.length() - this.reverseWrapString(songName, 100).length() + "_".length();
             songAnimation.setMax(length);
+            songAnimation.update();
 
-            if (this.getStringWidth(songName.substring((int) songAnimation.getValue())) <= 100) {
+            if (songAnimation.getValue() == songAnimation.getMax()) {
                 songAnimation.setReversed(true);
-            } else if (songAnimation.getValue() == 0) {
+            } else if (songAnimation.getValue() <= 0) {
                 songAnimation.setReversed(false);
             }
 
             songName = this.wrapString(songName.substring((int) songAnimation.getValue()), 100);
-
-            songAnimation.update();
         }
 
         //Make the artist name scroll back and forth slowly

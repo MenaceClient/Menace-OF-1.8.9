@@ -114,8 +114,6 @@ public class Menace {
 		discordRP = new DiscordRP();
 		discordRP.start();
 
-		spotifyUtils = new SpotifyUtils();
-
 		eventManager.register(this);
 
 		try {
@@ -186,7 +184,7 @@ public class Menace {
 			}
 		}.start();
 
-		spotifyUtils.auth();
+		spotifyUtils = new SpotifyUtils();
 	}
 
 	public void stopClient() {

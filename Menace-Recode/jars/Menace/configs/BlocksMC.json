@@ -99,7 +99,7 @@
   "LongJump": {
     "Toggled": false,
     "Settings": {
-      "Mode": "New NCP",
+      "Mode": "NCP",
       "Speed": 4.0,
       "Height": 1.4,
       "Visible": true

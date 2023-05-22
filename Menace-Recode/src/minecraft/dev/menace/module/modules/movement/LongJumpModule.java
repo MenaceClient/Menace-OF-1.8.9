@@ -71,6 +71,7 @@ public class LongJumpModule extends BaseModule {
 	public void onPre(EventPreMotion event) {
 		switch(mode.getValue()) {
 			case "NCP":
+				//TODO: Improve NCP Mode
 				if (count == 0) {
 					mc.thePlayer.jump();
 					mc.thePlayer.setPosition(mc.thePlayer.posX, mc.thePlayer.posY - 0.1, mc.thePlayer.posZ);
@@ -96,11 +97,6 @@ public class LongJumpModule extends BaseModule {
 				}
 
 				MovementUtils.strafe();
-
-				if (mc.thePlayer.onGround && disable) {
-					MovementUtils.stop();
-					this.toggle();
-				}
 				break;
 			case "OldNCP":
 				if(mc.thePlayer.onGround)
