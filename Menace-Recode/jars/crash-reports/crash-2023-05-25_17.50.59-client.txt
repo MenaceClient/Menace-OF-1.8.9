@@ -1,0 +1,121 @@
+---- Minecraft Crash Report ----
+// This is a token for 1 free hug. Redeem at your nearest Mojangsta: [~~HUG~~]
+
+Time: 25/05/23 5:51 PM
+Description: Rendering entity in world
+
+java.lang.NullPointerException: Rendering entity in world
+	at net.minecraft.block.BlockTrapDoor.isPassable(BlockTrapDoor.java:55)
+	at net.minecraft.client.renderer.entity.RenderEntityItem.func_177077_a(RenderEntityItem.java:52)
+	at net.minecraft.client.renderer.entity.RenderEntityItem.doRender(RenderEntityItem.java:145)
+	at net.minecraft.client.renderer.entity.RenderEntityItem.doRender(RenderEntityItem.java:18)
+	at net.minecraft.client.renderer.entity.RenderManager.doRenderEntity(RenderManager.java:401)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntityStatic(RenderManager.java:353)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntitySimple(RenderManager.java:320)
+	at net.minecraft.client.renderer.RenderGlobal.renderEntities(RenderGlobal.java:819)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorldPass(EntityRenderer.java:1715)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1524)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1322)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:934)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:348)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at net.minecraft.block.BlockTrapDoor.isPassable(BlockTrapDoor.java:55)
+	at net.minecraft.client.renderer.entity.RenderEntityItem.func_177077_a(RenderEntityItem.java:52)
+	at net.minecraft.client.renderer.entity.RenderEntityItem.doRender(RenderEntityItem.java:145)
+	at net.minecraft.client.renderer.entity.RenderEntityItem.doRender(RenderEntityItem.java:18)
+
+-- Entity being rendered --
+Details:
+	Entity Type: Item (net.minecraft.entity.item.EntityItem)
+	Entity ID: 647584
+	Entity Name: item.tile.trapdoor
+	Entity's Exact location: 921.57, 117.57, 131.47
+	Entity's Block location: 921.00,117.00,131.00 - World: (921,117,131), Chunk: (at 9,7,3 in 57,8; contains blocks 912,0,128 to 927,255,143), Region: (1,0; contains chunks 32,0 to 63,31, blocks 512,0,0 to 1023,255,511)
+	Entity's Momentum: -0.06, 0.16, 0.03
+	Entity's Rider: ~~ERROR~~ NullPointerException: null
+	Entity's Vehicle: ~~ERROR~~ NullPointerException: null
+
+-- Renderer details --
+Details:
+	Assigned renderer: net.minecraft.client.renderer.entity.RenderEntityItem@b0a803c
+	Location: 0.11,4.45,0.96 - World: (0,4,0), Chunk: (at 0,0,0 in 0,0; contains blocks 0,0,0 to 15,255,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Rotation: -92.8125
+	Delta: 0.27286685
+Stacktrace:
+	at net.minecraft.client.renderer.entity.RenderManager.doRenderEntity(RenderManager.java:401)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntityStatic(RenderManager.java:353)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntitySimple(RenderManager.java:320)
+	at net.minecraft.client.renderer.RenderGlobal.renderEntities(RenderGlobal.java:819)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorldPass(EntityRenderer.java:1715)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1524)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 5 total; [EntityPlayerSP['FlyWalker4396'/718655730, l='MpServer', x=921.50, y=113.00, z=130.48], EntityOtherPlayerMP['20yTka20'/597931, l='MpServer', x=897.50, y=113.00, z=76.50], EntityOtherPlayerMP['DieDonMoron1'/622060, l='MpServer', x=915.56, y=118.00, z=163.16], EntityOtherPlayerMP['_MORRGEN_'/614824, l='MpServer', x=913.09, y=118.00, z=98.47], EntityOtherPlayerMP['zeka_pruf123'/639453, l='MpServer', x=897.50, y=116.39, z=188.39]]
+	Chunk stats: MultiplayerChunkCache: 169, 169
+	Level seed: 0
+	Level generator: ID 04 - customized, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: -1138.00,64.00,87.00 - World: (-1138,64,87), Chunk: (at 14,4,7 in -72,5; contains blocks -1152,0,80 to -1137,255,95), Region: (-3,0; contains chunks -96,0 to -65,31, blocks -1536,0,0 to -1025,255,511)
+	Level time: 1019 game time, 16201 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: adventure (ID 2). Hardcore: false. Cheats: false
+	Forced entities: 12 total; [EntityOtherPlayerMP['_MORRGEN_'/614824, l='MpServer', x=913.09, y=118.00, z=98.47], EntityOtherPlayerMP['20yTka20'/597931, l='MpServer', x=897.50, y=113.00, z=76.50], EntityOtherPlayerMP['DieDonMoron1'/622060, l='MpServer', x=915.56, y=118.00, z=163.16], EntityItem['item.tile.trapdoor'/647584, l='MpServer', x=921.57, y=117.57, z=131.47], EntityOtherPlayerMP['zeka_pruf123'/639453, l='MpServer', x=916.50, y=125.00, z=100.50], EntityOtherPlayerMP['DieDonMoron1'/622060, l='MpServer', x=915.56, y=118.00, z=163.16], EntityPlayerSP['FlyWalker4396'/718655730, l='MpServer', x=921.50, y=113.00, z=130.48], EntityOtherPlayerMP['20yTka20'/597931, l='MpServer', x=897.50, y=113.00, z=76.50], EntityOtherPlayerMP['vova228776'/502886, l='MpServer', x=3233.25, y=90.00, z=20.66], EntityOtherPlayerMP['_MORRGEN_'/614824, l='MpServer', x=913.09, y=118.00, z=98.47], EntityOtherPlayerMP['zeka_pruf123'/639453, l='MpServer', x=897.50, y=116.39, z=188.39], EntityOtherPlayerMP['zeka_pruf123'/639453, l='MpServer', x=897.50, y=116.39, z=188.39]]
+	Retry entities: 0 total; []
+	Server brand: Write by XSenko </3
+	Server type: Non-integrated multiplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:401)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2283)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:361)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_372, BellSoft
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), BellSoft
+	Memory: 634065032 bytes (604 MB) / 1059061760 bytes (1010 MB) up to 1059061760 bytes (1010 MB)
+	JVM Flags: 2 total; -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 78, allocated: 13, tallocated: 95
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 516.94, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: gamerswordpack.zip
+	Current Language: English (UK)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-9700F CPU @ 3.00GHz
+	OptiFine Version: OptiFine_1.8.9_HD_U_M5
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 10
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 516.94
+	OpenGlRenderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8

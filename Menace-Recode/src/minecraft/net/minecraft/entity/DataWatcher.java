@@ -370,7 +370,7 @@ public class DataWatcher
 
         for (DataWatcher.WatchableObject datawatcher$watchableobject : p_75687_1_)
         {
-            DataWatcher.WatchableObject datawatcher$watchableobject1 = (DataWatcher.WatchableObject)this.watchedObjects.get(Integer.valueOf(datawatcher$watchableobject.getDataValueId()));
+            DataWatcher.WatchableObject datawatcher$watchableobject1 = this.watchedObjects.get(datawatcher$watchableobject.getDataValueId());
 
             if (datawatcher$watchableobject1 != null)
             {

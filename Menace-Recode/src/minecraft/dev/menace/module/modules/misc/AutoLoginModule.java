@@ -17,7 +17,7 @@ public class AutoLoginModule extends BaseModule {
     public void onRecievePacket(EventReceivePacket event) {
         if (event.getPacket() instanceof S02PacketChat) {
             String message = ((S02PacketChat)event.getPacket()).getChatComponent().getUnformattedText();
-            if (message.contains("/register <password> <password>")) {
+            if (message.contains("/register") || message.contains("/reg")) {
                 new Thread(() -> {
                     try {
                         Thread.sleep(2000);
@@ -27,7 +27,7 @@ public class AutoLoginModule extends BaseModule {
                         e.printStackTrace();
                     }
                 }).start();
-            } else if (message.contains("/login <password>")) {
+            } else if (message.contains("/login")) {
                 new Thread(() -> {
                     try {
                         Thread.sleep(2000);

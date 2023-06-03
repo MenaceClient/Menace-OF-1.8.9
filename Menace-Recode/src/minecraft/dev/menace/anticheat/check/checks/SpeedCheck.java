@@ -2,6 +2,8 @@ package dev.menace.anticheat.check.checks;
 
 import dev.menace.anticheat.PlayerVL;
 import dev.menace.anticheat.check.BaseCheck;
+import dev.menace.utils.misc.ChatUtils;
+import dev.menace.utils.player.MovementUtils;
 
 public class SpeedCheck extends BaseCheck {
     public SpeedCheck() {
@@ -11,7 +13,13 @@ public class SpeedCheck extends BaseCheck {
     @Override
     public void update(PlayerVL vl) {
         if (Math.abs(vl.getPlayer().posX - vl.getPlayer().lastTickPosX) > 1 || Math.abs(vl.getPlayer().posZ - vl.getPlayer().lastTickPosZ) > 1) {
-            vl.addVL(1, this.getCheckName());
+            vl.addVL(1, this.getCheckName() + " (A)");
         }
+
+        /*if (MovementUtils.getSpeed(vl.getPlayer()) > 1.1) {
+            vl.addVL(1, this.getCheckName() + " (B)");
+        }*/
+
+
     }
 }

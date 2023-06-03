@@ -2,6 +2,11 @@
   "AntiBot": {
     "Toggled": false,
     "Settings": {
+      "CheckGameProfile": false,
+      "CheckNetworkInfo": true,
+      "Matrix": true,
+      "SpawnDistance": 17.0,
+      "HideBots": false,
       "Visible": true
     }
   },
@@ -10,6 +15,7 @@
     "Settings": {
       "Delay": 100.0,
       "Health": 10.0,
+      "ThrowSpeed": true,
       "OnlyOnGround": true,
       "Visible": true
     }
@@ -69,7 +75,7 @@
     }
   },
   "Velocity": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Mode": "Simple",
       "Explosions": true,
@@ -109,6 +115,10 @@
     "Toggled": false,
     "Settings": {
       "Mode": "BHop",
+      "Vanilla Mode": "BHop",
+      "Verus Mode": "LowHop",
+      "NCP Mode": "LowHop",
+      "Other Mode": "BlocksMC",
       "Speed": 10.0,
       "AutoDisable": true,
       "Visible": true
@@ -194,7 +204,7 @@
     }
   },
   "NoFall": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Mode": "SpoofGround",
       "Visible": true
@@ -223,10 +233,11 @@
       "Tower Speed": 42.0,
       "Tower Derp": true,
       "Sprint": true,
-      "KeepRotations": true,
       "SilentSwap": true,
       "KeepY": false,
       "Bypass": false,
+      "Rotation Mode": "Normal1",
+      "KeepRotations": true,
       "BlocksMC": false,
       "Eagle": false,
       "Eagle Delay": 100.0,
@@ -344,6 +355,7 @@
       "Watermark": true,
       "ArrayList": true,
       "ArrayAlign": "Right",
+      "ArrayOutline": "None",
       "ArrayAlpha": 100.0,
       "Position": true,
       "Position Mode": "Single",

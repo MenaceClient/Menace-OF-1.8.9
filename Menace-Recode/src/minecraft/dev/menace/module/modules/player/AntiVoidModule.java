@@ -90,6 +90,7 @@ public class AntiVoidModule extends BaseModule {
             scaffoldToggled = false;
         }
 
+        //TODO: Make settings for this
         if (mode.getValue().equalsIgnoreCase("Blink") && mc.thePlayer.fallDistance > 0 &&
                 !PlayerUtils.isBlockUnder() && !mc.thePlayer.onGround) {
             if (!blink) {
@@ -97,6 +98,7 @@ public class AntiVoidModule extends BaseModule {
             } else if (mc.thePlayer.fallDistance > 5) {
                 MovementUtils.stopHoriz();
                 mc.thePlayer.setPositionAndUpdate(lastPacketSent.getPositionX(), lastPacketSent.getPositionY(), lastPacketSent.getPositionZ());
+                //mc.thePlayer.setPositionAndUpdate(lastOnGroundX, lastOnGroundY, lastOnGroundZ);
                 packetQueue.clear();
                 if (!Menace.instance.moduleManager.scaffoldModule.isToggled()) {
                     Menace.instance.moduleManager.scaffoldModule.toggle();
@@ -137,9 +139,7 @@ public class AntiVoidModule extends BaseModule {
 
     @EventTarget
     public void onSendPacket(EventSendPacket event) {
-        if (event.getPacket() instanceof C03PacketPlayer.C04PacketPlayerPosition || event.getPacket() instanceof C03PacketPlayer.C06PacketPlayerPosLook ||
-                event.getPacket() instanceof C03PacketPlayer.C05PacketPlayerLook ||
-                event.getPacket() instanceof C03PacketPlayer) {
+        if (event.getPacket() instanceof C03PacketPlayer) {
             if (blink) {
                 event.setCancelled(true);
                 packetQueue.add((C03PacketPlayer) event.getPacket());

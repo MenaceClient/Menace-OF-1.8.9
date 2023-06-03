@@ -1,0 +1,123 @@
+---- Minecraft Crash Report ----
+// You're mean.
+
+Time: 24/05/23 9:12 PM
+Description: Rendering entity in world
+
+java.lang.IllegalArgumentException: Cannot get property PropertyBool{name=open, clazz=class java.lang.Boolean, values=[true, false]} as it does not exist in BlockState{block=minecraft:ladder, properties=[facing]}
+	at net.minecraft.block.state.BlockState$StateImplementation.getValue(BlockState.java:127)
+	at net.minecraft.block.BlockTrapDoor.isPassable(BlockTrapDoor.java:55)
+	at net.minecraft.client.renderer.entity.RenderEntityItem.func_177077_a(RenderEntityItem.java:52)
+	at net.minecraft.client.renderer.entity.RenderEntityItem.doRender(RenderEntityItem.java:145)
+	at net.minecraft.client.renderer.entity.RenderEntityItem.doRender(RenderEntityItem.java:18)
+	at net.minecraft.client.renderer.entity.RenderManager.doRenderEntity(RenderManager.java:401)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntityStatic(RenderManager.java:353)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntitySimple(RenderManager.java:320)
+	at net.minecraft.client.renderer.RenderGlobal.renderEntities(RenderGlobal.java:819)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorldPass(EntityRenderer.java:1715)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1524)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1322)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:934)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:348)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at net.minecraft.block.state.BlockState$StateImplementation.getValue(BlockState.java:127)
+	at net.minecraft.block.BlockTrapDoor.isPassable(BlockTrapDoor.java:55)
+	at net.minecraft.client.renderer.entity.RenderEntityItem.func_177077_a(RenderEntityItem.java:52)
+	at net.minecraft.client.renderer.entity.RenderEntityItem.doRender(RenderEntityItem.java:145)
+	at net.minecraft.client.renderer.entity.RenderEntityItem.doRender(RenderEntityItem.java:18)
+
+-- Entity being rendered --
+Details:
+	Entity Type: Item (net.minecraft.entity.item.EntityItem)
+	Entity ID: 1301213
+	Entity Name: item.tile.trapdoor
+	Entity's Exact location: 9293.63, 117.38, 188.53
+	Entity's Block location: 9293.00,117.00,188.00 - World: (9293,117,188), Chunk: (at 13,7,12 in 580,11; contains blocks 9280,0,176 to 9295,255,191), Region: (18,0; contains chunks 576,0 to 607,31, blocks 9216,0,0 to 9727,255,511)
+	Entity's Momentum: 0.09, 0.20, -0.02
+	Entity's Rider: ~~ERROR~~ NullPointerException: null
+	Entity's Vehicle: ~~ERROR~~ NullPointerException: null
+
+-- Renderer details --
+Details:
+	Assigned renderer: net.minecraft.client.renderer.entity.RenderEntityItem@345e9f6c
+	Location: 0.66,4.38,0.19 - World: (0,4,0), Chunk: (at 0,0,0 in 0,0; contains blocks 0,0,0 to 15,255,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Rotation: 54.096252
+	Delta: 0.3127516
+Stacktrace:
+	at net.minecraft.client.renderer.entity.RenderManager.doRenderEntity(RenderManager.java:401)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntityStatic(RenderManager.java:353)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntitySimple(RenderManager.java:320)
+	at net.minecraft.client.renderer.RenderGlobal.renderEntities(RenderGlobal.java:819)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorldPass(EntityRenderer.java:1715)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1524)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 5 total; [EntityPlayerSP['KittyHappy6733'/718655730, l='MpServer', x=9293.12, y=113.00, z=188.35], EntityOtherPlayerMP['Kit2000'/1277914, l='MpServer', x=9311.19, y=116.00, z=164.56], EntityOtherPlayerMP['916520870'/1277061, l='MpServer', x=9269.18, y=119.00, z=207.04], EntityOtherPlayerMP['916520822'/1276963, l='MpServer', x=9237.96, y=118.00, z=212.13], EntityOtherPlayerMP['KROONNOS1736'/1148324, l='MpServer', x=9317.59, y=113.00, z=131.28]]
+	Chunk stats: MultiplayerChunkCache: 169, 169
+	Level seed: 0
+	Level generator: ID 04 - customized, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: -2052.00,64.00,1855.00 - World: (-2052,64,1855), Chunk: (at 12,4,15 in -129,115; contains blocks -2064,0,1840 to -2049,255,1855), Region: (-5,3; contains chunks -160,96 to -129,127, blocks -2560,0,1536 to -2049,255,2047)
+	Level time: 949 game time, 16201 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: adventure (ID 2). Hardcore: false. Cheats: false
+	Forced entities: 15 total; [EntityPlayerSP['KittyHappy6733'/718655730, l='MpServer', x=9293.12, y=113.00, z=188.35], EntityOtherPlayerMP['Luca_the_real'/1280670, l='MpServer', x=6662.16, y=130.00, z=690.23], EntityOtherPlayerMP['Kit2000'/1277914, l='MpServer', x=9311.19, y=116.00, z=164.56], EntityItem['item.tile.trapdoor'/1301213, l='MpServer', x=9293.63, y=117.38, z=188.53], EntityOtherPlayerMP['916520822'/1276963, l='MpServer', x=9237.96, y=118.00, z=212.13], EntityOtherPlayerMP['916520822'/1276963, l='MpServer', x=6660.81, y=129.64, z=691.36], EntityOtherPlayerMP['SaShatrg'/1120710, l='MpServer', x=6622.67, y=133.89, z=719.10], EntityOtherPlayerMP['KROONNOS1736'/1148324, l='MpServer', x=9317.59, y=113.00, z=131.28], EntityOtherPlayerMP['916520870'/1277061, l='MpServer', x=9269.18, y=119.00, z=207.04], EntityOtherPlayerMP['XxBaga4xX'/1265592, l='MpServer', x=9313.50, y=125.00, z=161.50], EntityOtherPlayerMP['Kit2000'/1277914, l='MpServer', x=9311.19, y=116.00, z=164.56], EntityOtherPlayerMP['Atomic_DAnya013'/1263988, l='MpServer', x=9316.50, y=125.00, z=129.50], EntityOtherPlayerMP['916520822'/1276963, l='MpServer', x=9237.96, y=118.00, z=212.13], EntityOtherPlayerMP['916520870'/1277061, l='MpServer', x=9269.18, y=119.00, z=207.04], EntityOtherPlayerMP['KROONNOS1736'/1148324, l='MpServer', x=9317.59, y=113.00, z=131.28]]
+	Retry entities: 0 total; []
+	Server brand: Write by XSenko </3
+	Server type: Non-integrated multiplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:401)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2283)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:361)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_372, BellSoft
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), BellSoft
+	Memory: 672408592 bytes (641 MB) / 1051721728 bytes (1003 MB) up to 1051721728 bytes (1003 MB)
+	JVM Flags: 2 total; -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 57, allocated: 13, tallocated: 95
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 516.94, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: gamerswordpack.zip
+	Current Language: English (UK)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-9700F CPU @ 3.00GHz
+	OptiFine Version: OptiFine_1.8.9_HD_U_M5
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 10
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 516.94
+	OpenGlRenderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8

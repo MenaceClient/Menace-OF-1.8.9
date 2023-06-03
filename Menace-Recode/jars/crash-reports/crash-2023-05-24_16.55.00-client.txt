@@ -1,0 +1,110 @@
+---- Minecraft Crash Report ----
+// Hey, that tickles! Hehehe!
+
+Time: 24/05/23 4:55 PM
+Description: Updating screen events
+
+java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.ArrayList.rangeCheck(ArrayList.java:659)
+	at java.util.ArrayList.get(ArrayList.java:435)
+	at dev.menace.module.modules.misc.DevModule.onEnable(DevModule.java:45)
+	at dev.menace.module.BaseModule.setToggled(BaseModule.java:143)
+	at dev.menace.module.BaseModule.toggle(BaseModule.java:128)
+	at dev.menace.ui.clickgui.lime.components.FrameModule.mouseClicked(FrameModule.java:111)
+	at dev.menace.ui.clickgui.lime.components.FrameCategory.mouseClicked(FrameCategory.java:127)
+	at dev.menace.ui.clickgui.lime.LimeClickGUI.lambda$mouseClicked$1(LimeClickGUI.java:67)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at dev.menace.ui.clickgui.lime.LimeClickGUI.mouseClicked(LimeClickGUI.java:67)
+	at net.minecraft.client.gui.GuiScreen.handleMouseInput(GuiScreen.java:602)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:571)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1502)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:910)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:348)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at java.util.ArrayList.rangeCheck(ArrayList.java:659)
+	at java.util.ArrayList.get(ArrayList.java:435)
+	at dev.menace.module.modules.misc.DevModule.onEnable(DevModule.java:45)
+	at dev.menace.module.BaseModule.setToggled(BaseModule.java:143)
+	at dev.menace.module.BaseModule.toggle(BaseModule.java:128)
+	at dev.menace.ui.clickgui.lime.components.FrameModule.mouseClicked(FrameModule.java:111)
+	at dev.menace.ui.clickgui.lime.components.FrameCategory.mouseClicked(FrameCategory.java:127)
+	at dev.menace.ui.clickgui.lime.LimeClickGUI.lambda$mouseClicked$1(LimeClickGUI.java:67)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at dev.menace.ui.clickgui.lime.LimeClickGUI.mouseClicked(LimeClickGUI.java:67)
+	at net.minecraft.client.gui.GuiScreen.handleMouseInput(GuiScreen.java:602)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:571)
+
+-- Affected screen --
+Details:
+	Screen name: dev.menace.ui.clickgui.lime.LimeClickGUI
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 8 total; [EntityPlayerSP['GunWalker3444'/1017338363, l='MpServer', x=-15.04, y=58.00, z=-43.17], EntityOtherPlayerMP['TTMAMATT'/337428, l='MpServer', x=-7.38, y=63.00, z=-44.19], EntityOtherPlayerMP['foracus3'/335772, l='MpServer', x=-5.38, y=63.00, z=-44.50], EntityOtherPlayerMP['Craflo'/234663, l='MpServer', x=-5.50, y=63.00, z=-44.47], EntityOtherPlayerMP['hghytj'/272583, l='MpServer', x=-5.50, y=63.00, z=-44.47], EntityOtherPlayerMP['zeka_pruf123'/125141, l='MpServer', x=-5.50, y=63.00, z=-44.47], EntityOtherPlayerMP['Nes43'/326257, l='MpServer', x=-5.50, y=63.00, z=-44.47], EntityOtherPlayerMP['916520870'/337433, l='MpServer', x=-8.91, y=62.50, z=-45.72]]
+	Chunk stats: MultiplayerChunkCache: 169, 169
+	Level seed: 0
+	Level generator: ID 00 - default, ver 1. Features enabled: false
+	Level generator options: 
+	Level spawn location: -5.00,63.00,-44.00 - World: (-5,63,-44), Chunk: (at 11,3,4 in -1,-3; contains blocks -16,0,-48 to -1,255,-33), Region: (-1,-1; contains chunks -32,-32 to -1,-1, blocks -512,0,-512 to -1,255,-1)
+	Level time: 175 game time, 16201 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: adventure (ID 2). Hardcore: false. Cheats: false
+	Forced entities: 83 total; [EntityArmorStand['8. §cTheOne721 §f714 §c?????'/110337, l='MpServer', x=-30.50, y=58.75, z=-58.50], EntityArmorStand['7. §cLLIaypMucT §f723 §c??????'/110336, l='MpServer', x=-30.50, y=59.00, z=-58.50], EntityArmorStand['10. §csareas6 §f694 §c??????'/110339, l='MpServer', x=-30.50, y=58.25, z=-58.50], EntityArmorStand['9. §cmimimimimimimm §f699 §c?????'/110338, l='MpServer', x=-30.50, y=58.50, z=-58.50], EntityItem['item.item.bootsDiamond'/110341, l='MpServer', x=-38.50, y=60.84, z=-36.50], EntityArmorStand['§f??????, ????? ????????'/110340, l='MpServer', x=-38.50, y=61.25, z=-36.50], EntityArmorStand['§7§k|§bSKYCAVE.PRO§7§k|§r'/110343, l='MpServer', x=-34.50, y=63.97, z=-49.50], EntityArmorStand['Armour Stand'/110342, l='MpServer', x=-38.50, y=60.84, z=-36.50], EntityArmorStand['Armour Stand'/110345, l='MpServer', x=-34.50, y=63.47, z=-49.50], EntityArmorStand['§f???? ??????? ? ?????? ??????§r'/110344, l='MpServer', x=-34.50, y=63.72, z=-49.50], EntityArmorStand['§7[§d???????§7] §f- §c§l29 §7??????§r'/110347, l='MpServer', x=-34.50, y=62.97, z=-49.50], EntityArmorStand['§7[§a???§7] §f- §c§l19 §7??????§r'/110346, l='MpServer', x=-34.50, y=63.22, z=-49.50], EntityArmorStand['§7[§e?????§7] §f- §c§l59 §7??????§r'/110349, l='MpServer', x=-34.50, y=62.47, z=-49.50], EntityArmorStand['§7[§b???????§7] §f- §c§l39 §7??????§r'/110348, l='MpServer', x=-34.50, y=62.72, z=-49.50], EntityArmorStand['§7[§3?????????§7] §f- §c§l99 §7??????§r'/110351, l='MpServer', x=-34.50, y=61.97, z=-49.50], EntityArmorStand['§7[§4YouTube§7] §f- §c§l79 §7??????§r'/110350, l='MpServer', x=-34.50, y=62.22, z=-49.50], EntityArmorStand['§7[§6?????????§7] §f- §c§l199 §7??????§r'/110353, l='MpServer', x=-34.50, y=61.47, z=-49.50], EntityOtherPlayerMP['TTMAMATT'/337428, l='MpServer', x=-7.38, y=63.00, z=-44.19], EntityArmorStand['§7[§1??????? ?????§7] §f- §c§l149 §7??????§r'/110352, l='MpServer', x=-34.50, y=61.72, z=-49.50], EntityArmorStand['§7[§2Support§7] §f- §c§l329 §7??????§r'/110355, l='MpServer', x=-34.50, y=60.97, z=-49.50], EntityArmorStand['§7[§d??????§7] §f- §c§l249 §7??????§r'/110354, l='MpServer', x=-34.50, y=61.22, z=-49.50], EntityArmorStand['§7[§d???????? ??????§7] §f- §c§l979 §7??????§r'/110357, l='MpServer', x=-34.50, y=60.47, z=-49.50], EntityArmorStand['§7[§e??????????§7] §f- §c§l479 §7??????§r'/110356, l='MpServer', x=-34.50, y=60.72, z=-49.50], EntityArmorStand['§7[§e?????????§7] §f- §c§l3499 §7??????§r'/110359, l='MpServer', x=-34.50, y=59.97, z=-49.50], EntityArmorStand['§7[§b??????§7] §f- §c§l1999 §7??????§r'/110358, l='MpServer', x=-34.50, y=60.22, z=-49.50], EntityArmorStand['§7[§9????????§7] §f- §c§l7499 §7??????§r'/110361, l='MpServer', x=-34.50, y=59.47, z=-49.50], EntityOtherPlayerMP['foracus3'/335772, l='MpServer', x=-5.38, y=63.00, z=-44.50], EntityArmorStand['§7[§f???????§7] §f- §c§l5499 §7??????§r'/110360, l='MpServer', x=-34.50, y=59.72, z=-49.50], EntityArmorStand['§f????? ????????? §d§l???????? §f? ?? ????????? ????? ?????§r'/110363, l='MpServer', x=-34.50, y=58.97, z=-49.50], EntityArmorStand['Armour Stand'/110362, l='MpServer', x=-34.50, y=59.22, z=-49.50], EntityOtherPlayerMP['916520870'/337433, l='MpServer', x=-8.91, y=62.50, z=-45.72], EntityArmorStand['§f?????? ?????? ?????? ?? ????? §e§lSkyCave.pro§r'/110365, l='MpServer', x=-34.50, y=58.47, z=-49.50], EntityArmorStand['§f????????? ? §a§l§n??????§f: §c/donate§r'/110364, l='MpServer', x=-34.50, y=58.72, z=-49.50], EntityArmorStand['Armour Stand'/110367, l='MpServer', x=-34.50, y=58.03, z=-49.50], EntityItem['item.item.emerald'/110366, l='MpServer', x=-34.50, y=58.03, z=-49.50], EntityArmorStand['1. §cVasilievich_228 §f8083 §c?????'/110369, l='MpServer', x=-42.50, y=60.50, z=-56.50], EntityArmorStand['== ??? ??????? =='/110368, l='MpServer', x=-42.50, y=60.75, z=-56.50], EntityArmorStand['3. §cmaratg54 §f6014 §c??????'/110371, l='MpServer', x=-42.50, y=60.00, z=-56.50], EntityArmorStand['2. §cvakson §f6858 §c??????'/110370, l='MpServer', x=-42.50, y=60.25, z=-56.50], EntityOtherPlayerMP['Craflo'/234663, l='MpServer', x=-5.50, y=63.00, z=-44.47], EntityArmorStand['5. §cjopanus §f5091 §c????'/110373, l='MpServer', x=-42.50, y=59.50, z=-56.50], EntityArmorStand['4. §csareas6 §f5583 §c?????'/110372, l='MpServer', x=-42.50, y=59.75, z=-56.50], EntityArmorStand['7. §cmimimimimimimm §f4333 §c?????'/110375, l='MpServer', x=-42.50, y=59.00, z=-56.50], EntityArmorStand['6. §cPanda_YaY §f5071 §c????'/110374, l='MpServer', x=-42.50, y=59.25, z=-56.50], EntityArmorStand['9. §ctooez4me §f4307 §c??????'/110377, l='MpServer', x=-42.50, y=58.50, z=-56.50], EntityArmorStand['8. §cTeoPapik §f4328 §c??????'/110376, l='MpServer', x=-42.50, y=58.75, z=-56.50], EntityArmorStand['10. §cnoity §f3853 §c?????'/110378, l='MpServer', x=-42.50, y=58.25, z=-56.50], EntityOtherPlayerMP['hghytj'/272583, l='MpServer', x=-5.50, y=63.00, z=-44.47], EntityOtherPlayerMP['lionpvp'/337530, l='MpServer', x=-23.85, y=58.23, z=-44.52], EntityOtherPlayerMP['zeka_pruf123'/125141, l='MpServer', x=-5.50, y=63.00, z=-44.47], EntityPlayerSP['GunWalker3444'/1017338363, l='MpServer', x=-15.04, y=58.00, z=-43.17], EntityOtherPlayerMP['TTMAMATT'/337428, l='MpServer', x=-7.38, y=63.00, z=-44.19], EntityOtherPlayerMP['foracus3'/335772, l='MpServer', x=-5.38, y=63.00, z=-44.50], EntityOtherPlayerMP['Lym3on'/337439, l='MpServer', x=-15.41, y=58.00, z=-41.94], EntityOtherPlayerMP['Craflo'/234663, l='MpServer', x=-5.50, y=63.00, z=-44.47], EntityOtherPlayerMP['hghytj'/272583, l='MpServer', x=-5.50, y=63.00, z=-44.47], EntityOtherPlayerMP['zeka_pruf123'/125141, l='MpServer', x=-5.50, y=63.00, z=-44.47], EntityArmorStand['§f?? ?????????? ?? §cSkyWars'/110315, l='MpServer', x=-11.59, y=65.25, z=-44.50], EntityArmorStand['§f????? ?????????? ?? ?????? §bSKY§fCAVE'/110314, l='MpServer', x=-11.59, y=65.50, z=-44.50], EntityArmorStand['§f???? ?????? ? ?????? ? ?????? ??? ?????? ????.'/110317, l='MpServer', x=-11.59, y=64.75, z=-44.50], EntityArmorStand['Armour Stand'/110316, l='MpServer', x=-11.59, y=65.00, z=-44.50], EntityArmorStand['Armour Stand'/110319, l='MpServer', x=-11.59, y=64.25, z=-44.50], EntityArmorStand['§f??? ?????? ?? §c?????????§f ??? ?????????? ? ??????.'/110318, l='MpServer', x=-11.59, y=64.50, z=-44.50], EntityArmorStand['§f????? §b/donate'/110321, l='MpServer', x=-11.59, y=63.75, z=-44.50], EntityArmorStand['§f?????? ?? §d??? §f?????????? ?? §c95%'/110320, l='MpServer', x=-11.59, y=64.00, z=-44.50], EntityArmorStand['§f?????? ? §c???'/110323, l='MpServer', x=4.50, y=64.47, z=-44.50], EntityArmorStand['§f????-????? §bSkyCave.pro'/110322, l='MpServer', x=-11.59, y=63.50, z=-44.50], EntityOtherPlayerMP['Nes43'/326257, l='MpServer', x=-5.50, y=63.00, z=-44.47], EntityArmorStand['Armour Stand'/110325, l='MpServer', x=4.50, y=64.03, z=-44.50], EntityOtherPlayerMP['Nes43'/326257, l='MpServer', x=-5.50, y=63.00, z=-44.47], EntityItem['item.item.bucketWater'/110324, l='MpServer', x=4.50, y=64.03, z=-44.50], EntityItem['item.item.enderPearl'/110327, l='MpServer', x=-24.50, y=60.03, z=-44.50], EntityArmorStand['§f?????? ? ??????, ??? ?????? ?? §c?????????'/110326, l='MpServer', x=-24.50, y=60.47, z=-44.50], EntityArmorStand['== ??? ????? =='/110329, l='MpServer', x=-30.50, y=60.75, z=-58.50], EntityArmorStand['Armour Stand'/110328, l='MpServer', x=-24.50, y=60.03, z=-44.50], EntityArmorStand['2. §cVasilievich_228 §f1146 §c?????'/110331, l='MpServer', x=-30.50, y=60.25, z=-58.50], EntityOtherPlayerMP['916520870'/337433, l='MpServer', x=-8.91, y=62.50, z=-45.72], EntityArmorStand['1. §cmaratg54 §f1157 §c?????'/110330, l='MpServer', x=-30.50, y=60.50, z=-58.50], EntityOtherPlayerMP['j03_j'/308449, l='MpServer', x=-23.21, y=58.35, z=-44.76], EntityArmorStand['4. §cPanda_YaY §f875 §c?????'/110333, l='MpServer', x=-30.50, y=59.75, z=-58.50], EntityArmorStand['3. §cvakson §f1006 §c?????'/110332, l='MpServer', x=-30.50, y=60.00, z=-58.50], EntityArmorStand['6. §cTeoPapik §f756 §c?????'/110335, l='MpServer', x=-30.50, y=59.25, z=-58.50], EntityArmorStand['5. §ctooez4me §f807 §c?????'/110334, l='MpServer', x=-30.50, y=59.50, z=-58.50]]
+	Retry entities: 0 total; []
+	Server brand: Write by XSenko </3
+	Server type: Non-integrated multiplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:401)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2283)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:361)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_372, BellSoft
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), BellSoft
+	Memory: 464057224 bytes (442 MB) / 1043333120 bytes (995 MB) up to 1043333120 bytes (995 MB)
+	JVM Flags: 2 total; -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 13, tallocated: 95
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 516.94, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: gamerswordpack.zip
+	Current Language: English (UK)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-9700F CPU @ 3.00GHz
+	OptiFine Version: OptiFine_1.8.9_HD_U_M5
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 10
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 516.94
+	OpenGlRenderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8

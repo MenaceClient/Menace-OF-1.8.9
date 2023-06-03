@@ -15,7 +15,7 @@ public class ArmourElement extends BaseElement {
 
 
     public ArmourElement() {
-        super(0.5, 0.5, true);
+        super(486, 482, true);
     }
 
     @Override

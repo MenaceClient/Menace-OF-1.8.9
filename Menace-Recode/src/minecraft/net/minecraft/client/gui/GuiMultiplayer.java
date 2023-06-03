@@ -3,6 +3,7 @@ package net.minecraft.client.gui;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 
+import de.florianmichael.viamcp.ViaMCP;
 import dev.menace.Menace;
 
 import java.io.IOException;
@@ -16,8 +17,6 @@ import net.minecraft.client.multiplayer.ServerList;
 import net.minecraft.client.network.LanServerDetector;
 import net.minecraft.client.network.OldServerPinger;
 import net.minecraft.client.resources.I18n;
-import org.jetbrains.annotations.NotNull;
-import viamcp.ViaMCP;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -107,7 +106,7 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
         this.buttonList.add(new GuiButton(3, this.width / 2 + 4 + 50, this.height - 52, 100, 20, I18n.format("selectServer.add", new Object[0])));
         this.buttonList.add(new GuiButton(8, this.width / 2 + 4, this.height - 28, 70, 20, I18n.format("selectServer.refresh", new Object[0])));
         this.buttonList.add(new GuiButton(0, this.width / 2 + 4 + 76, this.height - 28, 75, 20, I18n.format("gui.cancel", new Object[0])));
-        this.buttonList.add(ViaMCP.getInstance().asyncSlider);
+        this.buttonList.add(ViaMCP.INSTANCE.getAsyncVersionSlider());
         this.selectServer(this.serverListSelector.func_148193_k());
     }
 

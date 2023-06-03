@@ -217,7 +217,8 @@ public class ChestStealerModule extends BaseModule {
 	public void onRecievePacket(EventReceivePacket event) {
 		if (event.getPacket() instanceof S2DPacketOpenWindow) {
 			S2DPacketOpenWindow packet = (S2DPacketOpenWindow) event.getPacket();
-			if (!chestOnly.getValue() || packet.getWindowTitle().getUnformattedText().equalsIgnoreCase(I18n.format("container.chest"))) {
+			if (!chestOnly.getValue() || packet.getWindowTitle().getUnformattedText().equalsIgnoreCase(I18n.format("container.chest") )
+					|| packet.getWindowTitle().getUnformattedText().equalsIgnoreCase(I18n.format("container.chestDouble"))) {
 				isInChest = true;
 			}
 		}

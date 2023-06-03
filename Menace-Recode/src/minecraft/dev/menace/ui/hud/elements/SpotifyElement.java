@@ -2,10 +2,9 @@ package dev.menace.ui.hud.elements;
 
 import com.google.gson.JsonObject;
 import dev.menace.Menace;
-import dev.menace.ui.clickgui.lime.utils.render.animation.easings.Animate;
-import dev.menace.ui.clickgui.lime.utils.render.animation.easings.Easing;
+import dev.menace.utils.render.animtion.Animate;
+import dev.menace.utils.render.animtion.Easing;
 import dev.menace.ui.hud.BaseElement;
-import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
@@ -15,7 +14,6 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.net.URL;
 import java.util.Objects;
 
@@ -28,7 +26,7 @@ public class SpotifyElement extends BaseElement {
     private final Animate artistAnimation;
 
     public SpotifyElement() {
-        super(0.5, 0.5, true);
+        super(1, 76, true);
         songAnimation = new Animate().setMin(0).setMax(5).setSpeed(5).setEase(Easing.QUAD_IN_OUT).setReversed(false);
         artistAnimation = new Animate().setMin(0).setMax(5).setSpeed(5).setEase(Easing.QUAD_IN_OUT).setReversed(false);
     }

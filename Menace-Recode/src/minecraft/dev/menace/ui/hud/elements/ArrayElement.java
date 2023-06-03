@@ -11,7 +11,7 @@ import dev.menace.utils.render.RenderUtils;
 public class ArrayElement extends BaseElement {
 
 	public ArrayElement() {
-		super(911, 2, true);
+		super(920, 1, true);
 	}
 	
 	@Override
@@ -28,10 +28,20 @@ public class ArrayElement extends BaseElement {
 			if (Menace.instance.moduleManager.hudModule.arrayAlign.getValue().equalsIgnoreCase("Left")) {
 				//Align left
 				RenderUtils.drawRect(this.getAbsoluteX(), y - 1, this.getAbsoluteX() + this.getStringWidth(m.getDisplayName()) + 1, y + this.getFontHeight(), new Color(0, 0, 0, Menace.instance.moduleManager.hudModule.arrayAlpha.getValueI()).getRGB());
+
+				if (Menace.instance.moduleManager.hudModule.arrayOutline.getValue().equalsIgnoreCase("Back")) {
+					RenderUtils.drawRect(this.getAbsoluteX(), y - 1, this.getAbsoluteX() - 1, y + this.getFontHeight(), getColor(y));
+				}
+
 				this.drawString(m.getDisplayName(), this.getAbsoluteX(), y);
 			} else {
 				//Align right
 				RenderUtils.drawRect(this.getAbsoluteX() + this.getStringWidth("ArrayList"), y - 1, this.getAbsoluteX() - this.getStringWidth(m.getDisplayName()) + this.getStringWidth("ArrayList") - 1, y + this.getFontHeight(), new Color(0, 0, 0, Menace.instance.moduleManager.hudModule.arrayAlpha.getValueI()).getRGB());
+
+				if (Menace.instance.moduleManager.hudModule.arrayOutline.getValue().equalsIgnoreCase("Back")) {
+					RenderUtils.drawRect(this.getAbsoluteX() + getWidth(), y - 1, this.getAbsoluteX() + getWidth() - 1, y + this.getFontHeight(), getColor(y));
+				}
+
 				this.drawString(m.getDisplayName(), this.getAbsoluteX() - this.getStringWidth(m.getDisplayName()) + this.getStringWidth("ArrayList"), y);
 			}
 			

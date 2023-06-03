@@ -11,6 +11,7 @@ import dev.menace.ui.clickgui.intellij.components.impl.SlideComponent;
 import dev.menace.utils.render.RenderUtils;
 import dev.menace.utils.render.font.MenaceFontRenderer;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -59,11 +60,17 @@ public class IntellijModule {
 
 
     public void drawScreen(int mouseX, int mouseY, int offset) {
+        if (RenderUtils.hover(this.x + 10, (this.y + 20 + offset), mouseX, mouseY, Menace.instance.jetbrainsMono.getStringWidth(this.module.getName()) + 40, Menace.instance.jetbrainsMono.getHeight())) {
+            RenderUtils.drawRect(this.x + 10, (this.y + 20 + offset), this.x + Menace.instance.jetbrainsMono.getStringWidth(this.module.getName()) + 40, this.y + 20 + offset + Menace.instance.jetbrainsMono.getHeight(), new Color(0, 0, 0, 50).getRGB());
+        }
         Menace.instance.jetbrainsMono.drawString(this.module.getName(), this.x + 35, this.y + 19.5 + offset, new Color(170, 177, 181, 255).getRGB());
         RenderUtils.drawImage(this.x + 25, this.y + 20 + offset, 7, 7, new ResourceLocation("menace/intellijclickgui/Class.png"), new Color(255, 255, 255, 0));
     }
 
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
+        if (RenderUtils.hover(this.x + 10, (this.y + 20 + offset), mouseX, mouseY, Menace.instance.jetbrainsMono.getStringWidth(this.module.getName()) + 40, Menace.instance.jetbrainsMono.getHeight()) && mouseButton == 0) {
+            module.toggle();
+        }
     }
 
     public void mouseReleased(int mouseX, int mouseY, int state) {

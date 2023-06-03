@@ -8,7 +8,7 @@ public class ScoreboardElement extends BaseElement {
     int height = 0;
 
     public ScoreboardElement() {
-        super(0.5, 0.5, true);
+        super(869, 218, true);
     }
 
     @Override

@@ -12,7 +12,7 @@ public class PingElement extends BaseElement {
     ArrayList<Integer> pingList = new ArrayList<>();
 
     public PingElement() {
-        super(0.5, 0.5, true);
+        super(1, 520, true);
     }
 
     @Override

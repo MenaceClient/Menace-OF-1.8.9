@@ -348,9 +348,10 @@
     </orderEntry>
     <orderEntry type="library" name="annotations-20.1.0" level="project" />
     <orderEntry type="library" name="durian-3.4.0" level="project" />
-    <orderEntry type="library" name="ViaSnakeYaml-1.30" level="project" />
-    <orderEntry type="library" name="ViaVersion-4.4.3-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="ViaBackwards-4.4.3-SNAPSHOT" level="project" />
     <orderEntry type="library" name="pircbot" level="project" />
+    <orderEntry type="library" name="snakeyaml-2.0" level="project" />
+    <orderEntry type="library" name="ViaBackwards-4.7.0-1.20-pre1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="ViaRewind-2.0.4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="ViaVersion-4.7.0-1.20-pre2-SNAPSHOT" level="project" />
   </component>
 </module>

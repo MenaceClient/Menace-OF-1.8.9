@@ -2,6 +2,7 @@ package dev.menace;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import de.florianmichael.viamcp.ViaMCP;
 import dev.menace.anticheat.HackerDetect;
 import dev.menace.command.CommandManager;
 import dev.menace.event.EventManager;
@@ -13,6 +14,7 @@ import dev.menace.scripting.ScriptManager;
 import dev.menace.ui.altmanager.LoginManager;
 import dev.menace.ui.hud.HUDManager;
 import dev.menace.utils.file.FileManager;
+import dev.menace.utils.friends.FriendManager;
 import dev.menace.utils.irc.IRCUtils;
 import dev.menace.utils.misc.DiscordRP;
 import dev.menace.utils.misc.ServerUtils;
@@ -31,7 +33,6 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ResourceLocation;
 import org.jibble.pircbot.IrcException;
 import org.lwjgl.opengl.Display;
-import viamcp.ViaMCP;
 
 import java.awt.*;
 import java.io.*;
@@ -56,6 +57,7 @@ public class Menace {
 	public NotificationManager notificationManager;
 	public HUDManager hudManager;
 	public ScriptManager scriptManager;
+	public FriendManager friendManager;
 	public HackerDetect hackerDetect;
 	public IRCUtils ircBot;
 	public SpotifyUtils spotifyUtils;
@@ -109,6 +111,8 @@ public class Menace {
 
 		scriptManager = new ScriptManager();
 
+		friendManager = new FriendManager();
+
 		hackerDetect = new HackerDetect();
 
 		discordRP = new DiscordRP();
@@ -117,8 +121,9 @@ public class Menace {
 		eventManager.register(this);
 
 		try {
-			ViaMCP.getInstance().start();
-			ViaMCP.getInstance().initAsyncSlider();
+			ViaMCP.create();
+
+			ViaMCP.INSTANCE.initAsyncSlider();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

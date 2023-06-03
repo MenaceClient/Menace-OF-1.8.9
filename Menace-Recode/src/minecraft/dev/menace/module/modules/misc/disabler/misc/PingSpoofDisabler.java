@@ -26,7 +26,9 @@ public class PingSpoofDisabler extends DisablerBase {
 
     @Override
     public void onDisable() {
-        packetBuffer.clear();
+        for (Packet<?> packet : packetBuffer) {
+            PacketUtils.sendPacketNoEvent(packet);
+        }
         super.onDisable();
     }
 
@@ -54,7 +56,9 @@ public class PingSpoofDisabler extends DisablerBase {
 
     @Override
     public void onWorldChange(EventWorldChange event) {
-        packetBuffer.clear();
+        for (Packet<?> packet : packetBuffer) {
+            PacketUtils.sendPacketNoEvent(packet);
+        }
         super.onWorldChange(event);
     }
 }

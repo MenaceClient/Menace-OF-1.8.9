@@ -181,7 +181,7 @@ public class KillAuraModule extends BaseModule {
 
     @EventTarget
     public void onPre(EventPreMotion event) {
-        this.setDisplayName(filter.getValue());
+        this.setDisplayName(mode.getValue());
 
         if (Menace.instance.moduleManager.scaffoldModule.isToggled()) {
             return;
@@ -216,9 +216,9 @@ public class KillAuraModule extends BaseModule {
                 if (switchTimer.hasTimePassed(switchDelay.getValueL())) {
                     switchIndex++;
                     switchTimer.reset();
-                    if (switchIndex >= switchAmount.getValue() || switchIndex >= targets.size()) {
-                        switchIndex = 0;
-                    }
+                }
+                if (switchIndex >= switchAmount.getValue() || switchIndex >= targets.size()) {
+                    switchIndex = 0;
                 }
                 target = targets.get(switchIndex);
             } else {
@@ -231,10 +231,10 @@ public class KillAuraModule extends BaseModule {
 
             if (autoblock.getValue().equalsIgnoreCase("Fake")) {
                 shouldFakeBlock = true;
-            } else if (autoblock.getValue().equalsIgnoreCase("Pre")) {
+            } else if (autoblock.getValue().equalsIgnoreCase("Pre")
+                    || autoblock.getValue().equalsIgnoreCase("Test")
+                    || autoblock.getValue().equalsIgnoreCase("NoInteract")) {
                 block();
-            } else if (autoblock.getValue().equalsIgnoreCase("NoInteract")) {
-                mc.thePlayer.setItemInUse(mc.thePlayer.getCurrentEquippedItem(), (int) (Math.random() * 100));
             }
 
             if (raycast.getValue()) {
@@ -274,12 +274,12 @@ public class KillAuraModule extends BaseModule {
             if (delayTimer.hasTimePassed(1000 / delay)) {
 
                 if (autoblock.getValue().equalsIgnoreCase("Test")) {
-                    mc.thePlayer.setEating(false);
+                    unblock();
                 }
 
-                //if (MathUtils.getAngleDifference(event.getYaw(), PlayerUtils.getRotations(target)[0]) > 15 || MathUtils.getAngleDifference(event.getPitch(), PlayerUtils.getRotations(target)[1]) > 15) {
-                //return;
-                //}
+                /*if (MathUtils.getAngleDifference(event.getYaw(), PlayerUtils.getRotations(target)[0]) > 15 || MathUtils.getAngleDifference(event.getPitch(), PlayerUtils.getRotations(target)[1]) > 15) {
+                    return;
+                }*/
 
                 if (noswing.getValue()) {
                     PacketUtils.sendPacket(new C0APacketAnimation());
@@ -307,9 +307,7 @@ public class KillAuraModule extends BaseModule {
 
     @EventTarget
     public void onPost(EventPostMotion event) {
-        if (autoblock.getValue().equalsIgnoreCase("Post") && trget != null) {
-            block();
-        } else if (autoblock.getValue().equalsIgnoreCase("Test") && trget != null) {
+        if (autoblock.getValue().equalsIgnoreCase("Post") && trget != null && !trget.isEmpty()) {
             block();
         }
     }
@@ -337,6 +335,8 @@ public class KillAuraModule extends BaseModule {
         targets = targets.stream().filter(entity -> entity != Menace.instance.moduleManager.blinkModule.fp).collect(Collectors.toList());
         targets = targets.stream().filter(entity -> !(entity instanceof EntityPlayer && Menace.instance.moduleManager.backTrackerModule.fakePos.contains(entity))).collect(Collectors.toList());
         targets = targets.stream().filter(entity -> !isBot(entity)).collect(Collectors.toList());
+        targets = targets.stream().filter(entity -> !Menace.instance.friendManager.isFriend(entity.getName())).collect(Collectors.toList());
+        
         return targets;
     }
 
@@ -346,16 +346,24 @@ public class KillAuraModule extends BaseModule {
 
     private void block() {
         if (mc.thePlayer.getHeldItem() == null || !(mc.thePlayer.getHeldItem().getItem() instanceof ItemSword)) return;
-        mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.getHeldItem());
-        mc.gameSettings.keyBindDrop.pressed = true;
+        if (autoblock.getValue().equalsIgnoreCase("NoInteract")) {
+            mc.thePlayer.setItemInUse(mc.thePlayer.getCurrentEquippedItem(), (int) (Math.random() * 100));
+        }
+        mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.getCurrentEquippedItem());
         blocking = true;
     }
 
     private void unblock() {
         if (!blocking) return;
-        mc.gameSettings.keyBindDrop.pressed = Mouse.isButtonDown(1);
-        mc.playerController.onStoppedUsingItem(mc.thePlayer);
+        PacketUtils.sendPacketNoEvent(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
         blocking = false;
+    }
+
+    @EventTarget
+    public void onSendPacket(EventSendPacket event) {
+        if (event.getPacket() instanceof C07PacketPlayerDigging && blocking) {
+            blocking = false;
+        }
     }
 
     private boolean isInFOV(Entity entity, double angle) {

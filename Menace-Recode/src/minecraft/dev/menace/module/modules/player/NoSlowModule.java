@@ -60,7 +60,7 @@ public class NoSlowModule extends BaseModule {
     @EventTarget
     public void onRecievePacket(EventReceivePacket event) {
         if (mc.thePlayer == null || mc.theWorld == null) return;
-        if((mode.getValue().equalsIgnoreCase("Hypixel") || mode.getValue().equalsIgnoreCase("NCP")) && (mc.thePlayer.isBlocking() || mc.thePlayer.isEating()) && MovementUtils.isMoving() && event.getPacket() instanceof S30PacketWindowItems) {
+        if((mode.getValue().equalsIgnoreCase("Hypixel") || mode.getValue().equalsIgnoreCase("NCP")) && (mc.thePlayer.isBlocking() || Menace.instance.moduleManager.killAuraModule.blocking) && MovementUtils.isMoving() && event.getPacket() instanceof S30PacketWindowItems) {
             PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(mc.thePlayer.getHeldItem()));
             event.setCancelled(true);
         }
@@ -68,7 +68,7 @@ public class NoSlowModule extends BaseModule {
 
     @EventTarget
     public void onPost(EventPostMotion event) {
-        if (mc.thePlayer.isBlocking()  && MovementUtils.isMoving() && mode.getValue().equalsIgnoreCase("OldNCP")) {
+        if (mc.thePlayer.isBlocking() && MovementUtils.isMoving() && mode.getValue().equalsIgnoreCase("OldNCP")) {
             PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getCurrentItem()));
         }
     }

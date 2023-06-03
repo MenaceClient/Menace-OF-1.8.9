@@ -57,6 +57,7 @@ public class ScaffoldModule extends BaseModule {
     ToggleSetting silentSwap;
     ToggleSetting keepY;
     ToggleSetting bypass;
+    ListSetting rotationMode;
     ToggleSetting blocksMC;
     public ToggleSetting eagle;
     SliderSetting eagleDelay;
@@ -106,9 +107,23 @@ public class ScaffoldModule extends BaseModule {
             }
         };
         sprint = new ToggleSetting("Sprint", true, false);
-        keepRotations = new ToggleSetting("KeepRotations", true, true);
         silentSwap = new ToggleSetting("SilentSwap", true, false);
         bypass = new ToggleSetting("Bypass", true, false);
+        rotationMode = new ListSetting("Rotation Mode", true, "Normal1", new String[]{"Normal1", "Normal2"}) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(bypass.getValue());
+                super.constantCheck();
+            }
+        };
+
+        keepRotations = new ToggleSetting("KeepRotations", true, true) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(bypass.getValue());
+                super.constantCheck();
+            }
+        };
         blocksMC = new ToggleSetting("BlocksMC", true, false) {
             @Override
             public void constantCheck() {
@@ -185,10 +200,11 @@ public class ScaffoldModule extends BaseModule {
         this.rSetting(towerSpeed);
         this.rSetting(towerDerp);
         this.rSetting(sprint);
-        this.rSetting(keepRotations);
         this.rSetting(silentSwap);
         this.rSetting(keepY);
         this.rSetting(bypass);
+        this.rSetting(rotationMode);
+        this.rSetting(keepRotations);
         this.rSetting(blocksMC);
         this.rSetting(eagle);
         this.rSetting(eagleDelay);
@@ -275,11 +291,14 @@ public class ScaffoldModule extends BaseModule {
         }
 
         //Boost
-        mc.timer.timerSpeed = timer.getValueF();
+        if (!lowhop.getValue() || !lowhopMode.getValue().equalsIgnoreCase("NCP")) {
+            mc.timer.timerSpeed = timer.getValueF();
+        }
         if (jump.getValue() && !lowhop.getValue() && mc.thePlayer.onGround && MovementUtils.isMoving()) {
             mc.thePlayer.jump();
         } else if (jump.getValue() && lowhop.getValue() && lowhopMode.getValue().equalsIgnoreCase("NCP") && MovementUtils.shouldMove()) {
             if (mc.thePlayer.onGround) {
+                mc.timer.timerSpeed = 0.95f;
                 mc.thePlayer.jump();
                 if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
                     if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier() == 0) {
@@ -292,6 +311,7 @@ public class ScaffoldModule extends BaseModule {
                 }
             } else if (mc.thePlayer.motionY < 0.16 && mc.thePlayer.motionY > 0.0) {
                 mc.thePlayer.motionY = -0.1;
+                mc.timer.timerSpeed = 1.2F;
             }
             MovementUtils.strafe();
         }
@@ -380,10 +400,28 @@ public class ScaffoldModule extends BaseModule {
                 if (eyesPos.squareDistanceTo(hitVec) <= 36.0 && (mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, mc.thePlayer.getEntityBoundingBox().offset(0, -0.0001, 0)).isEmpty() || !notOnBlock.getValue())) {
 
                     if (keepRotations.getValue()) {
-                        rotation = PlayerUtils.getRotsNew(neighbor, side2);
+                        if (rotationMode.getValue().equalsIgnoreCase("Normal1")) {
+                            rotation = PlayerUtils.getRotations(hitVec);
+                        } else if (rotationMode.getValue().equalsIgnoreCase("Normal2")) {
+                            rotation = PlayerUtils.getRotsNew(neighbor, side2);
+                        }
                     } else {
-                        event.setYaw(PlayerUtils.getRotsNew(neighbor, side2)[0]);
-                        event.setPitch(MathUtils.clamp(PlayerUtils.getRotsNew(neighbor, side2)[1], -90F, 90F));
+                        if (rotationMode.getValue().equalsIgnoreCase("Normal1")) {
+                            if (clampPitch.getValue()) {
+                                event.setPitch(MathUtils.clamp(PlayerUtils.getRotations(hitVec)[1], -90F, 90F));
+                            } else {
+                                event.setPitch(PlayerUtils.getRotations(hitVec)[1]);
+                            }
+                            event.setYaw(PlayerUtils.getRotations(hitVec)[0]);
+                        } else if (rotationMode.getValue().equalsIgnoreCase("Normal2")) {
+                            if (clampPitch.getValue()) {
+                                event.setPitch(MathUtils.clamp(PlayerUtils.getRotsNew(neighbor, side2)[1], -90F, 90F));
+                            } else {
+                                event.setPitch(PlayerUtils.getRotsNew(neighbor, side2)[1]);
+                            }
+                            event.setYaw(PlayerUtils.getRotsNew(neighbor, side2)[0]);
+                        }
+
                     }
 
 

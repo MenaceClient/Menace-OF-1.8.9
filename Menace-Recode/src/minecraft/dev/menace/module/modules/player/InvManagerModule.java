@@ -154,8 +154,13 @@ public class InvManagerModule extends BaseModule {
         ItemStack is = slot.getStack();
         int durabilityThreshold = 50;
 
+        if (is.getItem() instanceof ItemSword && InventoryUtils.getDamage(is) <= 0) {
+            //DONT DROP MY FUCKING OP SWORD
+            return;
+        }
+
         //Sword
-        if (is.getItem() instanceof ItemSword && is.getMaxDamage() - is.getItemDamage() > durabilityThreshold) {
+        if (is.getItem() instanceof ItemSword && InventoryUtils.getDamage(is) > damage && is.getMaxDamage() - is.getItemDamage() > durabilityThreshold) {
             InventoryUtils.swap(i, swordSlot);
             if (!inInv.getValue()) PacketUtils.sendPacketNoEvent(new C0DPacketCloseWindow());
             nextDelay = MathUtils.randLong(minDelay.getValueL(), maxDelay.getValueL());
@@ -239,31 +244,26 @@ public class InvManagerModule extends BaseModule {
             if (!inInv.getValue()) PacketUtils.sendPacketNoEvent(new C0DPacketCloseWindow());
             nextDelay = MathUtils.randLong(minDelay.getValueL(), maxDelay.getValueL());
             delayTimer.reset();
-            return;
         } else if (i != 36 + swordSlot && is.getItem() instanceof ItemSword) {
             InventoryUtils.drop(i);
             if (!inInv.getValue()) PacketUtils.sendPacketNoEvent(new C0DPacketCloseWindow());
             nextDelay = MathUtils.randLong(minDelay.getValueL(), maxDelay.getValueL());
             delayTimer.reset();
-            return;
         } else if (i != 36 + pickSlot && is.getItem() instanceof ItemPickaxe) {
             InventoryUtils.drop(i);
             if (!inInv.getValue()) PacketUtils.sendPacketNoEvent(new C0DPacketCloseWindow());
             nextDelay = MathUtils.randLong(minDelay.getValueL(), maxDelay.getValueL());
             delayTimer.reset();
-            return;
         } else if (i != 36 + axeSlot && is.getItem() instanceof ItemAxe) {
             InventoryUtils.drop(i);
             if (!inInv.getValue()) PacketUtils.sendPacketNoEvent(new C0DPacketCloseWindow());
             nextDelay = MathUtils.randLong(minDelay.getValueL(), maxDelay.getValueL());
             delayTimer.reset();
-            return;
         } else if (i != 36 + shovelSlot && is.getItem() instanceof ItemSpade) {
             InventoryUtils.drop(i);
             if (!inInv.getValue()) PacketUtils.sendPacketNoEvent(new C0DPacketCloseWindow());
             nextDelay = MathUtils.randLong(minDelay.getValueL(), maxDelay.getValueL());
             delayTimer.reset();
-            return;
         }
 
     }

@@ -29,9 +29,17 @@ public class SpotifyCmd extends BaseCommand {
             Menace.instance.spotifyUtils.auth();
             ChatUtils.message("Authenting with Spotify please check your browser.");
         } else if (args[0].equalsIgnoreCase("setClientID")) {
+            if (args.length < 2) {
+                ChatUtils.message("Please specify a Client ID.");
+                return;
+            }
             Menace.instance.spotifyUtils.CLIENTID = args[1];
             ChatUtils.message("Set Spotify Client ID to " + args[1]);
         } else if (args[0].equalsIgnoreCase("setClientSecret")) {
+            if (args.length < 2) {
+                ChatUtils.message("Please specify a Client Secret.");
+                return;
+            }
             Menace.instance.spotifyUtils.CLIENTSECRET = args[1];
             ChatUtils.message("Set Spotify Client Secret to " + args[1]);
         }

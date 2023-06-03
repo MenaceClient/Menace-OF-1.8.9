@@ -3,6 +3,8 @@ package dev.menace.ui.hud.elements;
 import dev.menace.Menace;
 import dev.menace.ui.hud.BaseElement;
 import dev.menace.utils.render.RenderUtils;
+import dev.menace.utils.render.animtion.Animate;
+import dev.menace.utils.render.animtion.Easing;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,7 +19,7 @@ public class TargetHudElement extends BaseElement {
 
     public TargetHudElement() {
 
-        super(0.5, 0.5, true);
+        super(440, 277, true);
 
     }
 

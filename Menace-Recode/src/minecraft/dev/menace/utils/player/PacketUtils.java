@@ -8,19 +8,28 @@ public class PacketUtils {
 
 	private static final Minecraft MC = Minecraft.getMinecraft();
 
-	public static void sendPacket(Packet packetIn) {
+	public static void sendPacket(Packet<?> packetIn) {
+		if (MC.getNetHandler() == null || MC.getNetHandler().getNetworkManager() == null) {
+			return;
+		}
 		MC.getNetHandler().getNetworkManager().sendPacket(packetIn);
 	}
 
-	public static void sendPacketNoEvent(Packet packetIn) {
+	public static void sendPacketNoEvent(Packet<?> packetIn) {
+		if (MC.getNetHandler() == null || MC.getNetHandler().getNetworkManager() == null) {
+			return;
+		}
 		MC.getNetHandler().getNetworkManager().sendPacketNoEvent(packetIn);
 	}
 
-	public static void sendPacketNoEventDelayed(Packet packetIn, long delay) {
+	public static void sendPacketNoEventDelayed(Packet<?> packetIn, long delay) {
+		if (MC.getNetHandler() == null || MC.getNetHandler().getNetworkManager() == null) {
+			return;
+		}
 		MC.getNetHandler().getNetworkManager().sendPacketNoEventDelayed(packetIn, delay);
 	}
 	
-	public static void addToSendQueue(Packet packetIn) {
+	public static void addToSendQueue(Packet<?> packetIn) {
 		MC.thePlayer.sendQueue.addToSendQueue(packetIn);
 	}
 }

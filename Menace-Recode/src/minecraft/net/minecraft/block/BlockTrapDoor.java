@@ -52,7 +52,14 @@ public class BlockTrapDoor extends Block
 
     public boolean isPassable(IBlockAccess worldIn, BlockPos pos)
     {
-        return !((Boolean)worldIn.getBlockState(pos).getValue(OPEN)).booleanValue();
+        if (worldIn.getBlockState(pos).getValue(OPEN) == null)
+        {
+            return false;
+        }
+        else
+        {
+            return worldIn.getBlockState(pos).getValue(OPEN);
+        }
     }
 
     public AxisAlignedBB getSelectedBoundingBox(World worldIn, BlockPos pos)

@@ -20,7 +20,6 @@ import java.util.function.Consumer;
 
 public class VelocityModule extends BaseModule {
 
-
 	ListSetting mode;
 	ToggleSetting explosions;
 	
@@ -30,7 +29,7 @@ public class VelocityModule extends BaseModule {
 	
 	@Override
 	public void setup() {
-		mode = new ListSetting("Mode", true, "Simple", new String[] {"Simple", "Bypass"});
+		mode = new ListSetting("Mode", true, "Simple", new String[] {"Simple", "Bypass", "Matrix"});
 		explosions = new ToggleSetting("Explosions", true, true);
 		this.rSetting(mode);
 		this.rSetting(explosions);
@@ -38,11 +37,20 @@ public class VelocityModule extends BaseModule {
 	}
 
 	@EventTarget
+	public void onUpdate(EventUpdate event) {
+		if (mode.getValue().equalsIgnoreCase("Matrix")) {
+			if (mc.thePlayer.hurtTime > 0) {
+				mc.thePlayer.motionX *= 0.6;
+				mc.thePlayer.motionZ *= 0.6;
+			}
+		}
+	}
+
+	@EventTarget
 	public void onRecievePacket(EventReceivePacket event) {
 		if (event.getPacket() instanceof S12PacketEntityVelocity) {
 			if (mode.getValue().equalsIgnoreCase("Simple")) {
 				event.cancel();
-				Menace.instance.moduleManager.speedModule.velocityBoost((S12PacketEntityVelocity) event.getPacket());
 			} else if (mode.getValue().equalsIgnoreCase("Bypass")) {
 				S12PacketEntityVelocity packet = (S12PacketEntityVelocity) event.getPacket();
 				packet.motionX = 0;

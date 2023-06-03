@@ -14,10 +14,18 @@ public class NoFallCheck extends BaseCheck {
     @Override
     public void update(PlayerVL vl) {
         EntityPlayer player = vl.getPlayer();
-        if (player.fallDistance > 3.5f && player.onGround && player.hurtTime == 0) {
-            vl.addVL(1, this.getCheckName() + "(A)");
-        } else if (player.fallDistance > 3.5f && (player.onGround || PlayerUtils.isOnGround(player)) && player.hurtTime == 0) {
-            vl.addVL(1, this.getCheckName() + "(B)");
+
+        //Update Real Fall Distance
+        if (player.posY < player.lastTickPosY) {
+            vl.realFallDistance += player.lastTickPosY - player.posY;
+        }
+
+        if (vl.realFallDistance > 4f && (player.onGround || PlayerUtils.isOnGround(player)) && player.hurtTime == 0) {
+            vl.addVL(1, this.getCheckName() + " (A)");
+        }
+
+        if (PlayerUtils.isOnGround(player) || player.isInWeb || player.isInWater()) {
+            vl.realFallDistance = 0;
         }
     }
 }

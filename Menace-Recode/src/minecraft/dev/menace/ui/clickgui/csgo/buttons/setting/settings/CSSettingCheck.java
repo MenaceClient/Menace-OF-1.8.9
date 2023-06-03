@@ -5,7 +5,6 @@ import java.io.IOException;
 import dev.menace.module.settings.ToggleSetting;
 import dev.menace.ui.clickgui.csgo.buttons.setting.CSSetting;
 import dev.menace.ui.clickgui.csgo.util.RenderHelper;
-import dev.menace.ui.clickgui.lime.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;

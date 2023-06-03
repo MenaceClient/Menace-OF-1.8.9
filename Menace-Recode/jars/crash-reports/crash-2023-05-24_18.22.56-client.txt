@@ -1,0 +1,110 @@
+---- Minecraft Crash Report ----
+// Shall we play a game?
+
+Time: 24/05/23 6:22 PM
+Description: Updating screen events
+
+java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.ArrayList.rangeCheck(ArrayList.java:659)
+	at java.util.ArrayList.get(ArrayList.java:435)
+	at dev.menace.module.modules.misc.DevModule.onEnable(DevModule.java:47)
+	at dev.menace.module.BaseModule.setToggled(BaseModule.java:143)
+	at dev.menace.module.BaseModule.toggle(BaseModule.java:128)
+	at dev.menace.ui.clickgui.lime.components.FrameModule.mouseClicked(FrameModule.java:111)
+	at dev.menace.ui.clickgui.lime.components.FrameCategory.mouseClicked(FrameCategory.java:127)
+	at dev.menace.ui.clickgui.lime.LimeClickGUI.lambda$mouseClicked$1(LimeClickGUI.java:67)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at dev.menace.ui.clickgui.lime.LimeClickGUI.mouseClicked(LimeClickGUI.java:67)
+	at net.minecraft.client.gui.GuiScreen.handleMouseInput(GuiScreen.java:602)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:571)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1502)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:910)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:348)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at java.util.ArrayList.rangeCheck(ArrayList.java:659)
+	at java.util.ArrayList.get(ArrayList.java:435)
+	at dev.menace.module.modules.misc.DevModule.onEnable(DevModule.java:47)
+	at dev.menace.module.BaseModule.setToggled(BaseModule.java:143)
+	at dev.menace.module.BaseModule.toggle(BaseModule.java:128)
+	at dev.menace.ui.clickgui.lime.components.FrameModule.mouseClicked(FrameModule.java:111)
+	at dev.menace.ui.clickgui.lime.components.FrameCategory.mouseClicked(FrameCategory.java:127)
+	at dev.menace.ui.clickgui.lime.LimeClickGUI.lambda$mouseClicked$1(LimeClickGUI.java:67)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at dev.menace.ui.clickgui.lime.LimeClickGUI.mouseClicked(LimeClickGUI.java:67)
+	at net.minecraft.client.gui.GuiScreen.handleMouseInput(GuiScreen.java:602)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:571)
+
+-- Affected screen --
+Details:
+	Screen name: dev.menace.ui.clickgui.lime.LimeClickGUI
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 4 total; [EntityPlayerSP['ExterminateYT'/2731364, l='MpServer', x=141.53, y=62.00, z=180.29], EntityOtherPlayerMP['SESHtilldeath'/2731355, l='MpServer', x=169.22, y=62.00, z=169.34], EntityOtherPlayerMP['WhiffyBoat'/2731358, l='MpServer', x=170.51, y=62.00, z=184.91], EntityOtherPlayerMP['Salomao32'/2731365, l='MpServer', x=138.16, y=62.00, z=178.13]]
+	Chunk stats: MultiplayerChunkCache: 441, 441
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 211.00,60.00,162.00 - World: (211,60,162), Chunk: (at 3,3,2 in 13,10; contains blocks 208,0,160 to 223,255,175), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 635 game time, 16201 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: survival (ID 0). Hardcore: false. Cheats: false
+	Forced entities: 178 total; [EntitySheep['Sheep'/2681640, l='MpServer', x=161.50, y=61.00, z=151.50], EntityPlayerSP['ExterminateYT'/2731364, l='MpServer', x=141.53, y=62.00, z=180.29], EntitySheep['Sheep'/2681641, l='MpServer', x=162.50, y=61.00, z=151.50], EntitySheep['Sheep'/2681642, l='MpServer', x=163.50, y=61.00, z=151.50], EntityVillager['Aim7'/2603301, l='MpServer', x=174.50, y=73.00, z=134.50], EntitySheep['Sheep'/2681643, l='MpServer', x=155.50, y=61.00, z=152.50], EntitySheep['Sheep'/2681644, l='MpServer', x=156.50, y=61.00, z=152.50], EntityOtherPlayerMP['SESHtilldeath'/2731355, l='MpServer', x=169.22, y=62.00, z=169.34], EntitySheep['Sheep'/2681645, l='MpServer', x=157.50, y=61.00, z=152.50], EntityVillager['Aim4'/2677549, l='MpServer', x=185.50, y=62.00, z=134.50], EntitySheep['Sheep'/2681646, l='MpServer', x=158.50, y=61.00, z=152.50], EntitySheep['Sheep'/2681647, l='MpServer', x=159.50, y=61.00, z=152.50], EntitySheep['Sheep'/2681632, l='MpServer', x=162.50, y=61.00, z=150.50], EntitySheep['Sheep'/2681633, l='MpServer', x=163.50, y=61.00, z=150.50], EntitySheep['Sheep'/2681634, l='MpServer', x=155.50, y=61.00, z=151.50], EntitySheep['Sheep'/2681635, l='MpServer', x=156.50, y=61.00, z=151.50], EntitySheep['Sheep'/2681636, l='MpServer', x=157.50, y=61.00, z=151.50], EntitySheep['Sheep'/2681637, l='MpServer', x=158.50, y=61.00, z=151.50], EntitySheep['Sheep'/2681638, l='MpServer', x=159.50, y=61.00, z=151.50], EntitySheep['Sheep'/2681639, l='MpServer', x=160.50, y=61.00, z=151.50], EntitySheep['Sheep'/2681656, l='MpServer', x=159.50, y=61.00, z=153.50], EntitySheep['Sheep'/2681657, l='MpServer', x=160.50, y=61.00, z=153.50], EntitySheep['Sheep'/2681658, l='MpServer', x=161.50, y=61.00, z=153.50], EntitySheep['Sheep'/2681659, l='MpServer', x=162.50, y=61.00, z=153.50], EntitySheep['Sheep'/2681660, l='MpServer', x=163.50, y=61.00, z=153.50], EntitySheep['Sheep'/2681661, l='MpServer', x=155.50, y=61.00, z=154.50], EntitySheep['Sheep'/2681662, l='MpServer', x=156.50, y=61.00, z=154.50], EntitySheep['Sheep'/2681663, l='MpServer', x=157.50, y=61.00, z=154.50], EntitySheep['Sheep'/2681648, l='MpServer', x=160.50, y=61.00, z=152.50], EntitySheep['Sheep'/2681649, l='MpServer', x=161.50, y=61.00, z=152.50], EntitySheep['Sheep'/2681650, l='MpServer', x=162.50, y=61.00, z=152.50], EntitySheep['Sheep'/2681651, l='MpServer', x=163.50, y=61.00, z=152.50], EntitySheep['Sheep'/2681652, l='MpServer', x=155.50, y=61.00, z=153.50], EntitySheep['Sheep'/2681653, l='MpServer', x=156.50, y=61.00, z=153.50], EntitySheep['Sheep'/2681654, l='MpServer', x=157.50, y=61.00, z=153.50], EntitySheep['Sheep'/2681655, l='MpServer', x=158.50, y=61.00, z=153.50], EntitySheep['Sheep'/2681613, l='MpServer', x=157.50, y=61.00, z=148.50], EntitySheep['Sheep'/2681614, l='MpServer', x=158.50, y=61.00, z=148.50], EntitySheep['Sheep'/2681615, l='MpServer', x=159.50, y=61.00, z=148.50], EntitySheep['Sheep'/2681624, l='MpServer', x=162.50, y=61.00, z=149.50], EntitySheep['Sheep'/2681625, l='MpServer', x=155.50, y=61.00, z=150.50], EntitySheep['Sheep'/2681626, l='MpServer', x=156.50, y=61.00, z=150.50], EntitySheep['Sheep'/2681627, l='MpServer', x=157.50, y=61.00, z=150.50], EntitySheep['Sheep'/2681628, l='MpServer', x=158.50, y=61.00, z=150.50], EntitySheep['Sheep'/2681629, l='MpServer', x=159.50, y=61.00, z=150.50], EntitySheep['Sheep'/2681630, l='MpServer', x=160.50, y=61.00, z=150.50], EntitySheep['Sheep'/2681631, l='MpServer', x=161.50, y=61.00, z=150.50], EntitySheep['Sheep'/2681616, l='MpServer', x=160.50, y=61.00, z=148.50], EntitySheep['Sheep'/2681617, l='MpServer', x=161.50, y=61.00, z=148.50], EntitySheep['Sheep'/2681618, l='MpServer', x=156.50, y=61.00, z=149.50], EntitySheep['Sheep'/2681619, l='MpServer', x=157.50, y=61.00, z=149.50], EntitySheep['Sheep'/2681620, l='MpServer', x=158.50, y=61.00, z=149.50], EntitySheep['Sheep'/2681621, l='MpServer', x=159.50, y=61.00, z=149.50], EntitySheep['Sheep'/2681622, l='MpServer', x=160.50, y=61.00, z=149.50], EntitySheep['Sheep'/2681623, l='MpServer', x=161.50, y=61.00, z=149.50], EntityVillager['DamageTest1'/65, l='MpServer', x=169.50, y=62.00, z=168.50], EntityVillager['DamageTest2'/66, l='MpServer', x=169.50, y=62.00, z=174.50], EntityZombie['NormalKnockBack'/67, l='MpServer', x=161.50, y=62.00, z=176.50], EntityZombie['KnockBack2'/68, l='MpServer', x=158.50, y=62.00, z=172.50], EntityZombie['KnockBack1'/69, l='MpServer', x=161.50, y=62.00, z=168.50], EntityVillager['Aim10'/2638959, l='MpServer', x=189.50, y=75.00, z=134.50], EntityVillager['Aim8'/2544750, l='MpServer', x=179.50, y=73.50, z=134.50], EntityArmorStand['§6KillauraAimTest 2'/75, l='MpServer', x=179.50, y=65.66, z=170.50], EntityArmorStand['§6KillauraSwitchTest'/76, l='MpServer', x=189.50, y=65.66, z=186.50], EntityOtherPlayerMP['Salomao32'/2731365, l='MpServer', x=138.16, y=62.00, z=178.13], EntityArmorStand['§6KillauraMultiTest1'/77, l='MpServer', x=179.50, y=65.66, z=186.50], EntityArmorStand['§6Velocity'/78, l='MpServer', x=155.50, y=65.66, z=165.50], EntityArmorStand['§6KillauraMultiTest3'/79, l='MpServer', x=159.50, y=65.66, z=152.50], EntityPig['Pig'/2713209, l='MpServer', x=141.63, y=60.00, z=149.41], EntityArmorStand['§6KillauraMultiTest2'/80, l='MpServer', x=144.50, y=65.66, z=152.50], EntityVillager['Aim6'/2715257, l='MpServer', x=169.50, y=72.50, z=134.50], EntityArmorStand['§6KillauraWallTest'/81, l='MpServer', x=181.50, y=65.66, z=139.50], EntityArmorStand['§6KillauraMultiTest4'/82, l='MpServer', x=147.50, y=65.66, z=139.50], EntityPig['Pig'/2713211, l='MpServer', x=140.44, y=60.00, z=151.66], EntityPig['Pig'/2713210, l='MpServer', x=143.82, y=60.00, z=153.02], EntityArmorStand['§6DamageTest'/83, l='MpServer', x=169.50, y=65.66, z=165.50], EntityPig['Pig'/2713213, l='MpServer', x=145.64, y=60.00, z=151.73], EntityArmorStand['§6TNTBlock'/85, l='MpServer', x=151.50, y=65.66, z=182.50], EntityPig['Pig'/2713212, l='MpServer', x=148.53, y=60.00, z=151.81], EntityPig['Pig'/2713215, l='MpServer', x=146.36, y=60.00, z=151.83], EntityArmorStand['§6PVP'/86, l='MpServer', x=181.50, y=65.66, z=160.50], EntityPig['Pig'/2713214, l='MpServer', x=147.53, y=60.00, z=155.44], EntityArmorStand['§6BedFucker'/88, l='MpServer', x=185.50, y=65.66, z=195.50], EntitySheep['Sheep'/2730864, l='MpServer', x=190.09, y=62.00, z=188.16], EntitySheep['Sheep'/2681672, l='MpServer', x=158.50, y=61.00, z=155.50], EntitySheep['Sheep'/2681673, l='MpServer', x=159.50, y=61.00, z=155.50], EntitySheep['Sheep'/2681674, l='MpServer', x=160.50, y=61.00, z=155.50], EntitySheep['Sheep'/2681675, l='MpServer', x=161.50, y=61.00, z=155.50], EntitySheep['Sheep'/2681676, l='MpServer', x=162.50, y=61.00, z=155.50], EntitySheep['Sheep'/2681677, l='MpServer', x=157.50, y=61.00, z=156.50], EntitySheep['Sheep'/2681678, l='MpServer', x=158.50, y=61.00, z=156.50], EntitySheep['Sheep'/2681679, l='MpServer', x=159.50, y=61.00, z=156.50], EntitySheep['Sheep'/2681664, l='MpServer', x=158.50, y=61.00, z=154.50], EntityVillager['Aim9'/2576463, l='MpServer', x=184.50, y=74.00, z=134.50], EntitySheep['Sheep'/2681665, l='MpServer', x=159.50, y=61.00, z=154.50], EntitySheep['Sheep'/2681666, l='MpServer', x=160.50, y=61.00, z=154.50], EntitySheep['Sheep'/2681667, l='MpServer', x=161.50, y=61.00, z=154.50], EntitySheep['Sheep'/2681668, l='MpServer', x=162.50, y=61.00, z=154.50], EntitySheep['Sheep'/2681669, l='MpServer', x=163.50, y=61.00, z=154.50], EntitySheep['Sheep'/2681671, l='MpServer', x=157.50, y=61.00, z=155.50], EntityOtherPlayerMP['SESHtilldeath'/2731355, l='MpServer', x=169.22, y=62.00, z=169.34], EntityOtherPlayerMP['Salomao32'/2731365, l='MpServer', x=138.16, y=62.00, z=178.13], EntityOtherPlayerMP['WhiffyBoat'/2731358, l='MpServer', x=170.51, y=62.00, z=184.91], EntitySheep['Sheep'/2681680, l='MpServer', x=160.50, y=61.00, z=156.50], EntitySheep['Sheep'/2681681, l='MpServer', x=161.50, y=61.00, z=156.50], EntityPig['Pig'/2713257, l='MpServer', x=145.06, y=60.00, z=149.48], EntityPig['Pig'/2713256, l='MpServer', x=141.44, y=60.00, z=152.85], EntityPig['Pig'/2713259, l='MpServer', x=141.57, y=60.00, z=150.60], EntityPig['Pig'/2713258, l='MpServer', x=141.64, y=60.00, z=154.32], EntityPig['Pig'/2713261, l='MpServer', x=144.19, y=60.00, z=151.31], EntityPig['Pig'/2713260, l='MpServer', x=144.25, y=60.00, z=154.09], EntityPig['Pig'/2713263, l='MpServer', x=140.44, y=60.00, z=153.22], EntityPig['Pig'/2713262, l='MpServer', x=143.00, y=60.00, z=150.84], EntityPig['Pig'/2713249, l='MpServer', x=146.28, y=60.00, z=149.63], EntityPig['Pig'/2713248, l='MpServer', x=148.52, y=60.00, z=153.85], EntityPig['Pig'/2713251, l='MpServer', x=141.55, y=60.00, z=155.51], EntityPig['Pig'/2713250, l='MpServer', x=142.78, y=60.00, z=154.28], EntityPig['Pig'/2713253, l='MpServer', x=145.46, y=60.00, z=152.80], EntityPig['Pig'/2713252, l='MpServer', x=143.81, y=60.00, z=155.31], EntityPig['Pig'/2713255, l='MpServer', x=141.56, y=60.00, z=153.20], EntityPig['Pig'/2713254, l='MpServer', x=140.44, y=60.00, z=154.38], EntityOtherPlayerMP['WhiffyBoat'/2731358, l='MpServer', x=170.51, y=62.00, z=184.91], EntityPig['Pig'/2713273, l='MpServer', x=142.80, y=60.00, z=149.74], EntityPig['Pig'/2713272, l='MpServer', x=146.33, y=60.00, z=156.53], EntityPig['Pig'/2713275, l='MpServer', x=145.66, y=60.00, z=155.29], EntityPig['Pig'/2713274, l='MpServer', x=146.62, y=60.00, z=153.82], EntityPig['Pig'/2713277, l='MpServer', x=145.19, y=60.00, z=156.53], EntityPig['Pig'/2713276, l='MpServer', x=140.44, y=60.00, z=150.43], EntityPig['Pig'/2713265, l='MpServer', x=141.61, y=60.00, z=149.44], EntityPig['Pig'/2713264, l='MpServer', x=148.50, y=60.00, z=152.92], EntityPig['Pig'/2713267, l='MpServer', x=143.84, y=60.00, z=149.53], EntityPig['Pig'/2713266, l='MpServer', x=145.60, y=60.00, z=150.79], EntityPig['Pig'/2713269, l='MpServer', x=146.42, y=60.00, z=150.69], EntityPig['Pig'/2713268, l='MpServer', x=140.44, y=60.00, z=150.59], EntityPig['Pig'/2713271, l='MpServer', x=144.84, y=60.00, z=155.31], EntityPig['Pig'/2713270, l='MpServer', x=148.53, y=60.00, z=150.47], EntityPig['Pig'/2713225, l='MpServer', x=143.84, y=60.00, z=148.44], EntityPig['Pig'/2713224, l='MpServer', x=144.09, y=60.00, z=150.35], EntitySheep['Sheep'/2730891, l='MpServer', x=191.44, y=62.00, z=187.78], EntityPig['Pig'/2713227, l='MpServer', x=147.50, y=60.00, z=149.34], EntityPig['Pig'/2713226, l='MpServer', x=140.44, y=60.00, z=151.78], EntityPig['Pig'/2713229, l='MpServer', x=142.77, y=60.00, z=154.18], EntityPig['Pig'/2713228, l='MpServer', x=142.88, y=60.00, z=152.00], EntityPig['Pig'/2713231, l='MpServer', x=144.44, y=60.00, z=152.47], EntityPig['Pig'/2713230, l='MpServer', x=143.88, y=60.00, z=156.53], EntityPig['Pig'/2713217, l='MpServer', x=142.66, y=60.00, z=156.53], EntityPig['Pig'/2713216, l='MpServer', x=146.51, y=60.00, z=156.50], EntityPig['Pig'/2713219, l='MpServer', x=147.34, y=60.00, z=153.85], EntityPig['Pig'/2713218, l='MpServer', x=146.41, y=60.00, z=155.50], EntityPig['Pig'/2713221, l='MpServer', x=146.13, y=60.00, z=153.88], EntityPig['Pig'/2713220, l='MpServer', x=144.25, y=60.00, z=148.44], EntityPig['Pig'/2713223, l='MpServer', x=147.31, y=60.00, z=152.75], EntityPig['Pig'/2713222, l='MpServer', x=146.81, y=60.00, z=152.79], EntityPig['Pig'/2713241, l='MpServer', x=147.31, y=60.00, z=150.58], EntityPig['Pig'/2713240, l='MpServer', x=146.28, y=60.00, z=149.47], EntityPig['Pig'/2713243, l='MpServer', x=142.78, y=60.00, z=148.38], EntityPig['Pig'/2713242, l='MpServer', x=141.90, y=60.00, z=151.86], EntityPig['Pig'/2713245, l='MpServer', x=148.63, y=60.00, z=154.38], EntityPig['Pig'/2713244, l='MpServer', x=142.53, y=60.00, z=156.53], EntityPig['Pig'/2713247, l='MpServer', x=140.44, y=60.00, z=154.38], EntityPig['Pig'/2713246, l='MpServer', x=147.52, y=60.00, z=151.66], EntityOtherPlayerMP['Screenatyouruse'/2731354, l='MpServer', x=212.98, y=63.13, z=146.08], EntityPig['Pig'/2713233, l='MpServer', x=148.53, y=60.00, z=152.72], EntityPig['Pig'/2713232, l='MpServer', x=147.44, y=60.00, z=154.50], EntityPig['Pig'/2713235, l='MpServer', x=145.43, y=60.00, z=153.45], EntityPig['Pig'/2713234, l='MpServer', x=147.53, y=60.00, z=155.47], EntityPig['Pig'/2713237, l='MpServer', x=140.44, y=60.00, z=152.78], EntityPig['Pig'/2713236, l='MpServer', x=142.66, y=60.00, z=155.59], EntityPig['Pig'/2713239, l='MpServer', x=144.91, y=60.00, z=156.53], EntityPig['Pig'/2713238, l='MpServer', x=146.13, y=60.00, z=148.44], EntitySheep['Sheep'/2731244, l='MpServer', x=187.91, y=62.00, z=184.34], EntitySheep['Sheep'/2731234, l='MpServer', x=191.28, y=62.00, z=189.88], EntityVillager['Aim3'/2573801, l='MpServer', x=179.50, y=62.00, z=134.50], EntitySheep['Sheep'/2731260, l='MpServer', x=189.97, y=62.00, z=187.13], EntitySheep['Sheep'/2731255, l='MpServer', x=190.06, y=62.00, z=184.59], EntitySheep['Sheep'/2730945, l='MpServer', x=187.22, y=62.00, z=188.69], EntityOtherPlayerMP['Screenatyouruse'/2731354, l='MpServer', x=211.44, y=62.00, z=176.75], EntitySheep['Sheep'/2731223, l='MpServer', x=186.16, y=62.00, z=188.19]]
+	Retry entities: 0 total; []
+	Server brand: DionaSpigot (Velocity)
+	Server type: Non-integrated multiplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:401)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2283)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:361)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_372, BellSoft
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), BellSoft
+	Memory: 733038616 bytes (699 MB) / 1013972992 bytes (967 MB) up to 1013972992 bytes (967 MB)
+	JVM Flags: 2 total; -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 516.94, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: gamerswordpack.zip
+	Current Language: English (UK)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-9700F CPU @ 3.00GHz
+	OptiFine Version: OptiFine_1.8.9_HD_U_M5
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 10
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 516.94
+	OpenGlRenderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8

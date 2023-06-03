@@ -7,25 +7,30 @@ import dev.menace.event.events.EventReceivePacket;
 import dev.menace.event.events.EventUpdate;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
+import dev.menace.module.modules.movement.speed.SpeedBase;
+import dev.menace.module.modules.movement.speed.SpeedMode;
 import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
 import dev.menace.utils.misc.ChatUtils;
-import dev.menace.utils.player.MovementUtils;
-import dev.menace.utils.player.PacketUtils;
 import net.minecraft.client.settings.GameSettings;
-import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.server.S08PacketPlayerPosLook;
-import net.minecraft.network.play.server.S12PacketEntityVelocity;
-import net.minecraft.potion.Potion;
+
+import java.util.ArrayList;
 
 public class SpeedModule extends BaseModule {
 
     private int flagCount;
 
     ListSetting mode;
-    SliderSetting speed;
+    ListSetting vanillaMode;
+    ListSetting verusMode;
+    ListSetting ncpMode;
+    ListSetting otherMode;
+    public SliderSetting speed;
     ToggleSetting autoDisable;
+
+    private SpeedBase speedBase;
 
     public SpeedModule() {
         super("Speed", Category.MOVEMENT, 0);
@@ -33,10 +38,70 @@ public class SpeedModule extends BaseModule {
 
     @Override
     public void setup() {
-        mode = new ListSetting("Mode", true, "BHop", new String[] {"BHop", "Strafe", "LowHop", "BlocksMC", "WTF", "NCPLowHop", "Experimental"});
+        ArrayList<String> values = new ArrayList<>();
+        for (SpeedMode.SpeedType fm : SpeedMode.SpeedType.values()) {
+            values.add(fm.getName());
+        }
+        mode = new ListSetting("Mode", true, "BHop", values.toArray(new String[] {}));
+
+        ArrayList<String> vanillaValues = new ArrayList<>();
+        ArrayList<String> verusValues = new ArrayList<>();
+        ArrayList<String> ncpValues = new ArrayList<>();
+        ArrayList<String> otherValues = new ArrayList<>();
+        for (SpeedMode fm : SpeedMode.values()) {
+            switch (fm.getType())
+            {
+                case VANILLA:
+                    vanillaValues.add(fm.getName());
+                    break;
+                case VERUS:
+                    verusValues.add(fm.getName());
+                    break;
+                case NCP:
+                    ncpValues.add(fm.getName());
+                    break;
+                case OTHER:
+                    otherValues.add(fm.getName());
+                    break;
+            }
+        }
+
+        vanillaMode = new ListSetting("Vanilla Mode", true, "BHop", vanillaValues.toArray(new String[] {})) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(mode.getValue().equals("Vanilla"));
+                super.constantCheck();
+            }
+        };
+        verusMode = new ListSetting("Verus Mode", true, "LowHop", verusValues.toArray(new String[] {})) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(mode.getValue().equals("Verus"));
+                super.constantCheck();
+            }
+        };
+        ncpMode = new ListSetting("NCP Mode", true, "LowHop", ncpValues.toArray(new String[] {})) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(mode.getValue().equals("NCP"));
+                super.constantCheck();
+            }
+        };
+        otherMode = new ListSetting("Other Mode", true, "BlocksMC", otherValues.toArray(new String[] {})) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(mode.getValue().equals("Other"));
+                super.constantCheck();
+            }
+        };
+
         speed = new SliderSetting("Speed", true, 1, 1, 10, true);
         autoDisable = new ToggleSetting("AutoDisable", true, true);
         this.rSetting(mode);
+        this.rSetting(vanillaMode);
+        this.rSetting(verusMode);
+        this.rSetting(ncpMode);
+        this.rSetting(otherMode);
         this.rSetting(speed);
         this.rSetting(autoDisable);
         super.setup();
@@ -46,8 +111,29 @@ public class SpeedModule extends BaseModule {
     public void onEnable() {
         flagCount = 0;
         mc.timer.timerSpeed = 1.0F;
-        this.setDisplayName(mode.getValue());
+
+        for (SpeedMode sm : SpeedMode.values()) {
+            if (mode.getValue().equalsIgnoreCase("Vanilla") && sm.getName().equalsIgnoreCase(vanillaMode.getValue()) && sm.getType() == SpeedMode.SpeedType.VANILLA) {
+                this.setDisplayName(sm.getName());
+                speedBase = sm.getSpeed();
+                break;
+            } else if (mode.getValue().equalsIgnoreCase("Verus") && sm.getName().equalsIgnoreCase(verusMode.getValue()) && sm.getType() == SpeedMode.SpeedType.VERUS) {
+                this.setDisplayName(sm.getName());
+                speedBase = sm.getSpeed();
+                break;
+            } else if (mode.getValue().equalsIgnoreCase("NCP") && sm.getName().equalsIgnoreCase(ncpMode.getValue()) && sm.getType() == SpeedMode.SpeedType.NCP) {
+                this.setDisplayName(sm.getName());
+                speedBase = sm.getSpeed();
+                break;
+            } else if (mode.getValue().equalsIgnoreCase("Other") && sm.getName().equalsIgnoreCase(otherMode.getValue()) && sm.getType() == SpeedMode.SpeedType.OTHER) {
+                this.setDisplayName(sm.getName());
+                speedBase = sm.getSpeed();
+                break;
+            }
+        }
+
         super.onEnable();
+        speedBase.onEnable();
     }
 
     @Override
@@ -56,124 +142,22 @@ public class SpeedModule extends BaseModule {
         mc.timer.timerSpeed = 1.0f;
         mc.thePlayer.speedInAir = 0.02f;
         super.onDisable();
+        speedBase.onDisable();
     }
 
     @EventTarget
     public void onUpdate(EventUpdate event) {
-        if (mode.getValue().equalsIgnoreCase("WTF")) {
-            if (!MovementUtils.shouldMove()) {
-                return;
-            }
-
-            if (mc.thePlayer.onGround) {
-                mc.timer.timerSpeed = 2f;
-                mc.thePlayer.jump();
-            } else {
-                mc.timer.timerSpeed = 0.98f;
-                mc.thePlayer.motionY = -0.427;
-            }
-
-        }
+        speedBase.onUpdate();
     }
 
     @EventTarget
     public void onPreMotion(EventPreMotion event) {
-        if (mode.getValue().equalsIgnoreCase("Strafe")) {
-            if (!MovementUtils.shouldMove()) {
-                return;
-            }
-            mc.gameSettings.keyBindJump.pressed = false;
-            if (mc.thePlayer.onGround) {
-                mc.thePlayer.jump();
-                MovementUtils.strafe();
-            }
-            MovementUtils.strafe();
-        } else if (mode.getValue().equalsIgnoreCase("BHop")) {
-            if (!MovementUtils.shouldMove()) return;
-            if (mc.thePlayer.onGround) {
-                mc.thePlayer.jump();
-                MovementUtils.strafe(speed.getValueF() / 2);
-            }
-            MovementUtils.strafe();
-        } else if(mode.getValue().equalsIgnoreCase("BlocksMC")) {
-            if(!MovementUtils.shouldMove()) {
-                mc.timer.timerSpeed = 1.0f;
-                return;
-            }
-
-            mc.gameSettings.keyBindJump.pressed = false;
-            if(mc.thePlayer.onGround) {
-                mc.thePlayer.jump();
-                if(mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
-                    if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier() == 0) {
-                        MovementUtils.strafe(0.5893f);
-                    } else if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier() == 1) {
-                        MovementUtils.strafe(0.6893f);
-                    }
-                } else {
-                    MovementUtils.strafe(0.485f);
-                }
-            }
-            MovementUtils.strafe();
-        } else if (mode.getValue().equalsIgnoreCase("NCPLowHop")) {
-            //Method by Exterminate (Lowest lowhop ever, trust)
-            if (!MovementUtils.shouldMove()) return;
-
-            //Anti Retard
-            mc.gameSettings.keyBindJump.pressed = false;
-
-            if (mc.thePlayer.onGround) {
-                mc.timer.timerSpeed = 0.95f;
-                mc.thePlayer.jump();
-                if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
-                    if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier() == 0) {
-                        MovementUtils.strafe(0.58f);
-                    } else if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier() == 1) {
-                        MovementUtils.strafe(0.67f);
-                    }
-                } else {
-                    MovementUtils.strafe(0.485f);
-                }
-            } else if (mc.thePlayer.motionY < 0.16 && mc.thePlayer.motionY > 0.0) {
-                mc.thePlayer.motionY = -0.1;
-            } else if (mc.thePlayer.motionY < 0.0 && mc.thePlayer.motionY > -0.3) {
-                mc.timer.timerSpeed = 1.2F;
-            }
-            MovementUtils.strafe();
-        }
-    }
-
-    public void velocityBoost(S12PacketEntityVelocity packetEntityVelocity) {
-        if (mode.getValue().equalsIgnoreCase("BlocksMC")) {
-            if (packetEntityVelocity.getEntityID() == mc.thePlayer.getEntityId() && mc.thePlayer.hurtTime > 0 && mc.thePlayer.hurtTime < 5) {
-                //MovementUtils.strafe(0.7f);
-            }
-        }
+        speedBase.onPreMotion(event);
     }
 
     @EventTarget
     public void onMove(EventMove event) {
-        if (mode.getValue().equalsIgnoreCase("LowHop")) {
-            if (!MovementUtils.shouldMove()) return;
-            mc.gameSettings.keyBindJump.pressed = false;
-            if (mc.thePlayer.onGround) {
-                mc.thePlayer.jump();
-                mc.thePlayer.motionY = 0.0;
-                MovementUtils.strafe(0.61F);
-                event.setY(0.41999998688698);
-            }
-            MovementUtils.strafe();
-        } else if (mode.getValue().equalsIgnoreCase("Experimental")) {
-            if (!MovementUtils.shouldMove()) return;
-            mc.gameSettings.keyBindJump.pressed = false;
-            if (mc.thePlayer.onGround) {
-                mc.thePlayer.jump();
-                mc.thePlayer.motionY = 0.0;
-                event.setY(0.1);
-                MovementUtils.strafe(0.5f);
-            }
-            MovementUtils.strafe();
-        }
+        speedBase.onMove(event);
     }
 
     @EventTarget

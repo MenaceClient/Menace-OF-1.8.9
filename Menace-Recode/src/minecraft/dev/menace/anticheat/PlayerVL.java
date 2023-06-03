@@ -16,6 +16,7 @@ public class PlayerVL {
 
     //Check Helpers
     public long blockingTicks = 0;
+    public float realFallDistance = 0;
 
     public PlayerVL(EntityPlayer player) {
         this.player = player;

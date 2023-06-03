@@ -2,17 +2,14 @@ package dev.menace.ui.clickgui.lime.components;
 
 import dev.menace.Menace;
 import dev.menace.ui.clickgui.lime.Priority;
-import dev.menace.ui.clickgui.lime.utils.render.RenderUtils;
-import dev.menace.ui.clickgui.lime.utils.render.animation.easings.Animate;
-import dev.menace.ui.clickgui.lime.utils.render.animation.easings.Easing;
-import dev.menace.utils.render.font.Fonts;
+import dev.menace.utils.render.RenderUtils;
+import dev.menace.utils.render.animtion.Animate;
+import dev.menace.utils.render.animtion.Easing;
 import dev.menace.utils.render.font.MenaceFontRenderer;
 import net.minecraft.client.gui.Gui;
-import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 

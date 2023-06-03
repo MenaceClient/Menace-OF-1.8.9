@@ -6,11 +6,18 @@ import com.google.common.util.concurrent.Futures;
 import com.mojang.authlib.GameProfile;
 import dev.menace.Menace;
 import dev.menace.event.events.EventConnection;
+import dev.menace.event.events.EventSpawnEntity;
 import dev.menace.event.events.EventTeleport;
 import dev.menace.ui.custom.MenaceMainMenu;
+import dev.menace.utils.misc.ChatUtils;
 import io.netty.buffer.Unpooled;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -553,13 +560,20 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
         }
 
         entityotherplayermp.setPositionAndRotation(d0, d1, d2, f, f1);
-        this.clientWorldController.addEntityToWorld(packetIn.getEntityID(), entityotherplayermp);
-        List<DataWatcher.WatchableObject> list = packetIn.func_148944_c();
+        List<DataWatcher.WatchableObject> list = packetIn.getWatchableObjectList();
 
         if (list != null)
         {
             entityotherplayermp.getDataWatcher().updateWatchedObjectsFromList(list);
         }
+
+        EventSpawnEntity event = new EventSpawnEntity(entityotherplayermp);
+        event.call();
+
+        if (event.isCancelled()) return;
+
+        this.clientWorldController.addEntityToWorld(packetIn.getEntityID(), entityotherplayermp);
+
     }
 
     /**
@@ -1685,7 +1699,7 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
     public void handleTabComplete(S3APacketTabComplete packetIn)
     {
         PacketThreadUtil.checkThreadAndEnqueue(packetIn, this, this.gameController);
-        String[] astring = packetIn.func_149630_c();
+        String[] astring = packetIn.getMatches();
 
         if (this.gameController.currentScreen instanceof GuiChat)
         {
@@ -1702,55 +1716,59 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
 
     public void handleResourcePack(S48PacketResourcePackSend packetIn)
     {
-        final String s = packetIn.getURL();
-        final String s1 = packetIn.getHash();
+        final String packURL = packetIn.getURL();
+        final String packHash = packetIn.getHash();
 
-        if (s.startsWith("level://"))
+        if (!validateResourcePackUrl(packURL, packHash)) {
+            return;
+        }
+
+        if (packURL.startsWith("level://"))
         {
-            String s2 = s.substring("level://".length());
+            String s2 = packURL.substring("level://".length());
             File file1 = new File(this.gameController.mcDataDir, "saves");
             File file2 = new File(file1, s2);
 
             if (file2.isFile())
             {
-                this.netManager.sendPacket(new C19PacketResourcePackStatus(s1, C19PacketResourcePackStatus.Action.ACCEPTED));
+                this.netManager.sendPacket(new C19PacketResourcePackStatus(packHash, C19PacketResourcePackStatus.Action.ACCEPTED));
                 Futures.addCallback(this.gameController.getResourcePackRepository().setResourcePackInstance(file2), new FutureCallback<Object>()
                 {
                     public void onSuccess(Object p_onSuccess_1_)
                     {
-                        NetHandlerPlayClient.this.netManager.sendPacket(new C19PacketResourcePackStatus(s1, C19PacketResourcePackStatus.Action.SUCCESSFULLY_LOADED));
+                        NetHandlerPlayClient.this.netManager.sendPacket(new C19PacketResourcePackStatus(packHash, C19PacketResourcePackStatus.Action.SUCCESSFULLY_LOADED));
                     }
                     public void onFailure(Throwable p_onFailure_1_)
                     {
-                        NetHandlerPlayClient.this.netManager.sendPacket(new C19PacketResourcePackStatus(s1, C19PacketResourcePackStatus.Action.FAILED_DOWNLOAD));
+                        NetHandlerPlayClient.this.netManager.sendPacket(new C19PacketResourcePackStatus(packHash, C19PacketResourcePackStatus.Action.FAILED_DOWNLOAD));
                     }
                 });
             }
             else
             {
-                this.netManager.sendPacket(new C19PacketResourcePackStatus(s1, C19PacketResourcePackStatus.Action.FAILED_DOWNLOAD));
+                this.netManager.sendPacket(new C19PacketResourcePackStatus(packHash, C19PacketResourcePackStatus.Action.FAILED_DOWNLOAD));
             }
         }
         else
         {
             if (this.gameController.getCurrentServerData() != null && this.gameController.getCurrentServerData().getResourceMode() == ServerData.ServerResourceMode.ENABLED)
             {
-                this.netManager.sendPacket(new C19PacketResourcePackStatus(s1, C19PacketResourcePackStatus.Action.ACCEPTED));
-                Futures.addCallback(this.gameController.getResourcePackRepository().downloadResourcePack(s, s1), new FutureCallback<Object>()
+                this.netManager.sendPacket(new C19PacketResourcePackStatus(packHash, C19PacketResourcePackStatus.Action.ACCEPTED));
+                Futures.addCallback(this.gameController.getResourcePackRepository().downloadResourcePack(packURL, packHash), new FutureCallback<Object>()
                 {
                     public void onSuccess(Object p_onSuccess_1_)
                     {
-                        NetHandlerPlayClient.this.netManager.sendPacket(new C19PacketResourcePackStatus(s1, C19PacketResourcePackStatus.Action.SUCCESSFULLY_LOADED));
+                        NetHandlerPlayClient.this.netManager.sendPacket(new C19PacketResourcePackStatus(packHash, C19PacketResourcePackStatus.Action.SUCCESSFULLY_LOADED));
                     }
                     public void onFailure(Throwable p_onFailure_1_)
                     {
-                        NetHandlerPlayClient.this.netManager.sendPacket(new C19PacketResourcePackStatus(s1, C19PacketResourcePackStatus.Action.FAILED_DOWNLOAD));
+                        NetHandlerPlayClient.this.netManager.sendPacket(new C19PacketResourcePackStatus(packHash, C19PacketResourcePackStatus.Action.FAILED_DOWNLOAD));
                     }
                 });
             }
             else if (this.gameController.getCurrentServerData() != null && this.gameController.getCurrentServerData().getResourceMode() != ServerData.ServerResourceMode.PROMPT)
             {
-                this.netManager.sendPacket(new C19PacketResourcePackStatus(s1, C19PacketResourcePackStatus.Action.DECLINED));
+                this.netManager.sendPacket(new C19PacketResourcePackStatus(packHash, C19PacketResourcePackStatus.Action.DECLINED));
             }
             else
             {
@@ -1758,50 +1776,78 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
                 {
                     public void run()
                     {
-                        NetHandlerPlayClient.this.gameController.displayGuiScreen(new GuiYesNo(new GuiYesNoCallback()
-                        {
-                            public void confirmClicked(boolean result, int id)
+                        NetHandlerPlayClient.this.gameController.displayGuiScreen(new GuiYesNo((result, id) -> {
+                            NetHandlerPlayClient.this.gameController = Minecraft.getMinecraft();
+
+                            if (result)
                             {
-                                NetHandlerPlayClient.this.gameController = Minecraft.getMinecraft();
-
-                                if (result)
+                                if (NetHandlerPlayClient.this.gameController.getCurrentServerData() != null)
                                 {
-                                    if (NetHandlerPlayClient.this.gameController.getCurrentServerData() != null)
-                                    {
-                                        NetHandlerPlayClient.this.gameController.getCurrentServerData().setResourceMode(ServerData.ServerResourceMode.ENABLED);
-                                    }
-
-                                    NetHandlerPlayClient.this.netManager.sendPacket(new C19PacketResourcePackStatus(s1, C19PacketResourcePackStatus.Action.ACCEPTED));
-                                    Futures.addCallback(NetHandlerPlayClient.this.gameController.getResourcePackRepository().downloadResourcePack(s, s1), new FutureCallback<Object>()
-                                    {
-                                        public void onSuccess(Object p_onSuccess_1_)
-                                        {
-                                            NetHandlerPlayClient.this.netManager.sendPacket(new C19PacketResourcePackStatus(s1, C19PacketResourcePackStatus.Action.SUCCESSFULLY_LOADED));
-                                        }
-                                        public void onFailure(Throwable p_onFailure_1_)
-                                        {
-                                            NetHandlerPlayClient.this.netManager.sendPacket(new C19PacketResourcePackStatus(s1, C19PacketResourcePackStatus.Action.FAILED_DOWNLOAD));
-                                        }
-                                    });
-                                }
-                                else
-                                {
-                                    if (NetHandlerPlayClient.this.gameController.getCurrentServerData() != null)
-                                    {
-                                        NetHandlerPlayClient.this.gameController.getCurrentServerData().setResourceMode(ServerData.ServerResourceMode.DISABLED);
-                                    }
-
-                                    NetHandlerPlayClient.this.netManager.sendPacket(new C19PacketResourcePackStatus(s1, C19PacketResourcePackStatus.Action.DECLINED));
+                                    NetHandlerPlayClient.this.gameController.getCurrentServerData().setResourceMode(ServerData.ServerResourceMode.ENABLED);
                                 }
 
-                                ServerList.func_147414_b(NetHandlerPlayClient.this.gameController.getCurrentServerData());
-                                NetHandlerPlayClient.this.gameController.displayGuiScreen((GuiScreen)null);
+                                NetHandlerPlayClient.this.netManager.sendPacket(new C19PacketResourcePackStatus(packHash, C19PacketResourcePackStatus.Action.ACCEPTED));
+                                Futures.addCallback(NetHandlerPlayClient.this.gameController.getResourcePackRepository().downloadResourcePack(packURL, packHash), new FutureCallback<Object>()
+                                {
+                                    public void onSuccess(Object p_onSuccess_1_)
+                                    {
+                                        NetHandlerPlayClient.this.netManager.sendPacket(new C19PacketResourcePackStatus(packHash, C19PacketResourcePackStatus.Action.SUCCESSFULLY_LOADED));
+                                    }
+                                    public void onFailure(Throwable p_onFailure_1_)
+                                    {
+                                        NetHandlerPlayClient.this.netManager.sendPacket(new C19PacketResourcePackStatus(packHash, C19PacketResourcePackStatus.Action.FAILED_DOWNLOAD));
+                                    }
+                                });
                             }
+                            else
+                            {
+                                if (NetHandlerPlayClient.this.gameController.getCurrentServerData() != null)
+                                {
+                                    NetHandlerPlayClient.this.gameController.getCurrentServerData().setResourceMode(ServerData.ServerResourceMode.DISABLED);
+                                }
+
+                                NetHandlerPlayClient.this.netManager.sendPacket(new C19PacketResourcePackStatus(packHash, C19PacketResourcePackStatus.Action.DECLINED));
+                            }
+
+                            ServerList.func_147414_b(NetHandlerPlayClient.this.gameController.getCurrentServerData());
+                            NetHandlerPlayClient.this.gameController.displayGuiScreen((GuiScreen)null);
                         }, I18n.format("multiplayer.texturePrompt.line1", new Object[0]), I18n.format("multiplayer.texturePrompt.line2", new Object[0]), 0));
                     }
                 });
             }
         }
+    }
+
+    //By Sk1erLLC (I have no fucking clue how this works)
+    public boolean validateResourcePackUrl(String url, String hash) {
+        try {
+            URI uri = new URI(url);
+            String scheme = uri.getScheme();
+            boolean isLevelProtocol = "level".equals(scheme);
+
+            if (!"http".equals(scheme) && !"https".equals(scheme) && !isLevelProtocol) {
+                this.getNetworkManager().sendPacket(new C19PacketResourcePackStatus(hash, C19PacketResourcePackStatus.Action.FAILED_DOWNLOAD));
+                throw new URISyntaxException(url, "Wrong protocol");
+            }
+
+            url = URLDecoder.decode(url.substring("level://".length()), StandardCharsets.UTF_8.toString());
+
+            if (isLevelProtocol && (url.contains("..") || !url.endsWith("/resources.zip"))) {
+                System.out.println("Malicious server tried to access " + url);
+
+                ChatUtils.message("Blocked malicious server from accessing your files.");
+
+                throw new URISyntaxException(url, "Invalid levelstorage resourcepack path");
+            }
+
+            return true;
+        } catch (URISyntaxException e) {
+            return false;
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 
     public void handleEntityNBT(S49PacketUpdateEntityNBT packetIn)

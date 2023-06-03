@@ -29,7 +29,7 @@ public class CSModButton extends CSButton {
 		int x = this.x + 100;
 		int longestName = 0;
 		for (Setting s : this.mod.getSettings()) {
-			if (s.isToggle()) {
+			if (s instanceof ToggleSetting) {
 
 				CSSettingCheck check = new CSSettingCheck(x, y, y, x, (ToggleSetting) s);
 
@@ -41,7 +41,7 @@ public class CSModButton extends CSButton {
 
 				y += 13;
 			}
-			if (s.isSlider()) {
+			if (s instanceof SliderSetting) {
 
 				CSSettingDouble doubleset = new CSSettingDouble(x, y, 0, 0, (SliderSetting) s);
 
@@ -54,7 +54,7 @@ public class CSModButton extends CSButton {
 				y += 15;
 
 			}
-			if (s.isList()) {
+			if (s instanceof ListSetting) {
 
 				CSSettingCombo combo = new CSSettingCombo(x, y, 70, mc.fontRendererObj.FONT_HEIGHT + 2, (ListSetting) s);
 				settings.add(combo);
@@ -109,7 +109,7 @@ public class CSModButton extends CSButton {
 			cs.set.constantCheck();
 			if (isCurrentMod() && cs.set.isVisible()) {
 				Setting s = cs.set;
-				if (s.isToggle()) {
+				if (s instanceof ToggleSetting) {
 
 					cs.x = x;
 					cs.y = y;
@@ -122,7 +122,7 @@ public class CSModButton extends CSButton {
 
 					y += 13;
 				}
-				if (s.isSlider()) {
+				if (s instanceof SliderSetting) {
 
 					cs.x = x;
 					cs.y = y;
@@ -135,7 +135,7 @@ public class CSModButton extends CSButton {
 					y += 15;
 
 				}
-				if (s.isList()) {
+				if (s instanceof ListSetting) {
 					cs.x = x;
 					cs.y = y;
 					cs.width = 70;

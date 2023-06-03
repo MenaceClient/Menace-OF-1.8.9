@@ -15,6 +15,7 @@ import dev.menace.scripting.js.JSMapping;
 import dev.menace.scripting.js.MappedName;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.DynamicTexture;
@@ -50,10 +51,10 @@ public class RenderUtils {
 	public static void quickDrawHorizontalGradient(double left, double top, double right, double bottom, int col1, int col2) {
 		glBegin(GL_QUADS);
 
-		glColor(col1);
+		ColorUtils.glColor(col1);
 		glVertex2d(left, top);
 		glVertex2d(left, bottom);
-		glColor(col2);
+		ColorUtils.glColor(col2);
 		glVertex2d(right, bottom);
 		glVertex2d(right, top);
 
@@ -78,10 +79,10 @@ public class RenderUtils {
 	public static void quickDrawVerticalGradient(double left, double top, double right, double bottom, int col1, int col2) {
 		glBegin(GL_QUADS);
 
-		glColor(col1);
+		ColorUtils.glColor(col1);
 		glVertex2d(right, top);
 		glVertex2d(left, top);
-		glColor(col2);
+		ColorUtils.glColor(col2);
 		glVertex2d(left, bottom);
 		glVertex2d(right, bottom);
 
@@ -222,6 +223,24 @@ public class RenderUtils {
 		drawRect(left, top, left + width, bottom, color);
 		drawRect(right - width, top, right, bottom, color);
 		drawRect(left, bottom - width, right, bottom, color);
+	}
+
+	public static void renderGaussianBlurredRect(float x, float y, float width, float height, Color color) {
+		// Enable blending for smooth alpha blending
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+
+		// Render the rect with a Gaussian blur effect
+		GlStateManager.color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+		GL11.glBegin(GL11.GL_QUADS);
+		GL11.glVertex2f(x, y);
+		GL11.glVertex2f(x + width, y);
+		GL11.glVertex2f(x + width, y + height);
+		GL11.glVertex2f(x, y + height);
+		GL11.glEnd();
+
+		// Disable blending after rendering
+		GL11.glDisable(GL11.GL_BLEND);
 	}
 
 	public static void drawHorizontalLine(int startX, int endX, int y, int color) {
@@ -502,11 +521,11 @@ public class RenderUtils {
 		if (outline) {
 			glLineWidth(1F);
 			enableGlCap(GL_LINE_SMOOTH);
-			glColor(color.getRed(), color.getGreen(), color.getBlue(), 95);
+			ColorUtils.glColor(color.getRed(), color.getGreen(), color.getBlue(), 95);
 			drawSelectionBoundingBox(axisAlignedBB);
 		}
 
-		glColor(color.getRed(), color.getGreen(), color.getBlue(), outline ? 26 : 35);
+		ColorUtils.glColor(color.getRed(), color.getGreen(), color.getBlue(), outline ? 26 : 35);
 		drawFilledBox(axisAlignedBB);
 		GlStateManager.resetColor();
 		glDepthMask(true);
@@ -691,6 +710,35 @@ public class RenderUtils {
 		GL11.glClear(0);
 	}
 
+	// From LiquidBounce
+	public static void drawFilledCircle(final int xx, final int yy, final float radius, final Color color) {
+		int sections = 50;
+		double dAngle = 2 * Math.PI / sections;
+		float x, y;
+
+		glPushAttrib(GL_ENABLE_BIT);
+
+		glEnable(GL_BLEND);
+		glDisable(GL_TEXTURE_2D);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_LINE_SMOOTH);
+		glBegin(GL_TRIANGLE_FAN);
+
+		for (int i = 0; i < sections; i++) {
+			x = (float) (radius * Math.sin((i * dAngle)));
+			y = (float) (radius * Math.cos((i * dAngle)));
+
+			ColorUtils.glColor(color);
+			glVertex2f(xx + x, yy + y);
+		}
+
+		glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+
+		glEnd();
+
+		glPopAttrib();
+	}
+
 	public static void draw2DImage(ResourceLocation image, float x, float y, int width, int height, Color c) {
 
 		GL11.glDisable(GL11.GL_DEPTH_TEST);
@@ -829,6 +877,12 @@ public class RenderUtils {
 		return new Vec3(x, y, z);
 	}
 
+	public static void prepareScissorBox(float x2, float y2, float x22, float y22) {
+		ScaledResolution scale = new ScaledResolution(MC);
+		int factor = scale.getScaleFactor();
+		GL11.glScissor((int)(x2 * (float)factor), (int)(((float)scale.getScaledHeight() - y22) * (float)factor), (int)((x22 - x2) * (float)factor), (int)((y22 - y2) * (float)factor));
+	}
+
 	/**
 	 * Checks if mouse is over rectangle.
 	 * 
@@ -844,61 +898,5 @@ public class RenderUtils {
 		return mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height;
 	}
 
-	public static void glColor(final int red, final int green, final int blue, final int alpha) {
-		GlStateManager.color(red / 255F, green / 255F, blue / 255F, alpha / 255F);
-	}
 
-	public static void glColor(final Color color) {
-		final float red = color.getRed() / 255F;
-		final float green = color.getGreen() / 255F;
-		final float blue = color.getBlue() / 255F;
-		final float alpha = color.getAlpha() / 255F;
-
-		GlStateManager.color(red, green, blue, alpha);
-	}
-
-	public static void glColor(final Color color, final int alpha) {
-		glColor(color, alpha/255F);
-	}
-
-	public static void glColor(final Color color, final float alpha) {
-		final float red = color.getRed() / 255F;
-		final float green = color.getGreen() / 255F;
-		final float blue = color.getBlue() / 255F;
-
-		GlStateManager.color(red, green, blue, alpha);
-	}
-
-	public static void glColor(final int hex) {
-		final float alpha = (hex >> 24 & 0xFF) / 255F;
-		final float red = (hex >> 16 & 0xFF) / 255F;
-		final float green = (hex >> 8 & 0xFF) / 255F;
-		final float blue = (hex & 0xFF) / 255F;
-
-		GlStateManager.color(red, green, blue, alpha);
-	}
-
-	public static void glColor(final int hex, final int alpha) {
-		final float red = (hex >> 16 & 0xFF) / 255F;
-		final float green = (hex >> 8 & 0xFF) / 255F;
-		final float blue = (hex & 0xFF) / 255F;
-
-		GlStateManager.color(red, green, blue, alpha / 255F);
-	}
-
-	public static void glColor(final int hex, final float alpha) {
-		final float red = (hex >> 16 & 0xFF) / 255F;
-		final float green = (hex >> 8 & 0xFF) / 255F;
-		final float blue = (hex & 0xFF) / 255F;
-
-		GlStateManager.color(red, green, blue, alpha);
-	}
-
-	public static Color darker(Color color, float percentage) {
-		return new Color((color.getRed() * percentage), (color.getGreen() * percentage), (color.getBlue() * percentage), (color.getAlpha() * percentage));
-	}
-
-	public static Color brighter(Color color, float percentage) {
-		return new Color(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, percentage);
-	}
 }

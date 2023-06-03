@@ -28,6 +28,7 @@ public class AutoPotModule extends BaseModule {
 
     SliderSetting delay;
     SliderSetting health;
+    ToggleSetting throwSpeed;
     ToggleSetting onlyOnGround;
 
     public AutoPotModule() {
@@ -38,9 +39,11 @@ public class AutoPotModule extends BaseModule {
     public void setup() {
         delay = new SliderSetting("Delay", true, 100, 100, 1000, 50, true);
         health = new SliderSetting("Health", true, 10, 1, 20, 1, true);
+        throwSpeed = new ToggleSetting("ThrowSpeed", true, true);
         onlyOnGround = new ToggleSetting("OnlyOnGround", true, true);
         this.rSetting(delay);
         this.rSetting(health);
+        this.rSetting(throwSpeed);
         this.rSetting(onlyOnGround);
         super.setup();
     }
@@ -100,7 +103,7 @@ public class AutoPotModule extends BaseModule {
     }
 
     private void handleSpeed() {
-        if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed) != null || !delayTimer.hasTimePassed(1000L + delay.getValueL()) || stage != 0) return;
+        if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed) != null || !delayTimer.hasTimePassed(1000L + delay.getValueL()) || stage != 0 || !throwSpeed.getValue()) return;
 
         int potionSlot = -1;
 

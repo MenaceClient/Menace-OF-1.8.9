@@ -2,6 +2,11 @@
   "AntiBot": {
     "Toggled": false,
     "Settings": {
+      "CheckGameProfile": false,
+      "CheckNetworkInfo": false,
+      "Matrix": true,
+      "SpawnDistance": 17.0,
+      "HideBots": false,
       "Visible": true
     }
   },
@@ -11,6 +16,15 @@
       "Delay": 100.0,
       "Health": 15.0,
       "OnlyOnGround": true,
+      "Visible": true
+    }
+  },
+  "BackTracker": {
+    "Toggled": false,
+    "Settings": {
+      "Delay": 500.0,
+      "Max Packets": 150.0,
+      "Only Target": true,
       "Visible": true
     }
   },
@@ -27,6 +41,9 @@
       "Reach": 3.8000000000000003,
       "MinCPS": 18.0,
       "MaxCPS": 20.0,
+      "Mode": "Switch",
+      "SwitchDelay": 216.0,
+      "SwitchAmount": 3.0,
       "TicksExisted": 0.0,
       "FOV": 360.0,
       "Filter": "Distance",
@@ -37,6 +54,7 @@
       "ThroughWalls": true,
       "InInventory": false,
       "RayCast": false,
+      "Cancel Click": true,
       "AutoDisable": true,
       "Players": true,
       "MenaceUsers": false,
@@ -56,9 +74,9 @@
     }
   },
   "Velocity": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
-      "Mode": "Bypass",
+      "Mode": "Matrix",
       "Explosions": true,
       "Visible": true
     }
@@ -75,7 +93,8 @@
       "Mode": "Other",
       "VanillaMode": "FakeGround",
       "VerusMode": "Bob",
-      "OtherMode": "NCPSlime",
+      "NCPMode": "NCPSlime",
+      "OtherMode": "BlocksMC",
       "DmgMode": "Verus",
       "Speed": 5.0,
       "Viewbob": 0.1,
@@ -85,13 +104,20 @@
   "LongJump": {
     "Toggled": false,
     "Settings": {
+      "Mode": "NCP",
+      "Speed": 1.0,
+      "Height": 4.0,
       "Visible": true
     }
   },
   "Speed": {
     "Toggled": false,
     "Settings": {
-      "Mode": "BlocksMC",
+      "Mode": "BHop",
+      "Vanilla Mode": "Strafe",
+      "Verus Mode": "LowHop",
+      "NCP Mode": "LowHop",
+      "Other Mode": "Experimental",
       "Speed": 7.0,
       "AutoDisable": true,
       "Visible": true
@@ -161,7 +187,7 @@
     }
   },
   "InvMove": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Sprint": false,
       "Rotate": false,
@@ -200,23 +226,27 @@
   "Scaffold": {
     "Toggled": false,
     "Settings": {
-      "Tower": true,
+      "Tower": false,
       "Tower Move": false,
       "Tower Mode": "BlocksMC",
       "Tower Speed": 50.0,
       "Tower Derp": false,
-      "Sprint": true,
-      "KeepRotations": true,
+      "Sprint": false,
       "SilentSwap": false,
       "KeepY": false,
-      "Bypass": false,
-      "BlocksMC": true,
+      "Bypass": true,
+      "Rotation Mode": "Normal1",
+      "KeepRotations": true,
+      "BlocksMC": false,
       "Eagle": false,
       "Eagle Delay": 100.0,
+      "ClampPitch": false,
+      "NotOnBlock": false,
       "NoSwing": false,
       "Boost": false,
       "Jump": false,
       "LowHop": false,
+      "Mode": "NCP",
       "Timer": 1.0,
       "Render": true,
       "Visible": true
@@ -324,6 +354,7 @@
       "Watermark": true,
       "ArrayList": true,
       "ArrayAlign": "Right",
+      "ArrayOutline": "None",
       "ArrayAlpha": 100.0,
       "Position": true,
       "Position Mode": "Single",
@@ -333,6 +364,7 @@
       "TargetHUD": true,
       "Notifications": true,
       "TabGui": false,
+      "Spotify": true,
       "Custom Font": true,
       "Color": "Custom",
       "RBW Speed": 10.0,
@@ -424,11 +456,17 @@
   "Spoofer": {
     "Toggled": true,
     "Settings": {
-      "Mode": "Null",
+      "Mode": "Lunar",
       "Visible": true
     }
   },
   "StaffDetector": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "Translator": {
     "Toggled": false,
     "Settings": {
       "Visible": true

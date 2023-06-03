@@ -16,7 +16,7 @@ ao:2
 renderClouds:false
 resourcePacks:["gamerswordpack.zip"]
 incompatibleResourcePacks:[]
-lastServer:test.ccbluex.net
+lastServer:mc.loyisa.cn
 lang:en_GB
 chatVisibility:0
 chatColors:true

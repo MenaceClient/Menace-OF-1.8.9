@@ -18,7 +18,7 @@ import java.util.concurrent.Executors;
 
 public class SpotifyUtils {
 
-    private final Thread songUpdateThread;
+    private Thread songUpdateThread;
     public String CLIENTID = "";
     public String CLIENTSECRET = "";
     private final String REDIRECTURI = "http://localhost:8080";
@@ -28,12 +28,6 @@ public class SpotifyUtils {
     private HttpServer server = null;
 
     public SpotifyUtils() {
-        songUpdateThread = new Thread(() -> {
-            while (true) {
-                updateCurrentSong();
-            }
-        });
-
         fileAuthenticate();
         if (isAuthed) {
             startSongUpdateThread();
@@ -47,9 +41,20 @@ public class SpotifyUtils {
     }
 
     public void startSongUpdateThread() {
-        if (!songUpdateThread.isAlive()) {
-            songUpdateThread.start();
-        }
+        if (songUpdateThread != null && songUpdateThread.isAlive()) return;
+        songUpdateThread = new Thread(() -> {
+            while (true) {
+                boolean idk = updateCurrentSong();
+                if (!idk) {
+                    try {
+                        Thread.sleep(5);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        songUpdateThread.start();
     }
 
     private JsonObject sendApiRequest(String apiUrl) {
@@ -65,6 +70,8 @@ public class SpotifyUtils {
                 if (conn.getResponseCode() == 401) {
                     refreshAuth();
                     sendApiRequest(apiUrl);
+                } else if (conn.getResponseCode() == 204) {
+                    return null;
                 }
                 throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode() + " " + conn.getResponseMessage());
             }
@@ -97,21 +104,22 @@ public class SpotifyUtils {
         return currentSong;
     }
 
-    public void updateCurrentSong() {
+    public boolean updateCurrentSong() {
         if (!songTimer.hasTimePassed(songEndTimeStamp) || !isAuthed) {
-            return;
+            return false;
         }
 
         JsonObject response = sendApiRequest("https://api.spotify.com/v1/me/player/currently-playing");
 
         if (response == null) {
             currentSong = null;
-            return;
+            return false;
         }
 
         currentSong = response.get("item").getAsJsonObject();
         songEndTimeStamp = (response.get("item").getAsJsonObject().get("duration_ms").getAsInt() - response.get("progress_ms").getAsInt());
         songTimer.reset();
+        return true;
     }
 
     public int getSongProgress() {

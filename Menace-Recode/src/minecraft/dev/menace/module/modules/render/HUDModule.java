@@ -18,6 +18,7 @@ public class HUDModule extends BaseModule {
 	public ListSetting wmMode;
 	public ToggleSetting array;
 	public ListSetting arrayAlign;
+	public ListSetting arrayOutline;
 	public SliderSetting arrayAlpha;
 	public ToggleSetting pos;
 	public ToggleSetting ping;
@@ -53,6 +54,12 @@ public class HUDModule extends BaseModule {
 		};
 		array = new ToggleSetting("ArrayList", true, true);
 		arrayAlign = new ListSetting("ArrayAlign", true, "Right", new String[] {"Left", "Right"}) {
+			@Override
+			public void constantCheck() {
+				this.setVisible(Menace.instance.moduleManager.hudModule.array.getValue());
+			}
+		};
+		arrayOutline = new ListSetting("ArrayOutline", true, "None", new String[] {"None", "Back"}) {
 			@Override
 			public void constantCheck() {
 				this.setVisible(Menace.instance.moduleManager.hudModule.array.getValue());
@@ -123,6 +130,7 @@ public class HUDModule extends BaseModule {
 		this.rSetting(watermark);
 		this.rSetting(array);
 		this.rSetting(arrayAlign);
+		this.rSetting(arrayOutline);
 		this.rSetting(arrayAlpha);
 		this.rSetting(pos);
 		this.rSetting(posMode);

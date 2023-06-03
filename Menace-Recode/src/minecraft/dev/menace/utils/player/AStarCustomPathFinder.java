@@ -4,7 +4,6 @@ import net.minecraft.block.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.Vec3;
-import org.jetbrains.annotations.NotNull;
 
 
 import java.util.ArrayList;
@@ -52,7 +51,7 @@ public class AStarCustomPathFinder
             if (this.hubsToWork.size() == 0) {
                 break;
             }
-            for (final Hub hub : new ArrayList<Hub>(this.hubsToWork)) {
+            for (final Hub hub : new ArrayList<>(this.hubsToWork)) {
                 if (++j > depth) {
                     break;
                 }

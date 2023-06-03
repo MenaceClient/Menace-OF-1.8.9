@@ -24,7 +24,7 @@ public class GameStatsElement extends BaseElement {
     public int kills = 0;
 
     public GameStatsElement() {
-        super(0.5, 0.5, true);
+        super(1, 15, true);
     }
 
     public void start() {

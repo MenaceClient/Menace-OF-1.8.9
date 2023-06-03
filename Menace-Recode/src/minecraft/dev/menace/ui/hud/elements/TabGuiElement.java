@@ -20,7 +20,7 @@ public class TabGuiElement extends BaseElement {
     public boolean expanded = false;
 
     public TabGuiElement() {
-        super(0.5, 0.5, true);
+        super(1, 117, true);
     }
 
     public void start() {

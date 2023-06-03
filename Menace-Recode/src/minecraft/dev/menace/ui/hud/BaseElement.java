@@ -28,10 +28,10 @@ public abstract class BaseElement {
 		this.visible = visible;
 	}
 	
-	public BaseElement(double posX, double posY, boolean visible) {
+	/*public BaseElement(double posX, double posY, boolean visible) {
 		this.setRelative(posX, posY);
 		this.visible = visible;
-	}
+	}*/
 	
 	public abstract void render();
 	public abstract void renderDummy();
@@ -77,27 +77,10 @@ public abstract class BaseElement {
 	}
 	
 	public void drawString(String string, int x, int y) {
-		int color;
-		HUDModule hudModule = Menace.instance.moduleManager.hudModule;
-		switch (hudModule.color.getValue()) {
-		
-		case "Fade" :
-			color = ColorUtils.fade(hudModule.rainbowSpeed.getValueF(), -y).getRGB();
-			break;
-		
-		case "Custom" :
-			color = new Color(hudModule.red.getValueI(), hudModule.green.getValueI(), hudModule.blue.getValueI(), hudModule.alpha.getValueI()).getRGB();
-			break;
-		
-		default : 
-			color = Color.WHITE.getRGB();
-			break;
-		}
-		
 		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {
-			fr.drawString(string, x, y, color);
+			fr.drawString(string, x, y, getColor(y));
 		} else {
-			mc.fontRendererObj.drawString(string, x, y, color);
+			mc.fontRendererObj.drawString(string, x, y, getColor(y));
 		}
 	}
 
@@ -146,6 +129,20 @@ public abstract class BaseElement {
 			return fr.getHeight();
 		} else {
 			return mc.fontRendererObj.FONT_HEIGHT;
+		}
+	}
+
+	public int getColor(float offset) {
+		HUDModule hudModule = Menace.instance.moduleManager.hudModule;
+
+		switch (hudModule.color.getValue()) {
+
+			case "Fade" :
+				return ColorUtils.fade(hudModule.rainbowSpeed.getValueF(), -offset).getRGB();
+			case "Custom" :
+				return new Color(hudModule.red.getValueI(), hudModule.green.getValueI(), hudModule.blue.getValueI(), hudModule.alpha.getValueI()).getRGB();
+			default :
+				return Color.WHITE.getRGB();
 		}
 	}
 

@@ -117,18 +117,20 @@ public class BlockState
 
         public Collection<IProperty> getPropertyNames()
         {
-            return Collections.<IProperty>unmodifiableCollection(this.properties.keySet());
+            return Collections.unmodifiableCollection(this.properties.keySet());
         }
 
         public <T extends Comparable<T>> T getValue(IProperty<T> property)
         {
-            if (!this.properties.containsKey(property))
-            {
-                throw new IllegalArgumentException("Cannot get property " + property + " as it does not exist in " + this.block.getBlockState());
-            }
-            else
-            {
-                return (T)((Comparable)property.getValueClass().cast(this.properties.get(property)));
+            try {
+                if (!this.properties.containsKey(property)) {
+                    throw new IllegalArgumentException("Cannot get property " + property + " as it does not exist in " + this.block.getBlockState());
+                } else {
+                    return property.getValueClass().cast(this.properties.get(property));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
             }
         }
 

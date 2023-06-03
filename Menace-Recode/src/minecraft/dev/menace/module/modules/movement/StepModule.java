@@ -23,10 +23,7 @@ public class StepModule extends BaseModule {
 
 	ListSetting mode;
 	SliderSetting height;
-
-	//NCP safety switch
-	int ncpTicks = 0;
-	int stepAmt = 0;
+	SliderSetting timer;
 
 	//MotionStep
 	int motionStepState = 0;
@@ -37,29 +34,24 @@ public class StepModule extends BaseModule {
 
 	@Override
 	public void setup() {
-		//matrix is just jumping then setting motionY to 0 after colliding <-- Thx hentajj
+		//matrix is just jumping then setting motionY to 0 after colliding <-- Thx Geuxy
 		mode = new ListSetting("Mode", true, "Vanilla", new String[] {"Vanilla", "Verus", "OldNCP", "NCP", "Motion", "Spider"});
 		height = new SliderSetting("Height", true, 1, 1, 10, 0.5, false);
+		timer = new SliderSetting("Timer", true, 0.5, 0.1, 1, 0.1, false);
 		this.rSetting(mode);
 		this.rSetting(height);
+		this.rSetting(timer);
 		super.setup();
 	}
 
 	@Override
 	public void onEnable() {
-		ncpTicks = 0;
-		stepAmt = 0;
 		motionStepState = 0;
 		super.onEnable();
 	}
 
 	@EventTarget
 	public void onUpdate(EventUpdate event) {
-		ncpTicks++;
-		if (ncpTicks >= 20) {
-			ncpTicks = 0;
-			stepAmt = 0;
-		}
 		this.setDisplayName(mode.getValue());
 	}
 
@@ -80,6 +72,13 @@ public class StepModule extends BaseModule {
 
 	@EventTarget
 	public void onStep(EventStep event) {
+
+		if (event.getState() == EventStep.StepState.PRE) {
+			mc.timer.timerSpeed = timer.getValueF();
+		} else {
+			mc.timer.timerSpeed = 1F;
+		}
+
 		if (mode.getValue().equalsIgnoreCase("Verus")) {
 			PacketUtils.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(-1, -1, -1), 255, new ItemStack(Items.water_bucket), 0, 0.5f, 0));
 			PacketUtils.sendPacketNoEvent(new C08PacketPlayerBlockPlacement(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY - 1.5, mc.thePlayer.posZ), 1, new net.minecraft.item.ItemStack(Blocks.stone.getItem(mc.theWorld, new BlockPos(-1, -1, -1))), 0f, 0.94f, 0f));
@@ -108,17 +107,13 @@ public class StepModule extends BaseModule {
 
 				if (mode.getValue().equalsIgnoreCase("NCP")) {
 					PacketUtils.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + event.getStepHeight(), mc.thePlayer.posZ, true));
-					stepAmt++;
-					if (stepAmt == 1) {
-						ncpTicks = 0;
-					}
 				}
 			}
 			return;
 		} else if (mode.getValue().equalsIgnoreCase("Spider")) {
 			return;
 		} else if (mode.getValue().equalsIgnoreCase("Motion")) {
-			if (event.getState() == EventStep.StepState.PRE && canStep()) {
+			if (event.getState() == EventStep.StepState.PRE && canStep() && mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, mc.thePlayer.getEntityBoundingBox().offset(0, 0.3, 0)).isEmpty()) {
 				motionStepState = 1;
 			}
 			return;
@@ -128,7 +123,7 @@ public class StepModule extends BaseModule {
 	}
 
 	private boolean canStep() {
-		return this.mc.thePlayer.isCollidedVertically && this.mc.thePlayer.onGround && this.mc.thePlayer.motionY < 0.0 && !this.mc.thePlayer.movementInput.jump && stepAmt < 4;
+		return this.mc.thePlayer.isCollidedVertically && this.mc.thePlayer.onGround && this.mc.thePlayer.motionY < 0.0 && !this.mc.thePlayer.movementInput.jump;
 	}
 
 	private void fakeJump() {

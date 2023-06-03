@@ -6,7 +6,7 @@ import dev.menace.module.settings.Setting;
 import dev.menace.ui.clickgui.lime.Priority;
 import dev.menace.ui.clickgui.lime.components.Component;
 import dev.menace.ui.clickgui.lime.components.FrameModule;
-import dev.menace.ui.clickgui.lime.utils.render.RenderUtils;
+import dev.menace.utils.render.RenderUtils;
 import dev.menace.utils.render.font.MenaceFontRenderer;
 
 public class EnumSetting extends Component implements Priority {

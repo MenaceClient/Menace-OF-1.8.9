@@ -77,6 +77,7 @@ public class ModuleManager {
 	public DisablerModule disablerModule = new DisablerModule();
 	ExitFlagModule exitFlagModule = new ExitFlagModule();
 	public KillFXModule killFXModule = new KillFXModule();
+	MCFModule mcfModule = new MCFModule();
 	public HackerDetectModule hackerDetectModule = new HackerDetectModule();
 	public SecurityFeaturesModule securityFeaturesModule = new SecurityFeaturesModule();
 	SpooferModule spooferModule = new SpooferModule();

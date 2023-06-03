@@ -9,6 +9,7 @@ import com.mojang.authlib.minecraft.MinecraftSessionService;
 import com.mojang.authlib.properties.Property;
 import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
+import de.florianmichael.viamcp.fixes.AttackOrder;
 import dev.menace.Menace;
 import dev.menace.event.Event;
 import dev.menace.event.events.EventAttack;
@@ -101,7 +102,6 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.*;
 import org.lwjgl.util.glu.GLU;
-import viamcp.utils.AttackOrder;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

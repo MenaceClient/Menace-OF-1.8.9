@@ -30,14 +30,14 @@
     "Visible": true
   },
   "ScoreboardElement": {
-    "X": 869,
-    "Y": 218,
+    "X": 880,
+    "Y": 221,
     "Visible": true
   },
   "SpotifyElement": {
     "X": 1,
     "Y": 76,
-    "Visible": true
+    "Visible": false
   },
   "TabGuiElement": {
     "X": 1,

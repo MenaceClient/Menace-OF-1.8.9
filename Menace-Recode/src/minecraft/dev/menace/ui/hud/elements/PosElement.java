@@ -8,7 +8,7 @@ import net.minecraft.client.network.OldServerPinger;
 public class PosElement extends BaseElement {
 
 	public PosElement() {
-		super(0.5, 0.5, true);
+		super(1, 530, true);
 	}
 
 	@Override

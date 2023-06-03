@@ -2,23 +2,29 @@
   "AntiBot": {
     "Toggled": false,
     "Settings": {
+      "CheckGameProfile": false,
+      "CheckNetworkInfo": false,
+      "Matrix": false,
+      "SpawnDistance": 17.0,
+      "HideBots": false,
       "Visible": true
     }
   },
   "AutoPot": {
     "Toggled": true,
     "Settings": {
-      "Delay": 100.0,
+      "Delay": 400.0,
       "Health": 15.0,
-      "OnlyOnGround": false,
+      "ThrowSpeed": true,
+      "OnlyOnGround": true,
       "Visible": true
     }
   },
   "BackTracker": {
     "Toggled": false,
     "Settings": {
-      "Delay": 500.0,
-      "Max Packets": 150.0,
+      "Delay": 200.0,
+      "Max Packets": 100.0,
       "Only Target": true,
       "Visible": true
     }
@@ -46,7 +52,7 @@
       "AutoBlock": "Fake",
       "KeepSprint": true,
       "NoSwing": false,
-      "ThroughWalls": true,
+      "ThroughWalls": false,
       "InInventory": false,
       "RayCast": false,
       "Cancel Click": true,
@@ -85,7 +91,7 @@
   "Flight": {
     "Toggled": false,
     "Settings": {
-      "Mode": "NCP",
+      "Mode": "Vanilla",
       "VanillaMode": "Motion",
       "VerusMode": "Jump",
       "NCPMode": "NCPSlime",
@@ -100,15 +106,19 @@
     "Toggled": false,
     "Settings": {
       "Mode": "NCP",
-      "Speed": 4.0,
-      "Height": 1.4,
+      "Speed": 1.0,
+      "Height": 4.0,
       "Visible": true
     }
   },
   "Speed": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
-      "Mode": "NCPLowHop",
+      "Mode": "NCP",
+      "Vanilla Mode": "Strafe",
+      "Verus Mode": "LowHop",
+      "NCP Mode": "LowHop",
+      "Other Mode": "Experimental",
       "Speed": 10.0,
       "AutoDisable": true,
       "Visible": true
@@ -145,7 +155,7 @@
   "AntiVoid": {
     "Toggled": true,
     "Settings": {
-      "Mode": "Blink",
+      "Mode": "Stop",
       "Fall Distance": 3.0,
       "Smart Disable": true,
       "Visible": true
@@ -155,16 +165,16 @@
     "Toggled": false,
     "Settings": {
       "FakePlayer": true,
-      "Pulse": false,
-      "PulseAmount": 10.0,
+      "Pulse": true,
+      "PulseAmount": 50.0,
       "Visible": true
     }
   },
   "InvManager": {
     "Toggled": true,
     "Settings": {
-      "Delay Min": 30.0,
-      "Delay Max": 50.0,
+      "Delay Min": 10.0,
+      "Delay Max": 30.0,
       "In Inventory": true,
       "CloseScreen": false,
       "Randomize": true,
@@ -196,7 +206,7 @@
   "NoFall": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Experimental",
+      "Mode": "SpoofGround",
       "Visible": true
     }
   },
@@ -223,19 +233,20 @@
       "Tower Speed": 50.0,
       "Tower Derp": false,
       "Sprint": true,
-      "KeepRotations": true,
       "SilentSwap": true,
-      "KeepY": false,
-      "Bypass": false,
-      "BlocksMC": true,
+      "KeepY": true,
+      "Bypass": true,
+      "Rotation Mode": "Normal1",
+      "KeepRotations": true,
+      "BlocksMC": false,
       "Eagle": false,
       "Eagle Delay": 100.0,
       "ClampPitch": false,
       "NotOnBlock": false,
       "NoSwing": false,
       "Boost": false,
-      "Jump": false,
-      "LowHop": false,
+      "Jump": true,
+      "LowHop": true,
       "Mode": "NCP",
       "Timer": 1.0,
       "Render": true,
@@ -283,7 +294,7 @@
   "Timer": {
     "Toggled": false,
     "Settings": {
-      "Speed": 0.30000000000000004,
+      "Speed": 1.0,
       "Visible": true
     }
   },
@@ -344,6 +355,7 @@
       "Watermark": true,
       "ArrayList": true,
       "ArrayAlign": "Right",
+      "ArrayOutline": "None",
       "ArrayAlpha": 100.0,
       "Position": true,
       "Position Mode": "Single",
@@ -353,14 +365,14 @@
       "TargetHUD": true,
       "Notifications": true,
       "TabGui": false,
-      "Spotify": true,
+      "Spotify": false,
       "Custom Font": true,
       "Color": "Custom",
-      "RBW Speed": 10.0,
+      "RBW Speed": 35.0,
       "Red": 255.0,
       "Green": 0.0,
       "Blue": 0.0,
-      "Alpha": 255.0,
+      "Alpha": 250.0,
       "HUD Editor": false,
       "Visible": false
     }
@@ -391,7 +403,7 @@
     }
   },
   "AutoPlay": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Delay": 700.0,
       "Visible": true
@@ -456,7 +468,7 @@
     }
   },
   "Translator": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Visible": true
     }

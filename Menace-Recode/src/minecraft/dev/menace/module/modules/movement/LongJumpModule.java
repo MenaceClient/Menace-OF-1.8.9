@@ -114,9 +114,12 @@ public class LongJumpModule extends BaseModule {
 				if(mc.thePlayer.hurtTime != 0) {
 					if(mc.thePlayer.onGround) {
 						mc.thePlayer.jump();
+						mc.thePlayer.motionY *= height.getValue();
 						MovementUtils.strafe((float) moveSpeed);
-					} else
+					} else {
 						disable = true;
+					}
+					MovementUtils.strafe();
 				}
 				break;
 

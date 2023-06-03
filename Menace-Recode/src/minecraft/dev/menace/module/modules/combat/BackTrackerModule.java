@@ -39,7 +39,7 @@ public class BackTrackerModule extends BaseModule {
 
     @Override
     public void setup() {
-        delay = new SliderSetting("Delay", true, 1000, 0, 5000, 100, true);
+        delay = new SliderSetting("Delay", true, 1000, 0, 5000, 50, true);
         maxPackets = new SliderSetting("Max Packets", true, 100, 0, 1000, 10, true);
         onlyTarget = new ToggleSetting("Only Target", true, true);
         this.rSetting(delay);

@@ -11,7 +11,7 @@ import java.awt.*;
 
 public class NotificationElement extends BaseElement {
     public NotificationElement() {
-        super(0.5, 0.5, true);
+        super(910, 530, true);
     }
 
     @Override
@@ -25,9 +25,13 @@ public class NotificationElement extends BaseElement {
                 return;
             }
 
-            RenderUtils.drawRect(this.getAbsoluteX() + 46, y, this.getAbsoluteX() + 49, y + 10, notif.getColor().getRGB());
-            RenderUtils.drawRect(this.getAbsoluteX() - this.getStringWidth(notif.getContents()) + 44, y, this.getAbsoluteX() + 46, y + 10, Color.black.getRGB());
-            this.drawString(notif.getContents(), this.getAbsoluteX() - this.getStringWidth(notif.getContents()) + 45, y, -1);
+            int x = (int) (this.getAbsoluteX() + notif.getAnimation().getMax() - notif.getAnimation().getValue());
+
+            RenderUtils.drawRect(x + 46, y, x + 49, y + 10, notif.getColor().getRGB());
+            RenderUtils.drawRect(x - this.getStringWidth(notif.getContents()) + 44, y, x + 46, y + 10, Color.black.getRGB());
+            this.drawString(notif.getContents(), x - this.getStringWidth(notif.getContents()) + 45, y, -1);
+
+            notif.getAnimation().update();
 
             y-=11;
         }

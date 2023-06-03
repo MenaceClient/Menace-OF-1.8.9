@@ -10,14 +10,12 @@ import dev.menace.ui.clickgui.lime.Priority;
 import dev.menace.ui.clickgui.lime.components.impl.BoolSetting;
 import dev.menace.ui.clickgui.lime.components.impl.EnumSetting;
 import dev.menace.ui.clickgui.lime.components.impl.SlideSetting;
-import dev.menace.ui.clickgui.lime.utils.render.ColorUtils;
-import dev.menace.ui.clickgui.lime.utils.render.RenderUtils;
-import dev.menace.ui.clickgui.lime.utils.render.animation.easings.Animate;
-import dev.menace.ui.clickgui.lime.utils.render.animation.easings.Easing;
-import dev.menace.utils.render.font.Fonts;
+import dev.menace.utils.render.ColorUtils;
+import dev.menace.utils.render.RenderUtils;
+import dev.menace.utils.render.animtion.Animate;
+import dev.menace.utils.render.animtion.Easing;
 import dev.menace.utils.render.font.MenaceFontRenderer;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.util.ResourceLocation;
 
 import java.awt.*;
 import java.util.ArrayList;

@@ -1,6 +1,7 @@
 package dev.menace.ui.custom;
 
 import com.google.common.collect.Lists;
+import de.florianmichael.viamcp.gui.GuiProtocolSelector;
 import dev.menace.Menace;
 import dev.menace.ui.altmanager.DirectLoginScreen;
 import dev.menace.utils.render.GLSLShader;
@@ -40,7 +41,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.demo.DemoWorldServer;
 import net.minecraft.world.storage.ISaveFormat;
 import net.minecraft.world.storage.WorldInfo;
-import viamcp.gui.GuiProtocolSelector;
 
 import org.apache.commons.io.Charsets;
 import org.apache.logging.log4j.LogManager;

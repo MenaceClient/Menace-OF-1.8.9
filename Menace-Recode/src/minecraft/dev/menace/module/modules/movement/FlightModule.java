@@ -117,7 +117,7 @@ public class FlightModule extends BaseModule {
 						&& Menace.instance.moduleManager.flightModule.ncpMode.getValue().equals("OldNCP")));
 			}
 		};
-		viewbobbingYaw = new SliderSetting("Viewbob", false, 0.1, 0, 0.5, 0.1, false);
+		viewbobbingYaw = new SliderSetting("Viewbob", true, 0.1, 0, 0.5, 0.1, false);
 		this.rSetting(mode);
 		this.rSetting(vanillaMode);
 		this.rSetting(verusMode);

@@ -23,7 +23,7 @@ public class S0CPacketSpawnPlayer implements Packet<INetHandlerPlayClient>
     private byte pitch;
     private int currentItem;
     private DataWatcher watcher;
-    private List<DataWatcher.WatchableObject> field_148958_j;
+    private List<DataWatcher.WatchableObject> watchableObjectList;
 
     public S0CPacketSpawnPlayer()
     {
@@ -56,7 +56,7 @@ public class S0CPacketSpawnPlayer implements Packet<INetHandlerPlayClient>
         this.yaw = buf.readByte();
         this.pitch = buf.readByte();
         this.currentItem = buf.readShort();
-        this.field_148958_j = DataWatcher.readWatchedListFromPacketBuffer(buf);
+        this.watchableObjectList = DataWatcher.readWatchedListFromPacketBuffer(buf);
     }
 
     /**
@@ -83,14 +83,14 @@ public class S0CPacketSpawnPlayer implements Packet<INetHandlerPlayClient>
         handler.handleSpawnPlayer(this);
     }
 
-    public List<DataWatcher.WatchableObject> func_148944_c()
+    public List<DataWatcher.WatchableObject> getWatchableObjectList()
     {
-        if (this.field_148958_j == null)
+        if (this.watchableObjectList == null && watcher != null)
         {
-            this.field_148958_j = this.watcher.getAllWatched();
+            this.watchableObjectList = this.watcher.getAllWatched();
         }
 
-        return this.field_148958_j;
+        return this.watchableObjectList;
     }
 
     public int getEntityID()

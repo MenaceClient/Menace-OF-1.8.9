@@ -3,6 +3,7 @@ package net.minecraft.client.gui;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 
+import de.florianmichael.viamcp.gui.GuiProtocolSelector;
 import dev.menace.Menace;
 import dev.menace.ui.altmanager.DirectLoginScreen;
 
@@ -33,7 +34,6 @@ import net.minecraft.world.storage.WorldInfo;
 import net.optifine.CustomPanorama;
 import net.optifine.CustomPanoramaProperties;
 import net.optifine.reflect.Reflector;
-import viamcp.gui.GuiProtocolSelector;
 
 import org.apache.commons.io.Charsets;
 import org.apache.logging.log4j.LogManager;

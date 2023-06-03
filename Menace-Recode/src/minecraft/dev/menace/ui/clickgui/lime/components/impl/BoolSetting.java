@@ -6,13 +6,11 @@ import dev.menace.module.settings.ToggleSetting;
 import dev.menace.ui.clickgui.lime.Priority;
 import dev.menace.ui.clickgui.lime.components.Component;
 import dev.menace.ui.clickgui.lime.components.FrameModule;
-import dev.menace.ui.clickgui.lime.utils.render.RenderUtils;
-import dev.menace.ui.clickgui.lime.utils.render.animation.easings.Animate;
-import dev.menace.ui.clickgui.lime.utils.render.animation.easings.Easing;
-import dev.menace.utils.render.font.Fonts;
+import dev.menace.utils.render.RenderUtils;
+import dev.menace.utils.render.animtion.Animate;
+import dev.menace.utils.render.animtion.Easing;
 import dev.menace.utils.render.font.MenaceFontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
