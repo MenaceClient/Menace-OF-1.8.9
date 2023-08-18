@@ -162,13 +162,9 @@ public class CryptManager
         {
             return createTheCipherInstance(opMode, key.getAlgorithm(), key).doFinal(data);
         }
-        catch (IllegalBlockSizeException illegalblocksizeexception)
+        catch (IllegalBlockSizeException | BadPaddingException illegalblocksizeexception)
         {
             illegalblocksizeexception.printStackTrace();
-        }
-        catch (BadPaddingException badpaddingexception)
-        {
-            badpaddingexception.printStackTrace();
         }
 
         LOGGER.error("Cipher data failed!");

@@ -6,6 +6,7 @@ import dev.menace.event.events.*;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.module.DontSaveState;
+import dev.menace.module.settings.DividerSetting;
 import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
@@ -17,6 +18,7 @@ import dev.menace.utils.player.PlayerUtils;
 import dev.menace.utils.render.RenderUtils;
 import dev.menace.utils.timer.MSTimer;
 import dev.menace.utils.world.BlockUtils;
+import dev.menace.utils.world.TimerHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.EntityEgg;
 import net.minecraft.item.ItemBlock;
@@ -47,6 +49,7 @@ public class ScaffoldModule extends BaseModule {
 
     MSTimer eagleTimer = new MSTimer();
 
+    DividerSetting towerDivider;
     public ToggleSetting tower;
     ToggleSetting towerMove;
     ListSetting towerMode;
@@ -56,7 +59,7 @@ public class ScaffoldModule extends BaseModule {
     ToggleSetting keepRotations;
     ToggleSetting silentSwap;
     ToggleSetting keepY;
-    ToggleSetting bypass;
+    DividerSetting bypassDivider;
     ListSetting rotationMode;
     ToggleSetting blocksMC;
     public ToggleSetting eagle;
@@ -72,7 +75,7 @@ public class ScaffoldModule extends BaseModule {
     ToggleSetting render;
 
     public ScaffoldModule() {
-        super("Scaffold", Category.PLAYER, 0);
+        super("Scaffold", "Automatically bridges for you", Category.PLAYER, 0);
     }
 
     @Override
@@ -106,59 +109,23 @@ public class ScaffoldModule extends BaseModule {
                 super.constantCheck();
             }
         };
+        towerDivider = new DividerSetting("Tower", true, tower, towerMove, towerMode, towerSpeed, towerDerp);
         sprint = new ToggleSetting("Sprint", true, false);
         silentSwap = new ToggleSetting("SilentSwap", true, false);
-        bypass = new ToggleSetting("Bypass", true, false);
-        rotationMode = new ListSetting("Rotation Mode", true, "Normal1", new String[]{"Normal1", "Normal2"}) {
+        rotationMode = new ListSetting("Rotation Mode", true, "Normal1", new String[]{"Normal1", "Normal2", "Smooth", "None"});
+        keepRotations = new ToggleSetting("KeepRotations", true, true);
+        blocksMC = new ToggleSetting("BlocksMC", true, false);
+        eagle = new ToggleSetting("Eagle", true, false);
+        eagleDelay = new SliderSetting("Eagle Delay", false, 200, 100, 1000, 50, true) {
             @Override
             public void constantCheck() {
-                this.setVisible(bypass.getValue());
+                this.setVisible(Menace.instance.moduleManager.scaffoldModule.eagle.getValue());
                 super.constantCheck();
             }
         };
-
-        keepRotations = new ToggleSetting("KeepRotations", true, true) {
-            @Override
-            public void constantCheck() {
-                this.setVisible(bypass.getValue());
-                super.constantCheck();
-            }
-        };
-        blocksMC = new ToggleSetting("BlocksMC", true, false) {
-            @Override
-            public void constantCheck() {
-                this.setVisible(bypass.getValue());
-                super.constantCheck();
-            }
-        };
-        eagle = new ToggleSetting("Eagle", true, false) {
-            @Override
-            public void constantCheck() {
-                this.setVisible(bypass.getValue());
-                super.constantCheck();
-            }
-        };
-        eagleDelay = new SliderSetting("Eagle Delay", false, 200, 100, 1000, 100, true) {
-            @Override
-            public void constantCheck() {
-                this.setVisible(Menace.instance.moduleManager.scaffoldModule.eagle.getValue() && bypass.getValue());
-                super.constantCheck();
-            }
-        };
-        clampPitch = new ToggleSetting("ClampPitch", true, false) {
-            @Override
-            public void constantCheck() {
-                this.setVisible(bypass.getValue());
-                super.constantCheck();
-            }
-        };
-        notOnBlock = new ToggleSetting("NotOnBlock", true, false) {
-            @Override
-            public void constantCheck() {
-                this.setVisible(bypass.getValue());
-                super.constantCheck();
-            }
-        };
+        clampPitch = new ToggleSetting("ClampPitch", true, false);
+        notOnBlock = new ToggleSetting("NotOnBlock", true, false);
+        bypassDivider = new DividerSetting("Bypass", true, rotationMode, keepRotations, blocksMC, eagle, eagleDelay, clampPitch, notOnBlock);
         keepY = new ToggleSetting("KeepY", true, false);
         noSwing = new ToggleSetting("NoSwing", true, false);
         boost = new ToggleSetting("Boost", true, false);
@@ -194,22 +161,11 @@ public class ScaffoldModule extends BaseModule {
             }
         };
         render = new ToggleSetting("Render", true, true);
-        this.rSetting(tower);
-        this.rSetting(towerMove);
-        this.rSetting(towerMode);
-        this.rSetting(towerSpeed);
-        this.rSetting(towerDerp);
+        this.rSetting(towerDivider);
         this.rSetting(sprint);
         this.rSetting(silentSwap);
         this.rSetting(keepY);
-        this.rSetting(bypass);
-        this.rSetting(rotationMode);
-        this.rSetting(keepRotations);
-        this.rSetting(blocksMC);
-        this.rSetting(eagle);
-        this.rSetting(eagleDelay);
-        this.rSetting(clampPitch);
-        this.rSetting(notOnBlock);
+        this.rSetting(bypassDivider);
         this.rSetting(noSwing);
         this.rSetting(boost);
         this.rSetting(jump);
@@ -240,7 +196,7 @@ public class ScaffoldModule extends BaseModule {
         } else {
             mc.thePlayer.inventory.currentItem = oldSlot;
         }
-        mc.timer.timerSpeed = 1F;
+        TimerHandler.resetTimer();
         super.onDisable();
     }
 
@@ -292,13 +248,13 @@ public class ScaffoldModule extends BaseModule {
 
         //Boost
         if (!lowhop.getValue() || !lowhopMode.getValue().equalsIgnoreCase("NCP")) {
-            mc.timer.timerSpeed = timer.getValueF();
+            TimerHandler.setTimer(timer.getValueF(), 100);
         }
         if (jump.getValue() && !lowhop.getValue() && mc.thePlayer.onGround && MovementUtils.isMoving()) {
             mc.thePlayer.jump();
         } else if (jump.getValue() && lowhop.getValue() && lowhopMode.getValue().equalsIgnoreCase("NCP") && MovementUtils.shouldMove()) {
             if (mc.thePlayer.onGround) {
-                mc.timer.timerSpeed = 0.95f;
+                TimerHandler.setTimer(0.95f, 12);
                 mc.thePlayer.jump();
                 if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
                     if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier() == 0) {
@@ -311,7 +267,7 @@ public class ScaffoldModule extends BaseModule {
                 }
             } else if (mc.thePlayer.motionY < 0.16 && mc.thePlayer.motionY > 0.0) {
                 mc.thePlayer.motionY = -0.1;
-                mc.timer.timerSpeed = 1.2F;
+                TimerHandler.setTimer(1.2f, 12);
             }
             MovementUtils.strafe();
         }
@@ -404,6 +360,8 @@ public class ScaffoldModule extends BaseModule {
                             rotation = PlayerUtils.getRotations(hitVec);
                         } else if (rotationMode.getValue().equalsIgnoreCase("Normal2")) {
                             rotation = PlayerUtils.getRotsNew(neighbor, side2);
+                        } else if (rotationMode.getValue().equalsIgnoreCase("Smooth")) {
+                            rotation = PlayerUtils.getFixedRotation(PlayerUtils.getRotsNew(neighbor, side2), rotation);
                         }
                     } else {
                         if (rotationMode.getValue().equalsIgnoreCase("Normal1")) {
@@ -420,6 +378,14 @@ public class ScaffoldModule extends BaseModule {
                                 event.setPitch(PlayerUtils.getRotsNew(neighbor, side2)[1]);
                             }
                             event.setYaw(PlayerUtils.getRotsNew(neighbor, side2)[0]);
+                        } else if (rotationMode.getValue().equalsIgnoreCase("Smooth")) {
+                            float[] rots = PlayerUtils.getFixedRotation(PlayerUtils.getRotsNew(neighbor, side2), new float[] {event.getYaw(), event.getPitch()});
+                            if (clampPitch.getValue()) {
+                                event.setPitch(MathUtils.clamp(rots[1], -90F, 90F));
+                            } else {
+                                event.setPitch(rots[1]);
+                            }
+                            event.setYaw(rots[0]);
                         }
 
                     }

@@ -75,7 +75,7 @@ public class KillAuraModule extends BaseModule {
     ToggleSetting invisibles;
 
     public KillAuraModule() {
-        super("KillAura", Category.COMBAT, 0);
+        super("KillAura", "Attacks targets for you", Category.COMBAT, 0);
     }
 
     @Override
@@ -347,15 +347,16 @@ public class KillAuraModule extends BaseModule {
     private void block() {
         if (mc.thePlayer.getHeldItem() == null || !(mc.thePlayer.getHeldItem().getItem() instanceof ItemSword)) return;
         if (autoblock.getValue().equalsIgnoreCase("NoInteract")) {
-            mc.thePlayer.setItemInUse(mc.thePlayer.getCurrentEquippedItem(), (int) (Math.random() * 100));
+            mc.thePlayer.setItemInUse(mc.thePlayer.getHeldItem(), (int) (Math.random() * 100));
         }
-        mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.getCurrentEquippedItem());
+        mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.getHeldItem());
+        mc.thePlayer.getHeldItem().useItemRightClick(mc.theWorld, mc.thePlayer);
         blocking = true;
     }
 
     private void unblock() {
         if (!blocking) return;
-        PacketUtils.sendPacketNoEvent(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
+        mc.playerController.onStoppedUsingItem(mc.thePlayer);
         blocking = false;
     }
 

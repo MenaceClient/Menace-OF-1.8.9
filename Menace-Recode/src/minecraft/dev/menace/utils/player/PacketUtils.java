@@ -1,8 +1,11 @@
 package dev.menace.utils.player;
 
+import dev.menace.event.events.EventSendPacket;
+import dev.menace.utils.misc.ChatUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
+import net.minecraft.network.play.client.C03PacketPlayer;
 
 public class PacketUtils {
 
@@ -19,6 +22,12 @@ public class PacketUtils {
 		if (MC.getNetHandler() == null || MC.getNetHandler().getNetworkManager() == null) {
 			return;
 		}
+
+		//Update PacketBalance even if we dont send an event
+		if (packetIn instanceof C03PacketPlayer) {
+			PacketBalanceUtils.instance.handleNoEvent();
+		}
+
 		MC.getNetHandler().getNetworkManager().sendPacketNoEvent(packetIn);
 	}
 
@@ -26,6 +35,12 @@ public class PacketUtils {
 		if (MC.getNetHandler() == null || MC.getNetHandler().getNetworkManager() == null) {
 			return;
 		}
+
+		//Update PacketBalance even if we dont send an event
+		if (packetIn instanceof C03PacketPlayer) {
+			PacketBalanceUtils.instance.handleNoEvent();
+		}
+
 		MC.getNetHandler().getNetworkManager().sendPacketNoEventDelayed(packetIn, delay);
 	}
 	

@@ -22,6 +22,9 @@ public class ConfigCmd extends BaseCommand {
 			ChatUtils.message("Successfully saved " + args[1] + ".");
 			Menace.instance.configManager.reload();
 		} else if (args[0].equalsIgnoreCase("load")) {
+			//Add this?
+			//Menace.instance.moduleManager.saveModules(Menace.instance.configManager.getLoadedConfig().getName());
+
 			Menace.instance.configManager.reload();
 			Optional<Config> cfg = Menace.instance.configManager.getConfigByName(args[1]);
 			if (!cfg.isPresent()) {

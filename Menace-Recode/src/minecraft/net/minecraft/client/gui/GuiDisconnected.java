@@ -2,6 +2,7 @@ package net.minecraft.client.gui;
 
 import dev.menace.Menace;
 import dev.menace.ui.altmanager.DirectLoginScreen;
+import dev.menace.ui.hud.elements.GameStatsElement;
 import dev.menace.utils.misc.ServerUtils;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.IChatComponent;
@@ -62,7 +63,9 @@ public class GuiDisconnected extends GuiScreen
         {
             this.mc.displayGuiScreen(this.parentScreen);
         } else if (button.id == 69) {
-            Menace.instance.hudManager.gameStatsElement.reset();
+            Menace.instance.hudManager.getElements().stream().filter(element -> element instanceof GameStatsElement).forEach(element -> {
+                ((GameStatsElement) element).reset();
+            });
         	ServerUtils.connectToLastServer(this.parentScreen);
         } else if (button.id == 420) {
             mc.displayGuiScreen(new DirectLoginScreen(this.parentScreen));
@@ -89,11 +92,13 @@ public class GuiDisconnected extends GuiScreen
 
         //GameStats
         this.drawCenteredString(this.fontRendererObj, "Username: " + mc.session.getUsername(), width / 2, height / 2 + this.field_175353_i / 2 + this.fontRendererObj.FONT_HEIGHT + 75, -1);
-        LocalTime lt = LocalTime.ofSecondOfDay((time - Menace.instance.hudManager.gameStatsElement.timer.getStartTime()) / 1000);
-        String second = lt.getSecond() < 10 ? "0" + lt.getSecond() : String.valueOf(lt.getSecond());
-        String hour = lt.getHour() != 0 ? lt.getHour() + ":" : "";
-        this.drawCenteredString(this.fontRendererObj, "Play time: " + hour + lt.getMinute() + ":" + second, width / 2, height / 2 + this.field_175353_i / 2 + this.fontRendererObj.FONT_HEIGHT + 85, -1);
-
+        if (Menace.instance.hudManager.getElements().stream().anyMatch(element -> element instanceof GameStatsElement) &&
+                ((GameStatsElement)Menace.instance.hudManager.getElements().stream().filter(element -> element instanceof GameStatsElement).findFirst().get()).timer.getStartTime() != -1) {
+            LocalTime lt = LocalTime.ofSecondOfDay((time - ((GameStatsElement)Menace.instance.hudManager.getElements().stream().filter(element -> element instanceof GameStatsElement).findFirst().get()).timer.getStartTime()) / 1000);
+            String second = lt.getSecond() < 10 ? "0" + lt.getSecond() : String.valueOf(lt.getSecond());
+            String hour = lt.getHour() != 0 ? lt.getHour() + ":" : "";
+            this.drawCenteredString(this.fontRendererObj, "Play time: " + hour + lt.getMinute() + ":" + second, width / 2, height / 2 + this.field_175353_i / 2 + this.fontRendererObj.FONT_HEIGHT + 85, -1);
+        }
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 }

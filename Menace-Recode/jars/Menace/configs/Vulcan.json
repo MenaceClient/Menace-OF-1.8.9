@@ -15,6 +15,7 @@
     "Settings": {
       "Delay": 100.0,
       "Health": 15.0,
+      "ThrowSpeed": true,
       "OnlyOnGround": false,
       "Visible": true
     }
@@ -45,7 +46,7 @@
       "SwitchDelay": 216.0,
       "SwitchAmount": 3.0,
       "TicksExisted": 0.0,
-      "FOV": 354.0,
+      "FOV": 360.0,
       "Filter": "Distance",
       "AttackPoint": "Cock",
       "AutoBlock": "Fake",
@@ -76,7 +77,7 @@
   "Velocity": {
     "Toggled": true,
     "Settings": {
-      "Mode": "Matrix",
+      "Mode": "Vulcan",
       "Explosions": true,
       "Visible": true
     }
@@ -94,8 +95,9 @@
       "VanillaMode": "Damage",
       "VerusMode": "Jump",
       "NCPMode": "OldNCP",
+      "VulcanMode": "Clip",
       "OtherMode": "MatrixDamage",
-      "DmgMode": "Verus",
+      "DmgMode": "Jump",
       "Speed": 1.0,
       "Viewbob": 0.1,
       "Visible": true
@@ -104,8 +106,8 @@
   "LongJump": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Damage",
-      "Speed": 10.0,
+      "Mode": "OldNCP",
+      "Speed": 1.0,
       "Height": 4.0,
       "Visible": true
     }
@@ -131,10 +133,11 @@
     }
   },
   "Step": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
-      "Mode": "Motion",
-      "Height": 1.0,
+      "Mode": "OldNCP",
+      "Height": 2.0,
+      "Timer": 0.30000000000000004,
       "Visible": true
     }
   },
@@ -166,6 +169,12 @@
       "FakePlayer": true,
       "Pulse": false,
       "PulseAmount": 1.0,
+      "Visible": true
+    }
+  },
+  "InventorySync": {
+    "Toggled": true,
+    "Settings": {
       "Visible": true
     }
   },
@@ -348,37 +357,17 @@
       "Visible": false
     }
   },
-  "HUD": {
-    "Toggled": true,
-    "Settings": {
-      "Watermark": true,
-      "ArrayList": true,
-      "ArrayAlign": "Right",
-      "ArrayOutline": "None",
-      "ArrayAlpha": 100.0,
-      "Position": true,
-      "Position Mode": "Single",
-      "Ping": true,
-      "Armour": true,
-      "GameStats": true,
-      "TargetHUD": true,
-      "Notifications": true,
-      "TabGui": false,
-      "Spotify": true,
-      "Custom Font": true,
-      "Color": "Custom",
-      "RBW Speed": 25.0,
-      "Red": 255.0,
-      "Green": 0.0,
-      "Blue": 0.0,
-      "Alpha": 250.0,
-      "HUD Editor": false,
-      "Visible": false
-    }
-  },
   "ItemPhysics": {
     "Toggled": true,
     "Settings": {
+      "Visible": false
+    }
+  },
+  "Nametags": {
+    "Toggled": true,
+    "Settings": {
+      "Custom Font": false,
+      "Only Players": true,
       "Visible": false
     }
   },
@@ -437,6 +426,12 @@
       "Insults": false,
       "Valorant": true,
       "Type": "Spectrum",
+      "Visible": true
+    }
+  },
+  "MCF": {
+    "Toggled": false,
+    "Settings": {
       "Visible": true
     }
   },

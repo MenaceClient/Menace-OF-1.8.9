@@ -42,7 +42,7 @@ public class KillFXModule extends BaseModule {
 	ListSetting valTypeSet;
 
 	public KillFXModule() {
-		super("KillFX", Category.MISC, 0);
+		super("KillFX", "Insult people when they die and break your eardrums", Category.MISC, 0);
 	}
 
 	@Override

@@ -42,6 +42,7 @@ public class ModuleManager {
 	//PLAYER
 	AntiVoidModule antiVoidModule = new AntiVoidModule();
 	public BlinkModule blinkModule = new BlinkModule();
+	public InventorySyncModule inventorySyncModule = new InventorySyncModule();
 	public InvManagerModule invManagerModule = new InvManagerModule();
 	InvMoveModule invMoveModule = new InvMoveModule();
 	JesusModule jesusModule = new JesusModule();
@@ -65,8 +66,8 @@ public class ModuleManager {
 	public ClickGuiModule clickGuiModule = new ClickGuiModule();
 	ESPModule espModule = new ESPModule();
 	FullbrightModule fullbrightModule = new FullbrightModule();
-	public HUDModule hudModule = new HUDModule();
 	public ItemPhysicsModule itemPhysicsModule = new ItemPhysicsModule();
+	public NametagsModule nametagsModule = new NametagsModule();
 	TimeChangerModule timeChangerModule = new TimeChangerModule();
 	public XRayModule xrayModule = new XRayModule();
 	

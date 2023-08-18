@@ -99,7 +99,7 @@ public class EventManager {
 
 	private void sortListValue(Class<? extends Event> clazz) {
 
-		ArrayHelper<Data> flexibleArray = new ArrayHelper<Data>();
+		ArrayHelper<Data> flexibleArray = new ArrayHelper<>();
 
 		for (byte b : Priority.VALUE_ARRAY) {
 			for (Data methodData : REGISTRY_MAP.get(clazz)) {

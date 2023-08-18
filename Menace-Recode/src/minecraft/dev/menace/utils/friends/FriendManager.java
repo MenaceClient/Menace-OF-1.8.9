@@ -14,7 +14,11 @@ public class FriendManager {
     public FriendManager() {
         File friendFile = new File(FileManager.getMenaceFolder(), "Friends.txt");
         if (!friendFile.exists()) {
-            friendFile.mkdirs();
+            try {
+                friendFile.createNewFile();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         //Load the friends from the file
@@ -32,6 +36,8 @@ public class FriendManager {
     }
 
     public void addFriend(String name) {
+
+        if (isFriend(name)) return;
 
         File friendFile = new File(FileManager.getMenaceFolder(), "Friends.txt");
 
@@ -65,6 +71,18 @@ public class FriendManager {
         }
 
         friends.remove(name);
+    }
+
+    public void clearFriends() {
+        File friendFile = new File(FileManager.getMenaceFolder(), "Friends.txt");
+        try {
+            FileWriter writer = new FileWriter(friendFile);
+            writer.write("");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        friends.clear();
     }
 
     public boolean isFriend(String name) {

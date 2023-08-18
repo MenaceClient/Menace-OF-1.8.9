@@ -51,10 +51,6 @@ public class Notification {
     }
 
     private int getStringWidth(String string) {
-        if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {
-            return Menace.instance.sfPro.getStringWidth(string);
-        } else {
-            return Minecraft.getMinecraft().fontRendererObj.getStringWidth(string);
-        }
+        return Minecraft.getMinecraft().fontRendererObj.getStringWidth(string);
     }
 }

@@ -13,7 +13,7 @@ import java.awt.*;
 public class ChestESPModule extends BaseModule {
 
     public ChestESPModule() {
-        super("ChestESP", Category.RENDER, 0);
+        super("ChestESP", "Allows you to see chests throught blocks", Category.RENDER, 0);
     }
 
     @EventTarget

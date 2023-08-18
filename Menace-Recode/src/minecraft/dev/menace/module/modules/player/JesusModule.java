@@ -16,7 +16,7 @@ public class JesusModule extends BaseModule {
     ListSetting mode;
 
     public JesusModule() {
-        super("Jesus", Category.PLAYER, 0);
+        super("Jesus", "Allows you to walk on water (The same hack Jesus used ~2000 years ago)", Category.PLAYER, 0);
     }
 
     @Override

@@ -17,7 +17,7 @@ public class SpooferModule extends BaseModule {
     ListSetting mode;
 
     public SpooferModule() {
-        super("Spoofer", Category.MISC, 0);
+        super("Spoofer", "Tells the server you're on a different client", Category.MISC, 0);
     }
 
     @Override

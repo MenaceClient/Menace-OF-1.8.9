@@ -1,149 +1,131 @@
 package dev.menace.ui.hud;
 
-import java.awt.*;
-
 import dev.menace.Menace;
-import dev.menace.module.modules.render.HUDModule;
-import dev.menace.utils.render.ColorUtils;
-import dev.menace.utils.render.RenderUtils;
-import dev.menace.utils.render.font.Fonts;
+import dev.menace.event.EventTarget;
+import dev.menace.event.events.EventRender2D;
+import dev.menace.ui.hud.options.BaseOption;
+import dev.menace.ui.hud.options.ColorSelectOption;
 import dev.menace.utils.render.font.MenaceFontRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.util.ResourceLocation;
+
+import java.awt.*;
+import java.util.ArrayList;
 
 public abstract class BaseElement {
 
-	{
-		HUDManager.hudElements.add(this);
-	}
+    private ArrayList<BaseOption> options = new ArrayList<>();
 
-	protected Minecraft mc = Minecraft.getMinecraft();
-	private double posX, posY;
-	private boolean visible;
-	private final MenaceFontRenderer fr = Menace.instance.sfPro;
-	
-	public BaseElement(int posX, int posY, boolean visible) {
-		this.setAbsolute(posX, posY);
-		this.visible = visible;
-	}
-	
-	/*public BaseElement(double posX, double posY, boolean visible) {
-		this.setRelative(posX, posY);
-		this.visible = visible;
-	}*/
-	
-	public abstract void render();
-	public abstract void renderDummy();
-	public abstract int getWidth();
-	public abstract int getHeight();
+    protected double posX;
+    protected double posY;
 
-	public int getAbsoluteX() {
-		ScaledResolution sr = new ScaledResolution(mc);
-		return (int) (posX * sr.getScaledWidth());
-	}
-	
-	public int getAbsoluteY() {
-		ScaledResolution sr = new ScaledResolution(mc);
-		return (int) (posY * sr.getScaledHeight());
-	}
-	
-	public double getRelativeX() {
-		return posX;
-	}
-	
-	public double getRelativeY() {
-		return posY;
-	}
-	
-	public void setAbsolute(int x, int y) {
-		ScaledResolution sr = new ScaledResolution(mc);
-		
-		this.posX = (double) x / sr.getScaledWidth();
-		this.posY = (double) y / sr.getScaledHeight();
-	}
+    MenaceFontRenderer fr;
+    protected Minecraft mc;
 
-	public void setRelative(double x, double y) {
-		this.posX = x;
-		this.posY = y;
-	}
+    public BaseElement() {
+        fr = Menace.instance.sfPro;
+        mc = Minecraft.getMinecraft();
 
-	public boolean isVisible() {
-		return visible;
-	}
+        this.setPos(50, 50);
 
-	public void setVisible(boolean visible) {
-		this.visible = visible;
-	}
-	
-	public void drawString(String string, int x, int y) {
-		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {
-			fr.drawString(string, x, y, getColor(y));
-		} else {
-			mc.fontRendererObj.drawString(string, x, y, getColor(y));
-		}
-	}
+        this.setup();
+    }
 
-	public void drawString(String string, double x, double y, int color) {
-		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {
-			fr.drawString(string, x, y, color);
-		} else {
-			mc.fontRendererObj.drawString(string, x, y, color);
-		}
-	}
+    public abstract void setup();
 
-	public void drawCenteredString(String string, float x, float y, int color) {
-		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {
-			fr.drawCenteredString(string, x, y, color);
-		} else {
-			mc.fontRendererObj.drawCenteredString(string, x, y, color);
-		}
-	}
+    public abstract void render();
 
-	protected String wrapString(String string, int width) {
-		if (getStringWidth(string) <= width) {
-			return string;
-		} else {
-			return wrapString(string.substring(0, string.length() - 1), width);
-		}
-	}
+    public abstract void renderDummy();
 
-	protected String reverseWrapString(String string, int width) {
-		if (getStringWidth(string) <= width) {
-			return string;
-		} else {
-			return reverseWrapString(string.substring(1), width);
-		}
-	}
+    public void setPos(double posX, double posY) {
+        ScaledResolution sr = new ScaledResolution(mc);
 
-	protected int getStringWidth(String string) {
-		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {
-			return fr.getStringWidth(string);
-		} else {
-			return mc.fontRendererObj.getStringWidth(string);
-		}
-	}
-	
-	protected int getFontHeight() {
-		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {
-			return fr.getHeight();
-		} else {
-			return mc.fontRendererObj.FONT_HEIGHT;
-		}
-	}
+        this.posX = posX / sr.getScaledWidth();
+        this.posY = posY / sr.getScaledHeight();
+    }
 
-	public int getColor(float offset) {
-		HUDModule hudModule = Menace.instance.moduleManager.hudModule;
+    public void setPosX(double posX) {
+        ScaledResolution sr = new ScaledResolution(mc);
 
-		switch (hudModule.color.getValue()) {
+        this.posX = posX / sr.getScaledWidth();
+    }
 
-			case "Fade" :
-				return ColorUtils.fade(hudModule.rainbowSpeed.getValueF(), -offset).getRGB();
-			case "Custom" :
-				return new Color(hudModule.red.getValueI(), hudModule.green.getValueI(), hudModule.blue.getValueI(), hudModule.alpha.getValueI()).getRGB();
-			default :
-				return Color.WHITE.getRGB();
-		}
-	}
+    public void setPosY(double posY) {
+        ScaledResolution sr = new ScaledResolution(mc);
+
+        this.posY = posY / sr.getScaledHeight();
+    }
+
+    public double getPosX() {
+        ScaledResolution sr = new ScaledResolution(mc);
+
+        return posX * sr.getScaledWidth();
+    }
+
+    public double getPosY() {
+        ScaledResolution sr = new ScaledResolution(mc);
+
+        return posY * sr.getScaledHeight();
+    }
+
+    public ArrayList<BaseOption> getOptions() {
+        return options;
+    }
+
+    public void addOption(BaseOption option) {
+        options.add(option);
+    }
+
+    public abstract int getWidth();
+
+    public abstract int getHeight();
+
+    public void drawString(String string, double x, double y, int color, boolean customFont) {
+        if (customFont) {
+            fr.drawString(string, x, y, color);
+        } else {
+            mc.fontRendererObj.drawString(string, x, y, color);
+        }
+    }
+
+    public void drawCenteredString(String string, float x, float y, int color, boolean customFont) {
+        if (customFont) {
+            fr.drawCenteredString(string, x, y, color);
+        } else {
+            mc.fontRendererObj.drawCenteredString(string, x, y, color);
+        }
+    }
+
+    protected String wrapString(String string, int width, boolean customFont) {
+        if (getStringWidth(string, customFont) <= width) {
+            return string;
+        } else {
+            return wrapString(string.substring(0, string.length() - 1), width, customFont);
+        }
+    }
+
+    protected String reverseWrapString(String string, int width, boolean customFont) {
+        if (getStringWidth(string, customFont) <= width) {
+            return string;
+        } else {
+            return reverseWrapString(string.substring(1), width, customFont);
+        }
+    }
+
+    protected int getStringWidth(String string, boolean customFont) {
+        if (customFont) {
+            return fr.getStringWidth(string);
+        } else {
+            return mc.fontRendererObj.getStringWidth(string);
+        }
+    }
+
+    protected int getFontHeight(boolean customFont) {
+        if (customFont) {
+            return fr.getHeight();
+        } else {
+            return mc.fontRendererObj.FONT_HEIGHT;
+        }
+    }
 
 }

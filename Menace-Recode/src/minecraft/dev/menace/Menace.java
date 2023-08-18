@@ -12,7 +12,9 @@ import dev.menace.module.ModuleManager;
 import dev.menace.module.config.ConfigManager;
 import dev.menace.scripting.ScriptManager;
 import dev.menace.ui.altmanager.LoginManager;
+import dev.menace.ui.custom.MenaceSplashScreen;
 import dev.menace.ui.hud.HUDManager;
+import dev.menace.ui.hud.elements.GameStatsElement;
 import dev.menace.utils.file.FileManager;
 import dev.menace.utils.friends.FriendManager;
 import dev.menace.utils.irc.IRCUtils;
@@ -20,6 +22,7 @@ import dev.menace.utils.misc.DiscordRP;
 import dev.menace.utils.misc.ServerUtils;
 import dev.menace.utils.notifications.Notification;
 import dev.menace.utils.notifications.NotificationManager;
+import dev.menace.utils.player.PacketBalanceUtils;
 import dev.menace.utils.render.font.Fonts;
 import dev.menace.utils.render.font.MenaceFontRenderer;
 import dev.menace.utils.security.MenaceUser;
@@ -72,6 +75,7 @@ public class Menace {
 
 	//Fonts
 	public MenaceFontRenderer sfPro;
+	public MenaceFontRenderer sfPro30;
 	public MenaceFontRenderer productSans20;
 	public MenaceFontRenderer productSans24;
 	public MenaceFontRenderer ascii24;
@@ -80,6 +84,7 @@ public class Menace {
 
 	public void initFonts() {
 		sfPro = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/SF-Pro.ttf"), 20, Font.PLAIN), true);
+		sfPro30 = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/SF-Pro.ttf"), 30, Font.PLAIN), true);
 		productSans20 = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/ProductSans.ttf"), 20, Font.PLAIN), true);
 		productSans24 = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/ProductSans.ttf"), 20, Font.PLAIN), true);
 		ascii24 = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/ascii.ttf"), 24, Font.PLAIN),  true);
@@ -94,6 +99,7 @@ public class Menace {
 
 		Display.setTitle("Menace 1.8.9 - Recode");
 
+		MenaceSplashScreen.setProgress(7, "Starting Client - Initializing");
 		FileManager.init();
 
 		eventManager = new EventManager();
@@ -115,11 +121,13 @@ public class Menace {
 
 		hackerDetect = new HackerDetect();
 
+		MenaceSplashScreen.setProgress(8, "Starting Client - Starting Discord RPC");
 		discordRP = new DiscordRP();
 		discordRP.start();
 
 		eventManager.register(this);
 
+		MenaceSplashScreen.setProgress(9, "Starting Client - Initializing ViaMCP");
 		try {
 			ViaMCP.create();
 
@@ -140,9 +148,7 @@ public class Menace {
 			}
 		}
 
-		hudManager.gameStatsElement.start();
-		hudManager.tabGuiElement.start();
-
+		MenaceSplashScreen.setProgress(10, "Starting Client - Loading Configs");
 		configManager.reload();
 
 		AtomicBoolean loaded = new AtomicBoolean(false);
@@ -190,6 +196,8 @@ public class Menace {
 		}.start();
 
 		spotifyUtils = new SpotifyUtils();
+
+		PacketBalanceUtils.instance.start();
 	}
 
 	public void stopClient() {
@@ -197,9 +205,9 @@ public class Menace {
 		discordRP.stop();
 		cmdManager.end();
 		moduleManager.saveModules(this.configManager.getLoadedConfig().getName());
-		hudManager.gameStatsElement.stop();
-		hudManager.tabGuiElement.stop();
+		hudManager.saveElements();
 		ircBot.quitServer("Left the Game");
+		PacketBalanceUtils.instance.stop();
 		eventManager.unregister(this);
 	}
 
@@ -218,7 +226,9 @@ public class Menace {
 			String message = ((S02PacketChat) event.getPacket()).getChatComponent().getUnformattedText();
 
 			if (message != null && message.contains(" killed by " + MC.thePlayer.getName())) {
-				this.hudManager.gameStatsElement.kills++;
+				this.hudManager.getElements().stream().filter(element -> element instanceof GameStatsElement).forEach(element -> {
+					((GameStatsElement) element).kills++;
+				});
 				this.moduleManager.killFXModule.onKill(message.split(" ")[0]);
 			}
 
@@ -250,7 +260,9 @@ public class Menace {
 	public void onConnection(EventConnection event) {
 		if (event.getState() == EventConnection.State.CONNECTING) {
 			Menace.instance.discordRP.update("Bypassing " + ServerUtils.getRemoteIp());
-			Menace.instance.hudManager.gameStatsElement.reset();
+			this.hudManager.getElements().stream().filter(element -> element instanceof GameStatsElement).forEach(element -> {
+				((GameStatsElement) element).reset();
+			});
 			try {
 				final URL url = new URL( apiURL + "/updateUser/" + ServerUtils.getRemoteIp().split(":")[0] + "/" + Menace.instance.user.getUsername() + "/" + MC.session.getUsername() + "/false");
 				HttpURLConnection uc = (HttpURLConnection ) url.openConnection();
@@ -342,13 +354,5 @@ public class Menace {
 
 		updateTimer.reset();
 
-	}
-
-	public int getClientColor() {
-		return Color.RED.getRGB();
-	}
-
-	public int getClientColorDarker() {
-		return new Color(203, 26, 26).getRGB();
 	}
 }

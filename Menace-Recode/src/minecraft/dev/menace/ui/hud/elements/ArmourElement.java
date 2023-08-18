@@ -1,26 +1,23 @@
 package dev.menace.ui.hud.elements;
 
 import dev.menace.ui.hud.BaseElement;
-import dev.menace.utils.render.RenderUtils;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ArmourElement extends BaseElement {
+    @Override
+    public void setup() {
 
-
-    public ArmourElement() {
-        super(486, 482, true);
     }
 
     @Override
     public void render() {
-
+        //TODO: Make this change axis
         if (mc.thePlayer.inventory.armorInventory.length > 0) {
             List<ItemStack> items = new ArrayList<>();
             if (mc.thePlayer.getHeldItem() != null) {
@@ -32,23 +29,22 @@ public class ArmourElement extends BaseElement {
                     items.add(stack);
                 }
             }
-            int x = this.getAbsoluteX();
+            int x = (int) this.getPosX();
             for (ItemStack stack : items) {
                 GlStateManager.pushMatrix();
                 GlStateManager.enableLighting();
-                mc.getRenderItem().renderItemIntoGUI(stack, x, this.getAbsoluteY());
-                mc.getRenderItem().renderItemOverlayIntoGUI(mc.fontRendererObj, stack, x, this.getAbsoluteY(), "");
+                mc.getRenderItem().renderItemIntoGUI(stack, x, (int) this.getPosY());
+                mc.getRenderItem().renderItemOverlayIntoGUI(mc.fontRendererObj, stack, x, (int) this.getPosX(), "");
                 GlStateManager.disableLighting();
                 GlStateManager.disableDepth();
                 if (stack.isStackable() && stack.stackSize > 1) {
-                    this.drawString(String.valueOf(stack.stackSize), x + 4, this.getAbsoluteY() + 4, Color.black.getRGB());
+                    this.drawString(String.valueOf(stack.stackSize), x + 4, this.getPosY() + 4, Color.black.getRGB(), false);
                 }
                 GlStateManager.enableDepth();
                 GlStateManager.popMatrix();
                 x += 18;
             }
         }
-
     }
 
     @Override
@@ -60,16 +56,16 @@ public class ArmourElement extends BaseElement {
         items.add(new ItemStack(Items.diamond_leggings, 1, 0));
         items.add(new ItemStack(Items.diamond_boots, 1, 0));
 
-        int x = this.getAbsoluteX();
+        int x = (int) this.getPosX();
         for (ItemStack stack : items) {
             GlStateManager.pushMatrix();
             GlStateManager.enableLighting();
-            mc.getRenderItem().renderItemIntoGUI(stack, x, this.getAbsoluteY());
-            mc.getRenderItem().renderItemOverlayIntoGUI(mc.fontRendererObj, stack, x, this.getAbsoluteY(), "");
+            mc.getRenderItem().renderItemIntoGUI(stack, x, (int) this.getPosY());
+            mc.getRenderItem().renderItemOverlayIntoGUI(mc.fontRendererObj, stack, x, (int) this.getPosY(), "");
             GlStateManager.disableLighting();
             GlStateManager.disableDepth();
             if (stack.isStackable() && stack.stackSize > 1) {
-                this.drawString(String.valueOf(stack.stackSize), x + 4, this.getAbsoluteY() + 4, Color.black.getRGB());
+                this.drawString(String.valueOf(stack.stackSize), x + 4, this.getPosY() + 4, Color.black.getRGB(), false);
             }
             GlStateManager.enableDepth();
             GlStateManager.popMatrix();

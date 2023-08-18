@@ -5,39 +5,21 @@ import dev.menace.event.EventTarget;
 import dev.menace.event.events.*;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
-import dev.menace.module.modules.player.InvManagerModule;
-import dev.menace.module.modules.render.HUDModule;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
-import dev.menace.ui.hud.BaseElement;
-import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.misc.MathUtils;
 import dev.menace.utils.player.InventoryUtils;
-import dev.menace.utils.player.MovementUtils;
-import dev.menace.utils.player.PlayerUtils;
 import dev.menace.utils.render.ColorUtils;
 import dev.menace.utils.render.RenderUtils;
 import dev.menace.utils.render.font.MenaceFontRenderer;
 import dev.menace.utils.timer.MSTimer;
-import dev.menace.utils.world.BlockUtils;
-import net.minecraft.block.BlockChest;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.projectile.EntityEgg;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
 import net.minecraft.network.play.client.C0DPacketCloseWindow;
 import net.minecraft.network.play.server.S2DPacketOpenWindow;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
-import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -62,7 +44,7 @@ public class ChestStealerModule extends BaseModule {
 	ToggleSetting noGui;
 
 	public ChestStealerModule() {
-		super("ChestStealer", Category.WORLD, 0);
+		super("ChestStealer", "Takes all the items from chests", Category.WORLD, 0);
 	}
 
 	@Override
@@ -109,7 +91,9 @@ public class ChestStealerModule extends BaseModule {
 			guiChest = (GuiChest) mc.currentScreen;
 			if (isEmpty(guiChest) || isInvFull()) {
 				reset();
-				mc.thePlayer.closeScreen();
+				if (closeScreen.getValue()) {
+					mc.thePlayer.closeScreen();
+				}
 				return;
 			}
 			if (noGui.getValue()) {
@@ -273,44 +257,9 @@ public class ChestStealerModule extends BaseModule {
 	}
 
 	private void drawString(String string, int x, int y) {
-		int color;
-		HUDModule hudModule = Menace.instance.moduleManager.hudModule;
-		switch (hudModule.color.getValue()) {
 
-			case "Fade" :
-				color = ColorUtils.fade(hudModule.rainbowSpeed.getValueF(), -y).getRGB();
-				break;
+		mc.fontRendererObj.drawCenteredString(string, x, y, -1);
 
-			case "Custom" :
-				color = new Color(hudModule.red.getValueI(), hudModule.green.getValueI(), hudModule.blue.getValueI(), hudModule.alpha.getValueI()).getRGB();
-				break;
-
-			default :
-				color = Color.WHITE.getRGB();
-				break;
-		}
-
-		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {
-			fr.drawCenteredString(string, x, y, color);
-		} else {
-			mc.fontRendererObj.drawCenteredString(string, x, y, color);
-		}
-	}
-
-	private int getStringWidth(String string) {
-		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {
-			return fr.getStringWidth(string);
-		} else {
-			return mc.fontRendererObj.getStringWidth(string);
-		}
-	}
-
-	private int getFontHeight() {
-		if (Menace.instance.moduleManager.hudModule.customFont.getValue()) {
-			return fr.getHeight();
-		} else {
-			return mc.fontRendererObj.FONT_HEIGHT;
-		}
 	}
 
 	private void reset() {

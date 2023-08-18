@@ -36,7 +36,7 @@ public class TPAuraModule extends BaseModule {
     public final MSTimer timer = new MSTimer();
 
     public TPAuraModule() {
-        super("TPAura", Category.COMBAT, 0);
+        super("TPAura", "Killaura on adderall", Category.COMBAT, 0);
     }
 
     @Override

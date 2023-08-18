@@ -25,7 +25,7 @@ public class NoSlowModule extends BaseModule {
     ListSetting mode;
 
     public NoSlowModule() {
-        super("NoSlow", Category.PLAYER, 0);
+        super("NoSlow", "Allows you to walk normally while blocking your sword/eating/etc.", Category.PLAYER, 0);
     }
 
     @Override

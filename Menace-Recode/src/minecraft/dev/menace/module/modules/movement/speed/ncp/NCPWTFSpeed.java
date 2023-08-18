@@ -2,6 +2,7 @@ package dev.menace.module.modules.movement.speed.ncp;
 
 import dev.menace.module.modules.movement.speed.SpeedBase;
 import dev.menace.utils.player.MovementUtils;
+import dev.menace.utils.world.TimerHandler;
 
 public class NCPWTFSpeed extends SpeedBase {
 
@@ -13,7 +14,7 @@ public class NCPWTFSpeed extends SpeedBase {
         }
 
         if (mc.thePlayer.onGround) {
-            mc.timer.timerSpeed = 2f;
+            TimerHandler.setTimer(2f, 10);
             mc.thePlayer.jump();
         } else {
             mc.timer.timerSpeed = 0.98f;

@@ -7,6 +7,7 @@ import dev.menace.Menace;
 import dev.menace.event.EventTarget;
 import dev.menace.event.events.EventSendPacket;
 import dev.menace.module.BaseModule;
+import dev.menace.module.DontSaveState;
 import dev.menace.module.Category;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
@@ -17,6 +18,7 @@ import net.minecraft.network.play.client.*;
 import net.minecraft.network.play.client.C03PacketPlayer.C04PacketPlayerPosition;
 import net.minecraft.network.play.client.C03PacketPlayer.C06PacketPlayerPosLook;
 
+@DontSaveState
 public class BlinkModule extends BaseModule {
 
 	private final Queue<Packet<?>> packets = new ConcurrentLinkedDeque<>();
@@ -27,7 +29,7 @@ public class BlinkModule extends BaseModule {
 	SliderSetting pulseAmount;
 	
 	public BlinkModule() {
-		super("Blink", Category.PLAYER, 0);
+		super("Blink", "Cancels packets", Category.PLAYER, 0);
 	}
 	
 	@Override

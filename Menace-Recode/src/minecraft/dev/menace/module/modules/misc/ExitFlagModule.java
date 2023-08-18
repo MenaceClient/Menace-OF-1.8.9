@@ -14,7 +14,7 @@ public class ExitFlagModule extends BaseModule {
     private int exitFlagCount;
     MSTimer timer = new MSTimer();
     public ExitFlagModule() {
-        super("ExitFlag", Category.MISC, 0);
+        super("ExitFlag", "Leaves the game you are in if you flag too much", Category.MISC, 0);
     }
 
     @Override

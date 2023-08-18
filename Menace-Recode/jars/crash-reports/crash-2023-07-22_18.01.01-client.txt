@@ -1,0 +1,92 @@
+---- Minecraft Crash Report ----
+// Daisy, daisy...
+
+Time: 22/07/23 6:01 PM
+Description: Rendering screen
+
+java.lang.NullPointerException: Rendering screen
+	at dev.menace.ui.hud.elements.GameStatsElement.renderDummy(GameStatsElement.java:71)
+	at dev.menace.ui.hud.GuiHUDEditor.drawScreen(GuiHUDEditor.java:55)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1386)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:935)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:349)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at dev.menace.ui.hud.elements.GameStatsElement.renderDummy(GameStatsElement.java:71)
+	at dev.menace.ui.hud.GuiHUDEditor.drawScreen(GuiHUDEditor.java:55)
+
+-- Screen render details --
+Details:
+	Screen name: dev.menace.ui.hud.GuiHUDEditor
+	Mouse location: Scaled: (446, 175). Absolute: (893, 729)
+	Screen size: Scaled: (960, 540). Absolute: (1920, 1080). Scale factor of 2
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 5 total; [EntityPlayerSP['ExterminateYT'/992581, l='MpServer', x=234.46, y=62.00, z=163.34], EntityOtherPlayerMP['RangE9999'/992612, l='MpServer', x=240.56, y=64.00, z=177.38], EntityOtherPlayerMP['PANZOID1'/992723, l='MpServer', x=248.00, y=62.00, z=180.31], EntityOtherPlayerMP['thembuLOLwa'/993413, l='MpServer', x=239.64, y=66.07, z=185.23], EntityOtherPlayerMP['Depressoh_'/993432, l='MpServer', x=191.50, y=62.00, z=162.44]]
+	Chunk stats: MultiplayerChunkCache: 441, 441
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 211.00,60.00,162.00 - World: (211,60,162), Chunk: (at 3,3,2 in 13,10; contains blocks 208,0,160 to 223,255,175), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 14769 game time, 19001 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: survival (ID 0). Hardcore: false. Cheats: false
+	Forced entities: 70 total; [EntityPlayerSP['ExterminateYT'/992581, l='MpServer', x=234.46, y=62.00, z=163.34], EntityOtherPlayerMP['Sockaholic'/992573, l='MpServer', x=211.50, y=61.00, z=162.50], EntityOtherPlayerMP['PANZOID1'/992723, l='MpServer', x=281.81, y=63.36, z=186.39], EntityOtherPlayerMP['OldPlayerLeo'/992610, l='MpServer', x=211.60, y=67.00, z=210.78], EntityOtherPlayerMP['thembuLOLwa'/993413, l='MpServer', x=239.64, y=66.07, z=185.23], EntityOtherPlayerMP['monsterclash217'/992603, l='MpServer', x=252.03, y=62.00, z=169.22], EntityOtherPlayerMP['PANZOID1'/992723, l='MpServer', x=281.70, y=65.66, z=184.47], EntityOtherPlayerMP['thembuLOLwa'/993413, l='MpServer', x=185.25, y=62.42, z=162.12], EntitySheep['Sheep'/991773, l='MpServer', x=187.25, y=62.00, z=188.97], EntityOtherPlayerMP['Ihaveatrashaim'/993415, l='MpServer', x=260.50, y=63.00, z=193.38], EntityOtherPlayerMP['Sockaholic'/992573, l='MpServer', x=282.53, y=62.66, z=199.30], EntityOtherPlayerMP['RangE9999'/992612, l='MpServer', x=240.56, y=64.00, z=177.38], EntityOtherPlayerMP['PANZOID1'/992723, l='MpServer', x=285.63, y=65.36, z=189.44], EntityOtherPlayerMP['monsterclash217'/992586, l='MpServer', x=247.44, y=62.98, z=177.75], EntityOtherPlayerMP['Depressoh_'/993432, l='MpServer', x=191.50, y=62.00, z=162.44], EntityOtherPlayerMP['Sockaholic'/992573, l='MpServer', x=211.50, y=61.00, z=162.50], EntitySheep['Sheep'/993303, l='MpServer', x=188.22, y=62.00, z=185.09], EntityOtherPlayerMP['Apex_SK'/993215, l='MpServer', x=284.27, y=63.37, z=198.84], EntityArmorStand['§6Nofall/Fly/Glide'/26, l='MpServer', x=214.50, y=65.66, z=140.50], EntityVillager['Aim10'/857495, l='MpServer', x=189.50, y=75.00, z=134.50], EntityArmorStand['§6AntiCactus'/27, l='MpServer', x=215.50, y=65.66, z=156.50], EntityArmorStand['§6Scaffold'/28, l='MpServer', x=239.50, y=65.66, z=164.50], EntityArmorStand['§6Step'/29, l='MpServer', x=208.50, y=65.66, z=140.50], EntityArmorStand['§6Fastladder'/30, l='MpServer', x=208.50, y=65.66, z=180.50], EntityArmorStand['§6Jesus'/31, l='MpServer', x=214.50, y=65.66, z=188.50], EntityArmorStand['§6Esp'/32, l='MpServer', x=208.50, y=65.66, z=199.50], EntityArmorStand['§6KillauraAimTest 1'/33, l='MpServer', x=190.50, y=65.66, z=170.50], EntityOtherPlayerMP['Depressoh_'/993432, l='MpServer', x=191.50, y=62.00, z=162.44], EntityArmorStand['§6AntiFire'/34, l='MpServer', x=215.50, y=65.66, z=168.50], EntityOtherPlayerMP['Sockaholic'/992573, l='MpServer', x=211.50, y=61.00, z=162.50], EntityArmorStand['§6TerrainSpeed'/36, l='MpServer', x=250.50, y=65.66, z=160.50], EntitySheep['Sheep'/991658, l='MpServer', x=190.44, y=62.00, z=189.41], EntityArmorStand['§6Snow'/38, l='MpServer', x=207.50, y=65.66, z=156.50], EntityArmorStand['§6ChestStealer'/40, l='MpServer', x=200.50, y=65.66, z=195.50], EntityOtherPlayerMP['OldPlayerLeo'/992610, l='MpServer', x=261.00, y=62.00, z=195.81], EntityOtherPlayerMP['Ihaveatrashaim'/993216, l='MpServer', x=260.06, y=62.00, z=170.22], EntityOtherPlayerMP['OldPlayerLeo'/992610, l='MpServer', x=254.75, y=62.00, z=186.94], EntityArmorStand['§6KillauraSwitchTest'/45, l='MpServer', x=189.50, y=65.66, z=186.50], EntityOtherPlayerMP['Sockaholic'/992573, l='MpServer', x=212.25, y=63.15, z=211.03], EntityOtherPlayerMP['OldPlayerLeo'/992610, l='MpServer', x=274.75, y=66.00, z=187.47], EntityOtherPlayerMP['thembuLOLwa'/993413, l='MpServer', x=239.64, y=66.07, z=185.23], EntitySheep['Sheep'/993335, l='MpServer', x=189.97, y=62.00, z=183.63], EntityVillager['Aim5'/872496, l='MpServer', x=191.50, y=65.00, z=134.50], EntityOtherPlayerMP['1046967509447554'/993213, l='MpServer', x=186.39, y=62.36, z=163.88], EntityOtherPlayerMP['OldPlayerLeo'/992610, l='MpServer', x=184.85, y=62.36, z=184.65], EntitySheep['Sheep'/993356, l='MpServer', x=188.88, y=62.00, z=189.81], EntityOtherPlayerMP['monsterclash217'/992603, l='MpServer', x=186.13, y=62.66, z=168.41], EntityOtherPlayerMP['thembuLOLwa'/993413, l='MpServer', x=211.84, y=62.36, z=211.49], EntityOtherPlayerMP['Sockaholic'/992573, l='MpServer', x=211.50, y=61.00, z=162.50], EntityOtherPlayerMP['CitizenTea'/993429, l='MpServer', x=239.66, y=65.00, z=185.47], EntityOtherPlayerMP['PANZOID1'/992723, l='MpServer', x=283.19, y=62.00, z=180.88], EntityOtherPlayerMP['Sockaholic'/992573, l='MpServer', x=211.50, y=61.00, z=162.50], EntitySheep['Sheep'/989662, l='MpServer', x=191.38, y=62.00, z=188.13], EntityOtherPlayerMP['Ihaveatrashaim'/992611, l='MpServer', x=185.64, y=62.00, z=183.92], EntityOtherPlayerMP['PANZOID1'/992723, l='MpServer', x=248.00, y=62.00, z=180.31], EntityOtherPlayerMP['PANZOID1'/992723, l='MpServer', x=248.00, y=62.00, z=180.31], EntityOtherPlayerMP['Judith7977'/993418, l='MpServer', x=187.09, y=62.63, z=163.55], EntityOtherPlayerMP['PANZOID1'/992723, l='MpServer', x=284.15, y=62.00, z=196.19], EntityOtherPlayerMP['monsterclash217'/992603, l='MpServer', x=281.94, y=67.66, z=177.53], EntityOtherPlayerMP['Sockaholic'/992573, l='MpServer', x=193.82, y=62.71, z=211.85], EntitySheep['Sheep'/993383, l='MpServer', x=188.53, y=62.00, z=188.91], EntityArmorStand['§6Longjump'/105, l='MpServer', x=214.50, y=65.66, z=119.50], EntityOtherPlayerMP['RangE9999'/992612, l='MpServer', x=240.56, y=64.00, z=177.38], EntityOtherPlayerMP['monsterclash217'/992603, l='MpServer', x=282.83, y=67.66, z=184.61], EntityOtherPlayerMP['monsterclash217'/992603, l='MpServer', x=213.37, y=62.00, z=214.12], EntityOtherPlayerMP['Sockaholic'/992573, l='MpServer', x=211.50, y=61.00, z=162.50], EntityOtherPlayerMP['CitizenTea'/993416, l='MpServer', x=239.41, y=66.00, z=184.53], EntityOtherPlayerMP['OldPlayerLeo'/992610, l='MpServer', x=211.66, y=62.00, z=115.05], EntityOtherPlayerMP['DieSturmkatze'/989206, l='MpServer', x=185.38, y=62.68, z=139.28], EntitySheep['Sheep'/993393, l='MpServer', x=188.09, y=62.00, z=183.53]]
+	Retry entities: 0 total; []
+	Server brand: DionaSpigot (Velocity)
+	Server type: Non-integrated multiplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:401)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2286)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:362)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_372, BellSoft
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), BellSoft
+	Memory: 649874456 bytes (619 MB) / 1072168960 bytes (1022 MB) up to 1072168960 bytes (1022 MB)
+	JVM Flags: 2 total; -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 531.79, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: gamerswordpack.zip
+	Current Language: English (UK)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-9700F CPU @ 3.00GHz
+	OptiFine Version: OptiFine_1.8.9_HD_U_M5
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 10
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 531.79
+	OpenGlRenderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8

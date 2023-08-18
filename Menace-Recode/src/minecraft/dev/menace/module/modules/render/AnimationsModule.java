@@ -27,7 +27,7 @@ public class AnimationsModule extends BaseModule {
 	ToggleSetting onedotseven;
 	
 	public AnimationsModule() {
-		super("Animations", Category.RENDER, 0);
+		super("Animations", "Sword go spinnnnnnnn", Category.RENDER, 0);
 	}
 	
 	@Override

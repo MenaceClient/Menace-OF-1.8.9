@@ -13,6 +13,7 @@ import dev.menace.utils.player.MovementUtils;
 import dev.menace.utils.player.PacketUtils;
 import dev.menace.utils.player.PlayerUtils;
 import dev.menace.utils.timer.MSTimer;
+import dev.menace.utils.world.TimerHandler;
 import net.minecraft.block.BlockAir;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -62,7 +63,7 @@ public class DamageFly extends FlightBase {
 			mc.thePlayer.motionY = 0.0;
 			mc.thePlayer.motionZ = 0.0;
 			flyable = true;
-			mc.timer.timerSpeed = 0.5f;
+			TimerHandler.setTimer(0.5f, 1);
 			timer.reset();
 		} else if (Menace.instance.moduleManager.flightModule.dmgMode.getValue().equalsIgnoreCase("Verus")) {
 
@@ -108,7 +109,7 @@ public class DamageFly extends FlightBase {
 		flyable = false;
 		shot = false;
 		C03Sent = false;
-		mc.timer.timerSpeed = 1f;
+		TimerHandler.resetTimer();
 		doUp = false;
 		jumpCount = 0;
 	}
@@ -126,7 +127,7 @@ public class DamageFly extends FlightBase {
 			mc.thePlayer.motionX = 0.0;
 			mc.thePlayer.motionY = 0.0;
 			mc.thePlayer.motionZ = 0.0;
-			mc.timer.timerSpeed = 0.5f;
+			TimerHandler.setTimer(0.5f, 1);
 			timer.reset();
 			C03Sent = true;
 		}
@@ -143,7 +144,7 @@ public class DamageFly extends FlightBase {
 			mc.thePlayer.motionZ = 0.0;
 			flyable = true;
 			doUp = true;
-			mc.timer.timerSpeed = 0.5f;
+			TimerHandler.setTimer(0.5f, 1);
 			timer.reset();
 			//Menace.instance.notificationManager.addNotification(new TimeredNotification("$TIMER$ms till slowdown", timer, 1500L));
 			//PacketUtils.sendPacketNoEvent(new C03PacketPlayer.C04PacketPlayerPosition(MC.thePlayer.posX, MC.thePlayer.posY + 0.5, MC.thePlayer.posZ, true));
@@ -171,7 +172,7 @@ public class DamageFly extends FlightBase {
 		}
 
 		if (timer.hasTimePassed(300)) {
-			mc.timer.timerSpeed = 1f;
+			TimerHandler.setTimer(1f, 1);
 		}
 
 		if (flyable && timer.hasTimePassed(100)) {

@@ -1,70 +1,166 @@
 package dev.menace.ui.hud;
 
 import com.google.gson.JsonObject;
-import dev.menace.scripting.ScriptElement;
+import dev.menace.Menace;
+import dev.menace.event.EventTarget;
+import dev.menace.event.events.EventKey;
+import dev.menace.event.events.EventRender2D;
 import dev.menace.ui.hud.elements.*;
+import dev.menace.ui.hud.options.BaseOption;
+import dev.menace.ui.hud.options.BooleanOption;
+import dev.menace.ui.hud.options.ColorSelectOption;
+import dev.menace.ui.hud.options.ListOption;
 import dev.menace.utils.file.FileManager;
 
+import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 
 public class HUDManager {
 
-	public static ArrayList<BaseElement> hudElements = new ArrayList<>();
+    private  ArrayList<BaseElement> elements = new ArrayList<>();
+    private ArrayList<Class<? extends BaseElement>> elementList = new ArrayList<>();
 
-	//Elements
-	public ArmourElement armourElement = new ArmourElement();
-	public ArrayElement arrayElement = new ArrayElement();
-	public GameStatsElement gameStatsElement = new GameStatsElement();
-	public NotificationElement notificationElement = new NotificationElement();
-	public PingElement pingElement = new PingElement();
-	public PosElement posElement = new PosElement();
-	public ScoreboardElement scoreboardElement = new ScoreboardElement();
-	public SpotifyElement spotifyElement = new SpotifyElement();
-	public TabGuiElement tabGuiElement = new TabGuiElement();
-	public TargetHudElement targetHudElement = new TargetHudElement();
-	public WatermarkElement watermarkElement = new WatermarkElement();
+    public HUDSettingsElement settingsElement;
 
-	public static void save() {
-		JsonObject hudFile = new JsonObject();
-		hudElements.forEach(element -> {
-			JsonObject elementFile = new JsonObject();
-			elementFile.addProperty("X", element.getAbsoluteX());
-			elementFile.addProperty("Y", element.getAbsoluteY());
-			elementFile.addProperty("Visible", element.isVisible());
+    public HUDManager() {
+        //Add all elements to the elementList (Except HUDSettingsElement)
+        elementList.add(ArmourElement.class);
+        elementList.add(ArrayElement.class);
+        elementList.add(GameStatsElement.class);
+        elementList.add(PingElement.class);
+        elementList.add(PositionElement.class);
+        elementList.add(ScoreboardElement.class);
+        elementList.add(SpotifyElement.class);
+        elementList.add(TabGuiElement.class);
+        elementList.add(TargetHudElement.class);
+        elementList.add(WatermarkElement.class);
 
-			if (element instanceof ScriptElement) {
-				hudFile.add(((ScriptElement)element).getElementMap().getName(), elementFile);
-			} else {
-				hudFile.add(element.getClass().getSimpleName(), elementFile);
-			}
-		});
-		FileManager.writeJsonToFile(new File(FileManager.getHudFolder(), "Hud.json"), hudFile);
-	}
+        loadElements();
 
-	public static void load() {
+        settingsElement = new HUDSettingsElement();
+        registerElement(settingsElement);
 
-		if (!(new File(FileManager.getHudFolder(), "Hud.json")).exists()) {
-			save();
-			return;
-		}
+        Menace.instance.eventManager.register(this);
+    }
 
-		JsonObject hudFile = FileManager.readJsonFromFile(new File(FileManager.getHudFolder(), "Hud.json"));
-		assert hudFile != null;
-		hudElements.stream().filter(e -> hudFile.has(e.getClass().getSimpleName())
-				|| (e instanceof ScriptElement && hudFile.has(((ScriptElement)e).getElementMap().getName()))).forEach(element -> {
+    public void registerElement(BaseElement element) {
+        elements.add(element);
+    }
 
-			JsonObject elementSave;
+    public void removeElement(BaseElement element) {
+        elements.remove(element);
+    }
 
-			if (element instanceof ScriptElement) {
-				elementSave = hudFile.get(((ScriptElement)element).getElementMap().getName()).getAsJsonObject();
-			} else {
-				elementSave = hudFile.get(element.getClass().getSimpleName()).getAsJsonObject();
-			}
+    public ArrayList<BaseElement> getElements() {
+        return elements;
+    }
 
-			element.setAbsolute(elementSave.get("X").getAsInt(), elementSave.get("Y").getAsInt());
-			element.setVisible(elementSave.get("Visible").getAsBoolean());
-		});
-	}
+    public ArrayList<Class<? extends BaseElement>> getElementList() {
+        return elementList;
+    }
+
+    @EventTarget
+    public void onRender(EventRender2D event) {
+        for (BaseElement element : elements) {
+            element.render();
+        }
+    }
+
+    @EventTarget
+    public void onKey(EventKey event) {
+        for (BaseElement element : elements) {
+            if (element instanceof TabGuiElement) {
+                ((TabGuiElement) element).onKey(event);
+            }
+        }
+    }
+
+    public void saveElements() {
+        JsonObject hudFile = new JsonObject();
+        for (BaseElement element : elements) {
+            String elementName = element.getClass().getSimpleName();
+            //If the element already exists in the file, add a number to the end of the name
+            if (hudFile.has(elementName)) {
+                int i = 1;
+                while (hudFile.has(elementName + i)) {
+                    i++;
+                }
+                elementName += i;
+            }
+
+            JsonObject elementObject = new JsonObject();
+            elementObject.addProperty("X", element.getPosX());
+            elementObject.addProperty("Y", element.getPosY());
+
+            JsonObject optionObject = new JsonObject();
+            for (BaseOption option : element.getOptions()) {
+                if (option instanceof BooleanOption) {
+                    optionObject.addProperty(option.getName(), ((BooleanOption) option).getValue());
+                } else if (option instanceof ColorSelectOption) {
+                    optionObject.addProperty(option.getName(), ((ColorSelectOption) option).getColor().getRGB());
+                } else if (option instanceof ListOption) {
+                    optionObject.addProperty(option.getName(), ((ListOption) option).getSelected());
+                }
+            }
+
+            elementObject.add("Options", optionObject);
+
+            hudFile.add(elementName, elementObject);
+        }
+
+        //TODO: Multiple HUD files support
+        FileManager.writeJsonToFile(new File(FileManager.getHudFolder(), "Hud.json"), hudFile);
+    }
+
+    public void loadElements() {
+        if (!(new File(FileManager.getHudFolder(), "Hud.json").exists())) {
+            saveElements();
+            return;
+        }
+
+        JsonObject hudFile = FileManager.readJsonFromFile(new File(FileManager.getHudFolder(), "Hud.json"));
+        assert hudFile != null;
+
+        for (Class<? extends BaseElement> element : elementList) {
+            //If there are multiple elements with the same name, add a number to the end of the name
+            int i = 0;
+            while (hudFile.has(element.getSimpleName() + (i == 0 ? "" : i))) {
+                JsonObject elementObject = hudFile.getAsJsonObject(element.getSimpleName());
+                BaseElement baseElement = null;
+
+                try {
+                    baseElement = element.newInstance();
+                } catch (InstantiationException | IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+
+                assert baseElement != null;
+
+                baseElement.setPosX(elementObject.get("X").getAsInt());
+                baseElement.setPosY(elementObject.get("Y").getAsInt());
+
+                JsonObject optionObject = elementObject.getAsJsonObject("Options");
+                for (BaseOption option : baseElement.getOptions()) {
+                    if (!optionObject.has(option.getName())) {
+                        continue;
+                    }
+
+                    if (option instanceof BooleanOption) {
+                        ((BooleanOption) option).setValue(optionObject.get(option.getName()).getAsBoolean());
+                    } else if (option instanceof ColorSelectOption) {
+                        ((ColorSelectOption) option).setColor(new Color(optionObject.get(option.getName()).getAsInt()));
+                    } else if (option instanceof ListOption) {
+                        ((ListOption) option).setSelected(optionObject.get(option.getName()).getAsString());
+                    }
+                }
+
+                registerElement(baseElement);
+                i++;
+            }
+        }
+
+    }
+
 
 }

@@ -225,6 +225,20 @@ public class RenderUtils {
 		drawRect(left, bottom - width, right, bottom, color);
 	}
 
+	public static void drawCirclePart(final double x, final double y, final float fromAngle, final float toAngle, final float radius, final int slices) {
+		GlStateManager.enableBlend();
+		GL11.glBegin(6);
+		GL11.glVertex2d(x, y);
+		final float increment = (toAngle - fromAngle) / slices;
+		for (int i = 0; i <= slices; ++i) {
+			final float angle = fromAngle + i * increment;
+			final float dX = MathHelper.sin(angle);
+			final float dY = MathHelper.cos(angle);
+			GL11.glVertex2d(x + dX * radius, y + dY * radius);
+		}
+		GL11.glEnd();
+	}
+
 	public static void renderGaussianBlurredRect(float x, float y, float width, float height, Color color) {
 		// Enable blending for smooth alpha blending
 		GL11.glEnable(GL11.GL_BLEND);
@@ -402,7 +416,7 @@ public class RenderUtils {
 		glEnable(GL_LINE_SMOOTH);
 		glLineWidth(1);
 
-		glColor4f(red, green, blue, alpha);
+		GlStateManager.color(red, green, blue, alpha);
 		glBegin(GL_POLYGON);
 
 		double degree = Math.PI / 180;
@@ -420,6 +434,8 @@ public class RenderUtils {
 		glDisable(GL_BLEND);
 		glDisable(GL_LINE_SMOOTH);
 		glPopMatrix();
+		GlStateManager.enableTexture2D();
+		GlStateManager.disableBlend();
 	}
 
 	public static void fastRoundedRect(float paramXStart, float paramYStart, float paramXEnd, float paramYEnd, float radius) {
@@ -896,6 +912,10 @@ public class RenderUtils {
 	 */
 	public static boolean hover(int x, int y, int mouseX, int mouseY, int width, int height) {
 		return mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height;
+	}
+
+	public static boolean hover2(int x, int y, int x1, int y1, int mouseX, int mouseY) {
+return mouseX >= x && mouseY >= y && mouseX < x1 && mouseY < y1;
 	}
 
 

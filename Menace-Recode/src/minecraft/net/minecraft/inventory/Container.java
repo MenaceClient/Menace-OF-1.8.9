@@ -16,7 +16,7 @@ public abstract class Container
     public List<ItemStack> inventoryItemStacks = Lists.<ItemStack>newArrayList();
     public List<Slot> inventorySlots = Lists.<Slot>newArrayList();
     public int windowId;
-    private short transactionID;
+    public short transactionID;
 
     /**
      * The current drag mode (0 : evenly split, 1 : one item by slot, 2 : not used ?)

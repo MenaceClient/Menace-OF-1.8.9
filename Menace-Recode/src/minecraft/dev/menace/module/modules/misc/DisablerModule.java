@@ -9,6 +9,7 @@ import dev.menace.module.modules.misc.disabler.DisablerMode;
 import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
+import dev.menace.utils.misc.ChatUtils;
 
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ public class DisablerModule extends BaseModule {
     public ToggleSetting pingSpoofTransaction;
 
     public DisablerModule() {
-        super("Disabler", Category.MISC, 0);
+        super("Disabler", "Used to disable checks on some anticheats", Category.MISC, 0);
     }
 
     @Override

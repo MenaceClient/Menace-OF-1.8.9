@@ -21,7 +21,6 @@ public class JSRemapper {
         script = remapScriptMngr(script);
         script = remapScript(script);
         script = remapModule(script);
-        script = remapHudElement(script);
         script = remapSliderSetting(script);
         script = remapToggleSetting(script);
         script = remapListSetting(script);
@@ -71,16 +70,6 @@ public class JSRemapper {
             if (method.isAnnotationPresent(MappedName.class)) {
                 MappedName mappedName = method.getAnnotation(MappedName.class);
                 script = script.replaceAll("Module." + StringGrabber.getString(mappedName.value()), "Module." + method.getName());
-            }
-        }
-        return script;
-    }
-
-    private static String remapHudElement(String script) {
-        for (Method method : ElementMap.class.getMethods()) {
-            if (method.isAnnotationPresent(MappedName.class)) {
-                MappedName mappedName = method.getAnnotation(MappedName.class);
-                script = script.replaceAll("HudElement." + StringGrabber.getString(mappedName.value()), "HudElement." + method.getName());
             }
         }
         return script;

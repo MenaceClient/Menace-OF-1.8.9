@@ -10,7 +10,7 @@ import java.awt.*;
 
 public class ESPModule extends BaseModule {
     public ESPModule() {
-        super("ESP", Category.RENDER, 0);
+        super("ESP", "Allows you to see players through walls", Category.RENDER, 0);
     }
 
     @EventTarget

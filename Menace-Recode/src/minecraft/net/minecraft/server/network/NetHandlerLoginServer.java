@@ -155,7 +155,7 @@ public class NetHandlerLoginServer implements INetHandlerLoginServer, ITickable
 
     public void processLoginStart(C00PacketLoginStart packetIn)
     {
-        Validate.validState(this.currentLoginState == NetHandlerLoginServer.LoginState.HELLO, "Unexpected hello packet", new Object[0]);
+        Validate.validState(this.currentLoginState == NetHandlerLoginServer.LoginState.HELLO, "Unexpected hello packet");
         this.loginGameProfile = packetIn.getProfile();
 
         if (this.server.isServerInOnlineMode() && !this.networkManager.isLocalChannel())

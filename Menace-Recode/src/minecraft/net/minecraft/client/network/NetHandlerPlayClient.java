@@ -6,6 +6,7 @@ import com.google.common.util.concurrent.Futures;
 import com.mojang.authlib.GameProfile;
 import dev.menace.Menace;
 import dev.menace.event.events.EventConnection;
+import dev.menace.event.events.EventExplosion;
 import dev.menace.event.events.EventSpawnEntity;
 import dev.menace.event.events.EventTeleport;
 import dev.menace.ui.custom.MenaceMainMenu;
@@ -1115,11 +1116,17 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
     public void handleExplosion(S27PacketExplosion packetIn)
     {
         PacketThreadUtil.checkThreadAndEnqueue(packetIn, this, this.gameController);
-        Explosion explosion = new Explosion(this.gameController.theWorld, (Entity)null, packetIn.getX(), packetIn.getY(), packetIn.getZ(), packetIn.getStrength(), packetIn.getAffectedBlockPositions());
+        Explosion explosion = new Explosion(this.gameController.theWorld, null, packetIn.getX(), packetIn.getY(), packetIn.getZ(), packetIn.getStrength(), packetIn.getAffectedBlockPositions());
         explosion.doExplosionB(true);
-        this.gameController.thePlayer.motionX += (double)packetIn.func_149149_c();
-        this.gameController.thePlayer.motionY += (double)packetIn.func_149144_d();
-        this.gameController.thePlayer.motionZ += (double)packetIn.func_149147_e();
+
+        EventExplosion event = new EventExplosion(packetIn.func_149149_c(), packetIn.func_149144_d(), packetIn.func_149147_e());
+        event.call();
+
+        if (event.isCancelled()) return;
+
+        this.gameController.thePlayer.motionX += event.getMotionX();
+        this.gameController.thePlayer.motionY += event.getMotionY();
+        this.gameController.thePlayer.motionZ += event.getMotionZ();
     }
 
     /**

@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import dev.menace.ui.hud.elements.ScoreboardElement;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -344,7 +345,7 @@ public class GuiIngame extends Gui
 
         if (scoreobjective1 != null)
         {
-            this.renderScoreboard(scoreobjective1);
+            //this.renderScoreboard(scoreobjective1);
         }
 
         GlStateManager.enableBlend();
@@ -560,7 +561,7 @@ public class GuiIngame extends Gui
         }
     }
 
-    private void renderScoreboard(ScoreObjective objective)
+    /*private void renderScoreboard(ScoreObjective objective)
     {
         Scoreboard scoreboard = objective.getScoreboard();
         Collection<Score> collection = scoreboard.getSortedScores(objective);
@@ -575,27 +576,29 @@ public class GuiIngame extends Gui
             collection = list;
         }
 
-        int i = Menace.instance.hudManager.scoreboardElement.getStringWidth(objective.getDisplayName());
+        ScoreboardElement scoreboardElement = (ScoreboardElement) Menace.instance.hudManager.getElements().stream().filter(element -> element instanceof ScoreboardElement).findFirst().orElse(null);
+
+        int i = scoreboardElement.getStringWidth(objective.getDisplayName());
 
         for (Score score : collection)
         {
             ScorePlayerTeam scoreplayerteam = scoreboard.getPlayersTeam(score.getPlayerName());
             String s = ScorePlayerTeam.formatPlayerName(scoreplayerteam, score.getPlayerName()) + ": " + EnumChatFormatting.RED + score.getScorePoints();
-            i = Math.max(i, Menace.instance.hudManager.scoreboardElement.getStringWidth(s));
+            i = Math.max(i, scoreboardElement.getStringWidth(s));
         }
 
-        int fontHeight = Menace.instance.hudManager.scoreboardElement.getFontHeight();
+        int fontHeight = scoreboardElement.getFontHeight();
         int i1 = collection.size() * fontHeight;
-        int j1 = Menace.instance.hudManager.scoreboardElement.getAbsoluteY() + i1;
-        int l1 = Menace.instance.hudManager.scoreboardElement.getAbsoluteX();
+        int j1 = scoreboardElement.getAbsoluteY() + i1;
+        int l1 = scoreboardElement.getAbsoluteX();
         int j = -1;
 
         //Set the element width & height to the width & height of the scoreboard
-        Menace.instance.hudManager.scoreboardElement.setWidth(i + 4);
-        Menace.instance.hudManager.scoreboardElement.setHeight(i1 + 4);
+        scoreboardElement.setWidth(i + 4);
+        scoreboardElement.setHeight(i1 + 4);
 
         //Draw only one rectangle that covers the whole scoreboard because the other rectangles overlap the text
-        drawRect(l1, Menace.instance.hudManager.scoreboardElement.getAbsoluteY() - 1, l1 + i + 4, j1 + fontHeight + 1, 0x60000000);
+        drawRect(l1, scoreboardElement.getAbsoluteY() - 1, l1 + i + 4, j1 + fontHeight + 1, 0x60000000);
 
         for (Score score1 : collection)
         {
@@ -617,19 +620,19 @@ public class GuiIngame extends Gui
 
             String s2 = EnumChatFormatting.RED + "" + score1.getScorePoints();
             int k = j1 - j * fontHeight;
-            int l = Menace.instance.hudManager.scoreboardElement.getAbsoluteX() + i;
+            int l = scoreboardElement.getAbsoluteX() + i;
             //drawRect(l1, k, l + 2, k + fontHeight, 1342177280);
-            Menace.instance.hudManager.scoreboardElement.drawString(s1[0], l1 + 2, k, -1);
-            Menace.instance.hudManager.scoreboardElement.drawString(s2, l - Menace.instance.hudManager.scoreboardElement.getStringWidth(s2) + 2, k, Color.red.getRGB());
+            scoreboardElement.drawString(s1[0], l1 + 2, k, -1);
+            scoreboardElement.drawString(s2, l - scoreboardElement.getStringWidth(s2) + 2, k, Color.red.getRGB());
 
             if (j == collection.size() - 1)
             {
                 String s3 = objective.getDisplayName();
                 //drawRect(l1, k - 1 - fontHeight, l + 2, k, 1610612736);
-                Menace.instance.hudManager.scoreboardElement.drawString(s3, l1 + i - Menace.instance.hudManager.scoreboardElement.getStringWidth(s3) + 2, k - fontHeight, -1);
+                scoreboardElement.drawString(s3, l1 + i - scoreboardElement.getStringWidth(s3) + 2, k - fontHeight, -1);
             }
         }
-    }
+    }*/
 
     private void renderPlayerStats(ScaledResolution scaledRes)
     {

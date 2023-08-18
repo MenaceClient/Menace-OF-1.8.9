@@ -2,6 +2,8 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/minecraft/dev/menace/Menace.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/minecraft/dev/menace/module/modules/render/NametagsModule.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/minecraft/dev/menace/ui/clickgui/dropdown/components/DropdownModule.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/minecraft/dev/menace/ui/hud/elements/TargetHudElement.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/minecraft/dev/menace/ui/hud/elements/WatermarkElement.java" charset="windows-1252" />
     <file url="PROJECT" charset="windows-1252" />

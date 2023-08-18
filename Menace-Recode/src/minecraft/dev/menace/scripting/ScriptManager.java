@@ -41,7 +41,7 @@ public class ScriptManager {
         }
 
         //Clear HUD Elements
-        HUDManager.hudElements.removeIf(element -> element instanceof ScriptElement);
+        //HUDManager.hudElements.removeIf(element -> element instanceof ScriptElement);
 
 
         for (File file : Objects.requireNonNull(FileManager.getScriptFolder().listFiles())) {

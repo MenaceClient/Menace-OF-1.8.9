@@ -9,7 +9,7 @@ import net.minecraft.network.play.server.S02PacketChat;
 public class PhaseModule extends BaseModule {
 
     public PhaseModule() {
-        super("Phase", Category.WORLD, 0);
+        super("Phase", "This doesnt work lol", Category.WORLD, 0);
     }
 
     @EventTarget

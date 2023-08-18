@@ -19,7 +19,7 @@ public class BedNukerModule extends BaseModule {
     ToggleSetting swing;
 
     public BedNukerModule() {
-        super("BedNuker", Category.WORLD, 0);
+        super("BedNuker", "Automatically breaks beds through walls", Category.WORLD, 0);
     }
 
     @Override

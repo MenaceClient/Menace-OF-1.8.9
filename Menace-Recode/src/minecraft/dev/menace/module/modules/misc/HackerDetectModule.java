@@ -12,7 +12,7 @@ public class HackerDetectModule extends BaseModule {
     public ToggleSetting showVl;
 
     public HackerDetectModule() {
-        super("MenaceNCP", Category.MISC, 0);
+        super("MenaceNCP", "Gotta catch them all", Category.MISC, 0);
     }
 
     @Override

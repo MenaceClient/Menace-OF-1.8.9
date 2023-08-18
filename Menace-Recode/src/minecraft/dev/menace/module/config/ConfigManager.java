@@ -46,6 +46,11 @@ public class ConfigManager {
         this.loadedConfig = loadedConfig;
     }
 
+    public boolean checkLoadedConfig(Config config) {
+        if (getLoadedConfig() == null) return false;
+        return getLoadedConfig().getName().equalsIgnoreCase(config.getName());
+    }
+
     public Optional<Config> getConfigByName(String name) {
         return getConfigs().stream().filter(c -> c.getName().equalsIgnoreCase(name)).findFirst();
     }

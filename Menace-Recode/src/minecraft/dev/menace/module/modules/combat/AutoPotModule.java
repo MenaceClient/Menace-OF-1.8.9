@@ -32,7 +32,7 @@ public class AutoPotModule extends BaseModule {
     ToggleSetting onlyOnGround;
 
     public AutoPotModule() {
-        super("AutoPot", Category.COMBAT, 0);
+        super("AutoPot", "Throws potions for you", Category.COMBAT, 0);
     }
 
     @Override

@@ -17,6 +17,8 @@ import dev.menace.event.events.EventKey;
 import dev.menace.event.events.EventMouse;
 import dev.menace.event.events.EventWorldChange;
 import dev.menace.ui.custom.MenaceMainMenu;
+import dev.menace.ui.custom.MenaceSplashScreen;
+import dev.menace.ui.hud.elements.GameStatsElement;
 import dev.menace.utils.misc.IconUtils;
 import dev.menace.utils.misc.ServerUtils;
 import dev.menace.utils.security.HWIDManager;
@@ -405,12 +407,21 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 		this.refreshResources();
 		this.renderEngine = new TextureManager(this.mcResourceManager);
 		this.mcResourceManager.registerReloadListener(this.renderEngine);
-		this.drawSplashScreen(this.renderEngine);
+		//this.drawSplashScreen(this.renderEngine);
+		MenaceSplashScreen.drawSplashScreen(getTextureManager());
+
+		if (this.gameSettings.fullScreen && !this.fullscreen) {
+			this.toggleFullscreen();
+		}
+
+		MenaceSplashScreen.setProgress(1, "Initializing game");
 		this.skinManager = new SkinManager(this.renderEngine, new File(this.fileAssets, "skins"), this.sessionService);
 		this.saveLoader = new AnvilSaveConverter(new File(this.mcDataDir, "saves"));
+		MenaceSplashScreen.setProgress(2, "Loading sounds");
 		this.mcSoundHandler = new SoundHandler(this.mcResourceManager, this.gameSettings);
 		this.mcResourceManager.registerReloadListener(this.mcSoundHandler);
 		this.mcMusicTicker = new MusicTicker(this);
+		MenaceSplashScreen.setProgress(2, "Loading fonts");
 		this.fontRendererObj = new FontRenderer(this.gameSettings, new ResourceLocation("textures/font/ascii.png"), this.renderEngine, false);
 
 		if (this.gameSettings.forceUnicodeFont != null) {
@@ -435,6 +446,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 		});
 		this.mouseHelper = new MouseHelper();
 		this.checkGLError("Pre startup");
+		MenaceSplashScreen.setProgress(4, "OpenGL pre startup");
 		GlStateManager.enableTexture2D();
 		GlStateManager.shadeModel(7425);
 		GlStateManager.clearDepth(1.0D);
@@ -447,6 +459,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 		GlStateManager.loadIdentity();
 		GlStateManager.matrixMode(5888);
 		this.checkGLError("Startup");
+		MenaceSplashScreen.setProgress(5, "Loading textures");
 		this.textureMapBlocks = new TextureMap("textures");
 		this.textureMapBlocks.setMipmapLevels(this.gameSettings.mipmapLevels);
 		this.renderEngine.loadTickableTexture(TextureMap.locationBlocksTexture, this.textureMapBlocks);
@@ -468,6 +481,11 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 		GlStateManager.viewport(0, 0, this.displayWidth, this.displayHeight);
 		this.effectRenderer = new EffectRenderer(this.theWorld, this.renderEngine);
 		this.checkGLError("Post startup");
+
+		MenaceSplashScreen.setProgress(6, "Starting Client");
+		Menace.instance.startClient();
+
+		MenaceSplashScreen.setProgress(11, "Finishing startup");
 		this.ingameGUI = new GuiIngame(this);
 
 		this.displayGuiScreen(new MenaceAuthScreen(new MenaceMainMenu()));
@@ -476,9 +494,9 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 		this.mojangLogo = null;
 		this.loadingScreen = new LoadingScreenRenderer(this);
 
-		if (this.gameSettings.fullScreen && !this.fullscreen) {
+		/*if (this.gameSettings.fullScreen && !this.fullscreen) {
 			this.toggleFullscreen();
-		}
+		}*/
 
 		try {
 			Display.setVSyncEnabled(this.gameSettings.enableVsync);
@@ -487,7 +505,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 			this.gameSettings.saveOptions();
 		}
 
-		Menace.instance.startClient();
+		//Menace.instance.startClient();
 
 		this.renderGlobal.makeEntityOutlineShader();
 	}
@@ -1918,14 +1936,16 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 			}
 		}
 
-		this.displayGuiScreen((GuiScreen)null);
+		this.displayGuiScreen(null);
 		SocketAddress socketaddress = this.theIntegratedServer.getNetworkSystem().addLocalEndpoint();
 		NetworkManager networkmanager = NetworkManager.provideLocalClient(socketaddress);
 		networkmanager.setNetHandler(new NetHandlerLoginClient(networkmanager, this, (GuiScreen)null));
 		networkmanager.sendPacket(new C00Handshake(47, socketaddress.toString(), 0, EnumConnectionState.LOGIN));
 		networkmanager.sendPacket(new C00PacketLoginStart(this.getSession().getProfile()));
 		this.myNetworkManager = networkmanager;
-		Menace.instance.hudManager.gameStatsElement.reset();
+		Menace.instance.hudManager.getElements().stream().filter(element -> element instanceof GameStatsElement).forEach(element -> {
+			((GameStatsElement) element).reset();
+		});
 	}
 
 	/**

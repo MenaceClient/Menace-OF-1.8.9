@@ -1,10 +1,7 @@
 package dev.menace.utils.render.font;
 
-import dev.menace.utils.misc.ChatUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.ResourceLocation;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector2f;
@@ -12,12 +9,8 @@ import org.lwjgl.util.vector.Vector2f;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
 import java.nio.ByteBuffer;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
 /**
  * Made by MemesValkyrie for Faint.
@@ -421,7 +414,8 @@ public class MenaceFontRenderer {
 
         // Sets the color back to white so no odd rendering problems happen.
         //This interferes with other rendering, so I removed it.
-        GlStateManager.color(1, 1, 1, 1);
+        //GlStateManager.color(1, 1, 1, 1);
+        GlStateManager.resetColor();
 
         GlStateManager.bindTexture(0);
     }

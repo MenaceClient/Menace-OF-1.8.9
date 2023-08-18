@@ -7,9 +7,9 @@ import dev.menace.event.events.EventUpdate;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.module.settings.ToggleSetting;
-import dev.menace.ui.clickgui.csgo.CSGOGui;
-import dev.menace.ui.clickgui.lime.LimeClickGUI;
-import dev.menace.ui.clickgui.vape.VapeGui;
+import dev.menace.ui.clickgui.dropdown.DropdownClickGui;
+import dev.menace.ui.clickgui.intellij.IntellijClickGui;
+import dev.menace.ui.clickgui.menace.MenaceClickGui;
 import dev.menace.utils.player.PacketUtils;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -32,7 +32,7 @@ public class InvMoveModule extends BaseModule {
     ToggleSetting blink;
 
     public InvMoveModule() {
-        super("InvMove", Category.PLAYER, 0);
+        super("InvMove", "Allows you to walk in your inventory", Category.PLAYER, 0);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class InvMoveModule extends BaseModule {
 
     @EventTarget
     public void onUpdate(EventUpdate event) {
-        if (mc.currentScreen instanceof GuiContainer || mc.currentScreen instanceof VapeGui || mc.currentScreen instanceof LimeClickGUI || mc.currentScreen instanceof CSGOGui) {
+        if (mc.currentScreen instanceof GuiContainer || mc.currentScreen instanceof DropdownClickGui || mc.currentScreen instanceof IntellijClickGui || mc.currentScreen instanceof MenaceClickGui) {
             mc.gameSettings.keyBindForward.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindForward);
             mc.gameSettings.keyBindBack.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindBack);
             mc.gameSettings.keyBindRight.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindRight);

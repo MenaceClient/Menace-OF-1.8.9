@@ -49,7 +49,7 @@ public class InvManagerModule extends BaseModule {
     private final int threshold = 10;
 
     public InvManagerModule() {
-        super("InvManager", Category.PLAYER, 0);
+        super("InvManager", "Cleans your inventory", Category.PLAYER, 0);
     }
 
     @Override

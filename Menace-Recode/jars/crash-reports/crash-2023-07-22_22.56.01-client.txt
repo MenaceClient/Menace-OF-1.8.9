@@ -1,0 +1,104 @@
+---- Minecraft Crash Report ----
+// You're mean.
+
+Time: 22/07/23 10:56 PM
+Description: Updating screen events
+
+java.lang.IllegalArgumentException: IntBuffer is not direct
+	at org.lwjgl.BufferChecks.checkDirect(BufferChecks.java:127)
+	at org.lwjgl.BufferChecks.checkBuffer(BufferChecks.java:245)
+	at org.lwjgl.opengl.GL11.glReadPixels(GL11.java:2474)
+	at dev.menace.ui.hud.options.ColorSelectOption.getPixelColor(ColorSelectOption.java:66)
+	at dev.menace.ui.hud.options.ColorSelectOption.mouseClicked(ColorSelectOption.java:97)
+	at dev.menace.ui.hud.elements.HUDSettingsElement.mouseClicked(HUDSettingsElement.java:58)
+	at dev.menace.ui.hud.GuiHUDEditor.mouseClicked(GuiHUDEditor.java:117)
+	at net.minecraft.client.gui.GuiScreen.handleMouseInput(GuiScreen.java:602)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:571)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1503)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:911)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:349)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at org.lwjgl.BufferChecks.checkDirect(BufferChecks.java:127)
+	at org.lwjgl.BufferChecks.checkBuffer(BufferChecks.java:245)
+	at org.lwjgl.opengl.GL11.glReadPixels(GL11.java:2474)
+	at dev.menace.ui.hud.options.ColorSelectOption.getPixelColor(ColorSelectOption.java:66)
+	at dev.menace.ui.hud.options.ColorSelectOption.mouseClicked(ColorSelectOption.java:97)
+	at dev.menace.ui.hud.elements.HUDSettingsElement.mouseClicked(HUDSettingsElement.java:58)
+	at dev.menace.ui.hud.GuiHUDEditor.mouseClicked(GuiHUDEditor.java:117)
+	at net.minecraft.client.gui.GuiScreen.handleMouseInput(GuiScreen.java:602)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:571)
+
+-- Affected screen --
+Details:
+	Screen name: dev.menace.ui.hud.GuiHUDEditor
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 3 total; [EntityPlayerSP['ExterminateYT'/1092605, l='MpServer', x=224.06, y=63.00, z=169.42], EntityOtherPlayerMP['0oaa'/1044468, l='MpServer', x=215.13, y=62.00, z=174.84], EntityOtherPlayerMP['iE_60_b'/1092604, l='MpServer', x=265.97, y=62.00, z=179.69]]
+	Chunk stats: MultiplayerChunkCache: 441, 441
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 211.00,60.00,162.00 - World: (211,60,162), Chunk: (at 3,3,2 in 13,10; contains blocks 208,0,160 to 223,255,175), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 178 game time, 19001 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: survival (ID 0). Hardcore: false. Cheats: false
+	Forced entities: 35 total; [EntityPlayerSP['ExterminateYT'/1092605, l='MpServer', x=224.06, y=63.00, z=169.42], EntityOtherPlayerMP['0oaa'/1044468, l='MpServer', x=215.13, y=62.00, z=174.84], EntitySheep['Sheep'/1092562, l='MpServer', x=186.72, y=62.00, z=186.38], EntitySheep['Sheep'/1092564, l='MpServer', x=190.19, y=62.00, z=187.13], EntityVillager['Aim8'/955593, l='MpServer', x=179.50, y=73.50, z=134.50], EntitySheep['Sheep'/1092507, l='MpServer', x=186.03, y=62.00, z=185.34], EntityOtherPlayerMP['iE_60_b'/1092604, l='MpServer', x=265.97, y=62.00, z=179.69], EntityVillager['Aim4'/1086088, l='MpServer', x=185.50, y=62.00, z=134.50], EntityArmorStand['§6Nofall/Fly/Glide'/26, l='MpServer', x=214.50, y=65.66, z=140.50], EntityArmorStand['§6AntiCactus'/27, l='MpServer', x=215.50, y=65.66, z=156.50], EntityArmorStand['§6Scaffold'/28, l='MpServer', x=239.50, y=65.66, z=164.50], EntityArmorStand['§6Step'/29, l='MpServer', x=208.50, y=65.66, z=140.50], EntityArmorStand['§6Fastladder'/30, l='MpServer', x=208.50, y=65.66, z=180.50], EntityArmorStand['§6Jesus'/31, l='MpServer', x=214.50, y=65.66, z=188.50], EntityArmorStand['§6Esp'/32, l='MpServer', x=208.50, y=65.66, z=199.50], EntitySheep['Sheep'/1092528, l='MpServer', x=187.91, y=62.00, z=185.47], EntityArmorStand['§6KillauraAimTest 1'/33, l='MpServer', x=190.50, y=65.66, z=170.50], EntityArmorStand['§6AntiFire'/34, l='MpServer', x=215.50, y=65.66, z=168.50], EntityVillager['Aim3'/1040364, l='MpServer', x=179.50, y=62.00, z=134.50], EntityArmorStand['§6TerrainSpeed'/36, l='MpServer', x=250.50, y=65.66, z=160.50], EntityArmorStand['§6Snow'/38, l='MpServer', x=207.50, y=65.66, z=156.50], EntityArmorStand['§6Phase'/39, l='MpServer', x=235.50, y=65.66, z=211.50], EntityArmorStand['§6ChestStealer'/40, l='MpServer', x=200.50, y=65.66, z=195.50], EntityOtherPlayerMP['iE_60_b'/1092604, l='MpServer', x=265.97, y=62.00, z=179.69], EntityArmorStand['§6KillauraSwitchTest'/45, l='MpServer', x=189.50, y=65.66, z=186.50], EntityArmorStand['§6BedFucker'/46, l='MpServer', x=185.50, y=65.66, z=195.50], EntityArmorStand['§6PVP'/47, l='MpServer', x=181.50, y=65.66, z=160.50], EntityArmorStand['§6KillauraAimTest 2'/48, l='MpServer', x=179.50, y=65.66, z=170.50], EntityArmorStand['§6KillauraMultiTest1'/49, l='MpServer', x=179.50, y=65.66, z=186.50], EntitySheep['Sheep'/1092578, l='MpServer', x=190.09, y=62.00, z=185.19], EntitySheep['Sheep'/1092133, l='MpServer', x=192.47, y=62.00, z=187.28], EntitySheep['Sheep'/1092198, l='MpServer', x=191.09, y=62.00, z=187.41], EntityOtherPlayerMP['0oaa'/1044468, l='MpServer', x=215.13, y=62.00, z=174.84], EntitySheep['Sheep'/1092267, l='MpServer', x=188.69, y=62.00, z=188.72], EntityArmorStand['§6KillauraWallTest'/62, l='MpServer', x=181.50, y=65.66, z=139.50]]
+	Retry entities: 0 total; []
+	Server brand: DionaSpigot (Velocity)
+	Server type: Non-integrated multiplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:401)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2286)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:362)
+	at net.minecraft.client.main.Main.main(Main.java:123)
+	at Start.main(Start.java:9)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_372, BellSoft
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), BellSoft
+	Memory: 735630224 bytes (701 MB) / 953679872 bytes (909 MB) up to 954728448 bytes (910 MB)
+	JVM Flags: 2 total; -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 531.79, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: gamerswordpack.zip
+	Current Language: English (UK)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-9700F CPU @ 3.00GHz
+	OptiFine Version: OptiFine_1.8.9_HD_U_M5
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 10
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 531.79
+	OpenGlRenderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 8

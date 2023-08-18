@@ -4,6 +4,7 @@ import dev.menace.module.modules.movement.flight.ncp.*;
 import dev.menace.module.modules.movement.flight.other.*;
 import dev.menace.module.modules.movement.flight.vanilla.*;
 import dev.menace.module.modules.movement.flight.verus.*;
+import dev.menace.module.modules.movement.flight.vulcan.*;
 
 public enum FlightMode {
 
@@ -15,6 +16,7 @@ public enum FlightMode {
 	VERUSBOB("Bob", new VerusBobFly(), FlightType.VERUS),
 	NCPSLIME("NCPSlime", new NCPSlimeFly(), FlightType.NCP),
 	OLDNCP("OldNCP", new OldNCPFly(), FlightType.NCP),
+	VULCANCLIP("Clip", new VulcanClipFly(), FlightType.VULCAN),
 	MATRIXDAMAGEFLY("MatrixDamage", new MatrixDamageFly(), FlightType.OTHER);
 	
 	
@@ -41,6 +43,7 @@ public enum FlightMode {
 		VANILLA("Vanilla"),
 		VERUS("Verus"),
 		NCP("NCP"),
+		VULCAN("Vulcan"),
 		OTHER("Other");
 		
 		final String name;

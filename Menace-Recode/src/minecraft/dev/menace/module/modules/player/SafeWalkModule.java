@@ -9,7 +9,7 @@ public class SafeWalkModule extends BaseModule {
 	public ToggleSetting inair;
 	
 	public SafeWalkModule() {
-		super("SafeWalk", Category.PLAYER, 0);
+		super("SafeWalk", "No fall off block", Category.PLAYER, 0);
 	}
 	
 	@Override

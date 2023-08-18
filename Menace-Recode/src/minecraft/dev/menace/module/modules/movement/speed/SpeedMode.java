@@ -9,10 +9,11 @@ public enum SpeedMode {
 
     BHOP("BHop", new BhopSpeed(), SpeedType.VANILLA),
     STRAFE("Strafe", new StrafeSpeed(), SpeedType.VANILLA),
+    LEGIT("Legit", new LegitSpeed(), SpeedType.VANILLA),
     VERUSLOWHOP("LowHop", new VerusLowhopSpeed(), SpeedType.VERUS),
     NCPLOWHOP("LowHop", new NCPLowHopSpeed(), SpeedType.NCP),
+    BLOCKSMC("Strafe", new NCPStrafeSpeed(), SpeedType.NCP),
     NCPWTFSPEED("WTF (OldNCP)", new NCPWTFSpeed(), SpeedType.NCP),
-    BLOCKSMC("BlocksMC", new BlocksMCSpeed(), SpeedType.OTHER),
     EXPERIMENTAL("Experimental", new ExperimentalSpeed(), SpeedType.OTHER);
 
     final String name;

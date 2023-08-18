@@ -8,7 +8,7 @@ import dev.menace.module.Category;
 public class FastPlaceModule extends BaseModule {
 
 	public FastPlaceModule() {
-		super("FastPlace", Category.WORLD, 0);
+		super("FastPlace", "Blocks go brrrrrrrrrrr", Category.WORLD, 0);
 	}
 
 	@EventTarget

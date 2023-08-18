@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class AutoLoginModule extends BaseModule {
     public AutoLoginModule() {
-        super("AutoLogin", Category.MISC, 0);
+        super("AutoLogin", "Automatically types /register and /login on servers", Category.MISC, 0);
     }
 
     @EventTarget

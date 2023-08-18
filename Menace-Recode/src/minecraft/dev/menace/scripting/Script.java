@@ -2,6 +2,7 @@ package dev.menace.scripting;
 
 import dev.menace.Menace;
 import dev.menace.event.Event;
+import dev.menace.event.events.*;
 import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
@@ -24,6 +25,9 @@ import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Script {
 
@@ -50,24 +54,49 @@ public class Script {
     }
 
     private void addVars() {
-        scriptEngine.put("ScriptManager", StaticClass.forClass(ScriptMngrMap.class));
-        scriptEngine.put("Script", StaticClass.forClass(ScriptMap.class));
-        scriptEngine.put("Module", StaticClass.forClass(ModuleMap.class));
-        scriptEngine.put("HudElement", StaticClass.forClass(ElementMap.class));
-        scriptEngine.put("SliderSetting", StaticClass.forClass(SliderSetting.class));
-        scriptEngine.put("BooleanSetting", StaticClass.forClass(ToggleSetting.class));
-        scriptEngine.put("ListSetting", StaticClass.forClass(ListSetting.class));
-        scriptEngine.put("Player", StaticClass.forClass(PlayerMap.class));
-        scriptEngine.put("EventList", StaticClass.forClass(EventListMap.class));
-        scriptEngine.put("ChatUtils", StaticClass.forClass(ChatUtils.class));
-        scriptEngine.put("MovementUtils", StaticClass.forClass(MovementUtils.class));
-        scriptEngine.put("RenderUtils", StaticClass.forClass(RenderUtils.class));
-        scriptEngine.put("PacketUtils", StaticClass.forClass(PacketUtilsMap.class));
-        //scriptEngine.put("mc", StaticClass.forClass(Minecraft.getMinecraft().getClass()));
 
-        //List all Event classes and bind them
-        for (Class<? extends Event> clazz : Menace.instance.eventManager.getClasses()) {
-            scriptEngine.put(StringGrabber.getString(clazz.getAnnotation(JSMapping.class).value()), StaticClass.forClass(clazz));
+        //Funny Obf thing mby
+        Map<Class<?>, String> classes = new HashMap<>();
+        classes.put(ScriptMngrMap.class, "ScriptManager");
+        classes.put(ScriptMap.class, "Script");
+        classes.put(ModuleMap.class, "Module");
+        classes.put(SliderSetting.class, "SliderSetting");
+        classes.put(ToggleSetting.class, "BooleanSetting");
+        classes.put(ListSetting.class, "ListSetting");
+        classes.put(PlayerMap.class, "Player");
+        classes.put(EventListMap.class, "EventList");
+        classes.put(ChatUtils.class, "ChatUtils");
+        classes.put(MovementUtils.class, "MovementUtils");
+        classes.put(RenderUtils.class, "RenderUtils");
+        classes.put(PacketUtilsMap.class, "PacketUtils");
+
+        //Events
+        classes.put(EventAttack.class, StringGrabber.getString(EventAttack.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventChatOutput.class, StringGrabber.getString(EventChatOutput.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventCollide.class, StringGrabber.getString(EventCollide.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventConnection.class, StringGrabber.getString(EventConnection.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventDeath.class, StringGrabber.getString(EventDeath.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventJump.class, StringGrabber.getString(EventJump.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventKey.class, StringGrabber.getString(EventKey.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventMouse.class, StringGrabber.getString(EventMouse.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventMove.class, StringGrabber.getString(EventMove.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventPostMotion.class, StringGrabber.getString(EventPostMotion.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventPreMotion.class, StringGrabber.getString(EventPreMotion.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventReceivePacket.class, StringGrabber.getString(EventReceivePacket.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventRender2D.class, StringGrabber.getString(EventRender2D.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventRender3D.class, StringGrabber.getString(EventRender3D.class.getAnnotation(JSMapping.class).value()));
+        //classes.put(EventRenderNametag.class, StringGrabber.getString(EventRenderNametag.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventSendPacket.class, StringGrabber.getString(EventSendPacket.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventSlowdown.class, StringGrabber.getString(EventSlowdown.class.getAnnotation(JSMapping.class).value()));
+        //classes.put(EventSpawnEntity.class, StringGrabber.getString(EventSpawnEntity.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventStep.class, StringGrabber.getString(EventStep.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventTeleport.class, StringGrabber.getString(EventTeleport.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventUpdate.class, StringGrabber.getString(EventUpdate.class.getAnnotation(JSMapping.class).value()));
+        classes.put(EventWorldChange.class, StringGrabber.getString(EventWorldChange.class.getAnnotation(JSMapping.class).value()));
+
+        //Im retarded and should have just done it with scriptEngine.put("name", object); but too late now
+        for (Map.Entry<Class<?>, String> entry : classes.entrySet()) {
+            scriptEngine.put(entry.getValue(), StaticClass.forClass(entry.getKey()));
         }
 
         //Not obfed

@@ -15,6 +15,7 @@
     "Settings": {
       "Delay": 100.0,
       "Health": 15.0,
+      "ThrowSpeed": true,
       "OnlyOnGround": true,
       "Visible": true
     }
@@ -31,14 +32,14 @@
   "Criticals": {
     "Toggled": false,
     "Settings": {
-      "Mode": "NCP",
+      "Mode": "Packet",
       "Visible": true
     }
   },
   "KillAura": {
     "Toggled": false,
     "Settings": {
-      "Reach": 3.8000000000000003,
+      "Reach": 4.0,
       "MinCPS": 16.0,
       "MaxCPS": 18.0,
       "Mode": "Switch",
@@ -48,7 +49,7 @@
       "FOV": 360.0,
       "Filter": "Distance",
       "AttackPoint": "Cock",
-      "AutoBlock": "Pre",
+      "AutoBlock": "Fake",
       "KeepSprint": true,
       "NoSwing": false,
       "ThroughWalls": true,
@@ -78,6 +79,10 @@
     "Settings": {
       "Mode": "Simple",
       "Explosions": true,
+      "Horizontal": 0.0,
+      "Vertical": 0.0,
+      "Smooth": true,
+      "HurtTime": 10.0,
       "Visible": true
     }
   },
@@ -94,6 +99,7 @@
       "VanillaMode": "Damage",
       "VerusMode": "Bob",
       "NCPMode": "NCPSlime",
+      "VulcanMode": "Clip",
       "OtherMode": "MatrixDamage",
       "DmgMode": "Jump",
       "Speed": 1.0,
@@ -120,6 +126,7 @@
       "Other Mode": "BlocksMC",
       "Speed": 7.0,
       "AutoDisable": false,
+      "Timer Mode": "Standard",
       "Visible": true
     }
   },
@@ -135,6 +142,7 @@
     "Settings": {
       "Mode": "NCP",
       "Height": 1.0,
+      "Timer": 0.5,
       "Visible": true
     }
   },
@@ -166,6 +174,12 @@
       "FakePlayer": true,
       "Pulse": false,
       "PulseAmount": 20.0,
+      "Visible": true
+    }
+  },
+  "InventorySync": {
+    "Toggled": false,
+    "Settings": {
       "Visible": true
     }
   },
@@ -234,8 +248,8 @@
       "Sprint": false,
       "SilentSwap": true,
       "KeepY": false,
-      "Bypass": true,
-      "Rotation Mode": "Normal1",
+      "Bypass": false,
+      "Rotation Mode": "Normal2",
       "KeepRotations": true,
       "BlocksMC": false,
       "Eagle": false,
@@ -337,7 +351,7 @@
     }
   },
   "ESP": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Visible": true
     }
@@ -348,38 +362,18 @@
       "Visible": false
     }
   },
-  "HUD": {
-    "Toggled": true,
-    "Settings": {
-      "Watermark": true,
-      "ArrayList": true,
-      "ArrayAlign": "Right",
-      "ArrayOutline": "None",
-      "ArrayAlpha": 100.0,
-      "Position": true,
-      "Position Mode": "Single",
-      "Ping": true,
-      "Armour": true,
-      "GameStats": true,
-      "TargetHUD": true,
-      "Notifications": true,
-      "TabGui": false,
-      "Spotify": true,
-      "Custom Font": true,
-      "Color": "Custom",
-      "RBW Speed": 10.0,
-      "Red": 255.0,
-      "Green": 0.0,
-      "Blue": 0.0,
-      "Alpha": 255.0,
-      "HUD Editor": false,
-      "Visible": false
-    }
-  },
   "ItemPhysics": {
     "Toggled": true,
     "Settings": {
       "Visible": false
+    }
+  },
+  "Nametags": {
+    "Toggled": true,
+    "Settings": {
+      "Custom Font": true,
+      "Only Players": true,
+      "Visible": true
     }
   },
   "TimeChanger": {
@@ -437,6 +431,12 @@
       "Insults": false,
       "Valorant": true,
       "Type": "Spectrum",
+      "Visible": true
+    }
+  },
+  "MCF": {
+    "Toggled": false,
+    "Settings": {
       "Visible": true
     }
   },

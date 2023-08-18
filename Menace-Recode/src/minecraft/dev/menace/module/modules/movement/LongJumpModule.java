@@ -9,6 +9,7 @@ import dev.menace.module.settings.SliderSetting;
 import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.player.MovementUtils;
 import dev.menace.utils.player.PacketUtils;
+import dev.menace.utils.world.TimerHandler;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.potion.Potion;
 
@@ -22,7 +23,7 @@ public class LongJumpModule extends BaseModule {
 	boolean disable;
 
 	public LongJumpModule() {
-		super("LongJump", Category.MOVEMENT, 0);
+		super("LongJump", "Jumps but long", Category.MOVEMENT, 0);
 	}
 
 	@Override
@@ -67,6 +68,13 @@ public class LongJumpModule extends BaseModule {
 		super.onEnable();
 	}
 
+	@Override
+	public void onDisable() {
+		mc.thePlayer.speedInAir = 0.02f;
+		TimerHandler.resetTimer();
+		super.onDisable();
+	}
+
 	@EventTarget
 	public void onPre(EventPreMotion event) {
 		switch(mode.getValue()) {
@@ -74,8 +82,8 @@ public class LongJumpModule extends BaseModule {
 				//TODO: Improve NCP Mode
 				if (count == 0) {
 					mc.thePlayer.jump();
-					mc.thePlayer.setPosition(mc.thePlayer.posX, mc.thePlayer.posY - 0.1, mc.thePlayer.posZ);
-					mc.thePlayer.motionY = 0.45;
+					//mc.thePlayer.setPosition(mc.thePlayer.posX, mc.thePlayer.posY - 0.1, mc.thePlayer.posZ);
+					//mc.thePlayer.motionY = 0.45;
 					if (mc.thePlayer.isPotionActive(Potion.moveSpeed)) {
 						if (mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier() == 0) {
 							MovementUtils.strafe(0.65f);
@@ -88,11 +96,11 @@ public class LongJumpModule extends BaseModule {
 					count++;
 				}
 
-				if (mc.thePlayer.motionY < 0.0 && count >= 1) {
+				if (count == 1) {
+					mc.thePlayer.speedInAir = 0.025f;
+				}
 
-					mc.thePlayer.motionY = (Math.round(mc.thePlayer.motionY * 100.0) / 100.0);
-
-					count++;
+				if (mc.thePlayer.motionY < 0.0) {
 					disable = true;
 				}
 

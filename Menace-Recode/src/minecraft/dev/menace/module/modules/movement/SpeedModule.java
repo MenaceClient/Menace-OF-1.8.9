@@ -7,17 +7,20 @@ import dev.menace.event.events.EventReceivePacket;
 import dev.menace.event.events.EventUpdate;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
+import dev.menace.module.DontSaveState;
 import dev.menace.module.modules.movement.speed.SpeedBase;
 import dev.menace.module.modules.movement.speed.SpeedMode;
 import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.module.settings.ToggleSetting;
 import dev.menace.utils.misc.ChatUtils;
+import dev.menace.utils.world.TimerHandler;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.network.play.server.S08PacketPlayerPosLook;
 
 import java.util.ArrayList;
 
+@DontSaveState
 public class SpeedModule extends BaseModule {
 
     private int flagCount;
@@ -29,11 +32,12 @@ public class SpeedModule extends BaseModule {
     ListSetting otherMode;
     public SliderSetting speed;
     ToggleSetting autoDisable;
+    public ListSetting timerMode;
 
     private SpeedBase speedBase;
 
     public SpeedModule() {
-        super("Speed", Category.MOVEMENT, 0);
+        super("Speed", "Zoom", Category.MOVEMENT, 0);
     }
 
     @Override
@@ -97,6 +101,13 @@ public class SpeedModule extends BaseModule {
 
         speed = new SliderSetting("Speed", true, 1, 1, 10, true);
         autoDisable = new ToggleSetting("AutoDisable", true, true);
+        timerMode = new ListSetting("Timer Mode", true, "Standard", new String[] {"Standard", "PacketBalance", "None"}) {
+            @Override
+            public void constantCheck() {
+                this.setVisible(mode.getValue().equalsIgnoreCase("NCP") && ncpMode.getValue().equalsIgnoreCase("LowHop"));
+                super.constantCheck();
+            }
+        };
         this.rSetting(mode);
         this.rSetting(vanillaMode);
         this.rSetting(verusMode);
@@ -104,6 +115,7 @@ public class SpeedModule extends BaseModule {
         this.rSetting(otherMode);
         this.rSetting(speed);
         this.rSetting(autoDisable);
+        this.rSetting(timerMode);
         super.setup();
     }
 
@@ -139,7 +151,7 @@ public class SpeedModule extends BaseModule {
     @Override
     public void onDisable() {
         mc.gameSettings.keyBindJump.pressed = GameSettings.isKeyDown(mc.gameSettings.keyBindJump);
-        mc.timer.timerSpeed = 1.0f;
+        TimerHandler.resetTimer();
         mc.thePlayer.speedInAir = 0.02f;
         super.onDisable();
         speedBase.onDisable();

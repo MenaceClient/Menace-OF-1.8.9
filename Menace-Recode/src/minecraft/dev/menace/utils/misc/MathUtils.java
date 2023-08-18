@@ -3,6 +3,8 @@ package dev.menace.utils.misc;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Random;
 
 public class MathUtils {
@@ -33,13 +35,7 @@ public class MathUtils {
     }
 
     public static float clamp(float angle, float min, float max) {
-        if (angle < min) {
-            angle = min;
-        }
-        if (angle > max) {
-            angle = max;
-        }
-        return angle;
+        return Math.max(min, Math.min(max, angle));
     }
 
     public static double precisionRound (double value, int precision) {
@@ -63,6 +59,23 @@ public class MathUtils {
             array[i] = start + i * (end - start) / count;
         }
         return array;
+    }
+
+    public static double roundToPlace(double value, int places) {
+        if (places < 0) {
+            throw new IllegalArgumentException();
+        }
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
+
+
+    public static double snapToStep(double value, double valueStep) {
+        if (valueStep > 0.0F)
+            value = valueStep * (double) Math.round(value / valueStep);
+
+        return value;
     }
 	
 }

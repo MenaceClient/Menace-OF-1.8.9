@@ -2,11 +2,11 @@ package dev.menace.ui.hud.elements;
 
 import com.google.gson.JsonObject;
 import dev.menace.Menace;
+import dev.menace.ui.hud.BaseElement;
+import dev.menace.ui.hud.options.BooleanOption;
+import dev.menace.utils.render.RenderUtils;
 import dev.menace.utils.render.animtion.Animate;
 import dev.menace.utils.render.animtion.Easing;
-import dev.menace.ui.hud.BaseElement;
-import dev.menace.utils.render.RenderUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.util.ResourceLocation;
 
@@ -19,16 +19,23 @@ import java.util.Objects;
 
 public class SpotifyElement extends BaseElement {
 
+    private boolean customFont;
+
     String imageLink = "";
     ResourceLocation albumImage = null;
     private JsonObject lastSongData = null;
-    private final Animate songAnimation;
-    private final Animate artistAnimation;
+    private final Animate songAnimation = new Animate().setMin(0).setMax(5).setSpeed(5).setEase(Easing.QUAD_IN_OUT).setReversed(false);
+    private final Animate artistAnimation = new Animate().setMin(0).setMax(5).setSpeed(5).setEase(Easing.QUAD_IN_OUT).setReversed(false);
 
-    public SpotifyElement() {
-        super(1, 76, true);
-        songAnimation = new Animate().setMin(0).setMax(5).setSpeed(5).setEase(Easing.QUAD_IN_OUT).setReversed(false);
-        artistAnimation = new Animate().setMin(0).setMax(5).setSpeed(5).setEase(Easing.QUAD_IN_OUT).setReversed(false);
+    @Override
+    public void setup() {
+        this.addOption(new BooleanOption("Custom Font", false) {
+            @Override
+            public void update() {
+                SpotifyElement.this.customFont = this.getValue();
+                super.update();
+            }
+        });
     }
 
     @Override
@@ -52,7 +59,7 @@ public class SpotifyElement extends BaseElement {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            albumImage = Minecraft.getMinecraft().getTextureManager().getDynamicTextureLocation("image", new DynamicTexture(texture));
+            albumImage = mc.getTextureManager().getDynamicTextureLocation("image", new DynamicTexture(texture));
         }
 
         String songName = songData.get("name").getAsString();
@@ -68,10 +75,10 @@ public class SpotifyElement extends BaseElement {
         //IM GOING TO KILL MYSELF
 
         //Make the song name scroll back and forth slowly
-        if (this.getStringWidth(songName) > 100) {
+        if (this.getStringWidth(songName, this.customFont) > 100) {
             if (songchanged) songAnimation.setValue(0);
 
-            int length = songName.length() - this.reverseWrapString(songName, 100).length() + "_".length();
+            int length = songName.length() - this.reverseWrapString(songName, 100, this.customFont).length() + "_".length();
             songAnimation.setMax(length);
             songAnimation.update();
 
@@ -81,15 +88,15 @@ public class SpotifyElement extends BaseElement {
                 songAnimation.setReversed(false);
             }
 
-            songName = this.wrapString(songName.substring((int) songAnimation.getValue()), 100);
+            songName = this.wrapString(songName.substring((int) songAnimation.getValue()), 100, this.customFont);
         }
 
         //Make the artist name scroll back and forth slowly
         String newName = artistName.toString();
-        if (this.getStringWidth(newName) > 100) {
+        if (this.getStringWidth(newName, this.customFont) > 100) {
             if (songchanged) artistAnimation.setValue(0);
 
-            int length = newName.length() - this.reverseWrapString(newName, 100).length() + "_".length();
+            int length = newName.length() - this.reverseWrapString(newName, 100, this.customFont).length() + "_".length();
             artistAnimation.setMax(length);
             artistAnimation.update();
 
@@ -100,23 +107,22 @@ public class SpotifyElement extends BaseElement {
                 artistAnimation.setReversed(false);
             }
 
-            newName = this.wrapString(newName.substring((int) artistAnimation.getValue()), 100);
+            newName = this.wrapString(newName.substring((int) artistAnimation.getValue()), 100, this.customFont);
         }
 
-        RenderUtils.drawRoundedRect(this.getAbsoluteX(), this.getAbsoluteY(), this.getAbsoluteX() + 150, this.getAbsoluteY() + 45, 5, new Color(0, 0, 0, 120).getRGB());
+        RenderUtils.drawRoundedRect((float) this.getPosX(), (float) this.getPosY(), (float) (this.getPosX() + 150), (float) (this.getPosY() + 45), 5, new Color(0, 0, 0, 120).getRGB());
 
-        RenderUtils.drawImage(this.getAbsoluteX() + 5, this.getAbsoluteY() + 5, 30, 30, albumImage, Color.white);
+        RenderUtils.drawImage((float) (this.getPosX() + 5), (float) (this.getPosY() + 5), 30, 30, albumImage, Color.white);
 
-        this.drawString(songName, this.getAbsoluteX() + 40, this.getAbsoluteY() + 5, Color.white.getRGB());
-        this.drawString(newName, this.getAbsoluteX() + 40, this.getAbsoluteY() + this.getFontHeight() + 10, Color.white.getRGB());
+        this.drawString(songName, this.getPosX() + 40, this.getPosY() + 5, Color.white.getRGB(), this.customFont);
+        this.drawString(newName, this.getPosX() + 40, this.getPosY() + this.getFontHeight(this.customFont) + 10, Color.white.getRGB(), this.customFont);
 
         //Draws the progress bar
         int progressPercentage = (int) (((double) songProgress / (double) songData.get("duration_ms").getAsInt()) * 145);
         progressPercentage = 145 - progressPercentage;
         progressPercentage = Math.max(0, progressPercentage);
-        RenderUtils.drawRoundedRect(this.getAbsoluteX() + 5, this.getAbsoluteY() + 42, this.getAbsoluteX() + 145, this.getAbsoluteY() + 38, 2, new Color(0, 0, 0, 120).getRGB());
-        RenderUtils.drawRoundedRect(this.getAbsoluteX() + 5, this.getAbsoluteY() + 42, this.getAbsoluteX() + 5 + progressPercentage, this.getAbsoluteY() + 38, 2, new Color(255, 255, 255, 255).getRGB());
-
+        RenderUtils.drawRoundedRect((float) (this.getPosX() + 5), (float) (this.getPosY() + 42), (float) (this.getPosX() + 145), (float) (this.getPosY() + 38), 2, new Color(0, 0, 0, 120).getRGB());
+        RenderUtils.drawRoundedRect((float) (this.getPosX() + 5), (float) (this.getPosY() + 42), (float) (this.getPosX() + 5 + progressPercentage), (float) (this.getPosY() + 38), 2, new Color(255, 255, 255, 255).getRGB());
     }
 
     @Override

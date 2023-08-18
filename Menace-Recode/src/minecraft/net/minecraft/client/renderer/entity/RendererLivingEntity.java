@@ -5,6 +5,7 @@ import java.nio.FloatBuffer;
 import java.util.List;
 
 import dev.menace.Menace;
+import dev.menace.event.events.EventRenderNametag;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.FontRenderer;
@@ -634,6 +635,14 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
 
     public void renderName(T entity, double x, double y, double z)
     {
+
+        EventRenderNametag event = new EventRenderNametag(entity, x, y, z);
+        event.call();
+
+        if (event.isCancelled()) {
+            return;
+        }
+
         if (!Reflector.RenderLivingEvent_Specials_Pre_Constructor.exists() || !Reflector.postForgeBusEvent(Reflector.RenderLivingEvent_Specials_Pre_Constructor, new Object[] {entity, this, Double.valueOf(x), Double.valueOf(y), Double.valueOf(z)}))
         {
             if (this.canRenderName(entity))
@@ -680,7 +689,7 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
                         tessellator.draw();
                         GlStateManager.enableTexture2D();
                         GlStateManager.depthMask(true);
-                        fontrenderer.drawString(s[0], -fontrenderer.getStringWidth(s[0]) / 2, 0, 553648127);
+                        fontrenderer.drawString(s[0], (double) -fontrenderer.getStringWidth(s[0]) / 2, 0, 553648127);
                         GlStateManager.enableLighting();
                         GlStateManager.disableBlend();
                         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -695,7 +704,7 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
 
             if (Reflector.RenderLivingEvent_Specials_Post_Constructor.exists())
             {
-                Reflector.postForgeBusEvent(Reflector.RenderLivingEvent_Specials_Post_Constructor, new Object[] {entity, this, Double.valueOf(x), Double.valueOf(y), Double.valueOf(z)});
+                Reflector.postForgeBusEvent(Reflector.RenderLivingEvent_Specials_Post_Constructor, entity, this, x, Double.valueOf(y), Double.valueOf(z));
             }
         }
     }

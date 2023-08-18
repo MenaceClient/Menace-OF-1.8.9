@@ -27,7 +27,7 @@ public class AntiBotModule extends BaseModule {
     ToggleSetting hideBots;
 
     public AntiBotModule() {
-        super("AntiBot", Category.COMBAT, 0);
+        super("AntiBot", "Removes anticheat bots", Category.COMBAT, 0);
     }
 
     @Override

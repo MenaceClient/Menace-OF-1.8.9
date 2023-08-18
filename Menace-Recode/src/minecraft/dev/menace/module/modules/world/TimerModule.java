@@ -5,13 +5,14 @@ import dev.menace.event.events.EventUpdate;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.module.settings.SliderSetting;
+import dev.menace.utils.world.TimerHandler;
 
 public class TimerModule extends BaseModule {
 
 	SliderSetting speed;
 	
 	public TimerModule() {
-		super("Timer", "Changes the world speed.", Category.WORLD, 0);
+		super("Timer", "Changes the world speed", Category.WORLD, 0);
 	}
 	
 	@Override
@@ -23,12 +24,12 @@ public class TimerModule extends BaseModule {
 	
 	@EventTarget
 	public void onUpdate(EventUpdate event) {
-		mc.timer.timerSpeed = speed.getValueF();
+		TimerHandler.setTimer(speed.getValueF(), 999);
 	}
 	
 	@Override
 	public void onDisable() {
-		mc.timer.timerSpeed = 1;
+		TimerHandler.resetTimer();
 		super.onDisable();
 	}
 

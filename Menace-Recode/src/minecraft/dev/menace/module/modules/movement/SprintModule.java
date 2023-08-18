@@ -15,7 +15,7 @@ public class SprintModule extends BaseModule {
 	public ToggleSetting omniSprint;
 	
 	public SprintModule() {
-		super("Sprint", Category.MOVEMENT, 0);
+		super("Sprint", "ToggleSprint but better", Category.MOVEMENT, 0);
 	}
 	
 	@Override

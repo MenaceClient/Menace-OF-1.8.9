@@ -11,7 +11,7 @@ import net.minecraft.network.play.server.S02PacketChat;
 public class TranslatorModule extends BaseModule {
 
     public TranslatorModule() {
-        super("Translator", Category.MISC, 0);
+        super("Translator", "Fuck Chinks", Category.MISC, 0);
     }
 
     @EventTarget

@@ -1,57 +1,71 @@
 {
   "ArmourElement": {
-    "X": 486,
-    "Y": 482,
-    "Visible": true
+    "X": 870.0,
+    "Y": 522.0,
+    "Options": {}
   },
   "ArrayElement": {
-    "X": 920,
-    "Y": 1,
-    "Visible": true
+    "X": 920.0,
+    "Y": 0.0,
+    "Options": {
+      "Custom Font": true,
+      "Align": "Right",
+      "Outline": "Full",
+      "Color Mode": "Fade",
+      "Color": -65536,
+      "Color2": -16777216
+    }
   },
   "GameStatsElement": {
-    "X": 1,
-    "Y": 15,
-    "Visible": true
-  },
-  "NotificationElement": {
-    "X": 910,
-    "Y": 530,
-    "Visible": true
+    "X": 0.0,
+    "Y": 29.0,
+    "Options": {
+      "Custom Font": true,
+      "Color": -65536
+    }
   },
   "PingElement": {
-    "X": 1,
-    "Y": 520,
-    "Visible": true
+    "X": 0.0,
+    "Y": 530.0,
+    "Options": {
+      "Custom Font": true,
+      "Color": -65536
+    }
   },
-  "PosElement": {
-    "X": 1,
-    "Y": 530,
-    "Visible": true
+  "PositionElement": {
+    "X": 0.0,
+    "Y": 530.0,
+    "Options": {
+      "Custom Font": true,
+      "Color": -65536,
+      "Mode": "Single"
+    }
   },
   "ScoreboardElement": {
-    "X": 880,
-    "Y": 221,
-    "Visible": true
-  },
-  "SpotifyElement": {
-    "X": 1,
-    "Y": 76,
-    "Visible": false
-  },
-  "TabGuiElement": {
-    "X": 1,
-    "Y": 117,
-    "Visible": false
+    "X": 869.0,
+    "Y": 250.0,
+    "Options": {
+      "Custom Font": true
+    }
   },
   "TargetHudElement": {
-    "X": 440,
-    "Y": 277,
-    "Visible": true
+    "X": 862.0,
+    "Y": 500.0,
+    "Options": {
+      "CustomFont": true
+    }
   },
   "WatermarkElement": {
-    "X": 1,
-    "Y": 1,
-    "Visible": true
+    "X": 0.0,
+    "Y": 0.0,
+    "Options": {
+      "Custom Font": true,
+      "Color": -65536
+    }
+  },
+  "HUDSettingsElement": {
+    "X": 50.0,
+    "Y": 50.0,
+    "Options": {}
   }
 }

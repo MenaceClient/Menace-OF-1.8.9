@@ -10,7 +10,7 @@ public class FullbrightModule extends BaseModule {
 	float oldBrightness;
 	
 	public FullbrightModule() {
-		super("Fullbright", "Changes the world light level.", Category.RENDER, 0);
+		super("Fullbright", "Changes the world light level", Category.RENDER, 0);
 	}
 	
 	@Override

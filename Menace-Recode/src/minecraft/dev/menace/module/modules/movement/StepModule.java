@@ -10,6 +10,8 @@ import dev.menace.module.settings.ListSetting;
 import dev.menace.module.settings.SliderSetting;
 import dev.menace.utils.misc.ChatUtils;
 import dev.menace.utils.player.PacketUtils;
+import dev.menace.utils.timer.MSTimer;
+import dev.menace.utils.world.TimerHandler;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -28,8 +30,12 @@ public class StepModule extends BaseModule {
 	//MotionStep
 	int motionStepState = 0;
 
+	//Smooth
+	MSTimer smoothTimer = new MSTimer();
+	boolean hasStepped = false;
+
 	public StepModule() {
-		super("Step", Category.MOVEMENT, 0);
+		super("Step", "Allows you to step up full blocks", Category.MOVEMENT, 0);
 	}
 
 	@Override
@@ -50,9 +56,22 @@ public class StepModule extends BaseModule {
 		super.onEnable();
 	}
 
+	@Override
+	public void onDisable() {
+		TimerHandler.resetTimer();
+		hasStepped = false;
+		super.onDisable();
+	}
+
 	@EventTarget
 	public void onUpdate(EventUpdate event) {
 		this.setDisplayName(mode.getValue());
+
+		if (smoothTimer.hasTimePassed(100) && hasStepped) {
+			TimerHandler.resetTimer();
+			hasStepped = false;
+		}
+
 	}
 
 	@EventTarget
@@ -73,10 +92,9 @@ public class StepModule extends BaseModule {
 	@EventTarget
 	public void onStep(EventStep event) {
 
-		if (event.getState() == EventStep.StepState.PRE) {
-			mc.timer.timerSpeed = timer.getValueF();
-		} else {
-			mc.timer.timerSpeed = 1F;
+		if (event.getState() == EventStep.StepState.POST && event.getStepHeight() > 0.5f) {
+			TimerHandler.setTimer(timer.getValueF(), 50);
+			hasStepped = true;
 		}
 
 		if (mode.getValue().equalsIgnoreCase("Verus")) {

@@ -2,8 +2,10 @@ package dev.menace.module.settings;
 
 public class DividerSetting extends Setting {
     private boolean open = false;
-    public DividerSetting(String name, boolean visible) {
+    private final Setting[] settings;
+    public DividerSetting(String name, boolean visible, Setting... settings) {
         super(name, visible);
+        this.settings = settings;
     }
 
     public boolean isOpen() {
@@ -14,4 +16,7 @@ public class DividerSetting extends Setting {
         this.open = open;
     }
 
+    public Setting[] getSettings() {
+        return settings;
+    }
 }

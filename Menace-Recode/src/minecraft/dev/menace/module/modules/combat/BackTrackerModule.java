@@ -34,7 +34,7 @@ public class BackTrackerModule extends BaseModule {
     ToggleSetting onlyTarget;
 
     public BackTrackerModule() {
-        super("BackTracker", Category.COMBAT, 0);
+        super("BackTracker", "Fakes lagging so you can hit people from further away", Category.COMBAT, 0);
     }
 
     @Override

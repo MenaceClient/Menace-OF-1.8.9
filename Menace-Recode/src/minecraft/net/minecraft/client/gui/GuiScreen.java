@@ -91,7 +91,7 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
 
         for (int j = 0; j < this.labelList.size(); ++j)
         {
-            ((GuiLabel)this.labelList.get(j)).drawLabel(this.mc, mouseX, mouseY);
+            this.labelList.get(j).drawLabel(this.mc, mouseX, mouseY);
         }
     }
 
@@ -103,7 +103,7 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
     {
         if (keyCode == 1)
         {
-            this.mc.displayGuiScreen((GuiScreen)null);
+            this.mc.displayGuiScreen(null);
 
             if (this.mc.currentScreen == null)
             {
@@ -126,9 +126,9 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
                 return (String)transferable.getTransferData(DataFlavor.stringFlavor);
             }
         }
-        catch (Exception var1)
+        catch (Exception ignored)
         {
-            ;
+
         }
 
         return "";
@@ -146,9 +146,9 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
                 StringSelection stringselection = new StringSelection(copyText);
                 Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringselection, (ClipboardOwner)null);
             }
-            catch (Exception var2)
+            catch (Exception ignored)
             {
-                ;
+
             }
         }
     }
@@ -161,11 +161,11 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
         {
             if (i == 0)
             {
-                list.set(i, stack.getRarity().rarityColor + (String)list.get(i));
+                list.set(i, stack.getRarity().rarityColor + list.get(i));
             }
             else
             {
-                list.set(i, EnumChatFormatting.GRAY + (String)list.get(i));
+                list.set(i, EnumChatFormatting.GRAY + list.get(i));
             }
         }
 

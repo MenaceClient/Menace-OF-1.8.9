@@ -13,7 +13,7 @@ public class SecurityFeaturesModule extends BaseModule {
 
 
     public SecurityFeaturesModule() {
-        super("SecurityFeatures", Category.MISC, 0);
+        super("SecurityFeatures", "Hides your name", Category.MISC, 0);
     }
 
     @EventTarget

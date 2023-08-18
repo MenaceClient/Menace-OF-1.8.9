@@ -39,7 +39,7 @@ extends GuiScreen {
 
 	public MenaceAuthScreen(GuiScreen previousScreen) {
 		this.previousScreen = previousScreen;
-		text = new MenaceFontRenderer(Fonts.fontFromTTF(new ResourceLocation("menace/fonts/SF-Pro.ttf"), 30, Font.PLAIN), true);
+		text = Menace.instance.sfPro30;
 		try {
 			this.backgroundShader = new GLSLShader("/assets/minecraft/menace/shaders/radar.fsh");
 		} catch (IOException e) {

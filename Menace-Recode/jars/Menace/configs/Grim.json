@@ -2,14 +2,20 @@
   "AntiBot": {
     "Toggled": false,
     "Settings": {
+      "CheckGameProfile": false,
+      "CheckNetworkInfo": false,
+      "Matrix": true,
+      "SpawnDistance": 17.0,
+      "HideBots": false,
       "Visible": true
     }
   },
   "AutoPot": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Delay": 100.0,
       "Health": 15.0,
+      "ThrowSpeed": true,
       "OnlyOnGround": true,
       "Visible": true
     }
@@ -26,7 +32,7 @@
   "Criticals": {
     "Toggled": false,
     "Settings": {
-      "Mode": "NCP",
+      "Mode": "Packet",
       "Visible": true
     }
   },
@@ -36,6 +42,9 @@
       "Reach": 3.8000000000000003,
       "MinCPS": 16.0,
       "MaxCPS": 18.0,
+      "Mode": "Switch",
+      "SwitchDelay": 600.0,
+      "SwitchAmount": 3.0,
       "TicksExisted": 0.0,
       "FOV": 360.0,
       "Filter": "Distance",
@@ -70,6 +79,8 @@
     "Settings": {
       "Mode": "Simple",
       "Explosions": true,
+      "Horizontal": 0.0,
+      "Vertical": 0.0,
       "Visible": true
     }
   },
@@ -85,7 +96,9 @@
       "Mode": "Other",
       "VanillaMode": "Damage",
       "VerusMode": "Jump",
-      "OtherMode": "NCPSlime",
+      "NCPMode": "NCPSlime",
+      "VulcanMode": "Clip",
+      "OtherMode": "BlocksMC",
       "DmgMode": "Jump",
       "Speed": 4.0,
       "Viewbob": 0.1,
@@ -95,20 +108,27 @@
   "LongJump": {
     "Toggled": false,
     "Settings": {
+      "Mode": "NCP",
+      "Speed": 1.0,
+      "Height": 4.0,
       "Visible": true
     }
   },
   "Speed": {
     "Toggled": false,
     "Settings": {
-      "Mode": "NCPLowHop",
+      "Mode": "BHop",
+      "Vanilla Mode": "Strafe",
+      "Verus Mode": "LowHop",
+      "NCP Mode": "LowHop",
+      "Other Mode": "BlocksMC",
       "Speed": 10.0,
       "AutoDisable": true,
       "Visible": true
     }
   },
   "Sprint": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "OmniSprint": false,
       "Visible": true
@@ -119,6 +139,7 @@
     "Settings": {
       "Mode": "NCP",
       "Height": 1.0,
+      "Timer": 0.5,
       "Visible": true
     }
   },
@@ -136,7 +157,7 @@
     }
   },
   "AntiVoid": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Mode": "Blink",
       "Fall Distance": 3.0,
@@ -153,8 +174,14 @@
       "Visible": true
     }
   },
-  "InvManager": {
+  "InventorySync": {
     "Toggled": true,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "InvManager": {
+    "Toggled": false,
     "Settings": {
       "Delay Min": 30.0,
       "Delay Max": 50.0,
@@ -216,10 +243,11 @@
       "Tower Speed": 50.0,
       "Tower Derp": false,
       "Sprint": false,
-      "KeepRotations": true,
       "SilentSwap": false,
       "KeepY": false,
       "Bypass": true,
+      "Rotation Mode": "Normal1",
+      "KeepRotations": true,
       "BlocksMC": false,
       "Eagle": false,
       "Eagle Delay": 100.0,
@@ -236,7 +264,7 @@
     }
   },
   "AntiCactus": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Visible": false
     }
@@ -250,7 +278,7 @@
     }
   },
   "ChestStealer": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Delay Min": 30.0,
       "Delay Max": 50.0,
@@ -331,36 +359,18 @@
       "Visible": false
     }
   },
-  "HUD": {
-    "Toggled": true,
-    "Settings": {
-      "Watermark": true,
-      "ArrayList": true,
-      "ArrayAlign": "Right",
-      "ArrayAlpha": 100.0,
-      "Position": true,
-      "Position Mode": "Single",
-      "Ping": true,
-      "Armour": true,
-      "GameStats": true,
-      "TargetHUD": true,
-      "Notifications": true,
-      "TabGui": false,
-      "Custom Font": true,
-      "Color": "Custom",
-      "RBW Speed": 10.0,
-      "Red": 255.0,
-      "Green": 0.0,
-      "Blue": 0.0,
-      "Alpha": 255.0,
-      "HUD Editor": false,
-      "Visible": false
-    }
-  },
   "ItemPhysics": {
     "Toggled": true,
     "Settings": {
       "Visible": false
+    }
+  },
+  "Nametags": {
+    "Toggled": false,
+    "Settings": {
+      "Custom Font": true,
+      "Only Players": false,
+      "Visible": true
     }
   },
   "TimeChanger": {
@@ -421,6 +431,12 @@
       "Visible": true
     }
   },
+  "MCF": {
+    "Toggled": false,
+    "Settings": {
+      "Visible": true
+    }
+  },
   "MenaceNCP": {
     "Toggled": false,
     "Settings": {
@@ -443,6 +459,12 @@
   },
   "StaffDetector": {
     "Toggled": true,
+    "Settings": {
+      "Visible": true
+    }
+  },
+  "Translator": {
+    "Toggled": false,
     "Settings": {
       "Visible": true
     }

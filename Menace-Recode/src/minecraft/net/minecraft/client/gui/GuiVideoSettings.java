@@ -85,7 +85,7 @@ public class GuiVideoSettings extends GuiScreenOF
         this.buttonList.add(new GuiOptionButton(222, i1, l, Lang.get("of.options.other")));
         l = l + 21;
         this.buttonList.add(borderlessFullscreenButton = new GuiOptionButton(666, this.width / 2 - 100, this.height / 6 + 179, 200, 20, GameSettings.Options.BORDERLESS_FULLSCREEN, "Borderless Fullscreen: " + (!Menace.instance.borderlessFullscreen ? "False" : "True")));
-        this.buttonList.add(new GuiButton(200, this.width / 2 - 100, this.height / 6 + 200, I18n.format("gui.done", new Object[0])));
+        this.buttonList.add(new GuiButton(200, this.width / 2 - 100, this.height / 6 + 200, I18n.format("gui.done")));
     }
 
     /**
@@ -168,7 +168,7 @@ public class GuiVideoSettings extends GuiScreenOF
             if (p_actionPerformed_1_.id == 666)
             {
                 this.guiGameSettings.setOptionValue(((GuiOptionButton)p_actionPerformed_1_).returnEnumOptions(), p_actionPerformed_2_);
-                borderlessFullscreenButton.displayString = "Borderless Fullscreen: " + (!Menace.instance.borderlessFullscreen ? "False" : "True");
+                borderlessFullscreenButton.displayString = "Borderless Fullscreen: " + (!Menace.instance.borderlessFullscreen ? "Off" : "On");
             }
 
             if (p_actionPerformed_1_.id == 231)

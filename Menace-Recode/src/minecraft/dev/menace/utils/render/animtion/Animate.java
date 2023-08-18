@@ -15,7 +15,15 @@ public class Animate {
         this.reversed = false;
     }
 
-    public void reset() { time = min; }
+    public void reset() {
+        last_time = System.nanoTime();
+        if (reversed) time = max;
+        else time = min;
+    }
+
+    public void resetTime() {
+    	last_time = System.nanoTime();
+    }
 
     long last_time = System.nanoTime();
     
@@ -70,4 +78,12 @@ public class Animate {
     public Easing getEase() { return ease; }
 
     private float clamp(float num, float min, float max) { return num < min ? min : (Math.min(num, max)); }
+
+    public boolean isFinished() {
+        if (reversed) {
+            return time <= min;
+        } else {
+            return time >= max;
+        }
+    }
 }

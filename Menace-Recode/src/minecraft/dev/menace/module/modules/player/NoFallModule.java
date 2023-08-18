@@ -7,6 +7,7 @@ import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.module.settings.ListSetting;
 import dev.menace.utils.misc.ChatUtils;
+import dev.menace.utils.player.MovementUtils;
 import dev.menace.utils.player.PacketUtils;
 import dev.menace.utils.player.PlayerUtils;
 import dev.menace.utils.world.BlockUtils;
@@ -25,6 +26,8 @@ public class NoFallModule extends BaseModule {
 	ListSetting mode;
 	boolean shouldSpoof;
 	private float lastTickFallDist, fallDist;
+	//Test
+	private int test = 0;
 
 	//Water Clutch
 	private boolean placedWater = false;
@@ -39,7 +42,7 @@ public class NoFallModule extends BaseModule {
 
 	@Override
 	public void setup() {
-		mode = new ListSetting("Mode", true, "SpoofGround", new String[] {"SpoofGround", "NoGround", "Verus", "Vulcan", "Hypixel", "Experimental"});
+		mode = new ListSetting("Mode", true, "SpoofGround", new String[] {"SpoofGround", "NoGround", "Verus", "Vulcan", /*"Matrix",*/ "Hypixel", "Experimental"});
 		this.rSetting(mode);
 		super.setup();
 	}
@@ -52,6 +55,7 @@ public class NoFallModule extends BaseModule {
 		lookTicks = 0;
 		bucketSlot = -1;
 		oldSlot = -1;
+		test = 0;
 		super.onEnable();
 	}
 
@@ -174,6 +178,30 @@ public class NoFallModule extends BaseModule {
 				lookTicks = 0;
 				oldSlot = -1;
 			}*/
+		} else if (mode.getValue().equalsIgnoreCase("Matrix")) {
+			if (mc.thePlayer.fallDistance == 0) {
+				fallDist = 0;
+				test = 0;
+			}
+
+			fallDist += mc.thePlayer.fallDistance - lastTickFallDist;
+			lastTickFallDist = mc.thePlayer.fallDistance;
+
+			if (PlayerUtils.isBlockUnder()) {
+				if (fallDist > 2) {
+					//Slow down the player
+					mc.thePlayer.motionX *= 0.1;
+					mc.thePlayer.motionY *= 0.1;
+					mc.thePlayer.motionZ *= 0.1;
+					ChatUtils.message("Matrix: " + fallDist + " " + MovementUtils.getSpeed());
+				}
+
+				if (fallDist > 3.5 && MovementUtils.getSpeed() < 0.2) {
+					event.setOnGround(true);
+					fallDist = 0;
+					//test++;
+				}
+			}
 		}
 	}
 

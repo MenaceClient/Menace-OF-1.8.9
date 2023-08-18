@@ -32,6 +32,7 @@ public class FlightModule extends BaseModule {
 	public ListSetting mode;
 	ListSetting vanillaMode;
 	ListSetting verusMode;
+	ListSetting vulcanMode;
 	ListSetting otherMode;
 	ListSetting ncpMode;
 	public ListSetting dmgMode;
@@ -39,7 +40,7 @@ public class FlightModule extends BaseModule {
 	SliderSetting viewbobbingYaw;
 
 	public FlightModule() {
-		super("Flight", "Fly like a bird!", Category.MOVEMENT, Keyboard.KEY_F);
+		super("Flight", Category.MOVEMENT, Keyboard.KEY_F);
 	}
 
 	@Override
@@ -53,6 +54,7 @@ public class FlightModule extends BaseModule {
 		ArrayList<String> vanillaValues = new ArrayList<>();
 		ArrayList<String> verusValues = new ArrayList<>();
 		ArrayList<String> ncpValues = new ArrayList<>();
+		ArrayList<String> vulcanValues = new ArrayList<>();
 		ArrayList<String> otherValues = new ArrayList<>();
 		for (FlightMode fm : FlightMode.values()) {
 			switch (fm.getType())
@@ -67,6 +69,10 @@ public class FlightModule extends BaseModule {
 
 				case NCP:
 					ncpValues.add(fm.getName());
+					break;
+
+				case VULCAN:
+					vulcanValues.add(fm.getName());
 					break;
 
 				case OTHER:
@@ -96,6 +102,12 @@ public class FlightModule extends BaseModule {
 				this.setVisible(Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("NCP"));
 			}
 		};
+		vulcanMode = new ListSetting("VulcanMode", false, "Clip", vulcanValues.toArray(new String[] {})) {
+			@Override
+			public void constantCheck() {
+				this.setVisible(Menace.instance.moduleManager.flightModule.mode.getValue().equalsIgnoreCase("Vulcan"));
+			}
+		};
 		otherMode = new ListSetting("OtherMode", false, "BlocksMC", otherValues.toArray(new String[] {})) {
 			@Override
 			public void constantCheck() {
@@ -122,6 +134,7 @@ public class FlightModule extends BaseModule {
 		this.rSetting(vanillaMode);
 		this.rSetting(verusMode);
 		this.rSetting(ncpMode);
+		this.rSetting(vulcanMode);
 		this.rSetting(otherMode);
 		this.rSetting(dmgMode);
 		this.rSetting(speed);
@@ -141,6 +154,10 @@ public class FlightModule extends BaseModule {
 				flightMode = fm.getFlight();
 				break;
 			} else if(ncpMode.getValue().equalsIgnoreCase(fm.getName()) && mode.getValue().equalsIgnoreCase("ncp")) {
+				this.setDisplayName(fm.getName());
+				flightMode = fm.getFlight();
+				break;
+			} else if (vulcanMode.getValue().equalsIgnoreCase(fm.getName()) && mode.getValue().equalsIgnoreCase("Vulcan")) {
 				this.setDisplayName(fm.getName());
 				flightMode = fm.getFlight();
 				break;

@@ -24,6 +24,7 @@ public class CommandManager {
 	BindCmd bindCmd = new BindCmd();
 	BindsCmd bindsCmd = new BindsCmd();
 	ConfigCmd configCmd = new ConfigCmd();
+	FriendCmd friendCmd = new FriendCmd();
 	HelpCmd helpCmd = new HelpCmd();
 	IRCCmd ircCmd = new IRCCmd();
 	PrefixCmd prefixCmd = new PrefixCmd();

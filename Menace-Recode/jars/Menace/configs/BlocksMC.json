@@ -1,6 +1,6 @@
 {
   "AntiBot": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "CheckGameProfile": false,
       "CheckNetworkInfo": false,
@@ -11,10 +11,10 @@
     }
   },
   "AutoPot": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
-      "Delay": 400.0,
-      "Health": 15.0,
+      "Delay": 250.0,
+      "Health": 10.0,
       "ThrowSpeed": true,
       "OnlyOnGround": true,
       "Visible": true
@@ -23,8 +23,8 @@
   "BackTracker": {
     "Toggled": false,
     "Settings": {
-      "Delay": 200.0,
-      "Max Packets": 100.0,
+      "Delay": 2650.0,
+      "Max Packets": 570.0,
       "Only Target": true,
       "Visible": true
     }
@@ -32,20 +32,20 @@
   "Criticals": {
     "Toggled": false,
     "Settings": {
-      "Mode": "NCP",
+      "Mode": "Packet",
       "Visible": true
     }
   },
   "KillAura": {
     "Toggled": false,
     "Settings": {
-      "Reach": 3.8000000000000003,
-      "MinCPS": 16.0,
-      "MaxCPS": 18.0,
+      "Reach": 3.6,
+      "MinCPS": 14.0,
+      "MaxCPS": 17.0,
       "Mode": "Switch",
-      "SwitchDelay": 216.0,
+      "SwitchDelay": 256.0,
       "SwitchAmount": 3.0,
-      "TicksExisted": 0.0,
+      "TicksExisted": 10.0,
       "FOV": 360.0,
       "Filter": "Distance",
       "AttackPoint": "Cock",
@@ -54,13 +54,13 @@
       "NoSwing": false,
       "ThroughWalls": false,
       "InInventory": false,
-      "RayCast": false,
+      "RayCast": true,
       "Cancel Click": true,
       "AutoDisable": true,
       "Players": true,
       "MenaceUsers": false,
       "Hostiles": true,
-      "Passives": true,
+      "Passives": false,
       "Invisibles": false,
       "Visible": true
     }
@@ -68,16 +68,16 @@
   "TPAura": {
     "Toggled": false,
     "Settings": {
-      "CPS": 12.0,
+      "CPS": 5.0,
       "Targets": 1.0,
-      "Range": 140.0,
+      "Range": 300.0,
       "Visible": true
     }
   },
   "Velocity": {
     "Toggled": true,
     "Settings": {
-      "Mode": "Simple",
+      "Mode": "Matrix",
       "Explosions": true,
       "Visible": true
     }
@@ -92,12 +92,13 @@
     "Toggled": false,
     "Settings": {
       "Mode": "Vanilla",
-      "VanillaMode": "Motion",
+      "VanillaMode": "Damage",
       "VerusMode": "Jump",
-      "NCPMode": "NCPSlime",
-      "OtherMode": "MatrixDamage",
-      "DmgMode": "Bow",
-      "Speed": 5.0,
+      "NCPMode": "OldNCP",
+      "VulcanMode": "Clip",
+      "OtherMode": "BlocksMC",
+      "DmgMode": "Jump",
+      "Speed": 1.0,
       "Viewbob": 0.1,
       "Visible": true
     }
@@ -107,19 +108,19 @@
     "Settings": {
       "Mode": "NCP",
       "Speed": 1.0,
-      "Height": 4.0,
+      "Height": 1.0,
       "Visible": true
     }
   },
   "Speed": {
-    "Toggled": true,
+    "Toggled": false,
     "Settings": {
       "Mode": "NCP",
-      "Vanilla Mode": "Strafe",
+      "Vanilla Mode": "BHop",
       "Verus Mode": "LowHop",
-      "NCP Mode": "LowHop",
+      "NCP Mode": "Strafe",
       "Other Mode": "Experimental",
-      "Speed": 10.0,
+      "Speed": 1.0,
       "AutoDisable": true,
       "Visible": true
     }
@@ -136,6 +137,7 @@
     "Settings": {
       "Mode": "NCP",
       "Height": 1.0,
+      "Timer": 0.30000000000000004,
       "Visible": true
     }
   },
@@ -155,7 +157,7 @@
   "AntiVoid": {
     "Toggled": true,
     "Settings": {
-      "Mode": "Stop",
+      "Mode": "Teleport",
       "Fall Distance": 3.0,
       "Smart Disable": true,
       "Visible": true
@@ -166,15 +168,21 @@
     "Settings": {
       "FakePlayer": true,
       "Pulse": true,
-      "PulseAmount": 50.0,
+      "PulseAmount": 40.0,
+      "Visible": true
+    }
+  },
+  "InventorySync": {
+    "Toggled": false,
+    "Settings": {
       "Visible": true
     }
   },
   "InvManager": {
     "Toggled": true,
     "Settings": {
-      "Delay Min": 10.0,
-      "Delay Max": 30.0,
+      "Delay Min": 30.0,
+      "Delay Max": 50.0,
       "In Inventory": true,
       "CloseScreen": false,
       "Randomize": true,
@@ -190,8 +198,8 @@
   "InvMove": {
     "Toggled": false,
     "Settings": {
-      "Sprint": false,
-      "Rotate": false,
+      "Sprint": true,
+      "Rotate": true,
       "Blink": false,
       "Visible": true
     }
@@ -199,14 +207,14 @@
   "Jesus": {
     "Toggled": false,
     "Settings": {
-      "Mode": "Motion",
+      "Mode": "Collide",
       "Visible": true
     }
   },
   "NoFall": {
     "Toggled": false,
     "Settings": {
-      "Mode": "SpoofGround",
+      "Mode": "Vulcan",
       "Visible": true
     }
   },
@@ -230,11 +238,11 @@
       "Tower": true,
       "Tower Move": false,
       "Tower Mode": "BlocksMC",
-      "Tower Speed": 50.0,
+      "Tower Speed": 42.0,
       "Tower Derp": false,
       "Sprint": true,
       "SilentSwap": true,
-      "KeepY": true,
+      "KeepY": false,
       "Bypass": true,
       "Rotation Mode": "Normal1",
       "KeepRotations": true,
@@ -245,8 +253,8 @@
       "NotOnBlock": false,
       "NoSwing": false,
       "Boost": false,
-      "Jump": true,
-      "LowHop": true,
+      "Jump": false,
+      "LowHop": false,
       "Mode": "NCP",
       "Timer": 1.0,
       "Render": true,
@@ -301,15 +309,15 @@
   "Animations": {
     "Toggled": true,
     "Settings": {
-      "Blocking Mode": "Slide",
+      "Blocking Mode": "SlideDown",
       "TranslateX": 0.2,
-      "TranslateY": 0.1,
+      "TranslateY": 0.2,
       "TranslateZ": 0.0,
       "ItemPosX": 0.5,
       "ItemPosY": -0.4,
       "ItemPosZ": -0.8,
       "ItemScale": 0.2,
-      "ItemRotation": 40.0,
+      "ItemRotation": 46.0,
       "SwingAnim": true,
       "AnythingBlock": false,
       "1.7": false,
@@ -338,42 +346,14 @@
     }
   },
   "ESP": {
-    "Toggled": true,
-    "Settings": {
-      "Visible": true
-    }
-  },
-  "Fullbright": {
     "Toggled": false,
     "Settings": {
       "Visible": false
     }
   },
-  "HUD": {
+  "Fullbright": {
     "Toggled": true,
     "Settings": {
-      "Watermark": true,
-      "ArrayList": true,
-      "ArrayAlign": "Right",
-      "ArrayOutline": "None",
-      "ArrayAlpha": 100.0,
-      "Position": true,
-      "Position Mode": "Single",
-      "Ping": true,
-      "Armour": true,
-      "GameStats": true,
-      "TargetHUD": true,
-      "Notifications": true,
-      "TabGui": false,
-      "Spotify": false,
-      "Custom Font": true,
-      "Color": "Custom",
-      "RBW Speed": 35.0,
-      "Red": 255.0,
-      "Green": 0.0,
-      "Blue": 0.0,
-      "Alpha": 250.0,
-      "HUD Editor": false,
       "Visible": false
     }
   },
@@ -383,10 +363,18 @@
       "Visible": false
     }
   },
+  "Nametags": {
+    "Toggled": true,
+    "Settings": {
+      "Custom Font": false,
+      "Only Players": true,
+      "Visible": false
+    }
+  },
   "TimeChanger": {
     "Toggled": true,
     "Settings": {
-      "Time": 16200.0,
+      "Time": 19000.0,
       "Visible": false
     }
   },
@@ -403,14 +391,14 @@
     }
   },
   "AutoPlay": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
-      "Delay": 700.0,
+      "Delay": 800.0,
       "Visible": true
     }
   },
   "DevModule": {
-    "Toggled": false,
+    "Toggled": true,
     "Settings": {
       "Visible": true
     }
@@ -418,11 +406,11 @@
   "Disabler": {
     "Toggled": false,
     "Settings": {
-      "Mode": "PingSpoof",
-      "Delay": 366.0,
-      "MaxPackets": 352.0,
+      "Mode": "VerusTransaction",
+      "Delay": 300.0,
+      "MaxPackets": 300.0,
       "Transactions": true,
-      "Silent": false,
+      "Silent": true,
       "Visible": true
     }
   },
@@ -438,6 +426,12 @@
       "Insults": false,
       "Valorant": true,
       "Type": "Spectrum",
+      "Visible": true
+    }
+  },
+  "MCF": {
+    "Toggled": false,
+    "Settings": {
       "Visible": true
     }
   },

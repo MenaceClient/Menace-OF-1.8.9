@@ -43,7 +43,7 @@ public class AntiVoidModule extends BaseModule {
     ToggleSetting smartDisable;
 
     public AntiVoidModule() {
-        super("AntiVoid", Category.PLAYER, 0);
+        super("AntiVoid", "You shouldn't need this", Category.PLAYER, 0);
     }
 
     @Override

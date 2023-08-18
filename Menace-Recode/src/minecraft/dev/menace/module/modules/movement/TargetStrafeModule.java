@@ -22,7 +22,7 @@ public class TargetStrafeModule extends BaseModule {
     SliderSetting range;
 
     public TargetStrafeModule() {
-        super("TargetStrafe", Category.MOVEMENT, 0);
+        super("TargetStrafe", "Adaptive Circumcision -Arithmo", Category.MOVEMENT, 0);
     }
 
     @Override

@@ -1,71 +1,64 @@
 package dev.menace.ui.hud.elements;
 
 import dev.menace.ui.hud.BaseElement;
-import dev.menace.utils.render.RenderUtils;
+import dev.menace.ui.hud.options.BooleanOption;
+import dev.menace.ui.hud.options.ColorSelectOption;
 import net.minecraft.client.network.NetworkPlayerInfo;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class PingElement extends BaseElement {
 
-    ArrayList<Integer> pingList = new ArrayList<>();
+    private boolean customFont;
+    private Color color;
 
-    public PingElement() {
-        super(1, 520, true);
+    @Override
+    public void setup() {
+        this.addOption(new BooleanOption("Custom Font", false) {
+            @Override
+            public void update() {
+                PingElement.this.customFont = this.getValue();
+                super.update();
+            }
+        });
+        this.addOption(new ColorSelectOption("Color", Color.RED) {
+            @Override
+            public void update() {
+                PingElement.this.color = this.getColor();
+                super.update();
+            }
+        });
     }
 
     @Override
     public void render() {
         if (mc.theWorld == null || mc.thePlayer == null) {
-            pingList.clear();
             return;
         }
 
         final NetworkPlayerInfo you = this.mc.getNetHandler().getPlayerInfo(this.mc.thePlayer.getUniqueID());
 
         if (you == null) {
-            pingList.clear();
             return;
         }
-        this.drawString("Ping: " + you.getResponseTime() + "ms", this.getAbsoluteX(), this.getAbsoluteY());
 
-        if (pingList.size() > 100) {
-            pingList.remove(0);
-        }
+        //TODO: Ping Average and Ping Graph
 
-        /*RenderUtils.drawHollowRect(this.getAbsoluteX(), this.getAbsoluteY(), this.getAbsoluteX() + 100, this.getAbsoluteY() + 50, 1, -1);
-
-        pingList.add(you.getResponseTime());
-
-        if (pingList.size() > 100) {
-            pingList.remove(0);
-        }
-
-        //draw average line
-        int average = 0;
-        for (int i : pingList) {
-            average += i;
-        }
-        average /= pingList.size();
-
-
-
-        RenderUtils.drawHorizontalLine(this.getAbsoluteX() + 1, this.getAbsoluteX() + 98, averageY, Color.GREEN.getRGB());*/
+        this.drawString("Ping: " + you.getResponseTime() + "ms", this.getPosX(), this.getPosY(), this.color.getRGB(), this.customFont);
     }
 
     @Override
     public void renderDummy() {
-        this.drawString("Ping: 255ms", this.getAbsoluteX(), this.getAbsoluteY());
+        this.drawString("Ping: 255ms", this.getPosX(), this.getPosY(), this.color.getRGB(), this.customFont);
     }
 
     @Override
     public int getWidth() {
-        return this.getStringWidth("Ping: 255ms");
+        return this.getStringWidth("Ping: 255ms", this.customFont);
     }
 
     @Override
     public int getHeight() {
-        return this.getFontHeight();
+        return this.getFontHeight(this.customFont);
     }
 }

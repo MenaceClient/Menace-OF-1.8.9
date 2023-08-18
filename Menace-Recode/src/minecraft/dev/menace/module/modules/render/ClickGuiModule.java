@@ -1,8 +1,9 @@
 package dev.menace.module.modules.render;
 
 import dev.menace.module.settings.ToggleSetting;
+import dev.menace.ui.clickgui.dropdown.DropdownClickGui;
 import dev.menace.ui.clickgui.intellij.IntellijClickGui;
-import dev.menace.ui.clickgui.vape.VapeGui;
+import dev.menace.ui.clickgui.menace.MenaceClickGui;
 import org.lwjgl.input.Keyboard;
 
 import dev.menace.event.EventTarget;
@@ -10,13 +11,8 @@ import dev.menace.event.events.EventUpdate;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
 import dev.menace.module.settings.ListSetting;
-import dev.menace.ui.clickgui.csgo.CSGOGui;
-import dev.menace.ui.clickgui.lime.LimeClickGUI;
 
 public class ClickGuiModule extends BaseModule {
-
-	public CSGOGui csgoGui;
-	public IntellijClickGui intellijClickGui;
 	
 	ListSetting mode;
 	public ToggleSetting sounds;
@@ -27,7 +23,7 @@ public class ClickGuiModule extends BaseModule {
 	
 	@Override
 	public void setup() {
-		mode = new ListSetting("Mode", true, "Dropdown", new String[] {"Dropdown", "Panel", "Dashboard", "IntelliJ"});
+		mode = new ListSetting("Mode", true, "Menace", new String[] {"Dropdown", "IntelliJ", "Menace"});
 		sounds = new ToggleSetting("Sounds", true, false);
 		this.rSetting(mode);
 		//TODO: fix sound or remove this
@@ -38,25 +34,19 @@ public class ClickGuiModule extends BaseModule {
 	@Override
 	public void onEnable() {
 		super.onEnable();
-		if (mc.currentScreen instanceof CSGOGui
-				|| mc.currentScreen instanceof LimeClickGUI
-				|| mc.currentScreen instanceof VapeGui
-				|| mc.currentScreen instanceof IntellijClickGui) {
+		if ( mc.currentScreen instanceof DropdownClickGui || mc.currentScreen instanceof IntellijClickGui || mc.currentScreen instanceof MenaceClickGui) {
 			return;
 		}
 		
 		switch (mode.getValue()) {
 			case "Dropdown" :
-				mc.displayGuiScreen(new LimeClickGUI());
-				break;
-			case "Panel" :
-				mc.displayGuiScreen(new CSGOGui());
-				break;
-			case "Dashboard" :
-				mc.displayGuiScreen(new VapeGui());
+				mc.displayGuiScreen(new DropdownClickGui());
 				break;
 			case "IntelliJ" :
 				mc.displayGuiScreen(new IntellijClickGui());
+				break;
+			case  "Menace" :
+				mc.displayGuiScreen(new MenaceClickGui());
 				break;
 		}
 	}

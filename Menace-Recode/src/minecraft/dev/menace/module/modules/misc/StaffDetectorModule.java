@@ -28,7 +28,7 @@ public class StaffDetectorModule extends BaseModule {
     List<String> obStaffs = new ArrayList<>();
 
     public StaffDetectorModule() {
-        super("StaffDetector", Category.MISC, 0);
+        super("StaffDetector", "Leaves the game if there is a staff in it (BlocksMC)", Category.MISC, 0);
     }
 
     @Override

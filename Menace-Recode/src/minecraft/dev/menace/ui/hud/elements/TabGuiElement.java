@@ -1,13 +1,12 @@
 package dev.menace.ui.hud.elements;
 
 import dev.menace.Menace;
-import dev.menace.event.EventTarget;
 import dev.menace.event.events.EventKey;
 import dev.menace.module.BaseModule;
 import dev.menace.module.Category;
-import dev.menace.module.modules.render.HUDModule;
 import dev.menace.ui.hud.BaseElement;
-import dev.menace.utils.render.ColorUtils;
+import dev.menace.ui.hud.options.BooleanOption;
+import dev.menace.ui.hud.options.ColorSelectOption;
 import dev.menace.utils.render.RenderUtils;
 import org.lwjgl.input.Keyboard;
 
@@ -15,64 +14,74 @@ import java.awt.*;
 
 public class TabGuiElement extends BaseElement {
 
+    private boolean customFont;
+    private Color color;
+
     public int currentTab = 0;
     public int moduleIndex = 0;
     public boolean expanded = false;
 
-    public TabGuiElement() {
-        super(1, 117, true);
-    }
-
-    public void start() {
-        Menace.instance.eventManager.register(this);
-    }
-
-    public void stop() {
-        Menace.instance.eventManager.unregister(this);
+    @Override
+    public void setup() {
+        this.addOption(new BooleanOption("Custom Font", false) {
+            @Override
+            public void update() {
+                TabGuiElement.this.customFont = this.getValue();
+                super.update();
+            }
+        });
+        this.addOption(new ColorSelectOption("Color", Color.red) {
+            @Override
+            public void update() {
+                TabGuiElement.this.color = this.getColor();
+                super.update();
+            }
+        });
     }
 
     @Override
     public void render() {
-
-        HUDModule hudModule = Menace.instance.moduleManager.hudModule;
-        int color = hudModule.color.getValue().equalsIgnoreCase("Custom") ? new Color(hudModule.red.getValueI(), hudModule.green.getValueI(), hudModule.blue.getValueI(), hudModule.alpha.getValueI()).getRGB() : ColorUtils.fade(hudModule.rainbowSpeed.getValueF(), -this.getAbsoluteY()).getRGB();
-        RenderUtils.drawRect(this.getAbsoluteX(), this.getAbsoluteY(), this.getAbsoluteX() + 75, this.getAbsoluteY() + (Category.values().length * (this.getFontHeight() + 4)) + 4, new Color(0, 0, 0, 120).getRGB());
-        RenderUtils.drawRect(this.getAbsoluteX() + 2, this.getAbsoluteY() + (currentTab * (this.getFontHeight() + 4)) + 2, this.getAbsoluteX() + 73, this.getAbsoluteY() + ((currentTab + 1) * (this.getFontHeight() + 4)) + 2, color);
+        RenderUtils.drawRect(this.getPosX(), this.getPosY(), this.getPosX() + 75, this.getPosY() + (Category.values().length * (this.getFontHeight(this.customFont) + 4)) + 4, new Color(0, 0, 0, 120).getRGB());
+        RenderUtils.drawRect(this.getPosX() + 2, this.getPosY() + (currentTab * (this.getFontHeight(this.customFont) + 4)) + 2, this.getPosX() + 73, this.getPosY() + ((currentTab + 1) * (this.getFontHeight(this.customFont) + 4)) + 2, color.getRGB());
 
         int count = 0;
         for (Category c : Category.values()) {
-            this.drawString(c.name(), this.getAbsoluteX() + 5, this.getAbsoluteY() + 5 + count, -1);
+            this.drawString(c.name(), this.getPosX() + 5, this.getPosY() + 5 + count, -1, this.customFont);
 
-            count += this.getFontHeight() + 4;
+            count += this.getFontHeight(this.customFont) + 4;
         }
 
         if (expanded) {
             int modules = Menace.instance.moduleManager.getModulesByCategory(Category.values()[currentTab]).size();
-            //int size = (int) (this.getFontHeight() * modules * 1.5 + 3);
 
             if (moduleIndex > modules - 1) {
                 moduleIndex = modules - 1;
             }
 
-            RenderUtils.drawRect(this.getAbsoluteX() + 75, this.getAbsoluteY(), this.getAbsoluteX() + 150, this.getAbsoluteY() + (modules * (this.getFontHeight() + 4)) + 4, new Color(0, 0, 0, 120).getRGB());
-            RenderUtils.drawRect(this.getAbsoluteX() + 77, this.getAbsoluteY() + (moduleIndex * (this.getFontHeight() + 4)) + 2, this.getAbsoluteX() + 148, this.getAbsoluteY() + ((moduleIndex + 1) * (this.getFontHeight() + 4)) + 2, color);
+            RenderUtils.drawRect(this.getPosX() + 75, this.getPosY(), this.getPosX() + 150, this.getPosY() + (modules * (this.getFontHeight(this.customFont) + 4)) + 4, new Color(0, 0, 0, 120).getRGB());
+            RenderUtils.drawRect(this.getPosX() + 77, this.getPosY() + (moduleIndex * (this.getFontHeight(this.customFont) + 4)) + 2, this.getPosX() + 148, this.getPosY() + ((moduleIndex + 1) * (this.getFontHeight(this.customFont) + 4)) + 2, color.getRGB());
 
             int count2 = 0;
             for (BaseModule m : Menace.instance.moduleManager.getModulesByCategory(Category.values()[currentTab])) {
-                this.drawString(m.getName(), this.getAbsoluteX() + 80, this.getAbsoluteY() + 5 + count2, -1);
+                this.drawString(m.getName(), this.getPosX() + 80, this.getPosY() + 5 + count2, -1, this.customFont);
 
-                count2 += this.getFontHeight() + 4;
+                count2 += this.getFontHeight(this.customFont) + 4;
             }
         }
 
     }
 
-    @EventTarget
+    @Override
+    public void renderDummy() {
+        int count = 0;
+        for (Category c : Category.values()) {
+            this.drawString(c.name(), this.getPosX() + 5, this.getPosY() + 5 + count, -1, this.customFont);
+
+            count += this.getFontHeight(customFont) + 4;
+        }
+    }
+
     public void onKey(EventKey event) {
-
-        HUDModule hudModule = Menace.instance.moduleManager.hudModule;
-        if (!hudModule.tabGui.getValue()) return;
-
         if (event.getKey() == Keyboard.KEY_UP) {
             if (expanded) {
                 if (moduleIndex > 0) {
@@ -111,16 +120,6 @@ public class TabGuiElement extends BaseElement {
             expanded = false;
         }
 
-    }
-
-    @Override
-    public void renderDummy() {
-        int count = 0;
-        for (Category c : Category.values()) {
-            this.drawString(c.name(), this.getAbsoluteX() + 5, this.getAbsoluteY() + 5 + count, -1);
-
-            count += this.getFontHeight() + 4;
-        }
     }
 
     @Override

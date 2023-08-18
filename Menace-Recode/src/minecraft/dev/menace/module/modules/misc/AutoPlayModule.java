@@ -20,7 +20,7 @@ public class AutoPlayModule extends BaseModule {
     SliderSetting delay;
 
     public AutoPlayModule() {
-        super("AutoPlay", Category.MISC, 0);
+        super("AutoPlay", "Automatically starts a new game (BlocksMC)", Category.MISC, 0);
     }
 
     @Override
